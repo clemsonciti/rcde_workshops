@@ -1,0 +1,124 @@
+# Table of contents
+
+format: jb-book
+root: index
+
+parts:
+- caption: Courses
+  # CSC231: Computer Systems
+  chapters:
+    - file: csc231/00-syllabus.md
+      sections:
+      - file: csc231/01-introduction.md
+      - file: csc231/02-intro-to-c.md
+      - file: csc231/03-data-representation.md
+      - file: csc231/04-machine-language.md
+      - file: csc231/05-memory-cache.md
+      - file: csc231/06-optimizing-program-performance.md
+      - file: csc231/07-network-programming.md
+  # CSC331: Operating Systems
+    - file: csc331/00-syllabus.md
+      sections:
+      - file: csc331/01-introduction.md
+      - file: csc331/02-process.md
+      - file: csc331/03-process-api.md
+      - file: csc331/04-limited-direct-execution.md
+      - file: csc331/05-cpu-scheduling.md
+      - file: csc331/06-gdb-debugger.md
+      - file: csc331/07-memory-virtualization.md
+      - file: csc331/08-address-translation.md
+      - file: csc331/09-paging.md
+      - file: csc331/10-concurrency.md
+      - file: csc331/11-lock-condition-variables.md
+      - file: csc331/12-semaphores.md
+      - file: csc331/13-io-disk-scheduling.md
+      - file: csc331/14-file-systems.md
+      - file: csc331/15-crash-consistency-fsck-journaling.md
+      - file: csc331/16-minix.md
+  # CSC 466: Parallel and Distributed Computing
+    - file: csc466/00-syllabus.md
+      sections:
+      - file: csc466/01-computational-demand.md
+      - file: csc466/02-intro-to-parallel-distributed-computing.md
+      - file: csc466/03-intro-openmp.md
+      - file: csc466/04-intro-xsede.md
+      - file: csc466/05-loop-parallelism.md
+      - file: csc466/06-works-sharing.md
+      - file: csc466/07-intro-mpi.md
+      - file: csc466/08-point-to-point.md
+      - file: csc466/09-functional-collectives.md
+      - file: csc466/10-pleasantly-parallel.md
+      - file: csc466/11-cloudlab.md
+      - file: csc466/12-compute-deployment.md
+      - file: csc466/13-distributed-file-systems.md
+      - file: csc466/14-schedulers.md
+      - file: csc466/15-data-intensive-computing.md
+      - file: csc466/16-high-throughput-computing.md
+      - file: csc466/17-intro-IOT.md
+  # CSC 467: Big Data Engineering
+    - file: csc467/00-syllabus.md
+      sections:
+      - file: csc467/01-introduction.md
+      - file: csc467/02-mapreduce.md
+      - file: csc467/03-spark.md
+      - file: csc467/04-data-parallel.md
+      - file: csc467/05-page-rank.md
+      - file: csc467/06-locality-sentitive-hashing.md
+      - file: csc467/07-frequent-itemsets.md
+      - file: csc467/08-clustering.md
+      - file: csc467/09-recommendation-systems.md
+      - file: csc467/10-large-scale-machine-learning.md
+  # CSC 468: Introduction to Cloud Computing
+    - file: csc468/00-syllabus.md
+      sections:
+      - file: csc468/01-introduction.md
+      - file: csc468/02-cloudlab.md
+      - file: csc468/03-project-part-1.md
+      - file: csc468/04-why-cloud.md
+      - file: csc468/05-virtualization.md
+      - file: csc468/06-programmatic-deployment.md
+      - file: csc468/07-kvm-docker-podman-singularity.md
+      - file: csc468/08-docker.md
+      - file: csc468/09-docker-compose.md
+      - file: csc468/10-kubernetes.md
+      - file: csc468/11-borg-to-kubernetes.md
+      - file: csc468/13-kubernetes-ci.md
+      - file: csc468/14-kubernetes-cd.md
+      - file: csc468/15-project-part-2.md
+      - file: csc468/16-docker-swarm-archive.md
+      - file: csc468/16-project-part-3.md
+  # CSC 495: Competitive Programming
+    - file: csc495/00-syllabus.md
+      sections:
+      - file: csc495/01-introduction.md
+      - file: csc495/02-ds-algo-libraries.md
+      - file: csc495/03-problem-solving-paradigms.md
+      - file: csc495/04-mathematics.md
+      - file: csc495/05-string-processing.md
+  # CSC 586: Linux System Administration
+    - file: csc586/00-syllabus.md
+      sections:
+      - file: csc586/01-introduction.md
+      - file: csc586/02-sys-admin.md
+      - file: csc586/03-intro-linux.md
+      - file: csc586/04-access-control.md
+      - file: csc586/05-process-control.md
+      - file: csc586/06-file-system.md
+      - file: csc586/07-user-management.md
+      - file: csc586/08-software-installation.md
+      - file: csc586/09-scripting-linux.md
+      - file: csc586/10-nfs.md
+      - file: csc586/11-sso.md
+      - file: csc586/12-practice.md
+      - file: csc586/13-docker.md
+  # CSC 603: Special Topics on Access Control in the Cloud
+    - file: csc603/00-syllabus.md
+      sections:
+      - file: csc603/01-introduction.md
+- caption: Appendix
+  chapters:
+    - file: extras/setup_ssh.md
+    - file: extras/setup_spark.md
+    - file: extras/intro-linux.md
+    - file: extras/gdb.md
+    - file: extras/github.md
