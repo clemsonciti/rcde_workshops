@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Computer Science Courses
+title: Research Computing and Data Workshop
 author: Linh Ngo
 logo: logo.png
 
@@ -21,15 +21,14 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/class-master/courses   # Online location of your book
+  url: https://github.com/clemsonciti/rcde_workshops  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 html:
-  google_analytics_id: G-0VRDR43ECD
   extra_footer:
     <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a>
-    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CSC Courses</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 
 sphinx:
   config:
