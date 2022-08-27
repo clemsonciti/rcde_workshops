@@ -1,0 +1,771 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Research Computing and Data Workshop</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Input to R" href="02-Basic-R.html" />
+    <link rel="prev" title="Introduction to R" href="00-index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Research Computing and Data Workshop</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introductory Sequence
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro_linux/00-index.html">
+   Introduction to Linux
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/01-introduction.html">
+     Introducing the Shell
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">
+     Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">
+     Working With Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/05-pipes.html">
+     Pipes and Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/06-find.html">
+     Finding Things
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro_palmetto/00-index.html">
+   Introduction to Palmetto
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/01-introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">
+     Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">
+     The structure of the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/04-storage.html">
+     Storage on Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/05-interactive.html">
+     Running an interactive job on Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/07-open-od.html">
+     Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  R
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="00-index.html">
+   Introduction to R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-Basic-R.html">
+     Input to R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-Data-Structures.html">
+     Classes of objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04-Matrix.html">
+     Vector math
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05-Control-Structure.html">
+     if-else
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-Functions.html">
+     Using custom functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../r_machine_learning/00-index.html">
+   Machine Learning using R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
+     2.1 What is Caret
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
+     3 Data partition: training and testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
+     5 More examples of prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/07-KNN.html">
+     K-Nearest Neighbour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
+     Training the model using Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
+     K-means clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
+     11 Neural Network
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_programming/00-index.html">
+   Introduction to Python Programming
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_sklearn/00-index.html">
+   Machine Learning using Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/01-introduction.html">
+     Introduction to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/02-sklearn-preprocessing.html">
+     Introduction to Scikit Learn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/03-sklearn-Data-Partition.html">
+     Data partition: training and testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/04-sklearn-Evaluation-Metrics.html">
+     Evaluation Metrics with Scikit-Learn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/05-Training-Regression.html">
+     Supervised Learning training with Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/06-Training-Tree.html">
+     Tree-based Learning Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/07-Training-Ensemble.html">
+     Ensemble-based Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/08-Model_Based.html">
+     Model-based Prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/09-Regularization.html">
+     Regularization and Variable Selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/10-Dimension-Reduction.html">
+     Dimension Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/11-Neural-Network.html">
+     Neural Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/12-Support-Vector-Machine.html">
+     Support Vector Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/13-KNN.html">
+     K-Nearest Neighbour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/14-Unsupervised-Learning.html">
+     Unsupervised Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/15-Mini-Project.html">
+     Mini-Project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_deep_learning/00-index.html">
+   Deep Learning in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/01-Introduction.html">
+     Introduction to Deep Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">
+     Deep Learning Library Framework
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">
+     Recap on ANN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">
+     Introduction to Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">
+     Training Deep Learning Regression model with Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">
+     Training Deep Learning Classification model with Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">
+     Convolution Neural Network for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">
+     Recurrent Neural Network for Timeseries forecasting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Advanced Palmetto Usage
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../containers/00-index.html">
+   Containerization on Palmetto (under development)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../containers/01-introduction.html">
+     1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../containers/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../containers/03-notebooks.html">
+     1. Where are the notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced_scheduling/00-index.html">
+   Advanced Scheduling (under development)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
+     1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/r_programming/01-Introduction.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><no title></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <ul class="simple">
+<li><p>R is a language and environment for statistical computing and graphics</p></li>
+<li><p>R is developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues.</p></li>
+<li><p>R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible.</p></li>
+<li><p>R is available as Free Software</p></li>
+<li><p>R runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.</p></li>
+<li><p>R can be extended (easily) via packages on CRAN (The Comprehensive R Archive Network)</p></li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114046192-a3f0aa80-9856-11eb-9646-995a67c144f9.png" /></p>
+<p>Users of the Palmetto cluster can run R on Palmetto. The most user-friendly way to do this is to run R Studio through a web interface (Open OnDemand). Let’s start it. In your web browser (Chrome, Firefox, Edge, Safari, Opera etc.), please go to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod02</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>You will need to login with your Clemson username and password, and perform a DUO check.</p>
+<img src="../fig/openod_dashboard.png" alt="Open OnDemand Dashboard" style="height:400px">
+<p>You can use OpenOD to run certain graphical applications applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run R Studio. From “Interactive apps”, please select “RStudio server”:
+<img src="../fig/rstudio1.png" style="height:300px"></p>
+<p>Please fill out the request as shown on this picture:
+<img src="../fig/rstudio2.png" style="height:500px"></p>
+<p>This is basically a graphical interface to <code class="docutils literal notranslate"><span class="pre">qsub</span></code>. You are asking for 1 compute node, 5 CPUs, 10 GB of memory, no GPU, 1g interconnect (that is, a c1 node), for the walltime duration of 6 hours. Once you are done entering this information, please click the blue “Launch” button at the bottom. It will bring out a new screen:</p>
+<img src="../fig/rstudio3.png">
+<p>This means your request is being processed. Once the compute node is ready, you will see a blue button under your request saying “Connect to RStudio server”:</p>
+<img src="../fig/rstudio4.png">
+<p>Click on it, and it will start RStudio. The final screen will be something like</p>
+<img src="../fig/rstudio_gui.png" style="width:600px">
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./r_programming"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="00-index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to R</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02-Basic-R.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Input to R</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Linh Ngo<br/>
+  
+    <div class="extra_footer">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
