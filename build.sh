@@ -4,7 +4,9 @@
 source activate jupyter-book
 jupyter-book build .
 
-if [[ $1 == "site" ]]
+# https://jupyterbook.org/en/stable/publish/gh-pages.html
+
+if [[ $1 == "pages" ]]
 then
-  rsync -a _build/html/* lngo@cs.wcupa.edu:~/public_html/courses/
+  ghp-import -n -p -f _build/html
 fi

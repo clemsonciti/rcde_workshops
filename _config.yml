@@ -28,8 +28,10 @@ repository:
 html:
   extra_footer:
     <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a>
-    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
 
 sphinx:
   config:
     html_show_copyright: false
+
+only_build_toc_files: true

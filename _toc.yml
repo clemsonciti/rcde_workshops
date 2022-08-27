@@ -6,50 +6,99 @@ root: index
 parts:
 - caption: Introductory Sequence
   chapters:
-    - file: intro_linux/00-syllabus.md
+    - file: intro_linux/00-index.md
       sections:
       - file: intro_linux/01-introduction.md
-      - file: intro_linux/02-intro-to-c.md
-    - file: intro_palmetto/00-syllabus.md
+      - file: intro_linux/02-accessing-palmetto.md
+      - file: intro_linux/03-file_system.md
+      - file: intro_linux/04-working_with_files_and_directories.md
+      - file: intro_linux/05-pipes.md
+      - file: intro_linux/06-find.md
+    - file: intro_palmetto/00-index.md
       sections:
-      - file: intro_linux/01-introduction.md
-      - file: intro_linux/02-intro-to-c.md
+      - file: intro_palmetto/01-introduction.md
+      - file: intro_palmetto/02-accessing-palmetto.md
+      - file: intro_palmetto/03-palmetto_structure.md
+      - file: intro_palmetto/04-storage.md
+      - file: intro_palmetto/05-interactive.md
+      - file: intro_palmetto/06-batch.md
+      - file: intro_palmetto/07-open-od.md
 - caption: R
-    - file: r_programming/00-syllabus.md
+  chapters:
+    - file: r_programming/00-index.md
       sections:
-      - file: r_programming/01-introduction.md
-    - file: r_machine_learning/00-syllabus.md
+      - file: r_programming/01-Introduction.md
+      - file: r_programming/02-Basic-R.md
+      - file: r_programming/03-Data-Structures.md
+      - file: r_programming/04-Matrix.md
+      - file: r_programming/05-Control-Structure.md
+      - file: r_programming/06-Functions.md
+      - file: r_programming/07-Parallel-Computing.md
+      - file: r_programming/08-Basic-Plotting.md
+      - file: r_programming/09-Plotting-with-ggplot.md
+      - file: r_programming/10-R-in-Palmetto.md
+    - file: r_machine_learning/00-index.md
       sections:
-      - file: r_machine_learning/01-computational-demand.md
-      - file: csc466/02-intro-to-parallel-distributed-computing.md
+      - file: r_machine_learning/01-Introduction.md
+      - file: r_machine_learning/02-Caret-Preprocessing.md
+      - file: r_machine_learning/03-Caret-Data-Partition.md
+      - file: r_machine_learning/04-Caret-Evaluation-Metrics.md
+      - file: r_machine_learning/05-Training_Regression.md
+      - file: r_machine_learning/06-Decision_boundaries.md
+      - file: r_machine_learning/07-KNN.md
+      - file: r_machine_learning/08-Training_Tree.md
+      - file: r_machine_learning/09-Training_Ensemble.md
+      - file: r_machine_learning/10-Unsupervised-Learning.md
+      - file: r_machine_learning/11-Neural-Network.md
+      - file: r_machine_learning/Project.md
 - caption: Python
-    - file: python_1/00-syllabus.md
+  chapters:
+    - file: python_programming/00-index.md
       sections:
-      - file: python_1/01-introduction.md
-    - file: python_2/00-syllabus.md
-      sections:
-      - file: python_2/01-introduction.md
-    - file: python_3/00-syllabus.md
-      sections:
-      - file: python_3/01-introduction.md
-      - file: python_3/02-mapreduce.md
-    - file: python_sklearn/00-syllabus.md
+      - file: python_programming/IntrotoPythonI.ipynb
+      - file: python_programming/IntrotoPythonII.ipynb
+      - file: python_programming/IntrotoPythonIII.ipynb
+    - file: python_sklearn/00-index.md
       sections:
       - file: python_sklearn/01-introduction.md
-      - file: python_sklearn/02-cloudlab.md
-    - file: python_deep_learning/03-project-part-1.md
+      - file: python_sklearn/02-sklearn-preprocessing.md
+      - file: python_sklearn/03-sklearn-Data-Partition.md
+      - file: python_sklearn/04-sklearn-Evaluation-Metrics.md
+      - file: python_sklearn/05-Training-Regression.md
+      - file: python_sklearn/06-Training-Tree.md
+      - file: python_sklearn/07-Training-Ensemble.md
+      - file: python_sklearn/08-Model_Based.md
+      - file: python_sklearn/09-Regularization.md
+      - file: python_sklearn/10-Dimension-Reduction.md
+      - file: python_sklearn/11-Neural-Network.md
+      - file: python_sklearn/12-Support-Vector-Machine.md
+      - file: python_sklearn/13-KNN.md
+      - file: python_sklearn/14-Unsupervised-Learning.md
+      - file: python_sklearn/15-Mini-Project.md
+    - file: python_deep_learning/00-index.md
       sections:
-      - file: python_deep_learning/04-why-cloud.md
-      - file: python_deep_learning/05-virtualization.md
-    - file: python_big_data/06-programmatic-deployment.md
+      - file: python_deep_learning/01-Introduction.md
+      - file: python_deep_learning/02-Deep-Learning-Framework.md
+      - file: python_deep_learning/03-Neural-Network.md
+      - file: python_deep_learning/04-Intro-to-Keras.md
+      - file: python_deep_learning/05-Keras-Regression.md
+      - file: python_deep_learning/06-Keras-Classification.md
+      - file: python_deep_learning/07-Convolution-Neural-Network.md
+      - file: python_deep_learning/08-Recurrent-neural-networks.md
+    - file: python_big_data/00_index.md
       sections:
-      - file: python_big_data/07-kvm-docker-podman-singularity.md
-      - file: python_big_data/08-docker.md
+      - file: python_big_data/01-introduction.md
+      - file: python_big_data/02-cluster.md
+      - file: python_big_data/03-notebooks.md
 - caption: Advanced Palmetto Usage
-    - file: containers/09-docker-compose.md
-      - sections:
-      - file: containers/10-kubernetes.md
-    - file: advanced_scheduling/11-borg-to-kubernetes.md
-      - sections:
-      - file: advanced_scheduling/13-kubernetes-ci.md
-      - file: advanced_scheduling/14-kubernetes-cd.md
+  chapters:
+    - file: containers/00-index.md
+      sections:
+      - file: containers/01-introduction.md
+      - file: containers/02-cluster.md
+      - file: containers/03-notebooks.md
+    - file: advanced_scheduling/00-index.md
+      sections:
+      - file: advanced_scheduling/01-introduction.md
+      - file: advanced_scheduling/02-cluster.md
+      - file: advanced_scheduling/03-notebooks.md
