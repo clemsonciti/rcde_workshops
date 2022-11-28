@@ -100,5 +100,5 @@ parts:
     - file: advanced_scheduling/00-index.md
       sections:
       - file: advanced_scheduling/01-introduction.md
-      - file: advanced_scheduling/02-cluster.md
-      - file: advanced_scheduling/03-notebooks.md
+      - file: advanced_scheduling/02-dockers.md
+      - file: advanced_scheduling/03-apptainers.md
