@@ -1,5 +1,5 @@
----
-title: "Functions"
+# Functions
+
 teaching: 10
 exercises: 0
 questions:
@@ -11,7 +11,6 @@ objectives:
 - "Use `function` to define a new function in R"
 - "Use parameters to pass value to function"
 - "Load function into program using `source()`"
----
 
 We have seen some examples of built-in R functions. For some functions, you would have to install particular packages. In this chapter, we will show you how to write your own functions. 
 

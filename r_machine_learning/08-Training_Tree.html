@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Training the model using Decision Trees &#8212; Research Computing and Data Workshop</title>
+    <title>Training Machine Learning model using Tree-based model &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Training Machine Learning model using Ensemble approach”" href="09-Training_Ensemble.html" />
-    <link rel="prev" title="K-Nearest Neighbour" href="07-KNN.html" />
+    <link rel="prev" title="Nearest Neighbours Classification" href="07-KNN.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -247,12 +247,27 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/06-Functions.html">
-     Using custom functions
+     Functions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/07-Parallel-Computing.html">
      Parallel Computing in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/08-Basic-Plotting.html">
+     Basic plotting with R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">
+     Ploting with ggplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">
+     R in Palmetto
     </a>
    </li>
   </ul>
@@ -274,17 +289,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-Caret-Preprocessing.html">
-     2.1 What is Caret
+     Introduction to Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Caret-Data-Partition.html">
-     3 Data partition: training and testing
+     Data Partition with caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
-     5 More examples of prediction
+     Training Machine Learning model using Regression Method
     </a>
    </li>
    <li class="toctree-l2">
@@ -294,12 +309,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-KNN.html">
-     K-Nearest Neighbour
+     Nearest Neighbours Classification
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Training the model using Decision Trees
+     Training Machine Learning model using Tree-based model
     </a>
    </li>
    <li class="toctree-l2">
@@ -309,12 +324,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="10-Unsupervised-Learning.html">
-     K-means clustering
+     Unsupervised Learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-Neural-Network.html">
-     11 Neural Network
+     Neural Network
     </a>
    </li>
   </ul>
@@ -660,29 +675,29 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-the-model-using-decision-trees">
    Training the model using Decision Trees
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spliting-algorithm">
      Spliting algorithm
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation">
      Implementation
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#train-model-using-random-forest">
    Train model using Random Forest
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation-of-random-forest">
      Implementation of Random Forest
     </a>
@@ -698,7 +713,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Training the model using Decision Trees</h1>
+                <h1>Training Machine Learning model using Tree-based model</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -708,29 +723,29 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-the-model-using-decision-trees">
    Training the model using Decision Trees
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spliting-algorithm">
      Spliting algorithm
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation">
      Implementation
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#train-model-using-random-forest">
    Train model using Random Forest
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation-of-random-forest">
      Implementation of Random Forest
     </a>
@@ -747,8 +762,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="training-the-model-using-decision-trees">
-<h1>Training the model using Decision Trees<a class="headerlink" href="#training-the-model-using-decision-trees" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="training-machine-learning-model-using-tree-based-model">
+<h1>Training Machine Learning model using Tree-based model<a class="headerlink" href="#training-machine-learning-model-using-tree-based-model" title="Permalink to this headline">#</a></h1>
+<p>teaching: 20
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“How to train a Machine Learning model using Tree-based model”
+objectives:</p></li>
+<li><p>“Learn to use different Tree-based algorithm for Machine Learning training”
+keypoints:</p></li>
+<li><p>“Decision Tree, Random Forest”</p></li>
+</ul>
+<section id="training-the-model-using-decision-trees">
+<h2>Training the model using Decision Trees<a class="headerlink" href="#training-the-model-using-decision-trees" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Decision trees can take inputs where some variables are numerical and some are categorical</p></li>
 <li><p>Very handy when dealing with demographic data (gender, age, education level)</p></li>
@@ -760,7 +787,7 @@ title="Print to PDF"
 <img alt="image" src="https://user-images.githubusercontent.com/43855029/114233972-198a7280-994c-11eb-9f4f-da4ed958961e.png" /></p></li>
 </ul>
 <section id="spliting-algorithm">
-<h2>Spliting algorithm<a class="headerlink" href="#spliting-algorithm" title="Permalink to this headline">#</a></h2>
+<h3>Spliting algorithm<a class="headerlink" href="#spliting-algorithm" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Gini Impurity: (Categorical)</p></li>
 <li><p>Chi-Square index (Categorical)</p></li>
@@ -772,7 +799,7 @@ title="Print to PDF"
 ![image](https://user-images.githubusercontent.com/43855029/114234120-548ca600-994c-11eb-889e-e8ec6d313e52.png) -->
 </section>
 <section id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
 <p>Here we will use <code class="docutils literal notranslate"><span class="pre">iris</span></code> data</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
@@ -807,7 +834,7 @@ Apply decision tree model to predict output of testing data</p>
 </section>
 </section>
 <section id="train-model-using-random-forest">
-<h1>Train model using Random Forest<a class="headerlink" href="#train-model-using-random-forest" title="Permalink to this headline">#</a></h1>
+<h2>Train model using Random Forest<a class="headerlink" href="#train-model-using-random-forest" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/115076000-f3278280-9ec9-11eb-89b4-b07f3713b105.png" /></p>
 <ul class="simple">
 <li><p>A single decision tree is prone to overfitting. A solution is to grow a number of decision trees, i.e. a forest.</p></li>
@@ -827,7 +854,7 @@ Apply decision tree model to predict output of testing data</p>
 ![image](https://user-images.githubusercontent.com/43855029/114235213-daf5b780-994d-11eb-83f8-ac7520749dbe.png)
 -->
 <section id="implementation-of-random-forest">
-<h2>Implementation of Random Forest<a class="headerlink" href="#implementation-of-random-forest" title="Permalink to this headline">#</a></h2>
+<h3>Implementation of Random Forest<a class="headerlink" href="#implementation-of-random-forest" title="Permalink to this headline">#</a></h3>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ModFit_rf</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;rf&quot;</span><span class="p">,</span><span class="n">prox</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="n">predict_rf</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ModFit_rf</span><span class="p">,</span><span class="n">testing</span><span class="p">)</span>
@@ -840,6 +867,7 @@ Apply decision tree model to predict output of testing data</p>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114235296-fb257680-994d-11eb-93ff-54702cbf87b8.png" /></p>
 <p>We can see that Random Forest result has better prediction than the Decision Tree.</p>
+</section>
 </section>
 </section>
 
@@ -874,7 +902,7 @@ Apply decision tree model to predict output of testing data</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">K-Nearest Neighbour</p>
+            <p class="prev-next-title">Nearest Neighbours Classification</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="09-Training_Ensemble.html" title="next page">

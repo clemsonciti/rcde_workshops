@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Using custom functions &#8212; Research Computing and Data Workshop</title>
+    <title>Functions &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -247,12 +247,27 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Using custom functions
+     Functions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-Parallel-Computing.html">
      Parallel Computing in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-Basic-Plotting.html">
+     Basic plotting with R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09-Plotting-with-ggplot.html">
+     Ploting with ggplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10-R-in-Palmetto.html">
+     R in Palmetto
     </a>
    </li>
   </ul>
@@ -274,17 +289,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
-     2.1 What is Caret
+     Introduction to Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
-     3 Data partition: training and testing
+     Data Partition with caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
-     5 More examples of prediction
+     Training Machine Learning model using Regression Method
     </a>
    </li>
    <li class="toctree-l2">
@@ -294,12 +309,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/07-KNN.html">
-     K-Nearest Neighbour
+     Nearest Neighbours Classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
-     Training the model using Decision Trees
+     Training Machine Learning model using Tree-based model
     </a>
    </li>
    <li class="toctree-l2">
@@ -309,12 +324,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
-     K-means clustering
+     Unsupervised Learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
-     11 Neural Network
+     Neural Network
     </a>
    </li>
   </ul>
@@ -660,37 +675,37 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-custom-functions">
    Using custom functions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-1-argument">
    Writing a user-defined function with 1 argument
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-2-or-more-arguments">
    Writing a user-defined function with 2 or more arguments
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#specifying-a-variable-for-the-result">
    Specifying a variable for the result
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#returning-several-results-in-a-list">
    Returning several results in a list
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nested-functions">
    Nested functions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defensive-programming-with-stopifnot-function">
    Defensive programming with
    <code class="docutils literal notranslate">
@@ -701,7 +716,7 @@ title="Print to PDF"
    function
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#saving-functions-for-future-use">
    Saving functions for future use
   </a>
@@ -715,7 +730,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Using custom functions</h1>
+                <h1>Functions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -725,37 +740,37 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-custom-functions">
    Using custom functions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-1-argument">
    Writing a user-defined function with 1 argument
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-2-or-more-arguments">
    Writing a user-defined function with 2 or more arguments
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#specifying-a-variable-for-the-result">
    Specifying a variable for the result
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#returning-several-results-in-a-list">
    Returning several results in a list
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nested-functions">
    Nested functions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defensive-programming-with-stopifnot-function">
    Defensive programming with
    <code class="docutils literal notranslate">
@@ -766,7 +781,7 @@ title="Print to PDF"
    function
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#saving-functions-for-future-use">
    Saving functions for future use
   </a>
@@ -781,9 +796,24 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>We have seen some examples of built-in R functions. For some functions, you would have to install particular packages. In this chapter, we will show you how to write your own functions.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<p>teaching: 10
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“How to write functions in R”
+objectives:</p></li>
+<li><p>“Define functions”</p></li>
+<li><p>“Return value(s) from functions”
+-keypoints:</p></li>
+<li><p>“Use <code class="docutils literal notranslate"><span class="pre">function</span></code> to define a new function in R”</p></li>
+<li><p>“Use parameters to pass value to function”</p></li>
+<li><p>“Load function into program using <code class="docutils literal notranslate"><span class="pre">source()</span></code>”</p></li>
+</ul>
+<p>We have seen some examples of built-in R functions. For some functions, you would have to install particular packages. In this chapter, we will show you how to write your own functions.</p>
 <section id="using-custom-functions">
-<h1>Using custom functions<a class="headerlink" href="#using-custom-functions" title="Permalink to this headline">#</a></h1>
+<h2>Using custom functions<a class="headerlink" href="#using-custom-functions" title="Permalink to this headline">#</a></h2>
 <p>There are several in-built functions in R that can be used to perform analytical tasks, for example: <code class="docutils literal notranslate"><span class="pre">mean,</span> <span class="pre">min,</span> <span class="pre">max,</span> <span class="pre">quantile,summary</span></code>.
 For example, here’s the <code class="docutils literal notranslate"><span class="pre">mean</span></code> function, which computes the arithmetic average of a vector:</p>
 <p>Using function mean with missing value</p>
@@ -795,7 +825,7 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 </div>
 </section>
 <section id="writing-a-user-defined-function-with-1-argument">
-<h1>Writing a user-defined function with 1 argument<a class="headerlink" href="#writing-a-user-defined-function-with-1-argument" title="Permalink to this headline">#</a></h1>
+<h2>Writing a user-defined function with 1 argument<a class="headerlink" href="#writing-a-user-defined-function-with-1-argument" title="Permalink to this headline">#</a></h2>
 <p>Syntax:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">arg</span><span class="p">){</span>
   <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">argument</span>
@@ -811,7 +841,7 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 </div>
 </section>
 <section id="writing-a-user-defined-function-with-2-or-more-arguments">
-<h1>Writing a user-defined function with 2 or more arguments<a class="headerlink" href="#writing-a-user-defined-function-with-2-or-more-arguments" title="Permalink to this headline">#</a></h1>
+<h2>Writing a user-defined function with 2 or more arguments<a class="headerlink" href="#writing-a-user-defined-function-with-2-or-more-arguments" title="Permalink to this headline">#</a></h2>
 <p>Syntax:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">){</span>
   <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">arg1</span> <span class="o">&amp;</span> <span class="n">arg2</span>
@@ -827,7 +857,7 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 </div>
 </section>
 <section id="specifying-a-variable-for-the-result">
-<h1>Specifying a variable for the result<a class="headerlink" href="#specifying-a-variable-for-the-result" title="Permalink to this headline">#</a></h1>
+<h2>Specifying a variable for the result<a class="headerlink" href="#specifying-a-variable-for-the-result" title="Permalink to this headline">#</a></h2>
 <p>Syntax:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
   <span class="n">f1</span> <span class="o">&lt;-</span> <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">args</span>
@@ -846,7 +876,7 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 </div>
 </section>
 <section id="returning-several-results-in-a-list">
-<h1>Returning several results in a list<a class="headerlink" href="#returning-several-results-in-a-list" title="Permalink to this headline">#</a></h1>
+<h2>Returning several results in a list<a class="headerlink" href="#returning-several-results-in-a-list" title="Permalink to this headline">#</a></h2>
 <p>Syntax:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
   <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">args</span>
@@ -880,7 +910,7 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 </div>
 </section>
 <section id="nested-functions">
-<h1>Nested functions<a class="headerlink" href="#nested-functions" title="Permalink to this headline">#</a></h1>
+<h2>Nested functions<a class="headerlink" href="#nested-functions" title="Permalink to this headline">#</a></h2>
 <p>In complex data science use cases, we may have to work on nested functions, which contain functions within a function.
 For example: Given dataset <code class="docutils literal notranslate"><span class="pre">mtcars</span></code>. Find the mean of fuel consumption <code class="docutils literal notranslate"><span class="pre">mpg</span></code> for cars that having 4 cylinders <code class="docutils literal notranslate"><span class="pre">cyl</span></code></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
@@ -900,7 +930,7 @@ For example: Given dataset <code class="docutils literal notranslate"><span clas
 </div>
 </section>
 <section id="defensive-programming-with-stopifnot-function">
-<h1>Defensive programming with <code class="docutils literal notranslate"><span class="pre">stopifnot()</span></code> function<a class="headerlink" href="#defensive-programming-with-stopifnot-function" title="Permalink to this headline">#</a></h1>
+<h2>Defensive programming with <code class="docutils literal notranslate"><span class="pre">stopifnot()</span></code> function<a class="headerlink" href="#defensive-programming-with-stopifnot-function" title="Permalink to this headline">#</a></h2>
 <p>Defensive programming encourages us to frequently check conditions and throw an error if something is wrong.
 For example:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">F2C</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
@@ -914,7 +944,7 @@ For example:</p>
 </div>
 </section>
 <section id="saving-functions-for-future-use">
-<h1>Saving functions for future use<a class="headerlink" href="#saving-functions-for-future-use" title="Permalink to this headline">#</a></h1>
+<h2>Saving functions for future use<a class="headerlink" href="#saving-functions-for-future-use" title="Permalink to this headline">#</a></h2>
 <p>Let’s save our function so we can use it later.</p>
 <p>First, get your working directory by running <code class="docutils literal notranslate"><span class="pre">getwd()</span></code>. Then, in a file browser (Windows) or in Finder (Mac), go to that directory, and please create a folder “R_workshop”. Then, in R, let’s make this our working directory: <code class="docutils literal notranslate"><span class="pre">setwd</span> <span class="pre">(&quot;R_workshop&quot;)</span></code>. Then, let’s list the files in it:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">list.files </span><span class="p">(</span><span class="nf">getwd</span><span class="p">())</span>
@@ -930,6 +960,7 @@ For example:</p>
 </pre></div>
 </div>
 <p>…and then save it by doing File -&gt; Save As and selecting the name <code class="docutils literal notranslate"><span class="pre">polar2cart.R</span></code>. Make sure you are saving it in the <code class="docutils literal notranslate"><span class="pre">R_workshop</span></code> folder.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

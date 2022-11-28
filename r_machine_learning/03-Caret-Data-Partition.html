@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3 Data partition: training and testing &#8212; Research Computing and Data Workshop</title>
+    <title>Data Partition with caret &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5 More examples of prediction" href="05-Training_Regression.html" />
-    <link rel="prev" title="2.1 What is Caret" href="02-Caret-Preprocessing.html" />
+    <link rel="next" title="Training Machine Learning model using Regression Method" href="05-Training_Regression.html" />
+    <link rel="prev" title="Introduction to Caret" href="02-Caret-Preprocessing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -247,12 +247,27 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/06-Functions.html">
-     Using custom functions
+     Functions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/07-Parallel-Computing.html">
      Parallel Computing in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/08-Basic-Plotting.html">
+     Basic plotting with R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">
+     Ploting with ggplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">
+     R in Palmetto
     </a>
    </li>
   </ul>
@@ -274,17 +289,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-Caret-Preprocessing.html">
-     2.1 What is Caret
+     Introduction to Caret
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3 Data partition: training and testing
+     Data Partition with caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
-     5 More examples of prediction
+     Training Machine Learning model using Regression Method
     </a>
    </li>
    <li class="toctree-l2">
@@ -294,12 +309,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-KNN.html">
-     K-Nearest Neighbour
+     Nearest Neighbours Classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-Training_Tree.html">
-     Training the model using Decision Trees
+     Training Machine Learning model using Tree-based model
     </a>
    </li>
    <li class="toctree-l2">
@@ -309,12 +324,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="10-Unsupervised-Learning.html">
-     K-means clustering
+     Unsupervised Learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-Neural-Network.html">
-     11 Neural Network
+     Neural Network
     </a>
    </li>
   </ul>
@@ -638,23 +653,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-partition-training-and-testing">
+   3 Data partition: training and testing
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>3 Data partition: training and testing</h1>
+                <h1>Data Partition with caret</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-partition-training-and-testing">
+   3 Data partition: training and testing
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -662,8 +714,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="data-partition-training-and-testing">
-<h1>3 Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-partition-with-caret">
+<h1>Data Partition with caret<a class="headerlink" href="#data-partition-with-caret" title="Permalink to this headline">#</a></h1>
+<p>teaching: 20
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“What is Data Partition”
+objectives:</p></li>
+<li><p>“Learn how to split data using caret”
+keypoints:</p></li>
+<li><p>“Caret”</p></li>
+</ul>
+<section id="data-partition-training-and-testing">
+<h2>3 Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122599105-cd3e6b80-d03b-11eb-9aa4-2b8f39427c20.png" /></p>
 <p>In a typical machine learning problem, you have a data set and you need to create a model which predicts the outcomes. You can use all the available data for training the model (that is, learning the associations between the data and the outcomes), anf then you can just keep your fingers crossed and hope that your model will perform well when it will be applied to data that it has never seen before.</p>
 <p>A more realistic behaviour is to reserve some of the data for testing the model. That is, you split the data into two sets: a training set and a testing set. You use the training set to train the model, and then you apply the test set to get an estimate on how well the model works on the data that were not used for training. This is called <em>cross-validation</em>. It is absolutely critical that the training and test sets are completely independent. Otherwise, when you test your model, your prediction accuracy will be artificially high – not because your model is good, but because there is some correlation between the training and test sets.</p>
@@ -702,6 +766,7 @@ predict1 <- predict(model,testing)
 More information on model tuning using caret can be found [here](https://topepo.github.io/caret/model-training-and-tuning.html)
 -->
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -734,13 +799,13 @@ More information on model tuning using caret can be found [here](https://topepo.
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">2.1 What is Caret</p>
+            <p class="prev-next-title">Introduction to Caret</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05-Training_Regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">5 More examples of prediction</p>
+        <p class="prev-next-title">Training Machine Learning model using Regression Method</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

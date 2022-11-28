@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Research Computing and Data Workshop</title>
+    <title>R in Palmetto &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Machine Learning using R" href="../r_machine_learning/00-index.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="09-Plotting-with-ggplot.html" />
+    <link rel="prev" title="Ploting with ggplot" href="09-Plotting-with-ggplot.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -209,17 +209,17 @@ const thebe_selector_output = ".output, .cell_output"
   R
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="00-index.html">
    Introduction to R
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01-Introduction.html">
      Introduction to R”
@@ -247,12 +247,27 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-Functions.html">
-     Using custom functions
+     Functions
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-Parallel-Computing.html">
      Parallel Computing in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-Basic-Plotting.html">
+     Basic plotting with R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09-Plotting-with-ggplot.html">
+     Ploting with ggplot
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     R in Palmetto
     </a>
    </li>
   </ul>
@@ -274,17 +289,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
-     2.1 What is Caret
+     Introduction to Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
-     3 Data partition: training and testing
+     Data Partition with caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
-     5 More examples of prediction
+     Training Machine Learning model using Regression Method
     </a>
    </li>
    <li class="toctree-l2">
@@ -294,12 +309,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/07-KNN.html">
-     K-Nearest Neighbour
+     Nearest Neighbours Classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
-     Training the model using Decision Trees
+     Training Machine Learning model using Tree-based model
     </a>
    </li>
    <li class="toctree-l2">
@@ -309,12 +324,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
-     K-means clustering
+     Unsupervised Learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
-     11 Neural Network
+     Neural Network
     </a>
    </li>
   </ul>
@@ -638,50 +653,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>R in Palmetto</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -689,7 +677,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>If you need to process a large amount of data and you think your laptop / desktop is not fast enough, you can utilize the power of the Palmetto supercomputing cluster. If you have an account on Palmetto, you can log in as described in <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/basic/login/">our manual</a>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="r-in-palmetto">
+<h1>R in Palmetto<a class="headerlink" href="#r-in-palmetto" title="Permalink to this headline">#</a></h1>
+<p>teaching: 10
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“How to run R scripts in Palmetto”
+objectives:</p></li>
+<li><p>“Learn how to run R in Palmetto”</p></li>
+<li><p>“Learn how to install R packages in Palmetto”
+keypoints:</p></li>
+<li><p>“Rscript”</p></li>
+</ul>
+<hr class="docutils" />
+<p>If you need to process a large amount of data and you think your laptop / desktop is not fast enough, you can utilize the power of the Palmetto supercomputing cluster. If you have an account on Palmetto, you can log in as described in <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/basic/login/">our manual</a>.</p>
 <p>Let’s request a compute node:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>32gb:interconnect<span class="o">=</span>fdr,walltime<span class="o">=</span><span class="m">2</span>:00:00
 </pre></div>
@@ -717,6 +719,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>If you want to use RStudio on Palmetto, you can use OpenOnDemand interface – please see our <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/openondemand/intro/">manual</a>.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -749,7 +752,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">&lt;no title&gt;</p>
+            <p class="prev-next-title">Ploting with ggplot</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../r_machine_learning/00-index.html" title="next page">
