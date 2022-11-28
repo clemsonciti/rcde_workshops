@@ -7,10 +7,15 @@
 
 ## Workshop Description
 
-The workshop will provide instructions on how to work with containers on Palmetto.
-Topics include creating container images using Docker, downloading and converting 
-Docker images to Singularity/Apptainer, and launching containers on Palmetto
+The workshop will provide instructions on how to work with 
+containers on Palmetto. Topics include creating container 
+images using Docker, downloading and converting 
+Docker images to Singularity/Apptainer, and launching 
+containers on Palmetto.
 
 ## Prerequisites
 
-TBD
+Completion (or equivalent knowledge of) the following workshops:
+- Introduction to Linux
+- Introduction to Palmetto
+- Introduction to Python (the first workshop in the series)
