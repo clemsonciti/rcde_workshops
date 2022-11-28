@@ -1,5 +1,5 @@
----
-title: "Neural Network"
+# Neural Network
+
 teaching: 20
 exercises: 0
 questions:
@@ -8,7 +8,6 @@ objectives:
 - "Learn how to use ANN in ML model"
 keypoints:
 - "ANN"
----
 
 ## 11 Neural Network
 <!---![image](https://user-images.githubusercontent.com/43855029/114472746-da188c00-9bc0-11eb-913c-9dcd14f872ac.png)-->

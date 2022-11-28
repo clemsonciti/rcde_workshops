@@ -1,5 +1,5 @@
----
-title: "Mini-Project"
+# Mini-Project
+
 teaching: 10
 exercises: 180
 questions:
@@ -8,9 +8,8 @@ objectives:
 - "Learn how to apply Machine Learning into your real project"
 keypoints:
 - "Self-project"
----
 
-# 15. MINI PROJECT
+## 15. MINI PROJECT
 
 ## Description of Mini Project: 
 

@@ -1,5 +1,5 @@
----
-title: "Data Partition with caret"
+# Data Partition with caret
+
 teaching: 20
 exercises: 0
 questions:
@@ -8,9 +8,8 @@ objectives:
 - "Learn how to split data using caret"
 keypoints:
 - "Caret"
----
 
-# 3 Data partition: training and testing
+## 3 Data partition: training and testing
 
 ![image](https://user-images.githubusercontent.com/43855029/122599105-cd3e6b80-d03b-11eb-9aa4-2b8f39427c20.png)
 

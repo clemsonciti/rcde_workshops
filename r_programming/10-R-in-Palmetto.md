@@ -1,5 +1,4 @@
----
-title: "R in Palmetto"
+# R in Palmetto
 teaching: 10
 exercises: 0
 questions:
