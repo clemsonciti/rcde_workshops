@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Input to R &#8212; Research Computing and Data Workshop</title>
+    <title>Basics of R &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Classes of objects" href="03-Data-Structures.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="01-Introduction.html" />
+    <link rel="next" title="Data Structures" href="03-Data-Structures.html" />
+    <link rel="prev" title="Introduction to R”" href="01-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -220,29 +220,39 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-Introduction.html">
+     Introduction to R”
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Input to R
+     Basics of R
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Data-Structures.html">
-     Classes of objects
+     Data Structures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04-Matrix.html">
-     Vector math
+     Vectors, Matrices, Lists and Data Frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Control-Structure.html">
-     if-else
+     Control Structure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-Functions.html">
      Using custom functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-Parallel-Computing.html">
+     Parallel Computing in R
     </a>
    </li>
   </ul>
@@ -257,6 +267,11 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/01-Introduction.html">
+     Introduction to Machine Learning”
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
      2.1 What is Caret
@@ -273,6 +288,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">
+     Classification with decision boundaries”
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/07-KNN.html">
      K-Nearest Neighbour
     </a>
@@ -280,6 +300,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
      Training the model using Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">
+     Training Machine Learning model using Ensemble approach”
     </a>
    </li>
    <li class="toctree-l2">
@@ -635,32 +660,32 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-to-r">
    Input to R
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-r-as-calculator">
    Using R as calculator
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparisons-in-r">
    Comparisons in R
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assign-variables">
    Assign Variables
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-directory">
    Working directory
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#seeking-help">
    Seeking Help
   </a>
@@ -674,7 +699,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Input to R</h1>
+                <h1>Basics of R</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -684,32 +709,32 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-to-r">
    Input to R
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-r-as-calculator">
    Using R as calculator
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparisons-in-r">
    Comparisons in R
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assign-variables">
    Assign Variables
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-directory">
    Working directory
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#seeking-help">
    Seeking Help
   </a>
@@ -724,8 +749,27 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="input-to-r">
-<h1>Input to R<a class="headerlink" href="#input-to-r" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="basics-of-r">
+<h1>Basics of R<a class="headerlink" href="#basics-of-r" title="Permalink to this headline">#</a></h1>
+<p>teaching: 5
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“how to do basic arithmetics”</p></li>
+<li><p>“how to initialize a variable”</p></li>
+<li><p>“how to get help”
+objectives:</p></li>
+<li><p>“R built-in functions”
+keypoints:</p></li>
+<li><p>“Use RStudio to write and run R programs.”</p></li>
+<li><p>“R has the usual arithmetic operators and mathematical functions.”</p></li>
+<li><p>“Use <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> to assign values to variables.”</p></li>
+<li><p>“Use <code class="docutils literal notranslate"><span class="pre">ls()</span></code> to list the variables in a program.”</p></li>
+<li><p>“Use <code class="docutils literal notranslate"><span class="pre">rm()</span></code> to delete objects in a program.”</p></li>
+<li><p>“Use <code class="docutils literal notranslate"><span class="pre">sessionInfo()</span></code> to get detail of the current loaded environmemt and packages”</p></li>
+</ul>
+<section id="input-to-r">
+<h2>Input to R<a class="headerlink" href="#input-to-r" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>In R console, the symbol <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> stands for <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">prompt</span></code>.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> is for comment insert.</p></li>
@@ -736,7 +780,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="using-r-as-calculator">
-<h1>Using R as calculator<a class="headerlink" href="#using-r-as-calculator" title="Permalink to this headline">#</a></h1>
+<h2>Using R as calculator<a class="headerlink" href="#using-r-as-calculator" title="Permalink to this headline">#</a></h2>
 <p>When using R as a calculator, the order of operations is the same as you
 would have learned back in school.</p>
 <p>From highest to lowest precedence:</p>
@@ -755,7 +799,7 @@ would have learned back in school.</p>
 </div>
 </section>
 <section id="comparisons-in-r">
-<h1>Comparisons in R<a class="headerlink" href="#comparisons-in-r" title="Permalink to this headline">#</a></h1>
+<h2>Comparisons in R<a class="headerlink" href="#comparisons-in-r" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>: equality</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code>: inequality</p></li>
@@ -767,7 +811,7 @@ would have learned back in school.</p>
 </div>
 </section>
 <section id="assign-variables">
-<h1>Assign Variables<a class="headerlink" href="#assign-variables" title="Permalink to this headline">#</a></h1>
+<h2>Assign Variables<a class="headerlink" href="#assign-variables" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>To assign variable in R, we can use both <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> sign</p></li>
 </ul>
@@ -794,7 +838,7 @@ would have learned back in school.</p>
 <p>Do not to worry about the <code class="docutils literal notranslate"><span class="pre">[1]</span></code> in front. We will be learning about that later.</p>
 </section>
 <section id="working-directory">
-<h1>Working directory<a class="headerlink" href="#working-directory" title="Permalink to this headline">#</a></h1>
+<h2>Working directory<a class="headerlink" href="#working-directory" title="Permalink to this headline">#</a></h2>
 <p>One important step in R is to define the working directory. It is particularly useful when you are working with files in the working directory and working in Linux environment in Palmetto:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># print working directory</span>
 <span class="nf">getwd</span><span class="p">()</span>
@@ -805,7 +849,7 @@ would have learned back in school.</p>
 </div>
 </section>
 <section id="seeking-help">
-<h1>Seeking Help<a class="headerlink" href="#seeking-help" title="Permalink to this headline">#</a></h1>
+<h2>Seeking Help<a class="headerlink" href="#seeking-help" title="Permalink to this headline">#</a></h2>
 <p>In order to look for help files for function:</p>
 <ul class="simple">
 <li><p>Put <code class="docutils literal notranslate"><span class="pre">?</span></code> in front of function name, for example <code class="docutils literal notranslate"><span class="pre">rnorm</span></code></p></li>
@@ -818,6 +862,7 @@ would have learned back in school.</p>
 <p>The help section will display:</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114055446-c981b200-985e-11eb-8207-1347edd1f62f.png" /></p>
 <p>If you don’t kow the exact function name, you can use <code class="docutils literal notranslate"><span class="pre">??</span></code> and R will try to find the appropriate function for you. For example, I want to know how to compute a correlation coefficient. I can do <code class="docutils literal notranslate"><span class="pre">??correlation</span></code>, and it will give me a list of functions that are, one way or another, related to correlation, and the first result on the list is the function <code class="docutils literal notranslate"><span class="pre">corr</span></code>, which is Pearson’s correlation coefficient.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -851,13 +896,13 @@ would have learned back in school.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">&lt;no title&gt;</p>
+            <p class="prev-next-title">Introduction to R”</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03-Data-Structures.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Classes of objects</p>
+        <p class="prev-next-title">Data Structures</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
