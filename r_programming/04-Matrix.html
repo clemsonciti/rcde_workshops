@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Vectors, Matrices, Lists and Data Frames &#8212; Research Computing and Data Workshop</title>
+    <title>Vector math &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Control Structure" href="05-Control-Structure.html" />
-    <link rel="prev" title="Data Structures" href="03-Data-Structures.html" />
+    <link rel="next" title="if-else" href="05-Control-Structure.html" />
+    <link rel="prev" title="Classes of objects" href="03-Data-Structures.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -221,53 +221,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="02-Basic-R.html">
-     Basics of R
+     Input to R
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Data-Structures.html">
-     Data Structures
+     Classes of objects
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Vectors, Matrices, Lists and Data Frames
+     Vector math
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Control-Structure.html">
-     Control Structure
+     if-else
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-Functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07-Parallel-Computing.html">
-     Parallel Computing in R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08-Basic-Plotting.html">
-     Basic plotting with R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09-Plotting-with-ggplot.html">
-     Ploting with ggplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10-R-in-Palmetto.html">
-     R in Palmetto
+     Using custom functions
     </a>
    </li>
   </ul>
@@ -283,53 +258,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/01-Introduction.html">
-     Introduction to Machine Learning”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
-     Introduction to Caret
+     2.1 What is Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
-     Data Partition with caret
+     3 Data partition: training and testing
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
-     Training Machine Learning model using Regression Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">
-     Classification with decision boundaries”
+     5 More examples of prediction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/07-KNN.html">
-     Nearest Neighbours Classification
+     K-Nearest Neighbour
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
-     Training Machine Learning model using Tree-based model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">
-     Training Machine Learning model using Ensemble approach”
+     Training the model using Decision Trees
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
-     Unsupervised Learning
+     K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
-     Neural Network
+     11 Neural Network
     </a>
    </li>
   </ul>
@@ -515,13 +475,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/02-dockers.html">
-     Docker Containers on CloudLab
+    <a class="reference internal" href="../containers/02-cluster.html">
+     Programmatic Deployment of Infrastructures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/03-apptainers.html">
-     Singularity/Apptainers on Palmetto
+    <a class="reference internal" href="../containers/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -539,6 +499,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
      1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -675,52 +645,52 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vector-math">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Vector math
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrices">
    Matrices
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-matrix-math">
    Basic Matrix Math
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#merging-matrices">
    Merging Matrices
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#subsetting">
    Subsetting
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lists">
    Lists
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-frames">
    Data Frames
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#names-of-objects-in-data-frames">
    Names of Objects in Data Frames
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#getting-data-from-data-frames">
    Getting data from Data Frames
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-and-writing-tables">
    Reading and Writing Tables
   </a>
@@ -734,7 +704,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Vectors, Matrices, Lists and Data Frames</h1>
+                <h1>Vector math</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -744,52 +714,52 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vector-math">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Vector math
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matrices">
    Matrices
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-matrix-math">
    Basic Matrix Math
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#merging-matrices">
    Merging Matrices
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#subsetting">
    Subsetting
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lists">
    Lists
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-frames">
    Data Frames
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#names-of-objects-in-data-frames">
    Names of Objects in Data Frames
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#getting-data-from-data-frames">
    Getting data from Data Frames
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reading-and-writing-tables">
    Reading and Writing Tables
   </a>
@@ -804,26 +774,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="vectors-matrices-lists-and-data-frames">
-<h1>Vectors, Matrices, Lists and Data Frames<a class="headerlink" href="#vectors-matrices-lists-and-data-frames" title="Permalink to this headline">#</a></h1>
-<p>teaching: 20
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“Vectors in R”</p></li>
-<li><p>“How to define matrix in R?”</p></li>
-<li><p>“How to manipulate a data frame in R?”</p></li>
-<li><p>“How to read text/csv file”
-objectives:</p></li>
-<li><p>“Working with Matrices”</p></li>
-<li><p>“Creating data frames”</p></li>
-<li><p>“Importing and exporting data frames”</p></li>
-<li><p>“Working with text/csv files”
-keypoints:</p></li>
-<li><p>“Working with csv input data”</p></li>
-</ul>
-<section id="vector-math">
-<h2>Vector math<a class="headerlink" href="#vector-math" title="Permalink to this headline">#</a></h2>
+  <section id="vector-math">
+<h1>Vector math<a class="headerlink" href="#vector-math" title="Permalink to this headline">#</a></h1>
 <p>R can do a lot of mathematical operations on vectors:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">3</span><span class="o">:</span><span class="m">7</span>
 <span class="n">b</span> <span class="o">&lt;-</span> <span class="m">20</span><span class="o">:</span><span class="m">24</span>
@@ -844,7 +796,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="matrices">
-<h2>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h2>
+<h1>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">#</a></h1>
 <p>Vectors are one-dimensional rows of numbers; matrices are two-dimensional tables. Like vectors, all elements of a matrix must be of the same data type.</p>
 <p>Let’s create a matrix of zeros:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">&lt;-</span> <span class="nf">matrix </span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
@@ -866,7 +818,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="basic-matrix-math">
-<h2>Basic Matrix Math<a class="headerlink" href="#basic-matrix-math" title="Permalink to this headline">#</a></h2>
+<h1>Basic Matrix Math<a class="headerlink" href="#basic-matrix-math" title="Permalink to this headline">#</a></h1>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
 <span class="n">m2</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">9</span><span class="p">),</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
 <span class="n">m1</span>
@@ -892,7 +844,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="merging-matrices">
-<h2>Merging Matrices<a class="headerlink" href="#merging-matrices" title="Permalink to this headline">#</a></h2>
+<h1>Merging Matrices<a class="headerlink" href="#merging-matrices" title="Permalink to this headline">#</a></h1>
 <p>Merging matrices by row and column using <code class="docutils literal notranslate"><span class="pre">rbind</span></code> and <code class="docutils literal notranslate"><span class="pre">cbind</span></code>:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> 
 <span class="n">m2</span> <span class="o">&lt;-</span> <span class="m">-1</span><span class="o">:</span><span class="m">-12</span>
@@ -913,7 +865,7 @@ table(m)
 -->
 </section>
 <section id="subsetting">
-<h2>Subsetting<a class="headerlink" href="#subsetting" title="Permalink to this headline">#</a></h2>
+<h1>Subsetting<a class="headerlink" href="#subsetting" title="Permalink to this headline">#</a></h1>
 <p>Subsetting is extracting elements from vectors / matrices / lists. In R, subsetting is denoted with square brackets: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">str</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="s">&quot;d&quot;</span><span class="p">)</span>
 <span class="n">str</span>
@@ -959,7 +911,7 @@ When subsettig a matrix, we use two indices (row and column):</p>
 </div>
 </section>
 <section id="lists">
-<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h2>
+<h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">#</a></h1>
 <p>In matrices and vectors, all elements belong to the same class. A collection of variables from different classes is called a list.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">str</span> <span class="o">&lt;-</span> <span class="s">&quot;Clemson&quot;</span>
 <span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
@@ -986,7 +938,7 @@ Elements of a list can also be extracted by subsetting, using the dollar sign <c
 </div>
 </section>
 <section id="data-frames">
-<h2>Data Frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">#</a></h2>
+<h1>Data Frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">#</a></h1>
 <p>Data frames are used to store tables, where columns correspond to a particular variable, and rows correpond to a particular observation.</p>
 <p><strong>Data Frame characteristics:</strong></p>
 <ul class="simple">
@@ -1009,7 +961,7 @@ Elements of a list can also be extracted by subsetting, using the dollar sign <c
 </div>
 </section>
 <section id="names-of-objects-in-data-frames">
-<h2>Names of Objects in Data Frames<a class="headerlink" href="#names-of-objects-in-data-frames" title="Permalink to this headline">#</a></h2>
+<h1>Names of Objects in Data Frames<a class="headerlink" href="#names-of-objects-in-data-frames" title="Permalink to this headline">#</a></h1>
 <p>Using <code class="docutils literal notranslate"><span class="pre">name()</span></code> function:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">names</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
 <span class="c1"># Change name</span>
@@ -1022,7 +974,7 @@ Elements of a list can also be extracted by subsetting, using the dollar sign <c
 </div>
 </section>
 <section id="getting-data-from-data-frames">
-<h2>Getting data from Data Frames<a class="headerlink" href="#getting-data-from-data-frames" title="Permalink to this headline">#</a></h2>
+<h1>Getting data from Data Frames<a class="headerlink" href="#getting-data-from-data-frames" title="Permalink to this headline">#</a></h1>
 <p>Columns of a data frame could be extracted with <code class="docutils literal notranslate"><span class="pre">$</span></code> (as in a list) or with <code class="docutils literal notranslate"><span class="pre">[]</span></code> (as in a matrix).</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 <span class="nf">head </span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
@@ -1033,7 +985,7 @@ Elements of a list can also be extracted by subsetting, using the dollar sign <c
 </div>
 </section>
 <section id="reading-and-writing-tables">
-<h2>Reading and Writing Tables<a class="headerlink" href="#reading-and-writing-tables" title="Permalink to this headline">#</a></h2>
+<h1>Reading and Writing Tables<a class="headerlink" href="#reading-and-writing-tables" title="Permalink to this headline">#</a></h1>
 <p><strong>Reading Table</strong>
 Data frames can be created by reading from a file (a text file, or a CSV / Excel file). The file can be on a local computer, or online.</p>
 <ul class="simple">
@@ -1067,7 +1019,6 @@ In a similar fashion, a data frame can be saved as a text / CSV / Excel file:</p
 </pre></div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1100,13 +1051,13 @@ In a similar fashion, a data frame can be saved as a text / CSV / Excel file:</p
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Structures</p>
+            <p class="prev-next-title">Classes of objects</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05-Control-Structure.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Control Structure</p>
+        <p class="prev-next-title">if-else</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

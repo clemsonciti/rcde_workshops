@@ -1,4 +1,14 @@
-# Introduction to Machine Learning"
+---
+title: "Introduction to Machine Learning"
+teaching: 10
+exercises: 0
+questions:
+- "What is Machine Learning"
+objectives:
+- "Learn the basics of Machine Learning"
+keypoints:
+- "Basic Machine Learning"
+---
 
 Very broadly speaking, machine learning is a discpline where an algorithm learns how to make predictions from data; ideally, the more data are available, the better the predictions get.
 

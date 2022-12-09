@@ -1,5 +1,5 @@
-# Unsupervised Learning
-
+---
+title: "Unsupervised Learning"
 teaching: 20
 exercises: 0
 questions:
@@ -8,7 +8,7 @@ objectives:
 - "Learn how to use K-mean clustering in ML model"
 keypoints:
 - "K-mean"
-
+---
 
 
 ## K-means clustering

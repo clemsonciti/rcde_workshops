@@ -1,5 +1,5 @@
-# Vectors, Matrices, Lists and Data Frames
-
+---
+title: "Vectors, Matrices, Lists and Data Frames"
 teaching: 20
 exercises: 0
 questions:
@@ -14,6 +14,7 @@ objectives:
 - "Working with text/csv files"
 keypoints:
 - "Working with csv input data"
+---
 
 ## Vector math
 

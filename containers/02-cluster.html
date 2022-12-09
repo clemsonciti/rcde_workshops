@@ -1,0 +1,1151 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Programmatic Deployment of Infrastructures &#8212; Research Computing and Data Workshop</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Where are the notebooks" href="03-notebooks.html" />
+    <link rel="prev" title="Introduction to CloudLab" href="01-introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Research Computing and Data Workshop</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introductory Sequence
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro_linux/00-index.html">
+   Introduction to Linux
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/01-introduction.html">
+     Introducing the Shell
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">
+     Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">
+     Working With Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/05-pipes.html">
+     Pipes and Filters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/06-find.html">
+     Finding Things
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro_palmetto/00-index.html">
+   Introduction to Palmetto
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/01-introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">
+     Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">
+     The structure of the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/04-storage.html">
+     Storage on Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/05-interactive.html">
+     Running an interactive job on Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/07-open-od.html">
+     Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  R
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../r_programming/00-index.html">
+   Introduction to R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/02-Basic-R.html">
+     Input to R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/03-Data-Structures.html">
+     Classes of objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/04-Matrix.html">
+     Vector math
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/05-Control-Structure.html">
+     if-else
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/06-Functions.html">
+     Using custom functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../r_machine_learning/00-index.html">
+   Machine Learning using R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
+     2.1 What is Caret
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
+     3 Data partition: training and testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
+     5 More examples of prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/07-KNN.html">
+     K-Nearest Neighbour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
+     Training the model using Decision Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
+     K-means clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
+     11 Neural Network
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_programming/00-index.html">
+   Introduction to Python Programming
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_sklearn/00-index.html">
+   Machine Learning using Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/01-introduction.html">
+     Introduction to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/02-sklearn-preprocessing.html">
+     Introduction to Scikit Learn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/03-sklearn-Data-Partition.html">
+     Data partition: training and testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/04-sklearn-Evaluation-Metrics.html">
+     Evaluation Metrics with Scikit-Learn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/05-Training-Regression.html">
+     Supervised Learning training with Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/06-Training-Tree.html">
+     Tree-based Learning Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/07-Training-Ensemble.html">
+     Ensemble-based Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/08-Model_Based.html">
+     Model-based Prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/09-Regularization.html">
+     Regularization and Variable Selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/10-Dimension-Reduction.html">
+     Dimension Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/11-Neural-Network.html">
+     Neural Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/12-Support-Vector-Machine.html">
+     Support Vector Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/13-KNN.html">
+     K-Nearest Neighbour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/14-Unsupervised-Learning.html">
+     Unsupervised Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/15-Mini-Project.html">
+     Mini-Project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_deep_learning/00-index.html">
+   Deep Learning in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/01-Introduction.html">
+     Introduction to Deep Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">
+     Deep Learning Library Framework
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">
+     Recap on ANN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">
+     Introduction to Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">
+     Training Deep Learning Regression model with Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">
+     Training Deep Learning Classification model with Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">
+     Convolution Neural Network for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">
+     Recurrent Neural Network for Timeseries forecasting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Advanced Palmetto Usage
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-index.html">
+   Containerization on Palmetto (under development)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-introduction.html">
+     Introduction to CloudLab
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Programmatic Deployment of Infrastructures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-notebooks.html">
+     1. Where are the notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced_scheduling/00-index.html">
+   Advanced Scheduling (under development)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
+     1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/containers/02-cluster.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#openstack-on-cloudlab">
+   1. OpenStack on CloudLab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-compute-resources-from-openstack">
+   2. Deploying compute resources from OpenStack
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-public-ip-address">
+   10. Setup public IP address
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-security-basic">
+   12. Cloud security basic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handle-security">
+   11. Handle security
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Programmatic Deployment of Infrastructures</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#openstack-on-cloudlab">
+   1. OpenStack on CloudLab
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deploying-compute-resources-from-openstack">
+   2. Deploying compute resources from OpenStack
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-public-ip-address">
+   10. Setup public IP address
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-security-basic">
+   12. Cloud security basic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handle-security">
+   11. Handle security
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="programmatic-deployment-of-infrastructures">
+<h1>Programmatic Deployment of Infrastructures<a class="headerlink" href="#programmatic-deployment-of-infrastructures" title="Permalink to this headline">#</a></h1>
+<p>teaching: 0
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“”
+objectives:</p></li>
+<li><p>“Be able to launch OpenStack on CloudLab”</p></li>
+<li><p>“Understand the management of resources, including memory, CPU, storage, network, and security in the Cloud”
+keypoints:</p></li>
+<li><p>“”</p></li>
+</ul>
+<section id="openstack-on-cloudlab">
+<h2>1. OpenStack on CloudLab<a class="headerlink" href="#openstack-on-cloudlab" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Log into <a class="reference external" href="https://www.cloudlab.us/">CloudLab</a></p></li>
+<li><p>Under <strong>Experiments</strong> drop down box, select <strong>Start Experiment</strong>.</p></li>
+</ul>
+<img src="../fig/05-programmatic/01.png" style="height:450px">
+<ul class="simple">
+<li><p>Click <strong>Change Profile</strong>.</p></li>
+</ul>
+<img src="../fig/05-programmatic/02.png" style="height:450px">
+>
+- Type **OpenStack** in the search box, and select the profile **OpenStack** 
+as shown in the figure below. 
+- Click **Select Profile** when done. 
+>
+<img src="../fig/05-programmatic/03.png" style="height:550px">
+>
+- Click **Next**. 
+<img src="../fig/05-programmatic/04.png" style="height:500px">
+>
+- Select the options similar to the figure below. 
+- If the **Parameterize** tab does not look like this, click **Previous** to 
+go back one step, and then click **Next** again.
+>
+<img src="../fig/05-programmatic/05.png" style="height:600px">
+>
+- Only **Utah**, **Wisconsin**, and **Clemson** have been known to work with this 
+profile. 
+- I will use **Utah** for the remaining steps. 
+>
+<img src="../fig/05-programmatic/06.png" style="height:500px">
+>
+- Do not change anything on the **Schedule** step and click **Finish**. 
+>
+<img src="../fig/05-programmatic/07.png" style="height:500px">
+>
+- The startup scripts of this profile will take sometimes to run, approximately 
+**thirty minutes to one hour**. 
+- You will receive an email from CloudLab (to the registered) to inform you when 
+the experiment is ready. 
+>
+<img src="../fig/05-programmatic/08.png" style="height:200px">
+>
+- Go to the experiment, and open the blue *Profile Instructions** box. 
+<img src="../fig/05-programmatic/09.png" style="height:400px">
+>
+- Follow the instructions to login to OpenStack dashboard. Your passwords will be
+randomly generated and unique to each experiment. 
+>
+<img src="../fig/05-programmatic/10.png" style="height:500px">
+>
+- You will see a Dashboard on a successful deployment as follows.
+>
+<img src="../fig/05-programmatic/11.png" style="height:600px">
+>
+```
+</section>
+<section id="deploying-compute-resources-from-openstack">
+<h2>2. Deploying compute resources from OpenStack<a class="headerlink" href="#deploying-compute-resources-from-openstack" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>In the next sequence of hands-on, we will look at how OpenStack can
+support the deployment of a virtual machine inside its Nova compute
+components.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+## 3. Hands-on: Download Linux distribution
+&gt;
+- We will use Alpine Linux, a light-weight distribution that was created
+for containerization/cloud deployment. 
+- From [Alpine Download Page](https://alpinelinux.org/downloads/), select the 
+x86_64 Virtual version. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/12.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+{:.slide}
+
+
+## 4. Hands-on: Create cloud image
+&gt;
+- Go to your CloudLab Dashboard. 
+- Go to **Compute**/**Images**, then click on **Create Image**.  
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/13.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Click **Browse** and find and select the downloaded ISO file from the
+the previous slide. 
+- Set the other parameters as shown in the figure below. 
+- Click **Create Image** when done. 
+
+&lt;img src=&quot;../fig/05-programmatic/14.png&quot; style=&quot;height:800px&quot;&gt;
+&gt;
+- The image will show up in the **Images** tab. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/15.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+{:.slide}
+
+
+## 5. Hands-on: Create volumes
+&gt;
+- Go to your CloudLab Dashboard. 
+- Go to **Volumes**/**Volumes**, then click on **Create Volume**.  
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/16.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Set the other parameters as shown in the figure below. 
+- Alpine takes up a small amount of storage, so 2GB is more than enough 
+for a simple installation.
+- Click **Create Volume** when done. 
+
+&lt;img src=&quot;../fig/05-programmatic/17.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- The volume will show up in the **Volumes** tab. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/18.png&quot; style=&quot;height:300px&quot;&gt;
+&gt;
+{:.slide}
+
+
+## 6. Hands-on: Launching a compute instance
+&gt;
+- Go to your CloudLab Dashboard. 
+- Go to **Compute**/**Instances** and click on **Launch Instance**.  
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/19.png&quot; style=&quot;height:300px&quot;&gt;
+&gt;
+- Set the instance name and other parameters, then click **Next**
+
+&lt;img src=&quot;../fig/05-programmatic/20.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Use the up arrow to select the **alpine** image as the allocated image. Click **Next**. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/21.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Select **m1.tiny** as the compute flavor. Click **Next**. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/22.png&quot; style=&quot;height:600px&quot;&gt;
+
+- Select **flat-lan-1-net** as the connected network. Click **Launch Instance**. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/23.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- It should take a few minute for the instance to become ready. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/24.png&quot; style=&quot;height:300px&quot;&gt;
+&gt;
+{:.slide}
+
+
+## 7. Hands-on: Volume attachment and Linux installation
+&gt;
+- Go to your CloudLab Dashboard. 
+- Go to **Compute**/**Instances**
+- Click on the drop-down arrow under **Actions** for the alpine instance, 
+then click **Attach Volume**.  
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/25.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Select your `sda_****` volume ID created earlier, then click **Attach Volume**
+
+&lt;img src=&quot;../fig/05-programmatic/26.png&quot; style=&quot;height:300px&quot;&gt;
+&gt;
+- Click on the drop-down arrow under **Actions** for the alpine instance. 
+- Select **Console**.
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/27.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Right click on **Click here to show only console** and select **Open link in new tab**.
+- This helps with navigating back and forth.  
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/28.png&quot; style=&quot;height:600px&quot;&gt;
+
+- A new console tab appears! 
+- You are now booting from the Alpine distro. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/29.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Type **root** into the`localhost login:` prompt and hit Enter to log in. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/30.png&quot; style=&quot;height:400px&quot;&gt;
+&gt;
+- A quick review of Alpine installation process can be found 
+on [their wiki](https://wiki.alpinelinux.org/wiki/Install_to_disk)
+- Type `setup-alpine` and hit Enter to start the installation process. 
+- Use the following options:
+  - `Select keyboard layout`: `us`
+  - `Select variant`: `us`
+  - `Enter system hostname ...`: Hit Enter to accept default. 
+  - `Which one do you want to initialize?`: Hit Enter to accept `eth0` as the default interface. 
+  - `Ip address for eth0`: Hit Enter to accept `dhcp` as the default value. 
+  - `Do you want to do any manual network configuration?`: Hit Enter to accept `n` as the default value. 
+  - Enter a **complex** password for root. DO NOT MAKE AN EASY PASSWORD. If your cloud instance got 
+  hacked and used for malicious purposes, you will be banned from CloudLab. Retype the password. 
+  - `Which timezone are you in?`: Type `EST` and hit Enter. 
+  - `HTTP/FTP proxy URL?`: Hit Enter to accept `none` as the default value. 
+  - For the mirror question, type `30` (the one from princeton), then hit Enter. 
+  - `Which SSH server?`: Hit Enter to accept `openssh` as the default value. 
+  - `Which disk(s) would you like to use?`: Review the lines above, and select the listed disk. 
+  There should be one as we already attached a volume to this instance. For me, it is `vdb`, so I 
+  type in `vda` and hit Enter. 
+  - `How would you like to use it?`: Type `sys` and hit Enter. 
+  - `WARNING: Erase the above disk(s) and continue?`: Type `y` and hit Enter. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/31.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Once the installation process is completed, Leave this console running and return to the Dashboard. 
+- Go to **Compute**/**Instances**
+- Click on the drop-down arrow under **Actions** for the alpine instance.  
+- Select the `sda_****` volume ID selected earlier, then click **Detach Volume**
+
+&lt;img src=&quot;../fig/05-programmatic/32.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Select the `sda_****` volume ID created earlier, then click **Detach Volume**
+
+&lt;img src=&quot;../fig/05-programmatic/33.png&quot; style=&quot;height:300px&quot;&gt;
+&gt;
+- Go to your CloudLab Dashboard. 
+- Go to **Volumes**/**Volumes**.  
+- In the **Actions** box of `sda_****`, click the drop-down arrow and select **Upload to Image**. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/34.png&quot; style=&quot;height:400px&quot;&gt;
+
+- Set **Image Name** to `alpine-disk` and **Disk Format** as `Raw`, then click 
+**Upload**. 
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/35.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+- Successful upload:
+&gt;
+&lt;img src=&quot;../fig/05-programmatic/36.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+{:.slide}
+
+
+## 8. Challenge
+- Launch another compute instance using the newly created `alpine-disk` image. 
+  - Pay attention to the flavor. 
+- Log into the console and confirm that you can use the root password created earlier to log in
+&gt;
+&gt; ## Expected Outcome: 
+&gt; 
+&gt; &lt;img src=&quot;../fig/05-programmatic/37.png&quot; style=&quot;height:600px&quot;&gt;
+&gt;
+{: .solution}
+{: .challenge}
+
+
+## 9. Setup Apache webserver (from the volume-based Alpine from Challenge 8)
+&gt;
+- You should be inside the console after log in as root and have the root password. 
+- Run the following commands to install Apache webserver
+&gt;
+~~~
+$ apk update
+$ apk add apache2
+$ rc-service apache2 start
+~~~
+{ :.language-bash}
+&gt;
+
+&lt;img src=&quot;../fig/05-programmatic/38.png&quot; style=&quot;height:400px&quot;&gt;
+&gt;
+</pre></div>
+</div>
+</section>
+<section id="setup-public-ip-address">
+<h2>10. Setup public IP address<a class="headerlink" href="#setup-public-ip-address" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>To expose the webserver, we need a public IP address.</p></li>
+<li><p>Go to your CloudLab Dashboard.</p></li>
+<li><p>Go to <strong>Compute</strong>/<strong>Instances</strong></p></li>
+<li><p>Click on the drop-down arrow under <strong>Actions</strong> for the alpine instance,
+then click <strong>Associate Floating IP</strong>.</p></li>
+</ul>
+<img src="../fig/05-programmatic/39.png" style="height:600px">
+>
+- Click on the `+` sign to allocate IP address. 
+>
+<img src="../fig/05-programmatic/40.png" style="height:300px">
+>
+- Click on **Allocate IP**. 
+>
+<img src="../fig/05-programmatic/41.png" style="height:300px">
+>
+- Click on **Associate**.
+>
+<img src="../fig/05-programmatic/42.png" style="height:300px">
+>
+- You should see the public IP address with your instance
+>
+<img src="../fig/05-programmatic/43.png" style="height:300px">
+>
+- Try visiting this IP address now, anything?
+>
+```
+</section>
+<section id="cloud-security-basic">
+<h2>12. Cloud security basic<a class="headerlink" href="#cloud-security-basic" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>In the cloud, <code class="docutils literal notranslate"><span class="pre">egress</span></code> means traffic that’s leaving from inside the private network out to the
+public internet (similar to standard network definition).</p></li>
+<li><p>In the cloud, <code class="docutils literal notranslate"><span class="pre">ingress</span></code> refers to unsolicited traffic sent from an address in public internet to
+the private network – it is not a response to a request initiated by an inside system. In this case,
+firewalls are designed to decline this request unless there are specific policy and configuration that
+allows ingress connections.</p></li>
+</ul>
+<img src="../fig/05-programmatic/44.png" style="height:600px">
+<img src="../fig/05-programmatic/45.png" style="height:600px">
+>
+```
+</section>
+<section id="handle-security">
+<h2>11. Handle security<a class="headerlink" href="#handle-security" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Go to your CloudLab Dashboard.</p></li>
+<li><p>Go to <strong>Network</strong>/<strong>Security Group</strong></p></li>
+<li><p>Click on <strong>Manage Rules</strong>.</p></li>
+</ul>
+<img src="../fig/05-programmatic/46.png" style="height:600px">
+>
+- Click `Add Rules` 
+>
+<img src="../fig/05-programmatic/47.png" style="height:600px">
+>
+- In the `Rule` drop down box, select `HTTP`, then click `Add`. 
+>
+<img src="../fig/05-programmatic/48.png" style="height:600px">
+>
+- You can see the new `Ingress` rule for HTTP.
+>
+<img src="../fig/05-programmatic/49.png" style="height:600px">
+>
+- The apache webserver is now visible
+>
+<img src="../fig/05-programmatic/50.png" style="height:300px">
+>
+```
+<p>{% include <a class="reference external" href="http://links.md">links.md</a> %}</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./containers"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="01-introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to CloudLab</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03-notebooks.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">1. Where are the notebooks</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Linh Ngo<br/>
+  
+    <div class="extra_footer">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

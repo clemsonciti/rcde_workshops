@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Classification with decision boundaries” &#8212; Research Computing and Data Workshop</title>
+    <title>&lt;no title&gt; &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Nearest Neighbours Classification" href="07-KNN.html" />
-    <link rel="prev" title="Training Machine Learning model using Regression Method" href="05-Training_Regression.html" />
+    <link rel="next" title="K-Nearest Neighbour" href="07-KNN.html" />
+    <link rel="prev" title="5 More examples of prediction" href="05-Training_Regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -209,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
   R
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../r_programming/00-index.html">
    Introduction to R
@@ -221,115 +221,75 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/01-Introduction.html">
-     Introduction to R”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/02-Basic-R.html">
-     Basics of R
+     Input to R
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/03-Data-Structures.html">
-     Data Structures
+     Classes of objects
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/04-Matrix.html">
-     Vectors, Matrices, Lists and Data Frames
+     Vector math
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/05-Control-Structure.html">
-     Control Structure
+     if-else
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/06-Functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/07-Parallel-Computing.html">
-     Parallel Computing in R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/08-Basic-Plotting.html">
-     Basic plotting with R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">
-     Ploting with ggplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">
-     R in Palmetto
+     Using custom functions
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="00-index.html">
    Machine Learning using R
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="01-Introduction.html">
-     Introduction to Machine Learning”
-    </a>
-   </li>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="02-Caret-Preprocessing.html">
-     Introduction to Caret
+     2.1 What is Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Caret-Data-Partition.html">
-     Data Partition with caret
+     3 Data partition: training and testing
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
-     Training Machine Learning model using Regression Method
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Classification with decision boundaries”
+     5 More examples of prediction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-KNN.html">
-     Nearest Neighbours Classification
+     K-Nearest Neighbour
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-Training_Tree.html">
-     Training Machine Learning model using Tree-based model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09-Training_Ensemble.html">
-     Training Machine Learning model using Ensemble approach”
+     Training the model using Decision Trees
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="10-Unsupervised-Learning.html">
-     Unsupervised Learning
+     K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-Neural-Network.html">
-     Neural Network
+     11 Neural Network
     </a>
    </li>
   </ul>
@@ -515,13 +475,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/02-dockers.html">
-     Docker Containers on CloudLab
+    <a class="reference internal" href="../containers/02-cluster.html">
+     Programmatic Deployment of Infrastructures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/03-apptainers.html">
-     Singularity/Apptainers on Palmetto
+    <a class="reference internal" href="../containers/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -539,6 +499,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
      1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -653,23 +623,50 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Classification with decision boundaries”</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -677,9 +674,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="classification-with-decision-boundaries">
-<h1>Classification with decision boundaries”<a class="headerlink" href="#classification-with-decision-boundaries" title="Permalink to this headline">#</a></h1>
-<p>Let’s discuss the problem of multivariate classification. “Multivariate” means that we have more than one input variable, and we will
+  <p>Let’s discuss the problem of multivariate classification. “Multivariate” means that we have more than one input variable, and we will
 consider the interaction between the input variables when we classify them. For simplicity, we assume we have two input variables, x and y. For
 this two-dimensional case, we can plot the data graphically. Let’s say we have two classes; we will represent them with blue squares and red circles.</p>
 <img src="../fig/twoclasses.png" width="300" />
@@ -700,7 +695,6 @@ this two-dimensional case, we can plot the data graphically. Let’s say we have
 <p>SVM is a very robust classifier: it works well in small samples and in situations where the number of observations is less than the number of variables. It can also use decision boundaries that are not straight lines. However, it is not very practical on large data sets because it becomes very slow. Also, when doing SVM, keep in mind that it is sensitive to scale of the data, so it’s usually a good idea to scale all variables to (0,1) range.</p>
 <p>In Caret, these three classifiers can be performed with the <code class="docutils literal notranslate"><span class="pre">train</span></code> function. For linear discriminant, you need to set <code class="docutils literal notranslate"><span class="pre">method='lda'</span></code>; for quadratic discriminant, <code class="docutils literal notranslate"><span class="pre">method='qda'</span></code>. For SVM with linear (straight line) decision boundary, you set <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'svmLinear'</span></code> (you can also specify <code class="docutils literal notranslate"><span class="pre">cost</span></code>, which is the amount of error you are willing to tolerate). For non-linear boundaries, you can set <code class="docutils literal notranslate"><span class="pre">method</span></code> to <code class="docutils literal notranslate"><span class="pre">'svmPoly'</span></code>, <code class="docutils literal notranslate"><span class="pre">'svmRadial'</span></code>, etc. – see <a class="reference external" href="https://rdrr.io/cran/caret/man/models.html">the list of methods supported by Caret</a>. I used two classes in my examples, but all these methods work with any number of classes.</p>
 <p>If the number of observations is less than the number of variables, linear and quadratic discriminants won’t work. The way around it is to use principal component analysis (PCA), where we approximate the data with a small orthogonal set of new variables(<em>principal components</em>), each capturing an important trend in the data. This way, if several variables are correlated, they end up in the same principal component. Essentially, our data are approximated ith a small set of principal components; this approximaition is then fed into linear or quadratic discriminants. This method is very robust to noise.</p>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -733,13 +727,13 @@ this two-dimensional case, we can plot the data graphically. Let’s say we have
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Training Machine Learning model using Regression Method</p>
+            <p class="prev-next-title">5 More examples of prediction</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="07-KNN.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Nearest Neighbours Classification</p>
+        <p class="prev-next-title">K-Nearest Neighbour</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

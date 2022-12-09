@@ -1,1 +1,0 @@
-# Singularity/Apptainers on Palmetto

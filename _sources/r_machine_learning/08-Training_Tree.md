@@ -1,5 +1,5 @@
-# Training Machine Learning model using Tree-based model
-
+---
+title: "Training Machine Learning model using Tree-based model"
 teaching: 20
 exercises: 0
 questions:
@@ -8,6 +8,7 @@ objectives:
 - "Learn to use different Tree-based algorithm for Machine Learning training"
 keypoints:
 - "Decision Tree, Random Forest"
+---
 
 ## Training the model using Decision Trees
 -   Decision trees can take inputs where some variables are numerical and some are categorical

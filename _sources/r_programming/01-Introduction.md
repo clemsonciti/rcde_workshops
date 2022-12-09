@@ -1,5 +1,14 @@
-# Introduction to R"
-
+---
+title: "Introduction to R"
+teaching: 5 min
+exercises: 0
+questions: "What is R?"
+objectives:
+- "Basic Introductory of R"
+- "Why using R"
+keypoints:
+- "Advantage of using R"
+---
 - R is a language and environment for statistical computing and graphics
 - R is developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues.
 - R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible. 

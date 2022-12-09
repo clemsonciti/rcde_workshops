@@ -1,5 +1,5 @@
-# Introduction to Caret
-
+---
+title: "Introduction to Caret"
 teaching: 40
 exercises: 0
 questions:
@@ -8,6 +8,7 @@ objectives:
 - "Master Caret package for Machine Learning"
 keypoints:
 - "Caret"
+---
 
 ## 2.1 What is Caret
 ![image](https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png)

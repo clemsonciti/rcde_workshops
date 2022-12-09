@@ -1,5 +1,5 @@
-# Data Structures
-
+---
+title: "Data Structures"
 teaching: 20
 exercises: 0
 questions:
@@ -14,6 +14,7 @@ objectives:
 keypoints:
 - "Classes of objects"
 - "Vectors" 
+---
 
 ## Classes of objects
 In R, there are 5 main classes of objects:

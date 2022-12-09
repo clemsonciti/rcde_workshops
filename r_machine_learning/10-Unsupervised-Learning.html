@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Unsupervised Learning &#8212; Research Computing and Data Workshop</title>
+    <title>K-means clustering &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Neural Network" href="11-Neural-Network.html" />
-    <link rel="prev" title="Training Machine Learning model using Ensemble approach”" href="09-Training_Ensemble.html" />
+    <link rel="next" title="11 Neural Network" href="11-Neural-Network.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="09-Training_Ensemble.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -221,53 +221,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/01-Introduction.html">
-     Introduction to R”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/02-Basic-R.html">
-     Basics of R
+     Input to R
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/03-Data-Structures.html">
-     Data Structures
+     Classes of objects
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/04-Matrix.html">
-     Vectors, Matrices, Lists and Data Frames
+     Vector math
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/05-Control-Structure.html">
-     Control Structure
+     if-else
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/06-Functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/07-Parallel-Computing.html">
-     Parallel Computing in R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/08-Basic-Plotting.html">
-     Basic plotting with R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">
-     Ploting with ggplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">
-     R in Palmetto
+     Using custom functions
     </a>
    </li>
   </ul>
@@ -283,53 +258,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="01-Introduction.html">
-     Introduction to Machine Learning”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="02-Caret-Preprocessing.html">
-     Introduction to Caret
+     2.1 What is Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Caret-Data-Partition.html">
-     Data Partition with caret
+     3 Data partition: training and testing
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
-     Training Machine Learning model using Regression Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="06-Decision_boundaries.html">
-     Classification with decision boundaries”
+     5 More examples of prediction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-KNN.html">
-     Nearest Neighbours Classification
+     K-Nearest Neighbour
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-Training_Tree.html">
-     Training Machine Learning model using Tree-based model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09-Training_Ensemble.html">
-     Training Machine Learning model using Ensemble approach”
+     Training the model using Decision Trees
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Unsupervised Learning
+     K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-Neural-Network.html">
-     Neural Network
+     11 Neural Network
     </a>
    </li>
   </ul>
@@ -515,13 +475,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/02-dockers.html">
-     Docker Containers on CloudLab
+    <a class="reference internal" href="../containers/02-cluster.html">
+     Programmatic Deployment of Infrastructures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/03-apptainers.html">
-     Singularity/Apptainers on Palmetto
+    <a class="reference internal" href="../containers/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -539,6 +499,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
      1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -676,36 +646,29 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-means-clustering">
-   K-means clustering
+  <a class="reference internal nav-link" href="#explanation-of-k-means-clustering-method">
+   Explanation of K-means clustering method:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-with-k-3">
+   Example with K=3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-find-optimal-k-values">
+   How to find optimal K values:
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explanation-of-k-means-clustering-method">
-     Explanation of K-means clustering method:
+    <a class="reference internal nav-link" href="#elbow-approach">
+     Elbow approach
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-with-k-3">
-     Example with K=3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#implementation">
-     Implementation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-find-optimal-k-values">
-     How to find optimal K values:
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#elbow-approach">
-       Elbow approach
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -718,7 +681,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unsupervised Learning</h1>
+                <h1>K-means clustering</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -729,36 +692,29 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-means-clustering">
-   K-means clustering
+  <a class="reference internal nav-link" href="#explanation-of-k-means-clustering-method">
+   Explanation of K-means clustering method:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-with-k-3">
+   Example with K=3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-find-optimal-k-values">
+   How to find optimal K values:
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explanation-of-k-means-clustering-method">
-     Explanation of K-means clustering method:
+    <a class="reference internal nav-link" href="#elbow-approach">
+     Elbow approach
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-with-k-3">
-     Example with K=3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#implementation">
-     Implementation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-find-optimal-k-values">
-     How to find optimal K values:
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#elbow-approach">
-       Elbow approach
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -772,22 +728,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="unsupervised-learning">
-<h1>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">#</a></h1>
-<p>teaching: 20
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“What is Unsupervised Learning in Machine Learning model”
-objectives:</p></li>
-<li><p>“Learn how to use K-mean clustering in ML model”
-keypoints:</p></li>
-<li><p>“K-mean”</p></li>
-</ul>
-<section id="k-means-clustering">
-<h2>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h2>
+  <section id="k-means-clustering">
+<h1>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h1>
 <section id="explanation-of-k-means-clustering-method">
-<h3>Explanation of K-means clustering method:<a class="headerlink" href="#explanation-of-k-means-clustering-method" title="Permalink to this headline">#</a></h3>
+<h2>Explanation of K-means clustering method:<a class="headerlink" href="#explanation-of-k-means-clustering-method" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Given a set of data, we choose K=2 clusters to be split into:</p></li>
 </ul>
@@ -814,12 +758,12 @@ keypoints:</p></li>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585223-6b374380-9c51-11eb-8663-27474956ec61.png" /></p>
 </section>
 <section id="example-with-k-3">
-<h3>Example with K=3<a class="headerlink" href="#example-with-k-3" title="Permalink to this headline">#</a></h3>
+<h2>Example with K=3<a class="headerlink" href="#example-with-k-3" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585361-8e61f300-9c51-11eb-965e-dc4d57e9c0eb.png" /></p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585502-b81b1a00-9c51-11eb-8015-973216b450ce.png" /></p>
 </section>
 <section id="implementation">
-<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h2>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">factoextra</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span>
@@ -836,9 +780,9 @@ keypoints:</p></li>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585677-e567c800-9c51-11eb-8cb4-6db443f0698b.png" /></p>
 </section>
 <section id="how-to-find-optimal-k-values">
-<h3>How to find optimal K values:<a class="headerlink" href="#how-to-find-optimal-k-values" title="Permalink to this headline">#</a></h3>
+<h2>How to find optimal K values:<a class="headerlink" href="#how-to-find-optimal-k-values" title="Permalink to this headline">#</a></h2>
 <section id="elbow-approach">
-<h4>Elbow approach<a class="headerlink" href="#elbow-approach" title="Permalink to this headline">#</a></h4>
+<h3>Elbow approach<a class="headerlink" href="#elbow-approach" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Similar to KNN method for supervised learning, for K-means approach, we are able to use Elbow approach to find the optimal K values.</p></li>
 <li><p>The Elbow approach ues the Within-Cluster Sum of Square (WSS) to measure the compactness of the clusters:
@@ -874,7 +818,6 @@ fviz_gap_stat(gap_stat)
 </section>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -907,13 +850,13 @@ fviz_gap_stat(gap_stat)
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Training Machine Learning model using Ensemble approach”</p>
+            <p class="prev-next-title">&lt;no title&gt;</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="11-Neural-Network.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Neural Network</p>
+        <p class="prev-next-title">11 Neural Network</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

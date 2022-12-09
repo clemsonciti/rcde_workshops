@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Structures &#8212; Research Computing and Data Workshop</title>
+    <title>Classes of objects &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Vectors, Matrices, Lists and Data Frames" href="04-Matrix.html" />
-    <link rel="prev" title="Basics of R" href="02-Basic-R.html" />
+    <link rel="next" title="Vector math" href="04-Matrix.html" />
+    <link rel="prev" title="Input to R" href="02-Basic-R.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -221,53 +221,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="02-Basic-R.html">
-     Basics of R
+     Input to R
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Data Structures
+     Classes of objects
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04-Matrix.html">
-     Vectors, Matrices, Lists and Data Frames
+     Vector math
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Control-Structure.html">
-     Control Structure
+     if-else
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-Functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07-Parallel-Computing.html">
-     Parallel Computing in R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08-Basic-Plotting.html">
-     Basic plotting with R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09-Plotting-with-ggplot.html">
-     Ploting with ggplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10-R-in-Palmetto.html">
-     R in Palmetto
+     Using custom functions
     </a>
    </li>
   </ul>
@@ -283,53 +258,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/01-Introduction.html">
-     Introduction to Machine Learning”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
-     Introduction to Caret
+     2.1 What is Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
-     Data Partition with caret
+     3 Data partition: training and testing
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
-     Training Machine Learning model using Regression Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">
-     Classification with decision boundaries”
+     5 More examples of prediction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/07-KNN.html">
-     Nearest Neighbours Classification
+     K-Nearest Neighbour
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
-     Training Machine Learning model using Tree-based model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">
-     Training Machine Learning model using Ensemble approach”
+     Training the model using Decision Trees
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
-     Unsupervised Learning
+     K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
-     Neural Network
+     11 Neural Network
     </a>
    </li>
   </ul>
@@ -515,13 +475,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/02-dockers.html">
-     Docker Containers on CloudLab
+    <a class="reference internal" href="../containers/02-cluster.html">
+     Programmatic Deployment of Infrastructures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/03-apptainers.html">
-     Singularity/Apptainers on Palmetto
+    <a class="reference internal" href="../containers/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -539,6 +499,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
      1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -675,37 +645,37 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classes-of-objects">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Classes of objects
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logical-operations">
    Logical operations
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numbers">
    Numbers
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-number-seed">
    Random Number &amp; seed
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vectors">
    Vectors
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#explicit-coercion">
    Explicit Coercion
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#missing-values">
    Missing values
   </a>
@@ -719,7 +689,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data Structures</h1>
+                <h1>Classes of objects</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -729,37 +699,37 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classes-of-objects">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    Classes of objects
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logical-operations">
    Logical operations
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numbers">
    Numbers
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#random-number-seed">
    Random Number &amp; seed
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#vectors">
    Vectors
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#explicit-coercion">
    Explicit Coercion
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#missing-values">
    Missing values
   </a>
@@ -774,27 +744,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="data-structures">
-<h1>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h1>
-<p>teaching: 20
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“Data types / classes in R”</p></li>
-<li><p>“Random numbers”</p></li>
-<li><p>“Vectors”</p></li>
-<li><p>“Missing values”</p></li>
-</ul>
-<p>objectives:</p>
-<ul class="simple">
-<li><p>“5 data types / classes of objects”</p></li>
-<li><p>“Working with vectors”
-keypoints:</p></li>
-<li><p>“Classes of objects”</p></li>
-<li><p>“Vectors”</p></li>
-</ul>
-<section id="classes-of-objects">
-<h2>Classes of objects<a class="headerlink" href="#classes-of-objects" title="Permalink to this headline">#</a></h2>
+  <section id="classes-of-objects">
+<h1>Classes of objects<a class="headerlink" href="#classes-of-objects" title="Permalink to this headline">#</a></h1>
 <p>In R, there are 5 main classes of objects:</p>
 <ul class="simple">
 <li><p>characters a, b</p></li>
@@ -817,7 +768,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="logical-operations">
-<h2>Logical operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">#</a></h2>
+<h1>Logical operations<a class="headerlink" href="#logical-operations" title="Permalink to this headline">#</a></h1>
 <p>Logical operations “and” and “or” are computed with <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">||</span></code>:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">&lt;-</span><span class="kc">TRUE</span>
 <span class="n">b</span><span class="o">&lt;-</span><span class="kc">FALSE</span>
@@ -833,7 +784,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="numbers">
-<h2>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">#</a></h2>
+<h1>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>In R, a number is considered a numeric type:</p></li>
 </ul>
@@ -870,7 +821,7 @@ keypoints:</p></li>
 <p>Sometimes, when you are dealing with data, you have missing values. In R, there is a special way to denote missing values: <code class="docutils literal notranslate"><span class="pre">NA</span></code> (“not available”). <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is a special type of <code class="docutils literal notranslate"><span class="pre">NA</span></code>.</p>
 </section>
 <section id="random-number-seed">
-<h2>Random Number &amp; seed<a class="headerlink" href="#random-number-seed" title="Permalink to this headline">#</a></h2>
+<h1>Random Number &amp; seed<a class="headerlink" href="#random-number-seed" title="Permalink to this headline">#</a></h1>
 <p>Create random numeric numbers using runif</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 <span class="nf">runif</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
@@ -891,7 +842,7 @@ keypoints:</p></li>
 <p><code class="docutils literal notranslate"><span class="pre">sample</span></code> returns a set of variables, rather than one variable. Sets of variables of the same type are called vectors.</p>
 </section>
 <section id="vectors">
-<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h2>
+<h1>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h1>
 <p>Vectors are sets of variables of the same class, in a certain order. The simplest, and a very useful, type of a vector is a range of values, specified with a colon:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span>
 <span class="n">x</span> <span class="o">&lt;-</span> <span class="m">-3</span><span class="o">:</span><span class="m">3</span>
@@ -930,7 +881,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="explicit-coercion">
-<h2>Explicit Coercion<a class="headerlink" href="#explicit-coercion" title="Permalink to this headline">#</a></h2>
+<h1>Explicit Coercion<a class="headerlink" href="#explicit-coercion" title="Permalink to this headline">#</a></h1>
 <p>Convert objects from one class to another, using <code class="docutils literal notranslate"><span class="pre">as.</span></code> function:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">5</span>
 <span class="nf">class</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -949,7 +900,7 @@ keypoints:</p></li>
 </div>
 </section>
 <section id="missing-values">
-<h2>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">#</a></h2>
+<h1>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">#</a></h1>
 <p>In order to detect missing values or bad values (NaN, NA, Inf), we can use these functions:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://is.na">is.na</a>() test NA value</p></li>
@@ -964,7 +915,6 @@ keypoints:</p></li>
 <span class="nf">is.infinite</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -998,13 +948,13 @@ keypoints:</p></li>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Basics of R</p>
+            <p class="prev-next-title">Input to R</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04-Matrix.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Vectors, Matrices, Lists and Data Frames</p>
+        <p class="prev-next-title">Vector math</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

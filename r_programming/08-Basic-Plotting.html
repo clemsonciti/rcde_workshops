@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Basic plotting with R &#8212; Research Computing and Data Workshop</title>
+    <title>&lt;no title&gt; &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ploting with ggplot" href="09-Plotting-with-ggplot.html" />
-    <link rel="prev" title="Parallel Computing in R" href="07-Parallel-Computing.html" />
+    <link rel="next" title="&lt;no title&gt;" href="09-Plotting-with-ggplot.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="07-Parallel-Computing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -209,65 +209,40 @@ const thebe_selector_output = ".output, .cell_output"
   R
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="00-index.html">
    Introduction to R
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
-    </a>
-   </li>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="02-Basic-R.html">
-     Basics of R
+     Input to R
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Data-Structures.html">
-     Data Structures
+     Classes of objects
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04-Matrix.html">
-     Vectors, Matrices, Lists and Data Frames
+     Vector math
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Control-Structure.html">
-     Control Structure
+     if-else
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-Functions.html">
-     Functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="07-Parallel-Computing.html">
-     Parallel Computing in R
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Basic plotting with R
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="09-Plotting-with-ggplot.html">
-     Ploting with ggplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10-R-in-Palmetto.html">
-     R in Palmetto
+     Using custom functions
     </a>
    </li>
   </ul>
@@ -283,53 +258,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/01-Introduction.html">
-     Introduction to Machine Learning”
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
-     Introduction to Caret
+     2.1 What is Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
-     Data Partition with caret
+     3 Data partition: training and testing
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
-     Training Machine Learning model using Regression Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">
-     Classification with decision boundaries”
+     5 More examples of prediction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/07-KNN.html">
-     Nearest Neighbours Classification
+     K-Nearest Neighbour
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
-     Training Machine Learning model using Tree-based model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">
-     Training Machine Learning model using Ensemble approach”
+     Training the model using Decision Trees
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
-     Unsupervised Learning
+     K-means clustering
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
-     Neural Network
+     11 Neural Network
     </a>
    </li>
   </ul>
@@ -515,13 +475,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/02-dockers.html">
-     Docker Containers on CloudLab
+    <a class="reference internal" href="../containers/02-cluster.html">
+     Programmatic Deployment of Infrastructures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/03-apptainers.html">
-     Singularity/Apptainers on Palmetto
+    <a class="reference internal" href="../containers/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -539,6 +499,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
      1. What is Spark?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
+     1. Launching the Spark cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
+     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -653,23 +623,50 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Basic plotting with R</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -677,20 +674,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="basic-plotting-with-r">
-<h1>Basic plotting with R<a class="headerlink" href="#basic-plotting-with-r" title="Permalink to this headline">#</a></h1>
-<p>teaching: 30
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“How to plot in R”
-objectives:</p></li>
-<li><p>“Learn basic plotting tools in R”</p></li>
-<li><p>“Learn to export graphics to a file”
-keypoints:</p></li>
-<li><p>“plot”</p></li>
-</ul>
-<!---
+  <!---
 ## Course content:
 - Making exploratory graphs
 - Principles of analytic graphics
@@ -804,7 +788,6 @@ dev.copy(png,"filename.png") # to save the image to file
 dev.off() # to close all the graphical devices
 ```
 -->
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -837,13 +820,13 @@ dev.off() # to close all the graphical devices
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Parallel Computing in R</p>
+            <p class="prev-next-title">&lt;no title&gt;</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="09-Plotting-with-ggplot.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ploting with ggplot</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

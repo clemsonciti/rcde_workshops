@@ -1,5 +1,16 @@
-# Classification with decision boundaries"
-
+---
+title: "Classification with decision boundaries"
+teaching: 20
+exercises: 0
+questions:
+- "Classifying with decision boundaries"
+objectives:
+- "How to classify with a method that uses a decision boundary"
+keypoints:
+- "Linear Discriminant"
+- "Quadratic Discriminant"
+- "Support Vector Machines"
+---
 
 Let's discuss the problem of multivariate classification. "Multivariate" means that we have more than one input variable, and we will 
 consider the interaction between the input variables when we classify them. For simplicity, we assume we have two input variables, x and y. For

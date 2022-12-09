@@ -1,4 +1,14 @@
-# Training Machine Learning model using Ensemble approach"
+---
+title: "Training Machine Learning model using Ensemble approach"
+teaching: 20
+exercises: 0
+questions:
+- "How to overcome limitation of single ML model?"
+objectives:
+- "Learn to use different Ensemble ML algorithm for Machine Learning training"
+keypoints:
+- "Bagging, Boosting"
+---
 
 Ensemble learning is a way to combine multiple ML methods, and to base the final answer on the outputs of these classifiers. A good description of ensemble learning is [here](https://www.pluralsight.com/guides/ensemble-methods:-bagging-versus-boosting).
 

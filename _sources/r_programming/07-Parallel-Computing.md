@@ -1,5 +1,5 @@
-# Parallel Computing in R
-
+---
+title: "Parallel Computing in R"
 teaching: 20
 exercises: 0
 questions:
@@ -9,6 +9,7 @@ objectives:
 - "Utilizing multiple cores"
 keypoints:
 - "foreach()"
+---
 
 <!--
 - The `doParallel` package is a "parallel backend" for the foreach package. It provides a mechanism needed to execute foreach loops in parallel.
