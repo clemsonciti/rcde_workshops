@@ -13,4 +13,7 @@ Docker images to Singularity/Apptainer, and launching containers on Palmetto
 
 ## Prerequisites
 
-TBD
+Completion (knowledge equivalency) of the following workshops:
+
+- Introduction to Linux
+- Introduction to Research Computing on Palmetto
