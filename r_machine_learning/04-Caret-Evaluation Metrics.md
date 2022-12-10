@@ -1,5 +1,5 @@
----
-title: "Evaluation Metrics with caret"
+# Evaluation Metrics with caret
+
 teaching: 40
 exercises: 0
 questions:
@@ -8,9 +8,8 @@ objectives:
 - "Learn different metrics with caret"
 keypoints:
 - "Caret"
----
 
-# 4 Evaluation of prediction 
+##  4 Evaluation of prediction 
 
 Here, we will discuss how we can evaluate our prediction. This process is somewhat different depending on whether we predict numerical outouts (regression) or categorical outputs (classification).
 

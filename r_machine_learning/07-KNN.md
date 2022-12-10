@@ -1,5 +1,5 @@
----
-title: "Nearest Neighbours Classification"
+# Nearest Neighbours Classification
+
 teaching: 20
 exercises: 0
 questions:
@@ -8,7 +8,6 @@ objectives:
 - "Learn how to use KNN in ML model"
 keypoints:
 - "KNN"
----
 
 ## K-Nearest Neighbour
 

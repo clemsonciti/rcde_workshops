@@ -1,5 +1,5 @@
----
-title: "Basic plotting with R"
+# Basic plotting with R
+
 teaching: 30
 exercises: 0
 questions:
@@ -9,7 +9,6 @@ objectives:
 - "Learn to export graphics to a file"
 keypoints:
 - "plot"
----
 
 <!---
 ## Course content:

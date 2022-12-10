@@ -1,5 +1,5 @@
----
-title: "Training Machine Learning model using Regression Method"
+# Training Machine Learning model using Regression Method
+
 teaching: 20
 exercises: 0
 questions:
@@ -9,7 +9,7 @@ objectives:
 keypoints:
 - "Regression training"
 ---
-# 5 More examples of prediction
+## 5 More examples of prediction
 
 CARET supports a huge number of prediction methods; see the list [here](https://rdrr.io/cran/caret/man/models.html). Let's do a few examples.
 
