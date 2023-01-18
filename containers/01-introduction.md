@@ -152,7 +152,7 @@ starting from `ssh-rsa ...` until `...@login001.palmetto.clemson.edu`.
 - Click `Add file` and select `Create new file`
 - Type `profile.py` for the file name and enter the content below:
 
-<script src="https://gist.github.com/linhbngo/6d5747ab8f04763f9dc265c361d7ebcf.js?file=profile-basic.c"></script>
+<script src="https://gist.github.com/linhbngo/6d5747ab8f04763f9dc265c361d7ebcf.js?file=profile-basic.py"></script>
 
 - Click `Commit new file` when done. 
 
