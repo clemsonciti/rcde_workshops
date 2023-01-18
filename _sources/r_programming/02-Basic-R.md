@@ -1,5 +1,5 @@
----
-title: "Basics of R"
+# Basics of R
+
 teaching: 5
 exercises: 0
 questions:
@@ -15,7 +15,6 @@ keypoints:
 - "Use `ls()` to list the variables in a program."
 - "Use `rm()` to delete objects in a program."
 - "Use `sessionInfo()` to get detail of the current loaded environmemt and packages"
----
 
 ## Input to R
 - In R console, the symbol `>` stands for `R prompt`.

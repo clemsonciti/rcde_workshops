@@ -1,5 +1,5 @@
----
-title: "Control Structure"
+# Control Structure
+
 teaching: 20
 exercises: 0
 questions:
@@ -13,7 +13,6 @@ objectives:
 keypoints:
 - "Use `if` and `else`"
 - "Use `for` loop "
----
 
 ## if-else
 Syntax:

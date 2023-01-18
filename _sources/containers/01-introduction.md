@@ -164,41 +164,107 @@ starting from `ssh-rsa ...` until `...@login001.palmetto.clemson.edu`.
 - Login to your CloudLab account, click `Experiments` on top left, 
 select `Create Experiment Profile`. 
 
-<img src="../fig/02-cloudlab/11.png" style="height:300px">
+```{admonition} Create New Profile
+:class: dropdown
+
+![Create New Profile](../fig/containers/cloudlab-new-profile.png)
+
+```
 
 - Click on `Git Repo`
+  - You might not have a dropdown `Project` box, unless you are members of multiple CloudLab
+  projects.
 
-<img src="../fig/02-cloudlab/12.png" style="height:300px">
+```{admonition} Create New Profile
+:class: dropdown
+
+![Create New Profile from Git Repo](../fig/containers/cloudlab-profile-git.png)
+
+```
+
+- Open another browser tab, go to the previously created Git repository, and 
+get the clone URL (HTTPS option) of your Git repository
+
+```{admonition} HTTPS clone link
+:class: dropdown
+
+![Getting HTTPS clone link](../fig/containers/git-clone-https.png)
+
+```
 
 - Paste the URL of **your** previously created Git repo here and click `Confirm`
+  - This must be the `HTTPS` option. 
 
-<img src="../fig/02-cloudlab/13.png" style="height:250px">
+```{admonition} Paste Git clone link
+:class: dropdown
+
+![Paste }HTTPS clone link](../fig/containers/cloudlab-profile-git-url.png)
+
+```
 
 - Enter the name for your profile, put in some words for the Description. 
 - You will not have a drop-down list of Project. 
 - Click `Create` when done. 
 
-<img src="../fig/02-cloudlab/14.png" style="height:350px">
+```{admonition} Complete and create profile
+:class: dropdown
+
+![Create CloudLab profile](../fig/containers/cloudlab-profile-create.png)
+
+```
 
 - Click `Instantiate` to launch an experiment from your profile. 
 
-<img src="../fig/02-cloudlab/15.png" style="height:450px">
+```{admonition} Instantiate an experiment from a profile
+:class: dropdown
 
+![Launch CloudLab experiment from profile](../fig/containers/cloudlab-profile-instantiate.png)
+
+```
+
+- Click `Next` on the first tab, `Select a Profile`.
 - Select a Cluster from Wisconsin, Clemson, or Emulab, then click `Next`. 
+
+```{admonition} Select cluster
+:class: dropdown
+
+![Select cluster to launch experiment](../fig/containers/cloudlab-instantiate-emulab.png)
+
+```
+
 - Do not do anything on the next `Start on date/time` screen. Click `Finish`.  
+- Your experiment is now being `provision`, and then `booting`  
 
-<img src="../fig/02-cloudlab/16.png" style="height:450px">
+```{admonition} Provisioning and Booting
+:class: dropdown
 
-- Your experiment is now being `provision`, and then `booting  
+![Provisioning](../fig/containers/cloudlab-instantiate-provisining.png)
+![Booting](../fig/containers/cloudlab-instantiate-booting.png)
 
-<img src="../fig/02-cloudlab/17.png" style="height:400px">
-<img src="../fig/02-cloudlab/18.png" style="height:800px">
+```
 
 - When it is ready, you can use the provided SSH command to log in to your experiment (assuming 
 your key was set up correctly). 
 - The command is in the **List View** tab. 
 
-<img src="../fig/02-cloudlab/19.png" style="height:500px">
+```{admonition} Provisioning and Booting
+:class: dropdown
 
+![Experiment is ready](../fig/containers/cloudlab-ready.png)
+![Log into experiment nodes](../fig/containers/cloudlab-ssh.png)
+
+```
+
+- The automated script included in the profile setup the Apache 
+web server. This can be accessed by using the DNS of the experiment node in 
+**List View** tab. 
+
+
+```{admonition} Automated installation of Apache2
+:class: dropdown
+
+![Apache2 Webserver](../fig/containers/cloudlab-apache2.png)
+
+```
 
 

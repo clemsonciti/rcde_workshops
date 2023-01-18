@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>K-Nearest Neighbour &#8212; Research Computing and Data Workshop</title>
+    <title>Nearest Neighbours Classification &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Training the model using Decision Trees" href="08-Training_Tree.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="06-Decision_boundaries.html" />
+    <link rel="next" title="Training Machine Learning model using Tree-based model" href="08-Training_Tree.html" />
+    <link rel="prev" title="Classification with decision boundaries”" href="06-Decision_boundaries.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -221,28 +221,53 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/01-Introduction.html">
+     Introduction to R”
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/02-Basic-R.html">
-     Input to R
+     Basics of R
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/03-Data-Structures.html">
-     Classes of objects
+     Data Structures
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/04-Matrix.html">
-     Vector math
+     Vectors, Matrices, Lists and Data Frames
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/05-Control-Structure.html">
-     if-else
+     Control Structure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/06-Functions.html">
-     Using custom functions
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/07-Parallel-Computing.html">
+     Parallel Computing in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/08-Basic-Plotting.html">
+     Basic plotting with R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">
+     Ploting with ggplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">
+     R in Palmetto
     </a>
    </li>
   </ul>
@@ -258,38 +283,53 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="01-Introduction.html">
+     Introduction to Machine Learning”
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="02-Caret-Preprocessing.html">
-     2.1 What is Caret
+     Introduction to Caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03-Caret-Data-Partition.html">
-     3 Data partition: training and testing
+     Data Partition with caret
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
-     5 More examples of prediction
+     Training Machine Learning model using Regression Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06-Decision_boundaries.html">
+     Classification with decision boundaries”
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     K-Nearest Neighbour
+     Nearest Neighbours Classification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="08-Training_Tree.html">
-     Training the model using Decision Trees
+     Training Machine Learning model using Tree-based model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09-Training_Ensemble.html">
+     Training Machine Learning model using Ensemble approach”
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="10-Unsupervised-Learning.html">
-     K-means clustering
+     Unsupervised Learning
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-Neural-Network.html">
-     11 Neural Network
+     Neural Network
     </a>
    </li>
   </ul>
@@ -475,13 +515,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/02-cluster.html">
-     Programmatic Deployment of Infrastructures
+    <a class="reference internal" href="../containers/02-dockers.html">
+     Docker Containers on CloudLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../containers/03-notebooks.html">
-     1. Where are the notebooks
+    <a class="reference internal" href="../containers/03-apptainers.html">
+     Singularity/Apptainers on Palmetto
     </a>
    </li>
   </ul>
@@ -499,16 +539,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
      1. What is Spark?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../advanced_scheduling/02-cluster.html">
-     1. Launching the Spark cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../advanced_scheduling/03-notebooks.html">
-     1. Where are the notebooks
     </a>
    </li>
   </ul>
@@ -623,23 +653,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nearest-neighbour">
+   K-Nearest Neighbour
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>K-Nearest Neighbour</h1>
+                <h1>Nearest Neighbours Classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nearest-neighbour">
+   K-Nearest Neighbour
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -647,8 +714,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="k-nearest-neighbour">
-<h1>K-Nearest Neighbour<a class="headerlink" href="#k-nearest-neighbour" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="nearest-neighbours-classification">
+<h1>Nearest Neighbours Classification<a class="headerlink" href="#nearest-neighbours-classification" title="Permalink to this headline">#</a></h1>
+<p>teaching: 20
+exercises: 0
+questions:</p>
+<ul class="simple">
+<li><p>“How to use K-Nearest Neighbour in Machine Learning model”
+objectives:</p></li>
+<li><p>“Learn how to use KNN in ML model”
+keypoints:</p></li>
+<li><p>“KNN”</p></li>
+</ul>
+<section id="k-nearest-neighbour">
+<h2>K-Nearest Neighbour<a class="headerlink" href="#k-nearest-neighbour" title="Permalink to this headline">#</a></h2>
 <p>Nearest-neighbour classification is very simple and intuitive. Consider a two-dimensional graphical representation of our data:</p>
 <img src="../fig/twoclasses.png" width="300" />
 <p>The idea is: given a point (an observation), we assign it to the same class as its nearest neighbour. So there is no training, and in the testing phase, we compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distances</a> to all training data points and assign the observation to the same class as the training data point which is the closest. So it is really fast, but it only works on data where classes form very tight clusters:</p>
@@ -679,6 +758,7 @@ title="Print to PDF"
 </div>
 <p>Here, we go from K=1 to K=25. The Caret <code class="docutils literal notranslate"><span class="pre">train</span></code> function takes care of creating the validation set and applying these value of K to classify it.</p>
 <p>The process of determining the optimal value of the hyperparameter is called <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperparameter_optimization">hyperparameter optimization</a>, and it is very useful. For example, in SVM the hyperparameter is the cost of errors; we can loop through different settings of cose to determine the best one. However, this might take a long time. Luckily, this process is highly parallelizable, so the Palmetto cluster is a good place to do it.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -712,13 +792,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">&lt;no title&gt;</p>
+            <p class="prev-next-title">Classification with decision boundaries”</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="08-Training_Tree.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Training the model using Decision Trees</p>
+        <p class="prev-next-title">Training Machine Learning model using Tree-based model</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

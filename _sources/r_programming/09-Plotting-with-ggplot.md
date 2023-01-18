@@ -1,5 +1,5 @@
----
-title: "Ploting with ggplot"
+# Ploting with ggplot
+
 teaching: 30
 exercises: 0
 questions:
@@ -8,7 +8,6 @@ objectives:
 - "Learn advanced plotting using ggplot2"
 keypoints:
 - "ggplot2"
----
 
 `ggplot2` is a graphics package, written by Hadley Wickham, a grad student at Iowa State, based on the ideas from the book "Grammar of Graphics" by Leland Wilkinson. Let's install it (it will install multiple additional packages that it requires):
 
