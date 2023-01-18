@@ -17,7 +17,7 @@ branch called `docker` from the `main` (or `master`) branch.
 ```{admonition} Modification of profile.py
 :class: dropdown
 
-<script src="https://gist.github.com/linhbngo/6d5747ab8f04763f9dc265c361d7ebcf.js?file=profile-basic.c"></script>
+<script src="https://gist.github.com/linhbngo/6d5747ab8f04763f9dc265c361d7ebcf.js?file=profile-basic.py"></script>
 
 
 ```
@@ -33,6 +33,8 @@ components from [this link](https://github.com/CSC468-WCU/csc468cloud/tree/docke
 - Instantiate an experiment from this branch. 
 - **Only login after the Startup column becomes Finished** and type the following command: `sudo docker info | grep "Docker Root Dir"`
 - Confirm that you have something similar to the screenshot below
+
+![Create new Git branch](../fig/containers/github-branch-docker.png)
 
 <img src="../fig/07-docker/00.png" style="height:100px">
 
