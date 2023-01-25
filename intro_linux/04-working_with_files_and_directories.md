@@ -78,12 +78,12 @@ File globbing, known better as wildcards, uses patterns to automatically expand 
 
 ```
 $ ls
-example1.txt    hello1.txt    hello2.txt    hello3.txt
+example1.txt    hello1.txt    hello2.txt    hello3.txt  hello4.csv
 ```
 
 ```
 $ ls *.txt
-example1.txt    hello1.txt    hello2.txt    hello3.txt  hello4.csv
+example1.txt    hello1.txt    hello2.txt    hello3.txt
 ```
 
 ```
@@ -95,6 +95,7 @@ hello1.txt    hello2.txt    hello3.txt  hello4.csv
 $ ls hello?.txt
 hello1.txt    hello2.txt    hello3.txt
 ```
+
 ## Viewing Contents of a File
 
 There are many different ways to view the contents of a file.
