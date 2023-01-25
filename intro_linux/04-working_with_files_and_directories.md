@@ -33,7 +33,7 @@ $ cp oldfile newfile
 ```
 To copy a file into a directory:
 ```
-$ cp filename directory
+$ cp filename /path/to/directory
 ```
 This will make a copy of *filename* with same name in *directory*.
 
@@ -47,6 +47,10 @@ The move command is also the command to rename a file.
 $ mv filename directory
 ```
 The above command will move *filename* into the existing *directory*.
+
+```{note}
+`cp` and `mv` can overwrite files which is irreversible. Using the `-i` flag with `cp` or `mv` will prompt you before overwriting an existing file.
+```
 
 ### Deleting
 Remove a file with `rm`:
