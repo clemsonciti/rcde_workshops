@@ -848,7 +848,7 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 </pre></div>
 </div>
 <p>To copy a file into a directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp filename directory
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp filename /path/to/directory
 </pre></div>
 </div>
 <p>This will make a copy of <em>filename</em> with same name in <em>directory</em>.</p>
@@ -864,6 +864,10 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 </pre></div>
 </div>
 <p>The above command will move <em>filename</em> into the existing <em>directory</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span></code> and <code class="docutils literal notranslate"><span class="pre">mv</span></code> can overwrite files which is irreversible. Using the <code class="docutils literal notranslate"><span class="pre">-i</span></code> flag with <code class="docutils literal notranslate"><span class="pre">cp</span></code> or <code class="docutils literal notranslate"><span class="pre">mv</span></code> will prompt you before overwriting an existing file.</p>
+</div>
 </section>
 <section id="deleting">
 <h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">#</a></h3>
