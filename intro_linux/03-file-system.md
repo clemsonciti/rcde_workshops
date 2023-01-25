@@ -1,35 +1,7 @@
 # Navigating Files and Directories
 
-teaching: 15
-exercises: 0
-questions:
-- "How can I move around on Palmetto?"
-- "How can I see what files and directories I have?"
-- "How can I specify the location of a file or directory on my computer?"
-objectives:
-- "Explain the similarities and differences between a file and a directory."
-- "Translate an absolute path into a relative path and vice versa."
-- "Construct absolute and relative paths that identify specific files and directories."
-keypoints:
-- "The file system is responsible for managing information on the disk."
-- "Information is stored in files, which are stored in directories (folders)."
-- "Directories can also store other directories, which forms a directory tree."
-- "`cd path` changes the current working directory."
-- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
-- "`pwd` prints the user's current working directory."
-- "`whoami` shows the user's current identity."
-- "`/` on its own is the root directory of the whole file system."
-- "A relative path specifies a location starting from the current location."
-- "An absolute path specifies a location from the root of the file system."
-- "'..' means 'the directory above the current one'; '.' on its own means 'the current directory'."
----
-
-The part of the operating system responsible for managing files and directories
-is called the **file system**.
-It organizes our data into files,
-which hold information,
-and directories (also called "folders"),
-which hold files or other directories.
+The part of the operating system responsible for managing files and directories is called the **file system**.
+It organizes our data into files, which hold information, and directories (also called "folders"), which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 The first command that we will look at is called `pwd` (print working directory). Let's type it in:
@@ -37,16 +9,12 @@ The first command that we will look at is called `pwd` (print working directory)
 ~~~
 $ pwd
 ~~~
-{: .bash}
 
 ~~~
 /home/<your Palmetto username>
 ~~~
-{: .output}
 
-To understand what a "home directory" is,
-let's have a look at how the file system as a whole is organized.  
-On Palmetto, the filesystem looks something like this: 
+To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. On Palmetto, the filesystem looks something like this: 
 
 ![The File System](../fig/filesystem.png)
 
@@ -61,69 +29,57 @@ Inside that directory are several other directories:
 `etc` (for miscellaneous data files),
 and so on.  
 
-We know that our current working directory is stored inside `/home`
-because `/home` is the first part of its name.
-Similarly,
-we know that `/home` is stored inside the root directory `/`
-because its name begins with `/`.
 
-> ## Slashes
->
-> Notice that there are two meanings for the `/` character.
-> When it appears at the front of a file or directory name,
-> it refers to the root directory. When it appears *inside* a name,
-> it's just a separator.
-{: .callout}
+## Slashes
+There are two meanings for the `/` character.
+When it appears at the front of a file or directory name,
+it refers to the root directory. This is called an **absolute path**. 
+When it appears *inside* a name, it's a **relative path**.
 
-Underneath `/home`,
-we find one directory for each user with an account on Palmetto. 
 
-Now let's learn the command that will let us see the contents of our 
-own filesystem.  We can see what's in our home directory by running `ls`,
-which stands for "listing":
+Underneath `/home`, we find one directory for each user with an account on Palmetto. 
+
+## Listing files and directories
+
+The command `ls` will list the contents of the working directory.
 
 ~~~
 $ ls
 ~~~
-{: .bash}
 
 ~~~
 Applications Documents    Library      Music        Public
 Desktop      Downloads    Movies       Pictures
 ~~~
-{: .output}
 
-Your results might be completely different, depending on the ontents of your home directory. In fact, if you are just starting to use Palmetto, your home directory might be empty.
+Your results might be completely different, depending on the contents of your home directory.
 
 
-`ls` prints the names of the files and directories in the current directory in 
-alphabetical order,
-arranged neatly into columns.
-We can make its output more comprehensible by using the **flag** `-F`,
-which tells `ls` to add a trailing `/` to the names of directories:
+`ls` prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns.
+
+We can also use `ls` to see the contents of a specified directory. Let's list the directories of all the Palmetto users (note that you cannot actually see inside other people's directories):  
+~~~
+$ ls /home
+~~~
+ 
+We can make its output more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
 
 ~~~
 $ ls -F
 ~~~
-{: .bash}
 
 ~~~
 Applications/ Documents/    Library/      Music/        Public/
 Desktop/      Downloads/    Movies/       Pictures/
 ~~~
-{: .output}
 
-And note that there is a space between `ls` and `-F`:
-without it,
-the shell thinks we're trying to run a command called `ls-F`,
-which doesn't exist.
+And note that there is a space between `ls` and `-F`: without it, the shell thinks we're trying to run a command called `ls-F`, which doesn't exist.
 
 `ls` has lots of other options. To find out what they are, we can type:
 
 ~~~
 $ ls --help
 ~~~
-{: .bash}
 
 ~~~
 Usage: ls [OPTION]... [FILE]...
@@ -243,7 +199,6 @@ GNU coreutils online help: <http://www.gnu.org/software/coreutils/>
 Full documentation at: <http://www.gnu.org/software/coreutils/ls>
 or available locally via: info '(coreutils) ls invocation'
 ~~~
-{: .output}
 
 Many Linux commands, and programs that people have written that can be
 run from within the shell, support a `--help` flag to display more
@@ -260,42 +215,29 @@ you may use the up and down arrow keys to move line-by-line,
 or try the "b" and spacebar keys to skip up and down by full page.
 Quit the `man` pages by typing "q".
 
-
-We can also use `ls` to see the contents of a different directory. Let's list the directories of all the Palmetto users (note that you cannot actually go inside other people's directories):  
-~~~
-$ ls /home
-~~~
-{: .bash}
-
-Note that on Palmetto you cannot access other people's directories. 
+## Creating and Changing Directories
 
 The next command we will discuss is `mkdir`, which creates a new directory. Let's create a directory with the name `linux_workshop`:
 
 ~~~
 $ mkdir linux_workshop
 ~~~
-{: .bash}
 
-Now, if you type `ls`, you should see `linux_workshop` lited among the contents of your home directory. 
+Now, if you type `ls`, you should see `linux_workshop` listed among the contents of your home directory. 
 
-The next command that we will discuss is `cd` ("change directory"), which changes our location to a different directory, so 
-we are no longer located in
-our home directory. Let's enter the directory we have just created:
+The next command that we will discuss is `cd` ("change directory"), which changes our location to a different directory. Let's enter the directory we have just created:
 ~~~
 $ cd linux_workshop
 ~~~
-{: .bash}
 
 Now, our current directory is `linux_workshop`:
 ~~~
 $ pwd
 ~~~
-{: .bash}
 
 ~~~
 /home/<your Palmetto username>/linux_workshop
 ~~~
-{: .output}
 
 If you type `ls`, you won't see anything, because we have just created this directory and it is empty.
 
@@ -305,135 +247,30 @@ that looks like this:
 ~~~
 $ cd ..
 ~~~
-{: .bash}
 
-`..` is a special directory name meaning
-"the directory containing this one",
-or more succinctly,
-the **parent** of the current directory.
-Sure enough,
-if we run `pwd` after running `cd ..`, we're back in your home directory:
+**Path Shortcuts:**
+- `..` parent directory
+- `.` current directory
+- `~` home directory
 
 ~~~
 $ pwd
 ~~~
-{: .bash}
 
 ~~~
 /home/<your Palmetto username>
 ~~~
-{: .output}
 
-The special directory `..` doesn't usually show up when we run `ls`.  If we want 
-to display it, we can give `ls` the `-a` flag:
-
+Directories starting with `.` are hidden from `ls` by default. The `-a` flag to `ls` will list all files and directories.
 ~~~
 $ ls -F -a
 ~~~
-{: .bash}
 
+### Other Hidden Files
+Many common configuration files will begin with `.`. You may see a `.bash_profile` or `.bashrc` file in your home directory which you can edit to alias certain commands or add variables to use later.
 
-`-a` stands for "show all";
-it forces `ls` to show us file and directory names that begin with `.`,
-such as `..` (which in our case is the `/home` directory).
-As you can see,
-it also displays another special directory that's just called `.`,
-which means "the current working directory".
-It may seem redundant to have a name for it,
-but we'll see some uses for it soon.
+### One More Shortcut
 
-> ## Other Hidden Files
-> 
-> In addition to the hidden directories `..` and `.`, you may also see a file
-> called `.bash_profile`. This file usually contains shell configuration
-> settings. You may also see other files and directories beginning
-> with `.`. These are usually files and directories that are used to configure
-> different programs on your computer. The prefix `.` is used to prevent these
-> configuration files from cluttering the terminal when a standard `ls` command
-> is used.
-{: .callout}
-
-
-These  are the basic commands for navigating the filesystem on your computer: 
-`pwd`, `ls` and `cd`.  Let's explore some variations on those commands.  What happens 
-if you type `cd` on its own, without giving 
-a directory?  
-
-~~~
-$ cd
-~~~
-{: .bash}
-
-How can you check what happened?  `pwd` gives us the answer!  
-
-~~~
-$ pwd
-~~~
-{: .bash}
-
-~~~
-/home/<your Palmetto username>
-~~~
-{: .output}
-
-It turns out that `cd` without an argument will return you to your home directory, 
-which is great if you've gotten lost in your own filesystem.  
-
-Let's try returning to the `linux_workshop` directory from before.  We can actually string together the list of directories 
-to move to `linux_workshop` in one step: 
-
-~~~
-$ cd /home/<your Palmetto username>/linux_workshop
-~~~
-{: .bash}
-
-Check that we've moved to the right place by running `pwd`.  
-
-This is probably a good time to mention a couple of things which make Bash a convenient shell. The first one is *tab completion*. Most of the times, you don't need to type in the full name of the folders; you can to type the first few characters and press the TAB key. If there are files or folders that match the pattern you have entered, it will be completed for you. Let's go to the home directory, then type `cd linu` and press TAB instead of ENTER, and see what happens:
-
-~~~
-$ cd 
-$ cd linu
-~~~
-{: .bash}
-The shell should automatically complete `linu` to `linux_workshop`. The second useful feature is the *command history*. If you press the UP &uarr; or DOWN &darr; arrow keys, you can go through the previously typed commands. Try it. 
-
-
-If we want to move up one level from the shell directory, we could use `cd ..`.  But 
-there is another way to move to any directory, regardless of your 
-current location.  
-
-So far, when specifying directory names, or even a directory path (as above), 
-we have been using **relative paths**.  When you use a relative path with a command 
-like `ls` or `cd`, it tries to find that location  from where we are,
-rather than from the root of the file system.  
-
-However, it is possible to specify the **absolute path** to a directory by 
-including its entire path from the root directory, which is indicated by a 
-leading slash.  The leading `/` tells the computer to follow the path from 
-the root of the file system, so it always refers to exactly one directory,
-no matter where we are when we run the command.
-
-This allows us to move to any directory from anywhere on
-the filesystem.  To find the absolute path 
-we're looking for, we can use `pwd` and then extract the piece we need 
-to move to `linux_workshop`.  
-
-
-
-> ## Two More Shortcuts
->
-> The shell interprets the character `~` (tilde) at the start of a path to
-> mean "the current user's home directory". For example, `~/linux_workshop` is equivalent to
-> `/home/<your Palmetto username>/linux_workshop`. This only works if it is the first character in the
-> path: `here/there/~/elsewhere` is *not* `here/there/Users/nelle/elsewhere`. 
-> 
-> Another shortcut is the `-` (dash) character.  `cd` will translate `-` into
-> *the previous directory I was in*, which is faster than having to remember, 
-> then type, the full path.  This is a *very* efficient way of moving back 
-> and forth between directories. The difference between `cd ..` and `cd -` is 
-> that the former brings you *up*, while the latter brings you *back*. 
-{: .callout}
-
-
-
+Another shortcut is the `-` (dash) character.  `cd` will translate `-` into *the previous working directory *.
+This is a *very* efficient way of moving back and forth between directories.
+The difference between `cd ..` and `cd -` is that the former brings you *up*, while the latter brings you *back*. 
