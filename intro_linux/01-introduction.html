@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introducing the Shell &#8212; Research Computing and Data Workshop</title>
+    <title>What is Linux? &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Accessing the Palmetto Cluster" href="02-accessing-palmetto.html" />
-    <link rel="prev" title="Introduction to Linux" href="00-index.html" />
+    <link rel="next" title="Shell Specifics" href="01a-shell.html" />
+    <link rel="prev" title="Workshop Outline" href="00a-outline.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,9 +129,19 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Introducing the Shell
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01a-shell.html">
+     Shell Specifics
     </a>
    </li>
    <li class="toctree-l2">
@@ -140,18 +150,38 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03-file-system.html">
+     Navigating Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="04-working_with_files_and_directories.html">
      Working With Files and Directories
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-pipes.html">
-     Pipes and Filters
+     Pipes and Redirection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-find.html">
      Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-conclusion.html">
+     Workshop Conclusion
     </a>
    </li>
   </ul>
@@ -665,7 +695,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introducing the Shell</h1>
+                <h1>What is Linux?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -677,20 +707,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introducing-the-shell">
-<h1>Introducing the Shell<a class="headerlink" href="#introducing-the-shell" title="Permalink to this headline">#</a></h1>
-<p>The Palmetto cluster is running the Linux operating system (more specifically, <a class="reference external" href="https://www.centos.org/">CentOS 8</a>). An <em>operating system</em> is a special software that coordinates the computer’s hardware and other software. Other popular operating systems are Windows and Mac OS.</p>
-<p>This workshop will teach you how to use the Linux command line interface. For this purpose, we will use the <em>terminal</em> software, such as MobaXTerm or Putty (on Windows machines) or Terminal (on Mac and Linux machines). We will use the terminal sowtare to enter the Linux commands which will be immediately executed by Palmetto. The terminal does not use graphical features (like windows or buttons) and the use of the mouse is very limited. This is the most direct way to interact with Palmetto; there is an option of graphical user interface (whih we will not cover in today’s workshop), but this way is indirect because the graphical interaction needs to be translated into Linux commands by the operating system. Another advantage of using the Linux commands is <em>scripting</em>, where we can order the oprerating system to perform some ations repeatedly instead of clicking the mouse each time we need to perform the action.</p>
-<p>Most Linux computers, including Palmetto, run a separate program called <strong>command shell</strong>.
-What the user types goes into the shell,
-which then figures out what commands to run and orders the computer to execute them. Note, the shell is called <em>the shell</em> because it encloses the operating system in order to hide some of its complexity and make it simpler to interact with.</p>
-<p>A shell is a program like any other.
-What’s special about it is that its job is to run other programs
-rather than to do calculations itself.
-Palmetto runs the shell that’s called <strong>Bash</strong>, which is the most popular Linux shell.</p>
-<p>The command line interface works as follows. You enter the command, press “Enter”, and the operating system executes the command. When it’s done, you are prompted to enter the next command. It is possible to stop the execution by typing Ctrl+C.</p>
-<p>A word of warning: Linux is case-sensitive and typo-sensitive. Commands need to be entered directly as shown; it is important to use the right case (upper or lower), to use spaces when they are needed, and not to use spaces when they are not needed.</p>
-<p>Now, let’s log into Palmetto.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-linux">
+<h1>What is Linux?<a class="headerlink" href="#what-is-linux" title="Permalink to this headline">#</a></h1>
+<figure class="margin align-default" id="id1">
+<img alt="../_images/Tux.png" src="../_images/Tux.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Tux, the official Linux mascot</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Linux is a family of free and open-source operating systems based on the kernel created by Linus Torvalds in 1991. A kenel is software that coordinates/interfaces the computer’s hardware and other sofware. An operating system based on Linux is called a <strong>distro</strong> or distribution.</p>
+<p>Every entry on the <a class="reference external" href="https://top500.org">Top 500</a> runs Linux. The Palmetto cluster is running a Linux distro called <a class="reference external" href="https://rockylinux.org">Rocky Linux 8</a>.</p>
+<p>This workshop will teach you how to use the Linux command line interface or <strong>CLI</strong>. For this purpose, we will use a <em>terminal</em> software, such as MobaXTerm or Putty (on Windows machines) or Terminal (on Mac and Linux machines).</p>
+<p>The terminal is a wrapper program that provides text-only input and output from the <strong>shell</strong>. The <strong>shell</strong> is a program that will allow us to interact directly with the operating system kernel. There are many different shells, but the most common (and the default on Palmetto) is <strong>Bash</strong>. Bash provides it’s own <em>stripting language</em> which allows us to run commands automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux is case-sensitive and typo-sensitive.
+Commands need to be entered directly as shown; it is important to use the right case (upper or lower), to use spaces when they are needed, and not to use spaces when they are not needed.</p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -720,17 +753,17 @@ Palmetto runs the shell that’s called <strong>Bash</strong>, which is the most
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="00-index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="00a-outline.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to Linux</p>
+            <p class="prev-next-title">Workshop Outline</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02-accessing-palmetto.html" title="next page">
+    <a class='right-next' id="next-link" href="01a-shell.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Accessing the Palmetto Cluster</p>
+        <p class="prev-next-title">Shell Specifics</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pipes and Filters" href="05-pipes.html" />
-    <link rel="prev" title="Accessing the Palmetto Cluster" href="02-accessing-palmetto.html" />
+    <link rel="next" title="File Permissions and Atrributes" href="04a-file-permissions.html" />
+    <link rel="prev" title="Navigating Files and Directories" href="03-file-system.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -130,13 +130,28 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-introduction.html">
-     Introducing the Shell
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01a-shell.html">
+     Shell Specifics
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02-accessing-palmetto.html">
      Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-file-system.html">
+     Navigating Files and Directories
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -145,13 +160,28 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-pipes.html">
-     Pipes and Filters
+     Pipes and Redirection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-find.html">
      Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-conclusion.html">
+     Workshop Conclusion
     </a>
    </li>
   </ul>
@@ -676,53 +706,45 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#good-names-for-files-and-directories">
-   Good Names for Files and Directories
+  <a class="reference internal nav-link" href="#names-for-files-and-directories">
+   Names for Files and Directories
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#which-editor">
-   Which Editor?
+  <a class="reference internal nav-link" href="#copying-moving-and-deleting">
+   Copying, Moving, and Deleting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copying">
+     Copying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moving">
+     Moving
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting">
+     Deleting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting-is-forever">
+     Deleting Is Forever
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wildcards">
+   Wildcards
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#control-ctrl-or-key">
-   Control, Ctrl, or ^ Key
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deleting-is-forever">
-   Deleting Is Forever
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#with-great-power-comes-great-responsibility">
-   With Great Power Comes Great Responsibility
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#renaming-files">
-   Renaming Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moving-and-copying">
-   Moving and Copying
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#organizing-directories-and-files">
-   Organizing Directories and Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#listing-recursively-and-by-time">
-   Listing Recursively and By Time
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moving-to-the-current-folder">
-   Moving to the Current Folder
+  <a class="reference internal nav-link" href="#viewing-contents-of-a-file">
+   Viewing Contents of a File
   </a>
  </li>
 </ul>
@@ -745,53 +767,45 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#good-names-for-files-and-directories">
-   Good Names for Files and Directories
+  <a class="reference internal nav-link" href="#names-for-files-and-directories">
+   Names for Files and Directories
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#which-editor">
-   Which Editor?
+  <a class="reference internal nav-link" href="#copying-moving-and-deleting">
+   Copying, Moving, and Deleting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#copying">
+     Copying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moving">
+     Moving
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting">
+     Deleting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting-is-forever">
+     Deleting Is Forever
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wildcards">
+   Wildcards
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#control-ctrl-or-key">
-   Control, Ctrl, or ^ Key
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deleting-is-forever">
-   Deleting Is Forever
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#with-great-power-comes-great-responsibility">
-   With Great Power Comes Great Responsibility
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#renaming-files">
-   Renaming Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moving-and-copying">
-   Moving and Copying
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#organizing-directories-and-files">
-   Organizing Directories and Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#listing-recursively-and-by-time">
-   Listing Recursively and By Time
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moving-to-the-current-folder">
-   Moving to the Current Folder
+  <a class="reference internal nav-link" href="#viewing-contents-of-a-file">
+   Viewing Contents of a File
   </a>
  </li>
 </ul>
@@ -806,18 +820,8 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-files-and-directories">
 <h1>Working With Files and Directories<a class="headerlink" href="#working-with-files-and-directories" title="Permalink to this headline">#</a></h1>
-<p>Directories are created with the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (“make directory”) command. Let’s create a new directory called <code class="docutils literal notranslate"><span class="pre">thesis</span></code> in our home directory, using the command <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">thesis</span></code>
-(which has no output):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd
-$ mkdir thesis
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>Since <code class="docutils literal notranslate"><span class="pre">thesis</span></code> is a relative path
-(i.e., doesn’t have a leading slash),
-the new directory is created in the current working directory. If you type <code class="docutils literal notranslate"><span class="pre">ls</span></code>, you should see it listed.</p>
-<section id="good-names-for-files-and-directories">
-<h2>Good Names for Files and Directories<a class="headerlink" href="#good-names-for-files-and-directories" title="Permalink to this headline">#</a></h2>
+<section id="names-for-files-and-directories">
+<h2>Names for Files and Directories<a class="headerlink" href="#names-for-files-and-directories" title="Permalink to this headline">#</a></h2>
 <p>Complicated names of files and directories can make your life very painful
 when working on the command line. Here we provide a few useful
 tips for the names of your files from now on.</p>
@@ -829,379 +833,126 @@ is better to avoid them on name of files and directories.
 You can use <code class="docutils literal notranslate"><span class="pre">-</span></code> or <code class="docutils literal notranslate"><span class="pre">_</span></code> instead of whitespace.</p>
 <p>Commands treat names starting with <code class="docutils literal notranslate"><span class="pre">-</span></code> as options.</p>
 </li>
-<li><p>Stay with letters, numbers, <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code> and <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p></li>
+<li><p>Stay with letters, numbers, <code class="docutils literal notranslate"><span class="pre">.</span></code> (period), <code class="docutils literal notranslate"><span class="pre">-</span></code> (dash) and <code class="docutils literal notranslate"><span class="pre">_</span></code> (underscore).</p></li>
 <li><p>Don’t begin the name with <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
 </ol>
 <p>If you need to refer to names of files or directories that have whitespace
-or another non-alphanumeric character you should put quotes around the name.
-{: .callout}</p>
+or another non-alphanumeric character you should put quotes around the name.</p>
 </section>
-<p>However, there’s nothing in it yet:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -F thesis
+<section id="copying-moving-and-deleting">
+<h2>Copying, Moving, and Deleting<a class="headerlink" href="#copying-moving-and-deleting" title="Permalink to this headline">#</a></h2>
+<section id="copying">
+<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this headline">#</a></h3>
+<p>Copy a file with <code class="docutils literal notranslate"><span class="pre">cp</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp oldfile newfile
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>Let’s change our working directory to <code class="docutils literal notranslate"><span class="pre">thesis</span></code> using <code class="docutils literal notranslate"><span class="pre">cd</span></code>,
-then run a text editor called Nano to create a file called <code class="docutils literal notranslate"><span class="pre">draft.txt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd thesis
-$ nano draft.txt
+<p>To copy a file into a directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp filename directory
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<section id="which-editor">
-<h2>Which Editor?<a class="headerlink" href="#which-editor" title="Permalink to this headline">#</a></h2>
-<p>When we say, “<code class="docutils literal notranslate"><span class="pre">nano</span></code> is a text editor,” we really do mean “text”: it can
-only work with plain character data, not tables, images, or any other
-human-friendly media. We use it in examples because almost anyone can
-drive it anywhere without training, but please use something more
-powerful for real work. On Unix systems (such as Linux and Mac OS X),
-many programmers use <a class="reference external" href="http://www.gnu.org/software/emacs/">Emacs</a> or
-<a class="reference external" href="http://www.vim.org/">Vim</a> (both of which are completely unintuitive,
-even by Unix standards), or a graphical editor such as
-<a class="reference external" href="http://projects.gnome.org/gedit/">Gedit</a>. On Windows, you may wish to
-use <a class="reference external" href="http://notepad-plus-plus.org/">Notepad++</a>.  Windows also has a built-in
-editor called <code class="docutils literal notranslate"><span class="pre">notepad</span></code> that can be run from the command line in the same
-way as <code class="docutils literal notranslate"><span class="pre">nano</span></code> for the purposes of this lesson.</p>
-<p>No matter what editor you use, you will need to know where it searches
-for and saves files. If you start it from the shell, it will (probably)
-use your current working directory as its default location. If you use
-your computer’s start menu, it may want to save files in your desktop or
-documents directory instead. You can change this by navigating to
-another directory the first time you “Save As…”
-{: .callout}</p>
+<p>This will make a copy of <em>filename</em> with same name in <em>directory</em>.</p>
 </section>
-<p>Let’s type in a few lines of text.
-Once we’re happy with our text, we can press <code class="docutils literal notranslate"><span class="pre">Ctrl-O</span></code> (press the Ctrl or Control key and, while
-holding it down, press the O key) to write our data to disk
-(we’ll be asked what file we want to save this to:
-press Return to accept the suggested default of <code class="docutils literal notranslate"><span class="pre">draft.txt</span></code>).</p>
-<p><img alt="Nano in Action" src="fig/nano-screenshot.png" /></p>
-<p>Once our file is saved, we can use <code class="docutils literal notranslate"><span class="pre">Ctrl-X</span></code> to quit the editor and
-return to the shell.</p>
-<section id="control-ctrl-or-key">
-<h2>Control, Ctrl, or ^ Key<a class="headerlink" href="#control-ctrl-or-key" title="Permalink to this headline">#</a></h2>
-<p>The Control key is also called the “Ctrl” key. There are various ways
-in which using the Control key may be described. For example, you may
-see an instruction to press the Control key and, while holding it down,
-press the X key, described as any of:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Control-X</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Control+X</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl-X</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">^X</span></code></p></li>
-</ul>
-<p>In nano, along the bottom of the screen you’ll see <code class="docutils literal notranslate"><span class="pre">^G</span> <span class="pre">Get</span> <span class="pre">Help</span> <span class="pre">^O</span> <span class="pre">WriteOut</span></code>.
-This means that you can use <code class="docutils literal notranslate"><span class="pre">Control-G</span></code> to get help and <code class="docutils literal notranslate"><span class="pre">Control-O</span></code> to save your
-file.
-{: .callout}</p>
+<section id="moving">
+<h3>Moving<a class="headerlink" href="#moving" title="Permalink to this headline">#</a></h3>
+<p>Move a file with <code class="docutils literal notranslate"><span class="pre">mv</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv oldfile newfile
+</pre></div>
+</div>
+<p>The move command is also the command to rename a file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv filename directory
+</pre></div>
+</div>
+<p>The above command will move <em>filename</em> into the existing <em>directory</em>.</p>
 </section>
-<p><code class="docutils literal notranslate"><span class="pre">nano</span></code> doesn’t leave any output on the screen after it exits,
-but <code class="docutils literal notranslate"><span class="pre">ls</span></code> now shows that we have created a file called <code class="docutils literal notranslate"><span class="pre">draft.txt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+<section id="deleting">
+<h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">#</a></h3>
+<p>Remove a file with <code class="docutils literal notranslate"><span class="pre">rm</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm filename
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">draft</span><span class="o">.</span><span class="n">txt</span>
+<p>The opposite of <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> is <code class="docutils literal notranslate"><span class="pre">rmdir</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rmdir directory
 </pre></div>
 </div>
-<p>{: .output}</p>
-<p>Let’s tidy up by running <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">draft.txt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm draft.txt
+<p><code class="docutils literal notranslate"><span class="pre">rmdir</span></code> only works for empty directories. To delete a directory and all it’s contents pass the <code class="docutils literal notranslate"><span class="pre">-r</span></code> or <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> flag to <code class="docutils literal notranslate"><span class="pre">rm</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm -r directory
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>This command removes files (<code class="docutils literal notranslate"><span class="pre">rm</span></code> is short for “remove”).
-If we run <code class="docutils literal notranslate"><span class="pre">ls</span></code> again,
-its output is empty once more,
-which tells us that our file is gone:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
-</pre></div>
-</div>
-<p>{: .bash}</p>
+</section>
 <section id="deleting-is-forever">
-<h2>Deleting Is Forever<a class="headerlink" href="#deleting-is-forever" title="Permalink to this headline">#</a></h2>
-<p>The Linux shell doesn’t have a trash bin that we can recover deleted
-files from (though most graphical interfaces to Linux do).  Instead,
-when we delete files, they are unhooked from the file system so that
-their storage space on disk can be recycled. Tools for finding and
-recovering deleted files do exist, but there’s no guarantee they’ll
-work in any particular situation, since the computer may recycle the
-file’s disk space right away.
-{: .callout}</p>
+<h3>Deleting Is Forever<a class="headerlink" href="#deleting-is-forever" title="Permalink to this headline">#</a></h3>
+<p>Files deleted with <code class="docutils literal notranslate"><span class="pre">rm</span></code> cannot be recovered from a trash bin. Be very careful when deleting files especially with <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span></code>.</p>
 </section>
-<p>Let’s re-create that file
-and then move up to your home directory using <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">your</span> <span class="n">Palmetto</span> <span class="n">username</span><span class="o">&gt;/</span><span class="n">thesis</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano draft.txt
-$ ls
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">draft</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ..
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>If we try to remove the entire <code class="docutils literal notranslate"><span class="pre">thesis</span></code> directory using <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">thesis</span></code>,
-we get an error message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm thesis
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rm: cannot remove `thesis&#39;: Is a directory
-</pre></div>
-</div>
-<p>{: .error}</p>
-<p>This happens because <code class="docutils literal notranslate"><span class="pre">rm</span></code> by default only works on files, not directories.</p>
-<p>To really get rid of <code class="docutils literal notranslate"><span class="pre">thesis</span></code> we must also delete the file <code class="docutils literal notranslate"><span class="pre">draft.txt</span></code>.
-We can do this with the <a class="reference external" href="https://en.wikipedia.org/wiki/Recursion">recursive</a> option for <code class="docutils literal notranslate"><span class="pre">rm</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm -r thesis
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<section id="with-great-power-comes-great-responsibility">
-<h2>With Great Power Comes Great Responsibility<a class="headerlink" href="#with-great-power-comes-great-responsibility" title="Permalink to this headline">#</a></h2>
-<p>Removing the files in a directory recursively can be very dangerous
-operation. If we’re concerned about what we might be deleting we can
-add the “interactive” flag <code class="docutils literal notranslate"><span class="pre">-i</span></code> to <code class="docutils literal notranslate"><span class="pre">rm</span></code> which will ask us for confirmation
-before each step</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm -r -i thesis
-rm: descend into directory ‘thesis’? y
-rm: remove regular file ‘thesis/draft.txt’? y
-rm: remove directory ‘thesis’? y
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>This removes everything in the directory, then the directory itself, asking
-at each step for you to confirm the deletion.
-{: .callout}</p>
 </section>
-<p>Let’s create that directory and file one more time.
-(Note that this time we’re running <code class="docutils literal notranslate"><span class="pre">nano</span></code> with the path <code class="docutils literal notranslate"><span class="pre">thesis/draft.txt</span></code>,
-rather than going into the <code class="docutils literal notranslate"><span class="pre">thesis</span></code> directory and running <code class="docutils literal notranslate"><span class="pre">nano</span></code> on <code class="docutils literal notranslate"><span class="pre">draft.txt</span></code> there.)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">your</span> <span class="n">Palmetto</span> <span class="n">username</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir thesis
-$ nano thesis/draft.txt
-$ ls thesis
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">draft</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>To rename the file, we can use the <code class="docutils literal notranslate"><span class="pre">mv</span></code> command, which stands for “move”. The same command is used to move a file from one folder to another. Let’s rename <code class="docutils literal notranslate"><span class="pre">draft.txt</span></code> to <code class="docutils literal notranslate"><span class="pre">quotes.txt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv thesis/draft.txt thesis/quotes.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>The first parameter tells <code class="docutils literal notranslate"><span class="pre">mv</span></code> what we’re “moving”,
-while the second is where it’s to go.
-In this case,
-we’re moving <code class="docutils literal notranslate"><span class="pre">thesis/draft.txt</span></code> to <code class="docutils literal notranslate"><span class="pre">thesis/quotes.txt</span></code>,
-which has the same effect as renaming the file.
-Sure enough,
-<code class="docutils literal notranslate"><span class="pre">ls</span></code> shows us that <code class="docutils literal notranslate"><span class="pre">thesis</span></code> now contains one file called <code class="docutils literal notranslate"><span class="pre">quotes.txt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls thesis
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>One has to be careful when specifying the target file name, since <code class="docutils literal notranslate"><span class="pre">mv</span></code> will
-silently overwrite any existing file with the same name, which could
-lead to data loss. An additional flag, <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">-i</span></code> (or <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">--interactive</span></code>),
-can be used to make <code class="docutils literal notranslate"><span class="pre">mv</span></code> ask you for confirmation before overwriting.</p>
-<p>Just for the sake of inconsistency,
-<code class="docutils literal notranslate"><span class="pre">mv</span></code> also works on directories — there is no separate <code class="docutils literal notranslate"><span class="pre">mvdir</span></code> command.</p>
-<p>Let’s move <code class="docutils literal notranslate"><span class="pre">quotes.txt</span></code> into the current working directory.
-We use <code class="docutils literal notranslate"><span class="pre">mv</span></code> once again,
-but this time we’ll just use the name of a directory as the second parameter
-to tell <code class="docutils literal notranslate"><span class="pre">mv</span></code> that we want to keep the filename,
-but put the file somewhere new.
-(This is why the command is called “move”.)
-In this case,
-the directory name we use is the special directory name <code class="docutils literal notranslate"><span class="pre">.</span></code> that we mentioned earlier.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv thesis/quotes.txt .
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>The effect is to move the file from the directory it was in to the current working directory.
-<code class="docutils literal notranslate"><span class="pre">ls</span></code> now shows us that <code class="docutils literal notranslate"><span class="pre">thesis</span></code> is empty:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls thesis
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>Further,
-<code class="docutils literal notranslate"><span class="pre">ls</span></code> with a filename or directory name as a parameter only lists that file or directory.
-We can use this to see that <code class="docutils literal notranslate"><span class="pre">quotes.txt</span></code> is still in our current directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls quotes.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">cp</span></code> command works very much like <code class="docutils literal notranslate"><span class="pre">mv</span></code>,
-except it copies a file instead of moving it.
-We can check that it did the right thing using <code class="docutils literal notranslate"><span class="pre">ls</span></code>
-with two paths as parameters — like most Linux commands,
-<code class="docutils literal notranslate"><span class="pre">ls</span></code> can be given thousands of paths at once:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp quotes.txt thesis/quotations.txt
-$ ls quotes.txt thesis/quotations.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quotes</span><span class="o">.</span><span class="n">txt</span>   <span class="n">thesis</span><span class="o">/</span><span class="n">quotations</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>To prove that we made a copy,
-let’s delete the <code class="docutils literal notranslate"><span class="pre">quotes.txt</span></code> file in the current directory
-and then run that same <code class="docutils literal notranslate"><span class="pre">ls</span></code> again.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm quotes.txt
-$ ls quotes.txt thesis/quotations.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">access</span> <span class="n">quotes</span><span class="o">.</span><span class="n">txt</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
-<span class="n">thesis</span><span class="o">/</span><span class="n">quotations</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .error}</p>
-<p>This time it tells us that it can’t find <code class="docutils literal notranslate"><span class="pre">quotes.txt</span></code> in the current directory,
-but it does find the copy in <code class="docutils literal notranslate"><span class="pre">thesis</span></code> that we didn’t delete.</p>
-<section id="renaming-files">
-<h2>Renaming Files<a class="headerlink" href="#renaming-files" title="Permalink to this headline">#</a></h2>
-<p>Suppose that you created a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file in your current directory to contain a list of the
-statistical tests you will need to do to analyze your data, and named it: <code class="docutils literal notranslate"><span class="pre">statstics.txt</span></code></p>
-<p>After creating and saving this file you realize you misspelled the filename! You want to
-correct the mistake, which of the following commands could you use to do so?</p>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">statstics.txt</span> <span class="pre">statistics.txt</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">statstics.txt</span> <span class="pre">statistics.txt</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">statstics.txt</span> <span class="pre">.</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">statstics.txt</span> <span class="pre">.</span></code>
-{: .challenge}</p></li>
-</ol>
-</section>
-<section id="moving-and-copying">
-<h2>Moving and Copying<a class="headerlink" href="#moving-and-copying" title="Permalink to this headline">#</a></h2>
-<p>What is the output of the closing <code class="docutils literal notranslate"><span class="pre">ls</span></code> command in the sequence shown below?</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pwd
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">jamie</span><span class="o">/</span><span class="n">data</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
+<section id="wildcards">
+<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">#</a></h2>
+<p>File globbing, known better as wildcards, uses patterns to automatically expand a file name or path. The <code class="docutils literal notranslate"><span class="pre">*</span></code> character matches any (multiple) characters. A <code class="docutils literal notranslate"><span class="pre">?</span></code> matches a single character.</p>
+<p><strong>Example:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
+example1.txt    hello1.txt    hello2.txt    hello3.txt
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proteins</span><span class="o">.</span><span class="n">dat</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls *.txt
+example1.txt    hello1.txt    hello2.txt    hello3.txt  hello4.csv
 </pre></div>
 </div>
-<p>{: .output}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir recombine
-$ mv proteins.dat recombine
-$ cp recombine/proteins.dat ../proteins-saved.dat
-$ ls
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls hello*
+hello1.txt    hello2.txt    hello3.txt  hello4.csv
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">proteins-saved.dat</span> <span class="pre">recombine</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">recombine</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">proteins.dat</span> <span class="pre">recombine</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">proteins-saved.dat</span></code>
-{: .challenge}</p></li>
-</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls hello?.txt
+hello1.txt    hello2.txt    hello3.txt
+</pre></div>
+</div>
 </section>
-<section id="organizing-directories-and-files">
-<h2>Organizing Directories and Files<a class="headerlink" href="#organizing-directories-and-files" title="Permalink to this headline">#</a></h2>
-<p>Jamie is working on a project and she sees that her files aren’t very well
-organized:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -F
+<section id="viewing-contents-of-a-file">
+<h2>Viewing Contents of a File<a class="headerlink" href="#viewing-contents-of-a-file" title="Permalink to this headline">#</a></h2>
+<p>There are many different ways to view the contents of a file.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">more</span></code> and <code class="docutils literal notranslate"><span class="pre">less</span></code> will display the file in a <em>buffer</em></p>
+<ul>
+<li><p>contents will fill the size of your terminal, allowing you to scroll</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ less file
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">analyzed</span><span class="o">/</span>  <span class="n">fructose</span><span class="o">.</span><span class="n">dat</span>    <span class="n">raw</span><span class="o">/</span>   <span class="n">sucrose</span><span class="o">.</span><span class="n">dat</span>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span></code> will print the contents of the file to the terminal</p>
+<ul>
+<li><p>not recommended with large text files, use <code class="docutils literal notranslate"><span class="pre">more</span></code> or <code class="docutils literal notranslate"><span class="pre">less</span></code> instead</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat file
 </pre></div>
 </div>
-<p>{: .output}</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">fructose.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">sucrose.dat</span></code> files contain output from her data
-analysis. What command(s) covered in this lesson does she need to run so that the commands below will
-produce the output shown?</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -F
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head</span></code> will display the first 10 lines of the file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-n</span> <span class="pre">X</span></code> will display the first X lines of the file</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ head file
+
+$ head -n 20 file
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">analyzed</span><span class="o">/</span>   <span class="n">raw</span><span class="o">/</span>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tail</span></code> will display the last 10 lines of the file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">X</span></code> will display the last X lines of the file</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail file
+
+$ tail -n 20 file
 </pre></div>
 </div>
-<p>{: .output}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls analyzed
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span></code> will display the last 10 lines and continue displaying lines as the file is updated</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail -f logfile
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fructose</span><span class="o">.</span><span class="n">dat</span>    <span class="n">sucrose</span><span class="o">.</span><span class="n">dat</span>
-</pre></div>
-</div>
-<p>{: .output}
-{: .challenge}</p>
-</section>
-<section id="listing-recursively-and-by-time">
-<h2>Listing Recursively and By Time<a class="headerlink" href="#listing-recursively-and-by-time" title="Permalink to this headline">#</a></h2>
-<p>The command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-R</span></code> lists the contents of directories recursively,
-i.e., lists their sub-directories, sub-sub-directories, and so on
-in alphabetical order at each level.
-The command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-t</span></code> lists things by time of last change,
-with most recently changed files or directories first.
-In what order does <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-R</span> <span class="pre">-t</span></code> display things?
-{: .challenge}</p>
-</section>
-<section id="moving-to-the-current-folder">
-<h2>Moving to the Current Folder<a class="headerlink" href="#moving-to-the-current-folder" title="Permalink to this headline">#</a></h2>
-<p>After running the following commands,
-Jamie realizes that she put the files <code class="docutils literal notranslate"><span class="pre">sucrose.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">maltose.dat</span></code> into the wrong folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -F
-raw/ analyzed/
-$ ls -F analyzed
-fructose.dat glucose.dat maltose.dat sucrose.dat 
-$ cd raw/
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>Fill in the blanks to move these files to the current folder
-(i.e., the one she is currently in):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv ___/sucrose.dat  ___/maltose.dat ___
-</pre></div>
-</div>
-<p>{: .bash}
-{: .challenge}</p>
 </section>
 </section>
 
@@ -1232,17 +983,17 @@ $ cd raw/
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="02-accessing-palmetto.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03-file-system.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Accessing the Palmetto Cluster</p>
+            <p class="prev-next-title">Navigating Files and Directories</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="05-pipes.html" title="next page">
+    <a class='right-next' id="next-link" href="04a-file-permissions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pipes and Filters</p>
+        <p class="prev-next-title">File Permissions and Atrributes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pipes and Filters &#8212; Research Computing and Data Workshop</title>
+    <title>Pipes and Redirection &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Finding Things" href="06-find.html" />
-    <link rel="prev" title="Working With Files and Directories" href="04-working_with_files_and_directories.html" />
+    <link rel="prev" title="File Permissions and Atrributes" href="04a-file-permissions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -130,8 +130,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-introduction.html">
-     Introducing the Shell
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01a-shell.html">
+     Shell Specifics
     </a>
    </li>
    <li class="toctree-l2">
@@ -140,18 +150,38 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03-file-system.html">
+     Navigating Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="04-working_with_files_and_directories.html">
      Working With Files and Directories
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Pipes and Filters
+     Pipes and Redirection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-find.html">
      Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-conclusion.html">
+     Workshop Conclusion
     </a>
    </li>
   </ul>
@@ -676,23 +706,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wildcards">
-   Wildcards
+  <a class="reference internal nav-link" href="#pipes">
+   Pipes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#output-page-by-page">
-   Output Page by Page
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#redirecting-input">
-   Redirecting Input
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pipe-reading-comprehension">
-   Pipe Reading Comprehension
+  <a class="reference internal nav-link" href="#redirect-input-and-output">
+   Redirect Input and Output
   </a>
  </li>
 </ul>
@@ -704,7 +724,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pipes and Filters</h1>
+                <h1>Pipes and Redirection</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -715,23 +735,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wildcards">
-   Wildcards
+  <a class="reference internal nav-link" href="#pipes">
+   Pipes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#output-page-by-page">
-   Output Page by Page
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#redirecting-input">
-   Redirecting Input
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pipe-reading-comprehension">
-   Pipe Reading Comprehension
+  <a class="reference internal nav-link" href="#redirect-input-and-output">
+   Redirect Input and Output
   </a>
  </li>
 </ul>
@@ -744,322 +754,34 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="pipes-and-filters">
-<h1>Pipes and Filters<a class="headerlink" href="#pipes-and-filters" title="Permalink to this headline">#</a></h1>
-<p>Now that we know a few basic commands,
-we can finally look at the shell’s most powerful feature:
-the ease with which it lets us combine existing programs in new ways.</p>
-<p>For training purposes, let’s use some data from the Software Carpentry workshop. We will download them using the GitHub interface and the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> command. Let’s put them inside the <code class="docutils literal notranslate"><span class="pre">linux_workshop</span></code> folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/linux_workshop
-$ git clone https://github.com/silshack/pipes.git
+  <section class="tex2jax_ignore mathjax_ignore" id="pipes-and-redirection">
+<h1>Pipes and Redirection<a class="headerlink" href="#pipes-and-redirection" title="Permalink to this headline">#</a></h1>
+<section id="pipes">
+<h2>Pipes<a class="headerlink" href="#pipes" title="Permalink to this headline">#</a></h2>
+<p><strong>Pipes</strong> are used to redirect output from one command into the input of another. When a command outputs text to the screen, that is called <strong>standard out</strong> (stdout). A pipe will redirect the standard output of a process to the <strong>standard in</strong> (stdin) of another program.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls | wc -l
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>This will create a folder called <code class="docutils literal notranslate"><span class="pre">pipes</span></code>, which will contain a subfolder called <code class="docutils literal notranslate"><span class="pre">molecules</span></code>. Lets’s see its contents.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd pipes
-$ cd molecules
-$ ls
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cubane</span><span class="o">.</span><span class="n">pdb</span>    <span class="n">ethane</span><span class="o">.</span><span class="n">pdb</span>    <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-<span class="n">octane</span><span class="o">.</span><span class="n">pdb</span>    <span class="n">pentane</span><span class="o">.</span><span class="n">pdb</span>   <span class="n">propane</span><span class="o">.</span><span class="n">pdb</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>The folder <code class="docutils literal notranslate"><span class="pre">molecules</span></code> contains six files describing some simple organic molecules.
-The <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> extension indicates that these files are in Protein Data Bank format,
-a simple text format that specifies the type and position of each atom in the molecule.</p>
-<p>We can print out the contents of these files using the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command. Let’s print out <code class="docutils literal notranslate"><span class="pre">methane.pdb</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat methane.pdb
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COMPND</span>      <span class="n">METHANE</span>
-<span class="n">AUTHOR</span>      <span class="n">DAVE</span> <span class="n">WOODCOCK</span>  <span class="mi">95</span> <span class="mi">12</span> <span class="mi">18</span>
-<span class="n">ATOM</span>      <span class="mi">1</span>  <span class="n">C</span>           <span class="mi">1</span>       <span class="mf">0.257</span>  <span class="o">-</span><span class="mf">0.363</span>   <span class="mf">0.000</span>  <span class="mf">1.00</span>  <span class="mf">0.00</span>
-<span class="n">ATOM</span>      <span class="mi">2</span>  <span class="n">H</span>           <span class="mi">1</span>       <span class="mf">0.257</span>   <span class="mf">0.727</span>   <span class="mf">0.000</span>  <span class="mf">1.00</span>  <span class="mf">0.00</span>
-<span class="n">ATOM</span>      <span class="mi">3</span>  <span class="n">H</span>           <span class="mi">1</span>       <span class="mf">0.771</span>  <span class="o">-</span><span class="mf">0.727</span>   <span class="mf">0.890</span>  <span class="mf">1.00</span>  <span class="mf">0.00</span>
-<span class="n">ATOM</span>      <span class="mi">4</span>  <span class="n">H</span>           <span class="mi">1</span>       <span class="mf">0.771</span>  <span class="o">-</span><span class="mf">0.727</span>  <span class="o">-</span><span class="mf">0.890</span>  <span class="mf">1.00</span>  <span class="mf">0.00</span>
-<span class="n">ATOM</span>      <span class="mi">5</span>  <span class="n">H</span>           <span class="mi">1</span>      <span class="o">-</span><span class="mf">0.771</span>  <span class="o">-</span><span class="mf">0.727</span>   <span class="mf">0.000</span>  <span class="mf">1.00</span>  <span class="mf">0.00</span>
-<span class="n">TER</span>       <span class="mi">6</span>              <span class="mi">1</span>
-<span class="n">END</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Now, I would like to introduce you to a command that could be very useful: <code class="docutils literal notranslate"><span class="pre">wc</span></code>, which stands for “word count” and counts the number of lines, words, and characters in files. Let’s apply it to <code class="docutils literal notranslate"><span class="pre">methane.pdb</span></code> and see what we get:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc methane.pdb
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">9</span>  <span class="mi">57</span> <span class="mi">422</span> <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>So, the file <code class="docutils literal notranslate"><span class="pre">methane.pdb</span></code> has 9 lines, 57 words, and 422 characters. Now, let’s apply the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command to all six files that have the <code class="docutils literal notranslate"><span class="pre">.pdb</span></code> extension. We can run <code class="docutils literal notranslate"><span class="pre">wc</span></code> command six times, but thankfully, there is a way to do it with a single use of the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command using the very useful feature of Linux called <em>wildcards</em>. Let me show you how it works:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc *.pdb
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">20</span>  <span class="mi">156</span> <span class="mi">1158</span> <span class="n">cubane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">12</span>   <span class="mi">84</span>  <span class="mi">622</span> <span class="n">ethane</span><span class="o">.</span><span class="n">pdb</span>
-   <span class="mi">9</span>   <span class="mi">57</span>  <span class="mi">422</span> <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">30</span>  <span class="mi">246</span> <span class="mi">1828</span> <span class="n">octane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">21</span>  <span class="mi">165</span> <span class="mi">1226</span> <span class="n">pentane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">15</span>  <span class="mi">111</span>  <span class="mi">825</span> <span class="n">propane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">107</span>  <span class="mi">819</span> <span class="mi">6081</span> <span class="n">total</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<section id="wildcards">
-<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">*</span></code> is a <strong>wildcard</strong>. It matches zero or more
-characters, so <code class="docutils literal notranslate"><span class="pre">*.pdb</span></code> matches <code class="docutils literal notranslate"><span class="pre">ethane.pdb</span></code>, <code class="docutils literal notranslate"><span class="pre">propane.pdb</span></code>, and every
-file that ends with ‘.pdb’. On the other hand, <code class="docutils literal notranslate"><span class="pre">p*.pdb</span></code> only matches
-<code class="docutils literal notranslate"><span class="pre">pentane.pdb</span></code> and <code class="docutils literal notranslate"><span class="pre">propane.pdb</span></code>, because the ‘p’ at the front only
-matches filenames that begin with the letter ‘p’. If you want to apply the command to all the
-files in the folder, you can do <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">*</span></code>.
-{: .callout}</p>
+<p>The above example pipes the output of <code class="docutils literal notranslate"><span class="pre">ls</span></code> to the input of <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">wc</span></code> stands for <strong>w</strong>ord <strong>c</strong>ount and <code class="docutils literal notranslate"><span class="pre">-l</span></code> tells <code class="docutils literal notranslate"><span class="pre">wc</span></code> to count lines instead of characters. This command will output the number of files in the directory.</p>
 </section>
-<p>If we run <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code> instead of just <code class="docutils literal notranslate"><span class="pre">wc</span></code>,
-the output shows only the number of lines per file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l *.pdb
+<section id="redirect-input-and-output">
+<h2>Redirect Input and Output<a class="headerlink" href="#redirect-input-and-output" title="Permalink to this headline">#</a></h2>
+<p>A program’s output can be redirected to a file instead of stdout using <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls &gt; list-of-files.txt
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">20</span>  <span class="n">cubane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">12</span>  <span class="n">ethane</span><span class="o">.</span><span class="n">pdb</span>
-   <span class="mi">9</span>  <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">30</span>  <span class="n">octane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">21</span>  <span class="n">pentane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">15</span>  <span class="n">propane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">107</span>  <span class="n">total</span>
+<p>The content of a file can be sent as stdin to a program with <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l &lt; list-of-files.txt
 </pre></div>
 </div>
-<p>{: .output}</p>
-<p>We can also use <code class="docutils literal notranslate"><span class="pre">-w</span></code> to get only the number of words,
-or <code class="docutils literal notranslate"><span class="pre">-c</span></code> to get only the number of characters.</p>
-<p>Which of these files is shortest?
-It’s an easy question to answer when there are only six files,
-but what if there were 6000?
-Our first step toward a solution is to run the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l *.pdb &gt; lengths.txt
+<p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will overwrite the contents of an existing file. Use <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> to <strong>append</strong> to a file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ some-command &gt; logfile
+
+$ other-command &gt;&gt; logfile
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>The greater than symbol, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, tells the shell to <strong>redirect</strong> the command’s output
-to a file instead of printing it to the screen. (This is why there is no screen output:
-everything that <code class="docutils literal notranslate"><span class="pre">wc</span></code> would have printed has gone into the
-file <code class="docutils literal notranslate"><span class="pre">lengths.txt</span></code> instead.)  The shell will create
-the file if it doesn’t exist. If the file exists, it will be
-silently overwritten, which may lead to data loss and thus requires
-some caution.
-<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">lengths.txt</span></code> confirms that the file exists:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls lengths.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lengths</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>We can now send the content of <code class="docutils literal notranslate"><span class="pre">lengths.txt</span></code> to the screen using <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">lengths.txt</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat lengths.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">20</span>  <span class="n">cubane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">12</span>  <span class="n">ethane</span><span class="o">.</span><span class="n">pdb</span>
-   <span class="mi">9</span>  <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">30</span>  <span class="n">octane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">21</span>  <span class="n">pentane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">15</span>  <span class="n">propane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">107</span>  <span class="n">total</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<section id="output-page-by-page">
-<h2>Output Page by Page<a class="headerlink" href="#output-page-by-page" title="Permalink to this headline">#</a></h2>
-<p>We’ll continue to use <code class="docutils literal notranslate"><span class="pre">cat</span></code> in this lesson, for convenience and consistency,
-but it has the disadvantage that it always dumps the whole file onto your screen.
-More useful in practice is the command <code class="docutils literal notranslate"><span class="pre">less</span></code>,
-which you use with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">less</span> <span class="pre">lengths.txt</span></code>.
-This displays a screenful of the file, and then stops.
-You can go forward one screenful by pressing the spacebar,
-or back one by pressing <code class="docutils literal notranslate"><span class="pre">b</span></code>.  Press <code class="docutils literal notranslate"><span class="pre">q</span></code> to quit.
-{: .callout}</p>
-</section>
-<p>Now let’s use the <code class="docutils literal notranslate"><span class="pre">sort</span></code> command to sort its contents.
-We will also use the <code class="docutils literal notranslate"><span class="pre">-n</span></code> flag to specify that the sort is
-numerical instead of alphabetical.
-This does <em>not</em> change the file;
-instead, it sends the sorted result to the screen:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort -n lengths.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">9</span>  <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">12</span>  <span class="n">ethane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">15</span>  <span class="n">propane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">20</span>  <span class="n">cubane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">21</span>  <span class="n">pentane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">30</span>  <span class="n">octane</span><span class="o">.</span><span class="n">pdb</span>
-<span class="mi">107</span>  <span class="n">total</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>We can put the sorted list of lines in another temporary file called <code class="docutils literal notranslate"><span class="pre">sorted-lengths.txt</span></code>
-by putting <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">sorted-lengths.txt</span></code> after the command,
-just as we used <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">lengths.txt</span></code> to put the output of <code class="docutils literal notranslate"><span class="pre">wc</span></code> into <code class="docutils literal notranslate"><span class="pre">lengths.txt</span></code>.
-Once we’ve done that,
-we can run another command called <code class="docutils literal notranslate"><span class="pre">head</span></code> to get the first few lines in <code class="docutils literal notranslate"><span class="pre">sorted-lengths.txt</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort -n lengths.txt &gt; sorted-lengths.txt
-$ head -n 1 sorted-lengths.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">9</span>  <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Using the parameter <code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">1</span></code> with <code class="docutils literal notranslate"><span class="pre">head</span></code> tells it that
-we only want the first line of the file;
-<code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">20</span></code> would get the first 20,
-and so on.
-Since <code class="docutils literal notranslate"><span class="pre">sorted-lengths.txt</span></code> contains the lengths of our files ordered from least to greatest,
-the output of <code class="docutils literal notranslate"><span class="pre">head</span></code> must be the file with the fewest lines.</p>
-<p>If you think this is confusing,
-you’re in good company:
-even once you understand what <code class="docutils literal notranslate"><span class="pre">wc</span></code>, <code class="docutils literal notranslate"><span class="pre">sort</span></code>, and <code class="docutils literal notranslate"><span class="pre">head</span></code> do,
-all those intermediate files make it hard to follow what’s going on.
-We can make it easier to understand by running <code class="docutils literal notranslate"><span class="pre">sort</span></code> and <code class="docutils literal notranslate"><span class="pre">head</span></code> together:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sort -n lengths.txt | head -n 1
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">9</span>  <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>The vertical bar, <code class="docutils literal notranslate"><span class="pre">|</span></code>, between the two commands is called a <strong>pipe</strong>.
-It tells the shell that we want to use
-the output of the command on the left
-as the input to the command on the right.</p>
-<p>Nothing prevents us from chaining pipes consecutively.
-That is, we can for example send the output of <code class="docutils literal notranslate"><span class="pre">wc</span></code> directly to <code class="docutils literal notranslate"><span class="pre">sort</span></code>,
-and then the resulting output to <code class="docutils literal notranslate"><span class="pre">head</span></code>.
-Thus we first use a pipe to send the output of <code class="docutils literal notranslate"><span class="pre">wc</span></code> to <code class="docutils literal notranslate"><span class="pre">sort</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l *.pdb | sort -n
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">9</span> <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">12</span> <span class="n">ethane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">15</span> <span class="n">propane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">20</span> <span class="n">cubane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">21</span> <span class="n">pentane</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="mi">30</span> <span class="n">octane</span><span class="o">.</span><span class="n">pdb</span>
- <span class="mi">107</span> <span class="n">total</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>And now we send the output ot this pipe, through another pipe, to <code class="docutils literal notranslate"><span class="pre">head</span></code>, so that the full pipeline becomes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wc -l *.pdb | sort -n | head -n 1
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">9</span>  <span class="n">methane</span><span class="o">.</span><span class="n">pdb</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>This is exactly like a mathematician nesting functions like <em>log(3x)</em>
-and saying “the log of three times <em>x</em>”.
-In our case,
-the calculation is “head of sort of line count of <code class="docutils literal notranslate"><span class="pre">*.pdb</span></code>”.</p>
-<p>Here’s what actually happens behind the scenes when we create a pipe.
-When a computer runs a program — any program — it creates a <strong>process</strong>
-in memory to hold the program’s software and its current state.
-Every process has an input channel called <strong>standard input</strong>.
-(By this point, you may be surprised that the name is so memorable, but don’t worry:
-most Linux programmers call it “stdin”.
-Every process also has a default output channel called <strong>standard output</strong>
-(or “stdout”).</p>
-<p>The shell is actually just another program.
-Under normal circumstances,
-whatever we type on the keyboard is sent to the shell on its standard input,
-and whatever it produces on standard output is displayed on our screen.
-When we tell the shell to run a program,
-it creates a new process
-and temporarily sends whatever we type on our keyboard to that process’s standard input,
-and whatever the process sends to standard output to the screen.</p>
-<p>Here’s what happens when we run <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span> <span class="pre">*.pdb</span> <span class="pre">&gt;</span> <span class="pre">lengths.txt</span></code>.
-The shell starts by telling the computer to create a new process to run the <code class="docutils literal notranslate"><span class="pre">wc</span></code> program.
-Since we’ve provided some filenames as parameters,
-<code class="docutils literal notranslate"><span class="pre">wc</span></code> reads from them instead of from standard input.
-And since we’ve used <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to redirect output to a file,
-the shell connects the process’s standard output to that file.</p>
-<p>If we run <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span> <span class="pre">*.pdb</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-n</span></code> instead,
-the shell creates two processes
-(one for each process in the pipe)
-so that <code class="docutils literal notranslate"><span class="pre">wc</span></code> and <code class="docutils literal notranslate"><span class="pre">sort</span></code> run simultaneously.
-The standard output of <code class="docutils literal notranslate"><span class="pre">wc</span></code> is fed directly to the standard input of <code class="docutils literal notranslate"><span class="pre">sort</span></code>;
-since there’s no redirection with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">sort</span></code>’s output goes to the screen.
-And if we run <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span> <span class="pre">*.pdb</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-n</span> <span class="pre">|</span> <span class="pre">head</span> <span class="pre">-n</span> <span class="pre">1</span></code>,
-we get three processes with data flowing from the files,
-through <code class="docutils literal notranslate"><span class="pre">wc</span></code> to <code class="docutils literal notranslate"><span class="pre">sort</span></code>,
-and from <code class="docutils literal notranslate"><span class="pre">sort</span></code> through <code class="docutils literal notranslate"><span class="pre">head</span></code> to the screen.</p>
-<p><img alt="Redirects and Pipes" src="fig/redirects-and-pipes.png" /></p>
-<p>This simple idea is why Linux has been so successful.
-Instead of creating enormous programs that try to do many different things,
-Linux programmers focus on creating lots of simple tools that each do one job well,
-and that work well with each other.
-This programming model is called “pipes and filters”.
-We’ve already seen pipes;
-a <strong>filter</strong> is a program like <code class="docutils literal notranslate"><span class="pre">wc</span></code> or <code class="docutils literal notranslate"><span class="pre">sort</span></code>
-that transforms a stream of input into a stream of output.
-Almost all of the standard Linux tools can work this way:
-unless told to do otherwise,
-they read from standard input,
-do something with what they’ve read,
-and write to standard output.</p>
-<p>The key is that any program that reads lines of text from standard input
-and writes lines of text to standard output
-can be combined with every other program that behaves this way as well.
-You can <em>and should</em> write your programs this way
-so that you and other people can put those programs into pipes to multiply their power.</p>
-<section id="redirecting-input">
-<h2>Redirecting Input<a class="headerlink" href="#redirecting-input" title="Permalink to this headline">#</a></h2>
-<p>As well as using <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to redirect a program’s output, we can use <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> to
-redirect its input, i.e., to read from a file instead of from standard
-input. For example, instead of writing <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">ammonia.pdb</span></code>, we could write
-<code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">&lt;</span> <span class="pre">ammonia.pdb</span></code>. In the first case, <code class="docutils literal notranslate"><span class="pre">wc</span></code> gets a command line
-parameter telling it what file to open. In the second, <code class="docutils literal notranslate"><span class="pre">wc</span></code> doesn’t have
-any command line parameters, so it reads from standard input, but we
-have told the shell to send the contents of <code class="docutils literal notranslate"><span class="pre">ammonia.pdb</span></code> to <code class="docutils literal notranslate"><span class="pre">wc</span></code>’s
-standard input.
-{: .callout}</p>
-</section>
-<section id="pipe-reading-comprehension">
-<h2>Pipe Reading Comprehension<a class="headerlink" href="#pipe-reading-comprehension" title="Permalink to this headline">#</a></h2>
-<p>A file called <code class="docutils literal notranslate"><span class="pre">animals.txt</span></code> contains the following data:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">05</span><span class="p">,</span><span class="n">deer</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">05</span><span class="p">,</span><span class="n">rabbit</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">05</span><span class="p">,</span><span class="n">raccoon</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">06</span><span class="p">,</span><span class="n">rabbit</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">06</span><span class="p">,</span><span class="n">deer</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">06</span><span class="p">,</span><span class="n">fox</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span><span class="n">rabbit</span>
-<span class="mi">2012</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">07</span><span class="p">,</span><span class="n">bear</span>
-</pre></div>
-</div>
-<p>{: .source}</p>
-<p>What text passes through each of the pipes and the final redirect in the pipeline below? Note that <code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">-r</span></code> sorts in reverse order.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat animals.txt | head -n 5 | tail -n 3 | sort -r &gt; final.txt
-</pre></div>
-</div>
-<p>{: .bash}
-{: .challenge}</p>
+<p><img alt="Redirects and Pipes" src="../_images/redirects-and-pipes.svg" /></p>
 </section>
 </section>
 
@@ -1090,11 +812,11 @@ standard input.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04-working_with_files_and_directories.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="04a-file-permissions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Working With Files and Directories</p>
+            <p class="prev-next-title">File Permissions and Atrributes</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="06-find.html" title="next page">

@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Working With Files and Directories" href="04-working_with_files_and_directories.html" />
-    <link rel="prev" title="Introducing the Shell" href="01-introduction.html" />
+    <link rel="next" title="Navigating Files and Directories" href="03-file-system.html" />
+    <link rel="prev" title="Shell Specifics" href="01a-shell.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -130,8 +130,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-introduction.html">
-     Introducing the Shell
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01a-shell.html">
+     Shell Specifics
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -140,18 +150,38 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03-file-system.html">
+     Navigating Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="04-working_with_files_and_directories.html">
      Working With Files and Directories
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-pipes.html">
-     Pipes and Filters
+     Pipes and Redirection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06-find.html">
      Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-conclusion.html">
+     Workshop Conclusion
     </a>
    </li>
   </ul>
@@ -676,18 +706,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openondemand-interface">
-   OpenOnDemand Interface
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-structure-of-the-cluster">
-   Basic structure of the cluster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remote-login-for-reference-purpose">
-   Remote login (for reference purpose)
+  <a class="reference internal nav-link" href="#remote-login-ssh">
+   Remote login (SSH)
   </a>
  </li>
 </ul>
@@ -710,18 +730,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#openondemand-interface">
-   OpenOnDemand Interface
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-structure-of-the-cluster">
-   Basic structure of the cluster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remote-login-for-reference-purpose">
-   Remote login (for reference purpose)
+  <a class="reference internal nav-link" href="#remote-login-ssh">
+   Remote login (SSH)
   </a>
  </li>
 </ul>
@@ -736,104 +746,47 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-palmetto-cluster">
 <h1>Accessing the Palmetto Cluster<a class="headerlink" href="#accessing-the-palmetto-cluster" title="Permalink to this headline">#</a></h1>
-<p>For this workshop, we will utilize Palmetto’s new browser-based interface.
-This interface includes a directory navigation interface and a browser-based terminal.</p>
-<section id="openondemand-interface">
-<h2>OpenOnDemand Interface<a class="headerlink" href="#openondemand-interface" title="Permalink to this headline">#</a></h2>
-<p>Visit the following URL from your browser:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod02</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
-</pre></div>
-</div>
-<p>You will need to login with your Clemson username and password, and perform a DUO check.</p>
-<img src="../fig/openod_dashboard.png" alt="Open OnDemand Dashboard" style="height:600px">
-<p>On the top menu bar, click on <code class="docutils literal notranslate"><span class="pre">Clusters</span></code>, then <code class="docutils literal notranslate"><span class="pre">Palmetto</span> <span class="pre">Shell</span> <span class="pre">Access</span></code></p>
-<img src="../fig/openod_shell_access.png" alt="Open OnDemand Shell Menu" style="height:300px">
-<p>Enter your account password, then DUO information to log in to the browser-based terminal</p>
-<img src="../fig/openod_shell.png" alt="Open OnDemand Shell Menu" style="height:500px">
-<p>When logged in,
-you are presented with a welcome message
-and the following “prompt”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@login001 ~]$
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>The prompt in a bash shell usually
-consists of a dollar (<code class="docutils literal notranslate"><span class="pre">$</span></code>) sign,
-and shows that the shell is waiting for input.
-The prompt may also contain other information:
-this prompt tells you <code class="docutils literal notranslate"><span class="pre">your</span> <span class="pre">username</span></code> and which node
-you are connected to -
-<code class="docutils literal notranslate"><span class="pre">login001</span></code> is the “login” node.
-It also tells you your current directory,
-i.e., <code class="docutils literal notranslate"><span class="pre">~</span></code>, which, as you will learn shortly,
-is short for your <em>home</em> directory.
-We will mostly refer to the prompt as just <code class="docutils literal notranslate"><span class="pre">$</span></code>, i.e.,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>Let’s enter our first command!
-Type the command <code class="docutils literal notranslate"><span class="pre">whoami</span></code>,
-then press the Enter key (sometimes marked Return) to send the command to the shell.
-The command’s output is the ID of the current user.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ whoami
-</pre></div>
-</div>
-<p>{: .bash}</p>
-</section>
-<section id="basic-structure-of-the-cluster">
-<h2>Basic structure of the cluster<a class="headerlink" href="#basic-structure-of-the-cluster" title="Permalink to this headline">#</a></h2>
-<img src="../fig/palmetto-structure.png" alt="Structure of the Palmetto Cluster" style="height:350px">
-<p>The Palmetto cluster has several “compute” nodes
-that can perform fast calculations on large amounts of data.
-It also has a few so-called “service” nodes,
-that are <em>not</em> meant for this purpose.
-Instead, they are meant to help users perform other actions
-such as transfering code and data to and from the cluster.</p>
-</section>
-<section id="remote-login-for-reference-purpose">
-<h2>Remote login (for reference purpose)<a class="headerlink" href="#remote-login-for-reference-purpose" title="Permalink to this headline">#</a></h2>
-<p>To be able to run commands on the Palmetto from your own machine,
-you will first need to be able to log in to the Palmetto.
-This is known as a <em>remote login</em>.</p>
+<section id="remote-login-ssh">
+<h2>Remote login (SSH)<a class="headerlink" href="#remote-login-ssh" title="Permalink to this headline">#</a></h2>
+<p>To be able to run commands on Palmetto from your own machine, you will first need to log in. We will login via <strong>SSH</strong> which will provide us a shell on one of Palmetto’s login nodes.</p>
 <p>For Mac OS X, you can open the Terminal Application (which is usually in Applications → Utilities folder) and run the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">Palmetto</span> <span class="n">username</span><span class="o">&gt;</span><span class="nd">@login</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
 <p>For Windows, first you need to download and install
 <a class="reference external" href="https://mobaxterm.mobatek.net/download.html">MobaXterm Home Edition</a>.</p>
 <blockquote>
 <div><p>It is important that you unzip the downloaded installer prior to installation.
 The zipped installer file contains an additional data file besides the installer
 executable. This data file is not accessible if the installer executable is
-called from insize the zipped file (something Windows allows you to do).
-{: .callout}</p>
+called from insize the zipped file (something Windows allows you to do).</p>
 </div></blockquote>
 <p>After MobaXterm starts, click the <code class="docutils literal notranslate"><span class="pre">Session</span></code> button.</p>
-<img src="../fig/mobaxterm_0.png" alt="Main MobaXterm Windows" style="height:350px">
+<p><img alt="Main MobaXterm Windows" src="../_images/mobaxterm_0.png" /></p>
 <p>Select SSH session and use the following parameters (whichever required), then click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
 <ul class="simple">
 <li><p>Remote host: <code class="docutils literal notranslate"><span class="pre">login.palmetto.clemson.edu</span></code></p></li>
 <li><p>SSH-browser type: Enhanced SCP</p></li>
 <li><p>Port: 22</p></li>
 </ul>
-<img src="../fig/mobaxterm_1.png" alt="MobaXterm SSH Session" style="height:350px">
+<p><img alt="MobaXterm SSH Session" src="../_images/mobaxterm_1.png" /></p>
 <p>At this stage, for both Mac and Windows, you will be asked to enter your username
 and password, then DUO option.</p>
-<img src="../fig/mobaxterm_2.png" alt="Login interface" style="height:350px">
+<p><img alt="Login interface" src="../_images/mobaxterm_2.png" /></p>
 <blockquote>
-<div><p>For MobaXterm, please select No when asked if you want to save your password.
-<img src="../fig/mobaxterm_3.png" alt="Password saving selection" style="height:350px">
-{: .callout}</p>
+<div><p>For MobaXterm, please select No when asked if you want to save your password.</p>
 </div></blockquote>
-<p>When logged in,
-you are presented with a welcome message
-and the following “prompt”:</p>
+<p><img alt="Password saving selection" src="../_images/mobaxterm_3.png" /></p>
+<p>When logged in, you are presented with a welcome message and the following “prompt”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@login001 ~]$
 </pre></div>
 </div>
-<p>{: .bash}</p>
+<p>Let’s enter our first command!
+Type the command <code class="docutils literal notranslate"><span class="pre">whoami</span></code>, then press the Enter key (sometimes marked Return) to send the command to the shell.
+The command’s output is the ID of the current user.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ whoami
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -864,17 +817,17 @@ and the following “prompt”:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="01-introduction.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01a-shell.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introducing the Shell</p>
+            <p class="prev-next-title">Shell Specifics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="04-working_with_files_and_directories.html" title="next page">
+    <a class='right-next' id="next-link" href="03-file-system.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Working With Files and Directories</p>
+        <p class="prev-next-title">Navigating Files and Directories</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

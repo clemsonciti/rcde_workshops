@@ -233,38 +233,87 @@ get the clone URL (HTTPS option) of your Git repository
 ```
 
 - Do not do anything on the next `Start on date/time` screen. Click `Finish`.  
-- Your experiment is now being `provision`, and then `booting`  
 
-```{admonition} Provisioning and Booting
+
+
+
+- Your experiment is now being `provision`, and then `booting  
+
+```{admonition} Select cluster
 :class: dropdown
 
-![Provisioning](../fig/containers/cloudlab-instantiate-provisining.png)
-![Booting](../fig/containers/cloudlab-instantiate-booting.png)
+![Select cluster to launch experiment](../fig/containers/cloudlab-instantiate-emulab.png)
 
 ```
 
-- When it is ready, you can use the provided SSH command to log in to your experiment (assuming 
-your key was set up correctly). 
-- The command is in the **List View** tab. 
+> ## 3. A brief history of Spark
+> 
+> - Research project at UC Berkeley AMP Lab in 2009 to address drawbacks of 
+> Hadoop MapReduce. 
+> - Paper published in 2010: [Spark: Cluster Computing with Working Sets](https://static.usenix.org/events/hotcloud10/tech/full_papers/Zaharia.pdf) 
+> - Source code is contributed to Apache in 2013. The project had more than 100 
+> contributors from more than 30 organizations outside UC Berkeley. 
+> - Version 1.0 was released in 2014. 
+> - Currently, Spark is being used extensively in academic and industry 
+> (NASA, CERN, Uber, Netflix …). 
+>
+{: .slide}
 
-```{admonition} Provisioning and Booting
-:class: dropdown
+> ## 4. map and reduce
+> 
+> - What is `map`? A function/procedure that is applied to every individual 
+> elements of a collection/list/array/…
+>
+> ~~~
+> int square(x) { return x*x;}
+> map square [1,2,3,4] -> [1,4,9,16]
+> ~~~
+> {: .language-bash}
+>
+> - What is “reduce”? A function/procedure that performs an operation on a list. 
+> This operation will “fold/reduce” this list into a single value (or a smaller 
+> subset).
+>
+> ~~~
+> reduce ([1,2,3,4]) using sum -> 10
+> reduce ([1,2,3,4]) using multiply -> 24
+> ~~~
+> {: .language-bash}
+>
+{: .slide}
 
-![Experiment is ready](../fig/containers/cloudlab-ready.png)
-![Log into experiment nodes](../fig/containers/cloudlab-ssh.png)
+> ## 5. MapReduce programming paradigm
+> 
+> - Programmers implement:
+>   - Map function: Take in the input data and return a key,value pair.
+>   - Reduce function: Receive the key,value pairs from the mapper and provide a
+>   final output as a reduction operation on the pairs.
+>
+> - MapReduce Framework handles everything else.
+> - Spark implements a MapReduce framework. 
+>
+{: .slide}
 
-```
+> ## 6. WordCount: the Hello, World! of Big Data
+> 
+> - Count how many unique words there are in a file/multiple files.
+> - Standard parallel programming approach:
+>   - Count number of files
+>   - Set number of processes
+>   - Possibly setting up dynamic workload assignment
+>   - A lot of data transfer
+>   - Significant coding effort
+> 
+> > ## MapReduce workflow
+> > 
+> > <img src="../fig/01-introduction/02.png" alt="Spark" style="height:400px">
+> {: .slide}
+>
+> > ## MapReduce framework
+> > 
+> > <img src="../fig/01-introduction/03.png" alt="Spark" style="height:400px">
+> {: .slide}
+{: .slide}
 
-- The automated script included in the profile setup the Apache 
-web server. This can be accessed by using the DNS of the experiment node in 
-**List View** tab. 
-
-
-```{admonition} Automated installation of Apache2
-:class: dropdown
-
-![Apache2 Webserver](../fig/containers/cloudlab-apache2.png)
-
-```
 
 

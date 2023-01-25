@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Palmetto" href="../intro_palmetto/00-index.html" />
-    <link rel="prev" title="Pipes and Filters" href="05-pipes.html" />
+    <link rel="next" title="Utilities and Useful Information" href="07-utilities.html" />
+    <link rel="prev" title="Pipes and Redirection" href="05-pipes.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -130,8 +130,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="01-introduction.html">
-     Introducing the Shell
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01a-shell.html">
+     Shell Specifics
     </a>
    </li>
    <li class="toctree-l2">
@@ -140,18 +150,38 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03-file-system.html">
+     Navigating Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="04-working_with_files_and_directories.html">
      Working With Files and Directories
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-pipes.html">
-     Pipes and Filters
+     Pipes and Redirection
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08-conclusion.html">
+     Workshop Conclusion
     </a>
    </li>
   </ul>
@@ -676,8 +706,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wildcards">
-   Wildcards
+  <a class="reference internal nav-link" href="#find">
+   find
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grep">
+   grep
   </a>
  </li>
 </ul>
@@ -700,8 +735,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wildcards">
-   Wildcards
+  <a class="reference internal nav-link" href="#find">
+   find
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grep">
+   grep
   </a>
  </li>
 </ul>
@@ -716,201 +756,22 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="finding-things">
 <h1>Finding Things<a class="headerlink" href="#finding-things" title="Permalink to this headline">#</a></h1>
-<p>In the same way that many of us now use “Google” as a
-verb meaning “to find”, Unix programmers often use the
-word “grep”.
-“grep” is a contraction of “global/regular expression/print”,
-a common sequence of operations in early Unix text editors.
-It is also the name of a very useful command-line program.</p>
-<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> finds and prints lines in files that match a pattern.
-For our examples,
-we will use a file that contains three haikus taken from a
-1998 competition in <em>Salon</em> magazine. Let’s create a file called <code class="docutils literal notranslate"><span class="pre">haiku.txt</span></code> and paste the contents of the web page into it. On MobaXTerm, you can paste with “Shift + Insert”. On a Mac, you can use Ctrl+V.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd
-$ cd linux_workshop
-$ nano haiku.txt
+<section id="find">
+<h2>find<a class="headerlink" href="#find" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">find</span></code> command will search through your directories for a file matching your search string.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ find ~ -name script.sh
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">Tao</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">seen</span>
-<span class="n">Is</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">true</span> <span class="n">Tao</span><span class="p">,</span> <span class="n">until</span>
-<span class="n">You</span> <span class="n">bring</span> <span class="n">fresh</span> <span class="n">toner</span><span class="o">.</span>
-
-<span class="n">With</span> <span class="n">searching</span> <span class="n">comes</span> <span class="n">loss</span>
-<span class="ow">and</span> <span class="n">the</span> <span class="n">presence</span> <span class="n">of</span> <span class="n">absence</span><span class="p">:</span>
-<span class="s2">&quot;My Thesis&quot;</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
-
-<span class="n">Yesterday</span> <span class="n">it</span> <span class="n">worked</span>
-<span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-<span class="n">Software</span> <span class="ow">is</span> <span class="n">like</span> <span class="n">that</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Let’s find lines that contain the word “not”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep not haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Is</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">true</span> <span class="n">Tao</span><span class="p">,</span> <span class="n">until</span>
-<span class="s2">&quot;My Thesis&quot;</span> <span class="ow">not</span> <span class="n">found</span>
-<span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">not</span></code> is the pattern we’re searching for.
-It’s pretty simple:
-every alphanumeric character matches against itself.
-After the pattern comes the name or names of the files we’re searching in.
-The output is the three lines in the file that contain the letters “not”.</p>
-<p>Let’s try a different pattern: “day”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep day haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Yesterday</span> <span class="n">it</span> <span class="n">worked</span>
-<span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>This time,
-two lines that include the letters “day” are outputted.
-However, these letters are contained within larger words.
-To restrict matches to lines containing the word “day” on its own,
-we can give <code class="docutils literal notranslate"><span class="pre">grep</span></code> with the <code class="docutils literal notranslate"><span class="pre">-w</span></code> flag.
-This will limit matches to word boundaries.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -w day haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<p>In this case, there aren’t any, so <code class="docutils literal notranslate"><span class="pre">grep</span></code>’s output is empty. Sometimes we don’t
-want to search for a single word, but a phrase. This is also easy to do with
-<code class="docutils literal notranslate"><span class="pre">grep</span></code> by putting the phrase in quotes.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -w &quot;is not&quot; haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>We’ve now seen that you don’t have to have quotes around single words,
-but it is useful to use quotes when searching for multiple words.
-It also helps to make it easier to distinguish between the search term or phrase
-and the file being searched.
-We will use quotes in the remaining examples.</p>
-<p>Another useful option is <code class="docutils literal notranslate"><span class="pre">-n</span></code>, which numbers the lines that match:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -n &quot;it&quot; haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="p">:</span><span class="n">With</span> <span class="n">searching</span> <span class="n">comes</span> <span class="n">loss</span>
-<span class="mi">9</span><span class="p">:</span><span class="n">Yesterday</span> <span class="n">it</span> <span class="n">worked</span>
-<span class="mi">10</span><span class="p">:</span><span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Here, we can see that lines 5, 9, and 10 contain the letters “it”.</p>
-<p>We can combine options (i.e. flags) as we do with other Unix commands.
-For example, let’s find the lines that contain the word “the”. We can combine
-the option <code class="docutils literal notranslate"><span class="pre">-w</span></code> to find the lines that contain the word “the” and <code class="docutils literal notranslate"><span class="pre">-n</span></code> to number the lines that match:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -n -w &quot;the&quot; haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="p">:</span><span class="n">Is</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">true</span> <span class="n">Tao</span><span class="p">,</span> <span class="n">until</span>
-<span class="mi">6</span><span class="p">:</span><span class="ow">and</span> <span class="n">the</span> <span class="n">presence</span> <span class="n">of</span> <span class="n">absence</span><span class="p">:</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Now we want to use the option <code class="docutils literal notranslate"><span class="pre">-i</span></code> to make our search case-insensitive:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -n -w -i &quot;the&quot; haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">:</span><span class="n">The</span> <span class="n">Tao</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">seen</span>
-<span class="mi">2</span><span class="p">:</span><span class="n">Is</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">true</span> <span class="n">Tao</span><span class="p">,</span> <span class="n">until</span>
-<span class="mi">6</span><span class="p">:</span><span class="ow">and</span> <span class="n">the</span> <span class="n">presence</span> <span class="n">of</span> <span class="n">absence</span><span class="p">:</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Now, we want to use the option <code class="docutils literal notranslate"><span class="pre">-v</span></code> to invert our search, i.e., we want to output
-the lines that do not contain the word “the”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -n -w -v &quot;the&quot; haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">:</span><span class="n">The</span> <span class="n">Tao</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">seen</span>
-<span class="mi">3</span><span class="p">:</span><span class="n">You</span> <span class="n">bring</span> <span class="n">fresh</span> <span class="n">toner</span><span class="o">.</span>
-<span class="mi">4</span><span class="p">:</span>
-<span class="mi">5</span><span class="p">:</span><span class="n">With</span> <span class="n">searching</span> <span class="n">comes</span> <span class="n">loss</span>
-<span class="mi">7</span><span class="p">:</span><span class="s2">&quot;My Thesis&quot;</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
-<span class="mi">8</span><span class="p">:</span>
-<span class="mi">9</span><span class="p">:</span><span class="n">Yesterday</span> <span class="n">it</span> <span class="n">worked</span>
-<span class="mi">10</span><span class="p">:</span><span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-<span class="mi">11</span><span class="p">:</span><span class="n">Software</span> <span class="ow">is</span> <span class="n">like</span> <span class="n">that</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> has lots of other options. To find out what they are, we can type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep --help
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">grep</span> <span class="p">[</span><span class="n">OPTION</span><span class="p">]</span><span class="o">...</span> <span class="n">PATTERN</span> <span class="p">[</span><span class="n">FILE</span><span class="p">]</span><span class="o">...</span>
-<span class="n">Search</span> <span class="k">for</span> <span class="n">PATTERN</span> <span class="ow">in</span> <span class="n">each</span> <span class="n">FILE</span> <span class="ow">or</span> <span class="n">standard</span> <span class="nb">input</span><span class="o">.</span>
-<span class="n">PATTERN</span> <span class="ow">is</span><span class="p">,</span> <span class="n">by</span> <span class="n">default</span><span class="p">,</span> <span class="n">a</span> <span class="n">basic</span> <span class="n">regular</span> <span class="n">expression</span> <span class="p">(</span><span class="n">BRE</span><span class="p">)</span><span class="o">.</span>
-<span class="n">Example</span><span class="p">:</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;hello world&#39;</span> <span class="n">menu</span><span class="o">.</span><span class="n">h</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
-
-<span class="n">Regexp</span> <span class="n">selection</span> <span class="ow">and</span> <span class="n">interpretation</span><span class="p">:</span>
-  <span class="o">-</span><span class="n">E</span><span class="p">,</span> <span class="o">--</span><span class="n">extended</span><span class="o">-</span><span class="n">regexp</span>     <span class="n">PATTERN</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">extended</span> <span class="n">regular</span> <span class="n">expression</span> <span class="p">(</span><span class="n">ERE</span><span class="p">)</span>
-  <span class="o">-</span><span class="n">F</span><span class="p">,</span> <span class="o">--</span><span class="n">fixed</span><span class="o">-</span><span class="n">strings</span>       <span class="n">PATTERN</span> <span class="ow">is</span> <span class="n">a</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">newline</span><span class="o">-</span><span class="n">separated</span> <span class="n">fixed</span> <span class="n">strings</span>
-  <span class="o">-</span><span class="n">G</span><span class="p">,</span> <span class="o">--</span><span class="n">basic</span><span class="o">-</span><span class="n">regexp</span>        <span class="n">PATTERN</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">basic</span> <span class="n">regular</span> <span class="n">expression</span> <span class="p">(</span><span class="n">BRE</span><span class="p">)</span>
-  <span class="o">-</span><span class="n">P</span><span class="p">,</span> <span class="o">--</span><span class="n">perl</span><span class="o">-</span><span class="n">regexp</span>         <span class="n">PATTERN</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Perl</span> <span class="n">regular</span> <span class="n">expression</span>
-  <span class="o">-</span><span class="n">e</span><span class="p">,</span> <span class="o">--</span><span class="n">regexp</span><span class="o">=</span><span class="n">PATTERN</span>      <span class="n">use</span> <span class="n">PATTERN</span> <span class="k">for</span> <span class="n">matching</span>
-  <span class="o">-</span><span class="n">f</span><span class="p">,</span> <span class="o">--</span><span class="n">file</span><span class="o">=</span><span class="n">FILE</span>           <span class="n">obtain</span> <span class="n">PATTERN</span> <span class="kn">from</span> <span class="nn">FILE</span>
-  <span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">case</span>         <span class="n">ignore</span> <span class="n">case</span> <span class="n">distinctions</span>
-  <span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="o">--</span><span class="n">word</span><span class="o">-</span><span class="n">regexp</span>         <span class="n">force</span> <span class="n">PATTERN</span> <span class="n">to</span> <span class="n">match</span> <span class="n">only</span> <span class="n">whole</span> <span class="n">words</span>
-  <span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="o">--</span><span class="n">line</span><span class="o">-</span><span class="n">regexp</span>         <span class="n">force</span> <span class="n">PATTERN</span> <span class="n">to</span> <span class="n">match</span> <span class="n">only</span> <span class="n">whole</span> <span class="n">lines</span>
-  <span class="o">-</span><span class="n">z</span><span class="p">,</span> <span class="o">--</span><span class="n">null</span><span class="o">-</span><span class="n">data</span>           <span class="n">a</span> <span class="n">data</span> <span class="n">line</span> <span class="n">ends</span> <span class="ow">in</span> <span class="mi">0</span> <span class="n">byte</span><span class="p">,</span> <span class="ow">not</span> <span class="n">newline</span>
-
-<span class="n">Miscellaneous</span><span class="p">:</span>
-<span class="o">...</span>        <span class="o">...</span>        <span class="o">...</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<section id="wildcards">
-<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">grep</span></code>’s real power doesn’t come from its options, though; it comes from
-the fact that patterns can include wildcards. (The technical name for
-these is <strong>regular expressions</strong>, which
-is what the “re” in “grep” stands for.) Regular expressions are both complex
-and powerful; if you want to do complex searches, please look at the lesson
-on <a class="reference external" href="http://v4.software-carpentry.org/regexp/index.html">our website</a>. As a taster, we can
-find lines that have an ‘o’ in the second position like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep -E &#39;^.o&#39; haiku.txt
-</pre></div>
-</div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">bring</span> <span class="n">fresh</span> <span class="n">toner</span><span class="o">.</span>
-<span class="n">Today</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">working</span>
-<span class="n">Software</span> <span class="ow">is</span> <span class="n">like</span> <span class="n">that</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>We use the <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag and put the pattern in quotes to prevent the shell
-from trying to interpret it. (If the pattern contained a <code class="docutils literal notranslate"><span class="pre">*</span></code>, for
-example, the shell would try to expand it before running <code class="docutils literal notranslate"><span class="pre">grep</span></code>.) The
-<code class="docutils literal notranslate"><span class="pre">^</span></code> in the pattern anchors the match to the start of the line. The <code class="docutils literal notranslate"><span class="pre">.</span></code>
-matches a single character (just like <code class="docutils literal notranslate"><span class="pre">?</span></code> in the shell), while the <code class="docutils literal notranslate"><span class="pre">o</span></code>
-matches an actual ‘o’.
-{: .callout}</p>
+<p>The above command will search <em>recursively</em> starting in your home directory for a file named “<a class="reference external" href="http://script.sh">script.sh</a>”</p>
 </section>
-<p>The last thing I would like to mention in today’s workshop is the <code class="docutils literal notranslate"><span class="pre">history</span></code> command. It is the log of all the recent Linux commands that you have typed (by default, Palmetto stores 1,000 most recent commands). To see them, simply type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ history
+<section id="grep">
+<h2>grep<a class="headerlink" href="#grep" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">grep</span></code> command is used to search through a file for a specified pattern. This pattern is referred to as a <strong>regular expression</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ grep pattern filename
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>You can also save it into a text file by redirecting the output: <code class="docutils literal notranslate"><span class="pre">history</span> <span class="pre">&gt;</span> <span class="pre">logfile.txt</span></code>. You can also clear the history by typing <code class="docutils literal notranslate"><span class="pre">history</span> <span class="pre">-c</span></code>.</p>
+<p>Click <a class="reference external" href="https://download.microsoft.com/download/c/3/e/c3ef6850-d455-478a-afbe-b89e57df8569/Regular_Expressions_Cheat_Sheet.pdf">here</a> to download a regular expression cheat sheet.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -944,13 +805,13 @@ matches an actual ‘o’.
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pipes and Filters</p>
+            <p class="prev-next-title">Pipes and Redirection</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../intro_palmetto/00-index.html" title="next page">
+    <a class='right-next' id="next-link" href="07-utilities.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Palmetto</p>
+        <p class="prev-next-title">Utilities and Useful Information</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

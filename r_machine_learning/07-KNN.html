@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -130,8 +130,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../intro_linux/01-introduction.html">
-     Introducing the Shell
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/01a-shell.html">
+     Shell Specifics
     </a>
    </li>
    <li class="toctree-l2">
@@ -140,18 +150,38 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/03-file-system.html">
+     Navigating Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">
      Working With Files and Directories
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../intro_linux/05-pipes.html">
-     Pipes and Filters
+     Pipes and Redirection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_linux/06-find.html">
      Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/08-conclusion.html">
+     Workshop Conclusion
     </a>
    </li>
   </ul>
@@ -741,18 +771,18 @@ keypoints:</p></li>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
-<span class="n">indT</span> <span class="o">&lt;-</span> <span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="n">training</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">indT</span><span class="p">,]</span>
-<span class="n">testing</span>  <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">indT</span><span class="p">,]</span>
+<span class="n">indT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">training</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="n">indT</span><span class="p">,]</span>
+<span class="n">testing</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">indT</span><span class="p">,]</span>
 
-<span class="n">ModFit_KNN</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;knn&quot;</span><span class="p">,</span><span class="n">tuneGrid</span> <span class="o">=</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">25</span><span class="p">))</span>
+<span class="n">ModFit_KNN</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;knn&quot;</span><span class="p">,</span><span class="n">tuneGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">25</span><span class="p">))</span>
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">ModFit_KNN</span><span class="o">$</span><span class="n">results</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">Accuracy</span><span class="p">))</span><span class="o">+</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Optimum K is &quot;</span><span class="p">,</span><span class="n">ModFit_KNN</span><span class="o">$</span><span class="n">bestTune</span><span class="p">),</span>
-       <span class="n">y</span><span class="o">=</span><span class="s">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Optimum K is &quot;</span><span class="p">,</span><span class="n">ModFit_KNN</span><span class="o">$</span><span class="n">bestTune</span><span class="p">),</span>
+<span class="w">       </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Accuracy&quot;</span><span class="p">)</span>
 
-<span class="n">predict_KNN</span><span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ModFit_KNN</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">testing</span><span class="p">)</span>
+<span class="n">predict_KNN</span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">ModFit_KNN</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">testing</span><span class="p">)</span>
 <span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">testing</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">predict_KNN</span><span class="p">)</span>
 </pre></div>
 </div>
