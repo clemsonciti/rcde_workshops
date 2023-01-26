@@ -683,12 +683,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mac">
+   Mac
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windows">
+   Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entering-username-and-password">
+   Entering Username and Password
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -700,6 +734,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mac">
+   Mac
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#windows">
+   Windows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entering-username-and-password">
+   Entering Username and Password
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -709,52 +766,77 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-palmetto-cluster">
 <h1>Accessing the Palmetto Cluster<a class="headerlink" href="#accessing-the-palmetto-cluster" title="Permalink to this headline">#</a></h1>
-<p>teaching: 15
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“How can I access the Palmetto cluster from my local machine?”
-objectives:</p></li>
-<li><p>SSH client, Terminal, MobaXTerm
-keypoints:</p></li>
-<li><p>“Palmetto can be accessed by an SSh (secure shell) client”</p></li>
-<li><p>“Windows user can use <code class="docutils literal notranslate"><span class="pre">MobaXTerm</span></code> application”</p></li>
-<li><p>“Mac users can use the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> application”</p></li>
-</ul>
-<p>Pametto is accessed using the SSH (<a class="reference external" href="https://en.wikipedia.org/wiki/Ssh_(Secure_Shell)">“Secure shell”</a>) protocol. Palmetto runs the <em>SSH server</em>; on your local machine, you will need to run <em>SSH client</em> which connects to a server using a command-line <em>terminal</em>. The commands that are entered on the terminal are processed by the server on Palmetto.</p>
+<p>Palmetto is accessed using the SSH (<a class="reference external" href="https://en.wikipedia.org/wiki/Ssh_(Secure_Shell)">“Secure shell”</a>) protocol. Palmetto runs the <em>SSH server</em>; on your local machine, you will need to run <em>SSH client</em> which connects to a server using a command-line <em>terminal</em>. The commands that are entered on the terminal are processed by the server on Palmetto.</p>
+<section id="mac">
+<h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">#</a></h2>
 <p>To start the SSH client on a Mac, you can open the Terminal Application (which is usually located in <code class="docutils literal notranslate"><span class="pre">Applications</span></code> → <code class="docutils literal notranslate"><span class="pre">Utilities</span></code>) and run the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">login</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>login.palmetto.clemson.edu
 </pre></div>
 </div>
-<p>{: .bash}</p>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">#</a></h2>
 <p>For Windows, first you need to download and install
 <a class="reference external" href="https://mobaxterm.mobatek.net/download.html">MobaXterm Home Edition</a>.</p>
-<blockquote>
-<div><p>It is important that you unzip the downloaded installer prior to installation.
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is important that you unzip the downloaded installer prior to installation.
 The zipped installer file contains an additional data file besides the installer
 executable. This data file is not accessible if the installer executable is
-called from inside the zipped file (something Windows allows you to do).
-{: .callout}</p>
-</div></blockquote>
+called from inside the zipped file (something Windows allows you to do).</p>
+</div>
 <p>After MobaXterm starts, click the <code class="docutils literal notranslate"><span class="pre">Session</span></code> button.</p>
-<img src="../fig/mobaxterm_0.png" alt="Main MobaXterm Windows" style="height:350px">
+<figure class="align-default" id="id1">
+<img alt="../_images/mobaxterm_01.png" src="../_images/mobaxterm_01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Main MobaXterm Windows</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Select SSH session and use the following parameters (whichever required), then click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
 <ul class="simple">
 <li><p>Remote host: <code class="docutils literal notranslate"><span class="pre">login.palmetto.clemson.edu</span></code></p></li>
 <li><p>SSH-browser type: Enhanced SCP</p></li>
 <li><p>Port: 22</p></li>
 </ul>
-<img src="../fig/mobaxterm_1.png" alt="MobaXterm SSH Session" style="height:350px">
+<figure class="align-default" id="id2">
+<img alt="../_images/mobaxterm_11.png" src="../_images/mobaxterm_11.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">MobaXterm SSH Session Settings</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="entering-username-and-password">
+<h2>Entering Username and Password<a class="headerlink" href="#entering-username-and-password" title="Permalink to this headline">#</a></h2>
 <p>At this stage, for both Mac and Windows, you will be asked to enter your username
-and password, then DUO option.</p>
-<img src="../fig/mobaxterm_2.png" alt="Login interface" style="height:350px">
+and password, then DUO option. Use your usual Clemson username (with &#64;clemson.edu part) and Clemson
+password.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As you type your password, nothing will appear (not even asterisks). This can be confusing, but it
+is the expected behaviour. The SSH server is still receiving your password.</p>
+</div>
+<figure class="align-default" id="id3">
+<img alt="../_images/mobaxterm_21.png" src="../_images/mobaxterm_21.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Logging into palmetto</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition-windows-users admonition">
+<p class="admonition-title">Windows Users</p>
+<p>With MobaXterm, you may be asked to save your password.  For now, press No.</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/mobaxterm_31.png" src="../_images/mobaxterm_31.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">MobaXterm asking to save password</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
 <p>When logged in,
 you are presented with a welcome message
 and the following “prompt”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@login001 ~]$
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>username@login001<span class="w"> </span>~<span class="o">]</span>$
 </pre></div>
 </div>
-<p>{: .bash}</p>
 <p>The prompt in a bash shell usually
 contains a (<code class="docutils literal notranslate"><span class="pre">$</span></code>) sign,
 and shows that the shell is waiting for input.
@@ -768,7 +850,21 @@ is short for your <em>home</em> directory.</p>
 <p>In the figure below, MobaXterm also gives you a GUI browser of your home
 directory on Palmetto. For Mac OS and Linux terminal, you will only have the
 command line interface to the right.</p>
-<img src="../fig/mobaxterm_4.png" alt="MobaXterm interface" style="height:350px">
+<figure class="align-default" id="id5">
+<img alt="../_images/mobaxterm_4.png" src="../_images/mobaxterm_4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Logged into Palmetto on MobaXterm</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Palmetto can be accessed by an SSH (secure shell) client</p></li>
+<li><p>Windows user can use <code class="docutils literal notranslate"><span class="pre">MobaXterm</span></code> application</p></li>
+<li><p>Mac users can use the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> application</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

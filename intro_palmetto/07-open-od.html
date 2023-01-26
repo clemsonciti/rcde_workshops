@@ -683,12 +683,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-browsing">
+   File Browsing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell">
+   Shell
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-notebook">
+   Jupyter Notebook
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -700,6 +734,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-browsing">
+   File Browsing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell">
+   Shell
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-notebook">
+   Jupyter Notebook
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -709,37 +766,99 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="web-based-access-to-the-palmetto-cluster">
 <h1>Web-based access to the Palmetto Cluster<a class="headerlink" href="#web-based-access-to-the-palmetto-cluster" title="Permalink to this headline">#</a></h1>
-<p>teaching: 15
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“How can I access the Palmetto cluster from a web browser?”
-objectives:</p></li>
-<li><p>“Logging into Palmetto from a browser.”</p></li>
-</ul>
 <p>We have an interface to Palmetto that works through a Web browser. This interface is called “Open On Demand”, or OpenOD for short. To access it, go to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod02</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>You will need to login with your Clemson username and password, and perform a DUO check.</p>
-<img src="../fig/openod_dashboard.png" alt="Open OnDemand Dashboard" style="height:400px">
+<figure class="align-default" id="id1">
+<img alt="../_images/openod_1.png" src="../_images/openod_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Open OnDemand MOTD</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="file-browsing">
+<h2>File Browsing<a class="headerlink" href="#file-browsing" title="Permalink to this headline">#</a></h2>
 <p>One convenient feature of Open OnDemand is a file browser. In the top left corner, you will see the “Files” button, which will take you to your home diretory or to scratch directory. Click it and explore the files in your file system. You can use this feature to view, edit, and delete files. It is also a convenient way to upload and download the files. You can go to any folder that you have access to by clicking “Go to”.</p>
+</section>
+<section id="shell">
+<h2>Shell<a class="headerlink" href="#shell" title="Permalink to this headline">#</a></h2>
 <p>You can also use the web interface to run a terminal on Palmetto. This way, OpenOD becomes an alternative to MobaXTerm or to the Mac Terminal application. To start the terminal, click on <code class="docutils literal notranslate"><span class="pre">Clusters</span></code>, then <code class="docutils literal notranslate"><span class="pre">Palmetto</span> <span class="pre">Shell</span> <span class="pre">Access</span></code>:</p>
-<img src="../fig/openod_shell_access.png" alt="Open OnDemand Shell Menu" style="height:300px">
+<figure class="align-default" id="id2">
+<img alt="../_images/openod_2.png" src="../_images/openod_2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Palmetto Shell Access</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Enter your account password and do the two-factor identification. This will bring you to the login node of Palmetto:</p>
-<img src="../fig/openod_shell.png" alt="Open OnDemand Shell Menu" style="height:500px">
+<figure class="align-default" id="id3">
+<img alt="../_images/openod_3.png" src="../_images/openod_3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Palmetto Shell Access – On login node</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>From here, you can run scripts on the login node (such as <code class="docutils literal notranslate"><span class="pre">checkquota</span></code>, <code class="docutils literal notranslate"><span class="pre">checkqueucfg</span></code>, <code class="docutils literal notranslate"><span class="pre">whatsfree</span></code>), and request compute nodes with <code class="docutils literal notranslate"><span class="pre">qsub</span></code>.</p>
-<p>You can use OpenOD to run certain applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run R Studio. From “Interactive apps”, please select “RStudio server”:
-<img src="../fig/rstudio1.png" style="height:300px"></p>
-<p>Please fill out the request as shown on this picture (make sure the queue is set to <code class="docutils literal notranslate"><span class="pre">skystd</span></code> or to <code class="docutils literal notranslate"><span class="pre">skylm</span></code>):
-<img src="../fig/rstudio2a.png" style="height:500px"></p>
-<p>This is basically a graphical interface to <code class="docutils literal notranslate"><span class="pre">qsub</span></code>. You are asking for 1 compute node, 5 CPUs, 10 GB of memory, no GPU, 1g interconnect (that is, a c1 node), for the walltime duration of 6 hours. Once you are done entering this information, please click the blue “Launch” button at the bottom. It will bring out a new screen:</p>
-<img src="../fig/rstudio3.png">
-<p>This means your request is being processed. Once the compute node is ready, you will see a blue button under your request saying “Connect to RStudio server”:</p>
-<img src="../fig/rstudio4.png">
-<p>Click on it, and it will start RStudio.</p>
-<p>We won’t go further into R Studio at this workshop, but if you are interested, please attend our “Introduction to R” workshop.</p>
-<p>Thank you for your attention!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is currently an idle timeout that happens when you use the shell access feature of Open
+OnDemand.  If you are inactive for a period of time, the shell will need to be restarted.</p>
+</div>
+</section>
+<section id="jupyter-notebook">
+<h2>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<p>You can use OpenOD to run certain applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run Jupyter. From “Interactive apps”, please select “Jupyter Notebook”:</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/openod_4.png" src="../_images/openod_4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Select Jupyter Notebook</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Please fill out the request as shown on this picture:</p>
+<figure class="align-default" id="id5">
+<img alt="../_images/openod_5.png" src="../_images/openod_5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Fill Jupyter Notebook Options</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is basically a graphical interface to <code class="docutils literal notranslate"><span class="pre">qsub</span></code>. You are asking for 1 compute node, 5 CPUs, 10 GB of memory, no GPU, 1g interconnect (that is, a c1 node), for the walltime duration of 1 hours. Once you are done entering this information, please click the blue “Launch” button at the bottom. It will bring out a new screen:</p>
+<figure class="align-default" id="id6">
+<img alt="../_images/openod_6.png" src="../_images/openod_6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Jupyter Notebook is starting</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This means your request is being processed. Once the compute node is ready, you will see a blue button under your request saying “Connect to Jupyter”:</p>
+<figure class="align-default" id="id7">
+<img alt="../_images/openod_7.png" src="../_images/openod_7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Connect to Jupyter</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Click on it, and it will start Jupyter.</p>
+<p>We won’t go further into Jupyter notebooks at this workshop.  To exit the interactive app, you can
+close the browser tab, but that won’t stop the underlying job.  Those resources will still be
+locked.  To stop the job, select the “my interactive sessions” icon at the top:</p>
+<figure class="align-default" id="id8">
+<img alt="../_images/openod_8.png" src="../_images/openod_8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">My Interactive Sessions icon</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You can then press the Delete button on the session you are done with.</p>
+<figure class="align-default" id="id9">
+<img alt="../_images/openod_9.png" src="../_images/openod_9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Press the red Delete button to stop the job and release the resources back to the cluster</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Open OnDemand can be used to launch interactive applications with a GUI that run on Palmetto</p></li>
+<li><p>Open OnDemand has a file browser</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

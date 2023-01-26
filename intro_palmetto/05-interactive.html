@@ -683,12 +683,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qsub">
+   QSUB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modules">
+   Modules
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -700,6 +729,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qsub">
+   QSUB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modules">
+   Modules
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -709,194 +756,179 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="running-an-interactive-job-on-palmetto">
 <h1>Running an interactive job on Palmetto<a class="headerlink" href="#running-an-interactive-job-on-palmetto" title="Permalink to this headline">#</a></h1>
-<p>teaching: 15
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“How do I request and interact with a compute node?”
-objectives:</p></li>
-<li><p>“<code class="docutils literal notranslate"><span class="pre">qsub</span></code>, <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code>, modules”
-keypoints:</p></li>
-<li><p>“<code class="docutils literal notranslate"><span class="pre">whatsfree</span></code> shows the current Palmetto usage”</p></li>
-<li><p>“<code class="docutils literal notranslate"><span class="pre">qsub</span></code> sends a request for a compute node to the scheduler”</p></li>
-<li><p>“software available on Palmetto is organized into modules according to version”</p></li>
-<li><p>“modules need to be loaded before use”</p></li>
-</ul>
+<section id="qsub">
+<h2>QSUB<a class="headerlink" href="#qsub" title="Permalink to this headline">#</a></h2>
 <p>Now, we arrive at the most important part of today’s workshop: getting on the compute nodes. Compute nodes are the real power of Palmetto. Let’s see which of the compute nodes are available at the moment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">whatsfree</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>We can see that the cluster is quite busy, but there is a fair amount of compute nodes that are available for us. Now, let’s request one compute node in the <code class="docutils literal notranslate"><span class="pre">skystd</span></code> queue. Please type the following (or paste from the website into your SSH terminal):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">skystd</span>
+<p>We can see that the cluster is quite busy, but there is a fair amount of compute nodes that are available for us. Now, let’s request one compute node. Please type the following (or paste from the website into your SSH terminal):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>-I<span class="w"> </span>-l<span class="w"> </span><span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb:interconnect<span class="o">=</span>1g,walltime<span class="o">=</span><span class="m">2</span>:00:00
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">qsub</span></code> command will send a request to the scheduler. Once the request is granted, you will see something like that:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>qsub (Warning): Interactive jobs will be treated as not rerunnable
-qsub: waiting for job 631266.pbs02 to start
-qsub: job 631266.pbs02 ready
-
-[gyourga@skystd01 ~]$ 
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Importantly, you will see the prompt change. Perviously, the prompt was <your username>&#64;login001, because you were at the login node. Now, you are on a compute node – in this case, <code class="docutils literal notranslate"><span class="pre">skystd01</span></code> (you might be on a different compute node). To get back to the login node, let’s type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
-</pre></div>
-</div>
-<p>{: .output}</p>
-<p>Now, you will see the prompt changing back to <code class="docutils literal notranslate"><span class="pre">login001</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">qsub</span></code> command that we have entered used the default parameters: one CPU, 2 Gb of RAM, and 24 hours of walltime (walltime is the amount of time you are requestng for the compute node; once this time is over, you are kicked out from the compute node). This request is very modest and not particularly practical. Let’s do a more relevant request: four CPUs, 10 Gb of RAM, and two hours of walltime:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">skystd</span> <span class="o">-</span><span class="n">l</span> <span class="n">select</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ncpus</span><span class="o">=</span><span class="mi">4</span><span class="p">:</span><span class="n">mem</span><span class="o">=</span><span class="mi">10</span><span class="n">gb</span><span class="p">,</span><span class="n">walltime</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-</pre></div>
-</div>
-<p>{: .bash}</p>
 <p>It is very important not to make typos, use spaces and upper/lowercases exactly as shown, and use the proper punctuation (note the <code class="docutils literal notranslate"><span class="pre">:</span></code> between <code class="docutils literal notranslate"><span class="pre">ncpus</span></code> and <code class="docutils literal notranslate"><span class="pre">mem</span></code>, and the <code class="docutils literal notranslate"><span class="pre">,</span></code> before walltime). If you make a mistake, nothing wrong will happen, but the scheduler won’t understand your request.</p>
 <p>Now, let’s carefully go through the request:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">qsub</span></code> means that we are asking the scheduler to grant us access to a compute node;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-I</span></code> means it’s an interactive job (we’ll talk about it in a bit);</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-q</span></code> specifies the Skylight queue;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-l</span></code> is the list of resource requirements we are asking for;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">select=1</span></code> means we are asking for one compute node;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ncpus=4</span></code> means that we only need four CPUs on the node (since all Palmetto compute nodes have at least 8 CPUs, we might share the compute node with other users, but it’s OK because users who use the same node do not interfere with each other);</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mem=10gb</span></code> means that we are asking for 10 Gb of RAM (you shouldn’t ask for less than 8 Gb); again, memory is specific to the user, and not shared between different users who use the same node);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interconnect=1g</span></code> is the type of interconnect (the allowed types are <code class="docutils literal notranslate"><span class="pre">1g</span></code>, <code class="docutils literal notranslate"><span class="pre">10ge</span></code>, <code class="docutils literal notranslate"><span class="pre">fdr</span></code>, <code class="docutils literal notranslate"><span class="pre">hdr</span></code>, and <code class="docutils literal notranslate"><span class="pre">any</span></code>). If you look at the output of <code class="docutils literal notranslate"><span class="pre">whatsfree</span></code> and <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/hardware-table</span></code>, you will see the different CPU/RAM configurations that are available for these three types of interconnect. Typically, but not always, <code class="docutils literal notranslate"><span class="pre">1g</span></code> nodes have less RAM and a smaller number of CPUs than <code class="docutils literal notranslate"><span class="pre">fdr</span></code> and <code class="docutils literal notranslate"><span class="pre">hdr</span></code> (with the <code class="docutils literal notranslate"><span class="pre">hdr</span></code> nodes being the most powerful interms of RAM and CPUs).</p></li>
 <li><p>finally, <code class="docutils literal notranslate"><span class="pre">walltime=2:00:00</span></code> means that we are asking to use the node for 2 hours; after two hours we will be logged off the compute node if we haven’t already disconnected.</p></li>
 </ul>
-<p>This is actually a quite modest request as well, and the scheduler should grant it right away. Sometimes, when we are asking for much substantial amount of resources (for example, 10 nodes with 20 cores and 370 Gb of RAM), the scheduler cannot satisfy our request, and will put us into the queue so we will have to wait until the node becomes available. If you don’t want to wait, you can press Ctrl+C.</p>
+<p>This is actually a very modest request, and the scheduler should grant it right away. Sometimes, when we are asking for much substantial amount of resources (for example, 20 nodes with 40 cores and 370 Gb of RAM), the scheduler cannot satisfy our request, and will put us into the queue so we will have to wait until the node becomes available.</p>
 <p>Once the request is granted, you will see something like that:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>qsub (Warning): Interactive jobs will be treated as not rerunnable
-qsub: waiting for job 1649928.pbs02 to start
-qsub: job 1649928.pbs02 ready
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[dndawso@login002 ~]$ qsub -I -l select=1:ncpus=4:mem=10gb:interconnect=1g,walltime=2:00:00
+qsub (Warning): Interactive jobs will be treated as not rerunnable
+qsub: waiting for job 74956.pbs02 to start
+qsub: job 74956.pbs02 ready
 
-(base) [gyourga@skystd01 ~]$
+[dndawso@node0033 ~]$
 </pre></div>
 </div>
-<p>{: .output}</p>
-<p>Please note two important things. First, our prompt changes from <code class="docutils literal notranslate"><span class="pre">login001</span></code> no <code class="docutils literal notranslate"><span class="pre">skystdXX</span></code>, where <code class="docutils literal notranslate"><span class="pre">XX</span></code> is some four-digit number. This is the number of the node that we got (in our case, 01). The second one is the job ID, which is 1649928. We can see the information about the compute node by using the <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pbsnodes</span> <span class="n">skystd01</span>
+<p>Importantly, you will see the prompt change. Previously, the prompt was <your username>&#64;login002, because you were at the login node. Now, you are on a compute node – in this case, <code class="docutils literal notranslate"><span class="pre">node0033</span></code> (you might be on a different compute node). You can also see the job ID, in this case it is <code class="docutils literal notranslate"><span class="pre">74956.pbs02</span></code>.</p>
+<p>We can see the information about the compute node by using the <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pbsnodes<span class="w"> </span>node0033
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>Here is the information about the node that I was assigned to (skystd01):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">skystd01</span>
-     <span class="n">Mom</span> <span class="o">=</span> <span class="n">skystd01</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+<p>Here is the information about the node that I was assigned to (node0033):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node0033</span>
+     <span class="n">Mom</span> <span class="o">=</span> <span class="n">node0033</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
      <span class="n">ntype</span> <span class="o">=</span> <span class="n">PBS</span>
-     <span class="n">state</span> <span class="o">=</span> <span class="n">job</span><span class="o">-</span><span class="n">busy</span>
-     <span class="n">pcpus</span> <span class="o">=</span> <span class="mi">20</span>
-     <span class="n">Priority</span> <span class="o">=</span> <span class="mi">25</span>
-     <span class="n">jobs</span> <span class="o">=</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">9</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">11</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">13</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">14</span><span class="p">,</span> <span class="mf">1636248.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">15</span><span class="p">,</span> <span class="mf">1649928.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">16</span><span class="p">,</span> <span class="mf">1649928.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">17</span><span class="p">,</span> <span class="mf">1649928.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">18</span><span class="p">,</span> <span class="mf">1649928.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">19</span>
+     <span class="n">state</span> <span class="o">=</span> <span class="n">free</span>
+     <span class="n">pcpus</span> <span class="o">=</span> <span class="mi">8</span>
+     <span class="n">Priority</span> <span class="o">=</span> <span class="mi">1</span>
+     <span class="n">jobs</span> <span class="o">=</span> <span class="mf">61932.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="mf">74956.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="mf">74956.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">74956.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mf">74956.</span><span class="n">pbs02</span><span class="o">/</span><span class="mi">4</span>
      <span class="n">resources_available</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">linux</span>
      <span class="n">resources_available</span><span class="o">.</span><span class="n">chip_manufacturer</span> <span class="o">=</span> <span class="n">intel</span>
      <span class="n">resources_available</span><span class="o">.</span><span class="n">chip_model</span> <span class="o">=</span> <span class="n">xeon</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">chip_type</span> <span class="o">=</span> <span class="n">e5</span><span class="o">-</span><span class="mi">2640</span><span class="n">v4</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">skystd01</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">chip_type</span> <span class="o">=</span> <span class="n">e5520</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">node0033</span>
      <span class="n">resources_available</span><span class="o">.</span><span class="n">hpmem</span> <span class="o">=</span> <span class="mi">0</span><span class="n">b</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">interconnect</span> <span class="o">=</span> <span class="mi">1</span><span class="n">g</span><span class="p">,</span> <span class="mi">56</span><span class="n">g</span><span class="p">,</span> <span class="n">fdr</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">make</span> <span class="o">=</span> <span class="n">act</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">manufacturer</span> <span class="o">=</span> <span class="n">act</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">mem</span> <span class="o">=</span> <span class="mi">131659892</span><span class="n">kb</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">act</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">ncpus</span> <span class="o">=</span> <span class="mi">20</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">interconnect</span> <span class="o">=</span> <span class="mi">1</span><span class="n">g</span><span class="p">,</span> <span class="nb">any</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">make</span> <span class="o">=</span> <span class="n">dell</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">manufacturer</span> <span class="o">=</span> <span class="n">dell</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">mem</span> <span class="o">=</span> <span class="mi">31876</span><span class="n">mb</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">r610</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">ncpus</span> <span class="o">=</span> <span class="mi">8</span>
      <span class="n">resources_available</span><span class="o">.</span><span class="n">ngpus</span> <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">node_make</span> <span class="o">=</span> <span class="n">act</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">node_manufacturer</span> <span class="o">=</span> <span class="n">act</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">node_model</span> <span class="o">=</span> <span class="n">act</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">nphis</span> <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">phase</span> <span class="o">=</span> <span class="mi">25</span><span class="n">a</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">qcat</span> <span class="o">=</span> <span class="n">skylight_qcat</span><span class="p">,</span> <span class="n">skystd_qcat</span><span class="p">,</span> <span class="n">c2_workq_qcat</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">node_make</span> <span class="o">=</span> <span class="n">dell</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">node_manufacturer</span> <span class="o">=</span> <span class="n">dell</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">node_model</span> <span class="o">=</span> <span class="n">r610</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">phase</span> <span class="o">=</span> <span class="mi">1</span><span class="n">a</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">qcat</span> <span class="o">=</span> <span class="n">c1_workq_qcat</span><span class="p">,</span> <span class="n">c1_solo_qcat</span><span class="p">,</span> <span class="n">osg_qcat</span><span class="p">,</span> <span class="n">phase01a_qcat</span><span class="p">,</span> <span class="n">mx_qcat</span><span class="p">,</span> <span class="n">gilligan_qcat</span>
      <span class="n">resources_available</span><span class="o">.</span><span class="n">ssd</span> <span class="o">=</span> <span class="kc">False</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">vmem</span> <span class="o">=</span> <span class="mi">129470</span><span class="n">mb</span>
-     <span class="n">resources_available</span><span class="o">.</span><span class="n">vnode</span> <span class="o">=</span> <span class="n">skystd01</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">vmem</span> <span class="o">=</span> <span class="mi">32836</span><span class="n">mb</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">vnode</span> <span class="o">=</span> <span class="n">node0033</span>
+     <span class="n">resources_available</span><span class="o">.</span><span class="n">vntype</span> <span class="o">=</span> <span class="n">cpu_node</span>
      <span class="n">resources_assigned</span><span class="o">.</span><span class="n">accelerator_memory</span> <span class="o">=</span> <span class="mi">0</span><span class="n">kb</span>
      <span class="n">resources_assigned</span><span class="o">.</span><span class="n">hbmem</span> <span class="o">=</span> <span class="mi">0</span><span class="n">kb</span>
-     <span class="n">resources_assigned</span><span class="o">.</span><span class="n">mem</span> <span class="o">=</span> <span class="mi">73400320</span><span class="n">kb</span>
+     <span class="n">resources_assigned</span><span class="o">.</span><span class="n">mem</span> <span class="o">=</span> <span class="mi">1048576</span><span class="n">kb</span>
      <span class="n">resources_assigned</span><span class="o">.</span><span class="n">naccelerators</span> <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">resources_assigned</span><span class="o">.</span><span class="n">ncpus</span> <span class="o">=</span> <span class="mi">20</span>
+     <span class="n">resources_assigned</span><span class="o">.</span><span class="n">ncpus</span> <span class="o">=</span> <span class="mi">1</span>
      <span class="n">resources_assigned</span><span class="o">.</span><span class="n">ngpus</span> <span class="o">=</span> <span class="mi">0</span>
-     <span class="n">resources_assigned</span><span class="o">.</span><span class="n">nphis</span> <span class="o">=</span> <span class="mi">0</span>
      <span class="n">resources_assigned</span><span class="o">.</span><span class="n">vmem</span> <span class="o">=</span> <span class="mi">0</span><span class="n">kb</span>
      <span class="n">resv_enable</span> <span class="o">=</span> <span class="kc">True</span>
      <span class="n">sharing</span> <span class="o">=</span> <span class="n">default_shared</span>
-     <span class="n">last_state_change_time</span> <span class="o">=</span> <span class="n">Fri</span> <span class="n">Feb</span> <span class="mi">12</span> <span class="mi">14</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">24</span> <span class="mi">2021</span>
-     <span class="n">last_used_time</span> <span class="o">=</span> <span class="n">Fri</span> <span class="n">Feb</span> <span class="mi">12</span> <span class="mi">14</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">24</span> <span class="mi">2021</span>
+     <span class="n">last_state_change_time</span> <span class="o">=</span> <span class="n">Thu</span> <span class="n">Jan</span> <span class="mi">26</span> <span class="mi">04</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">34</span> <span class="mi">2023</span>
+     <span class="n">last_used_time</span> <span class="o">=</span> <span class="n">Thu</span> <span class="n">Jan</span> <span class="mi">26</span> <span class="mi">10</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">35</span> <span class="mi">2023</span>
 </pre></div>
 </div>
-<p>{: .output}</p>
-<p>You can see that the node has 20 CPUs, no GPUs, and at the moment runs a bunch of jobs. One of these jobs is mine (1649928). When I submitted <code class="docutils literal notranslate"><span class="pre">qsub</span></code> request, the scheduler told me that my job ID is 1649928. The <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code> command gives us the list of jobs that are currently running on the compute node, and, happily, I see my job on that list. It appears four times, because I have requested four CPUs. Somebody else runs a job (1636248) which takes the remaining 16 CPUs.</p>
+<p>You can see that the node has 8 CPUs, no GPUs, and at the moment runs a couple of jobs. One of these jobs is mine (74956). When I submitted <code class="docutils literal notranslate"><span class="pre">qsub</span></code> request, the scheduler told me that my job ID is 74956. The <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code> command gives us the list of jobs that are currently running on the compute node, and, happily, I see my job on that list. It appears four times, because I have requested four CPUs. Somebody else runs a job (61932) which is using just one CPU.</p>
 <p>To exit the compute node, type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>This will bring you back to the login node. See how your prompt has changed to <code class="docutils literal notranslate"><span class="pre">login001</span></code>. It is important to notice that you have to be on a login node to request a compute node. One you are on the compute node, and you want to go to another compute node, you have to exit first.</p>
-<p>For some jobs, you might want to get a GPU, or perhaps two GPUs. For such requests, the <code class="docutils literal notranslate"><span class="pre">qsub</span></code> command needs to specify the number of GPUs and the type of GPUs (which you can get from <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/hardware-skylight</span></code>); we will also have to use the <code class="docutils literal notranslate"><span class="pre">skygpu</span></code> queue. For example, let’s request a NVIDIA Tesla GTX-1080:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">skygpu</span> <span class="o">-</span><span class="n">l</span> <span class="n">select</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ncpus</span><span class="o">=</span><span class="mi">4</span><span class="p">:</span><span class="n">mem</span><span class="o">=</span><span class="mi">10</span><span class="n">gb</span><span class="p">:</span><span class="n">ngpus</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">gpu_model</span><span class="o">=</span><span class="n">gtx1080</span><span class="p">,</span><span class="n">walltime</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<p>This will bring you back to the login node. See how your prompt has changed to <code class="docutils literal notranslate"><span class="pre">login002</span></code>. It is important to notice that you have to be on a login node to request a compute node. One you are on the compute node, and you want to go to another compute node, you have to exit first.</p>
+<p>For some jobs, you might want to get a GPU, or perhaps two GPUs. For such requests, the <code class="docutils literal notranslate"><span class="pre">qsub</span></code> command needs to specify the number of GPUs and the type of GPUs (which you can get from <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/hardware-table</span></code>). For example, let’s request a NVIDIA K20:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>-I<span class="w"> </span>-l<span class="w"> </span><span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb:ngpus<span class="o">=</span><span class="m">1</span>:gpu_model<span class="o">=</span>k20,walltime<span class="o">=</span><span class="m">0</span>:10:00
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>You might have to wait for a bit of the GTX-1080 nodes are busy. Once you get on the compute node, exit it to let other people a chance to get on it.</p>
+<p>You might have to wait for a bit if the K20 nodes are busy. Once you get on the compute node, you can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi
+</pre></div>
+</div>
+<p>Then, <strong>exit the compute node to let other people a chance to get on it</strong>.</p>
 <p>If you want a GPU but don’t care about the type of the GPU, you can request <code class="docutils literal notranslate"><span class="pre">gpu_model=any</span></code>.</p>
 <p>It is possible to ask for several compute nodes at a time, for example <code class="docutils literal notranslate"><span class="pre">select=4</span></code> will give you 4 compute nodes. Some programs, such as LAMMPS or NAMD, work a lot faster if you ask for several nodes. This is an advanced topic and we will not discuss it here, but you can find some examples on our website.</p>
-<p>NOTE: please be considerate of others when you issue qsub. Remember that Palmetto is a shared resource. For example, maximum walltime is 10 days, but please don’t ask for 10 days of walltime if you only plan to run your program for two hours. The same goes for CPUs and memory: if you have a small program, don’t ask for 500 Gb of RAM.</p>
-<p>It is very important to remember that you shouldn’t run computations on the login node, because the login node is shared between everyone who logs into Palmetto, so your computations will interfere with other people’s login processes. However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM so there is no interference. If you are on the compute node, exit it. Once you get on the login node, type this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="o">-</span><span class="n">I</span> <span class="o">-</span><span class="n">q</span> <span class="n">skystd</span> <span class="o">-</span><span class="n">l</span> <span class="n">select</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">ncpus</span><span class="o">=</span><span class="mi">4</span><span class="p">:</span><span class="n">mem</span><span class="o">=</span><span class="mi">10</span><span class="n">gb</span><span class="p">,</span><span class="n">walltime</span><span class="o">=</span><span class="mi">2</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<p>There are other resource limit selection options documented on our
+<a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/basic/started/#resource-limits-specification">website</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be considerate of others when you issue qsub. Remember that Palmetto is a shared resource. Don’t request resources you don’t plan on actually using. Jobs that request in-demand resources and don’t use them are subject to termination.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is very important to remember that you shouldn’t run computations on the login node, because the login node is shared between everyone who logs into Palmetto, so your computations will interfere with other people’s login processes.
+However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM so there is no interference.</p>
+</div>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
+<p>If you are on the compute node, exit it. Once you get on the login node, type this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>-I<span class="w"> </span>-l<span class="w"> </span><span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb,walltime<span class="o">=</span><span class="m">2</span>:00:00
 </pre></div>
 </div>
-<p>{: .bash}</p>
 <p>We have a lot of software installed on Palmetto, but most of it is organized into <em>modules</em>, which need to be loaded. To see which modules are available on Palmetto, please type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">avail</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>Hit <code class="docutils literal notranslate"><span class="pre">SPACE</span></code> several times to get to the end of the module list. This is a very long list, and you can see that there is a lot of software installed for you. If you want to see which versions of LAMMPS are installed, you can type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">module</span> <span class="n">avail</span> <span class="n">lammps</span>
+<p>Hit <code class="docutils literal notranslate"><span class="pre">SPACE</span></code> several times to get to the end of the module list. This is a very long list, and you can see that there is a lot of software installed for you. If you want to see which versions of MATLAB are installed, you can type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail<span class="w"> </span>matlab
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----------------------------------------------------</span> <span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">ModuleFiles</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">centos8</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">-----------------------------------------------------</span>
-   <span class="n">lammps</span><span class="o">/</span><span class="mi">20190807</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span><span class="o">-</span><span class="n">cuda10_2</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">omp</span>                    <span class="n">lammps</span><span class="o">/</span><span class="mi">20200505</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span><span class="o">-</span><span class="n">cuda10_2</span><span class="o">-</span><span class="n">kokkos</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">nvidia_V</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">omp</span>
-   <span class="n">lammps</span><span class="o">/</span><span class="mi">20200505</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span><span class="o">-</span><span class="n">cuda10_2</span><span class="o">-</span><span class="n">kokkos</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">nvidia_K</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">omp</span>    <span class="n">lammps</span><span class="o">/</span><span class="mi">20200505</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span><span class="o">-</span><span class="n">cuda10_2</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">nvidia_K</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">omp</span>        <span class="p">(</span><span class="n">D</span><span class="p">)</span>
-   <span class="n">lammps</span><span class="o">/</span><span class="mi">20200505</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span><span class="o">-</span><span class="n">cuda10_2</span><span class="o">-</span><span class="n">kokkos</span><span class="o">-</span><span class="n">mpi</span><span class="o">-</span><span class="n">nvidia_P</span><span class="o">-</span><span class="n">openmp</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">omp</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[dndawso@node0033 ~]$ module avail matlab
 
-<span class="o">-------------------------------------------------------------------</span> <span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">AltModFiles</span> <span class="o">-------------------------------------------------------------------</span>
-   <span class="n">lammps</span><span class="o">/</span><span class="mi">20200505</span><span class="o">-</span><span class="n">nvidia_V_kokkos</span>
+------------------------------------------------- /software/AltModFiles --------------------------------------------------
+   matlab/MUSC2018b    matlab/2021a    matlab/2021b    matlab/2022a (D)
 
-  <span class="n">Where</span><span class="p">:</span>
-   <span class="n">D</span><span class="p">:</span>  <span class="n">Default</span> <span class="n">Module</span>
+  Where:
+   D:  Default Module
 
-<span class="n">Use</span> <span class="s2">&quot;module spider&quot;</span> <span class="n">to</span> <span class="n">find</span> <span class="nb">all</span> <span class="n">possible</span> <span class="n">modules</span> <span class="ow">and</span> <span class="n">extensions</span><span class="o">.</span>
-<span class="n">Use</span> <span class="s2">&quot;module keyword key1 key2 ...&quot;</span> <span class="n">to</span> <span class="n">search</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">possible</span> <span class="n">modules</span> <span class="n">matching</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;keys&quot;</span><span class="o">.</span>
+If the avail list is too long consider trying:
+
+&quot;module --default avail&quot; or &quot;ml -d av&quot; to just list the default modules.
+&quot;module overview&quot; or &quot;ml ov&quot; to display the number of modules for each name.
+
+Use &quot;module spider&quot; to find all possible modules and extensions.
+Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules matching any of the &quot;keys&quot;.
 </pre></div>
 </div>
-<p>{: .output}</p>
 <p>Let’s say you want to use R. To load the module, you will need to specify its full <a class="reference external" href="http://name.To">name.To</a> see which versions of R are available, type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">avail</span> <span class="n">r</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
-<p>This will give you a list of all modules which have the letter “r” in them (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> is not very sophisticated). Let’s see what happens when you load the R 4.0.2 module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">r</span><span class="o">/</span><span class="mf">4.0.2</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span>
+<p>This will give you a list of all modules which have the letter “r” in them (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> is not very sophisticated). Let’s see what happens when you load the R 4.1.3 module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span>  <span class="n">r</span><span class="o">/</span><span class="mf">4.1.3</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>
 <span class="n">module</span> <span class="nb">list</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Currently</span> <span class="n">Loaded</span> <span class="n">Modules</span><span class="p">:</span>
-  <span class="mi">1</span><span class="p">)</span> <span class="n">tcl</span><span class="o">/</span><span class="mf">8.6.8</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span>   <span class="mi">2</span><span class="p">)</span> <span class="n">openjdk</span><span class="o">/</span><span class="mf">11.0.2</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span>   <span class="mi">3</span><span class="p">)</span> <span class="n">libxml2</span><span class="o">/</span><span class="mf">2.9.10</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span>   <span class="mi">4</span><span class="p">)</span> <span class="n">libpng</span><span class="o">/</span><span class="mf">1.6.37</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span>   <span class="mi">5</span><span class="p">)</span> <span class="n">r</span><span class="o">/</span><span class="mf">4.0.2</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">8.3.1</span>
+  <span class="mi">1</span><span class="p">)</span> <span class="n">tcl</span><span class="o">/</span><span class="mf">8.6.12</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>       <span class="mi">4</span><span class="p">)</span> <span class="n">openjdk</span><span class="o">/</span><span class="mf">11.0.15_10</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>   <span class="mi">7</span><span class="p">)</span> <span class="n">glib</span><span class="o">/</span><span class="mf">2.72.1</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>
+  <span class="mi">2</span><span class="p">)</span> <span class="n">sqlite</span><span class="o">/</span><span class="mf">3.38.5</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>    <span class="mi">5</span><span class="p">)</span> <span class="n">libxml2</span><span class="o">/</span><span class="mf">2.9.13</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>       <span class="mi">8</span><span class="p">)</span> <span class="n">cairo</span><span class="o">/</span><span class="mf">1.16.0</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>
+  <span class="mi">3</span><span class="p">)</span> <span class="n">openssl</span><span class="o">/</span><span class="mf">1.1.1</span><span class="n">o</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>   <span class="mi">6</span><span class="p">)</span> <span class="n">libpng</span><span class="o">/</span><span class="mf">1.6.37</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>        <span class="mi">9</span><span class="p">)</span> <span class="n">r</span><span class="o">/</span><span class="mf">4.1.3</span><span class="o">-</span><span class="n">gcc</span><span class="o">/</span><span class="mf">9.5.0</span>
 </pre></div>
 </div>
-<p>{: .output}</p>
 <p>R depends on other software to run, so we have configured the R module in a way that when you load it, it automatically loads other modules that it depends on.</p>
 <p>To start command-line R, you can simply type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">R</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
 <p>To quit R, type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>{: .bash}</p>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">qsub</span></code> sends a request for a compute node to the scheduler.</p></li>
+<li><p>Software available on Palmetto is organized into modules according to version.</p></li>
+<li><p>Modules need to be loaded before use.</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
