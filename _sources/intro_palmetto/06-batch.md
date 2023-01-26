@@ -107,7 +107,7 @@ Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
 
 You see the job ID, your Palmetto username, the name of the queue (more on that later), the name of the job (`random_matrix`), the resources requested (1 node, 10 CPUs, 10 gb of RAM, twenty minutes of walltime). The letter `R` means that the job is running (`Q` means "queued", and `F` means "finished"), and then it shows for how long it's been running (it basically just started).
 
-Wait a little bit and do `qstat` again (you can hit the `UP` arrow to show the previous command). `Elap time` should now be a bit longer. The script should take five minutes or so to execute. If you enter `qstat -u <your Palmetto username>` and the list is empty, then congratulations, we are done!
+Wait a little bit and do `qstat` again (you can hit the `UP` arrow to show the previous command). `Elap time` should now be a bit longer. The script should take a few minutes or so to execute. If you enter `qstat -u <your Palmetto username>` and the list is empty, then congratulations, we are done!
 
 If everything went well, you should now see the file `random_matrix.txt`. Let's print it on screen:
 
@@ -115,8 +115,23 @@ If everything went well, you should now see the file `random_matrix.txt`. Let's 
 cat random_matrix.txt
 ```
 
-~~~
-~~~
+```
+[1] -69.78825+15.10709i
+
+
++------------------------------------------+
+| PALMETTO CLUSTER PBS RESOURCES REQUESTED |
++------------------------------------------+
+
+mem=10gb,walltime=00:20:00,ncpus=10
+
+
++-------------------------------------+
+| PALMETTO CLUSTER PBS RESOURCES USED |
++-------------------------------------+
+
+cput=00:03:18,mem=1025464kb,walltime=00:03:21,ncpus=10,cpupercent=65,vmem=1588316kb
+```
 
 Your output may be different since we used random matrices.
 
