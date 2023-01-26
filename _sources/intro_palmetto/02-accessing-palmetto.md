@@ -42,7 +42,7 @@ MobaXterm SSH Session Settings
 ## Entering Username and Password
 
 At this stage, for both Mac and Windows, you will be asked to enter your username
-and password, then DUO option. Use your usual Clemson username (with @clemson.edu part) and Clemson
+and password, then DUO option. Use your usual Clemson username (without @clemson.edu part) and Clemson
 password.
 
 :::{note}
