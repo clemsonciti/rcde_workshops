@@ -1,9 +1,8 @@
 # Introduction to Linux
 
-- **Instructor**: Linh B. Ngo
-- **Office**: 2092 Barre Hall
+- **Instructor**: Matt Moersen
 - **Office Hours**: Wednesday Office-hours 8.30am – 11.30am
-- **Email**: lngo AT clemson DOT edu
+- **Email**: mpmoers AT clemson DOT edu
 
 ## Workshop Description
 The workshop provides the introduction to the Linux Command Line Interface 
