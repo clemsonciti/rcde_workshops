@@ -26,8 +26,9 @@ parts:
       - file: intro_palmetto/03-palmetto_structure.md
       - file: intro_palmetto/04-storage.md
       - file: intro_palmetto/05-interactive.md
-      - file: intro_palmetto/06-batch.md
+      - file: intro_palmetto/06-file-transfer.md
       - file: intro_palmetto/07-open-od.md
+      - file: intro_palmetto/08-batch.md
 - caption: R
   chapters:
     - file: r_programming/00-index.md
