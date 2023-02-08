@@ -61,9 +61,8 @@ parts:
   chapters:
     - file: python_programming/00-index.md
       sections:
-      - file: python_programming/IntrotoPythonI.ipynb
-      - file: python_programming/IntrotoPythonII.ipynb
-      - file: python_programming/IntrotoPythonIII.ipynb
+      - file: python_programming/01-IntroToPython-I.ipynb
+      - file: python_programming/02-IntroToPython-II.ipynb
     - file: python_sklearn/00-index.md
       sections:
       - file: python_sklearn/01-introduction.md

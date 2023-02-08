@@ -1,13 +1,14 @@
 # RCDE Workshops
 
 
-This site is created using [jupyter-book](). A build script is set up in `build.sh`. 
+This site is created using [jupyter-book](). A build script is set up in `build.sh`.
 To create the build environment, run:
 
 ~~~
 $ conda create -n jupyter-book python==3.10.0
 $ source activate jupyter-book
 $ conda install -c conda-forge jupyter-book
+$ conda install numpy matplotlib
 $ pip install ghp-import
 ~~~
 
