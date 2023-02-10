@@ -8,7 +8,7 @@ To create the build environment, run:
 $ conda create -n jupyter-book python==3.10.0
 $ source activate jupyter-book
 $ conda install -c conda-forge jupyter-book
-$ conda install numpy matplotlib
+$ conda install numpy matplotlib pandas
 $ pip install ghp-import
 ~~~
 

@@ -63,6 +63,9 @@ parts:
       sections:
       - file: python_programming/01-IntroToPython-I.ipynb
       - file: python_programming/02-IntroToPython-II.ipynb
+      - file: python_programming/03-IntroToPython-III.ipynb
+      - file: python_programming/groupby_examples.ipynb
+      - file: python_programming/wattai_pandas_intro.ipynb
     - file: python_sklearn/00-index.md
       sections:
       - file: python_sklearn/01-introduction.md
