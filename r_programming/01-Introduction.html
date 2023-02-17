@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to R” &#8212; Research Computing and Data Workshop</title>
+    <title>Introduction to R &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -715,7 +695,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to R”</h1>
+                <h1>Introduction to R</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -728,32 +708,38 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-r">
-<h1>Introduction to R”<a class="headerlink" href="#introduction-to-r" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to R<a class="headerlink" href="#introduction-to-r" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>R is a language and environment for statistical computing and graphics</p></li>
-<li><p>R is developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies) by John Chambers and colleagues.</p></li>
-<li><p>R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, …) and graphical techniques, and is highly extensible.</p></li>
+<li><p>R is developed at Bell Laboratories (formerly AT&amp;T, now Lucent Technologies)
+by John Chambers and colleagues.</p></li>
+<li><p>R provides a wide variety of statistical (linear and nonlinear modelling,
+classical statistical tests, time-series analysis, classification, clustering, …)
+and graphical techniques, and is highly extensible.</p></li>
 <li><p>R is available as Free Software</p></li>
-<li><p>R runs on a wide variety of UNIX platforms and similar systems (including FreeBSD and Linux), Windows and MacOS.</p></li>
+<li><p>R runs on a wide variety of UNIX platforms and similar systems (including FreeBSD
+and Linux), Windows and MacOS.</p></li>
 <li><p>R can be extended (easily) via packages on CRAN (The Comprehensive R Archive Network)</p></li>
 </ul>
-<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114046192-a3f0aa80-9856-11eb-9646-995a67c144f9.png" /></p>
-<p>Users of the Palmetto cluster can run R on Palmetto. The most user-friendly way to do this is to run R Studio through a web interface (Open OnDemand). Let’s start it. In your web browser (Chrome, Firefox, Edge, Safari, Opera etc.), please go to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod02</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+<p>Users of the Palmetto cluster can run R on Palmetto. The most user-friendly way to do this
+is to run R Studio through a web interface (Open OnDemand). Let’s start it. In your web
+browser (Chrome, Firefox, Edge, Safari, Opera etc.), please go to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+
 </pre></div>
 </div>
 <p>You will need to login with your Clemson username and password, and perform a DUO check.</p>
-<img src="../fig/openod_dashboard.png" alt="Open OnDemand Dashboard" style="height:400px">
-<p>You can use OpenOD to run certain graphical applications applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run R Studio. From “Interactive apps”, please select “RStudio server”:
-<img src="../fig/rstudio1.png" style="height:300px"></p>
-<p>Please fill out the request as shown on this picture:
-<img src="../fig/rstudio2.png" style="height:500px"></p>
+<p><img alt="Open OnDemand Dashboard" src="../_images/openod_dashboard.png" /></p>
+<p>You can use OpenOD to run certain graphical applications applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run R Studio. From “Interactive apps”, please select “RStudio server”:</p>
+<p><img alt="RStudio" src="../_images/rstudio1.png" /></p>
+<p>Please fill out the request as shown on this picture:</p>
+<p><img alt="Open OnDemand Dashboard" src="../_images/rstudio2.png" /></p>
 <p>This is basically a graphical interface to <code class="docutils literal notranslate"><span class="pre">qsub</span></code>. You are asking for 1 compute node, 5 CPUs, 10 GB of memory, no GPU, 1g interconnect (that is, a c1 node), for the walltime duration of 6 hours. Once you are done entering this information, please click the blue “Launch” button at the bottom. It will bring out a new screen:</p>
-<img src="../fig/rstudio3.png">
+<p><img alt="Open OnDemand Dashboard" src="../_images/rstudio3.png" /></p>
 <p>This means your request is being processed. Once the compute node is ready, you will see a blue button under your request saying “Connect to RStudio server”:</p>
-<img src="../fig/rstudio4.png">
+<p><img alt="Open OnDemand Dashboard" src="../_images/rstudio4.png" /></p>
 <p>Click on it, and it will start RStudio. The final screen will be something like</p>
-<img src="../fig/rstudio_gui.png" style="width:600px">
+<p><img alt="Open OnDemand Dashboard" src="../_images/rstudio_gui.png" /></p>
 </section>
 
     <script type="text/x-thebe-config">

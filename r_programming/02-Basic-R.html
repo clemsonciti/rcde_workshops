@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Structures" href="03-Data-Structures.html" />
-    <link rel="prev" title="Introduction to R”" href="01-Introduction.html" />
+    <link rel="prev" title="Introduction to R" href="01-Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -840,7 +820,7 @@ keypoints:</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> is for comment insert.</p></li>
 <li><p>To clean the existing environment, remove all memory in previous sessions:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
@@ -858,8 +838,8 @@ would have learned back in school.</p>
 <li><p>Subtract: <code class="docutils literal notranslate"><span class="pre">-</span></code></p></li>
 <li><p>Other math functions: <code class="docutils literal notranslate"><span class="pre">sin,</span> <span class="pre">cos,</span> <span class="pre">log(),</span> <span class="pre">log10(),</span> <span class="pre">exp</span></code></p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="m">1+2</span><span class="p">)</span><span class="o">*</span><span class="m">3-4</span><span class="o">^</span><span class="m">5</span>
-<span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sin</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="nf">log10</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">*</span><span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1+2</span><span class="p">)</span><span class="o">*</span><span class="m">3-4</span><span class="o">^</span><span class="m">5</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">sin</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="nf">log10</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">*</span><span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -880,8 +860,8 @@ would have learned back in school.</p>
 <ul class="simple">
 <li><p>To assign variable in R, we can use both <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> sign</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
-<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="m">2</span>
 </pre></div>
 </div>
 <p>Note that assignment does not print out value to R console. It saves the variable in Environment section:
@@ -894,10 +874,10 @@ would have learned back in school.</p>
 </pre></div>
 </div>
 <p>The output will be like this:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span>
+<span class="o">&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span>
 </pre></div>
 </div>
 <p>Do not to worry about the <code class="docutils literal notranslate"><span class="pre">[1]</span></code> in front. We will be learning about that later.</p>
@@ -908,8 +888,8 @@ would have learned back in school.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># print working directory</span>
 <span class="nf">getwd</span><span class="p">()</span>
 <span class="c1"># set working directory</span>
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;C:/R/&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># for Windows</span>
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/user/home/R&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># for Macs</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;C:/R/&#39;</span><span class="p">)</span> <span class="c1"># for Windows</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/user/home/R&#39;</span><span class="p">)</span> <span class="c1"># for Macs</span>
 </pre></div>
 </div>
 </section>
@@ -961,7 +941,7 @@ would have learned back in school.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to R”</p>
+            <p class="prev-next-title">Introduction to R</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03-Data-Structures.html" title="next page">

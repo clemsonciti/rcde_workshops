@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -792,11 +772,11 @@ Tue's old screenshots:
 </pre></div>
 </div>
 <p>First, let’s make a bar plot of the miles-per-gallon values of the 32 cars. <code class="docutils literal notranslate"><span class="pre">col</span></code> specifies the colour.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now, let’s make a histogram for horsepower values.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">hp</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;magenta&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">hp</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;magenta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let’s display two jistorgrams on the same plot. We’ll use the function <code class="docutils literal notranslate"><span class="pre">par</span></code> to specify that the two histograms will be plotted stacked to each other, one on the left and one on the right.</p>
@@ -813,17 +793,17 @@ Tue's old screenshots:
 <p>Now, let’s make this box plot for every value of cylinders (<code class="docutils literal notranslate"><span class="pre">mtars$cyl</span></code>). We will use the same function <code class="docutils literal notranslate"><span class="pre">boxplot</span></code>, but with a few more parameters. We will specify the data explicitly, as well as <code class="docutils literal notranslate"><span class="pre">col</span></code> (for colour scheme), <code class="docutils literal notranslate"><span class="pre">main</span></code> (main figure title), <code class="docutils literal notranslate"><span class="pre">xlab</span></code> and <code class="docutils literal notranslate"><span class="pre">ylab</span></code> (X- and Y-axis labels). We will use the function <code class="docutils literal notranslate"><span class="pre">legend</span></code> to create a legend. We call <code class="docutils literal notranslate"><span class="pre">factors</span></code> to find out the unique cylinder values.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">factor</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span>
 <span class="nf">boxplot</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">cyl</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span>
-<span class="w">        </span><span class="n">col</span><span class="o">=</span><span class="nf">terrain.colors</span><span class="p">(</span><span class="m">3</span><span class="p">),</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;MPG by car cylinders&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cylinders&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;mpg&quot;</span><span class="p">)</span>
-<span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topright&quot;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;6&quot;</span><span class="p">,</span><span class="s">&quot;8&quot;</span><span class="p">),</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">terrain.colors</span><span class="p">(</span><span class="m">3</span><span class="p">))</span>
+        <span class="n">col</span><span class="o">=</span><span class="nf">terrain.colors</span><span class="p">(</span><span class="m">3</span><span class="p">),</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;MPG by car cylinders&quot;</span><span class="p">,</span>
+        <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;cylinders&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;mpg&quot;</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topright&quot;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;6&quot;</span><span class="p">,</span><span class="s">&quot;8&quot;</span><span class="p">),</span><span class="n">fill</span> <span class="o">=</span> <span class="nf">terrain.colors</span><span class="p">(</span><span class="m">3</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>And a scatter plot. We’ll use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function for this purpose. The dots will be coloured according to the number of cylinders.</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">mtcars</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Car Fuel vs Weight&quot;</span><span class="p">,</span>
-<span class="w">     </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Mileage per Gallon&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">,</span>
-<span class="w">     </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span> <span class="n">mtcars</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Car Fuel vs Weight&quot;</span><span class="p">,</span>
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Mileage per Gallon&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">,</span>
+     <span class="n">col</span> <span class="o">=</span> <span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
 <span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topright&quot;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">),</span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">3</span><span class="p">,</span>
-<span class="w">       </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
+       <span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">pch</span></code> is the plotting character; 16 corresponds to a circle, and <code class="docutils literal notranslate"><span class="pre">cex</span></code> is the size of the plotting characters. The full table of plotting characters is here:

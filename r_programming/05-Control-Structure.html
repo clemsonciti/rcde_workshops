@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -807,58 +787,58 @@ keypoints:</p></li>
 <p>Syntax:</p>
 <p><strong>if</strong></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="n">condition</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">task</span>
+  <span class="n">do</span> <span class="n">task</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>if…else</strong></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="n">condition1</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="m">1</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rest</span>
+  <span class="n">do</span> <span class="n">task</span> <span class="m">1</span>
+<span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+  <span class="n">do</span> <span class="n">the</span> <span class="n">rest</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>if…elseif…else</strong></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">if </span><span class="p">(</span><span class="n">condition1</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="m">1</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="nf">if </span><span class="p">(</span><span class="n">condition2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="m">2</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rest</span>
+  <span class="n">do</span> <span class="n">task</span> <span class="m">1</span>
+<span class="p">}</span> <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">condition2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">do</span> <span class="n">task</span> <span class="m">2</span>
+<span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+  <span class="n">do</span> <span class="n">the</span> <span class="n">rest</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>ifelse()</strong></p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ifelse</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span><span class="n">action</span><span class="w"> </span><span class="n">if</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="n">action</span><span class="w"> </span><span class="n">if</span><span class="w"> </span><span class="n">false</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ifelse</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span><span class="n">action</span> <span class="n">if</span> <span class="n">true</span><span class="p">,</span><span class="n">action</span> <span class="n">if</span> <span class="n">false</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Examples</strong></p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
 <span class="nf">if </span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="m">3</span><span class="p">){</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">)</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
 <span class="nf">if </span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="m">3</span><span class="p">){</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">)</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is NOT bigger than 3&quot;</span><span class="p">)</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is NOT bigger than 3&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
 <span class="nf">if </span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="m">3</span><span class="p">){</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">)</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="nf">if </span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;a equals to 3&quot;</span><span class="p">)</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is less than 3&quot;</span><span class="p">)</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="m">3</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a equals to 3&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">&quot;a is less than 3&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span>
-<span class="n">response</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="m">3</span><span class="p">,</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">,</span><span class="s">&quot;a is not bigger than 3&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">5</span>
+<span class="n">response</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="m">3</span><span class="p">,</span><span class="s">&quot;a is bigger than 3&quot;</span><span class="p">,</span><span class="s">&quot;a is not bigger than 3&quot;</span><span class="p">)</span>
 <span class="n">response</span>
 <span class="nf">class</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
@@ -867,43 +847,43 @@ keypoints:</p></li>
 <section id="for-loop">
 <h2>For Loop<a class="headerlink" href="#for-loop" title="Permalink to this headline">#</a></h2>
 <p>Full Syntax:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">sequence</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">task</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">iterator</span> <span class="n">in</span> <span class="n">sequence</span><span class="p">){</span>
+  <span class="n">do</span> <span class="n">task</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">){</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">){</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">2</span><span class="p">)){</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">2</span><span class="p">)){</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Short Syntax</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span> <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="kc">letters</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">))</span> <span class="nf">print</span><span class="p">(</span><span class="kc">letters</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
 <section id="while-loop">
 <h2>While Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">#</a></h2>
 <p>Syntax</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">while </span><span class="p">(</span><span class="n">this</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">true</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">task</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">while </span><span class="p">(</span><span class="n">this</span> <span class="n">condition</span> <span class="n">is</span> <span class="n">true</span><span class="p">){</span>
+  <span class="n">do</span> <span class="n">a</span> <span class="n">task</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">1</span>
 <span class="nf">while </span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="m">5</span><span class="p">){</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">a</span><span class="m">+1</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+  <span class="n">a</span> <span class="o">&lt;-</span> <span class="n">a</span><span class="m">+1</span>
 <span class="p">}</span>
 </pre></div>
 </div>

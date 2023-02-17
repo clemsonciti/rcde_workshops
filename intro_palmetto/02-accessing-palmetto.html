@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/01-Introduction.html">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -790,7 +770,7 @@ title="Print to PDF"
 <section id="mac">
 <h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">#</a></h2>
 <p>To start the SSH client on a Mac, you can open the Terminal Application (which is usually located in <code class="docutils literal notranslate"><span class="pre">Applications</span></code> → <code class="docutils literal notranslate"><span class="pre">Utilities</span></code>) and run the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>login.palmetto.clemson.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh login.palmetto.clemson.edu
 </pre></div>
 </div>
 </section>
@@ -854,7 +834,7 @@ is the expected behaviour. The SSH server is still receiving your password.</p>
 <p>When logged in,
 you are presented with a welcome message
 and the following “prompt”:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>username@login001<span class="w"> </span>~<span class="o">]</span>$
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>username@login001 ~<span class="o">]</span>$
 </pre></div>
 </div>
 <p>The prompt in a bash shell usually

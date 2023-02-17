@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Transferring files to and from Palmetto" href="06-file-transfer.html" />
+    <link rel="next" title="Running a batch job" href="06-batch.html" />
     <link rel="prev" title="Storage on Palmetto" href="04-storage.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../r_programming/01-Introduction.html">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -783,7 +763,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>We can see that the cluster is quite busy, but there is a fair amount of compute nodes that are available for us. Now, let’s request one compute node. Please type the following (or paste from the website into your SSH terminal):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>-I<span class="w"> </span>-l<span class="w"> </span><span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb:interconnect<span class="o">=</span>1g,walltime<span class="o">=</span><span class="m">2</span>:00:00
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb:interconnect<span class="o">=</span>1g,walltime<span class="o">=</span><span class="m">2</span>:00:00
 </pre></div>
 </div>
 <p>It is very important not to make typos, use spaces and upper/lowercases exactly as shown, and use the proper punctuation (note the <code class="docutils literal notranslate"><span class="pre">:</span></code> between <code class="docutils literal notranslate"><span class="pre">ncpus</span></code> and <code class="docutils literal notranslate"><span class="pre">mem</span></code>, and the <code class="docutils literal notranslate"><span class="pre">,</span></code> before walltime). If you make a mistake, nothing wrong will happen, but the scheduler won’t understand your request.</p>
@@ -810,7 +790,7 @@ qsub: job 74956.pbs02 ready
 </div>
 <p>Importantly, you will see the prompt change. Previously, the prompt was <your username>&#64;login002, because you were at the login node. Now, you are on a compute node – in this case, <code class="docutils literal notranslate"><span class="pre">node0033</span></code> (you might be on a different compute node). You can also see the job ID, in this case it is <code class="docutils literal notranslate"><span class="pre">74956.pbs02</span></code>.</p>
 <p>We can see the information about the compute node by using the <code class="docutils literal notranslate"><span class="pre">pbsnodes</span></code> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pbsnodes<span class="w"> </span>node0033
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pbsnodes node0033
 </pre></div>
 </div>
 <p>Here is the information about the node that I was assigned to (node0033):</p>
@@ -863,7 +843,7 @@ qsub: job 74956.pbs02 ready
 </div>
 <p>This will bring you back to the login node. See how your prompt has changed to <code class="docutils literal notranslate"><span class="pre">login002</span></code>. It is important to notice that you have to be on a login node to request a compute node. One you are on the compute node, and you want to go to another compute node, you have to exit first.</p>
 <p>For some jobs, you might want to get a GPU, or perhaps two GPUs. For such requests, the <code class="docutils literal notranslate"><span class="pre">qsub</span></code> command needs to specify the number of GPUs and the type of GPUs (which you can get from <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/hardware-table</span></code>). For example, let’s request a NVIDIA K20:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>-I<span class="w"> </span>-l<span class="w"> </span><span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb:ngpus<span class="o">=</span><span class="m">1</span>:gpu_model<span class="o">=</span>k20,walltime<span class="o">=</span><span class="m">0</span>:10:00
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb:ngpus<span class="o">=</span><span class="m">1</span>:gpu_model<span class="o">=</span>k20,walltime<span class="o">=</span><span class="m">0</span>:10:00
 </pre></div>
 </div>
 <p>You might have to wait for a bit if the K20 nodes are busy. Once you get on the compute node, you can run:</p>
@@ -888,15 +868,15 @@ However, once you are on a compute node, you can run some computations, because 
 <section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">#</a></h2>
 <p>If you are on the compute node, exit it. Once you get on the login node, type this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub<span class="w"> </span>-I<span class="w"> </span>-l<span class="w"> </span><span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb,walltime<span class="o">=</span><span class="m">2</span>:00:00
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>10gb,walltime<span class="o">=</span><span class="m">2</span>:00:00
 </pre></div>
 </div>
 <p>We have a lot of software installed on Palmetto, but most of it is organized into <em>modules</em>, which need to be loaded. To see which modules are available on Palmetto, please type</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module avail
 </pre></div>
 </div>
 <p>Hit <code class="docutils literal notranslate"><span class="pre">SPACE</span></code> several times to get to the end of the module list. This is a very long list, and you can see that there is a lot of software installed for you. If you want to see which versions of MATLAB are installed, you can type</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail<span class="w"> </span>matlab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module avail matlab
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[dndawso@node0033 ~]$ module avail matlab
@@ -985,10 +965,10 @@ Use &quot;module keyword key1 key2 ...&quot; to search for all possible modules 
             <p class="prev-next-title">Storage on Palmetto</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="06-file-transfer.html" title="next page">
+    <a class='right-next' id="next-link" href="06-batch.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Transferring files to and from Palmetto</p>
+        <p class="prev-next-title">Running a batch job</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

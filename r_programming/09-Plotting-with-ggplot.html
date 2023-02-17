@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -222,18 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
-     Transferring files to and from Palmetto
+    <a class="reference internal" href="../intro_palmetto/06-batch.html">
+     Running a batch job
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/08-batch.html">
-     Running a batch job
     </a>
    </li>
   </ul>
@@ -257,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01-Introduction.html">
-     Introduction to R”
+     Introduction to R
     </a>
    </li>
    <li class="toctree-l2">
@@ -385,22 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
-     Introduction to Python I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
-     Introduction to Python II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
-     Introduction to Python III
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -768,35 +748,35 @@ keypoints:</p></li>
 ```
 -->
 <p>A quick way to get familiar with <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is the <code class="docutils literal notranslate"><span class="pre">qplot</span></code> function, which stands for “quick plot”. Let’s do a quick scatter plot from the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset, plotting sepal length versus petal length:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Notice that it already looks nicer than the basic R plots we did in the last chapter. Now, let’s plot different species of iris with different colours and shapes:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-<span class="w">      </span><span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
+      <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+      <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095545-8ab62100-988b-11eb-8383-38d4a0802423.png" /></p>
 <p>Now, let’s add smooth lines which show trends in the data:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-<span class="w">      </span><span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-<span class="w">      </span><span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
+      <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+      <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+      <span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095674-b507de80-988b-11eb-8a9f-852ed19ed08a.png" /></p>
 <p>Let’s make these lines straight – that is, let’s fit a linear model to each species’ data:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-<span class="w">      </span><span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-<span class="w">      </span><span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
+      <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+      <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+      <span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095642-aae5e000-988b-11eb-925b-91336205073d.png" /></p>
 <p>Let’s make a density plot (a smoothed histogram) of sepal lengths of each species:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">geom</span><span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="n">Species</span><span class="p">)</span>
+      <span class="n">color</span><span class="o">=</span><span class="n">Species</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There are many more ways to use ggplot2. Some useful (and beautiful) examples of code are here:
