@@ -1,19 +1,23 @@
 # Data Structures
 
-teaching: 20
-exercises: 0
-questions:
-- "Data types / classes in R"
-- "Random numbers"
-- "Vectors"
-- "Missing values"
+```{admonition} Learning objectives
+:class: dropdown
 
-objectives:
-- "5 data types / classes of objects"
-- "Working with vectors"
-keypoints:
-- "Classes of objects"
-- "Vectors" 
+- Questions:
+  - Data types / classes in R
+  - Random numbers
+  - Vectors
+  - Missing values
+- Objectives:
+  - 5 data types / classes of objects
+  - Working with vectors
+- Keypoints:
+  - Classes of objects
+  - Vectors
+
+```
+
+
 
 ## Classes of objects
 In R, there are 5 main classes of objects:
