@@ -94,7 +94,6 @@ class(response)
 ```
 
 ```{admonition} For Loop
-```{admonition} Learning objectives
 :class: dropdown
 
 - Full Syntax:
