@@ -16,7 +16,7 @@ Another special node is the *scheduler*; Palmetto users can get from the
 login node to the compute nodes by submitting a request to the scheduler, and the scheduler will assign them to the most appropriate compute node.
 Palmetto also has a few so-called "service" nodes, which serve special purposes like transferring code and data to and from the cluster, and hosting web applications.
 
-The Skylight nodes are integrated into Palmetto. To see the specifications of the Skylight compute nodes, let's type
+To see the specifications of the Palmetto compute nodes, let's type
 
 ```bash
 cat /etc/hardware-table

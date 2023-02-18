@@ -222,13 +222,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-batch.html">
-     Running a batch job
+    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
+     Transferring files to and from Palmetto
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/08-batch.html">
+     Running a batch job
     </a>
    </li>
   </ul>
@@ -380,7 +385,22 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
+     Introduction to Python I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
+     Introduction to Python II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
+     Introduction to Python III
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -683,77 +703,12 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-custom-functions">
-   Using custom functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-1-argument">
-   Writing a user-defined function with 1 argument
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-2-or-more-arguments">
-   Writing a user-defined function with 2 or more arguments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#specifying-a-variable-for-the-result">
-   Specifying a variable for the result
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returning-several-results-in-a-list">
-   Returning several results in a list
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nested-functions">
-   Nested functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defensive-programming-with-stopifnot-function">
-   Defensive programming with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     stopifnot()
-    </span>
-   </code>
-   function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saving-functions-for-future-use">
-   Saving functions for future use
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
@@ -765,60 +720,6 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-custom-functions">
-   Using custom functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-1-argument">
-   Writing a user-defined function with 1 argument
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#writing-a-user-defined-function-with-2-or-more-arguments">
-   Writing a user-defined function with 2 or more arguments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#specifying-a-variable-for-the-result">
-   Specifying a variable for the result
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returning-several-results-in-a-list">
-   Returning several results in a list
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nested-functions">
-   Nested functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defensive-programming-with-stopifnot-function">
-   Defensive programming with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     stopifnot()
-    </span>
-   </code>
-   function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saving-functions-for-future-use">
-   Saving functions for future use
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -828,74 +729,102 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
-<p>teaching: 10
-exercises: 0
-questions:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Learning objectives</p>
 <ul class="simple">
-<li><p>“How to write functions in R”
-objectives:</p></li>
-<li><p>“Define functions”</p></li>
-<li><p>“Return value(s) from functions”
--keypoints:</p></li>
-<li><p>“Use <code class="docutils literal notranslate"><span class="pre">function</span></code> to define a new function in R”</p></li>
-<li><p>“Use parameters to pass value to function”</p></li>
-<li><p>“Load function into program using <code class="docutils literal notranslate"><span class="pre">source()</span></code>”</p></li>
+<li><p>Questions:</p>
+<ul>
+<li><p>How to write functions in R</p></li>
 </ul>
-<p>We have seen some examples of built-in R functions. For some functions, you would have to install particular packages. In this chapter, we will show you how to write your own functions.</p>
-<section id="using-custom-functions">
-<h2>Using custom functions<a class="headerlink" href="#using-custom-functions" title="Permalink to this headline">#</a></h2>
-<p>There are several in-built functions in R that can be used to perform analytical tasks, for example: <code class="docutils literal notranslate"><span class="pre">mean,</span> <span class="pre">min,</span> <span class="pre">max,</span> <span class="pre">quantile,summary</span></code>.
-For example, here’s the <code class="docutils literal notranslate"><span class="pre">mean</span></code> function, which computes the arithmetic average of a vector:</p>
-<p>Using function mean with missing value</p>
+</li>
+<li><p>Objectives:</p>
+<ul>
+<li><p>Define functions</p></li>
+<li><p>Return value(s) from functions</p></li>
+</ul>
+</li>
+<li><p>Keypoints:</p>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">function</span></code> to define a new function in R</p></li>
+<li><p>Use parameters to pass value to function</p></li>
+<li><p>Load function into program using <code class="docutils literal notranslate"><span class="pre">source()</span></code></p></li>
+</ul>
+</li>
+<li><p>We have seen some examples of built-in R functions. For some functions,
+you would have to install particular packages. In this chapter, we will
+show you how to write your own functions.</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Using custom functions</p>
+<ul class="simple">
+<li><p>There are several in-built functions in R that can be used
+to perform analytical tasks, for example: <code class="docutils literal notranslate"><span class="pre">mean,</span> <span class="pre">min,</span> <span class="pre">max,</span> <span class="pre">quantile,summary</span></code>.</p></li>
+<li><p>For example, here’s the <code class="docutils literal notranslate"><span class="pre">mean</span></code> function, which computes the
+arithmetic average of a vector:</p></li>
+<li><p>Using function mean with missing value</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean </span><span class="p">(</span><span class="nf">c </span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">))</span>
 <span class="n">v</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="kc">NA</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="kc">NaN</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
 <span class="nf">mean </span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 <span class="nf">mean</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="writing-a-user-defined-function-with-1-argument">
-<h2>Writing a user-defined function with 1 argument<a class="headerlink" href="#writing-a-user-defined-function-with-1-argument" title="Permalink to this headline">#</a></h2>
-<p>Syntax:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Writing a user-defined function with 1 argument</p>
+<ul class="simple">
+<li><p>Syntax:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">arg</span><span class="p">){</span>
   <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">argument</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Example:</p>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">squareroot</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">){</span>
   <span class="n">a</span><span class="o">^</span><span class="m">0.5</span>
 <span class="p">}</span>
 <span class="nf">squareroot</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="writing-a-user-defined-function-with-2-or-more-arguments">
-<h2>Writing a user-defined function with 2 or more arguments<a class="headerlink" href="#writing-a-user-defined-function-with-2-or-more-arguments" title="Permalink to this headline">#</a></h2>
-<p>Syntax:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Writing a user-defined function with 2 or more arguments</p>
+<ul class="simple">
+<li><p>Syntax:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">){</span>
   <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">arg1</span> <span class="o">&amp;</span> <span class="n">arg2</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Example:</p>
+<ul class="simple">
+<li><p>Example:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Addtwo</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">){</span>
   <span class="n">a</span><span class="o">+</span><span class="n">b</span>
 <span class="p">}</span>
 <span class="nf">Addtwo</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="specifying-a-variable-for-the-result">
-<h2>Specifying a variable for the result<a class="headerlink" href="#specifying-a-variable-for-the-result" title="Permalink to this headline">#</a></h2>
-<p>Syntax:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Specifying a variable for the result</p>
+<ul class="simple">
+<li><p>Syntax:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
   <span class="n">f1</span> <span class="o">&lt;-</span> <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">args</span>
   <span class="nf">return</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>For example:</p>
+<ul class="simple">
+<li><p>For example:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to convert oF to oC</span>
 <span class="n">F2C</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
    <span class="n">c</span> <span class="o">&lt;-</span> <span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="m">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">5</span> <span class="o">/</span> <span class="m">9</span><span class="p">))</span>
@@ -904,10 +833,12 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 <span class="nf">F2C</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="returning-several-results-in-a-list">
-<h2>Returning several results in a list<a class="headerlink" href="#returning-several-results-in-a-list" title="Permalink to this headline">#</a></h2>
-<p>Syntax:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Returning several results in a list</p>
+<ul class="simple">
+<li><p>Syntax:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
   <span class="n">do</span> <span class="n">function</span> <span class="n">with</span> <span class="n">args</span>
   <span class="n">out1</span> <span class="o">&lt;-</span> <span class="n">do1</span>
@@ -916,21 +847,26 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Example: a function which converts polar coordinates to Cartesian coordinates</p>
+<ul class="simple">
+<li><p>Example: a function which converts polar coordinates to
+Cartesian coordinates</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span> <span class="o">&lt;-</span> <span class="nf">function </span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">x</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+  <span class="n">x</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="n">y</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 <span class="p">}</span>
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span> 
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span> 
 </pre></div>
 </div>
-<p>Let’s specify the names of the two outputs:</p>
+<ul class="simple">
+<li><p>Let’s specify the names of the two outputs:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span> <span class="o">&lt;-</span> <span class="nf">function </span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">xcoord</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="n">ycoord</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xcoord</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ycoord</span><span class="p">))</span>
+  <span class="n">xcoord</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="n">ycoord</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xcoord</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ycoord</span><span class="p">))</span>
 <span class="p">}</span>
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span> 
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span> 
@@ -938,11 +874,15 @@ For example, here’s the <code class="docutils literal notranslate"><span class
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)</span><span class="o">$</span><span class="n">y</span> 
 </pre></div>
 </div>
-</section>
-<section id="nested-functions">
-<h2>Nested functions<a class="headerlink" href="#nested-functions" title="Permalink to this headline">#</a></h2>
-<p>In complex data science use cases, we may have to work on nested functions, which contain functions within a function.
-For example: Given dataset <code class="docutils literal notranslate"><span class="pre">mtcars</span></code>. Find the mean of fuel consumption <code class="docutils literal notranslate"><span class="pre">mpg</span></code> for cars that having 4 cylinders <code class="docutils literal notranslate"><span class="pre">cyl</span></code></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Nested functions</p>
+<ul class="simple">
+<li><p>In complex data science use cases, we may have to
+work on nested functions, which contain functions within a function.</p></li>
+<li><p>For example: Given dataset <code class="docutils literal notranslate"><span class="pre">mtcars</span></code>. Find the mean of fuel
+consumption <code class="docutils literal notranslate"><span class="pre">mpg</span></code> for cars that having 4 cylinders <code class="docutils literal notranslate"><span class="pre">cyl</span></code></p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 <span class="nf">names</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 
@@ -954,15 +894,20 @@ For example: Given dataset <code class="docutils literal notranslate"><span clas
 <span class="nf">mean</span><span class="p">(</span><span class="n">fuel_4cyl</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>All the 3 steps can be nested into one command line for experience user:</p>
+<ul class="simple">
+<li><p>All the 3 steps can be nested into one command line for experience user:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">[</span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="o">==</span><span class="m">4</span><span class="p">])</span>
 </pre></div>
 </div>
-</section>
-<section id="defensive-programming-with-stopifnot-function">
-<h2>Defensive programming with <code class="docutils literal notranslate"><span class="pre">stopifnot()</span></code> function<a class="headerlink" href="#defensive-programming-with-stopifnot-function" title="Permalink to this headline">#</a></h2>
-<p>Defensive programming encourages us to frequently check conditions and throw an error if something is wrong.
-For example:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Defensive programming with stopifnot() function</p>
+<ul class="simple">
+<li><p>Defensive programming encourages us to frequently check conditions
+and throw an error if something is wrong.</p></li>
+<li><p>For example:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">F2C</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
    <span class="nf">stopifnot</span><span class="p">(</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">==</span><span class="kc">TRUE</span><span class="p">)</span>
    <span class="n">c</span> <span class="o">&lt;-</span> <span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="m">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="m">5</span> <span class="o">/</span> <span class="m">9</span><span class="p">))</span>
@@ -972,25 +917,37 @@ For example:</p>
 <span class="nf">F2C</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="saving-functions-for-future-use">
-<h2>Saving functions for future use<a class="headerlink" href="#saving-functions-for-future-use" title="Permalink to this headline">#</a></h2>
-<p>Let’s save our function so we can use it later.</p>
-<p>First, get your working directory by running <code class="docutils literal notranslate"><span class="pre">getwd()</span></code>. Then, in a file browser (Windows) or in Finder (Mac), go to that directory, and please create a folder “R_workshop”. Then, in R, let’s make this our working directory: <code class="docutils literal notranslate"><span class="pre">setwd</span> <span class="pre">(&quot;R_workshop&quot;)</span></code>. Then, let’s list the files in it:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Saving functions for future use</p>
+<ul class="simple">
+<li><p>Let’s save our function so we can use it later.</p></li>
+<li><p>First, get your working directory by running <code class="docutils literal notranslate"><span class="pre">getwd()</span></code>.
+Then, in a file browser (Windows) or in Finder (Mac), go
+to that directory, and please create a folder “R_workshop”.
+Then, in R, let’s make this our working directory: <code class="docutils literal notranslate"><span class="pre">setwd</span> <span class="pre">(&quot;R_workshop&quot;)</span></code>.
+Then, let’s list the files in it:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">list.files </span><span class="p">(</span><span class="nf">getwd</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>The result should be empty (<code class="docutils literal notranslate"><span class="pre">character(0)</span></code>) because it is an empty directory. If you are familiar with Linux, you can use the “Terminal” tab from the console for the same purpose.</p>
-<p>Then, in the R studio Editor, copy-and-paste the polar2cart function:</p>
+<ul class="simple">
+<li><p>The result should be empty (<code class="docutils literal notranslate"><span class="pre">character(0)</span></code>) because it is
+an empty directory. If you are familiar with Linux, you can
+use the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> tab from the console for the same purpose.</p></li>
+<li><p>Then, in the R studio Editor, copy-and-paste the <code class="docutils literal notranslate"><span class="pre">polar2cart</span></code>
+function:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span> <span class="o">&lt;-</span> <span class="nf">function </span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">x</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+  <span class="n">x</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="n">y</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+  <span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>…and then save it by doing File -&gt; Save As and selecting the name <code class="docutils literal notranslate"><span class="pre">polar2cart.R</span></code>. Make sure you are saving it in the <code class="docutils literal notranslate"><span class="pre">R_workshop</span></code> folder.</p>
-</section>
+<p>…and then save it by doing <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">As</span></code> and selecting the name
+<code class="docutils literal notranslate"><span class="pre">polar2cart.R</span></code>. Make sure you are saving it in the <code class="docutils literal notranslate"><span class="pre">R_workshop</span></code> folder.</p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

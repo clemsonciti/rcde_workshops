@@ -222,13 +222,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-batch.html">
-     Running a batch job
+    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
+     Transferring files to and from Palmetto
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/08-batch.html">
+     Running a batch job
     </a>
    </li>
   </ul>
@@ -380,7 +385,22 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
+     Introduction to Python I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
+     Introduction to Python II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
+     Introduction to Python III
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -709,56 +729,89 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="ploting-with-ggplot">
 <h1>Ploting with ggplot<a class="headerlink" href="#ploting-with-ggplot" title="Permalink to this headline">#</a></h1>
-<p>teaching: 30
-exercises: 0
-questions:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Learning objectives</p>
 <ul class="simple">
-<li><p>“How to plot in R using ggplot2 package”
-objectives:</p></li>
-<li><p>“Learn advanced plotting using ggplot2”
-keypoints:</p></li>
-<li><p>“ggplot2”</p></li>
+<li><p>Questions:</p>
+<ul>
+<li><p>How to plot in R using ggplot2 package</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is a graphics package, written by Hadley Wickham, a grad student at Iowa State, based on the ideas from the book “Grammar of Graphics” by Leland Wilkinson. Let’s install it (it will install multiple additional packages that it requires):</p>
+</li>
+<li><p>Objectives:</p>
+<ul>
+<li><p>Learn advanced plotting using ggplot2</p></li>
+</ul>
+</li>
+<li><p>Keypoints:</p>
+<ul>
+<li><p>ggplot2</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">ggplot</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is a graphics package, written by Hadley Wickham, a
+grad student at Iowa State, based on the ideas from the book
+“Grammar of Graphics” by Leland Wilkinson. Let’s install it (it
+will install multiple additional packages that it requires):</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 </pre></div>
 </div>
-<!---
-## Basic component of ggplot
-- A data frame
-- aes: aesthetic mappings showing how data are mapped to color, size
-- geoms: geometric objects like points, lines, shapes.
-- facets: for conditional plots.
-- stats: statistical transformations like binning, quanti les, smoothing.
-- scales: what scale an aesthetic map uses
-- coordinate system
-![image](https://user-images.githubusercontent.com/43855029/114095124-0fed0600-988b-11eb-924c-868236195c2a.png)
-
-## Type of ggplot
-* Basic qplot
-```
-- Same as plot in Base plot
-- Nicer graphics than Base plot
-- Difficult for customize
-```
-* Advanced ggplot
-```
-- Flexible with many built-in function
-```
--->
-<p>A quick way to get familiar with <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is the <code class="docutils literal notranslate"><span class="pre">qplot</span></code> function, which stands for “quick plot”. Let’s do a quick scatter plot from the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset, plotting sepal length versus petal length:</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Basic component of ggplot</p>
+<ul class="simple">
+<li><p>A data frame</p></li>
+<li><p>aes: aesthetic mappings showing how data are mapped to color, size</p></li>
+<li><p>geoms: geometric objects like points, lines, shapes.</p></li>
+<li><p>facets: for conditional plots.</p></li>
+<li><p>stats: statistical transformations like binning, quanti les, smoothing.</p></li>
+<li><p>scales: what scale an aesthetic map uses</p></li>
+<li><p>coordinate system</p></li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095124-0fed0600-988b-11eb-924c-868236195c2a.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Type of ggplot</p>
+<ul class="simple">
+<li><p>Basic qplot</p>
+<ul>
+<li><p>Same as plot in Base plot</p></li>
+<li><p>Nicer graphics than Base plot</p></li>
+<li><p>Difficult for customize</p></li>
+</ul>
+</li>
+<li><p>Advanced ggplot</p>
+<ul>
+<li><p>Flexible with many built-in function</p></li>
+</ul>
+</li>
+<li><p>A quick way to get familiar with <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is the
+<code class="docutils literal notranslate"><span class="pre">qplot</span></code> function, which stands for <em>quick plot</em>.
+Let’s do a quick scatter plot from the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset,
+plotting sepal length versus petal length:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Notice that it already looks nicer than the basic R plots we did in the last chapter. Now, let’s plot different species of iris with different colours and shapes:</p>
+<ul class="simple">
+<li><p>Notice that it already looks nicer than the basic R plots
+we did in the last chapter. Now, let’s plot different species
+of iris with different colours and shapes:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
       <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
       <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095545-8ab62100-988b-11eb-8383-38d4a0802423.png" /></p>
-<p>Now, let’s add smooth lines which show trends in the data:</p>
+<ul class="simple">
+<li><p>Now, let’s add smooth lines which show trends in the data:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
       <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
       <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
@@ -766,7 +819,10 @@ keypoints:</p></li>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095674-b507de80-988b-11eb-8a9f-852ed19ed08a.png" /></p>
-<p>Let’s make these lines straight – that is, let’s fit a linear model to each species’ data:</p>
+<ul class="simple">
+<li><p>Let’s make these lines straight – that is, let’s fit a linear
+model to each species’ data:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
       <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
       <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
@@ -774,230 +830,248 @@ keypoints:</p></li>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095642-aae5e000-988b-11eb-925b-91336205073d.png" /></p>
-<p>Let’s make a density plot (a smoothed histogram) of sepal lengths of each species:</p>
+<ul class="simple">
+<li><p>Let’s make a density plot (a smoothed histogram) of
+sepal lengths of each species:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">geom</span><span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span>
       <span class="n">color</span><span class="o">=</span><span class="n">Species</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>There are many more ways to use ggplot2. Some useful (and beautiful) examples of code are here:
-<a class="reference external" href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p>
-<!---
-![image](https://user-images.githubusercontent.com/43855029/114096068-3c555200-988c-11eb-849a-1332fcf7c8f5.png)
+<ul class="simple">
+<li><p>There are many more ways to use ggplot2. Some useful (and beautiful)
+examples of code are here:
+<a class="reference external" href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114096068-3c555200-988c-11eb-849a-1332fcf7c8f5.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Basic qplot: Facets</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">facets</span><span class="o">=</span><span class="n">.</span><span class="o">~</span><span class="n">Species</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114096115-4d9e5e80-988c-11eb-8b75-c2a4d88282da.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Advanced ggplot</p>
+<ul class="simple">
+<li><p>Sample plot</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gp</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">hwy</span><span class="p">,</span> <span class="n">cty</span><span class="p">))</span>
 
-## Basic qplot: Facets
-```r
-qplot(Sepal.Length,Petal.Length,facets=.~Species, data=iris)
-```
-![image](https://user-images.githubusercontent.com/43855029/114096115-4d9e5e80-988c-11eb-8b75-c2a4d88282da.png)
+<span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cyl</span><span class="p">))</span>
+<span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span>
+<span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
+<span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
+  <span class="o">+</span><span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">cyl</span><span class="p">)</span>
+<span class="c1"># Save plot to file</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;plot.png&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114690-5a807980-98af-11eb-94b2-ae870139819d.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Annotation</p>
+<ul class="simple">
+<li><p>Labels: xlab(), ylab(), labs(), ggtitle()</p></li>
+<li><p>global annotation: use theme()</p></li>
+<li><p>Standard appearance: theme_bw()</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">),</span>
+              <span class="n">size</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span>
+  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Highway miles per gallon&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;city miles per gallon&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Scatter plot for cty &amp; hwy&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">xlim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">40</span><span class="p">)</span><span class="o">+</span><span class="nf">ylim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">40</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">theme_bw</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114812-a16e6f00-98af-11eb-91be-aad368dedb50.png" /></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Some nice ggplots featuring</p>
+<ul class="simple">
+<li><p>Boxplot</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">manufacturer</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">,</span>
+               <span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">manufacturer</span><span class="p">)))</span><span class="o">+</span>
+  <span class="nf">geom_boxplot</span><span class="p">()</span><span class="o">+</span>
+  <span class="nf">geom_jitter</span><span class="p">()</span><span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Boxplot for Hwy per manufacturer&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s">&quot;Manufacturer&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Highway milage&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">theme_bw</span><span class="p">()</span><span class="o">+</span><span class="nf">coord_flip</span><span class="p">()</span><span class="o">+</span>
+  <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114879-c19e2e00-98af-11eb-8ce8-000f14ac24ae.png" /></p>
+<ul class="simple">
+<li><p>Violin plot</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">cty</span><span class="p">))</span>
+<span class="n">g</span> <span class="o">+</span> <span class="nf">geom_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">class</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Violin plot&quot;</span><span class="p">,</span> 
+       <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;City Mileage vs Class of vehicle&quot;</span><span class="p">,</span>
+       <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Source: mpg&quot;</span><span class="p">,</span>
+       <span class="n">x</span><span class="o">=</span><span class="s">&quot;Class of Vehicle&quot;</span><span class="p">,</span>
+       <span class="n">y</span><span class="o">=</span><span class="s">&quot;City Mileage&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114954-e7c3ce00-98af-11eb-8040-4dbb0800b5e7.png" /></p>
+<ul class="simple">
+<li><p>Histogram</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">displ</span><span class="p">))</span> <span class="o">+</span> <span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span> <span class="o">=</span> <span class="s">&quot;Spectral&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">+</span> <span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">class</span><span class="p">),</span> 
+                   <span class="n">bins</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> 
+                   <span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span> 
+                   <span class="n">size</span><span class="o">=</span><span class="n">.</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span>   <span class="c1"># change number of bins</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Histogram with Fixed Bins&quot;</span><span class="p">,</span> 
+       <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Engine Displacement across Vehicle Classes&quot;</span><span class="p">,</span>
+       <span class="n">x</span><span class="o">=</span><span class="s">&quot;enginer displacement (m)&quot;</span><span class="p">,</span>
+       <span class="n">y</span><span class="o">=</span><span class="s">&quot;Frequency count&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115027-0629c980-98b0-11eb-8f8b-2c9bb4c5d6e6.png" /></p>
+<ul class="simple">
+<li><p>Scatter plot</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="s">&quot;midwest&quot;</span><span class="p">)</span>
+<span class="n">gg</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">midwest</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">poptotal</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">popdensity</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;loess&quot;</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="nf">xlim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.1</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">ylim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">500000</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">labs</span><span class="p">(</span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Area Vs Population&quot;</span><span class="p">,</span> 
+       <span class="n">y</span><span class="o">=</span><span class="s">&quot;Population&quot;</span><span class="p">,</span> 
+       <span class="n">x</span><span class="o">=</span><span class="s">&quot;Area&quot;</span><span class="p">,</span> 
+       <span class="n">title</span><span class="o">=</span><span class="s">&quot;Scatterplot&quot;</span><span class="p">,</span> 
+       <span class="n">caption</span> <span class="o">=</span> <span class="s">&quot;Source: midwest&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">gg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115089-278ab580-98b0-11eb-96f4-1d3adc70b511.png" /></p>
+<ul class="simple">
+<li><p>Density</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">cty</span><span class="p">))</span>
+<span class="n">g</span> <span class="o">+</span> <span class="nf">geom_density</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0.8</span><span class="p">)</span> <span class="o">+</span> 
+    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Density plot&quot;</span><span class="p">,</span> 
+         <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;City Mileage Grouped by Number of cylinders&quot;</span><span class="p">,</span>
+         <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Source: mpg&quot;</span><span class="p">,</span>
+         <span class="n">x</span><span class="o">=</span><span class="s">&quot;City Mileage&quot;</span><span class="p">,</span>
+         <span class="n">fill</span><span class="o">=</span><span class="s">&quot;# Cylinders&quot;</span><span class="p">)</span><span class="o">+</span>
+    <span class="nf">theme_bw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115140-47ba7480-98b0-11eb-87c9-922ae8970516.png" /></p>
+<ul class="simple">
+<li><p>Density 2D</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gg</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">faithful</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">eruptions</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">waiting</span><span class="p">))</span>
+<span class="n">gg</span> <span class="o">+</span> <span class="nf">stat_density_2d</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">..level..</span><span class="p">),</span>
+                     <span class="n">geom</span><span class="o">=</span><span class="s">&quot;polygon&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
+     <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">linetype</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
+     <span class="nf">scale_fill_continuous</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
+     <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+     <span class="nf">theme_bw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115221-63be1600-98b0-11eb-86b5-c0f6f0d8ecff.png" /></p>
+<ul class="simple">
+<li><p>Geographic visualization with ggplot</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
+<span class="n">states</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">states</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">region</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115281-84866b80-98b0-11eb-9706-0b07e1472a54.png" /></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">counties</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;county&quot;</span><span class="p">)</span>
+<span class="n">SC_counties</span> <span class="o">&lt;-</span> <span class="nf">subset</span><span class="p">(</span><span class="n">counties</span><span class="p">,</span><span class="n">region</span> <span class="o">==</span> <span class="s">&quot;south carolina&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">SC_counties</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">subregion</span><span class="p">),</span>
+               <span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115313-9700a500-98b0-11eb-8771-58631bdc3e54.png" /></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">some.eu.countries</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
+  <span class="s">&quot;Portugal&quot;</span><span class="p">,</span> <span class="s">&quot;Spain&quot;</span><span class="p">,</span> <span class="s">&quot;France&quot;</span><span class="p">,</span> <span class="s">&quot;Switzerland&quot;</span><span class="p">,</span> <span class="s">&quot;Germany&quot;</span><span class="p">,</span>
+  <span class="s">&quot;Austria&quot;</span><span class="p">,</span> <span class="s">&quot;Belgium&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">,</span> <span class="s">&quot;Netherlands&quot;</span><span class="p">,</span>
+  <span class="s">&quot;Denmark&quot;</span><span class="p">,</span> <span class="s">&quot;Poland&quot;</span><span class="p">,</span> <span class="s">&quot;Italy&quot;</span><span class="p">,</span> 
+  <span class="s">&quot;Croatia&quot;</span><span class="p">,</span> <span class="s">&quot;Slovenia&quot;</span><span class="p">,</span> <span class="s">&quot;Hungary&quot;</span><span class="p">,</span> <span class="s">&quot;Slovakia&quot;</span><span class="p">,</span>
+  <span class="s">&quot;Czech republic&quot;</span>
+<span class="p">)</span>
+<span class="c1"># Retrievethe map data</span>
+<span class="n">some.eu.maps</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="n">region</span> <span class="o">=</span> <span class="n">some.eu.countries</span><span class="p">)</span>
 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">some.eu.maps</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">long</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lat</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span> <span class="n">group</span> <span class="o">=</span> <span class="n">group</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">region</span><span class="p">))</span><span class="o">+</span>
+  <span class="nf">scale_fill_viridis_d</span><span class="p">()</span><span class="o">+</span>
+  <span class="nf">theme_void</span><span class="p">()</span><span class="o">+</span>
+  <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122972677-6633f600-d35e-11eb-9c3c-4b90db22b25e.png" /></p>
+<ul class="simple">
+<li><p>Plot Shapefile for geography study</p>
+<ul>
+<li><p>Download shape file data <a class="reference external" href="https://opendata.arcgis.com/datasets/a21fdb46d23e4ef896f31475217cbb08_1.zip">here</a></p></li>
+<li><p>Store it in your folder: c:/R/GIS/ in Windows or /user/R/GIS in MacOS</p></li>
+<li><p>Unzip it and rename all files to <code class="docutils literal notranslate"><span class="pre">Countries_WGS84.*</span></code> under <code class="docutils literal notranslate"><span class="pre">C:/GIS/</span></code></p></li>
+</ul>
+</li>
+<li><p>Install additional packages:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;rgdal&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;colorspace&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Perform plotting</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">rgdal</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">colorspace</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
 
-## Advanced ggplot
-### Sample plot
-```r
-gp <- ggplot(mpg, aes(hwy, cty))
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;c:/R/GIS/&#39;</span><span class="p">)</span>
+<span class="n">gfile</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="o">=</span><span class="s">&quot;Countries_WGS84.shp&quot;</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">gfile</span><span class="p">)</span>
+<span class="n">gfile</span><span class="o">$</span><span class="n">CNTRY_NAME</span>
 
-gp+geom_point(aes(color=cyl))
-gp+geom_point(aes(color=factor(cyl)))
-gp+geom_point(aes(color=factor(cyl)))+geom_smooth(method="lm")
-gp+geom_point(aes(color=factor(cyl)))+geom_smooth(method="lm")
-  +facet_grid(.~cyl)
-# Save plot to file
-ggsave("plot.png",width=5,height=5)
-```
-![image](https://user-images.githubusercontent.com/43855029/114114690-5a807980-98af-11eb-94b2-ae870139819d.png)
+<span class="nf">plot</span><span class="p">(</span><span class="n">gfile</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">gfile</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="nf">rainbow_hcl</span><span class="p">(</span><span class="m">50</span><span class="p">))</span>
+<span class="nf">llgridlines</span><span class="p">(</span><span class="n">gfile</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115693-4e95b700-98b1-11eb-8f93-0a27c0922e35.png" /></p>
+<ul class="simple">
+<li><p>Plot raster</p>
+<ul>
+<li><p>Here we will plot a raster data base using Global land cover data set.
+The data can be downloaded from <a class="reference external" href="http://due.esrin.esa.int/files/Globcover2009_V2.3_Global_.zip">here</a>.</p></li>
+</ul>
+</li>
+<li><p>Unzip and put the raster data to working directory:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;raster&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">rgdal</span><span class="p">)</span>
 
-### Annotation
-- Labels: xlab(), ylab(), labs(), ggtitle()
-- global annotation: use theme()
-- Standard appearance: theme_bw()
-```r
-gp+geom_point(aes(color=factor(cyl),
-              size=factor(cyl)))+
-  geom_smooth(method="lm")+
-  xlab("Highway miles per gallon")+
-  ylab("city miles per gallon")+
-  ggtitle("Scatter plot for cty & hwy")+
-  xlim(10,40)+ylim(10,40)+
-  theme_bw(base_size = 15)
-```
-![image](https://user-images.githubusercontent.com/43855029/114114812-a16e6f00-98af-11eb-91be-aad368dedb50.png)
-
-
-## Some nice ggplots featuring
-### Boxplot
-```r
-ggplot(mpg,aes(x=manufacturer,y=hwy,
-               fill=factor(manufacturer)))+
-  geom_boxplot()+
-  geom_jitter()+
-  labs(title="Boxplot for Hwy per manufacturer",x="Manufacturer",y="Highway milage")+
-  theme_bw()+coord_flip()+
-  theme(legend.position = "none")
-```
-![image](https://user-images.githubusercontent.com/43855029/114114879-c19e2e00-98af-11eb-8ce8-000f14ac24ae.png)
-
-### Violin plot
-```r
-g <- ggplot(mpg, aes(class, cty))
-g + geom_violin(aes(fill=class)) + 
-  labs(title="Violin plot", 
-       subtitle="City Mileage vs Class of vehicle",
-       caption="Source: mpg",
-       x="Class of Vehicle",
-       y="City Mileage")
-```
-![image](https://user-images.githubusercontent.com/43855029/114114954-e7c3ce00-98af-11eb-8040-4dbb0800b5e7.png)
-
-### Histogram
-```r
-g <- ggplot(mpg, aes(displ)) + scale_fill_brewer(palette = "Spectral")
-g + geom_histogram(aes(fill=class), 
-                   bins=10, 
-                   col="black", 
-                   size=.1) +   # change number of bins
-  labs(title="Histogram with Fixed Bins", 
-       subtitle="Engine Displacement across Vehicle Classes",
-       x="enginer displacement (m)",
-       y="Frequency count") 
-```
-![image](https://user-images.githubusercontent.com/43855029/114115027-0629c980-98b0-11eb-8f8b-2c9bb4c5d6e6.png)
-
-### Scatter plot
-```r
-data("midwest")
-gg <- ggplot(midwest, aes(x=area, y=poptotal)) + 
-  geom_point(aes(col=state, size=popdensity)) + 
-  geom_smooth(method="loess", se=F) + 
-  xlim(c(0, 0.1)) + 
-  ylim(c(0, 500000)) + 
-  labs(subtitle="Area Vs Population", 
-       y="Population", 
-       x="Area", 
-       title="Scatterplot", 
-       caption = "Source: midwest")
-plot(gg)
-```
-![image](https://user-images.githubusercontent.com/43855029/114115089-278ab580-98b0-11eb-96f4-1d3adc70b511.png)
-
-### Density
-```r
-g <- ggplot(mpg, aes(cty))
-g + geom_density(aes(fill=factor(cyl)), alpha=0.8) + 
-    labs(title="Density plot", 
-         subtitle="City Mileage Grouped by Number of cylinders",
-         caption="Source: mpg",
-         x="City Mileage",
-         fill="# Cylinders")+
-    theme_bw()
-```
-![image](https://user-images.githubusercontent.com/43855029/114115140-47ba7480-98b0-11eb-87c9-922ae8970516.png)
-
-### Density 2D
-```r
-gg <- ggplot(faithful,aes(x=eruptions,y=waiting))
-gg + stat_density_2d(aes(fill=..level..),
-                     geom="polygon",color="black")+
-     geom_smooth(method="lm",linetype=2,color="red")+
-     scale_fill_continuous(low="green",high="red")+
-     geom_point() +
-     theme_bw()
-```
-![image](https://user-images.githubusercontent.com/43855029/114115221-63be1600-98b0-11eb-86b5-c0f6f0d8ecff.png)
-
-
-### Geographic visualization with ggplot
-```r
-library(maps)
-states <- map_data("state")
-ggplot(data = states)+
-  geom_polygon(aes(x=long,y=lat,fill=region),
-               color="black")+
-  coord_fixed(1.3)+
-  guides(fill=FALSE)
-```
-![image](https://user-images.githubusercontent.com/43855029/114115281-84866b80-98b0-11eb-9706-0b07e1472a54.png)
-
-```r
-counties <- map_data("county")
-SC_counties <- subset(counties,region == "south carolina")
-ggplot(data = SC_counties)+
-  geom_polygon(aes(x=long,y=lat,fill=subregion),
-               color="black")+
-  coord_fixed(1.3)+
-  guides(fill=FALSE)
-```
-![image](https://user-images.githubusercontent.com/43855029/114115313-9700a500-98b0-11eb-8771-58631bdc3e54.png)
-
-```r
-some.eu.countries <- c(
-  "Portugal", "Spain", "France", "Switzerland", "Germany",
-  "Austria", "Belgium", "UK", "Netherlands",
-  "Denmark", "Poland", "Italy", 
-  "Croatia", "Slovenia", "Hungary", "Slovakia",
-  "Czech republic"
-)
-# Retrievethe map data
-some.eu.maps <- map_data("world", region = some.eu.countries)
-
-ggplot(some.eu.maps, aes(x = long, y = lat)) +
-  geom_polygon(aes( group = group, fill = region))+
-  scale_fill_viridis_d()+
-  theme_void()+
-  theme(legend.position = "none")
-```
-
-![image](https://user-images.githubusercontent.com/43855029/122972677-6633f600-d35e-11eb-9c3c-4b90db22b25e.png)
-
-
-### Plot Shapefile for geography study
-```
-Download shape file data [here](https://opendata.arcgis.com/datasets/a21fdb46d23e4ef896f31475217cbb08_1.zip)
-Store it in your folder: c:/R/GIS/ in Windows or /user/R/GIS in MacOS
-Unzip it and rename all files to `Countries_WGS84.*` under `C:/GIS/`
-```
-Install additional packages:
-```r
-install.packages("rgdal")
-install.packages("colorspace")
-```
-
-Perform plotting
-```r
-library(rgdal)
-library(colorspace)
-library(maps)
-
-setwd('c:/R/GIS/')
-gfile <- readOGR(dsn="Countries_WGS84.shp")
-names(gfile)
-gfile$CNTRY_NAME
-
-plot(gfile)
-plot(gfile,col=rainbow_hcl(50))
-llgridlines(gfile,lty=5)
-
-```
-![image](https://user-images.githubusercontent.com/43855029/114115693-4e95b700-98b1-11eb-8f93-0a27c0922e35.png)
-
-### Plot raster
-Here we will plot a raster data base using Global land cover data set. The data can be downloaded from [here](http://due.esrin.esa.int/files/Globcover2009_V2.3_Global_.zip).
-Unzip and put the raster data to working directory:
-
-```r
-install.packages("raster")
-```
-```r
-library(raster)
-library(rgdal)
-
-setwd('c:/R/GIS/')
-#import raster
-Gcover <- raster("GLOBCOVER_L4_200901_200912_V2.3.tif")
-#plot raster
-plot(Gcover,main="GLobal Land cover")
-```
-![image](https://user-images.githubusercontent.com/43855029/114116438-b7316380-98b2-11eb-91d0-0ca5a7b2c3d0.png) 
--->
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;c:/R/GIS/&#39;</span><span class="p">)</span>
+<span class="c1">#import raster</span>
+<span class="n">Gcover</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;GLOBCOVER_L4_200901_200912_V2.3.tif&quot;</span><span class="p">)</span>
+<span class="c1">#plot raster</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Gcover</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;GLobal Land cover&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114116438-b7316380-98b2-11eb-91d0-0ca5a7b2c3d0.png" /></p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

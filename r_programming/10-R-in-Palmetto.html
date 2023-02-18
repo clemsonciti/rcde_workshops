@@ -222,13 +222,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-batch.html">
-     Running a batch job
+    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
+     Transferring files to and from Palmetto
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/08-batch.html">
+     Running a batch job
     </a>
    </li>
   </ul>
@@ -380,7 +385,22 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
+     Introduction to Python I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
+     Introduction to Python II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
+     Introduction to Python III
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -709,46 +729,82 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="r-in-palmetto">
 <h1>R in Palmetto<a class="headerlink" href="#r-in-palmetto" title="Permalink to this headline">#</a></h1>
-<p>teaching: 10
-exercises: 0
-questions:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Learning objectives</p>
 <ul class="simple">
-<li><p>“How to run R scripts in Palmetto”
-objectives:</p></li>
-<li><p>“Learn how to run R in Palmetto”</p></li>
-<li><p>“Learn how to install R packages in Palmetto”
-keypoints:</p></li>
-<li><p>“Rscript”</p></li>
+<li><p>Questions:</p>
+<ul>
+<li><p>How to run R scripts in Palmetto</p></li>
 </ul>
-<hr class="docutils" />
-<p>If you need to process a large amount of data and you think your laptop / desktop is not fast enough, you can utilize the power of the Palmetto supercomputing cluster. If you have an account on Palmetto, you can log in as described in <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/basic/login/">our manual</a>.</p>
-<p>Let’s request a compute node:</p>
+</li>
+<li><p>Objectives:</p>
+<ul>
+<li><p>Learn how to run R in Palmetto</p></li>
+<li><p>Learn how to install R packages in Palmetto</p></li>
+</ul>
+</li>
+<li><p>Keypoints:</p>
+<ul>
+<li><p>Rscript</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition-palmetto-access admonition">
+<p class="admonition-title">Palmetto access</p>
+<ul class="simple">
+<li><p>If you need to process a large amount of data and you think your
+laptop/desktop is not fast enough, you can utilize the power of the
+Palmetto supercomputing cluster. If you have an account on Palmetto,
+you can log in as described in <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/basic/login/">our manual</a>.</p></li>
+<li><p>Let’s request a compute node:</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qsub -I -l <span class="k">select</span><span class="o">=</span><span class="m">1</span>:ncpus<span class="o">=</span><span class="m">4</span>:mem<span class="o">=</span>32gb:interconnect<span class="o">=</span>fdr,walltime<span class="o">=</span><span class="m">2</span>:00:00
 </pre></div>
 </div>
-<p>In order to run R, you will first need to load the R module. We have several versions of R installed on Palmetto, most recent being 4.0.3:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load r/4.0.3-gcc/8.4.1
+<ul class="simple">
+<li><p>In order to run R, you will first need to load the R module. We
+have several versions of R installed on Palmetto, most recent being 4.0.3:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load r/4.0.5-gcc/9.5.0
 </pre></div>
 </div>
-<p>We can now open R in interactive mode (text-only console). Let’s install a package <code class="docutils literal notranslate"><span class="pre">doParallel</span></code>:</p>
+<ul class="simple">
+<li><p>We can now open R in interactive mode (text-only console). Let’s
+install a package <code class="docutils literal notranslate"><span class="pre">doParallel</span></code>:</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>R
 &gt; install.packages<span class="o">(</span><span class="s2">&quot;doParallel&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>To quit the R console, type <code class="docutils literal notranslate"><span class="pre">quit()</span></code>. Let’s create a simple script and run it. We can use the text editor called <code class="docutils literal notranslate"><span class="pre">nano</span></code>:</p>
+<ul class="simple">
+<li><p>To quit the R console, type <code class="docutils literal notranslate"><span class="pre">quit()</span></code>. Let’s create a simple script
+and run it. We can use the text editor called <code class="docutils literal notranslate"><span class="pre">nano</span></code>:</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano randmatrix.r
 </pre></div>
 </div>
-<p>This will open a text editor. Let’s paste these lines which create a random 4x4 matrix (to paste, Mac users can use Cmd+V, and PC users can use Shift+Ins):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">&lt;-</span> <span class="n">matrix</span><span class="p">(</span><span class="n">rnorm</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">nrow</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<ul class="simple">
+<li><p>This will open a text editor. Let’s paste these lines which create
+a random 4x4 matrix (to paste, Mac users can use Cmd+V, and PC users
+can use Shift+Ins):</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">16</span><span class="p">),</span> <span class="n">nrow</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
 <span class="n">M</span>
 </pre></div>
 </div>
-<p>Let’s save it by pressing Ctrl+O, then Enter, then Ctrl+X. We can run this script with the <code class="docutils literal notranslate"><span class="pre">RScript</span></code> command:</p>
+<ul class="simple">
+<li><p>Let’s save it by pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+O</span></code>, then <code class="docutils literal notranslate"><span class="pre">Enter</span></code>, then <code class="docutils literal notranslate"><span class="pre">Ctrl+X</span></code>. We
+can run this script with the <code class="docutils literal notranslate"><span class="pre">RScript</span></code> command:</p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Rscript randmatrix.r
 </pre></div>
 </div>
-<p>If you want to use RStudio on Palmetto, you can use OpenOnDemand interface – please see our <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/openondemand/intro/">manual</a>.</p>
+<ul class="simple">
+<li><p>If you want to use RStudio on Palmetto, you can use OpenOnDemand
+interface – please see our <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/openondemand/intro/">manual</a>.</p></li>
+</ul>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

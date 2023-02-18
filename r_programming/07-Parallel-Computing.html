@@ -222,13 +222,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-batch.html">
-     Running a batch job
+    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
+     Transferring files to and from Palmetto
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/08-batch.html">
+     Running a batch job
     </a>
    </li>
   </ul>
@@ -380,7 +385,22 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
+     Introduction to Python I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
+     Introduction to Python II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
+     Introduction to Python III
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -709,36 +729,66 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="parallel-computing-in-r">
 <h1>Parallel Computing in R<a class="headerlink" href="#parallel-computing-in-r" title="Permalink to this headline">#</a></h1>
-<p>teaching: 20
-exercises: 0
-questions:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Learning objectives</p>
 <ul class="simple">
-<li><p>“How to utilize multiple cores for R programming”
-objectives:</p></li>
-<li><p>“Installing packages”</p></li>
-<li><p>“Utilizing multiple cores”
-keypoints:</p></li>
-<li><p>“foreach()”</p></li>
+<li><p>Questions:</p>
+<ul>
+<li><p>How to utilize multiple cores for R programming</p></li>
 </ul>
-<!--
-- The `doParallel` package is a "parallel backend" for the foreach package. It provides a mechanism needed to execute foreach loops in parallel.
-- The `foreach` package must be used in order to execute code in parallel.
-- The user must register a parallel backend to use, otherwise foreach will execute tasks sequentially, even when the %dopar% operator is used
-- User must register a parallel backend to use. To register doParallel to be used with foreach, you must call the registerDoParallel function.
--->
-<p>We can speed up computation by using <em>parallel computing</em>, that is, by running computational processes simultaneously on different cores of our computer. Most modern computers (laptops or desktops) are multi-cire, that is, they have more than one processor (CPU), so they can run more than one thing at a time. Taking advantage of this is the main idea behind parallel computing. Later in this workshop, we will try the same idea on the Palmetto cluster.</p>
-<p>First, we will need to install some packages. This will be a very common task as you start using R; there are many packages out there created by R users, which contain functions for specific purposes. We will need to install two packages: <code class="docutils literal notranslate"><span class="pre">foreach</span></code> and <code class="docutils literal notranslate"><span class="pre">doParallel</span></code>. In the console, type this:</p>
+</li>
+<li><p>Objectives:</p>
+<ul>
+<li><p>Installing packages</p></li>
+<li><p>Utilizing multiple cores</p></li>
+</ul>
+</li>
+<li><p>Keypoints:</p>
+<ul>
+<li><p>foreach()</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Parallel packages in R</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">doParallel</span></code> package is a “parallel backend” for the foreach package. It provides a mechanism needed to execute foreach loops in parallel.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">foreach</span></code> package must be used in order to execute code in parallel.</p></li>
+<li><p>The user must register a parallel backend to use, otherwise foreach will execute tasks sequentially, even when the %dopar% operator is used</p></li>
+<li><p>User must register a parallel backend to use. To register doParallel to be used with foreach, you must call the registerDoParallel function.</p></li>
+<li><p>We can speed up computation by using <em>parallel computing</em>, that is, by
+running computational processes simultaneously on different cores of our computer.
+Most modern computers (laptops or desktops) are multi-cire, that is, they have more
+than one processor (CPU), so they can run more than one thing at a time. Taking
+advantage of this is the main idea behind parallel computing. Later in this workshop,
+we will try the same idea on the Palmetto cluster.</p></li>
+<li><p>First, we will need to install some packages. This will be a very common
+task as you start using R; there are many packages out there created by R
+users, which contain functions for specific purposes. We will need to install
+two packages: <code class="docutils literal notranslate"><span class="pre">foreach</span></code> and <code class="docutils literal notranslate"><span class="pre">doParallel</span></code>. In the console, type this:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;foreach&quot;</span><span class="p">)</span>
 <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;doParallel&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Make sure you include the parentheses around the package names. These two packages depend on a third package called <code class="docutils literal notranslate"><span class="pre">iterators</span></code>, which should be installed automatically. If not, you will need to install it manually. Now, let’s load these packages into memory, so we can use the functions defined in these packages:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library </span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
-<span class="nf">library </span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<ul class="simple">
+<li><p>Make sure you include the parentheses around the package names. These two
+packages depend on a third package called <code class="docutils literal notranslate"><span class="pre">iterators</span></code>, which should be
+installed automatically. If not, you will need to install it manually.</p></li>
+<li><p>Now, let’s load these packages into memory, so we can use the functions
+defined in these packages:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">foreach</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that, this time, there are no quotation marks around the package names.</p>
-<p>Now that the packages are installed, let’s write a function that is somewhat computationally intensive. This function will compute the largest eigenvalue of a random matrix:</p>
+<ul class="simple">
+<li><p>Note that, this time, there are no quotation marks around the package names.</p></li>
+<li><p>Now that the packages are installed, let’s write a function that is somewhat
+computationally intensive. This function will compute the largest eigenvalue of a
+random matrix:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">max.eig</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="p">{</span>
      <span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="o">**</span><span class="m">2</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
      <span class="n">E</span> <span class="o">&lt;-</span> <span class="nf">eigen</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">$</span><span class="n">values</span>
@@ -746,103 +796,132 @@ keypoints:</p></li>
  <span class="p">}</span>
 </pre></div>
 </div>
-<p>Let’s save it as max.eig.R in our working directory. Then, we’ll need to run the <code class="docutils literal notranslate"><span class="pre">source</span></code> command to make sure we can use it:</p>
+<ul class="simple">
+<li><p>Let’s save it as max.eig.R in our working directory. Then, we’ll need
+to run the <code class="docutils literal notranslate"><span class="pre">source</span></code> command to make sure we can use it:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">source </span><span class="p">(</span><span class="s">&quot;max.eig.R&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now, let’s run it in a loop to create ten random matrices, of size 500x500 each, and compute their largest eigenvalue.</p>
+<ul class="simple">
+<li><p>Now, let’s run it in a loop to create ten random matrices, of size
+500x500 each, and compute their largest eigenvalue.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="nf">rep </span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="p">{</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">100</span><span class="p">)</span> <span class="p">}</span>
 <span class="n">m</span>
 </pre></div>
 </div>
-<p>This should take several seconds, depending on the processing power of your computer. An alternative way to run it is to use <code class="docutils literal notranslate"><span class="pre">foreach</span></code>:</p>
+<ul class="simple">
+<li><p>This should take several seconds, depending on the processing power
+of your computer. An alternative way to run it is to use <code class="docutils literal notranslate"><span class="pre">foreach</span></code>:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This should take about the same time. Now, let’s try to run it in parallel. For this purpose, we’ll need to replace <code class="docutils literal notranslate"><span class="pre">%do%</span></code> with <code class="docutils literal notranslate"><span class="pre">%dopar%</span></code>, but first we’ll need to initialize the parallel library so we take advantage of all available CPUs:</p>
+<ul class="simple">
+<li><p>This should take about the same time. Now, let’s try to run it
+in parallel. For this purpose, we’ll need to replace <code class="docutils literal notranslate"><span class="pre">%do%</span></code> with
+<code class="docutils literal notranslate"><span class="pre">%dopar%</span></code>, but first we’ll need to initialize the parallel library
+so we take advantage of all available CPUs:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">registerDoParallel </span><span class="p">()</span>
 <span class="n">m</span> <span class="o">=</span> <span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%dopar%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now, since we are running the code in parallel, it should take a shorter time. Let’s get the accurate timing with the <code class="docutils literal notranslate"><span class="pre">system.time</span></code> command:</p>
+<ul class="simple">
+<li><p>Now, since we are running the code in parallel, it should take a
+shorter time. Let’s get the accurate timing with the <code class="docutils literal notranslate"><span class="pre">system.time</span></code> command:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system.time </span><span class="p">(</span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">))</span>
 <span class="nf">system.time </span><span class="p">(</span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%dopar%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">))</span>
 </pre></div>
 </div>
-<!--
-## 
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Using foreach package</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Nested foreach</strong></p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">=</span><span class="m">1</span>
+<span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">%:%</span>
+   <span class="nf">foreach</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">%do%</span><span class="p">{</span>
+      <span class="nf">max.eig</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+      <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="m">+1</span>
+    <span class="p">}</span>      
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Using doParallel</p>
+<ul class="simple">
+<li><p>Check the number of available cpus:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="n">co</span> <span class="o">&lt;-</span> <span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span>
+<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeCluster</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">doParallel</span></code> to <code class="docutils literal notranslate"><span class="pre">foreach</span></code>:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%dopar%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Using Parallel and parLapply</p>
+<ul class="simple">
+<li><p>Note: this does not work in Windows, mostly applicable to run in Palmetto</p></li>
+<li><p>Check number of available processing cpus:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
+<span class="n">co</span> <span class="o">&lt;-</span> <span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span>
+<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makecluster</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">parLapply</span></code></p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load necessary packages on the cluster workers</span>
+<span class="nf">clusterExport</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;max.eig&#39;</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="nf">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="m">1</span><span class="p">)))</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-Using notranslate"><div class="highlight"><pre><span></span>:class: dropdown
 
+- Many packages have built-in paralle function. Here we use a 
+bootstraping package: `boot`
 
-## Using foreach package
-```r
-foreach(i=1:4, .combine='c') %do% max.eig(i,1)
-```
-
-**Nested foreach**
-```r
-k=1
-foreach(i=1:4) %:%
-   foreach(j=1:4) %do%{
-      max.eig(k,1)
-      k=k+1
-    }      
-```
-
-## Using `doParallel`
-Check the number of available cpus:
-```r
-library(doParallel)
-co <- detectCores()-1
-cl <- makeCluster(co)
-registerDoParallel(cl)
-```
-
-Apply `doParallel` to `foreach`
-```r
-system.time(foreach(i=1:200, .combine='c') %do% max.eig(i,1))
-system.time(foreach(i=1:200, .combine='c') %dopar% max.eig(i,1))
-stopCluster(cl)
-```
-
-## Using Parallel and parLapply
-(Note: this does not work in Windows, mostly applicable to run in Palmetto)
-Check number of available processing cpus:
-```r
-library(parallel)
-co <- detectCores()-1
-cl <- makecluster(co)
-``` 
-
-Apply `parLapply`
-```r
-#Load necessary packages on the cluster workers
-clusterExport(cl, c('max.eig'))
-system.time(foreach(i=1:200, .combine='c') %do% max.eig(i,1))
-system.time(parLapply(cl, 1:200, function(z) max.eig(z,1)))
-stopCluster(cl)
-```
-
-## Using built-in Parallel inside packages
-Many packages have built-in paralle function. Here we use a bootstraping package: `boot`
-```r
+~~~r
 library(boot)
 # function to obtain regression weights
-bs <- function(formula, data, indices) {
-  d <- data[indices,] # allows boot to select sample
-  fit <- lm(formula, d)
+bs &lt;- function(formula, data, indices) {
+  d &lt;- data[indices,] # allows boot to select sample
+  fit &lt;- lm(formula, d)
   return(coef(fit))
 }
 # bootstrapping with 1000 replications
-system.time(results <- boot(data=mtcars, statistic=bs,
+system.time(results &lt;- boot(data=mtcars, statistic=bs,
                 R=10000, formula=mpg~wt+disp))
 
-system.time(results <- boot(data=mtcars, statistic=bs,
+system.time(results &lt;- boot(data=mtcars, statistic=bs,
                 R=10000, formula=mpg~wt+disp,
-                parallel = "snow",ncpus=2))
-```
+                parallel = &quot;snow&quot;,ncpus=2))
+~~~
 
--->
+
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">

@@ -222,13 +222,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro_palmetto/06-batch.html">
-     Running a batch job
+    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
+     Transferring files to and from Palmetto
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../intro_palmetto/07-open-od.html">
      Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/08-batch.html">
+     Running a batch job
     </a>
    </li>
   </ul>
@@ -380,7 +385,22 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/01-IntroToPython-I.html">
+     Introduction to Python I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/02-IntroToPython-II.html">
+     Introduction to Python II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_programming/03-IntroToPython-III.html">
+     Introduction to Python III
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -709,61 +729,80 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="basic-plotting-with-r">
 <h1>Basic plotting with R<a class="headerlink" href="#basic-plotting-with-r" title="Permalink to this headline">#</a></h1>
-<p>teaching: 30
-exercises: 0
-questions:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Learning objectives</p>
 <ul class="simple">
-<li><p>“How to plot in R”
-objectives:</p></li>
-<li><p>“Learn basic plotting tools in R”</p></li>
-<li><p>“Learn to export graphics to a file”
-keypoints:</p></li>
-<li><p>“plot”</p></li>
+<li><p>Questions:</p>
+<ul>
+<li><p>How to plot in R</p></li>
 </ul>
-<!---
-## Course content:
-- Making exploratory graphs
-- Principles of analytic graphics
-- Plotting systems and graphics devices in R
-- The base, lattice, and ggplot2 plotting systems in R
-
-## Exploratory graph
-### Why do we use graphs in data analysis?
-- To understand data properties
-- To find patterns in data
-- To suggest modeling strategies
-- To "debug" analyses
-- To communicate results
-
-## Ploting System
-There are 3 main plotting systems in R:
-### The Base plotting system
-```
-- Start with blank plot and build up the plot
-- Plot is just a series of R command
-- Flexible
-```
-###  The Lattice plotting system (using package::lattice)
-```
-- Plots created using single function call
-- Good for putting many plots to screen
-- Cannot add to plots once created
-```
-
-### The ggplot plotting system (using package::ggplot2)
-```
-- Similar to Lattice but easier
-- Many default mode
-- Flexible between Base and Lattice
-```
-Tue's old screenshots:
-![image](https://user-images.githubusercontent.com/43855029/114093880-a7515980-9889-11eb-800e-0152f2e8c207.png)
-![image](https://user-images.githubusercontent.com/43855029/114093825-94d72000-9889-11eb-953f-2b232708b37d.png)
-![image](https://user-images.githubusercontent.com/43855029/114093954-b932fc80-9889-11eb-8532-f3db53f6278f.png)
-![image](https://user-images.githubusercontent.com/43855029/114093764-82f57d00-9889-11eb-8e8a-bb7d11340f02.png)
-![image](https://user-images.githubusercontent.com/43855029/114094073-dff13300-9889-11eb-9f97-6675f7408d04.png)
--->
-<p>R is a data analysis language, so naturally it comes with many built-in functions for plotting. Let’s look at some of them, in application to the <code class="docutils literal notranslate"><span class="pre">mtcars</span></code> datast.</p>
+</li>
+<li><p>Objectives:</p>
+<ul>
+<li><p>Learn basic plotting tools in R</p></li>
+<li><p>Learn to export graphics to a file</p></li>
+</ul>
+</li>
+<li><p>Keypoints:</p>
+<ul>
+<li><p>Plot</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Data visualization:</p>
+<ul class="simple">
+<li><p>Making exploratory graphs</p>
+<ul>
+<li><p>To understand data properties</p></li>
+<li><p>To find patterns in data</p></li>
+<li><p>To suggest modeling strategies</p></li>
+<li><p>To “debug” analyses</p></li>
+<li><p>To communicate results</p></li>
+</ul>
+</li>
+<li><p>Principles of analytic graphics</p></li>
+<li><p>Plotting systems and graphics devices in R</p></li>
+<li><p>The base, lattice, and ggplot2 plotting systems in R</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Ploting system</p>
+<ul class="simple">
+<li><p>There are 3 main plotting systems in R:</p>
+<ul>
+<li><p>The base plotting system</p></li>
+<li><p>Start with blank plot and build up the plot</p></li>
+<li><p>Plot is just a series of R command</p></li>
+<li><p>Flexible</p></li>
+</ul>
+</li>
+<li><p>The Lattice plotting system (using <code class="docutils literal notranslate"><span class="pre">package::lattice</span></code>)</p>
+<ul>
+<li><p>Plots created using single function call</p></li>
+<li><p>Good for putting many plots to screen</p></li>
+<li><p>Cannot add to plots once created</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> plotting system (using <code class="docutils literal notranslate"><span class="pre">package::ggplot2</span></code>)</p>
+<ul>
+<li><p>Similar to Lattice but easier</p></li>
+<li><p>Many default mode</p></li>
+<li><p>Flexible between Base and Lattice</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114093880-a7515980-9889-11eb-800e-0152f2e8c207.png" />
+<img alt="image" src="https://user-images.githubusercontent.com/43855029/114093825-94d72000-9889-11eb-953f-2b232708b37d.png" />
+<img alt="image" src="https://user-images.githubusercontent.com/43855029/114093954-b932fc80-9889-11eb-8532-f3db53f6278f.png" />
+<img alt="image" src="https://user-images.githubusercontent.com/43855029/114093764-82f57d00-9889-11eb-8e8a-bb7d11340f02.png" />
+<img alt="image" src="https://user-images.githubusercontent.com/43855029/114094073-dff13300-9889-11eb-9f97-6675f7408d04.png" /></p>
+<ul class="simple">
+<li><p>R is a data analysis language, so naturally it comes with many
+built-in functions for plotting. Let’s look at some of them, in
+application to the <code class="docutils literal notranslate"><span class="pre">mtcars</span></code> datast.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 <span class="nf">dim</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 <span class="nf">names</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
@@ -771,26 +810,46 @@ Tue's old screenshots:
 <span class="nf">print</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>First, let’s make a bar plot of the miles-per-gallon values of the 32 cars. <code class="docutils literal notranslate"><span class="pre">col</span></code> specifies the colour.</p>
+<ul class="simple">
+<li><p>First, let’s make a bar plot of the miles-per-gallon values of the 32
+cars. <code class="docutils literal notranslate"><span class="pre">col</span></code> specifies the colour.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now, let’s make a histogram for horsepower values.</p>
+<ul class="simple">
+<li><p>Now, let’s make a histogram for horsepower values.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">hp</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;magenta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Let’s display two jistorgrams on the same plot. We’ll use the function <code class="docutils literal notranslate"><span class="pre">par</span></code> to specify that the two histograms will be plotted stacked to each other, one on the left and one on the right.</p>
+<ul class="simple">
+<li><p>Let’s display two jistorgrams on the same plot. We’ll use the
+function <code class="docutils literal notranslate"><span class="pre">par</span></code> to specify that the two histograms will be plotted
+stacked to each other, one on the left and one on the right.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
 <span class="nf">hist</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
 <span class="nf">hist</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Let’s create a box plot for miles-per-gallon data. We’ll have to reset the plot options to let R know we don’t use multiple plots anymore; this is done with <code class="docutils literal notranslate"><span class="pre">dev.off()</span></code>.</p>
+<ul class="simple">
+<li><p>Let’s create a box plot for miles-per-gallon data. We’ll have to
+reset the plot options to let R know we don’t use multiple plots
+anymore; this is done with <code class="docutils literal notranslate"><span class="pre">dev.off()</span></code>.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dev.off</span><span class="p">()</span>
 <span class="nf">boxplot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Boxplot for mpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now, let’s make this box plot for every value of cylinders (<code class="docutils literal notranslate"><span class="pre">mtars$cyl</span></code>). We will use the same function <code class="docutils literal notranslate"><span class="pre">boxplot</span></code>, but with a few more parameters. We will specify the data explicitly, as well as <code class="docutils literal notranslate"><span class="pre">col</span></code> (for colour scheme), <code class="docutils literal notranslate"><span class="pre">main</span></code> (main figure title), <code class="docutils literal notranslate"><span class="pre">xlab</span></code> and <code class="docutils literal notranslate"><span class="pre">ylab</span></code> (X- and Y-axis labels). We will use the function <code class="docutils literal notranslate"><span class="pre">legend</span></code> to create a legend. We call <code class="docutils literal notranslate"><span class="pre">factors</span></code> to find out the unique cylinder values.</p>
+<ul class="simple">
+<li><p>Now, let’s make this box plot for every value of cylinders (<code class="docutils literal notranslate"><span class="pre">mtars$cyl</span></code>).
+We will use the same function <code class="docutils literal notranslate"><span class="pre">boxplot</span></code>, but with a few more parameters.
+We will specify the data explicitly, as well as <code class="docutils literal notranslate"><span class="pre">col</span></code> (for colour scheme),
+<code class="docutils literal notranslate"><span class="pre">main</span></code> (main figure title), <code class="docutils literal notranslate"><span class="pre">xlab</span></code> and <code class="docutils literal notranslate"><span class="pre">ylab</span></code> (X- and Y-axis labels). We
+will use the function <code class="docutils literal notranslate"><span class="pre">legend</span></code> to create a legend. We call <code class="docutils literal notranslate"><span class="pre">factors</span></code> to
+find out the unique cylinder values.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">factor</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">)</span>
 <span class="nf">boxplot</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">cyl</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span>
         <span class="n">col</span><span class="o">=</span><span class="nf">terrain.colors</span><span class="p">(</span><span class="m">3</span><span class="p">),</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;MPG by car cylinders&quot;</span><span class="p">,</span>
@@ -798,7 +857,10 @@ Tue's old screenshots:
 <span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topright&quot;</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;6&quot;</span><span class="p">,</span><span class="s">&quot;8&quot;</span><span class="p">),</span><span class="n">fill</span> <span class="o">=</span> <span class="nf">terrain.colors</span><span class="p">(</span><span class="m">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>And a scatter plot. We’ll use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function for this purpose. The dots will be coloured according to the number of cylinders.</p>
+<ul class="simple">
+<li><p>And a scatter plot. We’ll use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function for this purpose.
+The dots will be coloured according to the number of cylinders.</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span> <span class="n">mtcars</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s">&quot;Car Fuel vs Weight&quot;</span><span class="p">,</span>
      <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Mileage per Gallon&quot;</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">,</span>
      <span class="n">col</span> <span class="o">=</span> <span class="n">mtcars</span><span class="o">$</span><span class="n">cyl</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
@@ -806,34 +868,42 @@ Tue's old screenshots:
        <span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Here, <code class="docutils literal notranslate"><span class="pre">pch</span></code> is the plotting character; 16 corresponds to a circle, and <code class="docutils literal notranslate"><span class="pre">cex</span></code> is the size of the plotting characters. The full table of plotting characters is here:
-<img alt="img" src="https://r-lang.com/wp-content/uploads/2021/02/plot-character-in-R.png" /></p>
-<p>What if we want to save a plot? Let’s save it as a PDF. Here’s how we do it:</p>
+<ul class="simple">
+<li><p>Here, <code class="docutils literal notranslate"><span class="pre">pch</span></code> is the plotting character; 16 corresponds to a circle, and
+<code class="docutils literal notranslate"><span class="pre">cex</span></code> is the size of the plotting characters. The full table of plotting characters is here:</p></li>
+</ul>
+<p><img alt="img" src="https://r-lang.com/wp-content/uploads/2021/02/plot-character-in-R.png" /></p>
+<ul class="simple">
+<li><p>What if we want to save a plot? Let’s save it as a PDF. Here’s how we do it:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">pdf</span><span class="p">(</span><span class="s">&quot;myplot.pdf&quot;</span><span class="p">)</span>
 <span class="nf">boxplot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Boxplot for mpg&quot;</span><span class="p">)</span>
 <span class="nf">dev.off</span><span class="p">()</span>
 </pre></div>
 </div>
-<!---
-## Graphics Devices
-A graphics device is something where you can make a plot appear When you make a plot in R, it has to be "sent" to a specific graphics device.
-
-- A window on your computer (screen device): quick visualization
-- A PDF, PNG, JPEG file (file device) #recommended for documents, paper, presentation
-
-The most common place for a plot to be "sent" is the screen device
-
-- On a Mac the screen device is launched with the quartz()
-- On Windows the screen device is launched with windows()
-- On Unix/Linux the screen device is launched with x11()
-- save graphic to PDF
-- save graphic to PNG, JPEG
-
-```r
-dev.copy(png,"filename.png") # to save the image to file
-dev.off() # to close all the graphical devices
-```
--->
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Graphics Devices</p>
+<ul class="simple">
+<li><p>A graphics device is something where you can make a plot appear When
+you make a plot in R, it has to be “sent” to a specific graphics device.</p></li>
+<li><p>A window on your computer (screen device): quick visualization</p></li>
+<li><p>A PDF, PNG, JPEG file (file device) #recommended for documents, paper, presentation</p></li>
+<li><p>The most common place for a plot to be “sent” is the screen device</p>
+<ul>
+<li><p>On a Mac the screen device is launched with the quartz()</p></li>
+<li><p>On Windows the screen device is launched with windows()</p></li>
+<li><p>On Unix/Linux the screen device is launched with x11()</p></li>
+<li><p>save graphic to PDF</p></li>
+<li><p>save graphic to PNG, JPEG</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dev.copy</span><span class="p">(</span><span class="n">png</span><span class="p">,</span><span class="s">&quot;filename.png&quot;</span><span class="p">)</span> <span class="c1"># to save the image to file</span>
+<span class="nf">dev.off</span><span class="p">()</span> <span class="c1"># to close all the graphical devices</span>
+</pre></div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
