@@ -1,7 +1,7 @@
 # Introduction to Python Programming
 
 - **Instructor**: Asher Antao
-- **Office**: 2092 Barre Hall
+- **Office**: 2011 Barre Hall
 - **Office Hours**: Wednesday Office-hours 8.30am – 11.30am
 - **Email**: aantao AT clemson DOT edu
 
