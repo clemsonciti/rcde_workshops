@@ -897,30 +897,28 @@ shorter time. Let’s get the accurate timing with the <code class="docutils lit
 </pre></div>
 </div>
 </div>
-<div class="highlight-Using notranslate"><div class="highlight"><pre><span></span>:class: dropdown
+<div class="dropdown admonition">
+<p class="admonition-title">Using built-in Parallel inside packages</p>
+<ul class="simple">
+<li><p>Many packages have built-in paralle function. Here we use a
+bootstraping package: <code class="docutils literal notranslate"><span class="pre">boot</span></code></p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">boot</span><span class="p">)</span>
+<span class="c1"># function to obtain regression weights</span>
+<span class="n">bs</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">d</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">,]</span> <span class="c1"># allows boot to select sample</span>
+  <span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+  <span class="nf">return</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">fit</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="c1"># bootstrapping with 1000 replications</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="n">results</span> <span class="o">&lt;-</span> <span class="nf">boot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
+                <span class="n">R</span><span class="o">=</span><span class="m">10000</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="o">+</span><span class="n">disp</span><span class="p">))</span>
 
-- Many packages have built-in paralle function. Here we use a 
-bootstraping package: `boot`
-
-~~~r
-library(boot)
-# function to obtain regression weights
-bs &lt;- function(formula, data, indices) {
-  d &lt;- data[indices,] # allows boot to select sample
-  fit &lt;- lm(formula, d)
-  return(coef(fit))
-}
-# bootstrapping with 1000 replications
-system.time(results &lt;- boot(data=mtcars, statistic=bs,
-                R=10000, formula=mpg~wt+disp))
-
-system.time(results &lt;- boot(data=mtcars, statistic=bs,
-                R=10000, formula=mpg~wt+disp,
-                parallel = &quot;snow&quot;,ncpus=2))
-~~~
-
-
+<span class="nf">system.time</span><span class="p">(</span><span class="n">results</span> <span class="o">&lt;-</span> <span class="nf">boot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
+                <span class="n">R</span><span class="o">=</span><span class="m">10000</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="o">+</span><span class="n">disp</span><span class="p">,</span>
+                <span class="n">parallel</span> <span class="o">=</span> <span class="s">&quot;snow&quot;</span><span class="p">,</span><span class="n">ncpus</span><span class="o">=</span><span class="m">2</span><span class="p">))</span>
 </pre></div>
+</div>
 </div>
 </section>
 

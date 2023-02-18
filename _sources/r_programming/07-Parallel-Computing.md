@@ -172,7 +172,7 @@ stopCluster(cl)
 ```
 
 
-``` Using built-in Parallel inside packages
+```{admonition} Using built-in Parallel inside packages
 :class: dropdown
 
 - Many packages have built-in paralle function. Here we use a 

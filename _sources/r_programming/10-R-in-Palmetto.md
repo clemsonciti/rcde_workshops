@@ -14,6 +14,7 @@
 ```
 
 ```{admonition} Palmetto access
+:class: dropdown 
 
 - If you need to process a large amount of data and you think your 
 laptop/desktop is not fast enough, you can utilize the power of the 
