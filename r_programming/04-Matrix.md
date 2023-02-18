@@ -1,25 +1,29 @@
 # Vectors, Matrices, Lists and Data Frames
 
-teaching: 20
-exercises: 0
-questions:
-- "Vectors in R"
-- "How to define matrix in R?"
-- "How to manipulate a data frame in R?"
-- "How to read text/csv file"
-objectives:
-- "Working with Matrices"
-- "Creating data frames"
-- "Importing and exporting data frames"
-- "Working with text/csv files"
-keypoints:
-- "Working with csv input data"
+```{admonition} Learning objectives
+:class: dropdown
 
-## Vector math
+- Questions:
+  - Vectors in R
+  - How to define matrix in R?
+  - How to manipulate a data frame in R?
+  - How to read text/csv file
+- Objectives:
+  - Working with Matrices
+  - Creating data frames
+  - Importing and exporting data frames
+  - Working with text/csv files
+- Keypoints:
+  - Working with csv input data
 
-R can do a lot of mathematical operations on vectors:
+```
 
-```r
+```{admonition} Vector math
+:class: dropdown
+
+- R can do a lot of mathematical operations on vectors:
+
+~~~r
 a <- 3:7
 b <- 20:24
 a+b
@@ -27,44 +31,58 @@ a>b
 a>5
 a*b
 a/b
-```
+~~~
 
-What if vector lenghts don't match?
-```r
+- What if vector lenghts don't match?
+
+~~~r
 a<-1:5
 b<-1:6
 a
 b
 a+b
+~~~
+
 ```
 
-## Matrices
-Vectors are one-dimensional rows of numbers; matrices are two-dimensional tables. Like vectors, all elements of a matrix must be of the same data type. 
+```{admonition} Matrices
+:class: dropdown
+
+- Vectors are one-dimensional rows of numbers; matrices are 
+two-dimensional tables. Like vectors, all elements of a matrix 
+must be of the same data type. 
 
 Let's create a matrix of zeros:
 
-```r
+~~~r
 m <- matrix (0, nrow=3, ncol=4)
 m
-```
-When creating a matrix, you will need to specify number of rows and columns. 
+~~~
 
-You can create a matrix from a vector:
+- When creating a matrix, you will need to specify number of rows and columns. 
+- You can create a matrix from a vector:
 
-```r
+~~~r
 m <- matrix(1:12,nrow=3,ncol=4)
 m <- matrix(1:12,3,4)
 m
 dim(m)
-```
-Another way to create a matrix from a vector:
-```r
+~~~
+
+- Another way to create a matrix from a vector:
+
+~~~r
 m <- 1:12
 dim(m) <- c(3,4)
+~~~
+
 ```
 
-## Basic Matrix Math
-```r
+
+```{admonition} Basic matrix math
+:class: dropdown
+
+~~~r
 m1 <- matrix(1:9,nrow=3,ncol=3)
 m2 <- matrix(rep(10,9),3,3)
 m1
@@ -72,10 +90,11 @@ m2
 m1+m2
 m1*m2
 m1 %*% m2
-```
+~~~
 
-Some additional matrix functions:
-```r
+- Some additional matrix functions:
+
+~~~r
 # Define a matrix
 mr <- matrix(runif(9),3,3)
 #Transpose a matrix
@@ -87,7 +106,10 @@ det(mr)
 #Inverse
 solve(mr)
 solve(mr) %*% mr
+~~~
+
 ```
+
 
 ## Merging Matrices
 Merging matrices by row and column using `rbind` and `cbind`:

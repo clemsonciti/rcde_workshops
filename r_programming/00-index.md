@@ -1,10 +1,9 @@
 # Introduction to R
 
 ## Instructor
-- **Instructors**: Grigori Yourganov
-- **Office**: 2119 Barre Hall, Clemson University
+- **Instructors**: Linh B. Ngo
 - **Office Hours**: Wed 8.30-11.30 Zoom
-- **Email**: gyourga@clemson.edu
+- **Email**: lngo@clemson.edu
 
 ## Workshop Description
 
