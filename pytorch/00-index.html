@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Training Deep Learning Regression model with Keras &#8212; Research Computing and Data Workshop</title>
+    <title>Deep Learning in Pytorch &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Training Deep Learning Classification model with Keras" href="06-Keras-Classification.html" />
-    <link rel="prev" title="Introduction to Keras" href="04-Intro-to-Keras.html" />
+    <link rel="next" title="Intro to Pytorch with Distributed Data Parallel" href="03-DDP.html" />
+    <link rel="prev" title="Recurrent Neural Network for Timeseries forecasting" href="../python_deep_learning/08-Recurrent-neural-networks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -490,70 +490,70 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="00-index.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_deep_learning/00-index.html">
    Deep Learning in Python
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01-Introduction.html">
+    <a class="reference internal" href="../python_deep_learning/01-Introduction.html">
      Introduction to Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02-Deep-Learning-Framework.html">
+    <a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">
      Deep Learning Library Framework
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03-Neural-Network.html">
+    <a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">
      Recap on ANN
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04-Intro-to-Keras.html">
+    <a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">
      Introduction to Keras
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">
      Training Deep Learning Regression model with Keras
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06-Keras-Classification.html">
+    <a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">
      Training Deep Learning Classification model with Keras
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="07-Convolution-Neural-Network.html">
+    <a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">
      Convolution Neural Network for image classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="08-Recurrent-neural-networks.html">
+    <a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">
      Recurrent Neural Network for Timeseries forecasting
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pytorch/00-index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Deep Learning in Pytorch
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../pytorch/03-DDP.html">
+    <a class="reference internal" href="03-DDP.html">
      Intro to Pytorch with Distributed Data Parallel
     </a>
    </li>
@@ -683,7 +683,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/python_deep_learning/05-Keras-Regression.md"
+        <a href="../_sources/pytorch/00-index.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -743,46 +743,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-keras-to-solve-a-regression-model">
-   Using Keras to solve a Regression Model
+  <a class="reference internal nav-link" href="#instructor">
+   Instructor
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-the-data">
-     Prepare the data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-use-keras-s-sequential-model-with-dense-layers">
-     Let’s use Keras’s Sequential model with Dense layers
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-a-sequential-model-with-3-layers">
-     Create a Sequential model with 3 layers:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compile-model">
-     Compile model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fit-model">
-     Fit model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-load-keras-model">
-     Save &amp; load keras model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-validation-using-k-fold">
-     Cross validation using K-Fold
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workshop-description">
+   Workshop Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisite">
+   Prerequisite
+  </a>
  </li>
 </ul>
 
@@ -793,7 +766,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Training Deep Learning Regression model with Keras</h1>
+                <h1>Deep Learning in Pytorch</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -804,46 +777,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-keras-to-solve-a-regression-model">
-   Using Keras to solve a Regression Model
+  <a class="reference internal nav-link" href="#instructor">
+   Instructor
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prepare-the-data">
-     Prepare the data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#let-s-use-keras-s-sequential-model-with-dense-layers">
-     Let’s use Keras’s Sequential model with Dense layers
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-a-sequential-model-with-3-layers">
-     Create a Sequential model with 3 layers:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#compile-model">
-     Compile model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fit-model">
-     Fit model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-load-keras-model">
-     Save &amp; load keras model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cross-validation-using-k-fold">
-     Cross validation using K-Fold
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workshop-description">
+   Workshop Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisite">
+   Prerequisite
+  </a>
  </li>
 </ul>
 
@@ -855,132 +801,24 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="training-deep-learning-regression-model-with-keras">
-<h1>Training Deep Learning Regression model with Keras<a class="headerlink" href="#training-deep-learning-regression-model-with-keras" title="Permalink to this headline">#</a></h1>
-<section id="using-keras-to-solve-a-regression-model">
-<h2>Using Keras to solve a Regression Model<a class="headerlink" href="#using-keras-to-solve-a-regression-model" title="Permalink to this headline">#</a></h2>
-<section id="prepare-the-data">
-<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this headline">#</a></h3>
-<p>Here we use <a class="reference external" href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">Pima Indian Diabetes database</a> data:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="deep-learning-in-pytorch">
+<h1>Deep Learning in Pytorch<a class="headerlink" href="#deep-learning-in-pytorch" title="Permalink to this headline">#</a></h1>
+<section id="instructor">
+<h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>We need to omit the header line of the data.</p></li>
+<li><p><strong>Instructor</strong>: D. Hudson Smith</p></li>
+<li><p><strong>Office</strong>: 2105 Barre Hall, Clemson University</p></li>
+<li><p><strong>Email</strong>: <a class="reference external" href="mailto:dane2&#37;&#52;&#48;clemson&#46;edu">dane2<span>&#64;</span>clemson<span>&#46;</span>edu</a></p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">np_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;/zfs/citi/workshop_data/python_ml/diabetes.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># split into input (X) and output (Y) variables</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span><span class="mi">8</span><span class="p">]</span>
-</pre></div>
-</div>
 </section>
-<section id="let-s-use-keras-s-sequential-model-with-dense-layers">
-<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
-</pre></div>
-</div>
+<section id="workshop-description">
+<h2>Workshop Description<a class="headerlink" href="#workshop-description" title="Permalink to this headline">#</a></h2>
 </section>
-<section id="create-a-sequential-model-with-3-layers">
-<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Sequential model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="c1"># Create a first hidden layer, the input for the first hidden layer is input layer which has 8 variables:</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">input_dim</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="c1"># Create a second hidden layer</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="c1"># Create a third hidden layer</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
+<section id="prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">#</a></h2>
 </section>
-<section id="compile-model">
-<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-</pre></div>
+<div class="toctree-wrapper compound">
 </div>
-<p>Here, <strong>adam</strong> optimization is a stochastic gradient descent method that is based on adaptive estimation of first-order and second-order moments.</p>
-<p>According to Kingma et al., 2014, the method is “computationally efficient, has little memory requirement, invariant to diagonal rescaling of gradients, and is well suited for problems that are large in terms of data/parameters”.</p>
-<p>More information on <strong>adam</strong> optimizer is <a class="reference external" href="https://keras.io/api/optimizers/adam/">here</a></p>
-<p>In addition to <strong>adam</strong>, there are many other optimizer:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/sgd">SGD</a></p></li>
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/rmsprop">RMSprop</a></p></li>
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/adadelta">Adadelta</a></p></li>
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/adagrad">Adagrad</a></p></li>
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/adamax">Adamax</a></p></li>
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/nadam">Nadam</a></p></li>
-<li><p><a class="reference external" href="https://keras.io/api/optimizers/ftrl">Ftrl</a></p></li>
-</ul>
-<p>There are also many other <strong>loss</strong> function.</p>
-<p>The purpose of <strong>loss</strong> functions is to compute the quantity that a model should seek to minimize during training. Detail can be found <a class="reference external" href="https://keras.io/api/losses/">here</a></p>
-</section>
-<section id="fit-model">
-<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Here:</p>
-<ul class="simple">
-<li><p>epochs: the number of iteration</p></li>
-<li><p>verbose: ‘auto’, 0, 1, or 2. Verbosity mode. 0 = silent, 1 = progress bar,
-2 = one line per epoch. ‘auto’ defaults to 1 for most cases, but 2 when used with
-ParameterServerStrategy. Note that the progress bar is not particularly
-useful when logged to a file, so verbose=2 is recommended when not running
-interactively (eg, in a production environment).</p></li>
-<li><p>batch_size: Number of samples per batch of computation. If unspecified, batch_size will default to 32.</p></li>
-</ul>
-<p>You can also create custom training/testing dataset:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
-<span class="c1"># create model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-<span class="c1"># Compile model</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-<span class="c1"># Fit the model</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="save-load-keras-model">
-<h3>Save &amp; load keras model<a class="headerlink" href="#save-load-keras-model" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_model.keras&#39;</span><span class="p">)</span>  <span class="c1"># creates a HDF5 file &#39;my_model.h5&#39;</span>
-<span class="k">del</span> <span class="n">model</span>  <span class="c1"># deletes the existing model</span>
-
-<span class="c1"># returns a compiled model</span>
-<span class="c1"># identical to the previous one</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;my_model.keras&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="cross-validation-using-k-fold">
-<h3>Cross validation using K-Fold<a class="headerlink" href="#cross-validation-using-k-fold" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
-
-<span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
-<span class="n">cvscores</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">scores</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">metrics_names</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scores</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
-    <span class="n">cvscores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f%%</span><span class="s2"> (+/- </span><span class="si">%.2f%%</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cvscores</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">cvscores</span><span class="p">)))</span>
-
-</pre></div>
-</div>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -996,7 +834,7 @@ interactively (eg, in a production environment).</p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./python_deep_learning"
+            path: "./pytorch"
         },
         predefinedOutput: true
     }
@@ -1010,17 +848,17 @@ interactively (eg, in a production environment).</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="04-Intro-to-Keras.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../python_deep_learning/08-Recurrent-neural-networks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to Keras</p>
+            <p class="prev-next-title">Recurrent Neural Network for Timeseries forecasting</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="06-Keras-Classification.html" title="next page">
+    <a class='right-next' id="next-link" href="03-DDP.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Training Deep Learning Classification model with Keras</p>
+        <p class="prev-next-title">Intro to Pytorch with Distributed Data Parallel</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
