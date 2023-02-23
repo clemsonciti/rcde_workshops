@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -791,11 +791,11 @@ keypoints:</p></li>
 </ul>
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">createDataPartition</span></code> to randomly split 60% data for training and the rest for testing:
 <img alt="image" src="https://user-images.githubusercontent.com/43855029/114209883-22b81700-992d-11eb-83a4-c4ab1538a1e5.png" /></p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ind1</span> <span class="o">&lt;-</span> <span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">times</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ind1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">times</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="c1">#list=FALSE, prevent returning result as a list</span>
 <span class="c1">#times=1 to create one split</span>
-<span class="n">training</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">ind1</span><span class="p">,]</span>
-<span class="n">testing</span>  <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">ind1</span><span class="p">,]</span> 
+<span class="n">training</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="n">ind1</span><span class="p">,]</span>
+<span class="n">testing</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">ind1</span><span class="p">,]</span><span class="w"> </span>
 </pre></div>
 </div>
 <!---
@@ -830,7 +830,7 @@ More information on model tuning using caret can be found [here](https://topepo.
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./r_machine_learning"
         },
         predefinedOutput: true

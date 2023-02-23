@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -795,7 +795,7 @@ will install multiple additional packages that it requires):</p></li>
 Let’s do a quick scatter plot from the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset,
 plotting sepal length versus petal length:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -803,19 +803,19 @@ plotting sepal length versus petal length:</p></li>
 we did in the last chapter. Now, let’s plot different species
 of iris with different colours and shapes:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-      <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-      <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
+<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+<span class="w">      </span><span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095545-8ab62100-988b-11eb-8383-38d4a0802423.png" /></p>
 <ul class="simple">
 <li><p>Now, let’s add smooth lines which show trends in the data:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-      <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-      <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-      <span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
+<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+<span class="w">      </span><span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+<span class="w">      </span><span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095674-b507de80-988b-11eb-8a9f-852ed19ed08a.png" /></p>
@@ -823,10 +823,10 @@ of iris with different colours and shapes:</p></li>
 <li><p>Let’s make these lines straight – that is, let’s fit a linear
 model to each species’ data:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
-      <span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-      <span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
-      <span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span>
+<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+<span class="w">      </span><span class="n">shape</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span>
+<span class="w">      </span><span class="n">geom</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;point&quot;</span><span class="p">,</span><span class="s">&quot;smooth&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114095642-aae5e000-988b-11eb-925b-91336205073d.png" /></p>
@@ -835,7 +835,7 @@ model to each species’ data:</p></li>
 sepal lengths of each species:</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">,</span><span class="n">geom</span><span class="o">=</span><span class="s">&quot;density&quot;</span><span class="p">,</span>
-      <span class="n">color</span><span class="o">=</span><span class="n">Species</span><span class="p">)</span>
+<span class="w">      </span><span class="n">color</span><span class="o">=</span><span class="n">Species</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -847,7 +847,7 @@ examples of code are here:
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Basic qplot: Facets</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">facets</span><span class="o">=</span><span class="n">.</span><span class="o">~</span><span class="n">Species</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">qplot</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">facets</span><span class="o">=</span><span class="n">.</span><span class="o">~</span><span class="n">Species</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">iris</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114096115-4d9e5e80-988c-11eb-8b75-c2a4d88282da.png" /></p>
@@ -857,13 +857,13 @@ examples of code are here:
 <ul class="simple">
 <li><p>Sample plot</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gp</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">hwy</span><span class="p">,</span> <span class="n">cty</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">hwy</span><span class="p">,</span><span class="w"> </span><span class="n">cty</span><span class="p">))</span>
 
 <span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cyl</span><span class="p">))</span>
 <span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span>
 <span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
 <span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span>
-  <span class="o">+</span><span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">cyl</span><span class="p">)</span>
+<span class="w">  </span><span class="o">+</span><span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">cyl</span><span class="p">)</span>
 <span class="c1"># Save plot to file</span>
 <span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;plot.png&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
 </pre></div>
@@ -878,13 +878,13 @@ examples of code are here:
 <li><p>Standard appearance: theme_bw()</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gp</span><span class="o">+</span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">),</span>
-              <span class="n">size</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span>
-  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Highway miles per gallon&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;city miles per gallon&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Scatter plot for cty &amp; hwy&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">xlim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">40</span><span class="p">)</span><span class="o">+</span><span class="nf">ylim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">40</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">theme_bw</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">15</span><span class="p">)</span>
+<span class="w">              </span><span class="n">size</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)))</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Highway miles per gallon&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;city miles per gallon&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Scatter plot for cty &amp; hwy&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">xlim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">40</span><span class="p">)</span><span class="o">+</span><span class="nf">ylim</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">40</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">(</span><span class="n">base_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114812-a16e6f00-98af-11eb-91be-aad368dedb50.png" /></p>
@@ -895,40 +895,40 @@ examples of code are here:
 <li><p>Boxplot</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">manufacturer</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">hwy</span><span class="p">,</span>
-               <span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">manufacturer</span><span class="p">)))</span><span class="o">+</span>
-  <span class="nf">geom_boxplot</span><span class="p">()</span><span class="o">+</span>
-  <span class="nf">geom_jitter</span><span class="p">()</span><span class="o">+</span>
-  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Boxplot for Hwy per manufacturer&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s">&quot;Manufacturer&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Highway milage&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">theme_bw</span><span class="p">()</span><span class="o">+</span><span class="nf">coord_flip</span><span class="p">()</span><span class="o">+</span>
-  <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">manufacturer</span><span class="p">)))</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_boxplot</span><span class="p">()</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_jitter</span><span class="p">()</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Boxplot for Hwy per manufacturer&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s">&quot;Manufacturer&quot;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Highway milage&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="o">+</span><span class="nf">coord_flip</span><span class="p">()</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114879-c19e2e00-98af-11eb-8ce8-000f14ac24ae.png" /></p>
 <ul class="simple">
 <li><p>Violin plot</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">cty</span><span class="p">))</span>
-<span class="n">g</span> <span class="o">+</span> <span class="nf">geom_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">class</span><span class="p">))</span> <span class="o">+</span> 
-  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Violin plot&quot;</span><span class="p">,</span> 
-       <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;City Mileage vs Class of vehicle&quot;</span><span class="p">,</span>
-       <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Source: mpg&quot;</span><span class="p">,</span>
-       <span class="n">x</span><span class="o">=</span><span class="s">&quot;Class of Vehicle&quot;</span><span class="p">,</span>
-       <span class="n">y</span><span class="o">=</span><span class="s">&quot;City Mileage&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">cty</span><span class="p">))</span>
+<span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_violin</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">class</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Violin plot&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;City Mileage vs Class of vehicle&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">caption</span><span class="o">=</span><span class="s">&quot;Source: mpg&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;Class of Vehicle&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;City Mileage&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114114954-e7c3ce00-98af-11eb-8040-4dbb0800b5e7.png" /></p>
 <ul class="simple">
 <li><p>Histogram</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">displ</span><span class="p">))</span> <span class="o">+</span> <span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span> <span class="o">=</span> <span class="s">&quot;Spectral&quot;</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">+</span> <span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">class</span><span class="p">),</span> 
-                   <span class="n">bins</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> 
-                   <span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span> 
-                   <span class="n">size</span><span class="o">=</span><span class="n">.</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span>   <span class="c1"># change number of bins</span>
-  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Histogram with Fixed Bins&quot;</span><span class="p">,</span> 
-       <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Engine Displacement across Vehicle Classes&quot;</span><span class="p">,</span>
-       <span class="n">x</span><span class="o">=</span><span class="s">&quot;enginer displacement (m)&quot;</span><span class="p">,</span>
-       <span class="n">y</span><span class="o">=</span><span class="s">&quot;Frequency count&quot;</span><span class="p">)</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">displ</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Spectral&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">class</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                   </span><span class="n">bins</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                   </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                   </span><span class="n">size</span><span class="o">=</span><span class="n">.</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">   </span><span class="c1"># change number of bins</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Histogram with Fixed Bins&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Engine Displacement across Vehicle Classes&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;enginer displacement (m)&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Frequency count&quot;</span><span class="p">)</span><span class="w"> </span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115027-0629c980-98b0-11eb-8f8b-2c9bb4c5d6e6.png" /></p>
@@ -936,16 +936,16 @@ examples of code are here:
 <li><p>Scatter plot</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="s">&quot;midwest&quot;</span><span class="p">)</span>
-<span class="n">gg</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">midwest</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">poptotal</span><span class="p">))</span> <span class="o">+</span> 
-  <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">popdensity</span><span class="p">))</span> <span class="o">+</span> 
-  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;loess&quot;</span><span class="p">,</span> <span class="n">se</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span> <span class="o">+</span> 
-  <span class="nf">xlim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0.1</span><span class="p">))</span> <span class="o">+</span> 
-  <span class="nf">ylim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">500000</span><span class="p">))</span> <span class="o">+</span> 
-  <span class="nf">labs</span><span class="p">(</span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Area Vs Population&quot;</span><span class="p">,</span> 
-       <span class="n">y</span><span class="o">=</span><span class="s">&quot;Population&quot;</span><span class="p">,</span> 
-       <span class="n">x</span><span class="o">=</span><span class="s">&quot;Area&quot;</span><span class="p">,</span> 
-       <span class="n">title</span><span class="o">=</span><span class="s">&quot;Scatterplot&quot;</span><span class="p">,</span> 
-       <span class="n">caption</span> <span class="o">=</span> <span class="s">&quot;Source: midwest&quot;</span><span class="p">)</span>
+<span class="n">gg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">midwest</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">area</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">poptotal</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="n">popdensity</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;loess&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">xlim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">ylim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">500000</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;Area Vs Population&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Population&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;Area&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Scatterplot&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Source: midwest&quot;</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">gg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -953,27 +953,27 @@ examples of code are here:
 <ul class="simple">
 <li><p>Density</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">cty</span><span class="p">))</span>
-<span class="n">g</span> <span class="o">+</span> <span class="nf">geom_density</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0.8</span><span class="p">)</span> <span class="o">+</span> 
-    <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Density plot&quot;</span><span class="p">,</span> 
-         <span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;City Mileage Grouped by Number of cylinders&quot;</span><span class="p">,</span>
-         <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Source: mpg&quot;</span><span class="p">,</span>
-         <span class="n">x</span><span class="o">=</span><span class="s">&quot;City Mileage&quot;</span><span class="p">,</span>
-         <span class="n">fill</span><span class="o">=</span><span class="s">&quot;# Cylinders&quot;</span><span class="p">)</span><span class="o">+</span>
-    <span class="nf">theme_bw</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">cty</span><span class="p">))</span>
+<span class="n">g</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_density</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">)),</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.8</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Density plot&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">         </span><span class="n">subtitle</span><span class="o">=</span><span class="s">&quot;City Mileage Grouped by Number of cylinders&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="n">caption</span><span class="o">=</span><span class="s">&quot;Source: mpg&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;City Mileage&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;# Cylinders&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">    </span><span class="nf">theme_bw</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115140-47ba7480-98b0-11eb-87c9-922ae8970516.png" /></p>
 <ul class="simple">
 <li><p>Density 2D</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gg</span> <span class="o">&lt;-</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">faithful</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">eruptions</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">waiting</span><span class="p">))</span>
-<span class="n">gg</span> <span class="o">+</span> <span class="nf">stat_density_2d</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">..level..</span><span class="p">),</span>
-                     <span class="n">geom</span><span class="o">=</span><span class="s">&quot;polygon&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
-     <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">linetype</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
-     <span class="nf">scale_fill_continuous</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
-     <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
-     <span class="nf">theme_bw</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">faithful</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">eruptions</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">waiting</span><span class="p">))</span>
+<span class="n">gg</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">stat_density_2d</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">..level..</span><span class="p">),</span>
+<span class="w">                     </span><span class="n">geom</span><span class="o">=</span><span class="s">&quot;polygon&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">     </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">linetype</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">     </span><span class="nf">scale_fill_continuous</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">     </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">     </span><span class="nf">theme_bw</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115221-63be1600-98b0-11eb-86b5-c0f6f0d8ecff.png" /></p>
@@ -981,40 +981,40 @@ examples of code are here:
 <li><p>Geographic visualization with ggplot</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
-<span class="n">states</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">)</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">states</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">region</span><span class="p">),</span>
-               <span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">states</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;state&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">states</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">region</span><span class="p">),</span>
+<span class="w">               </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115281-84866b80-98b0-11eb-9706-0b07e1472a54.png" /></p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">counties</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;county&quot;</span><span class="p">)</span>
-<span class="n">SC_counties</span> <span class="o">&lt;-</span> <span class="nf">subset</span><span class="p">(</span><span class="n">counties</span><span class="p">,</span><span class="n">region</span> <span class="o">==</span> <span class="s">&quot;south carolina&quot;</span><span class="p">)</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">SC_counties</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">subregion</span><span class="p">),</span>
-               <span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">counties</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;county&quot;</span><span class="p">)</span>
+<span class="n">SC_counties</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">counties</span><span class="p">,</span><span class="n">region</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;south carolina&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SC_counties</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">subregion</span><span class="p">),</span>
+<span class="w">               </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_fixed</span><span class="p">(</span><span class="m">1.3</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114115313-9700a500-98b0-11eb-8771-58631bdc3e54.png" /></p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">some.eu.countries</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span>
-  <span class="s">&quot;Portugal&quot;</span><span class="p">,</span> <span class="s">&quot;Spain&quot;</span><span class="p">,</span> <span class="s">&quot;France&quot;</span><span class="p">,</span> <span class="s">&quot;Switzerland&quot;</span><span class="p">,</span> <span class="s">&quot;Germany&quot;</span><span class="p">,</span>
-  <span class="s">&quot;Austria&quot;</span><span class="p">,</span> <span class="s">&quot;Belgium&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">,</span> <span class="s">&quot;Netherlands&quot;</span><span class="p">,</span>
-  <span class="s">&quot;Denmark&quot;</span><span class="p">,</span> <span class="s">&quot;Poland&quot;</span><span class="p">,</span> <span class="s">&quot;Italy&quot;</span><span class="p">,</span> 
-  <span class="s">&quot;Croatia&quot;</span><span class="p">,</span> <span class="s">&quot;Slovenia&quot;</span><span class="p">,</span> <span class="s">&quot;Hungary&quot;</span><span class="p">,</span> <span class="s">&quot;Slovakia&quot;</span><span class="p">,</span>
-  <span class="s">&quot;Czech republic&quot;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">some.eu.countries</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;Portugal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Spain&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;France&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Switzerland&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Germany&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;Austria&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Belgium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;UK&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Netherlands&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;Denmark&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Poland&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Italy&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="s">&quot;Croatia&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Slovenia&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hungary&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Slovakia&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;Czech republic&quot;</span>
 <span class="p">)</span>
 <span class="c1"># Retrievethe map data</span>
-<span class="n">some.eu.maps</span> <span class="o">&lt;-</span> <span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="n">region</span> <span class="o">=</span> <span class="n">some.eu.countries</span><span class="p">)</span>
+<span class="n">some.eu.maps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">map_data</span><span class="p">(</span><span class="s">&quot;world&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">some.eu.countries</span><span class="p">)</span>
 
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">some.eu.maps</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">long</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lat</span><span class="p">))</span> <span class="o">+</span>
-  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span> <span class="n">group</span> <span class="o">=</span> <span class="n">group</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">region</span><span class="p">))</span><span class="o">+</span>
-  <span class="nf">scale_fill_viridis_d</span><span class="p">()</span><span class="o">+</span>
-  <span class="nf">theme_void</span><span class="p">()</span><span class="o">+</span>
-  <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&quot;none&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">some.eu.maps</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">region</span><span class="p">))</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_fill_viridis_d</span><span class="p">()</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_void</span><span class="p">()</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122972677-6633f600-d35e-11eb-9c3c-4b90db22b25e.png" /></p>
@@ -1040,7 +1040,7 @@ examples of code are here:
 <span class="nf">library</span><span class="p">(</span><span class="n">maps</span><span class="p">)</span>
 
 <span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;c:/R/GIS/&#39;</span><span class="p">)</span>
-<span class="n">gfile</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="o">=</span><span class="s">&quot;Countries_WGS84.shp&quot;</span><span class="p">)</span>
+<span class="n">gfile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="o">=</span><span class="s">&quot;Countries_WGS84.shp&quot;</span><span class="p">)</span>
 <span class="nf">names</span><span class="p">(</span><span class="n">gfile</span><span class="p">)</span>
 <span class="n">gfile</span><span class="o">$</span><span class="n">CNTRY_NAME</span>
 
@@ -1065,7 +1065,7 @@ The data can be downloaded from <a class="reference external" href="http://due.e
 
 <span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;c:/R/GIS/&#39;</span><span class="p">)</span>
 <span class="c1">#import raster</span>
-<span class="n">Gcover</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;GLOBCOVER_L4_200901_200912_V2.3.tif&quot;</span><span class="p">)</span>
+<span class="n">Gcover</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;GLOBCOVER_L4_200901_200912_V2.3.tif&quot;</span><span class="p">)</span>
 <span class="c1">#plot raster</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">Gcover</span><span class="p">,</span><span class="n">main</span><span class="o">=</span><span class="s">&quot;GLobal Land cover&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1086,7 +1086,7 @@ The data can be downloaded from <a class="reference external" href="http://due.e
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./r_programming"
         },
         predefinedOutput: true

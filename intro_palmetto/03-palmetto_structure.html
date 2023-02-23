@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -746,7 +746,7 @@ Any commands that we enter into this shell are executed not by our own machines,
 login node to the compute nodes by submitting a request to the scheduler, and the scheduler will assign them to the most appropriate compute node.
 Palmetto also has a few so-called “service” nodes, which serve special purposes like transferring code and data to and from the cluster, and hosting web applications.</p>
 <p>To see the specifications of the Palmetto compute nodes, let’s type</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat /etc/hardware-table
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>/etc/hardware-table
 </pre></div>
 </div>
 <p>This will print out a text file with the hardware info. Please make sure you type exactly as shown; Linux is case-sensitive, space-sensitive,
@@ -910,7 +910,7 @@ and typo-sensitive. The output will look something like this:</p>
 </div>
 <p>This table shows the amount of <em>completely free</em> nodes per each phase; a node which has, for example, 8 cores, but only 4 of them are used, would not be counted as “free”. So this table is a conservative estimate. It is a good idea to run <code class="docutils literal notranslate"><span class="pre">whatsfree</span></code> when you log into Palmetto, to get a picture of how busy the cluster is. This picture can change pretty drastically depending on the time of the day and the day of the week.</p>
 <p>If a compute node is not 100% busy, you can still get on it. For example, the compute nodes in phase 29 have 64 cores, 250 GB of RAM, and 2 GPUs. If you are fine with using a subset of these resources, the <code class="docutils literal notranslate"><span class="pre">freeres</span></code> script can be very convenient: it tells you which nodes are <em>partially</em> available. Let’s run it for phase 29:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>freeres phase29
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>freeres<span class="w"> </span>phase29
 </pre></div>
 </div>
 <div class="admonition hint">
@@ -981,7 +981,7 @@ nodes have at least 8 cores free and 21 nodes have at least 1 GPU free.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./intro_palmetto"
         },
         predefinedOutput: true

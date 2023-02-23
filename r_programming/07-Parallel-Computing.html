@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -789,11 +789,11 @@ defined in these packages:</p></li>
 computationally intensive. This function will compute the largest eigenvalue of a
 random matrix:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">max.eig</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="p">{</span>
-     <span class="n">d</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="o">**</span><span class="m">2</span><span class="p">),</span> <span class="n">nrow</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
-     <span class="n">E</span> <span class="o">&lt;-</span> <span class="nf">eigen</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">$</span><span class="n">values</span>
-     <span class="nf">abs</span><span class="p">(</span><span class="n">E</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
- <span class="p">}</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">max.eig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="o">**</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="p">)</span>
+<span class="w">     </span><span class="n">E</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">eigen</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">$</span><span class="n">values</span>
+<span class="w">     </span><span class="nf">abs</span><span class="p">(</span><span class="n">E</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
+<span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -807,8 +807,8 @@ to run the <code class="docutils literal notranslate"><span class="pre">source</
 <li><p>Now, let’s run it in a loop to create ten random matrices, of size
 500x500 each, and compute their largest eigenvalue.</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="nf">rep </span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="p">{</span> <span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">100</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">max.eig </span><span class="p">(</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -816,7 +816,7 @@ to run the <code class="docutils literal notranslate"><span class="pre">source</
 <li><p>This should take several seconds, depending on the processing power
 of your computer. An alternative way to run it is to use <code class="docutils literal notranslate"><span class="pre">foreach</span></code>:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">%do%</span><span class="w"> </span><span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -826,32 +826,32 @@ in parallel. For this purpose, we’ll need to replace <code class="docutils lit
 so we take advantage of all available CPUs:</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">registerDoParallel </span><span class="p">()</span>
-<span class="n">m</span> <span class="o">=</span> <span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%dopar%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+<span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Now, since we are running the code in parallel, it should take a
 shorter time. Let’s get the accurate timing with the <code class="docutils literal notranslate"><span class="pre">system.time</span></code> command:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system.time </span><span class="p">(</span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">))</span>
-<span class="nf">system.time </span><span class="p">(</span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span> <span class="n">.combine</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="o">%dopar%</span> <span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system.time </span><span class="p">(</span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">%do%</span><span class="w"> </span><span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">))</span>
+<span class="nf">system.time </span><span class="p">(</span><span class="nf">foreach </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="nf">max.eig </span><span class="p">(</span><span class="m">500</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">Using foreach package</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%do%</span><span class="w"> </span><span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p><strong>Nested foreach</strong></p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">=</span><span class="m">1</span>
-<span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">%:%</span>
-   <span class="nf">foreach</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span> <span class="o">%do%</span><span class="p">{</span>
-      <span class="nf">max.eig</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-      <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="m">+1</span>
-    <span class="p">}</span>      
+<span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">%:%</span>
+<span class="w">   </span><span class="nf">foreach</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">%do%</span><span class="p">{</span>
+<span class="w">      </span><span class="nf">max.eig</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="m">+1</span>
+<span class="w">    </span><span class="p">}</span><span class="w">      </span>
 </pre></div>
 </div>
 </div>
@@ -861,16 +861,16 @@ shorter time. Let’s get the accurate timing with the <code class="docutils lit
 <li><p>Check the number of available cpus:</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
-<span class="n">co</span> <span class="o">&lt;-</span> <span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span>
-<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makeCluster</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+<span class="n">co</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span>
+<span class="n">cl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
 <span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Apply <code class="docutils literal notranslate"><span class="pre">doParallel</span></code> to <code class="docutils literal notranslate"><span class="pre">foreach</span></code>:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
-<span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%dopar%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%do%</span><span class="w"> </span><span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span><span class="w"> </span><span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
 <span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -882,17 +882,17 @@ shorter time. Let’s get the accurate timing with the <code class="docutils lit
 <li><p>Check number of available processing cpus:</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
-<span class="n">co</span> <span class="o">&lt;-</span> <span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span>
-<span class="n">cl</span> <span class="o">&lt;-</span> <span class="nf">makecluster</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+<span class="n">co</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span>
+<span class="n">cl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">makecluster</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Apply <code class="docutils literal notranslate"><span class="pre">parLapply</span></code></p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load necessary packages on the cluster workers</span>
-<span class="nf">clusterExport</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;max.eig&#39;</span><span class="p">))</span>
-<span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span> <span class="o">%do%</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
-<span class="nf">system.time</span><span class="p">(</span><span class="nf">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="nf">max.eig</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="m">1</span><span class="p">)))</span>
+<span class="nf">clusterExport</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;max.eig&#39;</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%do%</span><span class="w"> </span><span class="nf">max.eig</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="nf">parLapply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="nf">max.eig</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="m">1</span><span class="p">)))</span>
 <span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -905,18 +905,18 @@ bootstraping package: <code class="docutils literal notranslate"><span class="pr
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">boot</span><span class="p">)</span>
 <span class="c1"># function to obtain regression weights</span>
-<span class="n">bs</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">d</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">,]</span> <span class="c1"># allows boot to select sample</span>
-  <span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
-  <span class="nf">return</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">fit</span><span class="p">))</span>
+<span class="n">bs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">indices</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">indices</span><span class="p">,]</span><span class="w"> </span><span class="c1"># allows boot to select sample</span>
+<span class="w">  </span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">fit</span><span class="p">))</span>
 <span class="p">}</span>
 <span class="c1"># bootstrapping with 1000 replications</span>
-<span class="nf">system.time</span><span class="p">(</span><span class="n">results</span> <span class="o">&lt;-</span> <span class="nf">boot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
-                <span class="n">R</span><span class="o">=</span><span class="m">10000</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="o">+</span><span class="n">disp</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="n">results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">boot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
+<span class="w">                </span><span class="n">R</span><span class="o">=</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="o">=</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="o">+</span><span class="n">disp</span><span class="p">))</span>
 
-<span class="nf">system.time</span><span class="p">(</span><span class="n">results</span> <span class="o">&lt;-</span> <span class="nf">boot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
-                <span class="n">R</span><span class="o">=</span><span class="m">10000</span><span class="p">,</span> <span class="n">formula</span><span class="o">=</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="o">+</span><span class="n">disp</span><span class="p">,</span>
-                <span class="n">parallel</span> <span class="o">=</span> <span class="s">&quot;snow&quot;</span><span class="p">,</span><span class="n">ncpus</span><span class="o">=</span><span class="m">2</span><span class="p">))</span>
+<span class="nf">system.time</span><span class="p">(</span><span class="n">results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">boot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span><span class="w"> </span><span class="n">statistic</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span>
+<span class="w">                </span><span class="n">R</span><span class="o">=</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="o">=</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="o">+</span><span class="n">disp</span><span class="p">,</span>
+<span class="w">                </span><span class="n">parallel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;snow&quot;</span><span class="p">,</span><span class="n">ncpus</span><span class="o">=</span><span class="m">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -934,7 +934,7 @@ bootstraping package: <code class="docutils literal notranslate"><span class="pr
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./r_programming"
         },
         predefinedOutput: true
