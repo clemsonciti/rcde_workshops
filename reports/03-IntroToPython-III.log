@@ -1,0 +1,169 @@
+Traceback (most recent call last):
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/hudson/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# pretty colors if you want
+df.groupby('variety').agg(['mean', 'std', 'sem', 'count']).style.background_gradient('Blues')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyboardInterrupt[0m                         Traceback (most recent call last)
+Cell [0;32mIn[63], line 2[0m
+[1;32m      1[0m [38;5;66;03m# pretty colors if you want[39;00m
+[0;32m----> 2[0m [43mdf[49m[38;5;241;43m.[39;49m[43mgroupby[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mvariety[39;49m[38;5;124;43m'[39;49m[43m)[49m[38;5;241;43m.[39;49m[43magg[49m[43m([49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mmean[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mstd[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43msem[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mcount[39;49m[38;5;124;43m'[39;49m[43m][49m[43m)[49m[38;5;241;43m.[39;49m[43mstyle[49m[38;5;241m.[39mbackground_gradient([38;5;124m'[39m[38;5;124mBlues[39m[38;5;124m'[39m)
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/pandas/core/frame.py:1264[0m, in [0;36mDataFrame.style[0;34m(self)[0m
+[1;32m   1252[0m [38;5;129m@property[39m
+[1;32m   1253[0m [38;5;28;01mdef[39;00m [38;5;21mstyle[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m Styler:
+[1;32m   1254[0m     [38;5;124;03m"""[39;00m
+[1;32m   1255[0m [38;5;124;03m    Returns a Styler object.[39;00m
+[1;32m   1256[0m 
+[0;32m   (...)[0m
+[1;32m   1262[0m [38;5;124;03m        data with HTML and CSS.[39;00m
+[1;32m   1263[0m [38;5;124;03m    """[39;00m
+[0;32m-> 1264[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mio[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformats[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstyle[39;00m [38;5;28;01mimport[39;00m Styler
+[1;32m   1266[0m     [38;5;28;01mreturn[39;00m Styler([38;5;28mself[39m)
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/pandas/io/formats/style.py:58[0m
+[1;32m     54[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mio[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformats[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformat[39;00m [38;5;28;01mimport[39;00m save_to_buffer
+[1;32m     56[0m jinja2 [38;5;241m=[39m import_optional_dependency([38;5;124m"[39m[38;5;124mjinja2[39m[38;5;124m"[39m, extra[38;5;241m=[39m[38;5;124m"[39m[38;5;124mDataFrame.style requires jinja2.[39m[38;5;124m"[39m)
+[0;32m---> 58[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mio[39;00m[38;5;21;01m.[39;00m[38;5;21;01mformats[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstyle_render[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     59[0m     CSSProperties,
+[1;32m     60[0m     CSSStyles,
+[1;32m     61[0m     ExtFormatter,
+[1;32m     62[0m     StylerRenderer,
+[1;32m     63[0m     Subset,
+[1;32m     64[0m     Tooltips,
+[1;32m     65[0m     format_table_styles,
+[1;32m     66[0m     maybe_convert_css_to_tuples,
+[1;32m     67[0m     non_reducing_slice,
+[1;32m     68[0m     refactor_levels,
+[1;32m     69[0m )
+[1;32m     71[0m [38;5;28;01mtry[39;00m:
+[1;32m     72[0m     [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpl[39;00m
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/pandas/io/formats/style_render.py:68[0m
+[1;32m     64[0m CSSStyles [38;5;241m=[39m List[CSSDict]
+[1;32m     65[0m Subset [38;5;241m=[39m Union[[38;5;28mslice[39m, Sequence, Index]
+[0;32m---> 68[0m [38;5;28;01mclass[39;00m [38;5;21;01mStylerRenderer[39;00m:
+[1;32m     69[0m     [38;5;124;03m"""[39;00m
+[1;32m     70[0m [38;5;124;03m    Base class to process rendering a Styler with a specified jinja2 template.[39;00m
+[1;32m     71[0m [38;5;124;03m    """[39;00m
+[1;32m     73[0m     loader [38;5;241m=[39m jinja2[38;5;241m.[39mPackageLoader([38;5;124m"[39m[38;5;124mpandas[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mio/formats/templates[39m[38;5;124m"[39m)
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/pandas/io/formats/style_render.py:75[0m, in [0;36mStylerRenderer[0;34m()[0m
+[1;32m     73[0m loader [38;5;241m=[39m jinja2[38;5;241m.[39mPackageLoader([38;5;124m"[39m[38;5;124mpandas[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mio/formats/templates[39m[38;5;124m"[39m)
+[1;32m     74[0m env [38;5;241m=[39m jinja2[38;5;241m.[39mEnvironment(loader[38;5;241m=[39mloader, trim_blocks[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[0;32m---> 75[0m template_html [38;5;241m=[39m [43menv[49m[38;5;241;43m.[39;49m[43mget_template[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mhtml.tpl[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m     76[0m template_html_table [38;5;241m=[39m env[38;5;241m.[39mget_template([38;5;124m"[39m[38;5;124mhtml_table.tpl[39m[38;5;124m"[39m)
+[1;32m     77[0m template_html_style [38;5;241m=[39m env[38;5;241m.[39mget_template([38;5;124m"[39m[38;5;124mhtml_style.tpl[39m[38;5;124m"[39m)
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/environment.py:1010[0m, in [0;36mEnvironment.get_template[0;34m(self, name, parent, globals)[0m
+[1;32m   1007[0m [38;5;28;01mif[39;00m parent [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1008[0m     name [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mjoin_path(name, parent)
+[0;32m-> 1010[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_load_template[49m[43m([49m[43mname[49m[43m,[49m[43m [49m[38;5;28;43mglobals[39;49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/environment.py:969[0m, in [0;36mEnvironment._load_template[0;34m(self, name, globals)[0m
+[1;32m    965[0m             template[38;5;241m.[39mglobals[38;5;241m.[39mupdate([38;5;28mglobals[39m)
+[1;32m    967[0m         [38;5;28;01mreturn[39;00m template
+[0;32m--> 969[0m template [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mloader[49m[38;5;241;43m.[39;49m[43mload[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mname[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmake_globals[49m[43m([49m[38;5;28;43mglobals[39;49m[43m)[49m[43m)[49m
+[1;32m    971[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mcache [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    972[0m     [38;5;28mself[39m[38;5;241m.[39mcache[cache_key] [38;5;241m=[39m template
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/loaders.py:138[0m, in [0;36mBaseLoader.load[0;34m(self, environment, name, globals)[0m
+[1;32m    135[0m [38;5;66;03m# if we don't have code so far (not cached, no longer up to[39;00m
+[1;32m    136[0m [38;5;66;03m# date) etc. we compile the template[39;00m
+[1;32m    137[0m [38;5;28;01mif[39;00m code [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 138[0m     code [38;5;241m=[39m [43menvironment[49m[38;5;241;43m.[39;49m[43mcompile[49m[43m([49m[43msource[49m[43m,[49m[43m [49m[43mname[49m[43m,[49m[43m [49m[43mfilename[49m[43m)[49m
+[1;32m    140[0m [38;5;66;03m# if the bytecode cache is available and the bucket doesn't[39;00m
+[1;32m    141[0m [38;5;66;03m# have a code so far, we give the bucket the new code and put[39;00m
+[1;32m    142[0m [38;5;66;03m# it back to the bytecode cache.[39;00m
+[1;32m    143[0m [38;5;28;01mif[39;00m bcc [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m bucket[38;5;241m.[39mcode [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/environment.py:760[0m, in [0;36mEnvironment.compile[0;34m(self, source, name, filename, raw, defer_init)[0m
+[1;32m    758[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(source, [38;5;28mstr[39m):
+[1;32m    759[0m     source_hint [38;5;241m=[39m source
+[0;32m--> 760[0m     source [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_parse[49m[43m([49m[43msource[49m[43m,[49m[43m [49m[43mname[49m[43m,[49m[43m [49m[43mfilename[49m[43m)[49m
+[1;32m    761[0m source [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_generate(source, name, filename, defer_init[38;5;241m=[39mdefer_init)
+[1;32m    762[0m [38;5;28;01mif[39;00m raw:
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/environment.py:617[0m, in [0;36mEnvironment._parse[0;34m(self, source, name, filename)[0m
+[1;32m    613[0m [38;5;28;01mdef[39;00m [38;5;21m_parse[39m(
+[1;32m    614[0m     [38;5;28mself[39m, source: [38;5;28mstr[39m, name: t[38;5;241m.[39mOptional[[38;5;28mstr[39m], filename: t[38;5;241m.[39mOptional[[38;5;28mstr[39m]
+[1;32m    615[0m ) [38;5;241m-[39m[38;5;241m>[39m nodes[38;5;241m.[39mTemplate:
+[1;32m    616[0m     [38;5;124;03m"""Internal parsing function used by `parse` and `compile`."""[39;00m
+[0;32m--> 617[0m     [38;5;28;01mreturn[39;00m [43mParser[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43msource[49m[43m,[49m[43m [49m[43mname[49m[43m,[49m[43m [49m[43mfilename[49m[43m)[49m[38;5;241;43m.[39;49m[43mparse[49m[43m([49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:1030[0m, in [0;36mParser.parse[0;34m(self)[0m
+[1;32m   1028[0m [38;5;28;01mdef[39;00m [38;5;21mparse[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m nodes[38;5;241m.[39mTemplate:
+[1;32m   1029[0m     [38;5;124;03m"""Parse the whole template into a `Template` node."""[39;00m
+[0;32m-> 1030[0m     result [38;5;241m=[39m nodes[38;5;241m.[39mTemplate([38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msubparse[49m[43m([49m[43m)[49m, lineno[38;5;241m=[39m[38;5;241m1[39m)
+[1;32m   1031[0m     result[38;5;241m.[39mset_environment([38;5;28mself[39m[38;5;241m.[39menvironment)
+[1;32m   1032[0m     [38;5;28;01mreturn[39;00m result
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:1013[0m, in [0;36mParser.subparse[0;34m(self, end_tokens)[0m
+[1;32m   1009[0m [38;5;28;01mif[39;00m end_tokens [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;28mself[39m[38;5;241m.[39mstream[38;5;241m.[39mcurrent[38;5;241m.[39mtest_any(
+[1;32m   1010[0m     [38;5;241m*[39mend_tokens
+[1;32m   1011[0m ):
+[1;32m   1012[0m     [38;5;28;01mreturn[39;00m body
+[0;32m-> 1013[0m rv [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mparse_statement[49m[43m([49m[43m)[49m
+[1;32m   1014[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(rv, [38;5;28mlist[39m):
+[1;32m   1015[0m     body[38;5;241m.[39mextend(rv)
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:175[0m, in [0;36mParser.parse_statement[0;34m(self)[0m
+[1;32m    173[0m [38;5;28;01mif[39;00m token[38;5;241m.[39mvalue [38;5;129;01min[39;00m _statement_keywords:
+[1;32m    174[0m     f [38;5;241m=[39m [38;5;28mgetattr[39m([38;5;28mself[39m, [38;5;124mf[39m[38;5;124m"[39m[38;5;124mparse_[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mstream[38;5;241m.[39mcurrent[38;5;241m.[39mvalue[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[0;32m--> 175[0m     [38;5;28;01mreturn[39;00m [43mf[49m[43m([49m[43m)[49m  [38;5;66;03m# type: ignore[39;00m
+[1;32m    176[0m [38;5;28;01mif[39;00m token[38;5;241m.[39mvalue [38;5;241m==[39m [38;5;124m"[39m[38;5;124mcall[39m[38;5;124m"[39m:
+[1;32m    177[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mparse_call_block()
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:258[0m, in [0;36mParser.parse_if[0;34m(self)[0m
+[1;32m    256[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[1;32m    257[0m     node[38;5;241m.[39mtest [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mparse_tuple(with_condexpr[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[0;32m--> 258[0m     node[38;5;241m.[39mbody [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mparse_statements[49m[43m([49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mname:elif[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mname:else[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mname:endif[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m)[49m
+[1;32m    259[0m     node[38;5;241m.[39melif_ [38;5;241m=[39m []
+[1;32m    260[0m     node[38;5;241m.[39melse_ [38;5;241m=[39m []
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:212[0m, in [0;36mParser.parse_statements[0;34m(self, end_tokens, drop_needle)[0m
+[1;32m    209[0m [38;5;66;03m# in the future it would be possible to add whole code sections[39;00m
+[1;32m    210[0m [38;5;66;03m# by adding some sort of end of statement token and parsing those here.[39;00m
+[1;32m    211[0m [38;5;28mself[39m[38;5;241m.[39mstream[38;5;241m.[39mexpect([38;5;124m"[39m[38;5;124mblock_end[39m[38;5;124m"[39m)
+[0;32m--> 212[0m result [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msubparse[49m[43m([49m[43mend_tokens[49m[43m)[49m
+[1;32m    214[0m [38;5;66;03m# we reached the end of the template too early, the subparser[39;00m
+[1;32m    215[0m [38;5;66;03m# does not check for this, so we do that now[39;00m
+[1;32m    216[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mstream[38;5;241m.[39mcurrent[38;5;241m.[39mtype [38;5;241m==[39m [38;5;124m"[39m[38;5;124meof[39m[38;5;124m"[39m:
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:1013[0m, in [0;36mParser.subparse[0;34m(self, end_tokens)[0m
+[1;32m   1009[0m [38;5;28;01mif[39;00m end_tokens [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;28mself[39m[38;5;241m.[39mstream[38;5;241m.[39mcurrent[38;5;241m.[39mtest_any(
+[1;32m   1010[0m     [38;5;241m*[39mend_tokens
+[1;32m   1011[0m ):
+[1;32m   1012[0m     [38;5;28;01mreturn[39;00m body
+[0;32m-> 1013[0m rv [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mparse_statement[49m[43m([49m[43m)[49m
+[1;32m   1014[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(rv, [38;5;28mlist[39m):
+[1;32m   1015[0m     body[38;5;241m.[39mextend(rv)
+
+File [0;32m~/miniconda3/envs/jupyter-book/lib/python3.10/site-packages/jinja2/parser.py:174[0m, in [0;36mParser.parse_statement[0;34m(self)[0m
+[1;32m    172[0m [38;5;28;01mtry[39;00m:
+[1;32m    173[0m     [38;5;28;01mif[39;00m token[38;5;241m.[39mvalue [38;5;129;01min[39;00m _statement_keywords:
+[0;32m--> 174[0m         f [38;5;241m=[39m [38;5;28;43mgetattr[39;49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[38;5;124;43mf[39;49m[38;5;124;43m"[39;49m[38;5;124;43mparse_[39;49m[38;5;132;43;01m{[39;49;00m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mstream[49m[38;5;241;43m.[39;49m[43mcurrent[49m[38;5;241;43m.[39;49m[43mvalue[49m[38;5;132;43;01m}[39;49;00m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m    175[0m         [38;5;28;01mreturn[39;00m f()  [38;5;66;03m# type: ignore[39;00m
+[1;32m    176[0m     [38;5;28;01mif[39;00m token[38;5;241m.[39mvalue [38;5;241m==[39m [38;5;124m"[39m[38;5;124mcall[39m[38;5;124m"[39m:
+
+[0;31mKeyboardInterrupt[0m: 
+KeyboardInterrupt: 
+
