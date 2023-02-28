@@ -1,24 +1,46 @@
 # Intro to Pytorch with Distributed Data Parallel
 
 ## Introduction
-Deep learning benefits from large models trained on large volumes of data. Unfortunately, training such models can take a very long time. We can use Pytorch's [`DistributedDataParallel`](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) (DDP) to speed up training by dividing training over multiple GPUs on a single node or even multiple nodes. This tutorial demonstrates how to use DDP on Palmetto. The code for this demonstration is also available as a [Palmetto Example](https://github.com/clemsonciti/palmetto-examples/tree/master/PyTorch/distributed_data_parallel). 
+Deep learning benefits from large models trained on large volumes of data. Unfortunately, training such models can take a very long time. We can use Pytorch's [`DistributedDataParallel`](https://pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html) (DDP) to speed up training by dividing training over multiple GPUs on a single node or even multiple nodes. This tutorial demonstrates how to use DDP on Palmetto. The code for this demonstration is also available as a [Palmetto Example](https://github.com/clemsonciti/palmetto-examples/tree/master/PyTorch/distributed_data_parallel).
 
-There are many ways to split model training over multiple GPU devices. In this tutorial, we focus on the simple but common case where the model is small enough to fit on a single GPU device. In this case, we simply replicate the model on each GPU, pass different batches of data to each GPU in parallel, and synchronize the state of the model with each iteration. This scenario is called "data parallelism" because the data is processed in parallel using replicas of the model. In "model parallelism", on the other hand, the model itself is split up over multiple devices. This is necessary when the model is too large to fit on a single GPU. We do not cover model parallelism in this tutorial.
+There are many ways to split model training over multiple GPU devices. In this tutorial, we focus on the simple but common case where the model is small enough to fit on a single GPU device. In this case, we simply replicate the model on each GPU, pass different batches of data to each GPU in parallel, and synchronize the state of the model with each iteration. This scenario is called "data parallelism" because the data is processed in parallel using replicas of the model. In "model parallelism", on the other hand, the model itself is split up over multiple devices (see figure below). This is necessary when the model is too large to fit on a single GPU. We do not cover model parallelism in this tutorial.
+![data vs. model parallelism](https://github.com/clemsonciti/rcde_workshops/blob/master/fig/pytorch/datavsmodel_parallelism.png?raw=true)
 
-## Create Pytorch Conda Environment
+## Pytorch Conda Environment
 Follow [these instructions](https://github.com/clemsonciti/palmetto-examples/tree/master/PyTorch#pytorch-installation-for-p100v100a100) from the Palmetto Examples github repository to create a conda environment named `pytorch` with all the necessary libraries. If you already have a suitable environment, you can use that instead.
 
 ## Sample Pytorch App
-To demonstrate the use of DDP, we will start with the non-distributed Pytorch image classification script [here]() and convert it into a script that can be run in a distributed fashion. To follow along with this tutorial on Palmetto, create a new project folder and download the example script from github:
+
+### Getting the source code
+To demonstrate the use of DDP, we will start with the non-distributed Pytorch image classification script [here]()
+and convert it into a script that can be run in a distributed fashion.
+To follow along with this tutorial on Palmetto, login to Palmetto, create a new project folder
+and download the example script from GitHub. For example:
 ```bash
-mkdir pytorch_ddp_example
-cd pytorch_ddp_example
+mkdir ~/pytorch_ddp
+cd ~/pytorch_ddp
 wget <fill me in>
 ```
 
+### Running in non-distributed mode
+As a baseline, we will run the sample training script without DDP. First, request an interactive job with a single GPU:
+```bash
+qsub -I -l select=1:ncpus=8:mem=16gb:ngpus=1:gpu_model=v100,walltime=1:00:00
+```
+
+Then activate the conda environment and run the training script
+```bash
+module load anaconda3/2022.05-gcc/9.5.0
+cd ~/pytorch_ddp
+source activate pytorch
+python cifar10_noddp.py --epochs 2
+```
+The script prints the total time taken to train on CIFAR-10 for 2 epochs. Record this time for future reference. In our case, it took TODO seconds to complete.
 
 
-### Create a sample 
+
+
+### Create a sample
 
 ## Setup
 First, we need to initialize the process group. There are three built-in backends to choose from.
@@ -31,7 +53,7 @@ dist.init_process_group("nccl")
 ```
 
 ## Dataset
-Next, let's get a dataset. The CIFAR-10 dataset we'll be using includes 10 classes 
+Next, let's get a dataset. The CIFAR-10 dataset we'll be using includes 10 classes
 organized into various animals and vehicles. We'll also be need to convert the images to Tensors.
 
 
@@ -52,7 +74,7 @@ train_data = datasets.CIFAR10(
 ```
 
 ## DataLoader
-To load the data, we'll need `DataLoader` class. In addition to passing in the 
+To load the data, we'll need `DataLoader` class. In addition to passing in the
 usual arguments, dataset and batch_size, we'll also want a sampler to distribute
 our data over different processes.
 
@@ -142,13 +164,13 @@ class Trainer:
 
             # Forward pass
             outputs: torch.Tensor = self.model(features)
-            
+
             # Squash the numbers into probabilities
             outputs = torch.softmax(outputs, -1)
-            
+
             # Calculate the loss
             loss: torch.Tensor = self.criterion(outputs, labels)
-            
+
             # Backward pass
             loss.backward()
 
