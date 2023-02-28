@@ -542,22 +542,10 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pytorch/00-index.html">
-   Deep Learning in Pytorch
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../pytorch/03-DDP.html">
-     Intro to Pytorch with Distributed Data Parallel
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -570,8 +558,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../containers/00-index.html">
    Containerization on Palmetto (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -597,8 +585,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../advanced_scheduling/00-index.html">
    Advanced Scheduling (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -780,7 +768,7 @@ title="Print to PDF"
 <li><p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> is for comment insert.</p></li>
 <li><p>To clean the existing environment, remove all memory in previous sessions:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -801,8 +789,8 @@ would have learned back in school.</p></li>
 </ul>
 </li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="m">1+2</span><span class="p">)</span><span class="o">*</span><span class="m">3-4</span><span class="o">^</span><span class="m">5</span>
-<span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sin</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="nf">log10</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">*</span><span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="m">1+2</span><span class="p">)</span><span class="o">*</span><span class="m">3-4</span><span class="o">^</span><span class="m">5</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">sin</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="nf">log10</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="o">*</span><span class="nf">exp</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -823,8 +811,8 @@ would have learned back in school.</p></li>
 <ul class="simple">
 <li><p>To assign variable in R, we can use both <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> sign</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
-<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="m">2</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -841,10 +829,10 @@ would have learned back in school.</p></li>
 <ul class="simple">
 <li><p>The output will be like this:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">a</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span>
+<span class="o">&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="m">1</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -859,8 +847,8 @@ environment in Palmetto:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># print working directory</span>
 <span class="nf">getwd</span><span class="p">()</span>
 <span class="c1"># set working directory</span>
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;C:/R/&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># for Windows</span>
-<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/user/home/R&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># for Macs</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;C:/R/&#39;</span><span class="p">)</span> <span class="c1"># for Windows</span>
+<span class="nf">setwd</span><span class="p">(</span><span class="s">&#39;/user/home/R&#39;</span><span class="p">)</span> <span class="c1"># for Macs</span>
 </pre></div>
 </div>
 </div>

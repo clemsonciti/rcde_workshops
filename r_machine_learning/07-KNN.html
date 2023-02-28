@@ -542,22 +542,10 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pytorch/00-index.html">
-   Deep Learning in Pytorch
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../pytorch/03-DDP.html">
-     Intro to Pytorch with Distributed Data Parallel
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -570,8 +558,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../containers/00-index.html">
    Containerization on Palmetto (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -597,8 +585,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../advanced_scheduling/00-index.html">
    Advanced Scheduling (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -808,18 +796,18 @@ keypoints:</p></li>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span>
-<span class="n">indT</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="n">training</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="n">indT</span><span class="p">,]</span>
-<span class="n">testing</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">indT</span><span class="p">,]</span>
+<span class="n">indT</span> <span class="o">&lt;-</span> <span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">training</span> <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="n">indT</span><span class="p">,]</span>
+<span class="n">testing</span>  <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">indT</span><span class="p">,]</span>
 
-<span class="n">ModFit_KNN</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;knn&quot;</span><span class="p">,</span><span class="n">tuneGrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">25</span><span class="p">))</span>
+<span class="n">ModFit_KNN</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;knn&quot;</span><span class="p">,</span><span class="n">tuneGrid</span> <span class="o">=</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">25</span><span class="p">))</span>
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">ModFit_KNN</span><span class="o">$</span><span class="n">results</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">Accuracy</span><span class="p">))</span><span class="o">+</span>
-<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="o">+</span>
-<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Optimum K is &quot;</span><span class="p">,</span><span class="n">ModFit_KNN</span><span class="o">$</span><span class="n">bestTune</span><span class="p">),</span>
-<span class="w">       </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Accuracy&quot;</span><span class="p">)</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="o">+</span>
+  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Optimum K is &quot;</span><span class="p">,</span><span class="n">ModFit_KNN</span><span class="o">$</span><span class="n">bestTune</span><span class="p">),</span>
+       <span class="n">y</span><span class="o">=</span><span class="s">&quot;Accuracy&quot;</span><span class="p">)</span>
 
-<span class="n">predict_KNN</span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">ModFit_KNN</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">testing</span><span class="p">)</span>
+<span class="n">predict_KNN</span><span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ModFit_KNN</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">testing</span><span class="p">)</span>
 <span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">testing</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">predict_KNN</span><span class="p">)</span>
 </pre></div>
 </div>

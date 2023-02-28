@@ -542,22 +542,10 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pytorch/00-index.html">
-   Deep Learning in Pytorch
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../pytorch/03-DDP.html">
-     Intro to Pytorch with Distributed Data Parallel
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -570,8 +558,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../containers/00-index.html">
    Containerization on Palmetto (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -597,8 +585,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../advanced_scheduling/00-index.html">
    Advanced Scheduling (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -931,17 +919,17 @@ Here we only touch some of the very basic commands that are useful for our Machi
 <li><p>There are several ways to treat the missing values:</p></li>
 <li><p>Method 1: remove all missing <code class="docutils literal notranslate"><span class="pre">NA</span></code> values</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="s">&quot;airquality&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Here we use this sample data because it contains missing value</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="s">&quot;airquality&quot;</span><span class="p">)</span> <span class="c1"># Here we use this sample data because it contains missing value</span>
 <span class="nf">summary </span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
-<span class="n">new_airquality1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
+<span class="n">new_airquality1</span> <span class="o">&lt;-</span> <span class="nf">na.omit</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
 <span class="nf">summary </span><span class="p">(</span><span class="n">new_airquality1</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Method 2: Set <code class="docutils literal notranslate"><span class="pre">NA</span></code> to mean value</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NA2mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
-<span class="n">new_airquality2</span><span class="w"> </span><span class="o">&lt;-</span><span class="nf">replace</span><span class="p">(</span><span class="n">airquality</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="n">airquality</span><span class="p">,</span><span class="w"> </span><span class="n">NA2mean</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NA2mean</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">replace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+<span class="n">new_airquality2</span> <span class="o">&lt;-</span><span class="nf">replace</span><span class="p">(</span><span class="n">airquality</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="nf">lapply</span><span class="p">(</span><span class="n">airquality</span><span class="p">,</span> <span class="n">NA2mean</span><span class="p">))</span>
 <span class="nf">summary </span><span class="p">(</span><span class="n">new_airquality2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -951,8 +939,8 @@ In statistics, imputation is the process of replacing missing data with substitu
 </ul>
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">preProcess</span></code> function from <code class="docutils literal notranslate"><span class="pre">caret</span></code> to perform <code class="docutils literal notranslate"><span class="pre">bagImpute</span></code> (Bootstrap Aggregation Imputation):</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
-<span class="n">PreImputeBag</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">preProcess</span><span class="p">(</span><span class="n">airquality</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;bagImpute&quot;</span><span class="p">)</span>
-<span class="n">DataImputeBag</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">PreImputeBag</span><span class="p">,</span><span class="n">airquality</span><span class="p">)</span>
+<span class="n">PreImputeBag</span> <span class="o">&lt;-</span> <span class="nf">preProcess</span><span class="p">(</span><span class="n">airquality</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;bagImpute&quot;</span><span class="p">)</span>
+<span class="n">DataImputeBag</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">PreImputeBag</span><span class="p">,</span><span class="n">airquality</span><span class="p">)</span>
 <span class="nf">summary </span><span class="p">(</span><span class="n">DataImputeBag</span><span class="p">)</span>
 </pre></div>
 </div>

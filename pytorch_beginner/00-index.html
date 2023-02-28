@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Deep Learning in Pytorch &#8212; Research Computing and Data Workshop</title>
+    <title>Deep Learning in Pytorch for Beginners &#8212; Research Computing and Data Workshop</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Intro to Pytorch with Distributed Data Parallel" href="03-DDP.html" />
+    <link rel="next" title="Containerization on Palmetto (under development)" href="../containers/00-index.html" />
     <link rel="prev" title="Recurrent Neural Network for Timeseries forecasting" href="../python_deep_learning/08-Recurrent-neural-networks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -542,22 +542,10 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Deep Learning in Pytorch
+   Deep Learning in Pytorch for Beginners
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03-DDP.html">
-     Intro to Pytorch with Distributed Data Parallel
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -570,8 +558,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../containers/00-index.html">
    Containerization on Palmetto (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -597,8 +585,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../advanced_scheduling/00-index.html">
    Advanced Scheduling (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -683,7 +671,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/pytorch/00-index.md"
+        <a href="../_sources/pytorch_beginner/00-index.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -748,13 +736,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#workshop-description">
-   Workshop Description
+  <a class="reference internal nav-link" href="#description">
+   Description
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisite">
-   Prerequisite
+  <a class="reference internal nav-link" href="#course-outline">
+   Course outline:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
   </a>
  </li>
 </ul>
@@ -766,7 +759,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Deep Learning in Pytorch</h1>
+                <h1>Deep Learning in Pytorch for Beginners</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -782,13 +775,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#workshop-description">
-   Workshop Description
+  <a class="reference internal nav-link" href="#description">
+   Description
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisite">
-   Prerequisite
+  <a class="reference internal nav-link" href="#course-outline">
+   Course outline:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
   </a>
  </li>
 </ul>
@@ -801,8 +799,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="deep-learning-in-pytorch">
-<h1>Deep Learning in Pytorch<a class="headerlink" href="#deep-learning-in-pytorch" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="deep-learning-in-pytorch-for-beginners">
+<h1>Deep Learning in Pytorch for Beginners<a class="headerlink" href="#deep-learning-in-pytorch-for-beginners" title="Permalink to this headline">#</a></h1>
 <section id="instructor">
 <h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -811,14 +809,31 @@ title="Print to PDF"
 <li><p><strong>Email</strong>: <a class="reference external" href="mailto:dane2&#37;&#52;&#48;clemson&#46;edu">dane2<span>&#64;</span>clemson<span>&#46;</span>edu</a></p></li>
 </ul>
 </section>
-<section id="workshop-description">
-<h2>Workshop Description<a class="headerlink" href="#workshop-description" title="Permalink to this headline">#</a></h2>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<p>This 2-part workshop series introduces students to the essential concepts in deep learning and walks through the common steps in a deep learning workflow from data loading to training and evaluation. Throughout the sessions, students will participate in writing and executing simple deep learning programs using <a class="reference external" href="https://pytorch.org/">Pytorch</a> – a popular Python library for developing, training, and deploying deep learning models.</p>
 </section>
-<section id="prerequisite">
-<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this headline">#</a></h2>
+<section id="course-outline">
+<h2>Course outline:<a class="headerlink" href="#course-outline" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Conceptual Introduction to Deep Learning</p></li>
+<li><p>Using Pytorch on the Palmetto Cluster</p></li>
+<li><p>Introduction to the Pytorch Library</p>
+<ul>
+<li><p>Tensors, Parameters, Modules</p></li>
+<li><p>Computing on GPU</p></li>
+<li><p>Datasets and Data loading</p></li>
+<li><p>Custom models</p></li>
+<li><p>Training and evaluation</p></li>
+</ul>
+</li>
+<li><p>Worked Deep Learning Example</p></li>
+</ul>
 </section>
-<div class="toctree-wrapper compound">
-</div>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h2>
+<p>All students should have a Palmetto Cluster account. If you do not already have an account, you can <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/starting/#-new-user-procedure">request one here</a>. Students should be familiar with the Python programming language. This requirement could be fulfilled by personal projects, coursework, or completion of the <a class="reference internal" href="../python_programming/00-index.html"><span class="doc std std-doc">Introduction to Python Programming</span></a> workshop series. Experience in numeric computing with the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library is helpful but not required.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -834,7 +849,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             name: "python3",
-            path: "./pytorch"
+            path: "./pytorch_beginner"
         },
         predefinedOutput: true
     }
@@ -855,10 +870,10 @@ title="Print to PDF"
             <p class="prev-next-title">Recurrent Neural Network for Timeseries forecasting</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="03-DDP.html" title="next page">
+    <a class='right-next' id="next-link" href="../containers/00-index.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Intro to Pytorch with Distributed Data Parallel</p>
+        <p class="prev-next-title">Containerization on Palmetto (under development)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

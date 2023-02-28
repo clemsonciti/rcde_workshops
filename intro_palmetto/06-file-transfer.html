@@ -542,22 +542,10 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../pytorch/00-index.html">
-   Deep Learning in Pytorch
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../pytorch/03-DDP.html">
-     Intro to Pytorch with Distributed Data Parallel
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -570,8 +558,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../containers/00-index.html">
    Containerization on Palmetto (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -597,8 +585,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../advanced_scheduling/00-index.html">
    Advanced Scheduling (under development)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -832,15 +820,15 @@ title="Print to PDF"
 <section id="command-line-mac-and-linux-users">
 <h2>Command line (Mac and Linux users)<a class="headerlink" href="#command-line-mac-and-linux-users" title="Permalink to this headline">#</a></h2>
 <p>Another option for advanced Mac and Linux users is to use the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command from the terminal. Open a new terminal, but <strong>don’t connect to Palmetto</strong>. The <code class="docutils literal notranslate"><span class="pre">scp</span></code> command works like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>&lt;path_to_source&gt;<span class="w"> </span>username@xfer02-ext.clemson.edu:&lt;path_to_destination&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp &lt;path_to_source&gt; username@xfer02-ext.clemson.edu:&lt;path_to_destination&gt;
 </pre></div>
 </div>
 <p>For example, here is the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command to copy a file from the current directory on my local machine to my home directory on Palmetto (<code class="docutils literal notranslate"><span class="pre">dndawso</span></code> is my Palmetto username:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>myfile.txt<span class="w"> </span>dndawso@xfer02-ext.clemson.edu:/home/dndawso/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp myfile.txt dndawso@xfer02-ext.clemson.edu:/home/dndawso/
 </pre></div>
 </div>
 <p>… and to do the same in reverse, i.e., copy from Palmetto to my local machine:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>dndawso@xfer02-ext.clemson.edu:/home/dndawso/myfile.txt<span class="w"> </span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp dndawso@xfer02-ext.clemson.edu:/home/dndawso/myfile.txt .
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.</span></code> represents the working directory on the local machine.</p>
