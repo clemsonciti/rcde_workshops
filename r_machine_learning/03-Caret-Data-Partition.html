@@ -21,7 +21,7 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -545,18 +545,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Deep Learning
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../pytorch_beginner/00-index.html">
-   Deep Learning in Pytorch for Beginners
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Advanced Palmetto Usage
  </span>
 </p>
@@ -739,7 +727,18 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-partition-training-and-testing">
-   3 Data partition: training and testing
+   Data partition: training and testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-spliting-using-k-fold-cross-validation-approach">
+   Data spliting using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     K-fold
+    </span>
+   </code>
+   : Cross validation approach
   </a>
  </li>
 </ul>
@@ -763,7 +762,18 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-partition-training-and-testing">
-   3 Data partition: training and testing
+   Data partition: training and testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-spliting-using-k-fold-cross-validation-approach">
+   Data spliting using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     K-fold
+    </span>
+   </code>
+   : Cross validation approach
   </a>
  </li>
 </ul>
@@ -778,24 +788,27 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="data-partition-with-caret">
 <h1>Data Partition with caret<a class="headerlink" href="#data-partition-with-caret" title="Permalink to this headline">#</a></h1>
-<p>teaching: 20
-exercises: 0
-questions:</p>
-<ul class="simple">
-<li><p>“What is Data Partition”
-objectives:</p></li>
-<li><p>“Learn how to split data using caret”
-keypoints:</p></li>
-<li><p>“Caret”</p></li>
-</ul>
 <section id="data-partition-training-and-testing">
-<h2>3 Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h2>
+<h2>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122599105-cd3e6b80-d03b-11eb-9aa4-2b8f39427c20.png" /></p>
-<p>In a typical machine learning problem, you have a data set and you need to create a model which predicts the outcomes. You can use all the available data for training the model (that is, learning the associations between the data and the outcomes), anf then you can just keep your fingers crossed and hope that your model will perform well when it will be applied to data that it has never seen before.</p>
-<p>A more realistic behaviour is to reserve some of the data for testing the model. That is, you split the data into two sets: a training set and a testing set. You use the training set to train the model, and then you apply the test set to get an estimate on how well the model works on the data that were not used for training. This is called <em>cross-validation</em>. It is absolutely critical that the training and test sets are completely independent. Otherwise, when you test your model, your prediction accuracy will be artificially high – not because your model is good, but because there is some correlation between the training and test sets.</p>
-<p>The more data you have for training, the more hope you can have that the model will accurately capture the relationships between the inputs and the outcomes. The more data you have for testing, the more accurate is your estimate on how well your model generalizes. So splitting the data into training and test sets is not a trivial task, with a lot of research performed on it. Some strategies are:</p>
+<p>In a typical machine learning problem, you have a data set and you need to create a model which predicts the
+outcomes. You can use all the available data for training the model (that is, learning the associations between
+the data and the outcomes), anf then you can just keep your fingers crossed and hope that your model will
+perform well when it will be applied to data that it has never seen before.</p>
+<p>A more realistic behaviour is to reserve some of the data for testing the model. That is, you split the
+data into two sets: a training set and a testing set. You use the training set to train the model, and
+then you apply the test set to get an estimate on how well the model works on the data that were not used
+for training. This is called <em>cross-validation</em>. It is absolutely critical that the training and test sets
+are completely independent. Otherwise, when you test your model, your prediction accuracy will be
+artificially high – not because your model is good, but because there is some correlation between the training and test sets.</p>
+<p>The more data you have for training, the more hope you can have that the model will accurately capture the
+relationships between the inputs and the outcomes. The more data you have for testing, the more accurate is
+your estimate on how well your model generalizes. So splitting the data into training and test sets is not
+a trivial task, with a lot of research performed on it. Some strategies are:</p>
 <ul class="simple">
-<li><p>leave-one-out cross-validation (“LOO”). Here, we maximize the training set: only one observation is used for test, and remaining observations are used for training. This is done in a loop, so each observation gets its turn to be in the test set. This procedure is common when you work with small datasets.</p></li>
+<li><p>leave-one-out cross-validation (“LOO”). Here, we maximize the training set: only one observation is used
+for test, and remaining observations are used for training. This is done in a loop, so each observation
+gets its turn to be in the test set. This procedure is common when you work with small datasets.</p></li>
 <li><p>80-20 split: 80% of the data are used for training, and 20% for testing. Again, this is done in a loop. One strategy is to get a random sample of 20% of the data, in a loop; at the next iteration, you can get another random sample of 20% etc. Another strategy is to first use the first 20%, at the next iteration you use the next 20%, etc; this way, you can have 5 iterations to go through the whole data set. This is also called 5-fold cross-validation.</p></li>
 <li><p>A general idea of <em>k-fold cross-validation</em> is to break up the data into k chunks and, at each iteration, use one of the chunks for testing and the rest of the data for training.
 <img src="../fig/5fold_cv.png" width=600></p></li>
@@ -810,23 +823,21 @@ keypoints:</p></li>
 <span class="n">testing</span>  <span class="o">&lt;-</span> <span class="n">iris</span><span class="p">[</span><span class="o">-</span><span class="n">ind1</span><span class="p">,]</span> 
 </pre></div>
 </div>
-<!---
-## 3.2 Data spliting using `K-fold`: Cross validation approach
-The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into. As such, the procedure is often called k-fold cross-validation. When a specific value for k is chosen, it may be used in place of k in the reference to the model, such as k=10 becoming 10-fold cross-validation.
-![image](https://user-images.githubusercontent.com/43855029/114211785-103edd00-992f-11eb-89d0-bbd7bd0c0178.png)
-
-```r
-fitControl <- trainControl(method="cv", number=10)
-# train the model
-model <- train(Species~., data=training, 
-               trControl=fitControl, method="lda")
-# summarize results
-print(model)
-predict1 <- predict(model,testing)
-```
-
-More information on model tuning using caret can be found [here](https://topepo.github.io/caret/model-training-and-tuning.html)
--->
+</section>
+<section id="data-spliting-using-k-fold-cross-validation-approach">
+<h2>Data spliting using <code class="docutils literal notranslate"><span class="pre">K-fold</span></code>: Cross validation approach<a class="headerlink" href="#data-spliting-using-k-fold-cross-validation-approach" title="Permalink to this headline">#</a></h2>
+<p>The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into. As such, the procedure is often called k-fold cross-validation. When a specific value for k is chosen, it may be used in place of k in the reference to the model, such as k=10 becoming 10-fold cross-validation.
+<img alt="image" src="https://user-images.githubusercontent.com/43855029/114211785-103edd00-992f-11eb-89d0-bbd7bd0c0178.png" /></p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitControl</span> <span class="o">&lt;-</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;cv&quot;</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="c1"># train the model</span>
+<span class="n">model</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">training</span><span class="p">,</span> 
+               <span class="n">trControl</span><span class="o">=</span><span class="n">fitControl</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;lda&quot;</span><span class="p">)</span>
+<span class="c1"># summarize results</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">predict1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">testing</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More information on model tuning using caret can be found <a class="reference external" href="https://topepo.github.io/caret/model-training-and-tuning.html">here</a></p>
 </section>
 </section>
 
@@ -842,7 +853,7 @@ More information on model tuning using caret can be found [here](https://topepo.
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./r_machine_learning"
         },
         predefinedOutput: true

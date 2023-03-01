@@ -7,7 +7,7 @@ Palmetto is accessed using the SSH (["Secure shell"](https://en.wikipedia.org/wi
 To start the SSH client on a Mac, you can open the Terminal Application (which is usually located in `Applications` &rarr; `Utilities`) and run the following:
 
 ```bash
-ssh <your clemson username>@login.palmetto.clemson.edu
+ssh login.palmetto.clemson.edu
 ```
 
 ## Windows
