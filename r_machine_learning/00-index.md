@@ -1,10 +1,9 @@
 # Machine Learning using R
 
 ## Instructor
-- **Instructor**: Grigori Yourganov; 
+- **Instructor**: Linh B. Ngo; 
 - **Office**: 2119 Barre Hall, Clemson University
-- **Office Hours**: Wed 8.30-11.30 Zoom
-- **Email**: gyourga@clemson.edu;
+- **Email**: lngo@clemson.edu;
 
 
 ## Workshop Description

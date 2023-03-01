@@ -112,7 +112,7 @@ environment in Palmetto:
 ~~~r
 # print working directory
 getwd()
-# set working directory
+# set working directory on your local computers
 setwd('C:/R/') # for Windows
 setwd('/user/home/R') # for Macs
 ~~~
