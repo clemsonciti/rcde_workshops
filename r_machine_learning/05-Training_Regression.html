@@ -929,9 +929,7 @@ title="Print to PDF"
 <span class="nf">cor.test</span><span class="p">(</span><span class="n">prediction_SLR</span><span class="p">,</span><span class="n">testing</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nf">postResample</span><span class="p">(</span><span class="n">prediction_SLR</span><span class="p">,</span><span class="n">testing</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
-      <span class="n">RMSE</span>   <span class="n">Rsquared</span>        <span class="n">MAE</span> 
-<span class="m">25.0004212</span>  <span class="m">0.5239849</span> <span class="m">17.0977421</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">postResample</span><span class="p">(</span><span class="n">prediction_SLR</span><span class="p">,</span><span class="n">testing</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>–&gt;</p>
@@ -1012,7 +1010,6 @@ More information on this data set can be found <a class="reference external" hre
 <span class="nf">plot</span><span class="p">(</span><span class="nf">performance</span><span class="p">(</span><span class="n">roc</span><span class="p">,</span> <span class="s">&quot;tpr&quot;</span><span class="p">,</span> <span class="s">&quot;fpr&quot;</span><span class="p">))</span>
 <span class="nf">abline</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 <span class="n">auc</span> <span class="o">&lt;-</span> <span class="nf">performance</span><span class="p">(</span><span class="n">roc</span><span class="p">,</span> <span class="n">measure</span> <span class="o">=</span> <span class="s">&quot;auc&quot;</span><span class="p">)</span>
-<span class="n">auc</span><span class="o">@</span><span class="n">y.values</span>
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122612391-07fece80-d051-11eb-9ab0-2f130ea10c59.png" /></p>

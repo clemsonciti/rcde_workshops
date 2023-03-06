@@ -967,21 +967,24 @@ In statistics, imputation is the process of replacing missing data with substitu
 <span class="nf">summary </span><span class="p">(</span><span class="n">DataImputeBag</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>In addition to <code class="docutils literal notranslate"><span class="pre">bagImpute</span></code>, we also can use <code class="docutils literal notranslate"><span class="pre">knnImpute</span></code> (K-Nearest Neighbour Imputation)
-<code class="docutils literal notranslate"><span class="pre">knnImpute</span></code> can also be used to impute missing value, however, it standardizes the
-data after Imputing:</p></li>
-</ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MData</span> <span class="o">&lt;-</span> <span class="n">airquality</span><span class="p">[,</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">)]</span>
-<span class="n">PreImputeKNN</span> <span class="o">&lt;-</span> <span class="nf">preProcess</span><span class="p">(</span><span class="n">MData</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;knnImpute&quot;</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
-<span class="n">DataImputeKNN</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">PreImputeKNN</span><span class="p">,</span><span class="n">MData</span><span class="p">)</span>
+<!--
+- In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
+`knnImpute` can also be used to impute missing value, however, it standardizes the 
+data after Imputing:
 
-<span class="c1">#Convert back to original scale</span>
-<span class="n">RescaleDataM</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">DataImputeKNN</span><span class="p">)</span><span class="o">*</span><span class="n">PreImputeKNN</span><span class="o">$</span><span class="n">std</span><span class="o">+</span><span class="n">PreImputeKNN</span><span class="o">$</span><span class="n">mean</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Note</strong>
-<code class="docutils literal notranslate"><span class="pre">bagImpute</span></code> is more powerful and computational cost than <code class="docutils literal notranslate"><span class="pre">knnImpute</span></code></p>
+~~~r
+MData <- airquality[,-c(1,5,6)]
+PreImputeKNN <- preProcess(MData,method="knnImpute",k=5)
+DataImputeKNN <- predict(PreImputeKNN,MData)
+
+#Convert back to original scale
+RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
+~~~
+
+**Note** 
+`bagImpute` is more powerful and computational cost than `knnImpute`
+
+-->
 </section>
 </section>
 </section>
