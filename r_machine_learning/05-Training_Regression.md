@@ -68,9 +68,7 @@ cor.test(prediction_SLR,testing$Ozone)
 ~~~
 
 ~~~r
-> postResample(prediction_SLR,testing$Ozone)
-      RMSE   Rsquared        MAE 
-25.0004212  0.5239849 17.0977421 
+postResample(prediction_SLR,testing$Ozone)
 ~~~
 -->
 
@@ -157,8 +155,6 @@ roc <- prediction(predictions = data_roc$pred_prob,
 plot(performance(roc, "tpr", "fpr"))
 abline(0, 1, lty = 2)
 auc <- performance(roc, measure = "auc")
-auc@y.values
-
 ~~~
 
 ![image](https://user-images.githubusercontent.com/43855029/122612391-07fece80-d051-11eb-9ab0-2f130ea10c59.png)

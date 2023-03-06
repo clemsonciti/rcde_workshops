@@ -120,6 +120,7 @@ DataImputeBag <- predict(PreImputeBag,airquality)
 summary (DataImputeBag)
 ~~~
 
+<!--
 - In addition to `bagImpute`, we also can use `knnImpute` (K-Nearest Neighbour Imputation)
 `knnImpute` can also be used to impute missing value, however, it standardizes the 
 data after Imputing:
@@ -136,4 +137,5 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
 **Note** 
 `bagImpute` is more powerful and computational cost than `knnImpute`
 
+-->
 

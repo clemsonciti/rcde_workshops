@@ -82,4 +82,4 @@ cor.test (predictions, mtcars$mpg)
 
 Pretty good! However, when evaluating your prediction, never forget to visually inspect the scatter plot. It will tell you a lot more than you can get from looking at a single number of the correlation coefficient. Below is a [famous example](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) of four scatter plots, each representing correlation coefficient of 0.816: 
 
-<img src="https://thumbnails-visually.netdna-ssl.com/anscombes-quartet_50290d2c47e85.png" width="600" />
+![Anscombe's quartet](../fig/r_ml/anscombes_quartet.png)
