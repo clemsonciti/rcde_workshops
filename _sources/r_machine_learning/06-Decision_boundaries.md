@@ -1,4 +1,4 @@
-# Classification with decision boundaries"
+# Classification with decision boundaries
 
 
 Let's discuss the problem of multivariate classification. "Multivariate" means that we have more than one input variable, and we will 
