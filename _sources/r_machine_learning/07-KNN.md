@@ -13,7 +13,7 @@ keypoints:
 
 Nearest-neighbour classification is very simple and intuitive. Consider a two-dimensional graphical representation of our data:
 
-<img src="../fig/twoclasses.png" width="300" />
+<img src="../fig/r_ml/twoclasses.png" width="300" />
 
 The idea is: given a point (an observation), we assign it to the same class as its nearest neighbour. So there is no training, and in the testing phase, we compute the [Euclidean distances](https://en.wikipedia.org/wiki/Euclidean_distance) to all training data points and assign the observation to the same class as the training data point which is the closest. So it is really fast, but it only works on data where classes form very tight clusters:
 

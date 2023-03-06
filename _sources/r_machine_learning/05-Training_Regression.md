@@ -40,7 +40,7 @@ prediction <- predict(ModFit,testing)
 cor.test(prediction,testing$Ozone)
 ~~~
 
-### 5.1.2 Linear regression with multiple predictors (Multi-Linear Regression)
+### Linear regression with multiple predictors (Multi-Linear Regression)
 
 Now, let's predict `Ozone` from three predictors: solar radiation, wind, and temperature. 
 
@@ -57,7 +57,7 @@ cor.test(prediction2,testing$Ozone)
 We see that our correlation has improved when we used more predictors. 
 
 
-### 5.1.3 Train model using Stepwise Linear Regression
+### Train model using Stepwise Linear Regression
 It’s a step by step Regression to determine which covariates set best match with the dependent variable. Using AIC as criteria:
 
 ~~~r
@@ -74,7 +74,7 @@ cor.test(prediction_SLR,testing$Ozone)
 ~~~
 -->
 
-### 5.1.3 Train model using Polynomial Regression
+### Train model using Polynomial Regression
 
 ![image](https://user-images.githubusercontent.com/43855029/122609104-6c1e9400-d04b-11eb-984c-ed20f0926451.png)
 
@@ -89,7 +89,7 @@ prediction_poly <- predict(modFit_poly,testing)
 cor.test(prediction_poly,testing$Ozone)
 ~~~
 
-### 5.1.4 Train model using Principal Component Regression
+### Train model using Principal Component Regression
 Principal Component Regression is a combination of linear regression and principal component analysis; it is particularly useful when the predictors are highly correlated. 
 
 ~~~r
@@ -101,8 +101,8 @@ prediction_PCR <- predict(modFit_PCR,testing)
 cor.test(prediction_PCR,testing$Ozone)
 ~~~
 
-## 5.2 For categorical output
-### 5.2.1 Train model using Logistic Regression
+## For categorical output
+### Train model using Logistic Regression
 - Logistic regression is a common method for binary classification problems (when outcomes fall into two categories).
 - Typical binary classification: True/False, Yes/No, Pass/Fail
 - Unlike linear regression, the prediction for the output is transformed using a non-linear function called the logistic function.
@@ -111,7 +111,8 @@ cor.test(prediction_PCR,testing$Ozone)
 ![image](https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png)
 
 <!--- ![image](https://user-images.githubusercontent.com/43855029/114233189-fb704280-994a-11eb-9019-8355f5337b37.png) -->
-<img src="../fig/logreg.png" width=600 />
+
+<img src="../fig/r_ml/logreg.png" width=600 />
 
 In this example, we use `spam` data set from package `kernlab`.
 This is a data set collected at Hewlett-Packard Labs, that classifies **4601** e-mails as spam or non-spam. In addition to this class label there are **57** variables indicating the frequency of certain words and characters in the e-mail.
