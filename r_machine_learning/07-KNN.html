@@ -796,7 +796,7 @@ keypoints:</p></li>
 <section id="k-nearest-neighbour">
 <h2>K-Nearest Neighbour<a class="headerlink" href="#k-nearest-neighbour" title="Permalink to this headline">#</a></h2>
 <p>Nearest-neighbour classification is very simple and intuitive. Consider a two-dimensional graphical representation of our data:</p>
-<img src="../fig/r_ml/twoclasses.png" width="300" />
+<p><img alt="5-fold cv" src="../_images/twoclasses.png" /></p>
 <p>The idea is: given a point (an observation), we assign it to the same class as its nearest neighbour. So there is no training, and in the testing phase, we compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distances</a> to all training data points and assign the observation to the same class as the training data point which is the closest. So it is really fast, but it only works on data where classes form very tight clusters:</p>
 <img src="https://user-images.githubusercontent.com/43855029/114582045-3d043480-9c4e-11eb-8698-e1c31840401a.png" width="600" />
 <p>If the clusters are less tight, the performance suffers; if the classes overlap, the performance gets really bad. This method is extremely sensitive to outliers and to noisy data.</p>
