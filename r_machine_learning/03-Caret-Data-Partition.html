@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Training Machine Learning model using Regression Method" href="05-Training_Regression.html" />
+    <link rel="next" title="Evaluation Metrics with caret" href="04-Caret-Evaluation-Metrics.html" />
     <link rel="prev" title="Introduction to Caret" href="02-Caret-Preprocessing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -333,6 +333,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="04-Caret-Evaluation-Metrics.html">
+     Evaluation Metrics with caret
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
      Training Machine Learning model using Regression Method
     </a>
@@ -541,6 +546,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -791,31 +808,53 @@ title="Print to PDF"
 <section id="data-partition-training-and-testing">
 <h2>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122599105-cd3e6b80-d03b-11eb-9aa4-2b8f39427c20.png" /></p>
-<p>In a typical machine learning problem, you have a data set and you need to create a model which predicts the
-outcomes. You can use all the available data for training the model (that is, learning the associations between
-the data and the outcomes), anf then you can just keep your fingers crossed and hope that your model will
-perform well when it will be applied to data that it has never seen before.</p>
-<p>A more realistic behaviour is to reserve some of the data for testing the model. That is, you split the
-data into two sets: a training set and a testing set. You use the training set to train the model, and
-then you apply the test set to get an estimate on how well the model works on the data that were not used
-for training. This is called <em>cross-validation</em>. It is absolutely critical that the training and test sets
-are completely independent. Otherwise, when you test your model, your prediction accuracy will be
-artificially high – not because your model is good, but because there is some correlation between the training and test sets.</p>
-<p>The more data you have for training, the more hope you can have that the model will accurately capture the
-relationships between the inputs and the outcomes. The more data you have for testing, the more accurate is
-your estimate on how well your model generalizes. So splitting the data into training and test sets is not
-a trivial task, with a lot of research performed on it. Some strategies are:</p>
 <ul class="simple">
-<li><p>leave-one-out cross-validation (“LOO”). Here, we maximize the training set: only one observation is used
-for test, and remaining observations are used for training. This is done in a loop, so each observation
-gets its turn to be in the test set. This procedure is common when you work with small datasets.</p></li>
-<li><p>80-20 split: 80% of the data are used for training, and 20% for testing. Again, this is done in a loop. One strategy is to get a random sample of 20% of the data, in a loop; at the next iteration, you can get another random sample of 20% etc. Another strategy is to first use the first 20%, at the next iteration you use the next 20%, etc; this way, you can have 5 iterations to go through the whole data set. This is also called 5-fold cross-validation.</p></li>
-<li><p>A general idea of <em>k-fold cross-validation</em> is to break up the data into k chunks and, at each iteration, use one of the chunks for testing and the rest of the data for training.
-<img src="../fig/5fold_cv.png" width=600></p></li>
-<li><p>split-half: the data are evenly split into training and test sets. First, you use on half for trainig and the other for testing; second, you use the second half for training and the first half for testing. The amount of training data is relatively small, but this way is sometimes used if the stability of the model is just as important as the classification accuracy.</p></li>
+<li><p>In a typical machine learning problem, you have a data set and you need to create a model which predicts the
+outcomes.</p>
+<ul>
+<li><p>You can use all the available data for training the model (that is,
+learning the associations between the data and the outcomes), and</p></li>
+<li><p>then you can just keep your fingers crossed and hope that your model will
+perform well when it will be applied to data that it has never seen before.</p></li>
 </ul>
-<p>Here we use <code class="docutils literal notranslate"><span class="pre">createDataPartition</span></code> to randomly split 60% data for training and the rest for testing:
-<img alt="image" src="https://user-images.githubusercontent.com/43855029/114209883-22b81700-992d-11eb-83a4-c4ab1538a1e5.png" /></p>
+</li>
+<li><p>A more realistic behaviour is to reserve some of the data for testing the model. That is, you split the data into two sets: a training set and a testing set.</p>
+<ul>
+<li><p>You use the training set to train the model, and</p></li>
+<li><p>then you apply the test set to get an estimate on how well the model
+works on the data that were not used for training. This is called <em>cross-validation</em>.</p></li>
+</ul>
+</li>
+<li><p>It is absolutely critical that the training and test sets are completely independent.
+Otherwise, when you test your model, your prediction accuracy will be artificially
+high – not because your model is good, but because there is some correlation between the
+training and test sets.</p></li>
+<li><p>The more data you have for training, the more hope you can have that the model will
+accurately capture the relationships between the inputs and the outcomes. The more
+data you have for testing, the more accurate is your estimate on how well
+your model generalizes. So splitting the data into training and test sets is not
+a trivial task, with a lot of research performed on it. Some strategies are:</p>
+<ul>
+<li><p>leave-one-out cross-validation (“LOO”). Here, we maximize the training set: only
+one observation is used for test, and remaining observations are used for training.
+This is done in a loop, so each observation gets its turn to be in the test set.
+This procedure is common when you work with small datasets.</p></li>
+<li><p>80-20 split: 80% of the data are used for training, and 20% for testing. Again,
+this is done in a loop. One strategy is to get a random sample of 20% of the data,
+in a loop; at the next iteration, you can get another random sample of 20% etc. Another
+strategy is to first use the first 20%, at the next iteration you use the next 20%, etc;
+this way, you can have 5 iterations to go through the whole data set. This is also called 5-fold cross-validation.</p></li>
+<li><p>A general idea of <em>k-fold cross-validation</em> is to break up the data into <code class="docutils literal notranslate"><span class="pre">k</span></code> chunks and,
+at each iteration, use one of the chunks for testing and the rest of the data for training.</p></li>
+</ul>
+</li>
+</ul>
+<img src="../fig/5fold_cv.png" width=600>
+<ul class="simple">
+<li><p>split-half: the data are evenly split into training and test sets. First, you use on half for trainig and the other for testing; second, you use the second half for training and the first half for testing. The amount of training data is relatively small, but this way is sometimes used if the stability of the model is just as important as the classification accuracy.</p></li>
+<li><p>Here we use <code class="docutils literal notranslate"><span class="pre">createDataPartition</span></code> to randomly split 60% data for training and the rest for testing:</p></li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114209883-22b81700-992d-11eb-83a4-c4ab1538a1e5.png" /></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ind1</span> <span class="o">&lt;-</span> <span class="nf">createDataPartition</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="n">times</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="c1">#list=FALSE, prevent returning result as a list</span>
 <span class="c1">#times=1 to create one split</span>
@@ -875,10 +914,10 @@ gets its turn to be in the test set. This procedure is common when you work with
             <p class="prev-next-title">Introduction to Caret</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="05-Training_Regression.html" title="next page">
+    <a class='right-next' id="next-link" href="04-Caret-Evaluation-Metrics.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Training Machine Learning model using Regression Method</p>
+        <p class="prev-next-title">Evaluation Metrics with caret</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

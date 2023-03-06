@@ -7,26 +7,24 @@
 
 ![image](https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png)
 
-The caret package (short for **C**lassification **A**nd **RE**gression **T**raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for, among others:
-
-pre-processing (cleaning up the data)
-data splitting (separating the data into training and test sets)
-feature selection (selecing a subset of variables for further analysis)
-model tuning using resampling (adjusting model parameters)
-variable importance estimation (to see which variables drive the prediction)
-
-There are many different modeling functions in R. Some have different syntax for model training and/or prediction. The package started off as a way to provide a uniform interface the functions themselves, as well as a way to standardize common tasks (such as parameter tuning and variable importance).
-
-The current release version can be found on CRAN and the project is hosted on github.
-Caret was developed by [Max Kuhn](https://topepo.github.io/caret/index.html)
+- The caret package (short for **C**lassification **A**nd **RE**gression **T**raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for, among others:
+  - pre-processing (cleaning up the data)
+  - data splitting (separating the data into training and test sets)
+  - feature selection (selecing a subset of variables for further analysis)
+  - model tuning using resampling (adjusting model parameters)
+  - variable importance estimation (to see which variables drive the prediction)
+- There are many different modeling functions in R. Some have different syntax 
+for model training and/or prediction. The package started off as a way to provide 
+a uniform interface the functions themselves, as well as a way to standardize common 
+tasks (such as parameter tuning and variable importance).
+- The current release version can be found on CRAN and the project is 
+hosted on github. Caret was developed by [Max Kuhn](https://topepo.github.io/caret/index.html)
 Here we only touch some of the very basic commands that are useful for our Machine Learning class.
 
 [caret cheatsheet](https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf)
 
 
-
 ### Why using Caret
-
 
 - Unified framework for a wide variety of ML algorithms, with consistent syntax
 - Possibly the biggest project in R
@@ -54,8 +52,6 @@ library(caret)
 ~~~
 
 
-
-
 ## 2. Pre-processing using caret
 
 ### Overview
@@ -64,7 +60,6 @@ library(caret)
 There are several steps that we will use `caret` for. For preprocessing raw data, we gonna use `caret` in these tasks:
 - Preprocessing with missing value
 - Data partition: training and testing
-
 
 
 ### Visualize important variables

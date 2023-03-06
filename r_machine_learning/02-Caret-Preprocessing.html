@@ -333,6 +333,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="04-Caret-Evaluation-Metrics.html">
+     Evaluation Metrics with caret
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05-Training_Regression.html">
      Training Machine Learning model using Regression Method
     </a>
@@ -541,6 +546,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -849,16 +866,24 @@ title="Print to PDF"
 <section id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png" /></p>
-<p>The caret package (short for <strong>C</strong>lassification <strong>A</strong>nd <strong>RE</strong>gression <strong>T</strong>raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for, among others:</p>
-<p>pre-processing (cleaning up the data)
-data splitting (separating the data into training and test sets)
-feature selection (selecing a subset of variables for further analysis)
-model tuning using resampling (adjusting model parameters)
-variable importance estimation (to see which variables drive the prediction)</p>
-<p>There are many different modeling functions in R. Some have different syntax for model training and/or prediction. The package started off as a way to provide a uniform interface the functions themselves, as well as a way to standardize common tasks (such as parameter tuning and variable importance).</p>
-<p>The current release version can be found on CRAN and the project is hosted on github.
-Caret was developed by <a class="reference external" href="https://topepo.github.io/caret/index.html">Max Kuhn</a>
-Here we only touch some of the very basic commands that are useful for our Machine Learning class.</p>
+<ul class="simple">
+<li><p>The caret package (short for <strong>C</strong>lassification <strong>A</strong>nd <strong>RE</strong>gression <strong>T</strong>raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for, among others:</p>
+<ul>
+<li><p>pre-processing (cleaning up the data)</p></li>
+<li><p>data splitting (separating the data into training and test sets)</p></li>
+<li><p>feature selection (selecing a subset of variables for further analysis)</p></li>
+<li><p>model tuning using resampling (adjusting model parameters)</p></li>
+<li><p>variable importance estimation (to see which variables drive the prediction)</p></li>
+</ul>
+</li>
+<li><p>There are many different modeling functions in R. Some have different syntax
+for model training and/or prediction. The package started off as a way to provide
+a uniform interface the functions themselves, as well as a way to standardize common
+tasks (such as parameter tuning and variable importance).</p></li>
+<li><p>The current release version can be found on CRAN and the project is
+hosted on github. Caret was developed by <a class="reference external" href="https://topepo.github.io/caret/index.html">Max Kuhn</a>
+Here we only touch some of the very basic commands that are useful for our Machine Learning class.</p></li>
+</ul>
 <p><a class="reference external" href="https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf">caret cheatsheet</a></p>
 </section>
 <section id="why-using-caret">
