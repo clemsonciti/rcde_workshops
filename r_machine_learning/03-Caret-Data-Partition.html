@@ -849,7 +849,7 @@ at each iteration, use one of the chunks for testing and the rest of the data fo
 </ul>
 </li>
 </ul>
-<img src="../fig/r_ml/5fold_cv.png" width=600>
+<p><img alt="5-fold cv" src="../_images/5fold_cv.png" /></p>
 <ul class="simple">
 <li><p>split-half: the data are evenly split into training and test sets. First, you use on half for trainig and the other for testing; second, you use the second half for training and the first half for testing. The amount of training data is relatively small, but this way is sometimes used if the stability of the model is just as important as the classification accuracy.</p></li>
 <li><p>Here we use <code class="docutils literal notranslate"><span class="pre">createDataPartition</span></code> to randomly split 60% data for training and the rest for testing:</p></li>

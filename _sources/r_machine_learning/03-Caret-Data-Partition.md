@@ -36,7 +36,8 @@ a trivial task, with a lot of research performed on it. Some strategies are:
   - A general idea of *k-fold cross-validation* is to break up the data into `k` chunks and, 
   at each iteration, use one of the chunks for testing and the rest of the data for training.
 
-<img src="../fig/r_ml/5fold_cv.png" width=600>
+![5-fold cv](../fig/r_ml/5fold_cv.png)
+
 
   - split-half: the data are evenly split into training and test sets. First, you use on half for trainig and the other for testing; second, you use the second half for training and the first half for testing. The amount of training data is relatively small, but this way is sometimes used if the stability of the model is just as important as the classification accuracy.
 
