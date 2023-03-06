@@ -1,4 +1,4 @@
-# Introduction to Machine Learning"
+# Introduction to Machine Learning
 
 Very broadly speaking, machine learning is a discpline where an 
 algorithm learns how to make predictions from data; ideally, the more 
