@@ -887,6 +887,15 @@ keypoints:</p></li>
 </section>
 <section id="implementation">
 <h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Run the following in console</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;factoextra&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run the following in R code</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">factoextra</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span>
@@ -929,12 +938,12 @@ E*n: expectation under a sample size of n from the reference distribution
 
 ![image](https://user-images.githubusercontent.com/43855029/114586456-af771380-9c52-11eb-9fdb-99cc8df854fb.png)
 
-```r
+~~~r
 library(cluster)
 # B is number of Monte Carlo bootstrap samples
 gap_stat <- clusGap(iris[,3:4], FUN = kmeans, nstart=20, K.max = 10, B = 50)
 fviz_gap_stat(gap_stat)
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114586485-b9007b80-9c52-11eb-9aae-24effc612e09.png)
 
 -->

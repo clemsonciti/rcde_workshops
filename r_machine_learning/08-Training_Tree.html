@@ -922,6 +922,15 @@ Apply decision tree model to predict output of testing data</p>
 -->
 <section id="implementation-of-random-forest">
 <h3>Implementation of Random Forest<a class="headerlink" href="#implementation-of-random-forest" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Run the following on console:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;randomForest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run the following:</p></li>
+</ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ModFit_rf</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">Species</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;rf&quot;</span><span class="p">,</span><span class="n">prox</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="n">predict_rf</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ModFit_rf</span><span class="p">,</span><span class="n">testing</span><span class="p">)</span>

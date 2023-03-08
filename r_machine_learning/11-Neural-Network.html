@@ -815,16 +815,17 @@ keypoints:</p></li>
 <li><p>Formulation of Neural Network</p></li>
 </ul>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114472776-e997d500-9bc0-11eb-9f70-450389c912df.png" /></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Here, x1,x2....xn are input variables. w1,w2....wn are weights of respective inputs.
-b is the bias, which is summed with the weighted inputs to form the net inputs. 
-Bias and weights are both adjustable parameters of the neuron.
-Parameters are adjusted using some learning rules. 
-The output of a neuron can range from -inf to +inf.
-The neuron doesn’t know the boundary. So we need a mapping mechanism between the input and output of the neuron. 
-This mechanism of mapping inputs to output is known as Activation Function.
-</pre></div>
-</div>
 <ul class="simple">
+<li><p>Here, x1,x2….xn are input variables. w1,w2….wn are weights of respective inputs.
+b is the bias, which is summed with the weighted inputs to form the net inputs.</p></li>
+<li><p>Bias and weights are both adjustable parameters of the neuron.</p></li>
+<li><p>Parameters are adjusted using some learning rules.</p></li>
+<li><p>The output of a neuron can range from -inf to +inf.</p></li>
+<li><p>The neuron doesn’t know the boundary. So we need a mapping mechanism between the input and output of the neuron.</p>
+<ul>
+<li><p>This mechanism of mapping inputs to output is known as Activation Function.</p></li>
+</ul>
+</li>
 <li><p>Activation functions:
 <img alt="image" src="https://user-images.githubusercontent.com/43855029/114575672-6752f380-9c48-11eb-8d53-c78d052cdf17.png" /></p></li>
 <li><p>Neural Network formulation</p></li>
@@ -870,8 +871,6 @@ This mechanism of mapping inputs to output is known as Activation Function.
 <span class="n">predictNN</span> <span class="o">&lt;-</span> <span class="nf">compute</span><span class="p">(</span><span class="n">ModNN</span><span class="p">,</span><span class="n">testNN</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="o">:</span><span class="m">7</span><span class="p">,</span><span class="m">11</span><span class="p">)])</span>
 <span class="n">predictmpg</span><span class="o">&lt;-</span> <span class="n">predictNN</span><span class="o">$</span><span class="n">net.result</span><span class="o">*</span><span class="p">(</span><span class="n">smax</span><span class="o">-</span><span class="n">smin</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="o">+</span><span class="n">smin</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="nf">postResample</span><span class="p">(</span><span class="n">testing</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span><span class="n">predictmpg</span><span class="p">)</span>
-     <span class="n">RMSE</span>  <span class="n">Rsquared</span>       <span class="n">MAE</span> 
-<span class="m">3.0444857</span> <span class="m">0.8543388</span> <span class="m">2.3276645</span> 
 </pre></div>
 </div>
 </section>
