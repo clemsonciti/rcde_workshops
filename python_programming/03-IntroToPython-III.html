@@ -1,45 +1,35 @@
 
-
 <!DOCTYPE html>
 
-
-<html >
-
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Python III &#8212; Research Computing and Data Workshop</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
+    
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -47,12 +37,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -62,93 +52,61 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'python_programming/03-IntroToPython-III';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Machine Learning using Python" href="../python_sklearn/00-index.html" />
     <link rel="prev" title="Introduction to Python II" href="02-IntroToPython-II.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-  
-
-<a class="navbar-brand logo" href="../index.html">
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Research Computing and Data Workshop</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -157,301 +115,780 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introductory Sequence
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro_linux/00-index.html">
+   Introduction to Linux
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/00a-outline.html">
+     Workshop Outline
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/01-introduction.html">
+     What is Linux?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/01a-shell.html">
+     Shell Specifics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">
+     Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/03-file-system.html">
+     Navigating Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">
+     Working With Files and Directories
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/04a-file-permissions.html">
+     File Permissions and Atrributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/05-pipes.html">
+     Pipes and Redirection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/06-find.html">
+     Finding Things
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/07-utilities.html">
+     Utilities and Useful Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_linux/08-conclusion.html">
+     Workshop Conclusion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro_palmetto/00-index.html">
+   Introduction to Palmetto
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/01-introduction.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">
+     Accessing the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">
+     The structure of the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/04-storage.html">
+     Storage on Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/05-interactive.html">
+     Running an interactive job on Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/06-file-transfer.html">
+     Transferring files to and from Palmetto
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/07-open-od.html">
+     Web-based access to the Palmetto Cluster
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro_palmetto/08-batch.html">
+     Running a batch job
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  R
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../r_programming/00-index.html">
+   Introduction to R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/01-Introduction.html">
+     Introduction to R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/02-Basic-R.html">
+     Basics of R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/03-Data-Structures.html">
+     Data Structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/04-Matrix.html">
+     Vectors, Matrices, Lists and Data Frames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/05-Control-Structure.html">
+     Control Structure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/06-Functions.html">
+     Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/07-Parallel-Computing.html">
+     Parallel Computing in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/08-Basic-Plotting.html">
+     Basic plotting with R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">
+     Ploting with ggplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">
+     R in Palmetto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../r_machine_learning/00-index.html">
+   Machine Learning using R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/01-Introduction.html">
+     Introduction to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">
+     Introduction to Caret
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">
+     Data Partition with caret
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">
+     Evaluation Metrics with caret
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">
+     Training Machine Learning model using Regression Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">
+     Classification with decision boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/07-KNN.html">
+     Nearest Neighbours Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">
+     Training Machine Learning model using Tree-based model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">
+     Training Machine Learning model using Ensemble approach
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">
+     Unsupervised Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">
+     Neural Network
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Introduction to Python Programming</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01-IntroToPython-I.html">Introduction to Python I</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="02-IntroToPython-II.html">Introduction to Python II</a></li>
-
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to Python III</a></li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-index.html">
+   Introduction to Python Programming
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01-IntroToPython-I.html">
+     Introduction to Python I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02-IntroToPython-II.html">
+     Introduction to Python II
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Python III
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_sklearn/00-index.html">
+   Machine Learning using Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/01-introduction.html">
+     Introduction to Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/02-sklearn-preprocessing.html">
+     Introduction to Scikit Learn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/03-sklearn-Data-Partition.html">
+     Data partition: training and testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/04-sklearn-Evaluation-Metrics.html">
+     Evaluation Metrics with Scikit-Learn
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/05-Training-Regression.html">
+     Supervised Learning training with Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/06-Training-Tree.html">
+     Tree-based Learning Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/07-Training-Ensemble.html">
+     Ensemble-based Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/08-Model_Based.html">
+     Model-based Prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/09-Regularization.html">
+     Regularization and Variable Selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/10-Dimension-Reduction.html">
+     Dimension Reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/11-Neural-Network.html">
+     Neural Network
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/12-Support-Vector-Machine.html">
+     Support Vector Machine
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/13-KNN.html">
+     K-Nearest Neighbour
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/14-Unsupervised-Learning.html">
+     Unsupervised Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_sklearn/15-Mini-Project.html">
+     Mini-Project
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python_deep_learning/00-index.html">
+   Deep Learning in Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/01-Introduction.html">
+     Introduction to Deep Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">
+     Deep Learning Library Framework
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">
+     Recap on ANN
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">
+     Introduction to Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">
+     Training Deep Learning Regression model with Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">
+     Training Deep Learning Classification model with Keras
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">
+     Convolution Neural Network for image classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">
+     Recurrent Neural Network for Timeseries forecasting
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-introduction.html">Introduction to Machine Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-sklearn-preprocessing.html">Introduction to Scikit Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-sklearn-Data-Partition.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-sklearn-Evaluation-Metrics.html">Evaluation Metrics with Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/05-Training-Regression.html">Supervised Learning training with Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/06-Training-Tree.html">Tree-based Learning Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/07-Training-Ensemble.html">Ensemble-based Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/08-Model_Based.html">Model-based Prediction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/09-Regularization.html">Regularization and Variable Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/10-Dimension-Reduction.html">Dimension Reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/11-Neural-Network.html">Neural Network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/12-Support-Vector-Machine.html">Support Vector Machine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/13-KNN.html">K-Nearest Neighbour</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/14-Unsupervised-Learning.html">Unsupervised Learning</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/15-Mini-Project.html">Mini-Project</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
-
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../pytorch_beginner/00-index.html">Deep Learning in Pytorch for Beginners</a></li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../pytorch_beginner/00-index.html">
+   Deep Learning in Pytorch for Beginners
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Advanced Palmetto Usage
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-</ul>
-</li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../containers/00-index.html">
+   Containerization on Palmetto (under development)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../containers/01-introduction.html">
+     Introduction to CloudLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../containers/02-dockers.html">
+     Docker Containers on CloudLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../containers/03-apptainers.html">
+     Singularity/Apptainers on Palmetto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../advanced_scheduling/00-index.html">
+   Advanced Scheduling (under development)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../advanced_scheduling/01-introduction.html">
+     1. What is Spark?
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
 </nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
     </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/python_programming/03-IntroToPython-III.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
+          
 
 
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
 >
   
 
-<span class="btn__icon-container">
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/clemsonciti/rcde_workshops/master?urlpath=tree/docs/python_programming/03-IntroToPython-III.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
   </button>
-`);
-</script>
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
-</div></div>
-      
-    </div>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_programming/03-IntroToPython-III.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
   
-</div>
-</div>
-              
-              
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Python III</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">Dataframe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-data-with-pandas">Real Data with Pandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">Split, Apply, Combine</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby"><code class="docutils literal notranslate"><span class="pre">groupby</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walk">Random Walk</a></li>
-</ul>
-            </nav>
-        </div>
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-              
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   Dataframe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-data-with-pandas">
+   Real Data with Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-apply-combine">
+   Split, Apply, Combine
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#groupby">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       groupby
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     apply
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-walk">
+   Random Walk
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Python III</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataframe">
+   Dataframe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-data-with-pandas">
+   Real Data with Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-apply-combine">
+   Split, Apply, Combine
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#groupby">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       groupby
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     apply
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-walk">
+   Random Walk
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
+              <div>
+                
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python-iii">
 <h1>Introduction to Python III<a class="headerlink" href="#introduction-to-python-iii" title="Permalink to this headline">#</a></h1>
 <p>Introduction to Pandas and some more Matplotlib functionality!</p>
@@ -460,18 +897,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
 </pre></div>
 </div>
 </div>
@@ -557,7 +982,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5, 5, 4, 3, 4, 4, 3, 6, 3, 6])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 3, 3, 6, 7, 4, 3, 4, 7, 3])
 </pre></div>
 </div>
 </div>
@@ -599,80 +1024,80 @@ dtype: object
       <th>2022-06-24</th>
       <td>6</td>
       <td>7</td>
-      <td>3</td>
-      <td>6</td>
       <td>5</td>
+      <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
-      <td>4</td>
+      <td>7</td>
+      <td>7</td>
       <td>6</td>
-      <td>7</td>
-      <td>7</td>
+      <td>5</td>
       <td>4</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
+      <td>5</td>
       <td>3</td>
-      <td>5</td>
-      <td>5</td>
       <td>6</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2022-06-27</th>
-      <td>3</td>
-      <td>3</td>
-      <td>5</td>
-      <td>3</td>
+      <td>7</td>
       <td>4</td>
     </tr>
     <tr>
+      <th>2022-06-27</th>
+      <td>4</td>
+      <td>5</td>
+      <td>5</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
       <th>2022-06-28</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
       <td>7</td>
-      <td>6</td>
-      <td>7</td>
-      <td>6</td>
       <td>7</td>
     </tr>
     <tr>
       <th>2022-06-29</th>
       <td>7</td>
-      <td>7</td>
+      <td>5</td>
+      <td>5</td>
       <td>4</td>
-      <td>7</td>
       <td>4</td>
     </tr>
     <tr>
       <th>2022-06-30</th>
-      <td>5</td>
-      <td>6</td>
-      <td>6</td>
       <td>3</td>
+      <td>7</td>
+      <td>4</td>
       <td>3</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>2022-07-01</th>
       <td>4</td>
-      <td>4</td>
-      <td>4</td>
+      <td>6</td>
       <td>5</td>
-      <td>4</td>
+      <td>3</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>2022-07-02</th>
-      <td>4</td>
-      <td>4</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
       <td>7</td>
       <td>3</td>
-      <td>4</td>
     </tr>
     <tr>
       <th>2022-07-03</th>
       <td>7</td>
-      <td>4</td>
-      <td>3</td>
-      <td>3</td>
+      <td>6</td>
+      <td>5</td>
+      <td>5</td>
       <td>3</td>
     </tr>
   </tbody>
@@ -720,66 +1145,66 @@ dtype: object
     <tr>
       <th>A</th>
       <td>6</td>
-      <td>4</td>
-      <td>3</td>
-      <td>3</td>
-      <td>7</td>
       <td>7</td>
       <td>5</td>
       <td>4</td>
+      <td>5</td>
+      <td>7</td>
+      <td>3</td>
       <td>4</td>
+      <td>3</td>
       <td>7</td>
     </tr>
     <tr>
       <th>B</th>
       <td>7</td>
-      <td>6</td>
-      <td>5</td>
+      <td>7</td>
       <td>3</td>
-      <td>6</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
       <td>7</td>
       <td>6</td>
-      <td>4</td>
-      <td>4</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>3</td>
-      <td>7</td>
       <td>5</td>
-      <td>5</td>
-      <td>7</td>
-      <td>4</td>
       <td>6</td>
+      <td>6</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
       <td>4</td>
-      <td>7</td>
-      <td>3</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>D</th>
-      <td>6</td>
-      <td>7</td>
-      <td>6</td>
-      <td>3</td>
-      <td>6</td>
-      <td>7</td>
-      <td>3</td>
       <td>5</td>
+      <td>5</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>4</td>
       <td>3</td>
       <td>3</td>
+      <td>7</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>E</th>
-      <td>5</td>
       <td>4</td>
-      <td>5</td>
       <td>4</td>
+      <td>4</td>
+      <td>6</td>
       <td>7</td>
       <td>4</td>
+      <td>7</td>
+      <td>7</td>
       <td>3</td>
-      <td>4</td>
-      <td>4</td>
       <td>3</td>
     </tr>
   </tbody>
@@ -837,64 +1262,64 @@ dtype: object
       <td>10.000000</td>
       <td>10.000000</td>
       <td>10.000000</td>
-      <td>10.00000</td>
       <td>10.000000</td>
+      <td>10.00000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>5.000000</td>
-      <td>5.200000</td>
       <td>5.100000</td>
+      <td>5.400000</td>
+      <td>5.100000</td>
+      <td>5.300000</td>
       <td>4.90000</td>
-      <td>4.300000</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.632993</td>
-      <td>1.398412</td>
       <td>1.595131</td>
-      <td>1.72884</td>
-      <td>1.159502</td>
+      <td>1.505545</td>
+      <td>0.567646</td>
+      <td>1.636392</td>
+      <td>1.66333</td>
     </tr>
     <tr>
       <th>min</th>
       <td>3.000000</td>
       <td>3.000000</td>
+      <td>4.000000</td>
       <td>3.000000</td>
       <td>3.00000</td>
-      <td>3.000000</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>4.000000</td>
-      <td>4.000000</td>
-      <td>4.000000</td>
-      <td>3.00000</td>
-      <td>4.000000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>4.250000</td>
+      <td>4.00000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>4.500000</td>
+      <td>5.000000</td>
       <td>5.500000</td>
       <td>5.000000</td>
-      <td>5.50000</td>
-      <td>4.000000</td>
+      <td>5.000000</td>
+      <td>4.00000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>6.750000</td>
-      <td>6.000000</td>
       <td>6.750000</td>
-      <td>6.00000</td>
-      <td>4.750000</td>
+      <td>5.000000</td>
+      <td>7.000000</td>
+      <td>6.75000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>7.000000</td>
       <td>7.000000</td>
+      <td>6.000000</td>
       <td>7.000000</td>
       <td>7.00000</td>
-      <td>7.000000</td>
     </tr>
   </tbody>
 </table>
@@ -938,25 +1363,25 @@ dtype: object
       <th>2022-06-24</th>
       <td>6</td>
       <td>7</td>
-      <td>3</td>
-      <td>6</td>
       <td>5</td>
+      <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
-      <td>4</td>
+      <td>7</td>
+      <td>7</td>
       <td>6</td>
-      <td>7</td>
-      <td>7</td>
+      <td>5</td>
       <td>4</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
+      <td>5</td>
       <td>3</td>
-      <td>5</td>
-      <td>5</td>
       <td>6</td>
-      <td>5</td>
+      <td>7</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -998,18 +1423,18 @@ dtype: object
   <tbody>
     <tr>
       <th>2022-07-02</th>
-      <td>4</td>
-      <td>4</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
       <td>7</td>
       <td>3</td>
-      <td>4</td>
     </tr>
     <tr>
       <th>2022-07-03</th>
       <td>7</td>
-      <td>4</td>
-      <td>3</td>
-      <td>3</td>
+      <td>6</td>
+      <td>5</td>
+      <td>5</td>
       <td>3</td>
     </tr>
   </tbody>
@@ -1057,106 +1482,106 @@ dtype: object
     <tr>
       <th>count</th>
       <td>5.000000</td>
+      <td>5.00000</td>
       <td>5.000000</td>
       <td>5.000000</td>
       <td>5.000000</td>
       <td>5.000000</td>
+      <td>5.00000</td>
       <td>5.000000</td>
       <td>5.000000</td>
-      <td>5.000000</td>
-      <td>5.000000</td>
-      <td>5.000000</td>
+      <td>5.00000</td>
     </tr>
     <tr>
       <th>mean</th>
       <td>5.400000</td>
-      <td>5.600000</td>
-      <td>4.800000</td>
-      <td>3.600000</td>
-      <td>6.600000</td>
+      <td>5.80000</td>
+      <td>5.000000</td>
+      <td>5.400000</td>
       <td>5.800000</td>
-      <td>4.600000</td>
+      <td>5.000000</td>
+      <td>4.80000</td>
+      <td>5.000000</td>
       <td>4.200000</td>
-      <td>4.400000</td>
-      <td>4.000000</td>
+      <td>5.20000</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.516575</td>
-      <td>1.516575</td>
+      <td>1.140175</td>
+      <td>1.30384</td>
+      <td>1.581139</td>
+      <td>1.140175</td>
       <td>1.095445</td>
-      <td>0.894427</td>
-      <td>0.547723</td>
-      <td>1.643168</td>
-      <td>1.516575</td>
-      <td>0.447214</td>
-      <td>1.516575</td>
-      <td>1.732051</td>
+      <td>1.224745</td>
+      <td>2.04939</td>
+      <td>1.581139</td>
+      <td>1.788854</td>
+      <td>1.48324</td>
     </tr>
     <tr>
       <th>min</th>
+      <td>4.000000</td>
+      <td>4.00000</td>
       <td>3.000000</td>
       <td>4.000000</td>
-      <td>3.000000</td>
-      <td>3.000000</td>
-      <td>6.000000</td>
+      <td>5.000000</td>
       <td>4.000000</td>
+      <td>3.00000</td>
       <td>3.000000</td>
-      <td>4.000000</td>
       <td>3.000000</td>
-      <td>3.000000</td>
+      <td>3.00000</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>5.000000</td>
+      <td>5.00000</td>
       <td>4.000000</td>
       <td>5.000000</td>
-      <td>3.000000</td>
-      <td>6.000000</td>
+      <td>5.000000</td>
+      <td>4.000000</td>
+      <td>3.00000</td>
       <td>4.000000</td>
       <td>3.000000</td>
-      <td>4.000000</td>
-      <td>4.000000</td>
-      <td>3.000000</td>
+      <td>5.00000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>6.000000</td>
-      <td>6.000000</td>
+      <td>5.000000</td>
+      <td>6.00000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>4.00000</td>
       <td>5.000000</td>
       <td>3.000000</td>
-      <td>7.000000</td>
-      <td>7.000000</td>
-      <td>5.000000</td>
-      <td>4.000000</td>
-      <td>4.000000</td>
-      <td>3.000000</td>
+      <td>5.00000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>6.000000</td>
+      <td>7.00000</td>
+      <td>6.000000</td>
+      <td>6.000000</td>
       <td>7.000000</td>
       <td>5.000000</td>
-      <td>4.000000</td>
-      <td>7.000000</td>
-      <td>7.000000</td>
+      <td>7.00000</td>
       <td>6.000000</td>
-      <td>4.000000</td>
-      <td>4.000000</td>
-      <td>4.000000</td>
+      <td>5.000000</td>
+      <td>6.00000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>7.000000</td>
-      <td>7.000000</td>
-      <td>6.000000</td>
-      <td>5.000000</td>
+      <td>7.00000</td>
       <td>7.000000</td>
       <td>7.000000</td>
-      <td>6.000000</td>
-      <td>5.000000</td>
       <td>7.000000</td>
       <td>7.000000</td>
+      <td>7.00000</td>
+      <td>7.000000</td>
+      <td>7.000000</td>
+      <td>7.00000</td>
     </tr>
   </tbody>
 </table>
@@ -1196,62 +1621,62 @@ dtype: object
   <tbody>
     <tr>
       <th>2022-06-24</th>
-      <td>6</td>
-      <td>3</td>
       <td>5</td>
+      <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
-      <td>7</td>
-      <td>7</td>
+      <td>5</td>
+      <td>6</td>
       <td>4</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
+      <td>7</td>
       <td>6</td>
-      <td>5</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2022-06-27</th>
-      <td>3</td>
-      <td>5</td>
       <td>4</td>
     </tr>
     <tr>
-      <th>2022-06-28</th>
-      <td>6</td>
+      <th>2022-06-27</th>
       <td>7</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2022-06-28</th>
+      <td>7</td>
+      <td>5</td>
       <td>7</td>
     </tr>
     <tr>
       <th>2022-06-29</th>
-      <td>7</td>
       <td>4</td>
+      <td>5</td>
       <td>4</td>
     </tr>
     <tr>
       <th>2022-06-30</th>
       <td>3</td>
-      <td>6</td>
-      <td>3</td>
+      <td>4</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>2022-07-01</th>
+      <td>3</td>
       <td>5</td>
-      <td>4</td>
-      <td>4</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>2022-07-02</th>
-      <td>3</td>
       <td>7</td>
-      <td>4</td>
+      <td>5</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2022-07-03</th>
-      <td>3</td>
-      <td>3</td>
+      <td>5</td>
+      <td>5</td>
       <td>3</td>
     </tr>
   </tbody>
@@ -1273,16 +1698,16 @@ dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-24    14
-2022-06-25    18
-2022-06-26    16
-2022-06-27    12
-2022-06-28    20
-2022-06-29    15
-2022-06-30    12
-2022-07-01    13
-2022-07-02    14
-2022-07-03     9
-Freq: D, dtype: int32
+2022-06-25    15
+2022-06-26    17
+2022-06-27    18
+2022-06-28    19
+2022-06-29    13
+2022-06-30    14
+2022-07-01    15
+2022-07-02    15
+2022-07-03    13
+Freq: D, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1335,88 +1760,99 @@ Freq: D, dtype: int32
       <th>C</th>
       <th>D</th>
       <th>E</th>
+      <th>H</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2022-06-29</th>
-      <td>6</td>
-      <td>4</td>
-      <td>11</td>
+      <th>2022-06-30</th>
       <td>3</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2022-06-26</th>
-      <td>6</td>
-      <td>5</td>
-      <td>14</td>
-      <td>4</td>
       <td>7</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+      <td>17.500000</td>
     </tr>
     <tr>
       <th>2022-07-01</th>
-      <td>7</td>
-      <td>4</td>
-      <td>15</td>
-      <td>4</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2022-07-03</th>
-      <td>5</td>
-      <td>3</td>
-      <td>14</td>
       <td>4</td>
       <td>6</td>
+      <td>5</td>
+      <td>3</td>
+      <td>7</td>
+      <td>12.000000</td>
+    </tr>
+    <tr>
+      <th>2022-06-29</th>
+      <td>7</td>
+      <td>5</td>
+      <td>5</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-24</th>
-      <td>7</td>
       <td>6</td>
-      <td>13</td>
-      <td>5</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>2022-06-28</th>
       <td>7</td>
-      <td>4</td>
-      <td>16</td>
+      <td>5</td>
       <td>5</td>
       <td>4</td>
-    </tr>
-    <tr>
-      <th>2022-06-30</th>
-      <td>3</td>
-      <td>5</td>
-      <td>16</td>
-      <td>5</td>
-      <td>6</td>
+      <td>14.000000</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
       <td>5</td>
+      <td>4</td>
+      <td>11.666667</td>
+    </tr>
+    <tr>
+      <th>2022-07-03</th>
+      <td>7</td>
       <td>6</td>
-      <td>16</td>
-      <td>6</td>
+      <td>5</td>
+      <td>5</td>
       <td>3</td>
+      <td>12.000000</td>
+    </tr>
+    <tr>
+      <th>2022-06-26</th>
+      <td>5</td>
+      <td>3</td>
+      <td>6</td>
+      <td>7</td>
+      <td>4</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>2022-06-27</th>
-      <td>3</td>
+      <td>4</td>
       <td>5</td>
-      <td>19</td>
+      <td>5</td>
+      <td>7</td>
       <td>6</td>
-      <td>6</td>
+      <td>10.000000</td>
+    </tr>
+    <tr>
+      <th>2022-06-28</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-07-02</th>
-      <td>4</td>
-      <td>6</td>
-      <td>14</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
       <td>7</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1453,99 +1889,99 @@ Freq: D, dtype: int32
       <th>C</th>
       <th>D</th>
       <th>E</th>
-      <th>F</th>
+      <th>H</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2022-06-24</th>
-      <td>7</td>
       <td>6</td>
-      <td>13</td>
+      <td>7</td>
       <td>5</td>
       <td>5</td>
-      <td>42</td>
+      <td>4</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
+      <td>7</td>
+      <td>7</td>
+      <td>6</td>
       <td>5</td>
-      <td>6</td>
-      <td>16</td>
-      <td>6</td>
-      <td>3</td>
-      <td>30</td>
+      <td>4</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
-      <td>6</td>
       <td>5</td>
-      <td>14</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6</td>
       <td>7</td>
-      <td>30</td>
+      <td>4</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>2022-06-27</th>
-      <td>3</td>
+      <td>4</td>
       <td>5</td>
-      <td>19</td>
+      <td>5</td>
+      <td>7</td>
       <td>6</td>
-      <td>6</td>
-      <td>15</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>2022-06-28</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
       <td>7</td>
-      <td>5</td>
-      <td>16</td>
-      <td>5</td>
-      <td>4</td>
-      <td>35</td>
+      <td>7</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>2022-06-29</th>
-      <td>6</td>
+      <td>7</td>
       <td>5</td>
-      <td>11</td>
-      <td>3</td>
       <td>5</td>
-      <td>30</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>2022-06-30</th>
       <td>3</td>
-      <td>5</td>
-      <td>16</td>
-      <td>5</td>
-      <td>6</td>
-      <td>15</td>
+      <td>7</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+      <td>17</td>
     </tr>
     <tr>
       <th>2022-07-01</th>
-      <td>7</td>
       <td>4</td>
-      <td>15</td>
-      <td>4</td>
+      <td>6</td>
       <td>5</td>
-      <td>28</td>
+      <td>3</td>
+      <td>7</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>2022-07-02</th>
-      <td>4</td>
-      <td>6</td>
-      <td>14</td>
+      <td>3</td>
+      <td>3</td>
+      <td>5</td>
       <td>7</td>
-      <td>4</td>
-      <td>24</td>
+      <td>3</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>2022-07-03</th>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
       <td>5</td>
       <td>3</td>
-      <td>14</td>
-      <td>4</td>
-      <td>6</td>
-      <td>15</td>
+      <td>12</td>
     </tr>
   </tbody>
 </table>
@@ -1582,40 +2018,45 @@ Freq: D, dtype: int32
       <th>C</th>
       <th>D</th>
       <th>E</th>
+      <th>H</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2022-06-26</th>
-      <td>6</td>
-      <td>5</td>
-      <td>14</td>
+      <th>2022-06-27</th>
       <td>4</td>
+      <td>5</td>
+      <td>5</td>
       <td>7</td>
+      <td>6</td>
+      <td>10.0</td>
     </tr>
     <tr>
-      <th>2022-06-27</th>
-      <td>3</td>
+      <th>2022-06-28</th>
       <td>5</td>
-      <td>19</td>
-      <td>6</td>
-      <td>6</td>
+      <td>5</td>
+      <td>5</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>2022-06-30</th>
       <td>3</td>
-      <td>5</td>
-      <td>16</td>
-      <td>5</td>
-      <td>6</td>
+      <td>7</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+      <td>17.5</td>
     </tr>
     <tr>
-      <th>2022-07-03</th>
-      <td>5</td>
-      <td>3</td>
-      <td>14</td>
+      <th>2022-07-01</th>
       <td>4</td>
       <td>6</td>
+      <td>5</td>
+      <td>3</td>
+      <td>7</td>
+      <td>12.0</td>
     </tr>
   </tbody>
 </table>
@@ -1656,24 +2097,24 @@ Freq: D, dtype: int32
   <tbody>
     <tr>
       <th>2022-06-24</th>
-      <td>6</td>
-      <td>13</td>
+      <td>7</td>
       <td>5</td>
       <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
+      <td>7</td>
       <td>6</td>
-      <td>16</td>
-      <td>6</td>
-      <td>3</td>
+      <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
-      <td>5</td>
-      <td>14</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6</td>
       <td>7</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -1710,88 +2151,99 @@ Freq: D, dtype: int32
       <th>C</th>
       <th>D</th>
       <th>E</th>
+      <th>H</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2022-06-24</th>
-      <td>7</td>
-      <td>6.0</td>
-      <td>13</td>
+      <td>6</td>
+      <td>7.0</td>
       <td>5</td>
       <td>5</td>
+      <td>4</td>
+      <td>14.000000</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
-      <td>5</td>
-      <td>6.0</td>
-      <td>16</td>
+      <td>7</td>
+      <td>7.0</td>
       <td>6</td>
-      <td>3</td>
+      <td>5</td>
+      <td>4</td>
+      <td>11.666667</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
+      <td>5</td>
+      <td>3.0</td>
       <td>6</td>
-      <td>5.0</td>
-      <td>14</td>
-      <td>4</td>
       <td>7</td>
+      <td>4</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>2022-06-27</th>
-      <td>3</td>
+      <td>4</td>
       <td>NaN</td>
-      <td>19</td>
+      <td>5</td>
+      <td>7</td>
       <td>6</td>
-      <td>6</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-28</th>
-      <td>7</td>
-      <td>NaN</td>
-      <td>16</td>
       <td>5</td>
-      <td>4</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-29</th>
-      <td>6</td>
+      <td>7</td>
       <td>NaN</td>
-      <td>11</td>
-      <td>3</td>
       <td>5</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-30</th>
       <td>3</td>
-      <td>5.0</td>
-      <td>16</td>
-      <td>5</td>
-      <td>6</td>
+      <td>7.0</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+      <td>17.500000</td>
     </tr>
     <tr>
       <th>2022-07-01</th>
-      <td>7</td>
-      <td>4.0</td>
-      <td>15</td>
       <td>4</td>
+      <td>6.0</td>
       <td>5</td>
+      <td>3</td>
+      <td>7</td>
+      <td>12.000000</td>
     </tr>
     <tr>
       <th>2022-07-02</th>
-      <td>4</td>
-      <td>6.0</td>
-      <td>14</td>
+      <td>3</td>
+      <td>3.0</td>
+      <td>5</td>
       <td>7</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6.000000</td>
     </tr>
     <tr>
       <th>2022-07-03</th>
+      <td>7</td>
+      <td>6.0</td>
       <td>5</td>
-      <td>3.0</td>
-      <td>14</td>
-      <td>4</td>
-      <td>6</td>
+      <td>5</td>
+      <td>3</td>
+      <td>12.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1827,6 +2279,7 @@ Freq: D, dtype: int32
       <th>C</th>
       <th>D</th>
       <th>E</th>
+      <th>H</th>
     </tr>
   </thead>
   <tbody>
@@ -1836,63 +2289,71 @@ Freq: D, dtype: int32
       <td>7.000000</td>
       <td>10.000000</td>
       <td>10.000000</td>
+      <td>10.00000</td>
       <td>10.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>5.300000</td>
-      <td>5.000000</td>
-      <td>14.800000</td>
-      <td>4.900000</td>
       <td>5.100000</td>
+      <td>5.571429</td>
+      <td>5.100000</td>
+      <td>5.300000</td>
+      <td>4.90000</td>
+      <td>10.816667</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.567021</td>
-      <td>1.154701</td>
-      <td>2.149935</td>
-      <td>1.197219</td>
-      <td>1.197219</td>
+      <td>1.595131</td>
+      <td>1.812654</td>
+      <td>0.567646</td>
+      <td>1.636392</td>
+      <td>1.66333</td>
+      <td>3.611068</td>
     </tr>
     <tr>
       <th>min</th>
       <td>3.000000</td>
       <td>3.000000</td>
-      <td>11.000000</td>
+      <td>4.000000</td>
       <td>3.000000</td>
-      <td>3.000000</td>
+      <td>3.00000</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>4.250000</td>
-      <td>4.500000</td>
-      <td>14.000000</td>
       <td>4.000000</td>
+      <td>4.500000</td>
+      <td>5.000000</td>
       <td>4.250000</td>
+      <td>4.00000</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>5.500000</td>
       <td>5.000000</td>
-      <td>14.500000</td>
+      <td>6.000000</td>
       <td>5.000000</td>
       <td>5.000000</td>
+      <td>4.00000</td>
+      <td>10.833333</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>6.750000</td>
-      <td>6.000000</td>
-      <td>16.000000</td>
-      <td>5.750000</td>
-      <td>6.000000</td>
+      <td>7.000000</td>
+      <td>5.000000</td>
+      <td>7.000000</td>
+      <td>6.75000</td>
+      <td>12.000000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>7.000000</td>
+      <td>7.000000</td>
       <td>6.000000</td>
-      <td>19.000000</td>
       <td>7.000000</td>
-      <td>7.000000</td>
+      <td>7.00000</td>
+      <td>17.500000</td>
     </tr>
   </tbody>
 </table>
@@ -1929,88 +2390,99 @@ Freq: D, dtype: int32
       <th>C</th>
       <th>D</th>
       <th>E</th>
+      <th>H</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2022-06-24</th>
-      <td>7</td>
-      <td>6.0</td>
-      <td>13</td>
+      <td>6</td>
+      <td>7.0</td>
       <td>5</td>
       <td>5</td>
+      <td>4</td>
+      <td>14.000000</td>
     </tr>
     <tr>
       <th>2022-06-25</th>
-      <td>5</td>
-      <td>6.0</td>
-      <td>16</td>
+      <td>7</td>
+      <td>7.0</td>
       <td>6</td>
-      <td>3</td>
+      <td>5</td>
+      <td>4</td>
+      <td>11.666667</td>
     </tr>
     <tr>
       <th>2022-06-26</th>
+      <td>5</td>
+      <td>3.0</td>
       <td>6</td>
-      <td>5.0</td>
-      <td>14</td>
-      <td>4</td>
       <td>7</td>
+      <td>4</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>2022-06-27</th>
-      <td>3</td>
+      <td>4</td>
       <td>5.0</td>
-      <td>19</td>
+      <td>5</td>
+      <td>7</td>
       <td>6</td>
-      <td>6</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-28</th>
-      <td>7</td>
-      <td>5.0</td>
-      <td>16</td>
       <td>5</td>
-      <td>4</td>
+      <td>5.0</td>
+      <td>5</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-29</th>
-      <td>6</td>
+      <td>7</td>
       <td>5.0</td>
-      <td>11</td>
-      <td>3</td>
       <td>5</td>
+      <td>4</td>
+      <td>4</td>
+      <td>10.000000</td>
     </tr>
     <tr>
       <th>2022-06-30</th>
       <td>3</td>
-      <td>5.0</td>
-      <td>16</td>
-      <td>5</td>
-      <td>6</td>
+      <td>7.0</td>
+      <td>4</td>
+      <td>3</td>
+      <td>7</td>
+      <td>17.500000</td>
     </tr>
     <tr>
       <th>2022-07-01</th>
-      <td>7</td>
-      <td>4.0</td>
-      <td>15</td>
       <td>4</td>
+      <td>6.0</td>
       <td>5</td>
+      <td>3</td>
+      <td>7</td>
+      <td>12.000000</td>
     </tr>
     <tr>
       <th>2022-07-02</th>
-      <td>4</td>
-      <td>6.0</td>
-      <td>14</td>
+      <td>3</td>
+      <td>3.0</td>
+      <td>5</td>
       <td>7</td>
-      <td>4</td>
+      <td>3</td>
+      <td>6.000000</td>
     </tr>
     <tr>
       <th>2022-07-03</th>
+      <td>7</td>
+      <td>6.0</td>
       <td>5</td>
-      <td>3.0</td>
-      <td>14</td>
-      <td>4</td>
-      <td>6</td>
+      <td>5</td>
+      <td>3</td>
+      <td>12.000000</td>
     </tr>
   </tbody>
 </table>
@@ -2027,18 +2499,13 @@ Freq: D, dtype: int32
 <section id="real-data-with-pandas">
 <h2>Real Data with Pandas<a class="headerlink" href="#real-data-with-pandas" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_europe</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/clemsonciti/intro-to-python/master/data3/gapminder_gdp_europe.csv&#39;</span>
 <span class="n">data_eur</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_europe</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">)</span>
 <span class="n">data_eur</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2541,20 +3008,14 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <p>Preview data imported into Dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code></p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_eur</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2712,19 +3173,13 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_eur</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2964,131 +3419,22 @@ Freq: D, dtype: int32
 </table>
 <p>8 rows × 30 columns</p>
 </div></div></div>
-</details>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data_eur.head(3)</span>
 <span class="c1">#data_eur.tail(3)</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>gdpPercap_1952</th>
-      <th>gdpPercap_1957</th>
-      <th>gdpPercap_1962</th>
-      <th>gdpPercap_1967</th>
-      <th>gdpPercap_1972</th>
-      <th>gdpPercap_1977</th>
-      <th>gdpPercap_1982</th>
-      <th>gdpPercap_1987</th>
-      <th>gdpPercap_1992</th>
-      <th>gdpPercap_1997</th>
-      <th>gdpPercap_2002</th>
-      <th>gdpPercap_2007</th>
-    </tr>
-    <tr>
-      <th>country</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Albania</th>
-      <td>1601.056136</td>
-      <td>1942.284244</td>
-      <td>2312.888958</td>
-      <td>2760.196931</td>
-      <td>3313.422188</td>
-      <td>3533.00391</td>
-      <td>3630.880722</td>
-      <td>3738.932735</td>
-      <td>2497.437901</td>
-      <td>3193.054604</td>
-      <td>4604.211737</td>
-      <td>5937.029526</td>
-    </tr>
-    <tr>
-      <th>Austria</th>
-      <td>6137.076492</td>
-      <td>8842.598030</td>
-      <td>10750.721110</td>
-      <td>12834.602400</td>
-      <td>16661.625600</td>
-      <td>19749.42230</td>
-      <td>21597.083620</td>
-      <td>23687.826070</td>
-      <td>27042.018680</td>
-      <td>29095.920660</td>
-      <td>32417.607690</td>
-      <td>36126.492700</td>
-    </tr>
-    <tr>
-      <th>Belgium</th>
-      <td>8343.105127</td>
-      <td>9714.960623</td>
-      <td>10991.206760</td>
-      <td>13149.041190</td>
-      <td>16672.143560</td>
-      <td>19117.97448</td>
-      <td>20979.845890</td>
-      <td>22525.563080</td>
-      <td>25575.570690</td>
-      <td>27561.196630</td>
-      <td>30485.883750</td>
-      <td>33692.605080</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</details>
 </div>
 <p>Extracting a subset of rows and columns</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_eur</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Switzerland&quot;</span><span class="p">:</span><span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span> <span class="s2">&quot;gdpPercap_1957&quot;</span><span class="p">:</span><span class="s2">&quot;gdpPercap_1977&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3151,19 +3497,13 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_eur</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Switzerland&quot;</span><span class="p">:</span><span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span> <span class="s2">&quot;gdpPercap_1957&quot;</span><span class="p">:</span><span class="s2">&quot;gdpPercap_1977&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3240,7 +3580,6 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3248,508 +3587,6 @@ Freq: D, dtype: int32
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>gdpPercap_1952</th>
-      <th>gdpPercap_1957</th>
-      <th>gdpPercap_1962</th>
-      <th>gdpPercap_1967</th>
-      <th>gdpPercap_1972</th>
-      <th>gdpPercap_1977</th>
-      <th>gdpPercap_1982</th>
-      <th>gdpPercap_1987</th>
-      <th>gdpPercap_1992</th>
-      <th>gdpPercap_1997</th>
-      <th>gdpPercap_2002</th>
-      <th>gdpPercap_2007</th>
-    </tr>
-    <tr>
-      <th>country</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Albania</th>
-      <td>1601.056136</td>
-      <td>1942.284244</td>
-      <td>2312.888958</td>
-      <td>2760.196931</td>
-      <td>3313.422188</td>
-      <td>3533.003910</td>
-      <td>3630.880722</td>
-      <td>3738.932735</td>
-      <td>2497.437901</td>
-      <td>3193.054604</td>
-      <td>4604.211737</td>
-      <td>5937.029526</td>
-    </tr>
-    <tr>
-      <th>Austria</th>
-      <td>6137.076492</td>
-      <td>8842.598030</td>
-      <td>10750.721110</td>
-      <td>12834.602400</td>
-      <td>16661.625600</td>
-      <td>19749.422300</td>
-      <td>21597.083620</td>
-      <td>23687.826070</td>
-      <td>27042.018680</td>
-      <td>29095.920660</td>
-      <td>32417.607690</td>
-      <td>36126.492700</td>
-    </tr>
-    <tr>
-      <th>Belgium</th>
-      <td>8343.105127</td>
-      <td>9714.960623</td>
-      <td>10991.206760</td>
-      <td>13149.041190</td>
-      <td>16672.143560</td>
-      <td>19117.974480</td>
-      <td>20979.845890</td>
-      <td>22525.563080</td>
-      <td>25575.570690</td>
-      <td>27561.196630</td>
-      <td>30485.883750</td>
-      <td>33692.605080</td>
-    </tr>
-    <tr>
-      <th>Bosnia and Herzegovina</th>
-      <td>973.533195</td>
-      <td>1353.989176</td>
-      <td>1709.683679</td>
-      <td>2172.352423</td>
-      <td>2860.169750</td>
-      <td>3528.481305</td>
-      <td>4126.613157</td>
-      <td>4314.114757</td>
-      <td>2546.781445</td>
-      <td>4766.355904</td>
-      <td>6018.975239</td>
-      <td>7446.298803</td>
-    </tr>
-    <tr>
-      <th>Bulgaria</th>
-      <td>2444.286648</td>
-      <td>3008.670727</td>
-      <td>4254.337839</td>
-      <td>5577.002800</td>
-      <td>6597.494398</td>
-      <td>7612.240438</td>
-      <td>8224.191647</td>
-      <td>8239.854824</td>
-      <td>6302.623438</td>
-      <td>5970.388760</td>
-      <td>7696.777725</td>
-      <td>10680.792820</td>
-    </tr>
-    <tr>
-      <th>Croatia</th>
-      <td>3119.236520</td>
-      <td>4338.231617</td>
-      <td>5477.890018</td>
-      <td>6960.297861</td>
-      <td>9164.090127</td>
-      <td>11305.385170</td>
-      <td>13221.821840</td>
-      <td>13822.583940</td>
-      <td>8447.794873</td>
-      <td>9875.604515</td>
-      <td>11628.388950</td>
-      <td>14619.222720</td>
-    </tr>
-    <tr>
-      <th>Czech Republic</th>
-      <td>6876.140250</td>
-      <td>8256.343918</td>
-      <td>10136.867130</td>
-      <td>11399.444890</td>
-      <td>13108.453600</td>
-      <td>14800.160620</td>
-      <td>15377.228550</td>
-      <td>16310.443400</td>
-      <td>14297.021220</td>
-      <td>16048.514240</td>
-      <td>17596.210220</td>
-      <td>22833.308510</td>
-    </tr>
-    <tr>
-      <th>Denmark</th>
-      <td>9692.385245</td>
-      <td>11099.659350</td>
-      <td>13583.313510</td>
-      <td>15937.211230</td>
-      <td>18866.207210</td>
-      <td>20422.901500</td>
-      <td>21688.040480</td>
-      <td>25116.175810</td>
-      <td>26406.739850</td>
-      <td>29804.345670</td>
-      <td>32166.500060</td>
-      <td>35278.418740</td>
-    </tr>
-    <tr>
-      <th>Finland</th>
-      <td>6424.519071</td>
-      <td>7545.415386</td>
-      <td>9371.842561</td>
-      <td>10921.636260</td>
-      <td>14358.875900</td>
-      <td>15605.422830</td>
-      <td>18533.157610</td>
-      <td>21141.012230</td>
-      <td>20647.164990</td>
-      <td>23723.950200</td>
-      <td>28204.590570</td>
-      <td>33207.084400</td>
-    </tr>
-    <tr>
-      <th>France</th>
-      <td>7029.809327</td>
-      <td>8662.834898</td>
-      <td>10560.485530</td>
-      <td>12999.917660</td>
-      <td>16107.191710</td>
-      <td>18292.635140</td>
-      <td>20293.897460</td>
-      <td>22066.442140</td>
-      <td>24703.796150</td>
-      <td>25889.784870</td>
-      <td>28926.032340</td>
-      <td>30470.016700</td>
-    </tr>
-    <tr>
-      <th>Germany</th>
-      <td>7144.114393</td>
-      <td>10187.826650</td>
-      <td>12902.462910</td>
-      <td>14745.625610</td>
-      <td>18016.180270</td>
-      <td>20512.921230</td>
-      <td>22031.532740</td>
-      <td>24639.185660</td>
-      <td>26505.303170</td>
-      <td>27788.884160</td>
-      <td>30035.801980</td>
-      <td>32170.374420</td>
-    </tr>
-    <tr>
-      <th>Greece</th>
-      <td>3530.690067</td>
-      <td>4916.299889</td>
-      <td>6017.190733</td>
-      <td>8513.097016</td>
-      <td>12724.829570</td>
-      <td>14195.524280</td>
-      <td>15268.420890</td>
-      <td>16120.528390</td>
-      <td>17541.496340</td>
-      <td>18747.698140</td>
-      <td>22514.254800</td>
-      <td>27538.411880</td>
-    </tr>
-    <tr>
-      <th>Hungary</th>
-      <td>5263.673816</td>
-      <td>6040.180011</td>
-      <td>7550.359877</td>
-      <td>9326.644670</td>
-      <td>10168.656110</td>
-      <td>11674.837370</td>
-      <td>12545.990660</td>
-      <td>12986.479980</td>
-      <td>10535.628550</td>
-      <td>11712.776800</td>
-      <td>14843.935560</td>
-      <td>18008.944440</td>
-    </tr>
-    <tr>
-      <th>Iceland</th>
-      <td>7267.688428</td>
-      <td>9244.001412</td>
-      <td>10350.159060</td>
-      <td>13319.895680</td>
-      <td>15798.063620</td>
-      <td>19654.962470</td>
-      <td>23269.607500</td>
-      <td>26923.206280</td>
-      <td>25144.392010</td>
-      <td>28061.099660</td>
-      <td>31163.201960</td>
-      <td>36180.789190</td>
-    </tr>
-    <tr>
-      <th>Ireland</th>
-      <td>5210.280328</td>
-      <td>5599.077872</td>
-      <td>6631.597314</td>
-      <td>7655.568963</td>
-      <td>9530.772896</td>
-      <td>11150.981130</td>
-      <td>12618.321410</td>
-      <td>13872.866520</td>
-      <td>17558.815550</td>
-      <td>24521.947130</td>
-      <td>34077.049390</td>
-      <td>40675.996350</td>
-    </tr>
-    <tr>
-      <th>Italy</th>
-      <td>4931.404155</td>
-      <td>6248.656232</td>
-      <td>8243.582340</td>
-      <td>10022.401310</td>
-      <td>12269.273780</td>
-      <td>14255.984750</td>
-      <td>16537.483500</td>
-      <td>19207.234820</td>
-      <td>22013.644860</td>
-      <td>24675.024460</td>
-      <td>27968.098170</td>
-      <td>28569.719700</td>
-    </tr>
-    <tr>
-      <th>Montenegro</th>
-      <td>2647.585601</td>
-      <td>3682.259903</td>
-      <td>4649.593785</td>
-      <td>5907.850937</td>
-      <td>7778.414017</td>
-      <td>9595.929905</td>
-      <td>11222.587620</td>
-      <td>11732.510170</td>
-      <td>7003.339037</td>
-      <td>6465.613349</td>
-      <td>6557.194282</td>
-      <td>9253.896111</td>
-    </tr>
-    <tr>
-      <th>Netherlands</th>
-      <td>8941.571858</td>
-      <td>11276.193440</td>
-      <td>12790.849560</td>
-      <td>15363.251360</td>
-      <td>18794.745670</td>
-      <td>21209.059200</td>
-      <td>21399.460460</td>
-      <td>23651.323610</td>
-      <td>26790.949610</td>
-      <td>30246.130630</td>
-      <td>33724.757780</td>
-      <td>36797.933320</td>
-    </tr>
-    <tr>
-      <th>Norway</th>
-      <td>10095.421720</td>
-      <td>11653.973040</td>
-      <td>13450.401510</td>
-      <td>16361.876470</td>
-      <td>18965.055510</td>
-      <td>23311.349390</td>
-      <td>26298.635310</td>
-      <td>31540.974800</td>
-      <td>33965.661150</td>
-      <td>41283.164330</td>
-      <td>44683.975250</td>
-      <td>49357.190170</td>
-    </tr>
-    <tr>
-      <th>Poland</th>
-      <td>4029.329699</td>
-      <td>4734.253019</td>
-      <td>5338.752143</td>
-      <td>6557.152776</td>
-      <td>8006.506993</td>
-      <td>9508.141454</td>
-      <td>8451.531004</td>
-      <td>9082.351172</td>
-      <td>7738.881247</td>
-      <td>10159.583680</td>
-      <td>12002.239080</td>
-      <td>15389.924680</td>
-    </tr>
-    <tr>
-      <th>Portugal</th>
-      <td>3068.319867</td>
-      <td>3774.571743</td>
-      <td>4727.954889</td>
-      <td>6361.517993</td>
-      <td>9022.247417</td>
-      <td>10172.485720</td>
-      <td>11753.842910</td>
-      <td>13039.308760</td>
-      <td>16207.266630</td>
-      <td>17641.031560</td>
-      <td>19970.907870</td>
-      <td>20509.647770</td>
-    </tr>
-    <tr>
-      <th>Romania</th>
-      <td>3144.613186</td>
-      <td>3943.370225</td>
-      <td>4734.997586</td>
-      <td>6470.866545</td>
-      <td>8011.414402</td>
-      <td>9356.397240</td>
-      <td>9605.314053</td>
-      <td>9696.273295</td>
-      <td>6598.409903</td>
-      <td>7346.547557</td>
-      <td>7885.360081</td>
-      <td>10808.475610</td>
-    </tr>
-    <tr>
-      <th>Serbia</th>
-      <td>3581.459448</td>
-      <td>4981.090891</td>
-      <td>6289.629157</td>
-      <td>7991.707066</td>
-      <td>10522.067490</td>
-      <td>12980.669560</td>
-      <td>15181.092700</td>
-      <td>15870.878510</td>
-      <td>9325.068238</td>
-      <td>7914.320304</td>
-      <td>7236.075251</td>
-      <td>9786.534714</td>
-    </tr>
-    <tr>
-      <th>Slovak Republic</th>
-      <td>5074.659104</td>
-      <td>6093.262980</td>
-      <td>7481.107598</td>
-      <td>8412.902397</td>
-      <td>9674.167626</td>
-      <td>10922.664040</td>
-      <td>11348.545850</td>
-      <td>12037.267580</td>
-      <td>9498.467723</td>
-      <td>12126.230650</td>
-      <td>13638.778370</td>
-      <td>18678.314350</td>
-    </tr>
-    <tr>
-      <th>Slovenia</th>
-      <td>4215.041741</td>
-      <td>5862.276629</td>
-      <td>7402.303395</td>
-      <td>9405.489397</td>
-      <td>12383.486200</td>
-      <td>15277.030170</td>
-      <td>17866.721750</td>
-      <td>18678.534920</td>
-      <td>14214.716810</td>
-      <td>17161.107350</td>
-      <td>20660.019360</td>
-      <td>25768.257590</td>
-    </tr>
-    <tr>
-      <th>Spain</th>
-      <td>3834.034742</td>
-      <td>4564.802410</td>
-      <td>5693.843879</td>
-      <td>7993.512294</td>
-      <td>10638.751310</td>
-      <td>13236.921170</td>
-      <td>13926.169970</td>
-      <td>15764.983130</td>
-      <td>18603.064520</td>
-      <td>20445.298960</td>
-      <td>24835.471660</td>
-      <td>28821.063700</td>
-    </tr>
-    <tr>
-      <th>Sweden</th>
-      <td>8527.844662</td>
-      <td>9911.878226</td>
-      <td>12329.441920</td>
-      <td>15258.296970</td>
-      <td>17832.024640</td>
-      <td>18855.725210</td>
-      <td>20667.381250</td>
-      <td>23586.929270</td>
-      <td>23880.016830</td>
-      <td>25266.594990</td>
-      <td>29341.630930</td>
-      <td>33859.748350</td>
-    </tr>
-    <tr>
-      <th>Switzerland</th>
-      <td>14734.232750</td>
-      <td>17909.489730</td>
-      <td>20431.092700</td>
-      <td>22966.144320</td>
-      <td>27195.113040</td>
-      <td>26982.290520</td>
-      <td>28397.715120</td>
-      <td>30281.704590</td>
-      <td>31871.530300</td>
-      <td>32135.323010</td>
-      <td>34480.957710</td>
-      <td>37506.419070</td>
-    </tr>
-    <tr>
-      <th>Turkey</th>
-      <td>1969.100980</td>
-      <td>2218.754257</td>
-      <td>2322.869908</td>
-      <td>2826.356387</td>
-      <td>3450.696380</td>
-      <td>4269.122326</td>
-      <td>4241.356344</td>
-      <td>5089.043686</td>
-      <td>5678.348271</td>
-      <td>6601.429915</td>
-      <td>6508.085718</td>
-      <td>8458.276384</td>
-    </tr>
-    <tr>
-      <th>United Kingdom</th>
-      <td>9979.508487</td>
-      <td>11283.177950</td>
-      <td>12477.177070</td>
-      <td>14142.850890</td>
-      <td>15895.116410</td>
-      <td>17428.748460</td>
-      <td>18232.424520</td>
-      <td>21664.787670</td>
-      <td>22705.092540</td>
-      <td>26074.531360</td>
-      <td>29478.999190</td>
-      <td>33203.261280</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3759,17 +3596,12 @@ Freq: D, dtype: int32
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">subset</span> <span class="o">&gt;</span> <span class="mi">5000</span>
 <span class="n">mask</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3821,7 +3653,7 @@ Freq: D, dtype: int32
   <tbody>
     <tr>
       <th>Italy</th>
-      <td>True</td>
+      <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
@@ -3837,8 +3669,8 @@ Freq: D, dtype: int32
     <tr>
       <th>Montenegro</th>
       <td>False</td>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
@@ -3881,8 +3713,8 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Poland</th>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
@@ -3896,9 +3728,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Portugal</th>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
@@ -3911,9 +3743,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Romania</th>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
@@ -3926,8 +3758,8 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Serbia</th>
-      <td>True</td>
-      <td>True</td>
+      <td>False</td>
+      <td>False</td>
       <td>True</td>
       <td>True</td>
       <td>True</td>
@@ -3942,19 +3774,13 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3991,9 +3817,9 @@ Freq: D, dtype: int32
   <tbody>
     <tr>
       <th>count</th>
-      <td>7.000000</td>
-      <td>8.000000</td>
-      <td>8.000000</td>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>5.000000</td>
       <td>8.000000</td>
       <td>8.000000</td>
       <td>8.000000</td>
@@ -4006,9 +3832,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>mean</th>
-      <td>5398.874276</td>
-      <td>6286.796062</td>
-      <td>7528.220121</td>
+      <td>9518.496789</td>
+      <td>9726.274237</td>
+      <td>9222.642942</td>
       <td>9379.578057</td>
       <td>11671.215660</td>
       <td>13798.752152</td>
@@ -4021,9 +3847,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>std</th>
-      <td>2901.683945</td>
-      <td>3303.762135</td>
-      <td>3655.469264</td>
+      <td>815.895062</td>
+      <td>3017.623171</td>
+      <td>3716.576995</td>
       <td>4217.048863</td>
       <td>4699.820161</td>
       <td>5545.111849</td>
@@ -4036,9 +3862,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>min</th>
-      <td>3068.319867</td>
-      <td>3682.259903</td>
-      <td>4649.593785</td>
+      <td>8941.571858</td>
+      <td>6248.656232</td>
+      <td>5338.752143</td>
       <td>5907.850937</td>
       <td>7778.414017</td>
       <td>9356.397240</td>
@@ -4051,9 +3877,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>25%</th>
-      <td>3363.036317</td>
-      <td>3901.170605</td>
-      <td>4733.236912</td>
+      <td>9230.034324</td>
+      <td>8762.424836</td>
+      <td>6289.629157</td>
       <td>6443.529407</td>
       <td>8010.187550</td>
       <td>9573.982792</td>
@@ -4066,9 +3892,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>50%</th>
-      <td>4029.329699</td>
-      <td>4857.671955</td>
-      <td>5814.190650</td>
+      <td>9518.496789</td>
+      <td>11276.193440</td>
+      <td>8243.582340</td>
       <td>7274.429921</td>
       <td>9772.157453</td>
       <td>11576.577640</td>
@@ -4081,9 +3907,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>75%</th>
-      <td>6936.488006</td>
-      <td>7505.540534</td>
-      <td>9380.399145</td>
+      <td>9806.959254</td>
+      <td>11465.083240</td>
+      <td>12790.849560</td>
       <td>11357.613822</td>
       <td>13900.641752</td>
       <td>15994.253362</td>
@@ -4112,7 +3938,6 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4122,17 +3947,12 @@ Freq: D, dtype: int32
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="s1">&#39;country&#39;</span><span class="p">)</span>
 <span class="n">subset_df</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -4184,7 +4004,7 @@ Freq: D, dtype: int32
   <tbody>
     <tr>
       <th>Italy</th>
-      <td>4931.404155</td>
+      <td>NaN</td>
       <td>6248.656232</td>
       <td>8243.582340</td>
       <td>10022.401310</td>
@@ -4200,8 +4020,8 @@ Freq: D, dtype: int32
     <tr>
       <th>Montenegro</th>
       <td>NaN</td>
-      <td>3682.259903</td>
-      <td>4649.593785</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>5907.850937</td>
       <td>7778.414017</td>
       <td>9595.929905</td>
@@ -4244,8 +4064,8 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Poland</th>
-      <td>4029.329699</td>
-      <td>4734.253019</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>5338.752143</td>
       <td>6557.152776</td>
       <td>8006.506993</td>
@@ -4259,9 +4079,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Portugal</th>
-      <td>3068.319867</td>
-      <td>3774.571743</td>
-      <td>4727.954889</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>6361.517993</td>
       <td>9022.247417</td>
       <td>10172.485720</td>
@@ -4274,9 +4094,9 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Romania</th>
-      <td>3144.613186</td>
-      <td>3943.370225</td>
-      <td>4734.997586</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>6470.866545</td>
       <td>8011.414402</td>
       <td>9356.397240</td>
@@ -4289,8 +4109,8 @@ Freq: D, dtype: int32
     </tr>
     <tr>
       <th>Serbia</th>
-      <td>3581.459448</td>
-      <td>4981.090891</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>6289.629157</td>
       <td>7991.707066</td>
       <td>10522.067490</td>
@@ -4305,22 +4125,16 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <p>Pandas and Matplotlib: Basic Visualization</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_oceania</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/clemsonciti/intro-to-python/master/data3/gapminder_gdp_oceania.csv&quot;</span>
 <span class="n">data_o</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_oceania</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">)</span>
 <span class="n">data_o</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -4403,7 +4217,6 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4412,10 +4225,10 @@ Freq: D, dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/0dde7639a787bab5ee91f2eb5c4ef182eac0551d89a3e2866ba1446c1f4c038f.png" src="../_images/0dde7639a787bab5ee91f2eb5c4ef182eac0551d89a3e2866ba1446c1f4c038f.png" />
+<img alt="../_images/03-IntroToPython-III_50_1.png" src="../_images/03-IntroToPython-III_50_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4450,18 +4263,13 @@ Freq: D, dtype: int32
 </div>
 </div>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Renaming column names</span>
 <span class="n">data_o</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">years</span>
 <span class="n">data_o</span>
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -4544,7 +4352,6 @@ Freq: D, dtype: int32
   </tbody>
 </table>
 </div></div></div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4553,10 +4360,10 @@ Freq: D, dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/e5f51dc841f35d382e1625fec7e0435014ee7a2b3b7bd3f88247d8b65a178e7a.png" src="../_images/e5f51dc841f35d382e1625fec7e0435014ee7a2b3b7bd3f88247d8b65a178e7a.png" />
+<img alt="../_images/03-IntroToPython-III_54_1.png" src="../_images/03-IntroToPython-III_54_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4571,7 +4378,7 @@ Freq: D, dtype: int32
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Years&#39;)
 </pre></div>
 </div>
-<img alt="../_images/715da67456a2a3a6ba7e75c0c8d0eeb03ebbab61e77ea3bc720fef1803c1816c.png" src="../_images/715da67456a2a3a6ba7e75c0c8d0eeb03ebbab61e77ea3bc720fef1803c1816c.png" />
+<img alt="../_images/03-IntroToPython-III_55_1.png" src="../_images/03-IntroToPython-III_55_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4588,7 +4395,7 @@ Freq: D, dtype: int32
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Years&#39;)
 </pre></div>
 </div>
-<img alt="../_images/87659c3c3f99c874d79e66dafe178c450c14617fcede57ee8a4c923afced7c74.png" src="../_images/87659c3c3f99c874d79e66dafe178c450c14617fcede57ee8a4c923afced7c74.png" />
+<img alt="../_images/03-IntroToPython-III_56_1.png" src="../_images/03-IntroToPython-III_56_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4599,10 +4406,10 @@ Freq: D, dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/28e0f1283055eea9590ef9a7f0b417b82ea708ca0553058fad397499ebe5209a.png" src="../_images/28e0f1283055eea9590ef9a7f0b417b82ea708ca0553058fad397499ebe5209a.png" />
+<img alt="../_images/03-IntroToPython-III_57_1.png" src="../_images/03-IntroToPython-III_57_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4647,7 +4454,7 @@ Name: 1987, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/66b17c12b6426ab1022563a39b8723dd00b7fcad7776dbc7f336cab5cd8ed40c.png" src="../_images/66b17c12b6426ab1022563a39b8723dd00b7fcad7776dbc7f336cab5cd8ed40c.png" />
+<img alt="../_images/03-IntroToPython-III_60_0.png" src="../_images/03-IntroToPython-III_60_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4670,7 +4477,7 @@ Name: 1987, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/eb643e5f559c8fbedd7d911d11b7fadb250cae9083eaa1680bc967fb5e14fc18.png" src="../_images/eb643e5f559c8fbedd7d911d11b7fadb250cae9083eaa1680bc967fb5e14fc18.png" />
+<img alt="../_images/03-IntroToPython-III_62_0.png" src="../_images/03-IntroToPython-III_62_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4833,7 +4640,7 @@ Name: 1987, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x1463c37c7a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x145e53203ca0&gt;
 </pre></div>
 </div>
 </div>
@@ -5311,74 +5118,74 @@ Name: 1987, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_af0be_row0_col0, #T_af0be_row0_col1, #T_af0be_row0_col2, #T_af0be_row0_col3, #T_af0be_row0_col7, #T_af0be_row0_col8, #T_af0be_row0_col9, #T_af0be_row0_col10, #T_af0be_row0_col11, #T_af0be_row0_col12, #T_af0be_row0_col13, #T_af0be_row0_col14, #T_af0be_row0_col15, #T_af0be_row1_col3, #T_af0be_row1_col4, #T_af0be_row1_col5, #T_af0be_row1_col6, #T_af0be_row1_col7, #T_af0be_row1_col11, #T_af0be_row1_col15, #T_af0be_row2_col3, #T_af0be_row2_col7, #T_af0be_row2_col11, #T_af0be_row2_col15 {
+#T_16e09_row0_col0, #T_16e09_row0_col1, #T_16e09_row0_col2, #T_16e09_row0_col3, #T_16e09_row0_col7, #T_16e09_row0_col8, #T_16e09_row0_col9, #T_16e09_row0_col10, #T_16e09_row0_col11, #T_16e09_row0_col12, #T_16e09_row0_col13, #T_16e09_row0_col14, #T_16e09_row0_col15, #T_16e09_row1_col3, #T_16e09_row1_col4, #T_16e09_row1_col5, #T_16e09_row1_col6, #T_16e09_row1_col7, #T_16e09_row1_col11, #T_16e09_row1_col15, #T_16e09_row2_col3, #T_16e09_row2_col7, #T_16e09_row2_col11, #T_16e09_row2_col15 {
   background-color: #f7fbff;
   color: #000000;
 }
-#T_af0be_row0_col4, #T_af0be_row0_col5, #T_af0be_row0_col6, #T_af0be_row2_col0, #T_af0be_row2_col1, #T_af0be_row2_col2, #T_af0be_row2_col8, #T_af0be_row2_col9, #T_af0be_row2_col10, #T_af0be_row2_col12, #T_af0be_row2_col13, #T_af0be_row2_col14 {
+#T_16e09_row0_col4, #T_16e09_row0_col5, #T_16e09_row0_col6, #T_16e09_row2_col0, #T_16e09_row2_col1, #T_16e09_row2_col2, #T_16e09_row2_col8, #T_16e09_row2_col9, #T_16e09_row2_col10, #T_16e09_row2_col12, #T_16e09_row2_col13, #T_16e09_row2_col14 {
   background-color: #08306b;
   color: #f1f1f1;
 }
-#T_af0be_row1_col0 {
+#T_16e09_row1_col0 {
   background-color: #4e9acb;
   color: #f1f1f1;
 }
-#T_af0be_row1_col1, #T_af0be_row1_col2 {
+#T_16e09_row1_col1, #T_16e09_row1_col2 {
   background-color: #529dcc;
   color: #f1f1f1;
 }
-#T_af0be_row1_col8 {
+#T_16e09_row1_col8 {
   background-color: #3282be;
   color: #f1f1f1;
 }
-#T_af0be_row1_col9, #T_af0be_row1_col10 {
+#T_16e09_row1_col9, #T_16e09_row1_col10 {
   background-color: #1a68ae;
   color: #f1f1f1;
 }
-#T_af0be_row1_col12 {
+#T_16e09_row1_col12 {
   background-color: #4896c8;
   color: #f1f1f1;
 }
-#T_af0be_row1_col13, #T_af0be_row1_col14 {
+#T_16e09_row1_col13, #T_16e09_row1_col14 {
   background-color: #5ca4d0;
   color: #f1f1f1;
 }
-#T_af0be_row2_col4 {
+#T_16e09_row2_col4 {
   background-color: #b3d3e8;
   color: #000000;
 }
-#T_af0be_row2_col5, #T_af0be_row2_col6 {
+#T_16e09_row2_col5, #T_16e09_row2_col6 {
   background-color: #dceaf6;
   color: #000000;
 }
 </style>
-<table id="T_af0be">
+<table id="T_16e09">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_af0be_level0_col0" class="col_heading level0 col0" colspan="4">sepal.length</th>
-      <th id="T_af0be_level0_col4" class="col_heading level0 col4" colspan="4">sepal.width</th>
-      <th id="T_af0be_level0_col8" class="col_heading level0 col8" colspan="4">petal.length</th>
-      <th id="T_af0be_level0_col12" class="col_heading level0 col12" colspan="4">petal.width</th>
+      <th id="T_16e09_level0_col0" class="col_heading level0 col0" colspan="4">sepal.length</th>
+      <th id="T_16e09_level0_col4" class="col_heading level0 col4" colspan="4">sepal.width</th>
+      <th id="T_16e09_level0_col8" class="col_heading level0 col8" colspan="4">petal.length</th>
+      <th id="T_16e09_level0_col12" class="col_heading level0 col12" colspan="4">petal.width</th>
     </tr>
     <tr>
       <th class="blank level1" >&nbsp;</th>
-      <th id="T_af0be_level1_col0" class="col_heading level1 col0" >mean</th>
-      <th id="T_af0be_level1_col1" class="col_heading level1 col1" >std</th>
-      <th id="T_af0be_level1_col2" class="col_heading level1 col2" >sem</th>
-      <th id="T_af0be_level1_col3" class="col_heading level1 col3" >count</th>
-      <th id="T_af0be_level1_col4" class="col_heading level1 col4" >mean</th>
-      <th id="T_af0be_level1_col5" class="col_heading level1 col5" >std</th>
-      <th id="T_af0be_level1_col6" class="col_heading level1 col6" >sem</th>
-      <th id="T_af0be_level1_col7" class="col_heading level1 col7" >count</th>
-      <th id="T_af0be_level1_col8" class="col_heading level1 col8" >mean</th>
-      <th id="T_af0be_level1_col9" class="col_heading level1 col9" >std</th>
-      <th id="T_af0be_level1_col10" class="col_heading level1 col10" >sem</th>
-      <th id="T_af0be_level1_col11" class="col_heading level1 col11" >count</th>
-      <th id="T_af0be_level1_col12" class="col_heading level1 col12" >mean</th>
-      <th id="T_af0be_level1_col13" class="col_heading level1 col13" >std</th>
-      <th id="T_af0be_level1_col14" class="col_heading level1 col14" >sem</th>
-      <th id="T_af0be_level1_col15" class="col_heading level1 col15" >count</th>
+      <th id="T_16e09_level1_col0" class="col_heading level1 col0" >mean</th>
+      <th id="T_16e09_level1_col1" class="col_heading level1 col1" >std</th>
+      <th id="T_16e09_level1_col2" class="col_heading level1 col2" >sem</th>
+      <th id="T_16e09_level1_col3" class="col_heading level1 col3" >count</th>
+      <th id="T_16e09_level1_col4" class="col_heading level1 col4" >mean</th>
+      <th id="T_16e09_level1_col5" class="col_heading level1 col5" >std</th>
+      <th id="T_16e09_level1_col6" class="col_heading level1 col6" >sem</th>
+      <th id="T_16e09_level1_col7" class="col_heading level1 col7" >count</th>
+      <th id="T_16e09_level1_col8" class="col_heading level1 col8" >mean</th>
+      <th id="T_16e09_level1_col9" class="col_heading level1 col9" >std</th>
+      <th id="T_16e09_level1_col10" class="col_heading level1 col10" >sem</th>
+      <th id="T_16e09_level1_col11" class="col_heading level1 col11" >count</th>
+      <th id="T_16e09_level1_col12" class="col_heading level1 col12" >mean</th>
+      <th id="T_16e09_level1_col13" class="col_heading level1 col13" >std</th>
+      <th id="T_16e09_level1_col14" class="col_heading level1 col14" >sem</th>
+      <th id="T_16e09_level1_col15" class="col_heading level1 col15" >count</th>
     </tr>
     <tr>
       <th class="index_name level0" >variety</th>
@@ -5402,61 +5209,61 @@ Name: 1987, dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th id="T_af0be_level0_row0" class="row_heading level0 row0" >Setosa</th>
-      <td id="T_af0be_row0_col0" class="data row0 col0" >5.006000</td>
-      <td id="T_af0be_row0_col1" class="data row0 col1" >0.352490</td>
-      <td id="T_af0be_row0_col2" class="data row0 col2" >0.049850</td>
-      <td id="T_af0be_row0_col3" class="data row0 col3" >50</td>
-      <td id="T_af0be_row0_col4" class="data row0 col4" >3.428000</td>
-      <td id="T_af0be_row0_col5" class="data row0 col5" >0.379064</td>
-      <td id="T_af0be_row0_col6" class="data row0 col6" >0.053608</td>
-      <td id="T_af0be_row0_col7" class="data row0 col7" >50</td>
-      <td id="T_af0be_row0_col8" class="data row0 col8" >1.462000</td>
-      <td id="T_af0be_row0_col9" class="data row0 col9" >0.173664</td>
-      <td id="T_af0be_row0_col10" class="data row0 col10" >0.024560</td>
-      <td id="T_af0be_row0_col11" class="data row0 col11" >50</td>
-      <td id="T_af0be_row0_col12" class="data row0 col12" >0.246000</td>
-      <td id="T_af0be_row0_col13" class="data row0 col13" >0.105386</td>
-      <td id="T_af0be_row0_col14" class="data row0 col14" >0.014904</td>
-      <td id="T_af0be_row0_col15" class="data row0 col15" >50</td>
+      <th id="T_16e09_level0_row0" class="row_heading level0 row0" >Setosa</th>
+      <td id="T_16e09_row0_col0" class="data row0 col0" >5.006000</td>
+      <td id="T_16e09_row0_col1" class="data row0 col1" >0.352490</td>
+      <td id="T_16e09_row0_col2" class="data row0 col2" >0.049850</td>
+      <td id="T_16e09_row0_col3" class="data row0 col3" >50</td>
+      <td id="T_16e09_row0_col4" class="data row0 col4" >3.428000</td>
+      <td id="T_16e09_row0_col5" class="data row0 col5" >0.379064</td>
+      <td id="T_16e09_row0_col6" class="data row0 col6" >0.053608</td>
+      <td id="T_16e09_row0_col7" class="data row0 col7" >50</td>
+      <td id="T_16e09_row0_col8" class="data row0 col8" >1.462000</td>
+      <td id="T_16e09_row0_col9" class="data row0 col9" >0.173664</td>
+      <td id="T_16e09_row0_col10" class="data row0 col10" >0.024560</td>
+      <td id="T_16e09_row0_col11" class="data row0 col11" >50</td>
+      <td id="T_16e09_row0_col12" class="data row0 col12" >0.246000</td>
+      <td id="T_16e09_row0_col13" class="data row0 col13" >0.105386</td>
+      <td id="T_16e09_row0_col14" class="data row0 col14" >0.014904</td>
+      <td id="T_16e09_row0_col15" class="data row0 col15" >50</td>
     </tr>
     <tr>
-      <th id="T_af0be_level0_row1" class="row_heading level0 row1" >Versicolor</th>
-      <td id="T_af0be_row1_col0" class="data row1 col0" >5.936000</td>
-      <td id="T_af0be_row1_col1" class="data row1 col1" >0.516171</td>
-      <td id="T_af0be_row1_col2" class="data row1 col2" >0.072998</td>
-      <td id="T_af0be_row1_col3" class="data row1 col3" >50</td>
-      <td id="T_af0be_row1_col4" class="data row1 col4" >2.770000</td>
-      <td id="T_af0be_row1_col5" class="data row1 col5" >0.313798</td>
-      <td id="T_af0be_row1_col6" class="data row1 col6" >0.044378</td>
-      <td id="T_af0be_row1_col7" class="data row1 col7" >50</td>
-      <td id="T_af0be_row1_col8" class="data row1 col8" >4.260000</td>
-      <td id="T_af0be_row1_col9" class="data row1 col9" >0.469911</td>
-      <td id="T_af0be_row1_col10" class="data row1 col10" >0.066455</td>
-      <td id="T_af0be_row1_col11" class="data row1 col11" >50</td>
-      <td id="T_af0be_row1_col12" class="data row1 col12" >1.326000</td>
-      <td id="T_af0be_row1_col13" class="data row1 col13" >0.197753</td>
-      <td id="T_af0be_row1_col14" class="data row1 col14" >0.027966</td>
-      <td id="T_af0be_row1_col15" class="data row1 col15" >50</td>
+      <th id="T_16e09_level0_row1" class="row_heading level0 row1" >Versicolor</th>
+      <td id="T_16e09_row1_col0" class="data row1 col0" >5.936000</td>
+      <td id="T_16e09_row1_col1" class="data row1 col1" >0.516171</td>
+      <td id="T_16e09_row1_col2" class="data row1 col2" >0.072998</td>
+      <td id="T_16e09_row1_col3" class="data row1 col3" >50</td>
+      <td id="T_16e09_row1_col4" class="data row1 col4" >2.770000</td>
+      <td id="T_16e09_row1_col5" class="data row1 col5" >0.313798</td>
+      <td id="T_16e09_row1_col6" class="data row1 col6" >0.044378</td>
+      <td id="T_16e09_row1_col7" class="data row1 col7" >50</td>
+      <td id="T_16e09_row1_col8" class="data row1 col8" >4.260000</td>
+      <td id="T_16e09_row1_col9" class="data row1 col9" >0.469911</td>
+      <td id="T_16e09_row1_col10" class="data row1 col10" >0.066455</td>
+      <td id="T_16e09_row1_col11" class="data row1 col11" >50</td>
+      <td id="T_16e09_row1_col12" class="data row1 col12" >1.326000</td>
+      <td id="T_16e09_row1_col13" class="data row1 col13" >0.197753</td>
+      <td id="T_16e09_row1_col14" class="data row1 col14" >0.027966</td>
+      <td id="T_16e09_row1_col15" class="data row1 col15" >50</td>
     </tr>
     <tr>
-      <th id="T_af0be_level0_row2" class="row_heading level0 row2" >Virginica</th>
-      <td id="T_af0be_row2_col0" class="data row2 col0" >6.588000</td>
-      <td id="T_af0be_row2_col1" class="data row2 col1" >0.635880</td>
-      <td id="T_af0be_row2_col2" class="data row2 col2" >0.089927</td>
-      <td id="T_af0be_row2_col3" class="data row2 col3" >50</td>
-      <td id="T_af0be_row2_col4" class="data row2 col4" >2.974000</td>
-      <td id="T_af0be_row2_col5" class="data row2 col5" >0.322497</td>
-      <td id="T_af0be_row2_col6" class="data row2 col6" >0.045608</td>
-      <td id="T_af0be_row2_col7" class="data row2 col7" >50</td>
-      <td id="T_af0be_row2_col8" class="data row2 col8" >5.552000</td>
-      <td id="T_af0be_row2_col9" class="data row2 col9" >0.551895</td>
-      <td id="T_af0be_row2_col10" class="data row2 col10" >0.078050</td>
-      <td id="T_af0be_row2_col11" class="data row2 col11" >50</td>
-      <td id="T_af0be_row2_col12" class="data row2 col12" >2.026000</td>
-      <td id="T_af0be_row2_col13" class="data row2 col13" >0.274650</td>
-      <td id="T_af0be_row2_col14" class="data row2 col14" >0.038841</td>
-      <td id="T_af0be_row2_col15" class="data row2 col15" >50</td>
+      <th id="T_16e09_level0_row2" class="row_heading level0 row2" >Virginica</th>
+      <td id="T_16e09_row2_col0" class="data row2 col0" >6.588000</td>
+      <td id="T_16e09_row2_col1" class="data row2 col1" >0.635880</td>
+      <td id="T_16e09_row2_col2" class="data row2 col2" >0.089927</td>
+      <td id="T_16e09_row2_col3" class="data row2 col3" >50</td>
+      <td id="T_16e09_row2_col4" class="data row2 col4" >2.974000</td>
+      <td id="T_16e09_row2_col5" class="data row2 col5" >0.322497</td>
+      <td id="T_16e09_row2_col6" class="data row2 col6" >0.045608</td>
+      <td id="T_16e09_row2_col7" class="data row2 col7" >50</td>
+      <td id="T_16e09_row2_col8" class="data row2 col8" >5.552000</td>
+      <td id="T_16e09_row2_col9" class="data row2 col9" >0.551895</td>
+      <td id="T_16e09_row2_col10" class="data row2 col10" >0.078050</td>
+      <td id="T_16e09_row2_col11" class="data row2 col11" >50</td>
+      <td id="T_16e09_row2_col12" class="data row2 col12" >2.026000</td>
+      <td id="T_16e09_row2_col13" class="data row2 col13" >0.274650</td>
+      <td id="T_16e09_row2_col14" class="data row2 col14" >0.038841</td>
+      <td id="T_16e09_row2_col15" class="data row2 col15" >50</td>
     </tr>
   </tbody>
 </table>
@@ -5491,6 +5298,17 @@ where \)</span>\mu_x<span class="math notranslate nohighlight">\( and \)</span>\
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/local_scratch/pbs.290335.pbs02/ipykernel_1341319/1893518821.py:7: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
+To preserve the previous behavior, use
+
+	&gt;&gt;&gt; .groupby(..., group_keys=False)
+
+To adopt the future behavior and silence this warning, use 
+
+	&gt;&gt;&gt; .groupby(..., group_keys=True)
+  df_scaled = df.set_index(&#39;variety&#39;).groupby(&#39;variety&#39;).apply(standard_scaler)
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -5616,7 +5434,7 @@ where \)</span>\mu_x<span class="math notranslate nohighlight">\( and \)</span>\
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original variables:
 </pre></div>
 </div>
-<img alt="../_images/c2e6a3536152fd4ae288138e89d34a2542e1ff3bb5ecbe54a70a1ef9c21d178b.png" src="../_images/c2e6a3536152fd4ae288138e89d34a2542e1ff3bb5ecbe54a70a1ef9c21d178b.png" />
+<img alt="../_images/03-IntroToPython-III_81_1.png" src="../_images/03-IntroToPython-III_81_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5630,7 +5448,7 @@ where \)</span>\mu_x<span class="math notranslate nohighlight">\( and \)</span>\
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scaled variables:
 </pre></div>
 </div>
-<img alt="../_images/d6f319ed5a70c37ec6cb7599d794f0dec7c0c2e6da65447e5587f81dee8d934d.png" src="../_images/d6f319ed5a70c37ec6cb7599d794f0dec7c0c2e6da65447e5587f81dee8d934d.png" />
+<img alt="../_images/03-IntroToPython-III_82_1.png" src="../_images/03-IntroToPython-III_82_1.png" />
 </div>
 </div>
 </section>
@@ -5669,11 +5487,11 @@ We can repeat this experiment multiple times to see the variation in each Random
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: total: 3.2 s
-Wall time: 3.21 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 850 ms, sys: 6.25 ms, total: 856 ms
+Wall time: 859 ms
 </pre></div>
 </div>
-<img alt="../_images/e8e33e2f9bbf04fea00454a63940360d7672894682400007294650f8958819ad.png" src="../_images/e8e33e2f9bbf04fea00454a63940360d7672894682400007294650f8958819ad.png" />
+<img alt="../_images/03-IntroToPython-III_86_1.png" src="../_images/03-IntroToPython-III_86_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5704,11 +5522,11 @@ Wall time: 3.21 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: total: 1.95 s
-Wall time: 1.96 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 443 ms, sys: 5.59 ms, total: 449 ms
+Wall time: 450 ms
 </pre></div>
 </div>
-<img alt="../_images/4935200c6966dac212b5158618e301199b939dedd14b42bbabb1f47e1f01259b.png" src="../_images/4935200c6966dac212b5158618e301199b939dedd14b42bbabb1f47e1f01259b.png" />
+<img alt="../_images/03-IntroToPython-III_88_1.png" src="../_images/03-IntroToPython-III_88_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5718,10 +5536,10 @@ Wall time: 1.96 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1c3ee36ecd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x145e52d59660&gt;]
 </pre></div>
 </div>
-<img alt="../_images/32cd71ae8da2fdde957c2a43fc4ab57a16271bc603f1bcec204436df6725ca1f.png" src="../_images/32cd71ae8da2fdde957c2a43fc4ab57a16271bc603f1bcec204436df6725ca1f.png" />
+<img alt="../_images/03-IntroToPython-III_89_1.png" src="../_images/03-IntroToPython-III_89_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5733,11 +5551,11 @@ Wall time: 1.96 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: total: 1.48 s
-Wall time: 1.47 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 418 ms, sys: 4.07 ms, total: 422 ms
+Wall time: 422 ms
 </pre></div>
 </div>
-<img alt="../_images/bf4ff027592c7094750aa9e9ad923e9a0d496092e1194f50a3f4d4801c66079a.png" src="../_images/bf4ff027592c7094750aa9e9ad923e9a0d496092e1194f50a3f4d4801c66079a.png" />
+<img alt="../_images/03-IntroToPython-III_90_1.png" src="../_images/03-IntroToPython-III_90_1.png" />
 </div>
 </div>
 </section>
@@ -5763,102 +5581,52 @@ Wall time: 1.47 s
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="02-IntroToPython-II.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to Python II</p>
-      </div>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02-IntroToPython-II.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to Python II</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="../python_sklearn/00-index.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="../python_sklearn/00-index.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Machine Learning using Python</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">Dataframe</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-data-with-pandas">Real Data with Pandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">Split, Apply, Combine</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby"><code class="docutils literal notranslate"><span class="pre">groupby</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply"><code class="docutils literal notranslate"><span class="pre">apply</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walk">Random Walk</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By Linh Ngo
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-<div class="extra_footer">
-  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-</div>
-  </div>
-  
-</div></div>
-          </footer>
-        
-
-      </main>
+            </footer>
+        </div>
     </div>
-  </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Linh Ngo<br/>
+  
+    <div class="extra_footer">
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  <footer class="bd-footer">
-  </footer>
+
   </body>
 </html>
