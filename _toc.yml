@@ -96,10 +96,12 @@ parts:
       - file: python_big_data/01-introduction.md
       - file: python_big_data/02-cluster.md
       - file: python_big_data/03-notebooks.md
-    - file: pytorch/00-index.md
-      sections:
-      - file: pytorch/01-pytorch_basics.ipynb
-      - file: pytorch/02-regression_and_classification.ipynb
+- caption: Deep Learning
+  chapters:
+  - file: pytorch_beginner/00-index.md
+    sections: 
+    - file: pytorch/01-pytorch_basics.ipynb
+    - file: pytorch/02-regression_and_classification.ipynb 
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md

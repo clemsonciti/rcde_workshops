@@ -1,6 +1,8 @@
-# Introduction to Machine Learning"
+# Introduction to Machine Learning
 
-Very broadly speaking, machine learning is a discpline where an algorithm learns how to make predictions from data; ideally, the more data are available, the better the predictions get.
+Very broadly speaking, machine learning is a discpline where an 
+algorithm learns how to make predictions from data; ideally, the more 
+data are available, the better the predictions get.
 
 Two types of machine learning:
 - Supervised machine learning: the algirithm learns the assiciations between "input" and "output" data (for example, between demographcs and political preferences). It has two stages: 
@@ -16,6 +18,4 @@ Generally speaking, a complex algorithm can learn more complex associations, but
 
 It is common to mix supervised and unsupervised methods within the same prediction process. For example, unsupervised methods can provide a simpler representation of the data and help against overfitting.
 
-
-{% include links.md %}
 

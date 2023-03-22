@@ -43,7 +43,16 @@ keypoints:
 ![image](https://user-images.githubusercontent.com/43855029/114585502-b81b1a00-9c51-11eb-8015-973216b450ce.png)
 
 ### Implementation
-```r
+
+- Run the following in console
+
+~~~r
+install.packages("factoextra")
+~~~
+
+- Run the following in R code
+
+~~~r
 library(ggplot2)
 library(factoextra)
 library(purrr)
@@ -55,7 +64,7 @@ km <- kmeans(iris[,3:4],3,nstart=20)
 
 table(km$cluster,iris$Species)
 fviz_cluster(km,data=iris[,3:4])
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114585677-e567c800-9c51-11eb-8cb4-6db443f0698b.png)
 
 ### How to find optimal K values:
@@ -65,9 +74,9 @@ fviz_cluster(km,data=iris[,3:4])
 ![image](https://user-images.githubusercontent.com/43855029/114587068-4d6ade00-9c53-11eb-932d-0de0c9edef83.png)
 
 The optimal K-values can be found from the Elbow using **method="wss"**:
-```r
+~~~r
 fviz_nbclust(iris[,3:4], kmeans, method = "wss")
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114586165-5e671f80-9c52-11eb-9ad1-e9170fd6b5ef.png)
 
 <!---
@@ -83,12 +92,12 @@ E*n: expectation under a sample size of n from the reference distribution
 
 ![image](https://user-images.githubusercontent.com/43855029/114586456-af771380-9c52-11eb-9fdb-99cc8df854fb.png)
 
-```r
+~~~r
 library(cluster)
 # B is number of Monte Carlo bootstrap samples
 gap_stat <- clusGap(iris[,3:4], FUN = kmeans, nstart=20, K.max = 10, B = 50)
 fviz_gap_stat(gap_stat)
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114586485-b9007b80-9c52-11eb-9aae-24effc612e09.png)
 
 -->

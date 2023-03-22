@@ -31,16 +31,16 @@ keypoints:
 
 ### Implementation
 Here we will use `iris` data
-```r
+~~~r
 library(caret)
 data(iris)
 set.seed(123)
 indT <- createDataPartition(y=iris$Species,p=0.6,list=FALSE)
 training <- iris[indT,]
 testing  <- iris[-indT,]
-```
+~~~
 Next we will train using `method="rpart"` with `gini` splitting algorithm:
-```r
+~~~r
 ModFit_rpart <- train(Species~.,data=training,method="rpart",
                       parms = list(split = "gini"))
 # gini can be replaced by chisquare, entropy, information
@@ -49,17 +49,17 @@ ModFit_rpart <- train(Species~.,data=training,method="rpart",
 install.packages("rattle")
 library(rattle)
 fancyRpartPlot(ModFit_rpart$finalModel)
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114234603-ff04c900-994c-11eb-9999-0c5d5f85b76e.png)
 Apply decision tree model to predict output of testing data
-```r
+~~~r
 predict_rpart <- predict(ModFit_rpart,testing)
 confusionMatrix(predict_rpart, testing$Species)
 
 testing$PredRight <- predict_rpart==testing$Species
 ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
   geom_point(aes(col=PredRight))
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114234661-117f0280-994d-11eb-950f-d07ed91cda09.png)
 
 ## Train model using Random Forest
@@ -83,7 +83,15 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 -->
 ### Implementation of Random Forest
 
-```r
+- Run the following on console:
+
+~~~r
+install.packages("randomForest")
+~~~
+
+- Run the following: 
+
+~~~r
 ModFit_rf <- train(Species~.,data=training,method="rf",prox=TRUE)
 
 predict_rf <- predict(ModFit_rf,testing)
@@ -92,7 +100,7 @@ confusionMatrix(predict_rf, testing$Species)
 testing$PredRight <- predict_rf==testing$Species
 ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
   geom_point(aes(col=PredRight))
-```
+~~~
 ![image](https://user-images.githubusercontent.com/43855029/114235296-fb257680-994d-11eb-93ff-54702cbf87b8.png)
 
 We can see that Random Forest result has better prediction than the Decision Tree.
