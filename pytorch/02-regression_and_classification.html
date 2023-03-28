@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Containerization on Palmetto (under development)" href="../containers/00-index.html" />
+    <link rel="next" title="Datasets and data loading" href="03-datasets.html" />
     <link rel="prev" title="PyTorch Basics" href="01-pytorch_basics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -576,6 +576,11 @@ const thebe_selector_output = ".output, .cell_output"
      Regression and Classification with Fully Connected Neural Networks
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03-datasets.html">
+     Datasets and data loading
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -791,11 +796,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tasks-to-solve-in-this-notebook">
    Tasks to solve in this notebook
   </a>
@@ -925,11 +925,6 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports">
-   Imports
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tasks-to-solve-in-this-notebook">
    Tasks to solve in this notebook
   </a>
@@ -1051,11 +1046,16 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="regression-and-classification-with-fully-connected-neural-networks">
 <h1>Regression and Classification with Fully Connected Neural Networks<a class="headerlink" href="#regression-and-classification-with-fully-connected-neural-networks" title="Permalink to this headline">#</a></h1>
-<section id="imports">
-<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">#</a></h2>
+<p>Deep learning is a large, developing field with many sub-communities, a constant stream of new developments, and unlimited application areas. Despite this complexity, most deep learning techniques share a relatively small set of algorithmic building blocks. The purpose of this notebook is to gain familiarity with some of these core concepts. Much of the intuition you develop here is applicable to the neural networks making headline news from the likes of OpenAI. To focus this notebook, we will consider the two main types of supervised machine learning:</p>
+<ol class="simple">
+<li><p>Regression: estimation of continuous quantities</p></li>
+<li><p>Classification: estimation of categories or discrete quantities</p></li>
+</ol>
+<p>We will create “deep learning” models for regression and classification. We will see the power of neural networks as well as the pitfalls.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># libraries we will need</span>
+<span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">torch.distributions</span> <span class="kn">import</span> <span class="n">bernoulli</span>
@@ -1068,14 +1068,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
 <section id="tasks-to-solve-in-this-notebook">
 <h2>Tasks to solve in this notebook<a class="headerlink" href="#tasks-to-solve-in-this-notebook" title="Permalink to this headline">#</a></h2>
-<p>Main types of supervised machine learning:</p>
-<ol class="simple">
-<li><p>Regression: estimation of continuous quantities</p></li>
-<li><p>Classification: estimation of categories or discrete quantities</p></li>
-</ol>
 <section id="regression">
 <h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -1099,7 +1093,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02-regression_and_classification_7_0.png" src="../_images/02-regression_and_classification_7_0.png" />
+<img alt="../_images/02-regression_and_classification_6_0.png" src="../_images/02-regression_and_classification_6_0.png" />
 </div>
 </div>
 </section>
@@ -1132,7 +1126,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02-regression_and_classification_10_0.png" src="../_images/02-regression_and_classification_10_0.png" />
+<img alt="../_images/02-regression_and_classification_9_0.png" src="../_images/02-regression_and_classification_9_0.png" />
 </div>
 </div>
 </section>
@@ -1202,7 +1196,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02-regression_and_classification_18_0.png" src="../_images/02-regression_and_classification_18_0.png" />
+<img alt="../_images/02-regression_and_classification_17_0.png" src="../_images/02-regression_and_classification_17_0.png" />
 </div>
 </div>
 </section>
@@ -1283,7 +1277,7 @@ Epoch 61. MSE Loss = 6.871
 Epoch 81. MSE Loss = 6.793
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_21_1.png" src="../_images/02-regression_and_classification_21_1.png" />
+<img alt="../_images/02-regression_and_classification_20_1.png" src="../_images/02-regression_and_classification_20_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1337,7 +1331,7 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02-regression_and_classification_31_0.png" src="../_images/02-regression_and_classification_31_0.png" />
+<img alt="../_images/02-regression_and_classification_30_0.png" src="../_images/02-regression_and_classification_30_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1437,7 +1431,7 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
   return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_35_1.png" src="../_images/02-regression_and_classification_35_1.png" />
+<img alt="../_images/02-regression_and_classification_34_1.png" src="../_images/02-regression_and_classification_34_1.png" />
 </div>
 </div>
 </section>
@@ -1517,7 +1511,7 @@ Epoch 901. MSE Loss = 0.672
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02-regression_and_classification_39_0.png" src="../_images/02-regression_and_classification_39_0.png" />
+<img alt="../_images/02-regression_and_classification_38_0.png" src="../_images/02-regression_and_classification_38_0.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1642,7 +1636,7 @@ Epoch 801. MSE Loss = 6.771
 Epoch 901. MSE Loss = 6.771
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_50_1.png" src="../_images/02-regression_and_classification_50_1.png" />
+<img alt="../_images/02-regression_and_classification_49_1.png" src="../_images/02-regression_and_classification_49_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1676,7 +1670,7 @@ Epoch 801. MSE Loss = 6.887
 Epoch 901. MSE Loss = 6.880
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_52_1.png" src="../_images/02-regression_and_classification_52_1.png" />
+<img alt="../_images/02-regression_and_classification_51_1.png" src="../_images/02-regression_and_classification_51_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1715,7 +1709,7 @@ Epoch 40001. MSE Loss = 0.695
 Epoch 45001. MSE Loss = 1.219
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_53_1.png" src="../_images/02-regression_and_classification_53_1.png" />
+<img alt="../_images/02-regression_and_classification_52_1.png" src="../_images/02-regression_and_classification_52_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1739,7 +1733,7 @@ Epoch 45001. MSE Loss = 1.219
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1454620c0370&gt;
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_55_1.png" src="../_images/02-regression_and_classification_55_1.png" />
+<img alt="../_images/02-regression_and_classification_54_1.png" src="../_images/02-regression_and_classification_54_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1791,7 +1785,7 @@ Epoch 8001. MSE Loss = 0.497
 Epoch 9001. MSE Loss = 0.492
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_62_1.png" src="../_images/02-regression_and_classification_62_1.png" />
+<img alt="../_images/02-regression_and_classification_61_1.png" src="../_images/02-regression_and_classification_61_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1834,7 +1828,7 @@ Epoch 24001. MSE Loss = 0.151
 Epoch 27001. MSE Loss = 0.136
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_64_1.png" src="../_images/02-regression_and_classification_64_1.png" />
+<img alt="../_images/02-regression_and_classification_63_1.png" src="../_images/02-regression_and_classification_63_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1865,7 +1859,7 @@ Epoch 27001. MSE Loss = 0.136
 </section>
 <section id="high-dimensional-data">
 <h2>High Dimensional Data<a class="headerlink" href="#high-dimensional-data" title="Permalink to this headline">#</a></h2>
-<p>For high-dimensional data, it is not possible to get a dense sampling of the data space. Consider the following analogy. Imagine we are measuring the temperatures of different spaces. We have sensors that measure reliably within a “volume” 1mm in extent. Outside of that volume, the temperature may change, so we need lots of sensors to map the temperature through the space.</p>
+<p>For high-dimensional data, it is not possible to get a dense sampling of the data space. Consider the following analogy. Imagine we are measuring the temperatures of spaces with growing numbers of dimensions. We have sensors that measure reliably within a “volume” 1mm in extent. Outside of that volume, the temperature may change, so we need lots of sensors to map the temperature through the space.</p>
 <ul class="simple">
 <li><p>1D space: The total space is 1 m. You are given 100 sensors; each 1mm extent. The most you could fill up is 1/10th of the space</p></li>
 <li><p>2D space: The total space is 1 m^2. You are given 100 sensors; each 1mm^2. The most you could fill up is 100mm^2 / (1000 mm)^2 = 1/10000th of the space. To cover 1/10th of the space, you would need 100,000 sensors!</p></li>
@@ -2027,7 +2021,7 @@ Epoch 27001. MSE Loss = 0.136
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 02000
 </pre></div>
 </div>
-<img alt="../_images/02-regression_and_classification_82_1.png" src="../_images/02-regression_and_classification_82_1.png" />
+<img alt="../_images/02-regression_and_classification_81_1.png" src="../_images/02-regression_and_classification_81_1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -2097,10 +2091,10 @@ Epoch 27001. MSE Loss = 0.136
             <p class="prev-next-title">PyTorch Basics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../containers/00-index.html" title="next page">
+    <a class='right-next' id="next-link" href="03-datasets.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Containerization on Palmetto (under development)</p>
+        <p class="prev-next-title">Datasets and data loading</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
