@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Containerization on Palmetto (under development)" href="../containers/00-index.html" />
+    <link rel="next" title="Builting the network" href="04-modules.html" />
     <link rel="prev" title="Regression and Classification with Fully Connected Neural Networks" href="02-regression_and_classification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -579,6 +579,11 @@ const thebe_selector_output = ".output, .cell_output"
      Datasets and data loading
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04-modules.html">
+     Builting the network
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -819,6 +824,16 @@ title="Print to PDF"
    class
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagenet-training-loop">
+   ImageNet Training Loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#teaser-let-s-actually-evaluate-a-trained-model">
+   Teaser: let’s actually evaluate a trained model
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -862,6 +877,16 @@ title="Print to PDF"
     </span>
    </code>
    class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagenet-training-loop">
+   ImageNet Training Loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#teaser-let-s-actually-evaluate-a-trained-model">
+   Teaser: let’s actually evaluate a trained model
   </a>
  </li>
 </ul>
@@ -928,7 +953,7 @@ val 1000
 <p>There’s a file that maps from these strange names to human-readable names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/project/rcde/datasets/imagenet/LOC_synset_mapping.txt&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;/project/rcde/datasets/imagenet/LOC_synset_mapping.txt&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1199,7 +1224,7 @@ orange 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x151b3d176560&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x14d42541b8b0&gt;
 </pre></div>
 </div>
 </div>
@@ -1220,6 +1245,9 @@ orange 50
 </div>
 <p>Notice the new dimension. The dataloader has bundled up the samples into a single tensor.</p>
 <p>We’re now ready to write our new training loop:</p>
+</section>
+<section id="imagenet-training-loop">
+<h2>ImageNet Training Loop<a class="headerlink" href="#imagenet-training-loop" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the datasets</span>
@@ -1228,7 +1256,7 @@ orange 50
 
 <span class="c1"># create dataloaders for training and validation</span>
 <span class="n">dl_train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1250,14 +1278,12 @@ orange 50
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
         
-        <span class="c1"># this is where to model training logic: forward pass, loss, backward pass...</span>
-        
         <span class="c1"># this is just a test, so break early</span>
         <span class="k">if</span> <span class="n">ix</span><span class="o">==</span><span class="mi">9</span><span class="p">:</span>
             <span class="k">break</span>
             
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[Epoch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] Testing...&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_val</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_val</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">[Epoch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] Batch </span><span class="si">{</span><span class="n">ix</span><span class="si">}</span><span class="s2">. x.shape=</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
         
         <span class="c1"># move to device</span>
@@ -1277,38 +1303,106 @@ orange 50
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 0] Training...
 [Epoch 0] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
+[Epoch 0] Testing...
+[Epoch 0] Batch 3. x.shape=torch.Size([2048, 3, 224, 224])
+[Epoch 1] Training...
+[Epoch 1] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
+[Epoch 1] Testing...
+[Epoch 1] Batch 3. x.shape=torch.Size([2048, 3, 224, 224])
+[Epoch 2] Training...
+[Epoch 2] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
+[Epoch 2] Testing...
+[Epoch 2] Batch 3. x.shape=torch.Size([2048, 3, 224, 224])
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception ignored in: &lt;function _MultiProcessingDataLoaderIter.__del__ at 0x151b42a3ea70&gt;
-Traceback (most recent call last):
-  File &quot;/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torch/utils/data/dataloader.py&quot;, line 1479, in __del__
-    self._shutdown_workers()
-  File &quot;/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torch/utils/data/dataloader.py&quot;, line 1443, in _shutdown_workers
-    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
-  File &quot;/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/multiprocessing/process.py&quot;, line 149, in join
-    res = self._popen.wait(timeout)
-  File &quot;/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/multiprocessing/popen_fork.py&quot;, line 40, in wait
-    if not wait([self.sentinel], timeout):
-  File &quot;/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/multiprocessing/connection.py&quot;, line 931, in wait
-    ready = selector.select(timeout)
-  File &quot;/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/selectors.py&quot;, line 416, in select
-    fd_event_list = self._selector.poll(timeout)
-KeyboardInterrupt: 
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 0] Testing...
-</pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[Epoch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] Testing...&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_val</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">24</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">[Epoch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] Batch </span><span class="si">{</span><span class="n">ix</span><span class="si">}</span><span class="s2">. x.shape=</span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># move to device</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</section>
+<section id="teaser-let-s-actually-evaluate-a-trained-model">
+<h2>Teaser: let’s actually evaluate a trained model<a class="headerlink" href="#teaser-let-s-actually-evaluate-a-trained-model" title="Permalink to this headline">#</a></h2>
+<p>Training takes too long.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.models</span> <span class="kn">import</span> <span class="n">resnet50</span><span class="p">,</span> <span class="n">ResNet50_Weights</span>
 
-<span class="ne">AttributeError</span>: &#39;list&#39; object has no attribute &#39;shape&#39;
+<span class="c1"># pretrained weights with purported accuracy 80.858%</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">resnet50</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">ResNet50_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V2</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">preds_ls</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">targs_ls</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_val</span><span class="p">):</span>
+    
+    <span class="c1"># move to device</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="c1"># this is where we put the model evaluation logic</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="c1"># compute batch-level performance metrics</span>
+    <span class="n">pred_cls</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">top1_acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_cls</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    
+    <span class="c1"># save preds for final acc calc</span>
+    <span class="n">preds_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred_cls</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+    <span class="n">targs_ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch </span><span class="si">{</span><span class="n">ix</span><span class="si">}</span><span class="s2">. Accuracy=</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">top1_acc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0. Accuracy=80.7%
+Batch 1. Accuracy=65.0%
+Batch 2. Accuracy=82.5%
+Batch 3. Accuracy=81.4%
+Batch 4. Accuracy=64.5%
+Batch 5. Accuracy=68.0%
+Batch 6. Accuracy=70.8%
+Batch 7. Accuracy=76.6%
+Batch 8. Accuracy=76.3%
+Batch 9. Accuracy=76.5%
+Batch 10. Accuracy=72.9%
+Batch 11. Accuracy=69.9%
+Batch 12. Accuracy=68.1%
+Batch 13. Accuracy=75.6%
+Batch 14. Accuracy=75.0%
+Batch 15. Accuracy=68.4%
+Batch 16. Accuracy=70.9%
+Batch 17. Accuracy=73.8%
+Batch 18. Accuracy=70.0%
+Batch 19. Accuracy=69.9%
+Batch 20. Accuracy=69.1%
+Batch 21. Accuracy=69.7%
+Batch 22. Accuracy=70.5%
+Batch 23. Accuracy=69.8%
+Batch 24. Accuracy=73.2%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">preds_ls</span><span class="p">)</span>
+<span class="n">targs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">targs_ls</span><span class="p">)</span>
+<span class="n">mean_top1_acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">preds</span><span class="o">==</span><span class="n">targs</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Accuracy=</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">mean_top1_acc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Accuracy=72.3%
 </pre></div>
 </div>
 </div>
@@ -1350,10 +1444,10 @@ KeyboardInterrupt:
             <p class="prev-next-title">Regression and Classification with Fully Connected Neural Networks</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../containers/00-index.html" title="next page">
+    <a class='right-next' id="next-link" href="04-modules.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Containerization on Palmetto (under development)</p>
+        <p class="prev-next-title">Builting the network</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
