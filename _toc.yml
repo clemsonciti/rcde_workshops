@@ -103,7 +103,7 @@ parts:
     - file: pytorch/01-pytorch_basics.ipynb
     - file: pytorch/02-regression_and_classification.ipynb 
     - file: pytorch/03-datasets.ipynb 
-    - file: pytorch/04-modules.ipynb 
+    # - file: pytorch/04-modules.ipynb 
     - file: pytorch/05-cnn_emnist.ipynb 
 - caption: Advanced Palmetto Usage
   chapters:
