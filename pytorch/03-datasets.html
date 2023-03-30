@@ -450,8 +450,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-style-dataset">Map-style dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-mini-batch-gradient-descent">Aside: Mini-Batch Gradient Descent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch-gradient-descent-with-the-dataloader-class">Mini-batch gradient descent with the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet-training-loop">ImageNet Training Loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaser-let-s-actually-evaluate-a-trained-model">Teaser: let’s actually evaluate a trained model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet-training-testing-loop">ImageNet Training/Testing Loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-actually-evaluate-a-trained-model">Let’s actually evaluate a trained model</a></li>
 </ul>
             </nav>
         </div>
@@ -468,7 +468,7 @@ document.write(`
 <p>The <a class="reference external" href="https://pytorch.org/docs/stable/data.html"><code class="docutils literal notranslate"><span class="pre">torch.utils.data</span></code></a> subpackage is an important part of PyTorch for developing neural networks. The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class represents a dataset and provides an interface to access the data samples. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class helps fetch data from the dataset and prepare it for passing to your neural network.</p>
 <section id="case-study-imagenet-data">
 <h2>Case study: ImageNet data<a class="headerlink" href="#case-study-imagenet-data" title="Permalink to this heading">#</a></h2>
-<p>The ImageNet-1000 image classification task has been a huge driver of progress in deep learning. We will develop a</p>
+<p>The ImageNet-1000 image classification task has been a huge driver of progress in deep learning. Let’s get to know this dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -522,7 +522,11 @@ val 1000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head: invalid number of lines: ‘/project/rcde/datasets/imagenet/LOC_synset_mapping.txt’
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n01440764 tench, Tinca tinca
+n01443537 goldfish, Carassius auratus
+n01484850 great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias
+n01491361 tiger shark, Galeocerdo cuvieri
+n01494475 hammerhead, hammerhead shark
 </pre></div>
 </div>
 </div>
@@ -634,7 +638,7 @@ orange 50
 </div>
 </section>
 <section id="map-style-dataset">
-<h2>Map-style dataset<a class="headerlink" href="#map-style-dataset" title="Permalink to this heading">#</a></h2>
+<h2><a class="reference external" href="https://pytorch.org/docs/stable/data.html">Map-style dataset</a><a class="headerlink" href="#map-style-dataset" title="Permalink to this heading">#</a></h2>
 <p>Use this when you have a well-defined set of samples that you will use to train your model. This is the most common case and the natural choice for ImageNet because we have a well-defined set of images that we want to feed to our model. Let’s see how to create a map-style dataset class for ImageNet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -781,6 +785,8 @@ orange 50
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
 
 <span class="c1"># the DataLoader takes the dataset class as input</span>
+<span class="c1"># batch_size: how many samples per mini batch</span>
+<span class="c1"># num_workers: how many parallel processes for data loading</span>
 <span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dl</span><span class="p">)</span>
@@ -788,7 +794,7 @@ orange 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x14d42541b8b0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x150716d379d0&gt;
 </pre></div>
 </div>
 </div>
@@ -796,7 +802,7 @@ orange 50
 <p>Pytorch fetches the batches of data on the fly, so we have to request them one at a time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl</span><span class="p">))</span><span class="c1"># get the first batch</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl</span><span class="p">))</span> <span class="c1"># get the first batch</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -810,8 +816,8 @@ orange 50
 <p>Notice the new dimension. The dataloader has bundled up the samples into a single tensor.</p>
 <p>We’re now ready to write our new training loop:</p>
 </section>
-<section id="imagenet-training-loop">
-<h2>ImageNet Training Loop<a class="headerlink" href="#imagenet-training-loop" title="Permalink to this heading">#</a></h2>
+<section id="imagenet-training-testing-loop">
+<h2>ImageNet Training/Testing Loop<a class="headerlink" href="#imagenet-training-testing-loop" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the datasets</span>
@@ -820,11 +826,14 @@ orange 50
 
 <span class="c1"># create dataloaders for training and validation</span>
 <span class="n">dl_train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<p><strong>Question</strong>: Why is it good to have separate training and validation sets?</p>
+<hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -868,28 +877,28 @@ orange 50
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 0] Training...
 [Epoch 0] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 0] Testing...
-[Epoch 0] Batch 3. x.shape=torch.Size([2048, 3, 224, 224])
+[Epoch 0] Batch 3. x.shape=torch.Size([15, 3, 224, 224])
 [Epoch 1] Training...
 [Epoch 1] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 1] Testing...
-[Epoch 1] Batch 3. x.shape=torch.Size([2048, 3, 224, 224])
+[Epoch 1] Batch 3. x.shape=torch.Size([15, 3, 224, 224])
 [Epoch 2] Training...
 [Epoch 2] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 2] Testing...
-[Epoch 2] Batch 3. x.shape=torch.Size([2048, 3, 224, 224])
+[Epoch 2] Batch 3. x.shape=torch.Size([15, 3, 224, 224])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="teaser-let-s-actually-evaluate-a-trained-model">
-<h2>Teaser: let’s actually evaluate a trained model<a class="headerlink" href="#teaser-let-s-actually-evaluate-a-trained-model" title="Permalink to this heading">#</a></h2>
+<section id="let-s-actually-evaluate-a-trained-model">
+<h2>Let’s actually evaluate a trained model<a class="headerlink" href="#let-s-actually-evaluate-a-trained-model" title="Permalink to this heading">#</a></h2>
 <p>Training takes too long.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.models</span> <span class="kn">import</span> <span class="n">resnet50</span><span class="p">,</span> <span class="n">ResNet50_Weights</span>
 
-<span class="c1"># pretrained weights with purported accuracy 80.858%</span>
+<span class="c1"># pretrained weights with advertised accuracy of 80.858% on the validation set</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">resnet50</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">ResNet50_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V2</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -897,10 +906,13 @@ orange 50
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1028</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 
 <span class="n">preds_ls</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">targs_ls</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># put the model in eval mode</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_val</span><span class="p">):</span>
     
     <span class="c1"># move to device</span>
@@ -924,31 +936,55 @@ orange 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0. Accuracy=80.7%
-Batch 1. Accuracy=65.0%
-Batch 2. Accuracy=82.5%
-Batch 3. Accuracy=81.4%
-Batch 4. Accuracy=64.5%
-Batch 5. Accuracy=68.0%
-Batch 6. Accuracy=70.8%
-Batch 7. Accuracy=76.6%
-Batch 8. Accuracy=76.3%
-Batch 9. Accuracy=76.5%
-Batch 10. Accuracy=72.9%
-Batch 11. Accuracy=69.9%
-Batch 12. Accuracy=68.1%
-Batch 13. Accuracy=75.6%
-Batch 14. Accuracy=75.0%
-Batch 15. Accuracy=68.4%
-Batch 16. Accuracy=70.9%
-Batch 17. Accuracy=73.8%
-Batch 18. Accuracy=70.0%
-Batch 19. Accuracy=69.9%
-Batch 20. Accuracy=69.1%
-Batch 21. Accuracy=69.7%
-Batch 22. Accuracy=70.5%
-Batch 23. Accuracy=69.8%
-Batch 24. Accuracy=73.2%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0. Accuracy=92.6%
+Batch 1. Accuracy=81.8%
+Batch 2. Accuracy=79.0%
+Batch 3. Accuracy=78.5%
+Batch 4. Accuracy=92.8%
+Batch 5. Accuracy=87.1%
+Batch 6. Accuracy=91.5%
+Batch 7. Accuracy=86.4%
+Batch 8. Accuracy=80.5%
+Batch 9. Accuracy=79.4%
+Batch 10. Accuracy=86.8%
+Batch 11. Accuracy=79.9%
+Batch 12. Accuracy=84.8%
+Batch 13. Accuracy=79.1%
+Batch 14. Accuracy=88.1%
+Batch 15. Accuracy=87.5%
+Batch 16. Accuracy=85.7%
+Batch 17. Accuracy=84.3%
+Batch 18. Accuracy=80.4%
+Batch 19. Accuracy=83.3%
+Batch 20. Accuracy=78.1%
+Batch 21. Accuracy=77.9%
+Batch 22. Accuracy=74.7%
+Batch 23. Accuracy=72.9%
+Batch 24. Accuracy=74.9%
+Batch 25. Accuracy=75.7%
+Batch 26. Accuracy=79.9%
+Batch 27. Accuracy=84.3%
+Batch 28. Accuracy=78.5%
+Batch 29. Accuracy=83.2%
+Batch 30. Accuracy=69.5%
+Batch 31. Accuracy=69.9%
+Batch 32. Accuracy=76.8%
+Batch 33. Accuracy=78.2%
+Batch 34. Accuracy=80.0%
+Batch 35. Accuracy=79.9%
+Batch 36. Accuracy=76.2%
+Batch 37. Accuracy=77.6%
+Batch 38. Accuracy=77.1%
+Batch 39. Accuracy=74.9%
+Batch 40. Accuracy=68.4%
+Batch 41. Accuracy=75.3%
+Batch 42. Accuracy=79.0%
+Batch 43. Accuracy=76.6%
+Batch 44. Accuracy=74.3%
+Batch 45. Accuracy=84.6%
+Batch 46. Accuracy=81.0%
+Batch 47. Accuracy=75.4%
+Batch 48. Accuracy=84.1%
 </pre></div>
 </div>
 </div>
@@ -961,12 +997,12 @@ Batch 24. Accuracy=73.2%
 <span class="n">targs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">targs_ls</span><span class="p">)</span>
 <span class="n">mean_top1_acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">preds</span><span class="o">==</span><span class="n">targs</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Accuracy=</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">mean_top1_acc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Accuracy=</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">mean_top1_acc</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Accuracy=72.3%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Accuracy=80.1%
 </pre></div>
 </div>
 </div>
@@ -1039,8 +1075,8 @@ Batch 24. Accuracy=73.2%
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-style-dataset">Map-style dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aside-mini-batch-gradient-descent">Aside: Mini-Batch Gradient Descent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch-gradient-descent-with-the-dataloader-class">Mini-batch gradient descent with the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet-training-loop">ImageNet Training Loop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaser-let-s-actually-evaluate-a-trained-model">Teaser: let’s actually evaluate a trained model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet-training-testing-loop">ImageNet Training/Testing Loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-actually-evaluate-a-trained-model">Let’s actually evaluate a trained model</a></li>
 </ul>
   </nav></div>
 
