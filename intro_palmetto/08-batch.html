@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Running a batch job &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro_palmetto/08-batch';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to R" href="../r_programming/00-index.html" />
+    <link rel="prev" title="Web-based access to the Palmetto Cluster" href="07-open-od.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Introduction to Palmetto</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Running a batch job</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-sklearn-preprocessing.html">Introduction to Scikit Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-sklearn-Data-Partition.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-sklearn-Evaluation-Metrics.html">Evaluation Metrics with Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/05-Training-Regression.html">Supervised Learning training with Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/06-Training-Tree.html">Tree-based Learning Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/07-Training-Ensemble.html">Ensemble-based Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/08-Model_Based.html">Model-based Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/09-Regularization.html">Regularization and Variable Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/10-Dimension-Reduction.html">Dimension Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/11-Neural-Network.html">Neural Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/12-Support-Vector-Machine.html">Support Vector Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/13-KNN.html">K-Nearest Neighbour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/14-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/15-Mini-Project.html">Mini-Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-cnn_emnist.html">Computer Vision and Convolutional Neural Networks (CNNs)</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/intro_palmetto/08-batch.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Running a batch job</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="running-a-batch-job">
+<h1>Running a batch job<a class="headerlink" href="#running-a-batch-job" title="Permalink to this heading">#</a></h1>
+<p>Interactive jobs are great if you need to do something quick, or perhaps visualize some data. If you have some code which runs for seven hours, interactive jobs are not a great idea. Please keep in mind that an interactive job gets killed if you close the SSH connection. So for example, you connect to Palmetto from your laptop, start an interactive job, but then your laptop runs out of battery power and you can’t find your charger. SSH client quits, and your interactive job is killed.</p>
+<p>If you have some truly serious, multi-hour computation project (and that’s what Palmetto is really good for), a better idea is to run it on the background. This is called a <em>batch job</em>. You submit it in a fashion which is conceptually similar to an interactive job, but then it runs on the compute node on the background until it’s over. If it needs to take two days, it takes two days. You can quit the SSH client or close your laptop, it won’t affect the batch job.</p>
+<p>To submit a batch job, we usually create a separate file called a <em>PBS script</em>. This file asks the scheduler for specific resources, and then specifies the actions that will be done once we get on a compute node.</p>
+<p>Let us go through an example. We will use batch mode to create a small random matrix with normally-distributed values. We will create two scripts: an R script which does the computation, and a PBS script which will execute the R script on a compute node in batch mode.</p>
+<p>Palmetto has a simple text editor which is called <code class="docutils literal notranslate"><span class="pre">nano</span></code>. It doesn’t offer any fancy formatting, but it suffices for ceating and editing simple texts. Let’s go to our home directory and create the R script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span>
+nano<span class="w"> </span>randmatrix.r
+</pre></div>
+</div>
+<p>This will open the <code class="docutils literal notranslate"><span class="pre">nano</span></code> text editor:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/nano_empty.png" src="../_images/nano_empty.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Nano just opened with empty file.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Inside the editor, type this:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">size</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5000</span>
+<span class="n">M</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">size</span><span class="o">*</span><span class="n">size</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">ev</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">eigen</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">values</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ev</span><span class="o">$</span><span class="n">values</span>
+<span class="n">values</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Instead of typing, you can copy the text from the Web browser and paste it into <code class="docutils literal notranslate"><span class="pre">nano</span></code>. Windows users can paste with <code class="docutils literal notranslate"><span class="pre">Shift</span></code>+<code class="docutils literal notranslate"><span class="pre">Ins</span></code> (or by right-clicking the mouse). Mac users can paste with <code class="docutils literal notranslate"><span class="pre">Cmd</span></code>+<code class="docutils literal notranslate"><span class="pre">V</span></code>. At the end, your screen should look like this:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/nano_r.png" src="../_images/nano_r.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Nano with the R script filled in</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To save it, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">O</span></code>, and hit enter. To exit the editor, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">X</span></code>. To make sure the text is saved properly, print it on screen using the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>randmatrix.r
+</pre></div>
+</div>
+<p>Now, let’s create the PBS script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano<span class="w"> </span>randmatrix.pbs
+</pre></div>
+</div>
+<p>Inside the <code class="docutils literal notranslate"><span class="pre">nano</span></code> text editor, type this (or paste from the Web browser):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1">#PBS -N random_matrix</span>
+<span class="c1">#PBS -l select=1:ncpus=10:mem=10gb</span>
+<span class="c1">#PBS -l walltime=0:20:00</span>
+<span class="c1">#PBS -o random_matrix.txt</span>
+<span class="c1">#PBS -j oe</span>
+
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$PBS_O_WORKDIR</span>
+module<span class="w"> </span>load<span class="w"> </span>r/4.1.3-gcc/9.5.0
+Rscript<span class="w"> </span>randmatrix.r
+</pre></div>
+</div>
+<p>Let’s go through the script, line by line. The first cryptic line says that it’s a script that is executed by the Linux shell. The next line is empty, followed by five lines that are the instructions to the scheduler (they start with <code class="docutils literal notranslate"><span class="pre">#PBS</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-N</span></code> specifies the name of the job;</p></li>
+<li><p>the first <code class="docutils literal notranslate"><span class="pre">-l</span></code> line is the specification of resources: one node, ten CPUs, ten Gb of RAM, 1g interconnect;</p></li>
+<li><p>the second <code class="docutils literal notranslate"><span class="pre">-l</span></code> line is the amount of walltime (twenty minutes);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code> specifies the name of the output file where the R output will be printed;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">oe</span></code> means “join output and error”, which is, if any errors happen, they will also be written into <code class="docutils literal notranslate"><span class="pre">random_matrix.txt</span></code>.</p></li>
+</ul>
+<p>The rest are the instructions for bash. They are commands to execute once we get on the compute node that satisfies the request we provided in <code class="docutils literal notranslate"><span class="pre">-l</span></code>: go to the directory from which you have submitted <code class="docutils literal notranslate"><span class="pre">qsub</span></code>, load the R module, and execute the R script called randmatrix.r that we have created. Save the PBS script and exit <code class="docutils literal notranslate"><span class="pre">nano</span></code> (<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">O</span></code>, <code class="docutils literal notranslate"><span class="pre">ENTER</span></code>, <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">X</span></code>).</p>
+<p>A very common question is how much walltime we should ask for. It’s a tricky question because there is no way of knowing how much time you will need until you actually try it. One rule of thumb is: make a rough guess, and ask for twice as much.</p>
+<p>Now, let’s submit our batch job!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qsub</span> <span class="n">randmatrix</span><span class="o">.</span><span class="n">pbs</span>
+</pre></div>
+</div>
+<p>We use the same command <code class="docutils literal notranslate"><span class="pre">qsub</span></code> that we have previously used for an interactive job, but now it’s much simpler, because all the hard work went into creating the PBS shell script <code class="docutils literal notranslate"><span class="pre">randmatrix.pbs</span></code> and <code class="docutils literal notranslate"><span class="pre">qsub</span></code> reads all the necessary information from there. If the submission was successful, it will give you the job ID, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">75696.</span><span class="n">pbs02</span>
+</pre></div>
+</div>
+<p>We can monitor the job’s progress with the <code class="docutils literal notranslate"><span class="pre">qstat</span></code> command. This is an example to list all jobs that are currently executed by you:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qstat</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">Palmetto</span> <span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You should see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pbs02</span><span class="p">:</span>
+                                                            <span class="n">Req</span><span class="s1">&#39;d  Req&#39;</span><span class="n">d</span>   <span class="n">Elap</span>
+<span class="n">Job</span> <span class="n">ID</span>          <span class="n">Username</span> <span class="n">Queue</span>    <span class="n">Jobname</span>    <span class="n">SessID</span> <span class="n">NDS</span> <span class="n">TSK</span> <span class="n">Memory</span> <span class="n">Time</span>  <span class="n">S</span> <span class="n">Time</span>
+<span class="o">---------------</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">----------</span> <span class="o">------</span> <span class="o">---</span> <span class="o">---</span> <span class="o">------</span> <span class="o">-----</span> <span class="o">-</span> <span class="o">-----</span>
+<span class="mf">75696.</span><span class="n">pbs02</span>     <span class="n">dndawso</span>  <span class="n">c1_sing</span><span class="o">*</span> <span class="n">random_ma</span><span class="o">*</span> <span class="mi">26095</span><span class="o">*</span>   <span class="mi">1</span>  <span class="mi">10</span>   <span class="mi">10</span><span class="n">gb</span> <span class="mi">00</span><span class="p">:</span><span class="mi">20</span> <span class="n">R</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>You see the job ID, your Palmetto username, the name of the queue (more on that later), the name of the job (<code class="docutils literal notranslate"><span class="pre">random_matrix</span></code>), the resources requested (1 node, 10 CPUs, 10 gb of RAM, twenty minutes of walltime). The letter <code class="docutils literal notranslate"><span class="pre">R</span></code> means that the job is running (<code class="docutils literal notranslate"><span class="pre">Q</span></code> means “queued”, and <code class="docutils literal notranslate"><span class="pre">F</span></code> means “finished”), and then it shows for how long it’s been running (it basically just started).</p>
+<p>Wait a little bit and do <code class="docutils literal notranslate"><span class="pre">qstat</span></code> again (you can hit the <code class="docutils literal notranslate"><span class="pre">UP</span></code> arrow to show the previous command). <code class="docutils literal notranslate"><span class="pre">Elap</span> <span class="pre">time</span></code> should now be a bit longer. The script should take a few minutes or so to execute. If you enter <code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-u</span> <span class="pre">&lt;your</span> <span class="pre">Palmetto</span> <span class="pre">username&gt;</span></code> and the list is empty, then congratulations, we are done!</p>
+<p>If everything went well, you should now see the file <code class="docutils literal notranslate"><span class="pre">random_matrix.txt</span></code>. Let’s print it on screen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">random_matrix</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span><span class="mf">69.78825</span><span class="o">+</span><span class="mf">15.10709</span><span class="n">i</span>
+
+
+<span class="o">+------------------------------------------+</span>
+<span class="o">|</span> <span class="n">PALMETTO</span> <span class="n">CLUSTER</span> <span class="n">PBS</span> <span class="n">RESOURCES</span> <span class="n">REQUESTED</span> <span class="o">|</span>
+<span class="o">+------------------------------------------+</span>
+
+<span class="n">mem</span><span class="o">=</span><span class="mi">10</span><span class="n">gb</span><span class="p">,</span><span class="n">walltime</span><span class="o">=</span><span class="mi">00</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">00</span><span class="p">,</span><span class="n">ncpus</span><span class="o">=</span><span class="mi">10</span>
+
+
+<span class="o">+-------------------------------------+</span>
+<span class="o">|</span> <span class="n">PALMETTO</span> <span class="n">CLUSTER</span> <span class="n">PBS</span> <span class="n">RESOURCES</span> <span class="n">USED</span> <span class="o">|</span>
+<span class="o">+-------------------------------------+</span>
+
+<span class="n">cput</span><span class="o">=</span><span class="mi">00</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="n">mem</span><span class="o">=</span><span class="mi">1025464</span><span class="n">kb</span><span class="p">,</span><span class="n">walltime</span><span class="o">=</span><span class="mi">00</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="n">ncpus</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">cpupercent</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span><span class="n">vmem</span><span class="o">=</span><span class="mi">1588316</span><span class="n">kb</span>
+</pre></div>
+</div>
+<p>Your output may be different since we used random matrices.</p>
+<p>Another way to use <code class="docutils literal notranslate"><span class="pre">qstat</span></code> is to list the information about a particular job. Here, instead of <code class="docutils literal notranslate"><span class="pre">-u</span></code>, we use the <code class="docutils literal notranslate"><span class="pre">-xf</span></code> option, followed by the Job ID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">qstat</span> <span class="o">-</span><span class="n">xf</span> <span class="mf">75696.</span><span class="n">pbs02</span>
+</pre></div>
+</div>
+<p>This will give you a lot of information about the job, which is really useful for debugging. If you have a problem and you need our help, it is very helpful to us if you provide the job ID so we can do <code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-xf</span></code> on it and get the job details.</p>
+<p>How many jobs can you run at the same time? It depends on how much resources you ask for. If each job asks for a small amount of resources, you can do a large amount of jobs simultaneously. If each job needs a large amount of resources, only a few of them can be running simultaneously, and the rest of them will be waiting in the queue until the jobs that are running are completed. This is a way to ensure that Palmetto is used fairly.</p>
+<p>These limits of the number of simultaneous jobs is not carved in stone, but it changes depending on how much Palmetto is used at the moment. To see the current queue configuration, you can execute this command (note that it only works on the login node):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">checkqueuecfg</span>
+</pre></div>
+</div>
+<p>You will see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="mi">1</span><span class="n">G</span> <span class="n">QUEUES</span>     <span class="n">min_cores_per_job</span>  <span class="n">max_cores_per_job</span>   <span class="n">max_mem_per_queue</span>  <span class="n">max_jobs_per_queue</span>   <span class="n">max_walltime</span>
+<span class="n">c1_solo</span>                       <span class="mi">1</span>                  <span class="mi">1</span>              <span class="mi">5000</span><span class="n">gb</span>                 <span class="mi">500</span>      <span class="mi">336</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c1_single</span>                     <span class="mi">2</span>                 <span class="mi">24</span>             <span class="mi">60000</span><span class="n">gb</span>                 <span class="mi">500</span>      <span class="mi">336</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c1_tiny</span>                      <span class="mi">25</span>                <span class="mi">128</span>             <span class="mi">51200</span><span class="n">gb</span>                  <span class="mi">50</span>      <span class="mi">336</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c1_small</span>                    <span class="mi">129</span>                <span class="mi">512</span>             <span class="mi">61440</span><span class="n">gb</span>                  <span class="mi">15</span>      <span class="mi">336</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c1_medium</span>                   <span class="mi">513</span>               <span class="mi">2048</span>             <span class="mi">16384</span><span class="n">gb</span>                   <span class="mi">1</span>      <span class="mi">336</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c1_large</span>                   <span class="mi">2049</span>               <span class="mi">4096</span>             <span class="mi">32768</span><span class="n">gb</span>                   <span class="mi">1</span>      <span class="mi">336</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">IB</span> <span class="n">QUEUES</span>     <span class="n">min_cores_per_job</span>  <span class="n">max_cores_per_job</span>   <span class="n">max_mem_per_queue</span>  <span class="n">max_jobs_per_queue</span>   <span class="n">max_walltime</span>
+<span class="n">c2_single</span>                     <span class="mi">1</span>                 <span class="mi">56</span>             <span class="mi">10000</span><span class="n">gb</span>                  <span class="mi">25</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_tiny</span>                      <span class="mi">57</span>                <span class="mi">200</span>             <span class="mi">32000</span><span class="n">gb</span>                  <span class="mi">10</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_small</span>                    <span class="mi">201</span>                <span class="mi">512</span>             <span class="mi">21504</span><span class="n">gb</span>                   <span class="mi">3</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_medium</span>                   <span class="mi">513</span>               <span class="mi">2048</span>             <span class="mi">32768</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_large</span>                   <span class="mi">2049</span>               <span class="mi">4096</span>             <span class="mi">32768</span><span class="n">gb</span>                   <span class="mi">1</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">c2_fdr_single</span>                  <span class="mi">1</span>                 <span class="mi">56</span>             <span class="mi">40000</span><span class="n">gb</span>                 <span class="mi">100</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_fdr_tiny</span>                   <span class="mi">57</span>                <span class="mi">200</span>             <span class="mi">80000</span><span class="n">gb</span>                  <span class="mi">25</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_fdr_small</span>                 <span class="mi">201</span>                <span class="mi">512</span>             <span class="mi">35840</span><span class="n">gb</span>                   <span class="mi">5</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_fdr_medium</span>                <span class="mi">513</span>               <span class="mi">2048</span>             <span class="mi">81920</span><span class="n">gb</span>                   <span class="mi">5</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_fdr_large</span>                <span class="mi">2049</span>               <span class="mi">4096</span>             <span class="mi">32768</span><span class="n">gb</span>                   <span class="mi">1</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">c2_hdr_single</span>                  <span class="mi">1</span>                 <span class="mi">56</span>             <span class="mi">24000</span><span class="n">gb</span>                  <span class="mi">20</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_hdr_tiny</span>                   <span class="mi">57</span>                <span class="mi">200</span>             <span class="mi">80000</span><span class="n">gb</span>                  <span class="mi">25</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_hdr_small</span>                 <span class="mi">201</span>                <span class="mi">512</span>             <span class="mi">14336</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_hdr_medium</span>                <span class="mi">513</span>               <span class="mi">2048</span>             <span class="mi">32768</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">c2_hdr_large</span>                <span class="mi">2049</span>               <span class="mi">4096</span>             <span class="mi">65536</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">GPU</span> <span class="n">QUEUES</span>     <span class="n">min_gpus_per_job</span>   <span class="n">max_gpus_per_job</span>  <span class="n">min_cores_per_job</span>  <span class="n">max_cores_per_job</span>   <span class="n">max_mem_per_queue</span>  <span class="n">max_jobs_per_queue</span>   <span class="n">max_walltime</span>
+<span class="n">gpu_dgxa100_e</span>                 <span class="mi">1</span>                  <span class="mi">8</span>                  <span class="mi">1</span>                <span class="mi">256</span>              <span class="mi">1000</span><span class="n">gb</span>                   <span class="mi">1</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">gpu_dgx1_e</span>                    <span class="mi">1</span>                  <span class="mi">8</span>                  <span class="mi">1</span>                 <span class="mi">80</span>               <span class="mi">500</span><span class="n">gb</span>                   <span class="mi">1</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">gpu_small_a100</span>                <span class="mi">1</span>                  <span class="mi">4</span>                  <span class="mi">1</span>                 <span class="mi">96</span>              <span class="mi">4800</span><span class="n">gb</span>                  <span class="mi">10</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_medium_a100</span>               <span class="mi">5</span>                  <span class="mi">9</span>                  <span class="mi">1</span>                <span class="mi">256</span>              <span class="mi">5120</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_large_a100</span>               <span class="mi">10</span>                <span class="mi">256</span>                  <span class="mi">1</span>               <span class="mi">2048</span>             <span class="mi">10240</span><span class="n">gb</span>                   <span class="mi">1</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">gpu_small_v100</span>                <span class="mi">1</span>                  <span class="mi">4</span>                  <span class="mi">1</span>                 <span class="mi">96</span>             <span class="mi">19200</span><span class="n">gb</span>                  <span class="mi">20</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_medium_v100</span>               <span class="mi">5</span>                  <span class="mi">9</span>                  <span class="mi">1</span>                <span class="mi">256</span>             <span class="mi">12800</span><span class="n">gb</span>                   <span class="mi">5</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_large_v100</span>               <span class="mi">10</span>                <span class="mi">256</span>                  <span class="mi">1</span>               <span class="mi">2048</span>             <span class="mi">20480</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">gpu_small_p100</span>                <span class="mi">1</span>                  <span class="mi">4</span>                  <span class="mi">1</span>                 <span class="mi">96</span>              <span class="mi">5760</span><span class="n">gb</span>                  <span class="mi">12</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_medium_p100</span>               <span class="mi">5</span>                  <span class="mi">9</span>                  <span class="mi">1</span>                <span class="mi">256</span>              <span class="mi">5120</span><span class="n">gb</span>                   <span class="mi">2</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_large_p100</span>               <span class="mi">10</span>                <span class="mi">256</span>                  <span class="mi">1</span>               <span class="mi">2048</span>             <span class="mi">30720</span><span class="n">gb</span>                   <span class="mi">3</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+<span class="n">gpu_small_k240</span>                <span class="mi">1</span>                  <span class="mi">4</span>                  <span class="mi">1</span>                 <span class="mi">96</span>             <span class="mi">12000</span><span class="n">gb</span>                  <span class="mi">25</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_medium_k240</span>               <span class="mi">5</span>                  <span class="mi">9</span>                  <span class="mi">1</span>                <span class="mi">256</span>             <span class="mi">25600</span><span class="n">gb</span>                  <span class="mi">10</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">gpu_large_k240</span>               <span class="mi">10</span>                <span class="mi">256</span>                  <span class="mi">1</span>               <span class="mi">2048</span>            <span class="mi">102400</span><span class="n">gb</span>                  <span class="mi">10</span>       <span class="mi">72</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+
+<span class="n">SMP</span> <span class="n">QUEUE</span>     <span class="n">min_cores</span>  <span class="n">max_cores</span>   <span class="n">max_jobs</span>   <span class="n">max_walltime</span>
+<span class="n">bigmem</span>                <span class="mi">1</span>         <span class="mi">80</span>          <span class="mi">3</span>      <span class="mi">168</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+
+
+<span class="n">SKYLIGHT</span> <span class="n">QUEUES</span>   <span class="n">max_jobs</span>   <span class="n">max_walltime</span>
+<span class="n">skystd_e</span>            <span class="mi">100</span>      <span class="mi">240</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">skylm_e</span>              <span class="mi">20</span>      <span class="mi">240</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">skygpu_e</span>             <span class="mi">50</span>      <span class="mi">240</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+
+
+   <span class="s1">&#39;max_mem&#39;</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">maximum</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">memory</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">jobs</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">queue</span> <span class="n">can</span>
+   <span class="n">consume</span> <span class="n">at</span> <span class="nb">any</span> <span class="n">one</span> <span class="n">time</span><span class="o">.</span>  <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">max_mem</span> <span class="k">for</span> <span class="n">the</span> <span class="n">solo</span> <span class="n">queue</span>
+   <span class="ow">is</span> <span class="mi">4000</span><span class="n">gb</span><span class="p">,</span> <span class="ow">and</span> <span class="n">your</span> <span class="n">solo</span> <span class="n">jobs</span> <span class="n">each</span> <span class="n">need</span> <span class="mi">10</span><span class="n">gb</span><span class="p">,</span> <span class="n">then</span> <span class="n">you</span> <span class="n">can</span> <span class="n">run</span> <span class="n">a</span>
+   <span class="n">maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="mi">4000</span><span class="o">/</span><span class="mi">10</span> <span class="o">=</span> <span class="mi">400</span> <span class="n">jobs</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">solo</span> <span class="n">queue</span><span class="p">,</span> <span class="n">even</span> <span class="n">though</span> <span class="n">the</span>
+   <span class="n">current</span> <span class="n">max_jobs</span> <span class="n">setting</span> <span class="k">for</span> <span class="n">the</span> <span class="n">solo</span> <span class="n">queue</span> <span class="n">may</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">higher</span> <span class="n">than</span> <span class="mf">400.</span>
+
+
+   <span class="n">NOTE</span><span class="p">:</span>  <span class="n">Although</span> <span class="n">you</span> <span class="n">may</span> <span class="n">be</span> <span class="n">within</span> <span class="n">the</span> <span class="n">limits</span> <span class="k">for</span> <span class="n">a</span> <span class="n">queue</span><span class="p">,</span> <span class="n">there</span> <span class="n">may</span> <span class="ow">not</span>
+          <span class="n">be</span> <span class="nb">any</span> <span class="n">resources</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">you</span> <span class="n">are</span> <span class="n">requesting</span> <span class="n">currently</span> <span class="n">available</span><span class="o">.</span>
+
+
+   <span class="n">NOTE</span><span class="p">:</span>  <span class="n">An</span> <span class="n">array</span> <span class="n">job</span> <span class="n">cannot</span> <span class="n">have</span> <span class="n">more</span> <span class="n">indexes</span> <span class="n">than</span> <span class="n">the</span>
+          <span class="n">current</span> <span class="n">max_jobs</span> <span class="n">value</span> <span class="n">otherwise</span> <span class="n">the</span> <span class="n">job</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">start</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>One thing to note is that 1g nodes have maximum walltime of 336 hours (two weeks), and InfiniBand (hdr and fdr) nodes have maximum walltime of 72 hours (three days). Since the GPUs are only installed on the InfiniBand nodes, any job that asks for a GPU will also be subject to 72-hour limit. The maximum number of simultaneous jobs really depends on how much CPUs and memory you are asking; for example, for 1 node, 10 CPUs and 10 Gb of RAM (what we asked for in our randmatrix job), we can run 500 jobs on 1g nodes (queue name c1_single), but only 25 jobs on InfiniBand nodes (queue name c2_single). This number changes day to day, depending on how busy the cluster is –on busy days, this number is lowered so more people have a chance to run their jobs on Palmetto.</p>
+<div class="admonition-key-points admonition">
+<p class="admonition-title">Key Points</p>
+<ul class="simple">
+<li><p>Batch jobs don’t require interaction with the user and run on the compute nodes on the background.</p></li>
+<li><p>To submit a batch job, users need to provide a PBS script which is passed to the scheduler.</p></li>
+<li><p>Jobs are assigned to queues, according to the amount of requested resources.</p></li>
+<li><p>Different queues have different limits on the walltime and the number of parallel jobs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qstat</span></code> allows you to check the status of your jobs.</p></li>
+</ul>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./intro_palmetto"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="07-open-od.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Web-based access to the Palmetto Cluster</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../r_programming/00-index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to R</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
