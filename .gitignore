@@ -3,4 +3,5 @@ _build
 .DS_Store
 .idea/
 *.csv
-
+pytorch/*.pt
+data/
