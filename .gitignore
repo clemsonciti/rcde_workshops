@@ -2,5 +2,7 @@ _build
 .ipynb_checkpoints
 .DS_Store
 .idea/
+.vscode/
 *.csv
-
+pytorch/*.pt
+data/

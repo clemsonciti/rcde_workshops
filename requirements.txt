@@ -2,3 +2,7 @@ numpy
 matplotlib
 pandas
 ghp-import
+jupyter-book
+
+# temporarily pin:
+pydata-sphinx-theme==0.13.1
