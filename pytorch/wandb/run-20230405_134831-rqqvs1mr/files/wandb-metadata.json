@@ -1,0 +1,244 @@
+{
+    "os": "Linux-4.18.0-372.13.1.el8_6.x86_64-x86_64-with-glibc2.28",
+    "python": "3.10.9",
+    "heartbeatAt": "2023-04-05T17:48:32.218034",
+    "startedAt": "2023-04-05T17:48:31.758966",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "git@github.com:clemsonciti/rcde_workshops.git",
+        "commit": "390fe72beb300807d776e1e0104136513e0456ae"
+    },
+    "email": "dhudsmith@gmail.com",
+    "root": "/home/dane2/Code/rcde_workshops",
+    "host": "node0148.palmetto.clemson.edu",
+    "username": "dane2",
+    "executable": "/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/bin/python",
+    "cpu_count": 40,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 3300.1901249999996,
+        "min": 3700.0,
+        "max": 3700.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3138.106,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.001,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3294.048,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3140.038,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3142.23,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3142.951,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3099.999,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3143.685,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3100.0,
+            "min": 3700.0,
+            "max": 3700.0
+        },
+        {
+            "current": 3700.0,
+            "min": 3700.0,
+            "max": 3700.0
+        }
+    ],
+    "disk": {
+        "total": 49.9755859375,
+        "used": 11.932605743408203
+    },
+    "gpu": "Tesla V100-PCIE-16GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "Tesla V100-PCIE-16GB",
+            "memory_total": 17179869184
+        }
+    ],
+    "memory": {
+        "total": 376.18520736694336
+    }
+}

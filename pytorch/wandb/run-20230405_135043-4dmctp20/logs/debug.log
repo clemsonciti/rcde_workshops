@@ -1,0 +1,31 @@
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_setup.py:_flush():76] Configure stats pid to 2795084
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_setup.py:_flush():76] Loading settings from /home/dane2/.config/wandb/settings
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_setup.py:_flush():76] Loading settings from /home/dane2/Code/rcde_workshops/pytorch/wandb/settings
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_init.py:_log_setup():506] Logging user logs to ./wandb/run-20230405_135043-4dmctp20/logs/debug.log
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_init.py:_log_setup():507] Logging internal logs to ./wandb/run-20230405_135043-4dmctp20/logs/debug-internal.log
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_init.py:_jupyter_setup():452] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x14d88fb2d5d0>
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_init.py:init():546] calling init triggers
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_init.py:init():552] wandb.init called with sweep_config: {}
+config: {}
+2023-04-05 13:50:43,650 INFO    MainThread:2795084 [wandb_init.py:init():602] starting backend
+2023-04-05 13:50:43,651 INFO    MainThread:2795084 [wandb_init.py:init():606] setting up manager
+2023-04-05 13:50:43,652 INFO    MainThread:2795084 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-04-05 13:50:43,652 INFO    MainThread:2795084 [wandb_init.py:init():613] backend started and connected
+2023-04-05 13:50:43,659 INFO    MainThread:2795084 [wandb_run.py:_label_probe_notebook():1204] probe notebook
+2023-04-05 13:50:43,659 INFO    MainThread:2795084 [wandb_run.py:_label_probe_notebook():1214] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-04-05 13:50:43,659 INFO    MainThread:2795084 [wandb_init.py:init():701] updated telemetry
+2023-04-05 13:50:43,672 INFO    MainThread:2795084 [wandb_init.py:init():741] communicating run to backend with 60.0 second timeout
+2023-04-05 13:50:44,448 INFO    MainThread:2795084 [wandb_run.py:_on_init():2133] communicating current version
+2023-04-05 13:50:44,551 INFO    MainThread:2795084 [wandb_run.py:_on_init():2142] got version response 
+2023-04-05 13:50:44,551 INFO    MainThread:2795084 [wandb_init.py:init():789] starting run threads in backend
+2023-04-05 13:50:47,987 INFO    MainThread:2795084 [wandb_run.py:_console_start():2114] atexit reg
+2023-04-05 13:50:47,987 INFO    MainThread:2795084 [wandb_run.py:_redirect():1969] redirect: SettingsConsole.WRAP_RAW
+2023-04-05 13:50:47,987 INFO    MainThread:2795084 [wandb_run.py:_redirect():2034] Wrapping output streams.
+2023-04-05 13:50:47,987 INFO    MainThread:2795084 [wandb_run.py:_redirect():2059] Redirects installed.
+2023-04-05 13:50:47,987 INFO    MainThread:2795084 [wandb_init.py:init():831] run started, returning control to user process
+2023-04-05 13:50:48,004 INFO    MainThread:2795084 [jupyter.py:save_ipynb():373] not saving jupyter notebook
+2023-04-05 13:50:48,005 INFO    MainThread:2795084 [wandb_init.py:_pause_backend():417] pausing backend
+2023-04-05 13:50:48,008 INFO    MainThread:2795084 [wandb_init.py:_resume_backend():422] resuming backend

@@ -1,0 +1,86 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name    | Type               | Params
+-----------------------------------------------
+0 | loss_fn | CrossEntropyLoss   | 0
+1 | metric  | MulticlassAccuracy | 0
+2 | layer   | Sequential         | 62.8 K
+3 | fc      | Sequential         | 660
+-----------------------------------------------
+63.4 K    Trainable params
+0         Non-trainable params
+63.4 K    Total params
+0.254     Total estimated model params size (MB)
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torchmetrics/functional/classification/stat_scores.py(269)_multiclass_stat_scores_tensor_validation()
+    267     if preds.ndim == target.ndim + 1:
+    268         if not preds.is_floating_point():
+--> 269             raise ValueError("If `preds` have one dimension more than `target`, `preds` should be a float tensor.")
+    270         if preds.shape[1] != num_classes:
+    271             raise ValueError(
+torch.int64
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torchmetrics/classification/stat_scores.py(315)update()
+    313         """Update state with predictions and targets."""
+    314         if self.validate_args:
+--> 315             _multiclass_stat_scores_tensor_validation(
+    316                 preds, target, self.num_classes, self.multidim_average, self.ignore_index
+    317             )
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torchmetrics/metric.py(390)wrapped_func()
+    388             with torch.set_grad_enabled(self._enable_grad):
+    389                 try:
+--> 390                     update(*args, **kwargs)
+    391                 except RuntimeError as err:
+    392                     if "Expected all tensors to be on" in str(err):
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torchmetrics/metric.py(302)_forward_reduce_state_update()
+    300
+    301         # calculate batch state and compute batch value
+--> 302         self.update(*args, **kwargs)
+    303         batch_val = self.compute()
+    304
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torchmetrics/metric.py(236)forward()
+    234             self._forward_cache = self._forward_full_state_update(*args, **kwargs)
+    235         else:
+--> 236             self._forward_cache = self._forward_reduce_state_update(*args, **kwargs)
+    237
+    238         return self._forward_cache
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torch/nn/modules/module.py(1501)_call_impl()
+   1499                 or _global_backward_pre_hooks or _global_backward_hooks
+   1500                 or _global_forward_hooks or _global_forward_pre_hooks):
+-> 1501             return forward_call(*args, **kwargs)
+   1502         # Do not call functions when jit is used
+   1503         full_backward_hooks, non_full_backward_hooks = [], []
+> /local_scratch/pbs.410034.pbs02/ipykernel_2771808/3898469247.py(55)validation_step()
+     53         loss = self.loss_fn(output, y)
+     54
+---> 55         accuracy = self.metric(torch.argmax(output, dim=-1), torch.argmax(y, dim=-1)).item()
+     56
+     57         # log data to a logger
+/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/pytorch_lightning/loggers/wandb.py:395: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name    | Type               | Params
+-----------------------------------------------
+0 | loss_fn | CrossEntropyLoss   | 0
+1 | metric  | MulticlassAccuracy | 0
+2 | layer   | Sequential         | 62.8 K
+3 | fc      | Sequential         | 660
+-----------------------------------------------
+63.4 K    Trainable params
+0         Non-trainable params
+63.4 K    Total params
+0.254     Total estimated model params size (MB)
+`Trainer.fit` stopped: `max_epochs=3` reached.
+> /software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torchmetrics/functional/classification/stat_scores.py(269)_multiclass_stat_scores_tensor_validation()
+    267     if preds.ndim == target.ndim + 1:
+    268         if not preds.is_floating_point():
+--> 269             raise ValueError("If `preds` have one dimension more than `target`, `preds` should be a float tensor.")
+    270         if preds.shape[1] != num_classes:
+    271             raise ValueError(
+--KeyboardInterrupt--
+KeyboardInterrupt: Interrupted by user

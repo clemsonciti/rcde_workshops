@@ -1,0 +1,28 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.14.0
+    framework: lightning
+    is_jupyter_run: true
+    is_kaggle_kernel: true
+    python_version: 3.10.9
+    start_time: 1680716911.766666
+    t:
+      1:
+      - 1
+      - 5
+      - 9
+      - 41
+      - 53
+      - 55
+      3:
+      - 13
+      - 23
+      4: 3.10.9
+      5: 0.14.0
+      8:
+      - 1
+      - 2
+      - 5

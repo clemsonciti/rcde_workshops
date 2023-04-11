@@ -1,0 +1,19 @@
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/pytorch_lightning/utilities/model_summary/model_summary.py:411: UserWarning: A layer with UninitializedParameter was found. Thus, the total number of parameters detected may be inaccurate.
+  warning_cache.warn(
+  | Name    | Type               | Params
+-----------------------------------------------
+0 | loss_fn | CrossEntropyLoss   | 0
+1 | metric  | MulticlassAccuracy | 0
+2 | layer   | Sequential         | 0
+3 | fc      | Sequential         | 0
+-----------------------------------------------
+0         Trainable params
+0         Non-trainable params
+0         Total params
+0.000     Total estimated model params size (MB)
+`Trainer.fit` stopped: `max_epochs=10` reached.
