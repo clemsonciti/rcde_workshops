@@ -787,14 +787,14 @@ orange 50
 <span class="c1"># the DataLoader takes the dataset class as input</span>
 <span class="c1"># batch_size: how many samples per mini batch</span>
 <span class="c1"># num_workers: how many parallel processes for data loading</span>
-<span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dl</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x150716d379d0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x153b730a3430&gt;
 </pre></div>
 </div>
 </div>
@@ -825,8 +825,8 @@ orange 50
 <span class="n">imagenet_val</span> <span class="o">=</span> <span class="n">Imagenet</span><span class="p">(</span><span class="s1">&#39;/project/rcde/datasets/imagenet/ILSVRC/Data/CLS-LOC/&#39;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="n">class2ix</span><span class="o">=</span><span class="n">class2ix</span><span class="p">,</span> <span class="n">tfms</span><span class="o">=</span><span class="n">tfms</span><span class="p">)</span>
 
 <span class="c1"># create dataloaders for training and validation</span>
-<span class="n">dl_train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">dl_train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet_val</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -877,15 +877,15 @@ orange 50
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 0] Training...
 [Epoch 0] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 0] Testing...
-[Epoch 0] Batch 3. x.shape=torch.Size([15, 3, 224, 224])
+[Epoch 0] Batch 3. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 1] Training...
 [Epoch 1] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 1] Testing...
-[Epoch 1] Batch 3. x.shape=torch.Size([15, 3, 224, 224])
+[Epoch 1] Batch 3. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 2] Training...
 [Epoch 2] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
 [Epoch 2] Testing...
-[Epoch 2] Batch 3. x.shape=torch.Size([15, 3, 224, 224])
+[Epoch 2] Batch 3. x.shape=torch.Size([256, 3, 224, 224])
 </pre></div>
 </div>
 </div>
@@ -906,7 +906,7 @@ orange 50
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1028</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">imagenet_val</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 
 <span class="n">preds_ls</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">targs_ls</span> <span class="o">=</span> <span class="p">[]</span>
@@ -936,55 +936,202 @@ orange 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0. Accuracy=92.6%
-Batch 1. Accuracy=81.8%
-Batch 2. Accuracy=79.0%
-Batch 3. Accuracy=78.5%
-Batch 4. Accuracy=92.8%
-Batch 5. Accuracy=87.1%
-Batch 6. Accuracy=91.5%
-Batch 7. Accuracy=86.4%
-Batch 8. Accuracy=80.5%
-Batch 9. Accuracy=79.4%
-Batch 10. Accuracy=86.8%
-Batch 11. Accuracy=79.9%
-Batch 12. Accuracy=84.8%
-Batch 13. Accuracy=79.1%
-Batch 14. Accuracy=88.1%
-Batch 15. Accuracy=87.5%
-Batch 16. Accuracy=85.7%
-Batch 17. Accuracy=84.3%
-Batch 18. Accuracy=80.4%
-Batch 19. Accuracy=83.3%
-Batch 20. Accuracy=78.1%
-Batch 21. Accuracy=77.9%
-Batch 22. Accuracy=74.7%
-Batch 23. Accuracy=72.9%
-Batch 24. Accuracy=74.9%
-Batch 25. Accuracy=75.7%
-Batch 26. Accuracy=79.9%
-Batch 27. Accuracy=84.3%
-Batch 28. Accuracy=78.5%
-Batch 29. Accuracy=83.2%
-Batch 30. Accuracy=69.5%
-Batch 31. Accuracy=69.9%
-Batch 32. Accuracy=76.8%
-Batch 33. Accuracy=78.2%
-Batch 34. Accuracy=80.0%
-Batch 35. Accuracy=79.9%
-Batch 36. Accuracy=76.2%
-Batch 37. Accuracy=77.6%
-Batch 38. Accuracy=77.1%
-Batch 39. Accuracy=74.9%
-Batch 40. Accuracy=68.4%
-Batch 41. Accuracy=75.3%
-Batch 42. Accuracy=79.0%
-Batch 43. Accuracy=76.6%
-Batch 44. Accuracy=74.3%
-Batch 45. Accuracy=84.6%
-Batch 46. Accuracy=81.0%
-Batch 47. Accuracy=75.4%
-Batch 48. Accuracy=84.1%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0. Accuracy=89.8%
+Batch 1. Accuracy=87.1%
+Batch 2. Accuracy=98.4%
+Batch 3. Accuracy=94.9%
+Batch 4. Accuracy=93.8%
+Batch 5. Accuracy=82.0%
+Batch 6. Accuracy=71.9%
+Batch 7. Accuracy=79.3%
+Batch 8. Accuracy=83.2%
+Batch 9. Accuracy=80.1%
+Batch 10. Accuracy=78.1%
+Batch 11. Accuracy=74.6%
+Batch 12. Accuracy=73.8%
+Batch 13. Accuracy=78.9%
+Batch 14. Accuracy=76.2%
+Batch 15. Accuracy=84.4%
+Batch 16. Accuracy=91.0%
+Batch 17. Accuracy=96.9%
+Batch 18. Accuracy=96.5%
+Batch 19. Accuracy=86.7%
+Batch 20. Accuracy=88.7%
+Batch 21. Accuracy=85.9%
+Batch 22. Accuracy=91.0%
+Batch 23. Accuracy=83.6%
+Batch 24. Accuracy=85.5%
+Batch 25. Accuracy=94.1%
+Batch 26. Accuracy=91.8%
+Batch 27. Accuracy=93.8%
+Batch 28. Accuracy=96.5%
+Batch 29. Accuracy=84.0%
+Batch 30. Accuracy=85.5%
+Batch 31. Accuracy=80.9%
+Batch 32. Accuracy=67.6%
+Batch 33. Accuracy=83.6%
+Batch 34. Accuracy=88.3%
+Batch 35. Accuracy=83.6%
+Batch 36. Accuracy=76.6%
+Batch 37. Accuracy=76.6%
+Batch 38. Accuracy=85.9%
+Batch 39. Accuracy=79.7%
+Batch 40. Accuracy=85.5%
+Batch 41. Accuracy=85.2%
+Batch 42. Accuracy=92.2%
+Batch 43. Accuracy=82.0%
+Batch 44. Accuracy=82.4%
+Batch 45. Accuracy=79.7%
+Batch 46. Accuracy=77.0%
+Batch 47. Accuracy=82.4%
+Batch 48. Accuracy=71.5%
+Batch 49. Accuracy=93.8%
+Batch 50. Accuracy=91.0%
+Batch 51. Accuracy=84.4%
+Batch 52. Accuracy=84.0%
+Batch 53. Accuracy=82.8%
+Batch 54. Accuracy=76.6%
+Batch 55. Accuracy=69.9%
+Batch 56. Accuracy=87.1%
+Batch 57. Accuracy=95.7%
+Batch 58. Accuracy=86.3%
+Batch 59. Accuracy=82.0%
+Batch 60. Accuracy=79.3%
+Batch 61. Accuracy=84.8%
+Batch 62. Accuracy=91.0%
+Batch 63. Accuracy=94.1%
+Batch 64. Accuracy=86.7%
+Batch 65. Accuracy=91.4%
+Batch 66. Accuracy=85.2%
+Batch 67. Accuracy=84.8%
+Batch 68. Accuracy=85.2%
+Batch 69. Accuracy=76.6%
+Batch 70. Accuracy=83.6%
+Batch 71. Accuracy=90.6%
+Batch 72. Accuracy=81.2%
+Batch 73. Accuracy=82.8%
+Batch 74. Accuracy=71.1%
+Batch 75. Accuracy=84.4%
+Batch 76. Accuracy=89.1%
+Batch 77. Accuracy=88.3%
+Batch 78. Accuracy=77.7%
+Batch 79. Accuracy=79.7%
+Batch 80. Accuracy=67.6%
+Batch 81. Accuracy=75.8%
+Batch 82. Accuracy=79.7%
+Batch 83. Accuracy=85.2%
+Batch 84. Accuracy=83.2%
+Batch 85. Accuracy=69.9%
+Batch 86. Accuracy=78.1%
+Batch 87. Accuracy=78.9%
+Batch 88. Accuracy=77.7%
+Batch 89. Accuracy=78.9%
+Batch 90. Accuracy=63.3%
+Batch 91. Accuracy=78.9%
+Batch 92. Accuracy=87.5%
+Batch 93. Accuracy=73.8%
+Batch 94. Accuracy=64.5%
+Batch 95. Accuracy=73.8%
+Batch 96. Accuracy=75.8%
+Batch 97. Accuracy=70.3%
+Batch 98. Accuracy=68.0%
+Batch 99. Accuracy=80.1%
+Batch 100. Accuracy=75.0%
+Batch 101. Accuracy=82.8%
+Batch 102. Accuracy=68.8%
+Batch 103. Accuracy=75.0%
+Batch 104. Accuracy=82.8%
+Batch 105. Accuracy=75.0%
+Batch 106. Accuracy=82.4%
+Batch 107. Accuracy=77.7%
+Batch 108. Accuracy=84.4%
+Batch 109. Accuracy=82.0%
+Batch 110. Accuracy=83.2%
+Batch 111. Accuracy=88.7%
+Batch 112. Accuracy=87.9%
+Batch 113. Accuracy=79.7%
+Batch 114. Accuracy=69.5%
+Batch 115. Accuracy=77.0%
+Batch 116. Accuracy=81.2%
+Batch 117. Accuracy=71.9%
+Batch 118. Accuracy=88.7%
+Batch 119. Accuracy=92.2%
+Batch 120. Accuracy=74.6%
+Batch 121. Accuracy=54.3%
+Batch 122. Accuracy=82.8%
+Batch 123. Accuracy=69.9%
+Batch 124. Accuracy=59.0%
+Batch 125. Accuracy=80.9%
+Batch 126. Accuracy=82.8%
+Batch 127. Accuracy=71.1%
+Batch 128. Accuracy=66.0%
+Batch 129. Accuracy=68.4%
+Batch 130. Accuracy=86.3%
+Batch 131. Accuracy=77.7%
+Batch 132. Accuracy=79.3%
+Batch 133. Accuracy=77.7%
+Batch 134. Accuracy=76.6%
+Batch 135. Accuracy=74.6%
+Batch 136. Accuracy=78.9%
+Batch 137. Accuracy=80.1%
+Batch 138. Accuracy=75.0%
+Batch 139. Accuracy=85.2%
+Batch 140. Accuracy=82.8%
+Batch 141. Accuracy=83.2%
+Batch 142. Accuracy=72.3%
+Batch 143. Accuracy=77.0%
+Batch 144. Accuracy=78.9%
+Batch 145. Accuracy=68.8%
+Batch 146. Accuracy=75.0%
+Batch 147. Accuracy=82.0%
+Batch 148. Accuracy=80.1%
+Batch 149. Accuracy=75.4%
+Batch 150. Accuracy=80.9%
+Batch 151. Accuracy=74.2%
+Batch 152. Accuracy=74.2%
+Batch 153. Accuracy=79.7%
+Batch 154. Accuracy=80.5%
+Batch 155. Accuracy=77.0%
+Batch 156. Accuracy=84.4%
+Batch 157. Accuracy=76.6%
+Batch 158. Accuracy=62.5%
+Batch 159. Accuracy=72.3%
+Batch 160. Accuracy=82.8%
+Batch 161. Accuracy=72.3%
+Batch 162. Accuracy=80.1%
+Batch 163. Accuracy=51.2%
+Batch 164. Accuracy=70.3%
+Batch 165. Accuracy=66.0%
+Batch 166. Accuracy=85.9%
+Batch 167. Accuracy=72.7%
+Batch 168. Accuracy=77.3%
+Batch 169. Accuracy=78.9%
+Batch 170. Accuracy=87.1%
+Batch 171. Accuracy=73.4%
+Batch 172. Accuracy=71.1%
+Batch 173. Accuracy=81.2%
+Batch 174. Accuracy=78.5%
+Batch 175. Accuracy=72.3%
+Batch 176. Accuracy=73.8%
+Batch 177. Accuracy=59.0%
+Batch 178. Accuracy=83.6%
+Batch 179. Accuracy=83.6%
+Batch 180. Accuracy=74.6%
+Batch 181. Accuracy=82.4%
+Batch 182. Accuracy=85.2%
+Batch 183. Accuracy=90.6%
+Batch 184. Accuracy=82.8%
+Batch 185. Accuracy=73.4%
+Batch 186. Accuracy=92.6%
+Batch 187. Accuracy=75.8%
+Batch 188. Accuracy=78.9%
+Batch 189. Accuracy=63.3%
+Batch 190. Accuracy=72.3%
+Batch 191. Accuracy=76.6%
+Batch 192. Accuracy=86.3%
+Batch 193. Accuracy=96.5%
+Batch 194. Accuracy=89.1%
+Batch 195. Accuracy=51.2%
 </pre></div>
 </div>
 </div>
@@ -1002,7 +1149,7 @@ Batch 48. Accuracy=84.1%
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Accuracy=80.1%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Accuracy=80.1420%
 </pre></div>
 </div>
 </div>
