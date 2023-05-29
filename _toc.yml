@@ -91,7 +91,7 @@ parts:
       - file: python_deep_learning/06-Keras-Classification.md
       - file: python_deep_learning/07-Convolution-Neural-Network.md
       - file: python_deep_learning/08-Recurrent-neural-networks.md
-    - file: python_big_data/00_index.md
+    - file: python_big_data/00-index.md
       sections:
       - file: python_big_data/01-introduction.md
       - file: python_big_data/02-cluster.md
