@@ -16,7 +16,7 @@
   - Use `<-` to assign values to variables.
   - Use `ls()` to list the variables in a program.
   - Use `rm()` to delete objects in a program.
-  - Use `sessionInfo()` to get detail of the current loaded environmemt and packages
+  - Use `sessionInfo()` to get detail of the current loaded environment and packages
 
 ```
 

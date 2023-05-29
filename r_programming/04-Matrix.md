@@ -33,7 +33,7 @@ a*b
 a/b
 ~~~
 
-- What if vector lenghts don't match?
+- What if vector lengths don't match?
 
 ~~~r
 a<-1:5
@@ -154,7 +154,7 @@ str[2:4]
 ~~~
 
 - You can see that we can use a vector to subset another vector.
-- Subsetting is very flexible. You can use a vector of logicals 
+- Subsetting is very flexible. You can use a vector of logical values 
 to subset another vector:
 
 ~~~r
@@ -180,7 +180,7 @@ a[!ind]
 ~~~
 
 - Subsetting matrices
-  - When subsettig a matrix, we use two indices (row and column):
+  - When subsetting a matrix, we use two indices (row and column):
 
 ~~~r
 m <- matrix(1:12,nrow=3,ncol=4)
@@ -241,7 +241,7 @@ list1$l1[3]
 :class: dropdown
 
 - Data frames are used to store tables, where columns 
-correspond to a particular variable, and rows correpond to 
+correspond to a particular variable, and rows correspond to 
 a particular observation. 
 
 - Data Frame characteristics:
@@ -334,7 +334,7 @@ names(saledata)
 write.csv(saledata,'SaleData.csv')
 ~~~
 
-- Here, we read a poam from an online text file, and save 
+- Here, we read a poem from an online text file, and save 
 ten lines in the working directory:
 
 ~~~r

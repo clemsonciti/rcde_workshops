@@ -178,7 +178,7 @@ x <- rep (3, 5)
 
 - If a vector is combined from variables of different 
 types, R tries to *coerce* them into the same type. 
-For example, logicals can be coerced into numbers (TRUE becomes 
+For example, logical values can be coerced into numbers (TRUE becomes 
 1, and FALSE becomes 0):
 
 ~~~r
