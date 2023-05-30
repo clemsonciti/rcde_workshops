@@ -64,7 +64,7 @@ qplot(Sepal.Length, Petal.Length, data=iris)
 
 - Notice that it already looks nicer than the basic R plots 
 we did in the last chapter. Now, let's plot different species 
-of iris with different colours and shapes:
+of iris with different colors and shapes:
 
 ~~~r
 qplot(Sepal.Length, Petal.Length, data=iris,

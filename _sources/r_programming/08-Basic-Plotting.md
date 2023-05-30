@@ -28,7 +28,7 @@
 
 ```
 
-```{admonition} Ploting system
+```{admonition} Plotting system
 :class: dropdown
 
 - There are 3 main plotting systems in R:
@@ -54,7 +54,7 @@
 
 - R is a data analysis language, so naturally it comes with many 
 built-in functions for plotting. Let's look at some of them, in 
-application to the `mtcars` datast.
+application to the `mtcars` data set.
 
 ~~~r
 data(mtcars)
@@ -65,7 +65,7 @@ print(mtcars)
 ~~~
 
 - First, let's make a bar plot of the miles-per-gallon values of the 32 
-cars. `col` specifies the colour.
+cars. `col` specifies the color.
 
 ~~~r
 barplot(mtcars$mpg, col="green")
