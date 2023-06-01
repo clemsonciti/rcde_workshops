@@ -64,6 +64,7 @@ parts:
       - file: python_programming/01-IntroToPython-I.ipynb
       - file: python_programming/02-IntroToPython-II.ipynb
       - file: python_programming/03-IntroToPython-III.ipynb
+      - file: python_programming/04-IntroToPython-IV.ipynb
     - file: python_sklearn/00-index.md
       sections:
       - file: python_sklearn/01-introduction.md
