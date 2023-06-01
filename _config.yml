@@ -12,7 +12,7 @@ execute:
   exclude_patterns:
     - 'pytorch/*.ipynb'
     - 'python_programming/03-IntroToPython-III.ipynb'
-    - 'python_programming/04-IntroToPython-IV.pynb'
+    - 'python_programming/04-IntroToPython-IV.ipynb'
 
 # Define the name of the latex output file for PDF builds
 latex:
