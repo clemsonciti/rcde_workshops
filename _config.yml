@@ -11,8 +11,8 @@ execute:
   execute_notebooks: force
   exclude_patterns:
     - 'pytorch/*.ipynb'
-    - 'python_programming/03-IntroToPythonIII.ipynb'
-    - 'python_programming/04-IntroToPythonIV.pynb'
+    - 'python_programming/03-IntroToPython-III.ipynb'
+    - 'python_programming/04-IntroToPython-IV.pynb'
 
 # Define the name of the latex output file for PDF builds
 latex:
