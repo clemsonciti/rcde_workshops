@@ -1,16 +1,22 @@
 #!/bin/bash
 
+build_error() {
+    echo "Build error detected!"
+    kill_background_server 2>/dev/null || true
+    echo "Stopped the server."
+    exit 1
+}
+
 run_build() {
-    conda run -n jupyter-book jupyter-book build .
+    conda run --no-capture-output -n jupyter-book jupyter-book build . \
+        || build_error
     echo "Build complete!"
     echo "You can access this at http://localhost:8080."
 }
 
 echo "Running initial build..."
-conda run -n jupyter-book jupyter-book clean .
+conda run --no-capture-output -n jupyter-book jupyter-book clean -a .
 run_build
-
-conda run -n jupyter-book jupyter-book build .
 
 echo "Starting server..."
 python3 -m http.server -d _build/html -b "0.0.0.0" 8080 &
