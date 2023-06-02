@@ -1,5 +1,5 @@
 #!/bin/bash
- 
+
  rm -Rf _build
 source activate jupyter-book
 jupyter-book build .
