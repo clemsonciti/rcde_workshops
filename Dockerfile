@@ -20,6 +20,3 @@ RUN apt-get update && \
 
 RUN useradd --create-home --shell /bin/bash jupyter
 USER jupyter
-
-
-ENTRYPOINT [ "/app/server.sh" ]
