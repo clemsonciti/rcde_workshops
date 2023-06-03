@@ -8,15 +8,15 @@ RUN conda create -n jupyter-book python==3.10.0 && \
         -c conda-forge \
         --file /opt/rcde_workshops/requirements.txt
 
-RUN mkdir /app
-VOLUME /app
-WORKDIR /app
-
 RUN conda init --system bash
 
 RUN apt-get update && \
     apt-get install -y inotify-tools && \
     apt-get clean
+
+RUN mkdir /app
+VOLUME /app
+WORKDIR /app
 
 RUN useradd --create-home --shell /bin/bash jupyter
 USER jupyter
