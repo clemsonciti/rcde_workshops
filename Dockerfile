@@ -11,8 +11,12 @@ RUN conda create -n jupyter-book python==3.10.0 && \
 RUN conda init --system bash
 
 RUN apt-get update && \
-    apt-get install -y inotify-tools && \
+    apt-get install -y inotify-tools python3-pyinotify && \
     apt-get clean
+
+# Add system packages to the conda environment so that pyinotify will be found.
+RUN echo "/usr/lib/python3/dist-packages" >> \
+    /opt/conda/envs/jupyter-book/lib/python3.10/site-packages/system-global.pth
 
 RUN mkdir /app
 VOLUME /app
