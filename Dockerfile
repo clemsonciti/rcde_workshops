@@ -22,5 +22,4 @@ RUN useradd --create-home --shell /bin/bash jupyter
 USER jupyter
 
 
-# ENTRYPOINT [ "conda", "run", "-n", "jupyter-book", "jupyter-book", "-h" ]
 ENTRYPOINT [ "/app/server.sh" ]

@@ -3,6 +3,7 @@ matplotlib
 pandas
 ghp-import
 jupyter-book
+livereload
 
 # temporarily pin:
 pydata-sphinx-theme==0.13.1
