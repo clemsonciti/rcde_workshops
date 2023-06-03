@@ -35,7 +35,7 @@ $ ./build.sh pages
 You can build and develop this site locally without installing any of the
 Python dependencies on your machine by using the Docker interface.
 
-### Initialization
+### Setting up the Docker Environment
 
 Before getting started, you will need to build the Docker image. This image
 will contain all of the dependencies for the project, so you will need to
@@ -47,7 +47,7 @@ To build the image, run:
 make docker
 ```
 
-### Live Development Server
+### Live Development Server with Docker
 
 The Docker setup for this project includes a live reload server that will
 serve the site on localhost:8080 and automatically re-build the site whenever
