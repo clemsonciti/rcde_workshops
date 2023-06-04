@@ -20,4 +20,7 @@ server.watch(
     ),
     ignore=should_ignore_file,
 )
+server.setHeader("Cache-Control", "no-cache, no-store, must-revalidate")
+server.setHeader("Pragma", "no-cache")
+server.setHeader("Expires", "0")
 server.serve(port=8080, host="0.0.0.0", root="./_build/html")
