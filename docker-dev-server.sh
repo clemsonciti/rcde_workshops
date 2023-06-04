@@ -11,4 +11,4 @@ conda run --no-capture-output -n jupyter-book jupyter-book build . \
     || build_error
 
 echo "Starting the live reload server..."
-conda run --no-capture-output -n jupyter-book ./server.py
+conda run --no-capture-output -n jupyter-book ./docker-livereload.py
