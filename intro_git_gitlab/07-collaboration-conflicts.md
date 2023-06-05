@@ -9,8 +9,20 @@ your local computer to interact with it.
 
 ### Cloning
 
+A live demonstration will be provided during the workshop. These materials will
+be updated later.
+
 ### Pushing
+
+A live demonstration will be provided during the workshop. These materials will
+be updated later.
 
 ### Pulling
 
+A live demonstration will be provided during the workshop. These materials will
+be updated later.
+
 ### Resolving Merge Conflicts
+
+A live demonstration will be provided during the workshop. These materials will
+be updated later.
