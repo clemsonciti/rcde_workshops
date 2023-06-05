@@ -18,9 +18,10 @@ RUN apt-get update && \
 RUN echo "/usr/lib/python3/dist-packages" >> \
     /opt/conda/envs/jupyter-book/lib/python3.10/site-packages/system-global.pth
 
-RUN mkdir /app
+RUN useradd --create-home --shell /bin/bash jupyter
+
+RUN mkdir /app && chown jupyter:jupyter /app
 VOLUME /app
 WORKDIR /app
 
-RUN useradd --create-home --shell /bin/bash jupyter
 USER jupyter
