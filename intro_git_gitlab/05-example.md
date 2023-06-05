@@ -33,7 +33,7 @@ $ ls
 file1 file2 file3
 ```
 
-### Initializing the Repository
+## Initializing the Repository
 
 Now that we have some example content, we can start tracking this project with
 Git. The `git init` command will create a new Git repository in the current
@@ -75,7 +75,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 In this case, you can see that all three of the files are currently
 **untracked** since they have not been committed to the repository before.
 
-### Our First Commit
+## Our First Commit
 
 Let's move these files onto the stage using `git add` and then check the status
 again.
@@ -131,7 +131,7 @@ On branch master
 nothing to commit, working tree clean
 ```
 
-### Making a Change
+## Making a Change
 
 Now, let's modify one of the original files that we committed. We can add a new
 line to `file3` that says "University" so we have the full school name.
