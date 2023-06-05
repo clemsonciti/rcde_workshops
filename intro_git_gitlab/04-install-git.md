@@ -3,6 +3,13 @@
 Before you can run any `git` commands, you must have a copy of Git installed on
 your computer.
 
+## Palmetto
+
+If you are on a **login or compute node** of the Palmetto Cluster, Git is
+**already installed** and available for use!
+
+Just type the `git` command at your terminal.
+
 ## Windows
 
 For Windows systems, download and run the installer from
