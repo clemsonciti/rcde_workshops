@@ -100,12 +100,12 @@ parts:
 - caption: Deep Learning
   chapters:
   - file: pytorch/00-index.md
-    sections: 
+    sections:
     - file: pytorch/01-pytorch_basics.ipynb
-    - file: pytorch/02-regression_and_classification.ipynb 
-    - file: pytorch/03-datasets.ipynb 
-    - file: pytorch/04-modules.ipynb 
-    - file: pytorch/05-cnn_emnist.ipynb 
+    - file: pytorch/02-regression_and_classification.ipynb
+    - file: pytorch/03-datasets.ipynb
+    - file: pytorch/04-modules.ipynb
+    - file: pytorch/05-cnn_emnist.ipynb
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md
@@ -118,3 +118,15 @@ parts:
       - file: advanced_scheduling/01-introduction.md
       - file: advanced_scheduling/02-dockers.md
       - file: advanced_scheduling/03-apptainers.md
+- caption: Software Development Life Cycle
+  chapters:
+    - file: intro_git_gitlab/00-index.md
+      sections:
+      - file: intro_git_gitlab/01-version-control.md
+      - file: intro_git_gitlab/02-git-workflow.md
+      - file: intro_git_gitlab/03-git-commands.md
+      - file: intro_git_gitlab/04-install-git.md
+      - file: intro_git_gitlab/05-example.md
+      - file: intro_git_gitlab/06-gitlab.md
+      - file: intro_git_gitlab/07-collaboration-conflicts.md
+      - file: intro_git_gitlab/09-more-resources.md

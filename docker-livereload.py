@@ -28,6 +28,7 @@ server.watch(
         cwd=".",
     ),
     ignore=should_ignore_file,
+    delay=5,
 )
 server.setHeader("Cache-Control", "no-cache, no-store, must-revalidate")
 server.setHeader("Pragma", "no-cache")
