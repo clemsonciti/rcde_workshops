@@ -21,10 +21,11 @@ RUN echo "/usr/lib/python3/dist-packages" >> \
 RUN useradd --create-home --shell /bin/bash jupyter
 
 RUN mkdir /app && \
-    chown jupyter:jupyter /app && \
-    git config --global --add safe.directory /app
+    chown jupyter:jupyter /app
 
 VOLUME /app
 WORKDIR /app
 
 USER jupyter
+
+RUN git config --global --add safe.directory /app
