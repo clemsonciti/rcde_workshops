@@ -41,6 +41,32 @@ To save space, Git will not save a copy of each file in your repository in every
 commit. Instead, each commit will record what has changed since the commit
 before it.
 
+## The Staging Area
+
+Before performing any Git operations, it is critical that you understand the
+three main states that a file can be in.
+
+Your project folder is considered your **working directory**. When you make
+changes to files in this directory, they are not immediately reflected in the
+project's history.
+
+To record a new version of your project, you must first decide which changes you
+want to be included in the next version. Let's say you have modified a few files
+and are ready to include them in the next version of your project. To do this,
+you must add the changes to the **staging area**.
+
+When you **make a commit**, the changes in the staging area are recorded in the
+history as a new version. After making a commit, the staging area is empty.
+
+```{figure} ../fig/intro_git_gitlab/git_areas.png
+---
+width: 80%
+---
+Diagram showing the different areas of a Git directory. <br />
+Source: _Pro Git_ by Scott Chacon and Ben Straub, licensed under
+[CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/).
+```
+
 ## States of a File
 
 Git does **not** automatically save a version for you each time you save a file
@@ -59,7 +85,3 @@ Diagram showing the states of a file in Git. <br /> Source: _Pro Git_ by Scott
 Chacon and Ben Straub, licensed under
 [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/).
 ```
-
-## The Stage
-
-## Commits
