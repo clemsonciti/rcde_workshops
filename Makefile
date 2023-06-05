@@ -23,7 +23,7 @@ docker-clean:
 .PHONY: docker-deploy
 docker-deploy: docker-stop-all docker-clean docker-build
 	DKR_GIT_NAME="$$(git config --get user.name)" \
-	DKR_GIT_EMAIL"$$(git config --get user.email)" \
+	DKR_GIT_EMAIL="$$(git config --get user.email)" \
 		docker compose up deployer
 	git push --force origin gh-pages
 
