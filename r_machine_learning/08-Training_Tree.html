@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Training Machine Learning model using Tree-based model &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Machine Learning model using Ensemble approach" href="09-Training_Ensemble.html" />
     <link rel="prev" title="Nearest Neighbours Classification" href="07-KNN.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -472,7 +485,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="training-machine-learning-model-using-tree-based-model">
-<h1>Training Machine Learning model using Tree-based model<a class="headerlink" href="#training-machine-learning-model-using-tree-based-model" title="Permalink to this heading">#</a></h1>
+<h1>Training Machine Learning model using Tree-based model<a class="headerlink" href="#training-machine-learning-model-using-tree-based-model" title="Permalink to this headline">#</a></h1>
 <p>teaching: 20
 exercises: 0
 questions:</p>
@@ -484,7 +497,7 @@ keypoints:</p></li>
 <li><p>“Decision Tree, Random Forest”</p></li>
 </ul>
 <section id="training-the-model-using-decision-trees">
-<h2>Training the model using Decision Trees<a class="headerlink" href="#training-the-model-using-decision-trees" title="Permalink to this heading">#</a></h2>
+<h2>Training the model using Decision Trees<a class="headerlink" href="#training-the-model-using-decision-trees" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Decision trees can take inputs where some variables are numerical and some are categorical</p></li>
 <li><p>Very handy when dealing with demographic data (gender, age, education level)</p></li>
@@ -496,7 +509,7 @@ keypoints:</p></li>
 <img alt="image" src="https://user-images.githubusercontent.com/43855029/114233972-198a7280-994c-11eb-9f4f-da4ed958961e.png" /></p></li>
 </ul>
 <section id="spliting-algorithm">
-<h3>Spliting algorithm<a class="headerlink" href="#spliting-algorithm" title="Permalink to this heading">#</a></h3>
+<h3>Spliting algorithm<a class="headerlink" href="#spliting-algorithm" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Gini Impurity: (Categorical)</p></li>
 <li><p>Chi-Square index (Categorical)</p></li>
@@ -508,7 +521,7 @@ keypoints:</p></li>
 ![image](https://user-images.githubusercontent.com/43855029/114234120-548ca600-994c-11eb-889e-e8ec6d313e52.png) -->
 </section>
 <section id="implementation">
-<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h3>
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
 <p>Here we will use <code class="docutils literal notranslate"><span class="pre">iris</span></code> data</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
@@ -543,7 +556,7 @@ Apply decision tree model to predict output of testing data</p>
 </section>
 </section>
 <section id="train-model-using-random-forest">
-<h2>Train model using Random Forest<a class="headerlink" href="#train-model-using-random-forest" title="Permalink to this heading">#</a></h2>
+<h2>Train model using Random Forest<a class="headerlink" href="#train-model-using-random-forest" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/115076000-f3278280-9ec9-11eb-89b4-b07f3713b105.png" /></p>
 <ul class="simple">
 <li><p>A single decision tree is prone to overfitting. A solution is to grow a number of decision trees, i.e. a forest.</p></li>
@@ -563,7 +576,7 @@ Apply decision tree model to predict output of testing data</p>
 ![image](https://user-images.githubusercontent.com/43855029/114235213-daf5b780-994d-11eb-83f8-ac7520749dbe.png)
 -->
 <section id="implementation-of-random-forest">
-<h3>Implementation of Random Forest<a class="headerlink" href="#implementation-of-random-forest" title="Permalink to this heading">#</a></h3>
+<h3>Implementation of Random Forest<a class="headerlink" href="#implementation-of-random-forest" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Run the following on console:</p></li>
 </ul>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Evaluation Metrics with caret &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Machine Learning model using Regression Method" href="05-Training_Regression.html" />
     <link rel="prev" title="Data Partition with caret" href="03-Caret-Data-Partition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -466,13 +479,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="evaluation-metrics-with-caret">
-<h1>Evaluation Metrics with caret<a class="headerlink" href="#evaluation-metrics-with-caret" title="Permalink to this heading">#</a></h1>
+<h1>Evaluation Metrics with caret<a class="headerlink" href="#evaluation-metrics-with-caret" title="Permalink to this headline">#</a></h1>
 <section id="evaluation-of-prediction">
-<h2>Evaluation of prediction<a class="headerlink" href="#evaluation-of-prediction" title="Permalink to this heading">#</a></h2>
+<h2>Evaluation of prediction<a class="headerlink" href="#evaluation-of-prediction" title="Permalink to this headline">#</a></h2>
 <p>Here, we will discuss how we can evaluate our prediction. This process is somewhat different depending on whether we predict numerical outouts (regression) or categorical outputs (classification).</p>
 </section>
 <section id="classification-model">
-<h2>Classification model<a class="headerlink" href="#classification-model" title="Permalink to this heading">#</a></h2>
+<h2>Classification model<a class="headerlink" href="#classification-model" title="Permalink to this headline">#</a></h2>
 <p>Let’s do our first prediction. Let’s predict the species of irises from the 4 variables (sepal / petal width and length). First, let’s train the model:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">train_inputs</span><span class="o">=</span><span class="n">training</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span>
 <span class="n">train_outputs</span><span class="o">=</span><span class="n">training</span><span class="p">[,</span><span class="m">5</span><span class="p">]</span>
@@ -507,7 +520,7 @@ document.write(`
 </ul>
 </section>
 <section id="regression-model">
-<h2>Regression model<a class="headerlink" href="#regression-model" title="Permalink to this heading">#</a></h2>
+<h2>Regression model<a class="headerlink" href="#regression-model" title="Permalink to this headline">#</a></h2>
 <p>Now, let’s do rergession – that is, let’s try to predict a numerical (continuous) outcome. We will use the <code class="docutils literal notranslate"><span class="pre">mtcars</span></code> dataset to predict miles-per-gallon from the car’s weight, number of cylinders, and other variables. This time, we will do a leave-one-out: for each car, we will exclude it from the training set; use all remaining cars to train the model; and apply the model to predict the MPG of the excluded car. We will use Linear Model (LM) as the method of our prediction.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)[</span><span class="m">1</span><span class="p">])</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">dim</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>

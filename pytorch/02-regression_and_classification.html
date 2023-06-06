@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Regression and Classification with Fully Connected Neural Networks &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Datasets and data loading" href="03-datasets.html" />
     <link rel="prev" title="PyTorch Basics" href="01-pytorch_basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -308,6 +307,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -495,7 +508,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="regression-and-classification-with-fully-connected-neural-networks">
-<h1>Regression and Classification with Fully Connected Neural Networks<a class="headerlink" href="#regression-and-classification-with-fully-connected-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Regression and Classification with Fully Connected Neural Networks<a class="headerlink" href="#regression-and-classification-with-fully-connected-neural-networks" title="Permalink to this headline">#</a></h1>
 <p>Deep learning is a large, developing field with many sub-communities, a constant stream of new developments, and unlimited application areas. Despite this complexity, most deep learning techniques share a relatively small set of algorithmic building blocks. The purpose of this notebook is to gain familiarity with some of these core concepts. Much of the intuition you develop here is applicable to the neural networks making headline news from the likes of OpenAI. To focus this notebook, we will consider the two main types of supervised machine learning:</p>
 <ol class="arabic simple">
 <li><p>Regression: estimation of continuous quantities</p></li>
@@ -519,9 +532,9 @@ document.write(`
 </div>
 </div>
 <section id="tasks-to-solve-in-this-notebook">
-<h2>Tasks to solve in this notebook<a class="headerlink" href="#tasks-to-solve-in-this-notebook" title="Permalink to this heading">#</a></h2>
+<h2>Tasks to solve in this notebook<a class="headerlink" href="#tasks-to-solve-in-this-notebook" title="Permalink to this headline">#</a></h2>
 <section id="regression">
-<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">#</a></h3>
+<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make some fake regression data</span>
@@ -548,7 +561,7 @@ document.write(`
 </div>
 </section>
 <section id="classification">
-<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h3>
+<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fake classification data</span>
@@ -582,9 +595,9 @@ document.write(`
 </section>
 </section>
 <section id="the-simplest-deep-learning-model-linear-regression">
-<h2>The Simplest “Deep Learning” Model: Linear Regression<a class="headerlink" href="#the-simplest-deep-learning-model-linear-regression" title="Permalink to this heading">#</a></h2>
+<h2>The Simplest “Deep Learning” Model: Linear Regression<a class="headerlink" href="#the-simplest-deep-learning-model-linear-regression" title="Permalink to this headline">#</a></h2>
 <section id="initializing-our-model">
-<h3>Initializing our model<a class="headerlink" href="#initializing-our-model" title="Permalink to this heading">#</a></h3>
+<h3>Initializing our model<a class="headerlink" href="#initializing-our-model" title="Permalink to this headline">#</a></h3>
 <p>Good old fashioned linear model: <span class="math notranslate nohighlight">\(y = wx + b\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,7 +664,7 @@ document.write(`
 </div>
 </section>
 <section id="anatomy-of-a-training-loop">
-<h3>Anatomy of a training loop<a class="headerlink" href="#anatomy-of-a-training-loop" title="Permalink to this heading">#</a></h3>
+<h3>Anatomy of a training loop<a class="headerlink" href="#anatomy-of-a-training-loop" title="Permalink to this headline">#</a></h3>
 <p>Basic idea:</p>
 <ul class="simple">
 <li><p>Start with random parameter values</p></li>
@@ -739,9 +752,9 @@ Epoch 81. MSE Loss = 6.793
 </section>
 <hr class="docutils" />
 <section id="linear-classification">
-<h2>Linear classification<a class="headerlink" href="#linear-classification" title="Permalink to this heading">#</a></h2>
+<h2>Linear classification<a class="headerlink" href="#linear-classification" title="Permalink to this headline">#</a></h2>
 <section id="a-slight-modification-to-the-model">
-<h3>A slight modification to the model<a class="headerlink" href="#a-slight-modification-to-the-model" title="Permalink to this heading">#</a></h3>
+<h3>A slight modification to the model<a class="headerlink" href="#a-slight-modification-to-the-model" title="Permalink to this headline">#</a></h3>
 <p>We need to modify our model because the outputs are true/false</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -886,7 +899,7 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
 </div>
 </section>
 <section id="training-loop">
-<h3>Training loop<a class="headerlink" href="#training-loop" title="Permalink to this heading">#</a></h3>
+<h3>Training loop<a class="headerlink" href="#training-loop" title="Permalink to this headline">#</a></h3>
 <p>The main difference between regression and classification is the loss function. For regression, we used mean squared error. For classification, we will use cross-entropy loss. This loss formula encourages the model to output low values for <span class="math notranslate nohighlight">\(p(y=1|x)\)</span> when the class is 0 and high values when the class is 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -969,16 +982,16 @@ Epoch 901. MSE Loss = 0.672
 </section>
 <hr class="docutils" />
 <section id="summing-up-linear-models">
-<h3>Summing up linear models<a class="headerlink" href="#summing-up-linear-models" title="Permalink to this heading">#</a></h3>
+<h3>Summing up linear models<a class="headerlink" href="#summing-up-linear-models" title="Permalink to this headline">#</a></h3>
 <p>Sometimes linear models can be a good approximation to our data. Sometimes not.</p>
 <p>Linear models tend to be <em>biased</em> in the statistical sense of the word. That is, they enforce linearity in the form of linear regression lines or linear decision boundaries. The linear model will fail to the degree that the real-world data is non-linear.</p>
 </section>
 </section>
 <section id="getting-non-linear-with-fully-connected-neural-networks">
-<h2>Getting non-linear with fully-connected neural networks<a class="headerlink" href="#getting-non-linear-with-fully-connected-neural-networks" title="Permalink to this heading">#</a></h2>
+<h2>Getting non-linear with fully-connected neural networks<a class="headerlink" href="#getting-non-linear-with-fully-connected-neural-networks" title="Permalink to this headline">#</a></h2>
 <p>We can compose simple math operations together to represent very complex functions.</p>
 <img src="https://github.com/clemsonciti/rcde_workshops/raw/master/pytorch/fig_ann.png" alt="grad descent" width="500"/><section id="a-few-helper-functions">
-<h3>A few helper functions<a class="headerlink" href="#a-few-helper-functions" title="Permalink to this heading">#</a></h3>
+<h3>A few helper functions<a class="headerlink" href="#a-few-helper-functions" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_and_test_regression_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
@@ -1055,7 +1068,7 @@ Epoch 901. MSE Loss = 0.672
 </div>
 </section>
 <section id="id1">
-<h3>Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Regression<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>What about nested linear models? Might this do something interesting?
 $<span class="math notranslate nohighlight">\(
 y = w_1(w_0 x + b_0) + b_1
@@ -1206,7 +1219,7 @@ Epoch 45001. MSE Loss = 1.219
 </div>
 </section>
 <section id="id2">
-<h3>Classification<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Classification<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>Let’s apply the same non-linear treatment to the case of classification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1298,7 +1311,7 @@ Epoch 27001. MSE Loss = 0.136
 </div>
 </section>
 <section id="summing-up-fully-connected-neural-networks">
-<h3>Summing up fully connected neural networks<a class="headerlink" href="#summing-up-fully-connected-neural-networks" title="Permalink to this heading">#</a></h3>
+<h3>Summing up fully connected neural networks<a class="headerlink" href="#summing-up-fully-connected-neural-networks" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Fully connected neural networks can represent highly non-linear functions</p></li>
 <li><p>We can learn good functions through gradient descent</p></li>
@@ -1308,7 +1321,7 @@ Epoch 27001. MSE Loss = 0.136
 </section>
 </section>
 <section id="high-dimensional-data">
-<h2>High Dimensional Data<a class="headerlink" href="#high-dimensional-data" title="Permalink to this heading">#</a></h2>
+<h2>High Dimensional Data<a class="headerlink" href="#high-dimensional-data" title="Permalink to this headline">#</a></h2>
 <p>For high-dimensional data, it is not possible to get a dense sampling of the data space. Consider the following analogy. Imagine we are measuring the temperatures of spaces with growing numbers of dimensions. We have sensors that measure reliably within a “volume” 1mm in extent. Outside of that volume, the temperature may change, so we need lots of sensors to map the temperature through the space.</p>
 <ul class="simple">
 <li><p>1D space: The total space is 1 m. You are given 100 sensors; each 1mm extent. The most you could fill up is 1/10th of the space</p></li>
@@ -1327,7 +1340,7 @@ Epoch 27001. MSE Loss = 0.136
 <p><strong>Question</strong>: How might THE CURSE OF DIMENSIONALITY pose a problem for real-world tasks like computer vision for autonomous driving?</p>
 <hr class="docutils" />
 <section id="fake-high-dimensional-data">
-<h3>Fake high-dimensional data<a class="headerlink" href="#fake-high-dimensional-data" title="Permalink to this heading">#</a></h3>
+<h3>Fake high-dimensional data<a class="headerlink" href="#fake-high-dimensional-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random seeds for reproducibility</span>
@@ -1378,7 +1391,7 @@ Epoch 27001. MSE Loss = 0.136
 </div>
 </section>
 <section id="splitting-into-train-test">
-<h3>Splitting into train/test<a class="headerlink" href="#splitting-into-train-test" title="Permalink to this heading">#</a></h3>
+<h3>Splitting into train/test<a class="headerlink" href="#splitting-into-train-test" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train/test split</span>
@@ -1398,7 +1411,7 @@ Epoch 27001. MSE Loss = 0.136
 </div>
 </section>
 <section id="fitting-a-model">
-<h3>Fitting a model<a class="headerlink" href="#fitting-a-model" title="Permalink to this heading">#</a></h3>
+<h3>Fitting a model<a class="headerlink" href="#fitting-a-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper function for training/evaluation</span>
@@ -1496,7 +1509,7 @@ Epoch 27001. MSE Loss = 0.136
 </div>
 </section>
 <section id="summing-up-high-dimensional-data">
-<h3>Summing up high dimensional data<a class="headerlink" href="#summing-up-high-dimensional-data" title="Permalink to this heading">#</a></h3>
+<h3>Summing up high dimensional data<a class="headerlink" href="#summing-up-high-dimensional-data" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Overfitting problems become much worse for high-dimensional data due to the curse of dimensionality</p></li>
 <li><p>To test for overfitting, it is critical to evaluate your model on different data than you used to train your model</p></li>

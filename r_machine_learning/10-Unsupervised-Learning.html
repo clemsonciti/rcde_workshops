@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Unsupervised Learning &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Neural Network" href="11-Neural-Network.html" />
     <link rel="prev" title="Training Machine Learning model using Ensemble approach" href="09-Training_Ensemble.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -473,7 +486,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="unsupervised-learning">
-<h1>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this heading">#</a></h1>
+<h1>Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">#</a></h1>
 <p>teaching: 20
 exercises: 0
 questions:</p>
@@ -485,9 +498,9 @@ keypoints:</p></li>
 <li><p>“K-mean”</p></li>
 </ul>
 <section id="k-means-clustering">
-<h2>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this heading">#</a></h2>
+<h2>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">#</a></h2>
 <section id="explanation-of-k-means-clustering-method">
-<h3>Explanation of K-means clustering method:<a class="headerlink" href="#explanation-of-k-means-clustering-method" title="Permalink to this heading">#</a></h3>
+<h3>Explanation of K-means clustering method:<a class="headerlink" href="#explanation-of-k-means-clustering-method" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Given a set of data, we choose K=2 clusters to be split into:</p></li>
 </ul>
@@ -514,12 +527,12 @@ keypoints:</p></li>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585223-6b374380-9c51-11eb-8663-27474956ec61.png" /></p>
 </section>
 <section id="example-with-k-3">
-<h3>Example with K=3<a class="headerlink" href="#example-with-k-3" title="Permalink to this heading">#</a></h3>
+<h3>Example with K=3<a class="headerlink" href="#example-with-k-3" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585361-8e61f300-9c51-11eb-965e-dc4d57e9c0eb.png" /></p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585502-b81b1a00-9c51-11eb-8015-973216b450ce.png" /></p>
 </section>
 <section id="implementation">
-<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h3>
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Run the following in console</p></li>
 </ul>
@@ -545,9 +558,9 @@ keypoints:</p></li>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114585677-e567c800-9c51-11eb-8cb4-6db443f0698b.png" /></p>
 </section>
 <section id="how-to-find-optimal-k-values">
-<h3>How to find optimal K values:<a class="headerlink" href="#how-to-find-optimal-k-values" title="Permalink to this heading">#</a></h3>
+<h3>How to find optimal K values:<a class="headerlink" href="#how-to-find-optimal-k-values" title="Permalink to this headline">#</a></h3>
 <section id="elbow-approach">
-<h4>Elbow approach<a class="headerlink" href="#elbow-approach" title="Permalink to this heading">#</a></h4>
+<h4>Elbow approach<a class="headerlink" href="#elbow-approach" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Similar to KNN method for supervised learning, for K-means approach, we are able to use Elbow approach to find the optimal K values.</p></li>
 <li><p>The Elbow approach ues the Within-Cluster Sum of Square (WSS) to measure the compactness of the clusters:

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Recap on ANN &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to Keras" href="04-Intro-to-Keras.html" />
     <link rel="prev" title="Deep Learning Library Framework" href="02-Deep-Learning-Framework.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -475,9 +488,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="recap-on-ann">
-<h1>Recap on ANN<a class="headerlink" href="#recap-on-ann" title="Permalink to this heading">#</a></h1>
+<h1>Recap on ANN<a class="headerlink" href="#recap-on-ann" title="Permalink to this headline">#</a></h1>
 <section id="recap-on-artificial-neural-network-ann">
-<h2>Recap on Artificial Neural Network (ANN)<a class="headerlink" href="#recap-on-artificial-neural-network-ann" title="Permalink to this heading">#</a></h2>
+<h2>Recap on Artificial Neural Network (ANN)<a class="headerlink" href="#recap-on-artificial-neural-network-ann" title="Permalink to this headline">#</a></h2>
 <p>Previous ANN in Machine Learning lecture can be found here: <a class="reference external" href="https://vuminhtue.github.io/Machine-Learning-Python/10-Neural-Network/index.html">https://vuminhtue.github.io/Machine-Learning-Python/10-Neural-Network/index.html</a></p>
 <ul class="simple">
 <li><p>Neural network is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.</p></li>
@@ -492,7 +505,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119180080-cf61da00-ba3d-11eb-9ad4-26c159a470be.png" /></p>
 <p>Deep Neural Network (multiple hidden layers)</p>
 <section id="forward-propagation-feed-forward">
-<h3>Forward Propagation (Feed-forward)<a class="headerlink" href="#forward-propagation-feed-forward" title="Permalink to this heading">#</a></h3>
+<h3>Forward Propagation (Feed-forward)<a class="headerlink" href="#forward-propagation-feed-forward" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>The process that data passes through multiple layers of neuron from input layer to output layers.</p></li>
 <li><p>The image below demonstrates that data from input layer passing through 1 neuron by connection through the dendrite with specific weight for each connection.</p></li>
@@ -503,7 +516,7 @@ document.write(`
 </ul>
 </section>
 <section id="backpropgation">
-<h3>Backpropgation<a class="headerlink" href="#backpropgation" title="Permalink to this heading">#</a></h3>
+<h3>Backpropgation<a class="headerlink" href="#backpropgation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Forward Propagation is fast but it has limitation that the weights and bias cannot be changed.</p></li>
 <li><p>In order to overcome this limitation, Backpropagation calculate the error between output and observered data and propagate the error back into the network and update the weights and biases</p></li>
@@ -512,7 +525,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119187908-f1605a00-ba47-11eb-8c78-9e459eaadea1.png" /></p>
 </section>
 <section id="activation-functions">
-<h3>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h3>
+<h3>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">#</a></h3>
 <p>Typical activation functions in Neural Network:</p>
 <ul class="simple">
 <li><p>Step Function (Binary Function)</p></li>
@@ -553,25 +566,25 @@ document.write(`
 </ul>
 </section>
 <section id="gradient-problem">
-<h3>Gradient problem<a class="headerlink" href="#gradient-problem" title="Permalink to this heading">#</a></h3>
+<h3>Gradient problem<a class="headerlink" href="#gradient-problem" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://towardsdatascience.com/the-vanishing-exploding-gradient-problem-in-deep-neural-networks-191358470c11">Gradient problem</a>
 When training a deep neural network with gradient based learning and backpropagation, we find the partial derivatives by traversing the network from the the final layer to the initial layer. Using the chain rule, layers that are deeper into the network go through continuous matrix multiplications in order to compute their derivatives.</p>
 <section id="vanishing-gradient">
-<h4>Vanishing gradient<a class="headerlink" href="#vanishing-gradient" title="Permalink to this heading">#</a></h4>
+<h4>Vanishing gradient<a class="headerlink" href="#vanishing-gradient" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>In a network of <strong>n</strong> hidden layers, <strong>n</strong> derivatives will be multiplied together. If the derivatives are small then the gradient will decrease exponentially as we propagate through the model until it eventually vanishes</p></li>
 <li><p>The accumulation of small gradients results in a model that is incapable of learning meaningful insights since the weights and biases of the initial layers, which tends to learn the core features from the input data (X), will not be updated effectively. In the worst case scenario the gradient will be 0 which in turn will stop the network and stop further training.</p></li>
 </ul>
 </section>
 <section id="exploding-gradient">
-<h4>Exploding gradient<a class="headerlink" href="#exploding-gradient" title="Permalink to this heading">#</a></h4>
+<h4>Exploding gradient<a class="headerlink" href="#exploding-gradient" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>If the derivatives are large then the gradient will increase exponentially as we propagate down the model until they eventually explode, and this is what we call the problem of exploding gradient.</p></li>
 <li><p>The accumulation of large derivatives results in the model being very unstable and incapable of effective learning, The large changes in the models weights creates a very unstable network, which at extreme values the weights become so large that is causes overflow resulting in NaN weight values of which can no longer be updated.</p></li>
 </ul>
 </section>
 <section id="solution">
-<h4>Solution:<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<h4>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
 <p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/06/the-challenge-of-vanishing-exploding-gradients-in-deep-neural-networks/">Solution</a></p>
 <ul class="simple">
 <li><p>Reduce the amount of layer</p></li>

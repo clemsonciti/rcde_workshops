@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Python II &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to Python III" href="03-IntroToPython-III.html" />
     <link rel="prev" title="Introduction to Python I" href="01-IntroToPython-I.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -490,7 +503,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python-ii">
-<h1>Introduction to Python II<a class="headerlink" href="#introduction-to-python-ii" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to Python II<a class="headerlink" href="#introduction-to-python-ii" title="Permalink to this headline">#</a></h1>
 <p>In today’s workshop we will learn about Python functions and popular Libraries: Numpy and Matplotlib</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,7 +515,7 @@ document.write(`
 </div>
 </div>
 <section id="workshop-setup">
-<h2>Workshop Setup<a class="headerlink" href="#workshop-setup" title="Permalink to this heading">#</a></h2>
+<h2>Workshop Setup<a class="headerlink" href="#workshop-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -515,13 +528,13 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
 <section id="creating-a-function-from-scratch">
-<h2>Creating a function from scratch<a class="headerlink" href="#creating-a-function-from-scratch" title="Permalink to this heading">#</a></h2>
+<h2>Creating a function from scratch<a class="headerlink" href="#creating-a-function-from-scratch" title="Permalink to this headline">#</a></h2>
 <section id="a-simple-function">
-<h3>A simple function<a class="headerlink" href="#a-simple-function" title="Permalink to this heading">#</a></h3>
+<h3>A simple function<a class="headerlink" href="#a-simple-function" title="Permalink to this headline">#</a></h3>
 <section id="step-1">
-<h4>Step 1:<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h4>
+<h4>Step 1:<a class="headerlink" href="#step-1" title="Permalink to this headline">#</a></h4>
 <p>Defining a function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,7 +558,7 @@ document.write(`
 </div>
 </section>
 <section id="step-2">
-<h4>Step 2:<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h4>
+<h4>Step 2:<a class="headerlink" href="#step-2" title="Permalink to this headline">#</a></h4>
 <p>Adding a comment</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,7 +571,7 @@ document.write(`
 </div>
 </section>
 <section id="step-3">
-<h4>Step 3:<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h4>
+<h4>Step 3:<a class="headerlink" href="#step-3" title="Permalink to this headline">#</a></h4>
 <p>Adding a Docstring</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,7 +592,7 @@ document.write(`
 </div>
 </section>
 <section id="step-4">
-<h4>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this heading">#</a></h4>
+<h4>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this headline">#</a></h4>
 <p>Passing Arguments</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,7 +635,7 @@ document.write(`
 </div>
 </section>
 <section id="step-5">
-<h4>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this heading">#</a></h4>
+<h4>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this headline">#</a></h4>
 <p>Adding a default Argument</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -673,7 +686,7 @@ document.write(`
 </section>
 </section>
 <section id="recap-lists">
-<h3>Recap: Lists<a class="headerlink" href="#recap-lists" title="Permalink to this heading">#</a></h3>
+<h3>Recap: Lists<a class="headerlink" href="#recap-lists" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2D arrays --&gt; List of lists</span>
@@ -715,7 +728,7 @@ document.write(`
 </div>
 </section>
 <section id="recap-for-loops-list-comprehensions">
-<h3>Recap: For loops, List Comprehensions<a class="headerlink" href="#recap-for-loops-list-comprehensions" title="Permalink to this heading">#</a></h3>
+<h3>Recap: For loops, List Comprehensions<a class="headerlink" href="#recap-for-loops-list-comprehensions" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
@@ -777,7 +790,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-matrix-with-random-numbers">
-<h3>Creating Matrix with Random numbers<a class="headerlink" href="#creating-matrix-with-random-numbers" title="Permalink to this heading">#</a></h3>
+<h3>Creating Matrix with Random numbers<a class="headerlink" href="#creating-matrix-with-random-numbers" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
@@ -908,7 +921,7 @@ Wall time: 8.7 s
 </section>
 </section>
 <section id="using-numpy">
-<h2>Using Numpy<a class="headerlink" href="#using-numpy" title="Permalink to this heading">#</a></h2>
+<h2>Using Numpy<a class="headerlink" href="#using-numpy" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">np.</span></code> is a library prefix and helps identify from which library a particular function is being used/called.<br />
 For example, the random function exists in the <code class="docutils literal notranslate"><span class="pre">random</span></code> library and the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library.<br />
 Instead of typing the entire library name, we shorten it so that it is easier to type.<br />
@@ -1616,7 +1629,7 @@ Cannot reshape an array of length 20 into (2,5)</p>
 </div>
 </section>
 <section id="indexing-and-slicing">
-<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h2>
+<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#extracts the first row</span>
@@ -1732,7 +1745,7 @@ Cannot reshape an array of length 20 into (2,5)</p>
 </div>
 </section>
 <section id="numpy-universal-functions">
-<h2>Numpy Universal Functions<a class="headerlink" href="#numpy-universal-functions" title="Permalink to this heading">#</a></h2>
+<h2>Numpy Universal Functions<a class="headerlink" href="#numpy-universal-functions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t_mat</span><span class="p">)</span>
@@ -1812,7 +1825,7 @@ numpy.random.RandomState.standard_t
 </div>
 </section>
 <section id="conditonal-logic-with-numpy">
-<h2>Conditonal Logic with Numpy<a class="headerlink" href="#conditonal-logic-with-numpy" title="Permalink to this heading">#</a></h2>
+<h2>Conditonal Logic with Numpy<a class="headerlink" href="#conditonal-logic-with-numpy" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Boolean Operations</span>
@@ -1912,7 +1925,7 @@ numpy.random.RandomState.standard_t
 </div>
 </section>
 <section id="matplotlib-visualization-plotting-library">
-<h2>Matplotlib –&gt; visualization/plotting library<a class="headerlink" href="#matplotlib-visualization-plotting-library" title="Permalink to this heading">#</a></h2>
+<h2>Matplotlib –&gt; visualization/plotting library<a class="headerlink" href="#matplotlib-visualization-plotting-library" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>

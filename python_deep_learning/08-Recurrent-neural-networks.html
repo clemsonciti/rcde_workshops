@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Recurrent Neural Network for Timeseries forecasting &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Big Data Analytics in Python" href="../python_big_data/00-index.html" />
     <link rel="prev" title="Convolution Neural Network for image classification" href="07-Convolution-Neural-Network.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -507,11 +520,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="recurrent-neural-network-for-timeseries-forecasting">
-<h1>Recurrent Neural Network for Timeseries forecasting<a class="headerlink" href="#recurrent-neural-network-for-timeseries-forecasting" title="Permalink to this heading">#</a></h1>
+<h1>Recurrent Neural Network for Timeseries forecasting<a class="headerlink" href="#recurrent-neural-network-for-timeseries-forecasting" title="Permalink to this headline">#</a></h1>
 <section id="recurrent-neural-network">
-<h2>Recurrent Neural Network<a class="headerlink" href="#recurrent-neural-network" title="Permalink to this heading">#</a></h2>
+<h2>Recurrent Neural Network<a class="headerlink" href="#recurrent-neural-network" title="Permalink to this headline">#</a></h2>
 <section id="introduction">
-<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h3>
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>RNNs are type of Deep Learning models with built-in feedback mechanism.</p></li>
 <li><p>The output of a particular layer can be <strong>re-fed</strong> as the input in order to predict the output.</p></li>
@@ -524,17 +537,17 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/132911838-0ce7eb99-fd60-44c7-b554-d176fdb45f8b.png" /></p>
 </section>
 <section id="types-of-rnn">
-<h3>Types of RNN<a class="headerlink" href="#types-of-rnn" title="Permalink to this heading">#</a></h3>
+<h3>Types of RNN<a class="headerlink" href="#types-of-rnn" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/132903689-398ef108-660d-47ba-ae46-b783f203e307.png" /></p>
 </section>
 <section id="applications">
-<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h3>
+<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>It is specifically designed for Sequential problem <strong>Weather forecast, Stock forecast, Image captioning, Natural Language Processing, Speech/Voice Recognition</strong></p></li>
 </ul>
 </section>
 <section id="some-disadvantages-of-rnn">
-<h3>Some Disadvantages of RNN:<a class="headerlink" href="#some-disadvantages-of-rnn" title="Permalink to this heading">#</a></h3>
+<h3>Some Disadvantages of RNN:<a class="headerlink" href="#some-disadvantages-of-rnn" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Computationally Expensive and large memory requested</p></li>
 <li><p>RNN is sensitive to changes in parameters and having <strong>Exploding Gradient</strong> or <strong>Vanishing Gradient</strong></p></li>
@@ -544,9 +557,9 @@ document.write(`
 </section>
 </section>
 <section id="long-short-term-memory-model-lstm">
-<h2>Long-Short Term Memory model - LSTM<a class="headerlink" href="#long-short-term-memory-model-lstm" title="Permalink to this heading">#</a></h2>
+<h2>Long-Short Term Memory model - LSTM<a class="headerlink" href="#long-short-term-memory-model-lstm" title="Permalink to this headline">#</a></h2>
 <section id="id1">
-<h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>LSTMs are a special kind of RNN — capable of learning long-term dependencies by remembering information for long periods is the default behavior.</p></li>
 <li><p>They were introduced by Hochreiter &amp; Schmidhuber (1997) and were refined and popularized by many people</p></li>
@@ -554,21 +567,21 @@ document.write(`
 </ul>
 </section>
 <section id="comparison-between-traditional-rnn-and-lstm">
-<h3>Comparison between traditional RNN and LSTM<a class="headerlink" href="#comparison-between-traditional-rnn-and-lstm" title="Permalink to this heading">#</a></h3>
+<h3>Comparison between traditional RNN and LSTM<a class="headerlink" href="#comparison-between-traditional-rnn-and-lstm" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/132913273-1b7d4765-a8f2-4f2d-b3b9-6910d5d15807.png" /></p>
 </section>
 <section id="step-by-step-walkthrought-lstm">
-<h3>Step by step walkthrought LSTM:<a class="headerlink" href="#step-by-step-walkthrought-lstm" title="Permalink to this heading">#</a></h3>
+<h3>Step by step walkthrought LSTM:<a class="headerlink" href="#step-by-step-walkthrought-lstm" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Link</a></p>
 </section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="hands-on-exercise-on-application-of-lstm-in-temperature-forecast">
-<h1>Hands-on exercise on application of LSTM in temperature forecast<a class="headerlink" href="#hands-on-exercise-on-application-of-lstm-in-temperature-forecast" title="Permalink to this heading">#</a></h1>
+<h1>Hands-on exercise on application of LSTM in temperature forecast<a class="headerlink" href="#hands-on-exercise-on-application-of-lstm-in-temperature-forecast" title="Permalink to this headline">#</a></h1>
 <p>Here, we will access Keras LSTM to forecast temperature at site name Jena (Germany), given information of temperature and other climate variables.
 The tutorial following the <a class="reference external" href="https://keras.io/examples/timeseries/timeseries_weather_forecasting/">keras website</a>, but rewritten in a simpler way for easy understanding.</p>
 <section id="climate-data">
-<h2>Climate Data<a class="headerlink" href="#climate-data" title="Permalink to this heading">#</a></h2>
+<h2>Climate Data<a class="headerlink" href="#climate-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Single station named Jena station in Germany.</p></li>
 <li><p>Data consists of 14 climate variables in every 10 minutes</p></li>
@@ -582,12 +595,12 @@ The tutorial following the <a class="reference external" href="https://keras.io/
 </ul>
 </section>
 <section id="objective">
-<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h2>
+<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Using data from previous 5 days, forecast temperature in the next 12 hours</p></li>
 </ul>
 <section id="loading-library">
-<h3>Loading library:<a class="headerlink" href="#loading-library" title="Permalink to this heading">#</a></h3>
+<h3>Loading library:<a class="headerlink" href="#loading-library" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -606,13 +619,13 @@ The tutorial following the <a class="reference external" href="https://keras.io/
 </div>
 </section>
 <section id="loading-jena-climate-station-data">
-<h3>Loading Jena climate station data:<a class="headerlink" href="#loading-jena-climate-station-data" title="Permalink to this heading">#</a></h3>
+<h3>Loading Jena climate station data:<a class="headerlink" href="#loading-jena-climate-station-data" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/zfs/citi/workshop_data/python_ml/jena_climate_2009_2016.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="check-for-any-missing-value">
-<h3>Check for any missing value<a class="headerlink" href="#check-for-any-missing-value" title="Permalink to this heading">#</a></h3>
+<h3>Check for any missing value<a class="headerlink" href="#check-for-any-missing-value" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check missing value</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
@@ -638,7 +651,7 @@ The tutorial following the <a class="reference external" href="https://keras.io/
 <p>Now all input data is clean without any missing value. Next step, we gonna use LASSO for variable selection:</p>
 </section>
 <section id="variable-selection-with-lasso">
-<h3>Variable selection with LASSO<a class="headerlink" href="#variable-selection-with-lasso" title="Permalink to this heading">#</a></h3>
+<h3>Variable selection with LASSO<a class="headerlink" href="#variable-selection-with-lasso" title="Permalink to this headline">#</a></h3>
 <p>Create set of input/output data.
 Here, the output variable is “T (degC)”. However “Tpot (K)” and “Tdew (degC)” are very similar to the output, resulting in collinearity. Therefore, I would drop them off for now in order to check the influence of ther variables with the output:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df_knnimpute</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;T (degC)&#39;</span><span class="p">,</span><span class="s1">&#39;Tpot (K)&#39;</span><span class="p">,</span><span class="s1">&#39;Tdew (degC)&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
@@ -718,7 +731,7 @@ Therefore, we select all these variables into our input data together with T (de
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/133648740-4a4d8987-30d6-4ea1-b5a5-d814b4c81c1e.png" /></p>
 </section>
 <section id="data-partitioning">
-<h3>Data partitioning<a class="headerlink" href="#data-partitioning" title="Permalink to this heading">#</a></h3>
+<h3>Data partitioning<a class="headerlink" href="#data-partitioning" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Data was collected at interval 10 minutes or 6 times an hour. Thus, resample the input data to hourly with the <strong>sampling_rate</strong> argument: <strong>step=6</strong></p></li>
 <li><p>Using historical data of 5 days in the past: 5 x 24 x 6 = <strong>720 data points</strong></p></li>
@@ -760,10 +773,10 @@ Therefore, we select all these variables into our input data together with T (de
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/133648834-659d6af7-95de-4969-9a03-c6f1f49d4846.png" /></p>
 </section>
 <section id="selecting-input-output-for-training-testing-dataset">
-<h3>Selecting input/output for training/testing dataset:<a class="headerlink" href="#selecting-input-output-for-training-testing-dataset" title="Permalink to this heading">#</a></h3>
+<h3>Selecting input/output for training/testing dataset:<a class="headerlink" href="#selecting-input-output-for-training-testing-dataset" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/133829483-8190525b-d278-497c-af5c-73f5a372855d.png" /></p>
 <section id="training">
-<h4>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h4>
+<h4>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_ytrain</span> <span class="o">=</span> <span class="n">past</span> <span class="o">+</span> <span class="n">future</span>
 <span class="n">end_ytrain</span> <span class="o">=</span> <span class="n">train_split</span> <span class="o">+</span> <span class="n">start_ytrain</span>
 
@@ -775,7 +788,7 @@ Therefore, we select all these variables into our input data together with T (de
 </div>
 </section>
 <section id="testing">
-<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h4>
+<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start_ytest</span> <span class="o">=</span> <span class="n">end_ytrain</span>
 <span class="n">end_ytest</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span> <span class="o">-</span> <span class="n">past</span> <span class="o">-</span> <span class="n">future</span>
 
@@ -796,10 +809,10 @@ Therefore, we select all these variables into our input data together with T (de
 </section>
 </section>
 <section id="using-keras-to-split-training-testing-data-to-different-batch">
-<h3>Using Keras to split training/testing data to different batch:<a class="headerlink" href="#using-keras-to-split-training-testing-data-to-different-batch" title="Permalink to this heading">#</a></h3>
+<h3>Using Keras to split training/testing data to different batch:<a class="headerlink" href="#using-keras-to-split-training-testing-data-to-different-batch" title="Permalink to this headline">#</a></h3>
 <p>Here, we utilize the preprocessing time series feature of keras to split training/testing data into different batch:</p>
 <section id="id2">
-<h4>Training<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>Training<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">timeseries_dataset_from_array</span><span class="p">(</span>
     <span class="n">x_train</span><span class="p">,</span>
     <span class="n">y_train</span><span class="p">,</span>
@@ -822,7 +835,7 @@ Therefore, we select all these variables into our input data together with T (de
 </div>
 </section>
 <section id="id3">
-<h4>Testing<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>Testing<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_test</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">timeseries_dataset_from_array</span><span class="p">(</span>
     <span class="n">x_test</span><span class="p">,</span>
     <span class="n">y_test</span><span class="p">,</span>
@@ -846,7 +859,7 @@ Therefore, we select all these variables into our input data together with T (de
 </section>
 </section>
 <section id="build-deep-learning-model-with-lstm-framework">
-<h3>Build Deep learning model with LSTM framework:<a class="headerlink" href="#build-deep-learning-model-with-lstm-framework" title="Permalink to this heading">#</a></h3>
+<h3>Build Deep learning model with LSTM framework:<a class="headerlink" href="#build-deep-learning-model-with-lstm-framework" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
 <span class="n">lstm_out</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">lstm_out</span><span class="p">)</span>
@@ -873,7 +886,7 @@ Therefore, we select all these variables into our input data together with T (de
 </div>
 </section>
 <section id="train-the-lstm-model-and-vaidate-with-testing-data-set">
-<h3>Train the LSTM model and vaidate with testing data set:<a class="headerlink" href="#train-the-lstm-model-and-vaidate-with-testing-data-set" title="Permalink to this heading">#</a></h3>
+<h3>Train the LSTM model and vaidate with testing data set:<a class="headerlink" href="#train-the-lstm-model-and-vaidate-with-testing-data-set" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">dataset_train</span><span class="p">,</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
@@ -883,7 +896,7 @@ Therefore, we select all these variables into our input data together with T (de
 </div>
 </section>
 <section id="visualize-the-training-testing-loss-with-10-different-epoches">
-<h3>Visualize the Training &amp; Testing loss with 10 different epoches?<a class="headerlink" href="#visualize-the-training-testing-loss-with-10-different-epoches" title="Permalink to this heading">#</a></h3>
+<h3>Visualize the Training &amp; Testing loss with 10 different epoches?<a class="headerlink" href="#visualize-the-training-testing-loss-with-10-different-epoches" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_loss</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;loss&quot;</span><span class="p">]</span>
     <span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s2">&quot;val_loss&quot;</span><span class="p">]</span>
@@ -903,7 +916,7 @@ Therefore, we select all these variables into our input data together with T (de
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/133833536-c25e5c6d-8fff-4509-9786-aec2f94fd201.png" /></p>
 </section>
 <section id="save-load-the-lstm-trained-model">
-<h3>Save &amp; Load the LSTM trained model<a class="headerlink" href="#save-load-the-lstm-trained-model" title="Permalink to this heading">#</a></h3>
+<h3>Save &amp; Load the LSTM trained model<a class="headerlink" href="#save-load-the-lstm-trained-model" title="Permalink to this headline">#</a></h3>
 <p>Save LSTM model:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;LSTM_Jena.keras&#39;</span><span class="p">)</span>
 </pre></div>
@@ -914,7 +927,7 @@ Therefore, we select all these variables into our input data together with T (de
 </div>
 </section>
 <section id="prediction">
-<h3>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h3>
+<h3>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h3>
 <p>Modifying the given <a class="reference external" href="https://keras.io/examples/timeseries/timeseries_weather_forecasting/">code</a> to make predictions for 5 sets of values from validation set:</p>
 <p>First, we need to create a rescale function back to original scale for T (degC)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create transformation function to rescale back to original</span>

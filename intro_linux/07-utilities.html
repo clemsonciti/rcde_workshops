@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Utilities and Useful Information &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Workshop Conclusion" href="08-conclusion.html" />
     <link rel="prev" title="Finding Things" href="06-find.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -472,9 +485,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="utilities-and-useful-information">
-<h1>Utilities and Useful Information<a class="headerlink" href="#utilities-and-useful-information" title="Permalink to this heading">#</a></h1>
+<h1>Utilities and Useful Information<a class="headerlink" href="#utilities-and-useful-information" title="Permalink to this headline">#</a></h1>
 <section id="tab-completion">
-<h2>Tab completion<a class="headerlink" href="#tab-completion" title="Permalink to this heading">#</a></h2>
+<h2>Tab completion<a class="headerlink" href="#tab-completion" title="Permalink to this headline">#</a></h2>
 <p>Pressing <code class="docutils literal notranslate"><span class="pre">Tab</span></code> will attempt to autocomplete the command/filename/directory you are typing.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls long_file
 </pre></div>
@@ -485,7 +498,7 @@ document.write(`
 </div>
 </section>
 <section id="history">
-<h2>history<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<h2>history<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h2>
 <p>Bash will retain a history of the previous commands you entered. The <code class="docutils literal notranslate"><span class="pre">history</span></code> command will (by default on Palmetto) display the last 1000 commands.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ history
 </pre></div>
@@ -511,20 +524,20 @@ qsub myjob.pbs
 </div>
 </section>
 <section id="download-files-from-the-web">
-<h2>Download Files from the Web<a class="headerlink" href="#download-files-from-the-web" title="Permalink to this heading">#</a></h2>
+<h2>Download Files from the Web<a class="headerlink" href="#download-files-from-the-web" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">wget</span></code> is a useful utility to download files from websites.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://github.com/lammps/lammps/archive/refs/tags/stable_23Jun2022_update2.tar.gz
 </pre></div>
 </div>
 </section>
 <section id="compressing-files-and-directories">
-<h2>Compressing Files and Directories<a class="headerlink" href="#compressing-files-and-directories" title="Permalink to this heading">#</a></h2>
+<h2>Compressing Files and Directories<a class="headerlink" href="#compressing-files-and-directories" title="Permalink to this headline">#</a></h2>
 <section id="gzip">
-<h3>gzip<a class="headerlink" href="#gzip" title="Permalink to this heading">#</a></h3>
+<h3>gzip<a class="headerlink" href="#gzip" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">gzip</span> <span class="pre">file</span></code> will compress a file to <code class="docutils literal notranslate"><span class="pre">file.gz</span></code>. Uncompress with <code class="docutils literal notranslate"><span class="pre">gunzip</span> <span class="pre">file.gz</span></code>.</p>
 </section>
 <section id="tar">
-<h3>tar<a class="headerlink" href="#tar" title="Permalink to this heading">#</a></h3>
+<h3>tar<a class="headerlink" href="#tar" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">tar</span></code> can be used to create a (<strong>t</strong>ape) <strong>ar</strong>chive of files/folders.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tar czvf my_archive.tar.gz file1 [file2] [directory]
 </pre></div>
@@ -547,7 +560,7 @@ qsub myjob.pbs
 </section>
 </section>
 <section id="convert-a-windows-file-to-unix-format">
-<h2>Convert a Windows file to Unix format<a class="headerlink" href="#convert-a-windows-file-to-unix-format" title="Permalink to this heading">#</a></h2>
+<h2>Convert a Windows file to Unix format<a class="headerlink" href="#convert-a-windows-file-to-unix-format" title="Permalink to this headline">#</a></h2>
 <p>Copying a file from a Windows computer can cause issues since Windows editors like Notepad will end lines with CRLF line endings. Linux uses the Unix LF line endings.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dos2unix</span></code> command will convert the file to Unix format. You can confirm if a file is in the Windows format with <code class="docutils literal notranslate"><span class="pre">file</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ file copied_from_windows.txt

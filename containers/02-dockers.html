@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Docker Containers on CloudLab &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Singularity/Apptainers on Palmetto" href="03-apptainers.html" />
     <link rel="prev" title="Introduction to CloudLab" href="01-introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -515,9 +528,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="docker-containers-on-cloudlab">
-<h1>Docker Containers on CloudLab<a class="headerlink" href="#docker-containers-on-cloudlab" title="Permalink to this heading">#</a></h1>
+<h1>Docker Containers on CloudLab<a class="headerlink" href="#docker-containers-on-cloudlab" title="Permalink to this headline">#</a></h1>
 <section id="setup">
-<h2>1. Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2>1. Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Go to your previouysly created GitHub project repository (on the first day), create a new
 branch called <code class="docutils literal notranslate"><span class="pre">docker</span></code> from the <code class="docutils literal notranslate"><span class="pre">main</span></code> (or <code class="docutils literal notranslate"><span class="pre">master</span></code>) branch.</p></li>
@@ -549,39 +562,39 @@ components from <a class="reference external" href="https://github.com/CSC468-WC
 <img src="../fig/07-docker/00.png" style="height:100px">
 </section>
 <section id="why-do-we-want-container">
-<h2>1. Why do we want container?<a class="headerlink" href="#why-do-we-want-container" title="Permalink to this heading">#</a></h2>
+<h2>1. Why do we want container?<a class="headerlink" href="#why-do-we-want-container" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/01.png" style="height:400px">
 </section>
 <section id="the-issue-who-does-what">
-<h2>2. The issue: who does what?<a class="headerlink" href="#the-issue-who-does-what" title="Permalink to this heading">#</a></h2>
+<h2>2. The issue: who does what?<a class="headerlink" href="#the-issue-who-does-what" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/02.png" style="height:400px">
 </section>
 <section id="inspiration-for-docker">
-<h2>3. Inspiration for Docker<a class="headerlink" href="#inspiration-for-docker" title="Permalink to this heading">#</a></h2>
+<h2>3. Inspiration for Docker<a class="headerlink" href="#inspiration-for-docker" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/03.png" style="height:400px">
 </section>
 <section id="inspiration-for-docker-intermodal-shipping-containers">
-<h2>4. Inspiration for Docker: intermodal shipping containers<a class="headerlink" href="#inspiration-for-docker-intermodal-shipping-containers" title="Permalink to this heading">#</a></h2>
+<h2>4. Inspiration for Docker: intermodal shipping containers<a class="headerlink" href="#inspiration-for-docker-intermodal-shipping-containers" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/04.png" style="height:400px">
 </section>
 <section id="modern-shipping-ecosystem">
-<h2>5. Modern shipping ecosystem<a class="headerlink" href="#modern-shipping-ecosystem" title="Permalink to this heading">#</a></h2>
+<h2>5. Modern shipping ecosystem<a class="headerlink" href="#modern-shipping-ecosystem" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/05.png" style="height:400px">
 </section>
 <section id="a-shipping-container-system-for-applications">
-<h2>6. A shipping container system for applications<a class="headerlink" href="#a-shipping-container-system-for-applications" title="Permalink to this heading">#</a></h2>
+<h2>6. A shipping container system for applications<a class="headerlink" href="#a-shipping-container-system-for-applications" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/06.png" style="height:400px">
 </section>
 <section id="who-does-what-we-don-t-care">
-<h2>7. Who does what? We don’t care …<a class="headerlink" href="#who-does-what-we-don-t-care" title="Permalink to this heading">#</a></h2>
+<h2>7. Who does what? We don’t care …<a class="headerlink" href="#who-does-what-we-don-t-care" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/07.png" style="height:400px">
 </section>
 <section id="cloud-native-applications-on-container">
-<h2>8. Cloud-native applications on container<a class="headerlink" href="#cloud-native-applications-on-container" title="Permalink to this heading">#</a></h2>
+<h2>8. Cloud-native applications on container<a class="headerlink" href="#cloud-native-applications-on-container" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/08.png" style="height:400px">
 </section>
 <section id="hands-on-getting-started">
-<h2>9. Hands-on: Getting started<a class="headerlink" href="#hands-on-getting-started" title="Permalink to this heading">#</a></h2>
+<h2>9. Hands-on: Getting started<a class="headerlink" href="#hands-on-getting-started" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>SSH into your CloudLab experiment.</p></li>
 <li><p>Check version of Docker:</p></li>
@@ -603,7 +616,7 @@ and requires root privilege.</p></li>
 </ul>
 </section>
 <section id="hands-on-hello-world">
-<h2>10. Hands-on: Hello world<a class="headerlink" href="#hands-on-hello-world" title="Permalink to this heading">#</a></h2>
+<h2>10. Hands-on: Hello world<a class="headerlink" href="#hands-on-hello-world" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Docker <code class="docutils literal notranslate"><span class="pre">containers</span></code> are instantiated from Docker <code class="docutils literal notranslate"><span class="pre">images</span></code>.</p></li>
 <li><p>You can check availability of local <code class="docutils literal notranslate"><span class="pre">images</span></code> and <code class="docutils literal notranslate"><span class="pre">containers</span></code>.</p></li>
@@ -639,7 +652,7 @@ $ docker container ls --all
 <img src="../fig/07-docker/11.png" style="height:400px">
 </section>
 <section id="hands-on-interactive-container">
-<h2>11. Hands-on: Interactive container<a class="headerlink" href="#hands-on-interactive-container" title="Permalink to this heading">#</a></h2>
+<h2>11. Hands-on: Interactive container<a class="headerlink" href="#hands-on-interactive-container" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>We can launch a container and get into the shell of the container.</p></li>
 </ul>
@@ -659,7 +672,7 @@ $ docker container ls --all
 </ul>
 </section>
 <section id="hands-on-run-something-interactively">
-<h2>12. Hands-on: run something interactively<a class="headerlink" href="#hands-on-run-something-interactively" title="Permalink to this heading">#</a></h2>
+<h2>12. Hands-on: run something interactively<a class="headerlink" href="#hands-on-run-something-interactively" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The following commands are done inside the container.</p></li>
 <li><p>Let’s attempt to run <code class="docutils literal notranslate"><span class="pre">figlet</span></code></p></li>
@@ -674,7 +687,7 @@ $ docker container ls --all
 </ul>
 </section>
 <section id="hands-on-installing-and-then-running">
-<h2>13. Hands-on: installing and then running<a class="headerlink" href="#hands-on-installing-and-then-running" title="Permalink to this heading">#</a></h2>
+<h2>13. Hands-on: installing and then running<a class="headerlink" href="#hands-on-installing-and-then-running" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The following commands are done inside the container.</p></li>
 </ul>
@@ -687,7 +700,7 @@ $ docker container ls --all
 <img src="../fig/07-docker/13.png" style="height:600px">
 </section>
 <section id="exercise">
-<h2>14. Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<h2>14. Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Type <code class="docutils literal notranslate"><span class="pre">exit</span></code> to shutdown the container and back to your normal terminal.</p></li>
 <li><p>Repeat the process of launching an interactive container from start and try
@@ -697,7 +710,7 @@ running <code class="docutils literal notranslate"><span class="pre">figlet</spa
 <p>{: .challenge}</p>
 </section>
 <section id="hands-on-background-container">
-<h2>15. Hands-on: Background container<a class="headerlink" href="#hands-on-background-container" title="Permalink to this heading">#</a></h2>
+<h2>15. Hands-on: Background container<a class="headerlink" href="#hands-on-background-container" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>You should have already exited out of the container shell and back to the CloudLab environment.</p></li>
 <li><p>Run the following command</p></li>
@@ -709,7 +722,7 @@ running <code class="docutils literal notranslate"><span class="pre">figlet</spa
 <p>{: .language-bash}</p>
 </section>
 <section id="id1">
-<h2>16. Hands-on: Background container<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>16. Hands-on: Background container<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Run the following command</p></li>
 </ul>
@@ -720,7 +733,7 @@ $ docker ps
 <p>{: .language-bash}</p>
 </section>
 <section id="hands-on-view-log-of-your-background-container">
-<h2>17. Hands-on: View log of your background container<a class="headerlink" href="#hands-on-view-log-of-your-background-container" title="Permalink to this heading">#</a></h2>
+<h2>17. Hands-on: View log of your background container<a class="headerlink" href="#hands-on-view-log-of-your-background-container" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Use the first four characters of your container ID to view the log of the running Docker container</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">--tail</span> <span class="pre">N</span></code> to only look at the tail of the log.</p></li>
@@ -731,14 +744,14 @@ $ docker logs --tail 5 YOUR_CONTAINER_ID
 </div>
 </section>
 <section id="id2">
-<h2>18. Exercise<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>18. Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Find out how to kill a running container by using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">kill</span></code>.
 {: .challenge}</p></li>
 </ul>
 </section>
 <section id="docker-images">
-<h2>19. Docker images<a class="headerlink" href="#docker-images" title="Permalink to this heading">#</a></h2>
+<h2>19. Docker images<a class="headerlink" href="#docker-images" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Image = files + metadata</p></li>
 <li><p>The files form the root filesystem of the container</p></li>
@@ -757,7 +770,7 @@ $ docker logs --tail 5 YOUR_CONTAINER_ID
 <p>{:  .slide}</p>
 </section>
 <section id="example-of-a-java-webapp">
-<h2>20. Example of a Java webapp<a class="headerlink" href="#example-of-a-java-webapp" title="Permalink to this heading">#</a></h2>
+<h2>20. Example of a Java webapp<a class="headerlink" href="#example-of-a-java-webapp" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>CentOS base layer</p></li>
 <li><p>Packages and configuration files added by our local IT</p></li>
@@ -770,12 +783,12 @@ $ docker logs --tail 5 YOUR_CONTAINER_ID
 <p>{:  .slide}</p>
 </section>
 <section id="the-read-write-layer">
-<h2>21. The read-write layer<a class="headerlink" href="#the-read-write-layer" title="Permalink to this heading">#</a></h2>
+<h2>21. The read-write layer<a class="headerlink" href="#the-read-write-layer" title="Permalink to this headline">#</a></h2>
 <img src="../fig/07-docker/25.png" style="height:500px">
 <p>{:  .slide}</p>
 </section>
 <section id="containers-versus-images">
-<h2>22. Containers versus images<a class="headerlink" href="#containers-versus-images" title="Permalink to this heading">#</a></h2>
+<h2>22. Containers versus images<a class="headerlink" href="#containers-versus-images" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>An image is a read-only filesystem.</p></li>
 <li><p>A container is an encapsulated set of processes running in a
@@ -796,7 +809,7 @@ read-write copy of that filesystem.</p></li>
 <p>{:  .slide}</p>
 </section>
 <section id="how-do-we-change-an-image">
-<h2>23. How do we change an image?<a class="headerlink" href="#how-do-we-change-an-image" title="Permalink to this heading">#</a></h2>
+<h2>23. How do we change an image?<a class="headerlink" href="#how-do-we-change-an-image" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>It is read-only, we don’t.</p></li>
 <li><p>We create a new container from the image</p></li>
@@ -807,7 +820,7 @@ read-write copy of that filesystem.</p></li>
 <p>{:  .slide}</p>
 </section>
 <section id="image-namespaces">
-<h2>24. Image namespaces<a class="headerlink" href="#image-namespaces" title="Permalink to this heading">#</a></h2>
+<h2>24. Image namespaces<a class="headerlink" href="#image-namespaces" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Official images (ubuntu, busybox, …)</p>
 <ul>
@@ -832,7 +845,7 @@ read-write copy of that filesystem.</p></li>
 <p>{:  .slide}</p>
 </section>
 <section id="hands-on-show-current-images">
-<h2>25. Hands-on: show current images<a class="headerlink" href="#hands-on-show-current-images" title="Permalink to this heading">#</a></h2>
+<h2>25. Hands-on: show current images<a class="headerlink" href="#hands-on-show-current-images" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>If this is a new experiment, go ahead and run the following commands to get
 some images loaded.</p></li>
@@ -847,7 +860,7 @@ $ docker image ls
 <img src="../fig/07-docker/27.png" style="height:200px">
 </section>
 <section id="hands-on-search-images">
-<h2>26. Hands-on: search images<a class="headerlink" href="#hands-on-search-images" title="Permalink to this heading">#</a></h2>
+<h2>26. Hands-on: search images<a class="headerlink" href="#hands-on-search-images" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>We can search for available images in the public Docker Hub</p></li>
 </ul>
@@ -858,7 +871,7 @@ $ docker image ls
 <img src="../fig/07-docker/28.png" style="height:500px">
 </section>
 <section id="general-steps-to-create-an-image">
-<h2>27. General steps to create an image<a class="headerlink" href="#general-steps-to-create-an-image" title="Permalink to this heading">#</a></h2>
+<h2>27. General steps to create an image<a class="headerlink" href="#general-steps-to-create-an-image" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Create a container using an appropriate base distro</p></li>
 <li><p>Inside the container, install and setup the necessary software</p></li>
@@ -869,7 +882,7 @@ $ docker image ls
 <img src="../fig/07-docker/31.png" style="height:500px">
 </section>
 <section id="hands-on-create-a-container-with-a-base-distro">
-<h2>28. Hands-on: create a container with a base distro<a class="headerlink" href="#hands-on-create-a-container-with-a-base-distro" title="Permalink to this heading">#</a></h2>
+<h2>28. Hands-on: create a container with a base distro<a class="headerlink" href="#hands-on-create-a-container-with-a-base-distro" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Remember to note your container ID.</p></li>
 </ul>
@@ -879,7 +892,7 @@ $ docker image ls
 <p>{: .language-bash}</p>
 </section>
 <section id="hands-on-install-software-inside-the-container">
-<h2>29. Hands-on: install software inside the container<a class="headerlink" href="#hands-on-install-software-inside-the-container" title="Permalink to this heading">#</a></h2>
+<h2>29. Hands-on: install software inside the container<a class="headerlink" href="#hands-on-install-software-inside-the-container" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># apt-get update</span>
 <span class="c1"># apt-get install -y figlet</span>
 <span class="c1"># exit</span>
@@ -889,7 +902,7 @@ $ docker image ls
 <img src="../fig/07-docker/32.png" style="height:500px">
 </section>
 <section id="hands-on-check-for-differences">
-<h2>30. Hands-on: check for differences<a class="headerlink" href="#hands-on-check-for-differences" title="Permalink to this heading">#</a></h2>
+<h2>30. Hands-on: check for differences<a class="headerlink" href="#hands-on-check-for-differences" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Remember to note your container ID.</p></li>
 </ul>
@@ -905,7 +918,7 @@ $ docker image ls
 </ul>
 </section>
 <section id="hands-on-commit-changes-into-a-new-image">
-<h2>31. Hands-on: commit changes into a new image<a class="headerlink" href="#hands-on-commit-changes-into-a-new-image" title="Permalink to this heading">#</a></h2>
+<h2>31. Hands-on: commit changes into a new image<a class="headerlink" href="#hands-on-commit-changes-into-a-new-image" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Remember to note your container ID.</p></li>
 </ul>
@@ -929,7 +942,7 @@ the layer that is the base ubuntu image <code class="docutils literal notranslat
 </ul>
 </section>
 <section id="id3">
-<h2>32. Exercise<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>32. Exercise<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Test run the new <code class="docutils literal notranslate"><span class="pre">ubuntu_figlet</span></code> image by launching an interactive container
 using this image, then immediately run <code class="docutils literal notranslate"><span class="pre">figlet</span> <span class="pre">hello</span> <span class="pre">world</span></code>.</p></li>
@@ -937,7 +950,7 @@ using this image, then immediately run <code class="docutils literal notranslate
 <p>{: .challenge}</p>
 </section>
 <section id="automatic-image-construction-dockerfile">
-<h2>33. Automatic image construction: Dockerfile<a class="headerlink" href="#automatic-image-construction-dockerfile" title="Permalink to this heading">#</a></h2>
+<h2>33. Automatic image construction: Dockerfile<a class="headerlink" href="#automatic-image-construction-dockerfile" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>A build recipe for a container image.</p></li>
 <li><p>Contains a series of instructions telling Docker/Podman how an image is to be constructed.</p></li>
@@ -945,7 +958,7 @@ using this image, then immediately run <code class="docutils literal notranslate
 </ul>
 </section>
 <section id="hands-on-writing-the-first-dockerfile">
-<h2>34. Hands on: writing the first Dockerfile<a class="headerlink" href="#hands-on-writing-the-first-dockerfile" title="Permalink to this heading">#</a></h2>
+<h2>34. Hands on: writing the first Dockerfile<a class="headerlink" href="#hands-on-writing-the-first-dockerfile" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The following commands are done in the terminal (Ubuntu WSL on Windows/Mac Terminal).</p></li>
 </ul>
@@ -969,7 +982,7 @@ $ nano Dockerfile
 </ul>
 </section>
 <section id="hands-on-build-the-image">
-<h2>35. Hands on: build the image<a class="headerlink" href="#hands-on-build-the-image" title="Permalink to this heading">#</a></h2>
+<h2>35. Hands on: build the image<a class="headerlink" href="#hands-on-build-the-image" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>The following commands are done in the terminal (Ubuntu WSL on Windows/Mac Terminal).</p></li>
 <li><p>Check that you are still inside <code class="docutils literal notranslate"><span class="pre">myimage</span></code></p></li>
@@ -995,7 +1008,7 @@ base for the next <code class="docutils literal notranslate"><span class="pre">R
 </ul>
 </section>
 <section id="id4">
-<h2>36. Exercise<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>36. Exercise<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">image</span> <span class="pre">ls</span></code> and <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">history</span> <span class="pre">...</span></code> to check which layer is reused for
 this image.</p></li>
@@ -1005,7 +1018,7 @@ using this image, then immediately run <code class="docutils literal notranslate
 <p>{: .challenge}</p>
 </section>
 <section id="hands-on-cmd">
-<h2>37. Hands on: CMD<a class="headerlink" href="#hands-on-cmd" title="Permalink to this heading">#</a></h2>
+<h2>37. Hands on: CMD<a class="headerlink" href="#hands-on-cmd" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Edit your Dockerfile so that it has the following content</p></li>
 </ul>
@@ -1026,7 +1039,7 @@ any command.</p></li>
 </ul>
 </section>
 <section id="hands-on-overriding-cmd">
-<h2>38. Hands on: Overriding CMD<a class="headerlink" href="#hands-on-overriding-cmd" title="Permalink to this heading">#</a></h2>
+<h2>38. Hands on: Overriding CMD<a class="headerlink" href="#hands-on-overriding-cmd" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>With CMD, the <code class="docutils literal notranslate"><span class="pre">-it</span></code> flag does not behave as expected
 without a parameter.</p></li>
@@ -1040,7 +1053,7 @@ $ docker run -it figlet_cmd_$USER bash
 <img src="../fig/07-docker/37.png" style="height:600px">
 </section>
 <section id="hands-on-entrypoint">
-<h2>39. Hands on: ENTRYPOINT<a class="headerlink" href="#hands-on-entrypoint" title="Permalink to this heading">#</a></h2>
+<h2>39. Hands on: ENTRYPOINT<a class="headerlink" href="#hands-on-entrypoint" title="Permalink to this headline">#</a></h2>
 <p>-<code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span></code> defines a base command (and its parameters)
 for the container.</p>
 <ul class="simple">
@@ -1059,7 +1072,7 @@ for the container.</p>
 <img src="../fig/07-docker/38.png" style="height:600px">
 </section>
 <section id="hands-on-why-not-both">
-<h2>40. Hands on: Why not both<a class="headerlink" href="#hands-on-why-not-both" title="Permalink to this heading">#</a></h2>
+<h2>40. Hands on: Why not both<a class="headerlink" href="#hands-on-why-not-both" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span></code> and <code class="docutils literal notranslate"><span class="pre">CMD</span></code> can be used together.</p></li>
 <li><p>The command line arguments are appended to those parameters.</p></li>
@@ -1078,7 +1091,7 @@ $ docker run figlet_both_$USER
 <img src="../fig/07-docker/39.png" style="height:700px">
 </section>
 <section id="hands-on-caveat">
-<h2>41. Hands on: Caveat<a class="headerlink" href="#hands-on-caveat" title="Permalink to this heading">#</a></h2>
+<h2>41. Hands on: Caveat<a class="headerlink" href="#hands-on-caveat" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">/bin/bash</span></code> does not work as expected.</p></li>
 </ul>
@@ -1091,7 +1104,7 @@ $ docker run -it --entrypoint bash figlet_both_$USER
 <img src="../fig/07-docker/40.png" style="height:300px">
 </section>
 <section id="hands-on-importing-and-building-external-code">
-<h2>42. Hands on: Importing and building external code<a class="headerlink" href="#hands-on-importing-and-building-external-code" title="Permalink to this heading">#</a></h2>
+<h2>42. Hands on: Importing and building external code<a class="headerlink" href="#hands-on-importing-and-building-external-code" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Create the following file called <code class="docutils literal notranslate"><span class="pre">hello.c</span></code>:</p></li>
 </ul>
@@ -1110,7 +1123,7 @@ $ docker run hello_$USER
 <p>{: .language-bash}</p>
 </section>
 <section id="challenge">
-<h2>43. Challenge<a class="headerlink" href="#challenge" title="Permalink to this heading">#</a></h2>
+<h2>43. Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Create an account on <a class="reference external" href="https://hub.docker.com">Docker Hub</a>.</p></li>
 <li><p>Find out how to login from the command line and push the recently created <code class="docutils literal notranslate"><span class="pre">hello</span></code> image
@@ -1119,14 +1132,14 @@ to your Docker Hub account.</p></li>
 <p>{: .challenge}</p>
 </section>
 <section id="networking-for-container">
-<h2>44. Networking for container<a class="headerlink" href="#networking-for-container" title="Permalink to this heading">#</a></h2>
+<h2>44. Networking for container<a class="headerlink" href="#networking-for-container" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>How can services provided by a container become available to the world?</p></li>
 </ul>
 <img src="../fig/07-docker/43.png" style="height:300px">
 </section>
 <section id="hands-on-a-simple-web-server">
-<h2>45. Hands on: a simple web server<a class="headerlink" href="#hands-on-a-simple-web-server" title="Permalink to this heading">#</a></h2>
+<h2>45. Hands on: a simple web server<a class="headerlink" href="#hands-on-a-simple-web-server" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -d -P nginx
 $ docker ps
 </pre></div>
@@ -1141,7 +1154,7 @@ $ docker ps
 <img src="../fig/07-docker/45.png" style="height:300px">
 </section>
 <section id="hands-on-how-does-the-container-engine-know-which-port-to-map">
-<h2>47. Hands on: How does the container engine know which port to map?<a class="headerlink" href="#hands-on-how-does-the-container-engine-know-which-port-to-map" title="Permalink to this heading">#</a></h2>
+<h2>47. Hands on: How does the container engine know which port to map?<a class="headerlink" href="#hands-on-how-does-the-container-engine-know-which-port-to-map" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>This is described in the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> and can be inspected.</p></li>
 <li><p>The keyword for this action is <code class="docutils literal notranslate"><span class="pre">EXPOSE</span></code>.</p></li>
@@ -1163,7 +1176,7 @@ $ docker ps
 </ul>
 </section>
 <section id="hands-on-manual-allocation-of-port-numbers">
-<h2>48. Hands on: manual allocation of port numbers<a class="headerlink" href="#hands-on-manual-allocation-of-port-numbers" title="Permalink to this heading">#</a></h2>
+<h2>48. Hands on: manual allocation of port numbers<a class="headerlink" href="#hands-on-manual-allocation-of-port-numbers" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -d -p 8000:80 nginx
 $ docker run -d -p 8080:80 -p 8888:80 nginx
 </pre></div>
@@ -1175,7 +1188,7 @@ $ docker run -d -p 8080:80 -p 8888:80 nginx
 </ul>
 </section>
 <section id="integrating-containers-into-your-infrastructure">
-<h2>49. Integrating containers into your infrastructure<a class="headerlink" href="#integrating-containers-into-your-infrastructure" title="Permalink to this heading">#</a></h2>
+<h2>49. Integrating containers into your infrastructure<a class="headerlink" href="#integrating-containers-into-your-infrastructure" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Manually add the containers to the infrastructure via container-generated public port.</p></li>
 <li><p>Predetermine a port on the infrastructure, then set the corresponding port mapping
@@ -1185,7 +1198,7 @@ when run the containers.</p></li>
 </ul>
 </section>
 <section id="container-network-model">
-<h2>50. Container network model<a class="headerlink" href="#container-network-model" title="Permalink to this heading">#</a></h2>
+<h2>50. Container network model<a class="headerlink" href="#container-network-model" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Provide the notion of a <code class="docutils literal notranslate"><span class="pre">network</span></code> to connect containers</p></li>
 <li><p>Provide top level command to manipulate and observe these networks:</p>
@@ -1216,7 +1229,7 @@ $ docker network ls
 </ul>
 </section>
 <section id="hands-on-create-a-network">
-<h2>51. Hands on: create a network<a class="headerlink" href="#hands-on-create-a-network" title="Permalink to this heading">#</a></h2>
+<h2>51. Hands on: create a network<a class="headerlink" href="#hands-on-create-a-network" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker network create ramnet
 $ docker network ls
 </pre></div>
@@ -1225,7 +1238,7 @@ $ docker network ls
 <img src="../fig/07-docker/48.png" style="height:200px">
 </section>
 <section id="hands-on-placing-containers-on-a-network">
-<h2>52. Hands on: placing containers on a network<a class="headerlink" href="#hands-on-placing-containers-on-a-network" title="Permalink to this heading">#</a></h2>
+<h2>52. Hands on: placing containers on a network<a class="headerlink" href="#hands-on-placing-containers-on-a-network" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -d --name es --net ramnet elasticsearch:2
 $ docker run -it --net ramnet alpine sh
 # ping es

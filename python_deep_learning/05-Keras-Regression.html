@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Training Deep Learning Regression model with Keras &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Deep Learning Classification model with Keras" href="06-Keras-Classification.html" />
     <link rel="prev" title="Introduction to Keras" href="04-Intro-to-Keras.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -473,11 +486,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="training-deep-learning-regression-model-with-keras">
-<h1>Training Deep Learning Regression model with Keras<a class="headerlink" href="#training-deep-learning-regression-model-with-keras" title="Permalink to this heading">#</a></h1>
+<h1>Training Deep Learning Regression model with Keras<a class="headerlink" href="#training-deep-learning-regression-model-with-keras" title="Permalink to this headline">#</a></h1>
 <section id="using-keras-to-solve-a-regression-model">
-<h2>Using Keras to solve a Regression Model<a class="headerlink" href="#using-keras-to-solve-a-regression-model" title="Permalink to this heading">#</a></h2>
+<h2>Using Keras to solve a Regression Model<a class="headerlink" href="#using-keras-to-solve-a-regression-model" title="Permalink to this headline">#</a></h2>
 <section id="prepare-the-data">
-<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this headline">#</a></h3>
 <p>Here we use <a class="reference external" href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">Pima Indian Diabetes database</a> data:</p>
 <ul class="simple">
 <li><p>We need to omit the header line of the data.</p></li>
@@ -492,7 +505,7 @@ document.write(`
 </div>
 </section>
 <section id="let-s-use-keras-s-sequential-model-with-dense-layers">
-<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this heading">#</a></h3>
+<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
@@ -500,7 +513,7 @@ document.write(`
 </div>
 </section>
 <section id="create-a-sequential-model-with-3-layers">
-<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this heading">#</a></h3>
+<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Sequential model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="c1"># Create a first hidden layer, the input for the first hidden layer is input layer which has 8 variables:</span>
@@ -513,7 +526,7 @@ document.write(`
 </div>
 </section>
 <section id="compile-model">
-<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this heading">#</a></h3>
+<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -534,7 +547,7 @@ document.write(`
 <p>The purpose of <strong>loss</strong> functions is to compute the quantity that a model should seek to minimize during training. Detail can be found <a class="reference external" href="https://keras.io/api/losses/">here</a></p>
 </section>
 <section id="fit-model">
-<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this heading">#</a></h3>
+<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -564,7 +577,7 @@ interactively (eg, in a production environment).</p></li>
 </div>
 </section>
 <section id="save-load-keras-model">
-<h3>Save &amp; load keras model<a class="headerlink" href="#save-load-keras-model" title="Permalink to this heading">#</a></h3>
+<h3>Save &amp; load keras model<a class="headerlink" href="#save-load-keras-model" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_model.keras&#39;</span><span class="p">)</span>  <span class="c1"># creates a HDF5 file &#39;my_model.h5&#39;</span>
@@ -577,7 +590,7 @@ interactively (eg, in a production environment).</p></li>
 </div>
 </section>
 <section id="cross-validation-using-k-fold">
-<h3>Cross validation using K-Fold<a class="headerlink" href="#cross-validation-using-k-fold" title="Permalink to this heading">#</a></h3>
+<h3>Cross validation using K-Fold<a class="headerlink" href="#cross-validation-using-k-fold" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
 
 <span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>

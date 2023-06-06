@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Working With Files and Directories &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="File Permissions and Atrributes" href="04a-file-permissions.html" />
     <link rel="prev" title="Navigating Files and Directories" href="03-file-system.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -473,9 +486,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-files-and-directories">
-<h1>Working With Files and Directories<a class="headerlink" href="#working-with-files-and-directories" title="Permalink to this heading">#</a></h1>
+<h1>Working With Files and Directories<a class="headerlink" href="#working-with-files-and-directories" title="Permalink to this headline">#</a></h1>
 <section id="names-for-files-and-directories">
-<h2>Names for Files and Directories<a class="headerlink" href="#names-for-files-and-directories" title="Permalink to this heading">#</a></h2>
+<h2>Names for Files and Directories<a class="headerlink" href="#names-for-files-and-directories" title="Permalink to this headline">#</a></h2>
 <p>Complicated names of files and directories can make your life very painful
 when working on the command line. Here we provide a few useful
 tips for the names of your files from now on.</p>
@@ -494,9 +507,9 @@ You can use <code class="docutils literal notranslate"><span class="pre">-</span
 or another non-alphanumeric character you should put quotes around the name.</p>
 </section>
 <section id="copying-moving-and-deleting">
-<h2>Copying, Moving, and Deleting<a class="headerlink" href="#copying-moving-and-deleting" title="Permalink to this heading">#</a></h2>
+<h2>Copying, Moving, and Deleting<a class="headerlink" href="#copying-moving-and-deleting" title="Permalink to this headline">#</a></h2>
 <section id="copying">
-<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this heading">#</a></h3>
+<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this headline">#</a></h3>
 <p>Copy a file with <code class="docutils literal notranslate"><span class="pre">cp</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp oldfile newfile
 </pre></div>
@@ -508,7 +521,7 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 <p>This will make a copy of <em>filename</em> with same name in <em>directory</em>.</p>
 </section>
 <section id="moving">
-<h3>Moving<a class="headerlink" href="#moving" title="Permalink to this heading">#</a></h3>
+<h3>Moving<a class="headerlink" href="#moving" title="Permalink to this headline">#</a></h3>
 <p>Move a file with <code class="docutils literal notranslate"><span class="pre">mv</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv oldfile newfile
 </pre></div>
@@ -524,7 +537,7 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 </div>
 </section>
 <section id="deleting">
-<h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this heading">#</a></h3>
+<h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">#</a></h3>
 <p>Remove a file with <code class="docutils literal notranslate"><span class="pre">rm</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm filename
 </pre></div>
@@ -539,12 +552,12 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 </div>
 </section>
 <section id="deleting-is-forever">
-<h3>Deleting Is Forever<a class="headerlink" href="#deleting-is-forever" title="Permalink to this heading">#</a></h3>
+<h3>Deleting Is Forever<a class="headerlink" href="#deleting-is-forever" title="Permalink to this headline">#</a></h3>
 <p>Files deleted with <code class="docutils literal notranslate"><span class="pre">rm</span></code> cannot be recovered from a trash bin. Be very careful when deleting files especially with <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span></code>.</p>
 </section>
 </section>
 <section id="wildcards">
-<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this heading">#</a></h2>
+<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">#</a></h2>
 <p>File globbing, known better as wildcards, uses patterns to automatically expand a file name or path. The <code class="docutils literal notranslate"><span class="pre">*</span></code> character matches any (multiple) characters. A <code class="docutils literal notranslate"><span class="pre">?</span></code> matches a single character.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
@@ -565,7 +578,7 @@ hello1.txt    hello2.txt    hello3.txt
 </div>
 </section>
 <section id="viewing-contents-of-a-file">
-<h2>Viewing Contents of a File<a class="headerlink" href="#viewing-contents-of-a-file" title="Permalink to this heading">#</a></h2>
+<h2>Viewing Contents of a File<a class="headerlink" href="#viewing-contents-of-a-file" title="Permalink to this headline">#</a></h2>
 <p>There are many different ways to view the contents of a file.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">more</span></code> and <code class="docutils literal notranslate"><span class="pre">less</span></code> will display the file in a <em>buffer</em></p>

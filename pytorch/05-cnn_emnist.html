@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Computer Vision and Convolutional Neural Networks &#8212; Research Computing and Data Workshop</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Containerization on Palmetto (under development)" href="../containers/00-index.html" />
     <link rel="prev" title="Building the network" href="04-modules.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -306,6 +305,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
 
     </div>
 </nav></div>
@@ -478,14 +491,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="computer-vision-and-convolutional-neural-networks">
-<h1>Computer Vision and Convolutional Neural Networks<a class="headerlink" href="#computer-vision-and-convolutional-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Computer Vision and Convolutional Neural Networks<a class="headerlink" href="#computer-vision-and-convolutional-neural-networks" title="Permalink to this headline">#</a></h1>
 <p>In 2012, Alex Krizhevsky et al. competed in the <a class="reference external" href="https://arxiv.org/abs/1409.0575">ImageNet Large Scale Visual Recognition Challenge</a>. Their solution, based on a deep <em>Convolutional Neural Network</em> (CNN) beat the runner up by more than 10% (<a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">their paper</a>). Prior to this result, many thought that it was infeasable to train such deep models due to the large number parameters that need to be optimized and the associated high computational cost. Krizhevsky et al. were among the first to user GPUs to speed things up. This landmark result kicked off a wave of innovation that continues to this day.</p>
 <p>Convolutional Neural Networks are named thus because of the <em>convolution</em> operation which plays a primary role in their design. You can take a look at <a class="reference external" href="https://docs.google.com/presentation/d/17Uygrr1g6qBMpXOwcfZf584PkW2LTZoXgX1mqsK6syE/edit?usp=sharing">these slides</a> to get a sense for what the convolution operator does. Convolution is a great example of building <em>inductive biases</em> into the network architecture. In this case, the inductive priors are <em>locality</em> and <em>translation invariance</em>. These assumptions lead to weight sharing which significantly improves the parameter efficiency of our model relative to the fully connected neural networks that we’ve seen so far.</p>
 <p>In this notebook, we apply CNNs to the classification of handwritten characters (letters and numbers) using the <a class="reference external" href="https://www.westernsydney.edu.au/icns/reproducible_research/publication_support_materials/emnist">EMNIST dataset</a>.  The EMNIST dataset has the digits 0 through 9 and a total of 37 upper and lower-case latin characters (see Figure) for a total of 47 classes. The latin characters make EMNIST a more difficult classification task than the more famous MNIST dataset which only contains digits. We will work through a variety of architecture design considerations, will train the model for each case, and learn to reason about how architecture choices impact the performance characteristics of the model.</p>
 <p><img alt="Balanced EMNIST Dataset" src="https://www.researchgate.net/publication/329391937/figure/fig3/AS:700515201605633&#64;1544027247072/Visualization-of-EMNIST-balanced-dataset-10-Fig2.ppm" /></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library imports</span>
@@ -692,7 +705,7 @@ Transform: Compose(
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="classification-architectures">
-<h1>Classification architectures<a class="headerlink" href="#classification-architectures" title="Permalink to this heading">#</a></h1>
+<h1>Classification architectures<a class="headerlink" href="#classification-architectures" title="Permalink to this headline">#</a></h1>
 <p>We will explore a range of classification architectures starting with a linear classifier and scaling up to a several-layer convolutional neural network. Each architecture can be described in two steps (see figure below):</p>
 <ol class="arabic simple">
 <li><p>Feature extraction – converting the raw pixel information into a <em>feature vector</em></p></li>
@@ -727,7 +740,7 @@ Transform: Compose(
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="linear-classifier">
-<h1>Linear Classifier<a class="headerlink" href="#linear-classifier" title="Permalink to this heading">#</a></h1>
+<h1>Linear Classifier<a class="headerlink" href="#linear-classifier" title="Permalink to this headline">#</a></h1>
 <p>A linear classifier uses the original pixels as the features for classification. We simply need to unravel the 2D image into a vector. This is accomplished using <code class="docutils literal notranslate"><span class="pre">nn.Flatten()</span></code>.</p>
 <p>Note: you can safely ignore the message <code class="docutils literal notranslate"><span class="pre">UserWarning:</span> <span class="pre">Lazy</span> <span class="pre">modules</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">feature</span> <span class="pre">under</span> <span class="pre">heavy</span> <span class="pre">development</span> <span class="pre">so</span> <span class="pre">changes</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">API</span> <span class="pre">or</span> <span class="pre">functionality</span> <span class="pre">can</span> <span class="pre">happen</span> <span class="pre">at</span> <span class="pre">any</span> <span class="pre">moment.</span>&#160;&#160; <span class="pre">warnings.warn('Lazy</span> <span class="pre">modules</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">new</span> <span class="pre">feature</span> <span class="pre">under</span> <span class="pre">heavy</span> <span class="pre">development</span></code></p>
 <div class="cell docutils container">
@@ -778,7 +791,7 @@ Transform: Compose(
 </div>
 </div>
 <section id="train-and-test-the-linear-model">
-<h2>Train and test the linear model<a class="headerlink" href="#train-and-test-the-linear-model" title="Permalink to this heading">#</a></h2>
+<h2>Train and test the linear model<a class="headerlink" href="#train-and-test-the-linear-model" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_and_test</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -805,9 +818,9 @@ Test epoch 5: Average loss: 3.2485, Accuracy: 12224/18800 (65.02%)
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="cnn-classifier">
-<h1>CNN Classifier<a class="headerlink" href="#cnn-classifier" title="Permalink to this heading">#</a></h1>
+<h1>CNN Classifier<a class="headerlink" href="#cnn-classifier" title="Permalink to this headline">#</a></h1>
 <section id="one-convolution-layer">
-<h2>One convolution layer<a class="headerlink" href="#one-convolution-layer" title="Permalink to this heading">#</a></h2>
+<h2>One convolution layer<a class="headerlink" href="#one-convolution-layer" title="Permalink to this headline">#</a></h2>
 <p>We now make a more interesting feature extractor using convolution. The feature extractor has the following steps:</p>
 <ol class="arabic simple">
 <li><p><em>convolution</em> (<code class="docutils literal notranslate"><span class="pre">nn.Conv2d</span></code>) over the input image.</p></li>
@@ -927,7 +940,7 @@ Test epoch 5: Average loss: 3.1416, Accuracy: 14139/18800 (75.21%)
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="a-wider-model">
-<h1>A “wider” model<a class="headerlink" href="#a-wider-model" title="Permalink to this heading">#</a></h1>
+<h1>A “wider” model<a class="headerlink" href="#a-wider-model" title="Permalink to this headline">#</a></h1>
 <p>The “width” of a CNN refers to how many feature maps are used in the convolution layers. Wide layers have many convolution kernels leading to many feature maps. In the model above, we had 4 convolution kernels (see <code class="docutils literal notranslate"><span class="pre">out_channels=4</span></code> in the <code class="docutils literal notranslate"><span class="pre">nn.Conv2d</span></code> layer in the feature extractor). Interpreting these kernels as feature extractors, it’s plausible that we could improve the performance of the model by increasing the number of kernels.</p>
 <p>The network below is the same as the previous one except that it uses twice as many kernels.</p>
 <div class="cell docutils container">
@@ -1006,7 +1019,7 @@ Test epoch 5: Average loss: 3.0975, Accuracy: 14926/18800 (79.39%)
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="a-deeper-model">
-<h1>A “deeper” model<a class="headerlink" href="#a-deeper-model" title="Permalink to this heading">#</a></h1>
+<h1>A “deeper” model<a class="headerlink" href="#a-deeper-model" title="Permalink to this headline">#</a></h1>
 <p>The “depth” of a CNN refers to how many convolution layers are used in the network. The feature maps from one convolution step are used as the input for the next convolution. The previous network had a single convolution step. We will now try adding more convolution layers and see how it effects performance. To isolate the effect of having more layers, we will hold the width at 4 kernels like our first CNN.</p>
 <hr class="docutils" />
 <p><strong>Question</strong>: Why might it be helpful to add more convolutional layers to the CNN? Can you contrast the effect of adding more depth to the effect of greater width?</p>
@@ -1104,7 +1117,7 @@ Test epoch 5: Average loss: 3.0965, Accuracy: 14907/18800 (79.29%)
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="your-turn">
-<h1>Your turn!<a class="headerlink" href="#your-turn" title="Permalink to this heading">#</a></h1>
+<h1>Your turn!<a class="headerlink" href="#your-turn" title="Permalink to this headline">#</a></h1>
 <p>Modify the feature extractor below and see how good of a score you can obtain on EMNIST. Some ideas:</p>
 <ul class="simple">
 <li><p>Change the number of channels in the convolution layers. Note: the <code class="docutils literal notranslate"><span class="pre">in_channels</span></code> argument to <code class="docutils literal notranslate"><span class="pre">nn.Conv2d</span></code> must match the <code class="docutils literal notranslate"><span class="pre">out_channels</span></code> argument from a previous layer. The input image has 1 channel since the images are grayscale.</p></li>
