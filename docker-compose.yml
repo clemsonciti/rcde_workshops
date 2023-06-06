@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  # This service is here to build the image once, then other services re-use
+  # this image, rather than firing off their own builds.
+  rcde-workshops-image:
+    image: rcde_workshops
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: /bin/true
+
+  dev-server:
+    image: rcde_workshops
+    pull_policy: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 8080:8080
+    entrypoint: /app/docker-dev-server.sh
+  builder:
+    image: rcde_workshops
+    pull_policy: never
+    volumes:
+      - .:/app
+    entrypoint: /app/docker-build.sh
+  cleaner:
+    image: rcde_workshops
+    pull_policy: never
+    volumes:
+      - .:/app
+    entrypoint: /app/docker-clean.sh
+  deployer:
+    image: rcde_workshops
+    pull_policy: never
+    environment:
+      - DKR_GIT_NAME
+      - DKR_GIT_EMAIL
+    volumes:
+      - .:/app
+    entrypoint: /app/docker-deploy.sh
+
+
