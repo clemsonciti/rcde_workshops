@@ -67,21 +67,9 @@ parts:
       - file: python_programming/04-IntroToPython-IV.ipynb
     - file: python_sklearn/00-index.md
       sections:
-      - file: python_sklearn/01-introduction.md
-      - file: python_sklearn/02-sklearn-preprocessing.md
-      - file: python_sklearn/03-sklearn-Data-Partition.md
-      - file: python_sklearn/04-sklearn-Evaluation-Metrics.md
-      - file: python_sklearn/05-Training-Regression.md
-      - file: python_sklearn/06-Training-Tree.md
-      - file: python_sklearn/07-Training-Ensemble.md
-      - file: python_sklearn/08-Model_Based.md
-      - file: python_sklearn/09-Regularization.md
-      - file: python_sklearn/10-Dimension-Reduction.md
-      - file: python_sklearn/11-Neural-Network.md
-      - file: python_sklearn/12-Support-Vector-Machine.md
-      - file: python_sklearn/13-KNN.md
-      - file: python_sklearn/14-Unsupervised-Learning.md
-      - file: python_sklearn/15-Mini-Project.md
+      - file: python_sklearn/01-TLDR.ipynb
+      - file: python_sklearn/02-preparing-data.ipynb
+      - file: python_sklearn/03-partitioning-data.ipynb
     - file: python_deep_learning/00-index.md
       sections:
       - file: python_deep_learning/01-Introduction.md
