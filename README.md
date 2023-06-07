@@ -14,7 +14,7 @@ $ conda install numpy matplotlib pandas
 $ pip install ghp-import
 ```
 
-## Building Locally
+### Building Locally
 
 To build the workshop site and test it locally, run:
 
@@ -22,7 +22,7 @@ To build the workshop site and test it locally, run:
 $ ./build.sh
 ```
 
-## Deploying Locally
+### Deploying Locally
 
 To deploy the workshop to GitHub page, run:
 
