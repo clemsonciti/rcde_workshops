@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Git Version Control &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Git Commands" href="03-git-commands.html" />
     <link rel="prev" title="Version Control Overview" href="01-version-control.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -472,13 +474,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="git-version-control">
-<h1>Git Version Control<a class="headerlink" href="#git-version-control" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="git-version-control">
+<h1>Git Version Control<a class="headerlink" href="#git-version-control" title="Permalink to this heading">#</a></h1>
 <p>Now that you understand the foundations of version control and the motivations
 behind it, let’s talk about one of the most popular version control systems:
 <strong>Git</strong>.</p>
-<div class="section" id="about-git">
-<h2>About Git<a class="headerlink" href="#about-git" title="Permalink to this headline">#</a></h2>
+<section id="about-git">
+<h2>About Git<a class="headerlink" href="#about-git" title="Permalink to this heading">#</a></h2>
 <p>Git was created by Linus Torvalds in 2005 to help Linux kernel developers
 collaborate on the source code. It is designed to be a <strong>distributed</strong> verison
 control system, meaning that all copies contain a full record of the history.</p>
@@ -486,32 +488,34 @@ control system, meaning that all copies contain a full record of the history.</p
 central server</strong>. Furthermore, this makes many operations <strong>fast</strong> since your
 computer has everything it needs to perform operations locally without waiting
 for information from the network.</p>
-</div>
-<div class="section" id="repositories">
-<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="repositories">
+<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this heading">#</a></h2>
 <p>Working with Git all starts with a <strong>repository</strong>. You can think of a repository
 as a “project folder” on your computer, which contains:</p>
 <ul class="simple">
 <li><p>the files and directories for your project</p></li>
 <li><p>the <strong>complete</strong> history of the changes to those files and directories</p></li>
 </ul>
-</div>
-<div class="section" id="history">
-<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>In Git, each <strong>version</strong> of your repository is called a <strong>commit</strong>. The history
 of your project is recorded as a series of these commits.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/git_history.png"><img alt="../_images/git_history.png" src="../_images/git_history.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Diagram showing history of a repository in Git as a series of commits. <br />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Diagram showing history of a repository in Git as a series of commits. <br />
 Source: <em>Pro Git</em> by Scott Chacon and Ben Straub, licensed under
 <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</div>
+</figcaption>
+</figure>
 <p>To save space, Git will not save a copy of each file in your repository in every
 commit. Instead, each commit will record what has changed since the commit
 before it.</p>
-</div>
-<div class="section" id="the-staging-area">
-<h2>The Staging Area<a class="headerlink" href="#the-staging-area" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-staging-area">
+<h2>The Staging Area<a class="headerlink" href="#the-staging-area" title="Permalink to this heading">#</a></h2>
 <p>Before performing any Git operations, it is critical that you understand the
 three main states that a file can be in.</p>
 <p>Your project folder is considered your <strong>working directory</strong>. When you make
@@ -523,29 +527,33 @@ and are ready to include them in the next version of your project. To do this,
 you must add the changes to the <strong>staging area</strong>.</p>
 <p>When you <strong>make a commit</strong>, the changes in the staging area are recorded in the
 history as a new version. After making a commit, the staging area is empty.</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/git_areas.png"><img alt="../_images/git_areas.png" src="../_images/git_areas.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Diagram showing the different areas of a Git directory. <br />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Diagram showing the different areas of a Git directory. <br />
 Source: <em>Pro Git</em> by Scott Chacon and Ben Straub, licensed under
 <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</div>
-</div>
-<div class="section" id="states-of-a-file">
-<h2>States of a File<a class="headerlink" href="#states-of-a-file" title="Permalink to this headline">#</a></h2>
+</figcaption>
+</figure>
+</section>
+<section id="states-of-a-file">
+<h2>States of a File<a class="headerlink" href="#states-of-a-file" title="Permalink to this heading">#</a></h2>
 <p>Git does <strong>not</strong> automatically save a version for you each time you save a file
 inside your repository. Instead, you must tell Git what changes you want to
 include in the next version and make a commit.</p>
 <p>To help users know which files will be included in the next version, it can
 report the status of each file in the repository. Users must understand the
 various states that a file can be in.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/git_states_of_a_file.png"><img alt="../_images/git_states_of_a_file.png" src="../_images/git_states_of_a_file.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Diagram showing the states of a file in Git. <br /> Source: <em>Pro Git</em> by Scott
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Diagram showing the states of a file in Git. <br /> Source: <em>Pro Git</em> by Scott
 Chacon and Ben Straub, licensed under
 <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-</div>
-</div>
-</div>
+</figcaption>
+</figure>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -573,10 +581,7 @@ Chacon and Ben Straub, licensed under
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="01-version-control.html"
@@ -596,10 +601,7 @@ Chacon and Ben Straub, licensed under
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -627,7 +629,7 @@ Chacon and Ben Straub, licensed under
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -653,7 +655,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -662,8 +664,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Transferring files to and from Palmetto &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Web-based access to the Palmetto Cluster" href="07-open-od.html" />
     <link rel="prev" title="Running an interactive job on Palmetto" href="05-interactive.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -470,16 +472,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="transferring-files-to-and-from-palmetto">
-<h1>Transferring files to and from Palmetto<a class="headerlink" href="#transferring-files-to-and-from-palmetto" title="Permalink to this headline">#</a></h1>
-<div class="section" id="cyberduck">
-<h2>CyberDuck<a class="headerlink" href="#cyberduck" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="transferring-files-to-and-from-palmetto">
+<h1>Transferring files to and from Palmetto<a class="headerlink" href="#transferring-files-to-and-from-palmetto" title="Permalink to this heading">#</a></h1>
+<section id="cyberduck">
+<h2>CyberDuck<a class="headerlink" href="#cyberduck" title="Permalink to this heading">#</a></h2>
 <p>There are many ways to transfer files between your local computer and Palmetto. One piece of software that works for both Mac and Windows machines is called CyberDuck. You can download it <a class="reference external" href="https://cyberduck.io/download/">here</a>.</p>
 <p>After installation, click on “Open Connection”. A new window will pop out:</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <img alt="../_images/cyberduck_1.png" src="../_images/cyberduck_1.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Cyberduck connection settings to Palmetto</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Cyberduck connection settings to Palmetto</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Let’s configure the connection:</p>
 <ul class="simple">
 <li><p>in the drop-down menu on top, select “SFTP” instead of the default “FTP”;</p></li>
@@ -488,14 +492,16 @@ document.write(`
 <li><p>specify your Palmetto username and password.</p></li>
 </ul>
 <p>Then, click on “Connect”. If it complains about an “unknown fingerprint”, click “Allow”. Another window will pop out asking you to do two-factor verification:</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <img alt="../_images/cyberduck_2.png" src="../_images/cyberduck_2.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Cyberduck connection settings to Palmetto</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Cyberduck connection settings to Palmetto</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Type “1” (the number one) or the word “push” if you want to get a DUO push notification. After two-factor verification, a yet another new window will pop up, which will contain the contents of your Palmetto home directory (if this is your first time using Palmetto, it will be empty). You can go to any other folder on Palmetto by changing the path (e.g., <code class="docutils literal notranslate"><span class="pre">/scratch1/username</span></code>). You can upload files by clicking the “Upload” button, and download files by right-clicking them and selecting “Download”.</p>
-</div>
-<div class="section" id="command-line-mac-and-linux-users">
-<h2>Command line (Mac and Linux users)<a class="headerlink" href="#command-line-mac-and-linux-users" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="command-line-mac-and-linux-users">
+<h2>Command line (Mac and Linux users)<a class="headerlink" href="#command-line-mac-and-linux-users" title="Permalink to this heading">#</a></h2>
 <p>Another option for advanced Mac and Linux users is to use the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command from the terminal. Open a new terminal, but <strong>don’t connect to Palmetto</strong>. The <code class="docutils literal notranslate"><span class="pre">scp</span></code> command works like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>&lt;path_to_source&gt;<span class="w"> </span>username@xfer02-ext.clemson.edu:&lt;path_to_destination&gt;
 </pre></div>
@@ -513,9 +519,9 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="o">-</span><span class="n">r</span> <span class="n">myfolder</span> <span class="n">dndawso</span><span class="nd">@xfer02</span><span class="o">-</span><span class="n">ext</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dndawso</span><span class="o">/</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="globus">
-<h2>Globus<a class="headerlink" href="#globus" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="globus">
+<h2>Globus<a class="headerlink" href="#globus" title="Permalink to this heading">#</a></h2>
 <p>If you need to transfer several gigabytes of data, and you find CyberDuck too slow, you can use Globus. The interface is not as intuitive, but the file transfer speeds are much higher. <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/basic/started/#transfer-large-files-using-globus">The guide to using Globus is on our website</a>.</p>
 <div class="admonition-key-points admonition">
 <p class="admonition-title">Key Points</p>
@@ -525,8 +531,8 @@ document.write(`
 <li><p>Large amounts of data can be transferred with Globus</p></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -554,10 +560,7 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="05-interactive.html"
@@ -577,10 +580,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -606,7 +606,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -632,7 +632,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -641,8 +641,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

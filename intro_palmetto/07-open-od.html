@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Web-based access to the Palmetto Cluster &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Running a batch job" href="08-batch.html" />
     <link rel="prev" title="Transferring files to and from Palmetto" href="06-file-transfer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -470,75 +472,93 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="web-based-access-to-the-palmetto-cluster">
-<h1>Web-based access to the Palmetto Cluster<a class="headerlink" href="#web-based-access-to-the-palmetto-cluster" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="web-based-access-to-the-palmetto-cluster">
+<h1>Web-based access to the Palmetto Cluster<a class="headerlink" href="#web-based-access-to-the-palmetto-cluster" title="Permalink to this heading">#</a></h1>
 <p>We have an interface to Palmetto that works through a Web browser. This interface is called “Open On Demand”, or OpenOD for short. To access it, go to</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
 <p>You will need to login with your Clemson username and password, and perform a DUO check.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <img alt="../_images/openod_1.png" src="../_images/openod_1.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Open OnDemand MOTD</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</div>
-<div class="section" id="file-browsing">
-<h2>File Browsing<a class="headerlink" href="#file-browsing" title="Permalink to this headline">#</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Open OnDemand MOTD</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="file-browsing">
+<h2>File Browsing<a class="headerlink" href="#file-browsing" title="Permalink to this heading">#</a></h2>
 <p>One convenient feature of Open OnDemand is a file browser. In the top left corner, you will see the “Files” button, which will take you to your home diretory or to scratch directory. Click it and explore the files in your file system. You can use this feature to view, edit, and delete files. It is also a convenient way to upload and download the files. You can go to any folder that you have access to by clicking “Go to”.</p>
-</div>
-<div class="section" id="shell">
-<h2>Shell<a class="headerlink" href="#shell" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="shell">
+<h2>Shell<a class="headerlink" href="#shell" title="Permalink to this heading">#</a></h2>
 <p>You can also use the web interface to run a terminal on Palmetto. This way, OpenOD becomes an alternative to MobaXTerm or to the Mac Terminal application. To start the terminal, click on <code class="docutils literal notranslate"><span class="pre">Clusters</span></code>, then <code class="docutils literal notranslate"><span class="pre">Palmetto</span> <span class="pre">Shell</span> <span class="pre">Access</span></code>:</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <img alt="../_images/openod_2.png" src="../_images/openod_2.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Palmetto Shell Access</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Palmetto Shell Access</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Enter your account password and do the two-factor identification. This will bring you to the login node of Palmetto:</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <img alt="../_images/openod_3.png" src="../_images/openod_3.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Palmetto Shell Access – On login node</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Palmetto Shell Access – On login node</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>From here, you can run scripts on the login node (such as <code class="docutils literal notranslate"><span class="pre">checkquota</span></code>, <code class="docutils literal notranslate"><span class="pre">checkqueucfg</span></code>, <code class="docutils literal notranslate"><span class="pre">whatsfree</span></code>), and request compute nodes with <code class="docutils literal notranslate"><span class="pre">qsub</span></code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>There is currently an idle timeout that happens when you use the shell access feature of Open
 OnDemand.  If you are inactive for a period of time, the shell will need to be restarted.</p>
 </div>
-</div>
-<div class="section" id="jupyter-notebook">
-<h2>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="jupyter-notebook">
+<h2>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>You can use OpenOD to run certain applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run Jupyter. From “Interactive apps”, please select “Jupyter Notebook”:</p>
-<div class="figure align-default" id="id4">
+<figure class="align-default" id="id4">
 <img alt="../_images/openod_4.png" src="../_images/openod_4.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Select Jupyter Notebook</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Select Jupyter Notebook</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Please fill out the request as shown on this picture:</p>
-<div class="figure align-default" id="id5">
+<figure class="align-default" id="id5">
 <img alt="../_images/openod_5.png" src="../_images/openod_5.png" />
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Fill Jupyter Notebook Options</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Fill Jupyter Notebook Options</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This is basically a graphical interface to <code class="docutils literal notranslate"><span class="pre">qsub</span></code>. You are asking for 1 compute node, 5 CPUs, 10 GB of memory, no GPU, 1g interconnect (that is, a c1 node), for the walltime duration of 1 hours. Once you are done entering this information, please click the blue “Launch” button at the bottom. It will bring out a new screen:</p>
-<div class="figure align-default" id="id6">
+<figure class="align-default" id="id6">
 <img alt="../_images/openod_6.png" src="../_images/openod_6.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Jupyter Notebook is starting</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Jupyter Notebook is starting</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>This means your request is being processed. Once the compute node is ready, you will see a blue button under your request saying “Connect to Jupyter”:</p>
-<div class="figure align-default" id="id7">
+<figure class="align-default" id="id7">
 <img alt="../_images/openod_7.png" src="../_images/openod_7.png" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Connect to Jupyter</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Connect to Jupyter</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Click on it, and it will start Jupyter.</p>
 <p>We won’t go further into Jupyter notebooks at this workshop.  To exit the interactive app, you can
 close the browser tab, but that won’t stop the underlying job.  Those resources will still be
 locked.  To stop the job, select the “my interactive sessions” icon at the top:</p>
-<div class="figure align-default" id="id8">
+<figure class="align-default" id="id8">
 <img alt="../_images/openod_8.png" src="../_images/openod_8.png" />
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">My Interactive Sessions icon</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">My Interactive Sessions icon</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>You can then press the Delete button on the session you are done with.</p>
-<div class="figure align-default" id="id9">
+<figure class="align-default" id="id9">
 <img alt="../_images/openod_9.png" src="../_images/openod_9.png" />
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Press the red Delete button to stop the job and release the resources back to the cluster</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Press the red Delete button to stop the job and release the resources back to the cluster</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition-key-points admonition">
 <p class="admonition-title">Key Points</p>
 <ul class="simple">
@@ -546,8 +566,8 @@ locked.  To stop the job, select the “my interactive sessions” icon at the t
 <li><p>Open OnDemand has a file browser</p></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -575,10 +595,7 @@ locked.  To stop the job, select the “my interactive sessions” icon at the t
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="06-file-transfer.html"
@@ -598,10 +615,7 @@ locked.  To stop the job, select the “my interactive sessions” icon at the t
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -627,7 +641,7 @@ locked.  To stop the job, select the “my interactive sessions” icon at the t
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -653,7 +667,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -662,8 +676,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

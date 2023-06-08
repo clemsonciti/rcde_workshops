@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Data partition: training and testing &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Model Pipelines in Sklearn" href="04-regression-example.html" />
     <link rel="prev" title="Preparing data" href="02-preparing-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -475,8 +477,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="data-partition-training-and-testing">
-<h1>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-partition-training-and-testing">
+<h1>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this heading">#</a></h1>
 <p>In Machine Learning, it is mandatory to have training and testing set. Some
 time a verification set is also recommended. Here are some functions
 for splitting training/testing set in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>:</p>
@@ -490,8 +492,8 @@ for splitting training/testing set in <code class="docutils literal notranslate"
 </ul>
 <p>We focus on <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, <code class="docutils literal notranslate"><span class="pre">KFolds</span></code> and  <code class="docutils literal notranslate"><span class="pre">StratifiedKFold</span></code>.</p>
 <p>We will use the airquality dataset to demonstrate:</p>
-<div class="section" id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -788,9 +790,9 @@ for splitting training/testing set in <code class="docutils literal notranslate"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train-test-split">
-<h2>Train-test split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="train-test-split">
+<h2>Train-test split<a class="headerlink" href="#train-test-split" title="Permalink to this heading">#</a></h2>
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> to randomly split 60% data for training and the rest for testing:</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114209883-22b81700-992d-11eb-83a4-c4ab1538a1e5.png" /></p>
 <div class="cell docutils container">
@@ -828,9 +830,9 @@ for splitting training/testing set in <code class="docutils literal notranslate"
 </div>
 </div>
 <p><strong>Question</strong>: What are some of the limitations with this approach?</p>
-</div>
-<div class="section" id="cross-validation">
-<h2>Cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="cross-validation">
+<h2>Cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>CV is a resampling process used to evaluate ML model on limited data sample.</p></li>
 <li><p>The general procedure:</p>
@@ -889,8 +891,8 @@ Std. dev. r^2: 0.11
 </div>
 </div>
 </div>
-<div class="section" id="stratified-k-fold-cv">
-<h3>Stratified k-fold CV<a class="headerlink" href="#stratified-k-fold-cv" title="Permalink to this headline">#</a></h3>
+<section id="stratified-k-fold-cv">
+<h3>Stratified k-fold CV<a class="headerlink" href="#stratified-k-fold-cv" title="Permalink to this heading">#</a></h3>
 <p>“Stratify” refers to sampling within a group to form the <span class="math notranslate nohighlight">\(k\)</span> folds. For example, we may wish that the distribution of Ozone levels in the CV partitions looks similar to the distribution in the full dataset. This is especially important when we have class imbalance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1018,9 +1020,9 @@ Std. dev. r^2: 0.11
 </div>
 </div>
 <p>Notice the better mean performance when stratifying.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1048,10 +1050,7 @@ Std. dev. r^2: 0.11
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="02-preparing-data.html"
@@ -1071,10 +1070,7 @@ Std. dev. r^2: 0.11
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1103,7 +1099,7 @@ Std. dev. r^2: 0.11
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1129,7 +1125,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1138,8 +1134,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

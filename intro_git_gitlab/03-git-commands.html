@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Git Commands &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Installing Git" href="04-install-git.html" />
     <link rel="prev" title="Git Version Control" href="02-git-workflow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -477,69 +479,69 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="git-commands">
-<h1>Git Commands<a class="headerlink" href="#git-commands" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="git-commands">
+<h1>Git Commands<a class="headerlink" href="#git-commands" title="Permalink to this heading">#</a></h1>
 <p>This sheet provides a quick reference for what the basic git commands are and
 what they do.</p>
-<div class="section" id="git-init">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code><a class="headerlink" href="#git-init" title="Permalink to this headline">#</a></h2>
+<section id="git-init">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code><a class="headerlink" href="#git-init" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command will initialize a new Git repository in the current
 directory. This command should be used</p>
-</div>
-<div class="section" id="git-status">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code><a class="headerlink" href="#git-status" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-status">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code><a class="headerlink" href="#git-status" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> command will show you the current status of the repository.</p>
 <p>If the stage is not empty, a list of staged files will be shown.</p>
 <p>If there are any modified files that have not been staged, a list of them will
 also be shown.</p>
-</div>
-<div class="section" id="git-add">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code><a class="headerlink" href="#git-add" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-add">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code><a class="headerlink" href="#git-add" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> command will add a file to the stage.</p>
 <p>For example, to stage the file <code class="docutils literal notranslate"><span class="pre">abc.txt</span></code>, you could run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">abc.txt</span></code>. You
 can also add all files by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code>.</p>
-</div>
-<div class="section" id="git-commit">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code><a class="headerlink" href="#git-commit" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-commit">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code><a class="headerlink" href="#git-commit" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> command will create a new commit on the repository.</p>
 <p>It is a good idea to provide a message explaining your changes, like this:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added images for the ski lift and cypress trees.&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="git-log">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code><a class="headerlink" href="#git-log" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-log">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code><a class="headerlink" href="#git-log" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> command shows an overview of previous commits made to the
 repository and their messages.</p>
-</div>
-<div class="section" id="git-push">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code><a class="headerlink" href="#git-push" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-push">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code><a class="headerlink" href="#git-push" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> command will send commits from your local computer to the remote
 server you have configured.</p>
-</div>
-<div class="section" id="git-fetch">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code><a class="headerlink" href="#git-fetch" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-fetch">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code><a class="headerlink" href="#git-fetch" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> command will search for information about new commits on the
 remote server, but will <strong>not</strong> integrate the changes into your copy.</p>
-</div>
-<div class="section" id="git-pull">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code><a class="headerlink" href="#git-pull" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-pull">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code><a class="headerlink" href="#git-pull" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command will download new commits from the remote server you have
 selected to your local computer and integrate the changes into your copy.</p>
-</div>
-<div class="section" id="git-merge">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code><a class="headerlink" href="#git-merge" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-merge">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code><a class="headerlink" href="#git-merge" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> command can be used to integrate changes from another branch
 into yours. For example, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">origin/feature-calculator</span></code>.</p>
-</div>
-<div class="section" id="git-help">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code><a class="headerlink" href="#git-help" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="git-help">
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code><a class="headerlink" href="#git-help" title="Permalink to this heading">#</a></h2>
 <p>For a more comprehensive list of commands and what they do, you can use the
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code> command.</p>
 <p>This command can also retrieve manual pages for other Git commands. For example,
 if you would like to know more about <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code>, you can run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span> <span class="pre">clone</span></code>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -567,10 +569,7 @@ if you would like to know more about <code class="docutils literal notranslate">
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="02-git-workflow.html"
@@ -590,10 +589,7 @@ if you would like to know more about <code class="docutils literal notranslate">
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -626,7 +622,7 @@ if you would like to know more about <code class="docutils literal notranslate">
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -652,7 +648,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -661,8 +657,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

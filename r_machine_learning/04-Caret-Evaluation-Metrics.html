@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Evaluation Metrics with caret &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Machine Learning model using Regression Method" href="05-Training_Regression.html" />
     <link rel="prev" title="Data Partition with caret" href="03-Caret-Data-Partition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -470,14 +472,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="evaluation-metrics-with-caret">
-<h1>Evaluation Metrics with caret<a class="headerlink" href="#evaluation-metrics-with-caret" title="Permalink to this headline">#</a></h1>
-<div class="section" id="evaluation-of-prediction">
-<h2>Evaluation of prediction<a class="headerlink" href="#evaluation-of-prediction" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="evaluation-metrics-with-caret">
+<h1>Evaluation Metrics with caret<a class="headerlink" href="#evaluation-metrics-with-caret" title="Permalink to this heading">#</a></h1>
+<section id="evaluation-of-prediction">
+<h2>Evaluation of prediction<a class="headerlink" href="#evaluation-of-prediction" title="Permalink to this heading">#</a></h2>
 <p>Here, we will discuss how we can evaluate our prediction. This process is somewhat different depending on whether we predict numerical outouts (regression) or categorical outputs (classification).</p>
-</div>
-<div class="section" id="classification-model">
-<h2>Classification model<a class="headerlink" href="#classification-model" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="classification-model">
+<h2>Classification model<a class="headerlink" href="#classification-model" title="Permalink to this heading">#</a></h2>
 <p>Let’s do our first prediction. Let’s predict the species of irises from the 4 variables (sepal / petal width and length). First, let’s train the model:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">train_inputs</span><span class="o">=</span><span class="n">training</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">]</span>
 <span class="n">train_outputs</span><span class="o">=</span><span class="n">training</span><span class="p">[,</span><span class="m">5</span><span class="p">]</span>
@@ -510,9 +512,9 @@ document.write(`
 <li><p>It measures how good or bad is your Machine Learning model</p></li>
 <li><p>Different Evaluation Metrics are used for Regression model (Continuous output) or Classification model (Categorical output).</p></li>
 </ul>
-</div>
-<div class="section" id="regression-model">
-<h2>Regression model<a class="headerlink" href="#regression-model" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="regression-model">
+<h2>Regression model<a class="headerlink" href="#regression-model" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s do rergession – that is, let’s try to predict a numerical (continuous) outcome. We will use the <code class="docutils literal notranslate"><span class="pre">mtcars</span></code> dataset to predict miles-per-gallon from the car’s weight, number of cylinders, and other variables. This time, we will do a leave-one-out: for each car, we will exclude it from the training set; use all remaining cars to train the model; and apply the model to predict the MPG of the excluded car. We will use Linear Model (LM) as the method of our prediction.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep </span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)[</span><span class="m">1</span><span class="p">])</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">dim</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
@@ -537,8 +539,8 @@ document.write(`
 </div>
 <p>Pretty good! However, when evaluating your prediction, never forget to visually inspect the scatter plot. It will tell you a lot more than you can get from looking at a single number of the correlation coefficient. Below is a <a class="reference external" href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">famous example</a> of four scatter plots, each representing correlation coefficient of 0.816:</p>
 <p><img alt="Anscombe's quartet" src="fig/r_ml/anscombes_quartet.png" /></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -566,10 +568,7 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03-Caret-Data-Partition.html"
@@ -589,10 +588,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -618,7 +614,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -644,7 +640,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -653,8 +649,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

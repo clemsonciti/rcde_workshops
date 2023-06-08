@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Classification with decision boundaries &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Nearest Neighbours Classification" href="07-KNN.html" />
     <link rel="prev" title="Training Machine Learning model using Regression Method" href="05-Training_Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -458,8 +460,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="classification-with-decision-boundaries">
-<h1>Classification with decision boundaries<a class="headerlink" href="#classification-with-decision-boundaries" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="classification-with-decision-boundaries">
+<h1>Classification with decision boundaries<a class="headerlink" href="#classification-with-decision-boundaries" title="Permalink to this heading">#</a></h1>
 <p>Let’s discuss the problem of multivariate classification. “Multivariate” means that we have more than one input variable, and we will
 consider the interaction between the input variables when we classify them. For simplicity, we assume we have two input variables, x and y. For
 this two-dimensional case, we can plot the data graphically. Let’s say we have two classes; we will represent them with blue squares and red circles.</p>
@@ -481,7 +483,7 @@ this two-dimensional case, we can plot the data graphically. Let’s say we have
 <p>SVM is a very robust classifier: it works well in small samples and in situations where the number of observations is less than the number of variables. It can also use decision boundaries that are not straight lines. However, it is not very practical on large data sets because it becomes very slow. Also, when doing SVM, keep in mind that it is sensitive to scale of the data, so it’s usually a good idea to scale all variables to (0,1) range.</p>
 <p>In Caret, these three classifiers can be performed with the <code class="docutils literal notranslate"><span class="pre">train</span></code> function. For linear discriminant, you need to set <code class="docutils literal notranslate"><span class="pre">method='lda'</span></code>; for quadratic discriminant, <code class="docutils literal notranslate"><span class="pre">method='qda'</span></code>. For SVM with linear (straight line) decision boundary, you set <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'svmLinear'</span></code> (you can also specify <code class="docutils literal notranslate"><span class="pre">cost</span></code>, which is the amount of error you are willing to tolerate). For non-linear boundaries, you can set <code class="docutils literal notranslate"><span class="pre">method</span></code> to <code class="docutils literal notranslate"><span class="pre">'svmPoly'</span></code>, <code class="docutils literal notranslate"><span class="pre">'svmRadial'</span></code>, etc. – see <a class="reference external" href="https://rdrr.io/cran/caret/man/models.html">the list of methods supported by Caret</a>. I used two classes in my examples, but all these methods work with any number of classes.</p>
 <p>If the number of observations is less than the number of variables, linear and quadratic discriminants won’t work. The way around it is to use principal component analysis (PCA), where we approximate the data with a small orthogonal set of new variables(<em>principal components</em>), each capturing an important trend in the data. This way, if several variables are correlated, they end up in the same principal component. Essentially, our data are approximated ith a small set of principal components; this approximaition is then fed into linear or quadratic discriminants. This method is very robust to noise.</p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -509,10 +511,7 @@ this two-dimensional case, we can plot the data graphically. Let’s say we have
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="05-Training_Regression.html"
@@ -532,10 +531,7 @@ this two-dimensional case, we can plot the data graphically. Let’s say we have
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -545,7 +541,7 @@ this two-dimensional case, we can plot the data graphically. Let’s say we have
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -571,7 +567,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -580,8 +576,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

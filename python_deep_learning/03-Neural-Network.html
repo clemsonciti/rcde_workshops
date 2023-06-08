@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Recap on ANN &#8212; Research Computing and Data Workshop</title>
   
   
@@ -18,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,12 +38,13 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to Keras" href="04-Intro-to-Keras.html" />
     <link rel="prev" title="Deep Learning Library Framework" href="02-Deep-Learning-Framework.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -479,10 +481,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="recap-on-ann">
-<h1>Recap on ANN<a class="headerlink" href="#recap-on-ann" title="Permalink to this headline">#</a></h1>
-<div class="section" id="recap-on-artificial-neural-network-ann">
-<h2>Recap on Artificial Neural Network (ANN)<a class="headerlink" href="#recap-on-artificial-neural-network-ann" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="recap-on-ann">
+<h1>Recap on ANN<a class="headerlink" href="#recap-on-ann" title="Permalink to this heading">#</a></h1>
+<section id="recap-on-artificial-neural-network-ann">
+<h2>Recap on Artificial Neural Network (ANN)<a class="headerlink" href="#recap-on-artificial-neural-network-ann" title="Permalink to this heading">#</a></h2>
 <p>Previous ANN in Machine Learning lecture can be found here: <a class="reference external" href="https://vuminhtue.github.io/Machine-Learning-Python/10-Neural-Network/index.html">https://vuminhtue.github.io/Machine-Learning-Python/10-Neural-Network/index.html</a></p>
 <ul class="simple">
 <li><p>Neural network is a series of algorithms that endeavors to recognize underlying relationships in a set of data through a process that mimics the way the human brain operates.</p></li>
@@ -496,8 +498,8 @@ document.write(`
 <p>Machine Learning Neural Network (normally consists of 1 hidden layer: Shallow Network)</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119180080-cf61da00-ba3d-11eb-9ad4-26c159a470be.png" /></p>
 <p>Deep Neural Network (multiple hidden layers)</p>
-<div class="section" id="forward-propagation-feed-forward">
-<h3>Forward Propagation (Feed-forward)<a class="headerlink" href="#forward-propagation-feed-forward" title="Permalink to this headline">#</a></h3>
+<section id="forward-propagation-feed-forward">
+<h3>Forward Propagation (Feed-forward)<a class="headerlink" href="#forward-propagation-feed-forward" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The process that data passes through multiple layers of neuron from input layer to output layers.</p></li>
 <li><p>The image below demonstrates that data from input layer passing through 1 neuron by connection through the dendrite with specific weight for each connection.</p></li>
@@ -506,18 +508,18 @@ document.write(`
 <li><p>Since there is only 1 way direction of the data, so this method is called forward propagation
 <img alt="image" src="https://user-images.githubusercontent.com/43855029/114472776-e997d500-9bc0-11eb-9f70-450389c912df.png" /></p></li>
 </ul>
-</div>
-<div class="section" id="backpropgation">
-<h3>Backpropgation<a class="headerlink" href="#backpropgation" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="backpropgation">
+<h3>Backpropgation<a class="headerlink" href="#backpropgation" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Forward Propagation is fast but it has limitation that the weights and bias cannot be changed.</p></li>
 <li><p>In order to overcome this limitation, Backpropagation calculate the error between output and observered data and propagate the error back into the network and update the weights and biases</p></li>
 <li><p>The Backpropagation process is repeated until number of iteration/epochs is reached or the error between output and observed is within the acceptable threshold.</p></li>
 </ul>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119187908-f1605a00-ba47-11eb-8c78-9e459eaadea1.png" /></p>
-</div>
-<div class="section" id="activation-functions">
-<h3>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="activation-functions">
+<h3>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this heading">#</a></h3>
 <p>Typical activation functions in Neural Network:</p>
 <ul class="simple">
 <li><p>Step Function (Binary Function)</p></li>
@@ -556,27 +558,27 @@ document.write(`
 <li><p>It does not activate all neuron at the same time: If the input is negative, the neuron is not activated</p></li>
 <li><p>Therefore, it overcomes the “vanishing gradient” problem</p></li>
 </ul>
-</div>
-<div class="section" id="gradient-problem">
-<h3>Gradient problem<a class="headerlink" href="#gradient-problem" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="gradient-problem">
+<h3>Gradient problem<a class="headerlink" href="#gradient-problem" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://towardsdatascience.com/the-vanishing-exploding-gradient-problem-in-deep-neural-networks-191358470c11">Gradient problem</a>
 When training a deep neural network with gradient based learning and backpropagation, we find the partial derivatives by traversing the network from the the final layer to the initial layer. Using the chain rule, layers that are deeper into the network go through continuous matrix multiplications in order to compute their derivatives.</p>
-<div class="section" id="vanishing-gradient">
-<h4>Vanishing gradient<a class="headerlink" href="#vanishing-gradient" title="Permalink to this headline">#</a></h4>
+<section id="vanishing-gradient">
+<h4>Vanishing gradient<a class="headerlink" href="#vanishing-gradient" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>In a network of <strong>n</strong> hidden layers, <strong>n</strong> derivatives will be multiplied together. If the derivatives are small then the gradient will decrease exponentially as we propagate through the model until it eventually vanishes</p></li>
 <li><p>The accumulation of small gradients results in a model that is incapable of learning meaningful insights since the weights and biases of the initial layers, which tends to learn the core features from the input data (X), will not be updated effectively. In the worst case scenario the gradient will be 0 which in turn will stop the network and stop further training.</p></li>
 </ul>
-</div>
-<div class="section" id="exploding-gradient">
-<h4>Exploding gradient<a class="headerlink" href="#exploding-gradient" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="exploding-gradient">
+<h4>Exploding gradient<a class="headerlink" href="#exploding-gradient" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>If the derivatives are large then the gradient will increase exponentially as we propagate down the model until they eventually explode, and this is what we call the problem of exploding gradient.</p></li>
 <li><p>The accumulation of large derivatives results in the model being very unstable and incapable of effective learning, The large changes in the models weights creates a very unstable network, which at extreme values the weights become so large that is causes overflow resulting in NaN weight values of which can no longer be updated.</p></li>
 </ul>
-</div>
-<div class="section" id="solution">
-<h4>Solution:<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="solution">
+<h4>Solution:<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
 <p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/06/the-challenge-of-vanishing-exploding-gradients-in-deep-neural-networks/">Solution</a></p>
 <ul class="simple">
 <li><p>Reduce the amount of layer</p></li>
@@ -598,10 +600,10 @@ When training a deep neural network with gradient based learning and backpropaga
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">clipvalue</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -629,10 +631,7 @@ When training a deep neural network with gradient based learning and backpropaga
               
               
                 <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="02-Deep-Learning-Framework.html"
@@ -652,10 +651,7 @@ When training a deep neural network with gradient based learning and backpropaga
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -690,7 +686,7 @@ When training a deep neural network with gradient based learning and backpropaga
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -716,7 +712,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -725,8 +721,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>
