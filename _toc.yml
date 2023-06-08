@@ -70,6 +70,7 @@ parts:
       - file: python_sklearn/01-TLDR.ipynb
       - file: python_sklearn/02-preparing-data.ipynb
       - file: python_sklearn/03-partitioning-data.ipynb
+      - file: python_sklearn/04-regression-example.ipynb
     - file: python_deep_learning/00-index.md
       sections:
       - file: python_deep_learning/01-Introduction.md
