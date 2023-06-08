@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Caret &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Data Partition with caret" href="03-Caret-Data-Partition.html" />
     <link rel="prev" title="Introduction to Machine Learning" href="01-Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -488,11 +490,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-caret">
-<h1>Introduction to Caret<a class="headerlink" href="#introduction-to-caret" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Caret<a class="headerlink" href="#introduction-to-caret" title="Permalink to this heading">#</a></h1>
 <section id="what-is-caret">
-<h2>1. What is Caret<a class="headerlink" href="#what-is-caret" title="Permalink to this headline">#</a></h2>
+<h2>1. What is Caret<a class="headerlink" href="#what-is-caret" title="Permalink to this heading">#</a></h2>
 <section id="overview">
-<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png" /></p>
 <ul class="simple">
 <li><p>The caret package (short for <strong>C</strong>lassification <strong>A</strong>nd <strong>RE</strong>gression <strong>T</strong>raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for, among others:</p>
@@ -515,7 +517,7 @@ Here we only touch some of the very basic commands that are useful for our Machi
 <p><a class="reference external" href="https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf">caret cheatsheet</a></p>
 </section>
 <section id="why-using-caret">
-<h3>Why using Caret<a class="headerlink" href="#why-using-caret" title="Permalink to this headline">#</a></h3>
+<h3>Why using Caret<a class="headerlink" href="#why-using-caret" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Unified framework for a wide variety of ML algorithms, with consistent syntax</p></li>
 <li><p>Possibly the biggest project in R</p></li>
@@ -525,7 +527,7 @@ Here we only touch some of the very basic commands that are useful for our Machi
 </ul>
 </section>
 <section id="install-caret">
-<h3>Install caret<a class="headerlink" href="#install-caret" title="Permalink to this headline">#</a></h3>
+<h3>Install caret<a class="headerlink" href="#install-caret" title="Permalink to this heading">#</a></h3>
 <p>Start R Studio on OpenOD. Lets’ pick 10 CPUs, 60 GB of memory, any interconnect, no GPU, R version 4.0.3.</p>
 <p>In R console:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;caret&quot;</span><span class="p">)</span>
@@ -538,9 +540,9 @@ Here we only touch some of the very basic commands that are useful for our Machi
 </section>
 </section>
 <section id="pre-processing-using-caret">
-<h2>2. Pre-processing using caret<a class="headerlink" href="#pre-processing-using-caret" title="Permalink to this headline">#</a></h2>
+<h2>2. Pre-processing using caret<a class="headerlink" href="#pre-processing-using-caret" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>Overview<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Overview<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>There are several steps that we will use <code class="docutils literal notranslate"><span class="pre">caret</span></code> for. For preprocessing raw data, we gonna use <code class="docutils literal notranslate"><span class="pre">caret</span></code> in these tasks:</p>
 <ul class="simple">
 <li><p>Preprocessing with missing value</p></li>
@@ -548,7 +550,7 @@ Here we only touch some of the very basic commands that are useful for our Machi
 </ul>
 </section>
 <section id="visualize-important-variables">
-<h3>Visualize important variables<a class="headerlink" href="#visualize-important-variables" title="Permalink to this headline">#</a></h3>
+<h3>Visualize important variables<a class="headerlink" href="#visualize-important-variables" title="Permalink to this heading">#</a></h3>
 <p>Here we introduce the library <code class="docutils literal notranslate"><span class="pre">GGally</span></code>  with function <code class="docutils literal notranslate"><span class="pre">ggpairs</span></code> to help user in visualizing the input data</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;GGally&#39;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
@@ -562,7 +564,7 @@ in our data. Interestingly, you can see an exammple of
 between sepal width and sepal length: the correlation is negative for all data, but positive within each data group!</p>
 </section>
 <section id="pre-processing-with-missing-value">
-<h3>Pre-processing with missing value<a class="headerlink" href="#pre-processing-with-missing-value" title="Permalink to this headline">#</a></h3>
+<h3>Pre-processing with missing value<a class="headerlink" href="#pre-processing-with-missing-value" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Most of the time the input data has missing values (<code class="docutils literal notranslate"><span class="pre">NA,</span> <span class="pre">NaN,</span> <span class="pre">Inf</span></code>) due to data collection issue (power, sensor, personel).</p></li>
 <li><p>There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency</p></li>

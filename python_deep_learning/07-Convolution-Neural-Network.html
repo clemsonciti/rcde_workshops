@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Convolution Neural Network for image classification &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Recurrent Neural Network for Timeseries forecasting" href="08-Recurrent-neural-networks.html" />
     <link rel="prev" title="Training Deep Learning Classification model with Keras" href="06-Keras-Classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -501,10 +503,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="convolution-neural-network-for-image-classification">
-<h1>Convolution Neural Network for image classification<a class="headerlink" href="#convolution-neural-network-for-image-classification" title="Permalink to this headline">#</a></h1>
+<h1>Convolution Neural Network for image classification<a class="headerlink" href="#convolution-neural-network-for-image-classification" title="Permalink to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="convolutional-neural-network-cnn">
-<h1>Convolutional Neural Network - CNN<a class="headerlink" href="#convolutional-neural-network-cnn" title="Permalink to this headline">#</a></h1>
+<h1>Convolutional Neural Network - CNN<a class="headerlink" href="#convolutional-neural-network-cnn" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>CNNs are one type of ANN which utilize the neuron, kernel, activation function.</p></li>
 <li><p>Inputs must be in images (or assumed to be images)</p></li>
@@ -512,7 +514,7 @@ document.write(`
 <li><p>CNNs best for object detection, image classification, computer vision</p></li>
 </ul>
 <section id="architecture-of-cnns">
-<h2>Architecture of CNNs<a class="headerlink" href="#architecture-of-cnns" title="Permalink to this headline">#</a></h2>
+<h2>Architecture of CNNs<a class="headerlink" href="#architecture-of-cnns" title="Permalink to this heading">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129789560-452539b8-06c7-4a3b-8543-c2f6e5a6f9c6.png" />
 <a class="reference external" href="http://henrysprojects.net/projects/conv-net.html">Source</a></p>
 <ul class="simple">
@@ -521,7 +523,7 @@ document.write(`
 <li><p>Therefore, Convolution Layers and  Max Pooling</p></li>
 </ul>
 <section id="convolutional-layer-cnn-or-convnet">
-<h3>Convolutional Layer (CNN or ConvNet)<a class="headerlink" href="#convolutional-layer-cnn-or-convnet" title="Permalink to this headline">#</a></h3>
+<h3>Convolutional Layer (CNN or ConvNet)<a class="headerlink" href="#convolutional-layer-cnn-or-convnet" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Take a look at the simple gray scale image below which contains 10 pixels on width &amp; height. The color scale has only 2 values (black &amp; white) or (binary -1 and 1), there fore the size of the following image is 10x10x1:</p></li>
 </ul>
@@ -545,7 +547,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129791297-fae899e5-1745-4fa0-b348-1785dea769ea.png" /></p>
 </section>
 <section id="pooling-layer">
-<h3>Pooling Layer<a class="headerlink" href="#pooling-layer" title="Permalink to this headline">#</a></h3>
+<h3>Pooling Layer<a class="headerlink" href="#pooling-layer" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Similar to the Convolutional Layer, the Pooling layer is responsible for reducing the spatial size of the Convolved Feature.</p></li>
 <li><p>This is to decrease the computational power required to process the data through dimensionality reduction</p></li>
@@ -559,7 +561,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129791581-5d9fa47d-1390-44c2-b86a-f66273a9f7ca.png" /></p>
 </section>
 <section id="flatten-layer">
-<h3>Flatten Layer<a class="headerlink" href="#flatten-layer" title="Permalink to this headline">#</a></h3>
+<h3>Flatten Layer<a class="headerlink" href="#flatten-layer" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Once the images have passed through Convolution Layer and Pooling Layer, its size has been reduced greatly and ready for MLP training (or to another Convolution steps).</p></li>
 <li><p>The image is then flatten to a column vector and passed through feed-forward NN and BackPropagation applied to every iteration.</p></li>
@@ -569,9 +571,9 @@ document.write(`
 </section>
 </section>
 <section id="application-of-cnn-in-image-classification">
-<h2>Application of CNN in image classification<a class="headerlink" href="#application-of-cnn-in-image-classification" title="Permalink to this headline">#</a></h2>
+<h2>Application of CNN in image classification<a class="headerlink" href="#application-of-cnn-in-image-classification" title="Permalink to this heading">#</a></h2>
 <section id="the-cifar10-database">
-<h3>The CIFAR10 database<a class="headerlink" href="#the-cifar10-database" title="Permalink to this headline">#</a></h3>
+<h3>The CIFAR10 database<a class="headerlink" href="#the-cifar10-database" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10</a> database consisting 60,000 color images with 10 different classes</p></li>
 <li><p>Each image has 32 x 32 pixels with color range from 0-255</p></li>
@@ -583,7 +585,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/134049153-99879363-c761-4b1d-b378-78186024bb95.png" /><a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">Source</a></p>
 </section>
 <section id="importing-libraries">
-<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this headline">#</a></h3>
+<h3>Importing libraries<a class="headerlink" href="#importing-libraries" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
@@ -593,7 +595,7 @@ document.write(`
 </div>
 </section>
 <section id="import-convolution-max-pooling-and-flatten-as-mentioned-above">
-<h3>Import convolution, max pooling and flatten as mentioned above:<a class="headerlink" href="#import-convolution-max-pooling-and-flatten-as-mentioned-above" title="Permalink to this headline">#</a></h3>
+<h3>Import convolution, max pooling and flatten as mentioned above:<a class="headerlink" href="#import-convolution-max-pooling-and-flatten-as-mentioned-above" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Conv2D</span> <span class="c1"># convolutional layers to reduce image size</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">MaxPooling2D</span> <span class="c1"># Max pooling layers to further reduce image size</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Flatten</span> <span class="c1"># flatten data from 2D to column for Dense layer</span>
@@ -601,7 +603,7 @@ document.write(`
 </div>
 </section>
 <section id="load-cifar10-data">
-<h3>Load CIFAR10 data<a class="headerlink" href="#load-cifar10-data" title="Permalink to this headline">#</a></h3>
+<h3>Load CIFAR10 data<a class="headerlink" href="#load-cifar10-data" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">cifar10</span>
 
 <span class="c1"># load data</span>
@@ -643,7 +645,7 @@ document.write(`
 </div>
 </section>
 <section id="construct-convolutional-neural-network">
-<h3>Construct Convolutional Neural Network<a class="headerlink" href="#construct-convolutional-neural-network" title="Permalink to this headline">#</a></h3>
+<h3>Construct Convolutional Neural Network<a class="headerlink" href="#construct-convolutional-neural-network" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For Convolution front end, starting with kernel size (3,3) with a number of filter 10 followed by Max Pooling Layer with pool_size = (2,2).</p></li>
 <li><p>The 2D data after two Max Pooling layer is flatten directly.</p></li>
@@ -665,7 +667,7 @@ document.write(`
 </div>
 </section>
 <section id="train-model">
-<h3>Train model<a class="headerlink" href="#train-model" title="Permalink to this headline">#</a></h3>
+<h3>Train model<a class="headerlink" href="#train-model" title="Permalink to this heading">#</a></h3>
 <p>Fit the model</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit the model</span>
 <span class="n">model_CNN</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
@@ -674,7 +676,7 @@ document.write(`
 </div>
 </section>
 <section id="evaluate-the-output">
-<h3>Evaluate the output<a class="headerlink" href="#evaluate-the-output" title="Permalink to this headline">#</a></h3>
+<h3>Evaluate the output<a class="headerlink" href="#evaluate-the-output" title="Permalink to this heading">#</a></h3>
 <p>Visualize the training/testing accuracy:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -698,7 +700,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/135329289-3e48cf23-ab0c-4a35-8074-b0a344e8dbbe.png" /></p>
 </section>
 <section id="save-reload-cnn-model">
-<h3>Save &amp; reload CNN model<a class="headerlink" href="#save-reload-cnn-model" title="Permalink to this headline">#</a></h3>
+<h3>Save &amp; reload CNN model<a class="headerlink" href="#save-reload-cnn-model" title="Permalink to this heading">#</a></h3>
 <p>Save model:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;CNN_CIFAR10.keras&#39;</span><span class="p">)</span>
 </pre></div>
@@ -709,7 +711,7 @@ document.write(`
 </div>
 </section>
 <section id="evaluate-model-with-testing-data">
-<h3>Evaluate model with testing data<a class="headerlink" href="#evaluate-model-with-testing-data" title="Permalink to this headline">#</a></h3>
+<h3>Evaluate model with testing data<a class="headerlink" href="#evaluate-model-with-testing-data" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">model_new</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test loss: </span><span class="si">%.4f</span><span class="s1"> accuracy: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_accuracy</span><span class="p">))</span>
 </pre></div>
@@ -721,7 +723,7 @@ document.write(`
 <p>The accuracy rate is 0.6080 for testing data means there are 6080 right classification based on 10,000 sample of testing data</p>
 </section>
 <section id="visualize-the-output-with-the-first-25-testing-images">
-<h3>Visualize the output with the first 25 testing images<a class="headerlink" href="#visualize-the-output-with-the-first-25-testing-images" title="Permalink to this headline">#</a></h3>
+<h3>Visualize the output with the first 25 testing images<a class="headerlink" href="#visualize-the-output-with-the-first-25-testing-images" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model_new</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">ypreds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -739,7 +741,7 @@ document.write(`
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/135329702-29eeb261-e7bb-4d93-bd6c-894e8360df16.png" /></p>
 </section>
 <section id="improving-the-performance">
-<h3>Improving the performance?<a class="headerlink" href="#improving-the-performance" title="Permalink to this headline">#</a></h3>
+<h3>Improving the performance?<a class="headerlink" href="#improving-the-performance" title="Permalink to this heading">#</a></h3>
 <p>Use more convolution and max pooling payer:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>

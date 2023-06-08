@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Git Commands &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Installing Git" href="04-install-git.html" />
     <link rel="prev" title="Git Version Control" href="02-git-workflow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -486,29 +488,29 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="git-commands">
-<h1>Git Commands<a class="headerlink" href="#git-commands" title="Permalink to this headline">#</a></h1>
+<h1>Git Commands<a class="headerlink" href="#git-commands" title="Permalink to this heading">#</a></h1>
 <p>This sheet provides a quick reference for what the basic git commands are and
 what they do.</p>
 <section id="git-init">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code><a class="headerlink" href="#git-init" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code><a class="headerlink" href="#git-init" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command will initialize a new Git repository in the current
 directory. This command should be used</p>
 </section>
 <section id="git-status">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code><a class="headerlink" href="#git-status" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code><a class="headerlink" href="#git-status" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> command will show you the current status of the repository.</p>
 <p>If the stage is not empty, a list of staged files will be shown.</p>
 <p>If there are any modified files that have not been staged, a list of them will
 also be shown.</p>
 </section>
 <section id="git-add">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code><a class="headerlink" href="#git-add" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code><a class="headerlink" href="#git-add" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> command will add a file to the stage.</p>
 <p>For example, to stage the file <code class="docutils literal notranslate"><span class="pre">abc.txt</span></code>, you could run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">abc.txt</span></code>. You
 can also add all files by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code>.</p>
 </section>
 <section id="git-commit">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code><a class="headerlink" href="#git-commit" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code><a class="headerlink" href="#git-commit" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> command will create a new commit on the repository.</p>
 <p>It is a good idea to provide a message explaining your changes, like this:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added images for the ski lift and cypress trees.&quot;</span>
@@ -516,32 +518,32 @@ can also add all files by running <code class="docutils literal notranslate"><sp
 </div>
 </section>
 <section id="git-log">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code><a class="headerlink" href="#git-log" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code><a class="headerlink" href="#git-log" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> command shows an overview of previous commits made to the
 repository and their messages.</p>
 </section>
 <section id="git-push">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code><a class="headerlink" href="#git-push" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code><a class="headerlink" href="#git-push" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> command will send commits from your local computer to the remote
 server you have configured.</p>
 </section>
 <section id="git-fetch">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code><a class="headerlink" href="#git-fetch" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code><a class="headerlink" href="#git-fetch" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> command will search for information about new commits on the
 remote server, but will <strong>not</strong> integrate the changes into your copy.</p>
 </section>
 <section id="git-pull">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code><a class="headerlink" href="#git-pull" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code><a class="headerlink" href="#git-pull" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command will download new commits from the remote server you have
 selected to your local computer and integrate the changes into your copy.</p>
 </section>
 <section id="git-merge">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code><a class="headerlink" href="#git-merge" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code><a class="headerlink" href="#git-merge" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> command can be used to integrate changes from another branch
 into yours. For example, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">origin/feature-calculator</span></code>.</p>
 </section>
 <section id="git-help">
-<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code><a class="headerlink" href="#git-help" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code><a class="headerlink" href="#git-help" title="Permalink to this heading">#</a></h2>
 <p>For a more comprehensive list of commands and what they do, you can use the
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code> command.</p>
 <p>This command can also retrieve manual pages for other Git commands. For example,

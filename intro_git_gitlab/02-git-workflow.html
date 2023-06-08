@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Git Version Control &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Git Commands" href="03-git-commands.html" />
     <link rel="prev" title="Version Control Overview" href="01-version-control.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -481,12 +483,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="git-version-control">
-<h1>Git Version Control<a class="headerlink" href="#git-version-control" title="Permalink to this headline">#</a></h1>
+<h1>Git Version Control<a class="headerlink" href="#git-version-control" title="Permalink to this heading">#</a></h1>
 <p>Now that you understand the foundations of version control and the motivations
 behind it, let’s talk about one of the most popular version control systems:
 <strong>Git</strong>.</p>
 <section id="about-git">
-<h2>About Git<a class="headerlink" href="#about-git" title="Permalink to this headline">#</a></h2>
+<h2>About Git<a class="headerlink" href="#about-git" title="Permalink to this heading">#</a></h2>
 <p>Git was created by Linus Torvalds in 2005 to help Linux kernel developers
 collaborate on the source code. It is designed to be a <strong>distributed</strong> verison
 control system, meaning that all copies contain a full record of the history.</p>
@@ -496,7 +498,7 @@ computer has everything it needs to perform operations locally without waiting
 for information from the network.</p>
 </section>
 <section id="repositories">
-<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this headline">#</a></h2>
+<h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this heading">#</a></h2>
 <p>Working with Git all starts with a <strong>repository</strong>. You can think of a repository
 as a “project folder” on your computer, which contains:</p>
 <ul class="simple">
@@ -505,7 +507,7 @@ as a “project folder” on your computer, which contains:</p>
 </ul>
 </section>
 <section id="history">
-<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h2>
+<h2>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>In Git, each <strong>version</strong> of your repository is called a <strong>commit</strong>. The history
 of your project is recorded as a series of these commits.</p>
 <figure class="align-default" id="id1">
@@ -521,7 +523,7 @@ commit. Instead, each commit will record what has changed since the commit
 before it.</p>
 </section>
 <section id="the-staging-area">
-<h2>The Staging Area<a class="headerlink" href="#the-staging-area" title="Permalink to this headline">#</a></h2>
+<h2>The Staging Area<a class="headerlink" href="#the-staging-area" title="Permalink to this heading">#</a></h2>
 <p>Before performing any Git operations, it is critical that you understand the
 three main states that a file can be in.</p>
 <p>Your project folder is considered your <strong>working directory</strong>. When you make
@@ -543,7 +545,7 @@ Source: <em>Pro Git</em> by Scott Chacon and Ben Straub, licensed under
 </figure>
 </section>
 <section id="states-of-a-file">
-<h2>States of a File<a class="headerlink" href="#states-of-a-file" title="Permalink to this headline">#</a></h2>
+<h2>States of a File<a class="headerlink" href="#states-of-a-file" title="Permalink to this heading">#</a></h2>
 <p>Git does <strong>not</strong> automatically save a version for you each time you save a file
 inside your repository. Instead, you must tell Git what changes you want to
 include in the next version and make a commit.</p>

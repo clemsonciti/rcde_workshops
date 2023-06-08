@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Training Deep Learning Classification model with Keras &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Convolution Neural Network for image classification" href="07-Convolution-Neural-Network.html" />
     <link rel="prev" title="Training Deep Learning Regression model with Keras" href="05-Keras-Regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -491,11 +493,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="training-deep-learning-classification-model-with-keras">
-<h1>Training Deep Learning Classification model with Keras<a class="headerlink" href="#training-deep-learning-classification-model-with-keras" title="Permalink to this headline">#</a></h1>
+<h1>Training Deep Learning Classification model with Keras<a class="headerlink" href="#training-deep-learning-classification-model-with-keras" title="Permalink to this heading">#</a></h1>
 <section id="using-keras-to-solve-a-classification-model">
-<h2>Using Keras to solve a Classification Model<a class="headerlink" href="#using-keras-to-solve-a-classification-model" title="Permalink to this headline">#</a></h2>
+<h2>Using Keras to solve a Classification Model<a class="headerlink" href="#using-keras-to-solve-a-classification-model" title="Permalink to this heading">#</a></h2>
 <section id="prepare-the-data">
-<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this heading">#</a></h3>
 <p>Here we use iris data from ANN and Classification episode in our previous Machine Learning class with sklearn:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -511,7 +513,7 @@ document.write(`
 </div>
 </section>
 <section id="apply-one-hot-encoding-to-categorize-the-output">
-<h3>Apply One Hot Encoding to categorize the output:<a class="headerlink" href="#apply-one-hot-encoding-to-categorize-the-output" title="Permalink to this headline">#</a></h3>
+<h3>Apply One Hot Encoding to categorize the output:<a class="headerlink" href="#apply-one-hot-encoding-to-categorize-the-output" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>One Hot Encoding allows to represent the categorical data in a probabilistic way that is understandable by the machine.</p></li>
 <li><p>For example <strong>cat, dog, deer</strong> can be converted to <strong>0, 1, 2</strong> or <strong>[1 0 0,0 1 0,0 0 1]</strong></p></li>
@@ -524,13 +526,13 @@ document.write(`
 </div>
 </section>
 <section id="split-data-to-training-testing">
-<h3>Split data to training/testing:<a class="headerlink" href="#split-data-to-training-testing" title="Permalink to this headline">#</a></h3>
+<h3>Split data to training/testing:<a class="headerlink" href="#split-data-to-training-testing" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">train_size</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="scale-the-input-data">
-<h3>Scale the input data:<a class="headerlink" href="#scale-the-input-data" title="Permalink to this headline">#</a></h3>
+<h3>Scale the input data:<a class="headerlink" href="#scale-the-input-data" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
@@ -540,14 +542,14 @@ document.write(`
 </div>
 </section>
 <section id="let-s-use-keras-s-sequential-model-with-dense-layers">
-<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this headline">#</a></h3>
+<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
 </pre></div>
 </div>
 </section>
 <section id="create-a-sequential-model-with-3-layers">
-<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this headline">#</a></h3>
+<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Sequential model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="c1"># Create a first hidden layer, the input for the first hidden layer is input layer which has 3 variables:</span>
@@ -560,20 +562,20 @@ document.write(`
 </div>
 </section>
 <section id="compile-model">
-<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this headline">#</a></h3>
+<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="fit-model">
-<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">#</a></h3>
+<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span><span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
 <section id="evaluate-model">
-<h3>Evaluate model<a class="headerlink" href="#evaluate-model" title="Permalink to this headline">#</a></h3>
+<h3>Evaluate model<a class="headerlink" href="#evaluate-model" title="Permalink to this heading">#</a></h3>
 <p>Evaluate the testing set using given loss function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test loss, test acc:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
@@ -581,20 +583,20 @@ document.write(`
 </div>
 </section>
 <section id="predict-output">
-<h3>Predict output<a class="headerlink" href="#predict-output" title="Permalink to this headline">#</a></h3>
+<h3>Predict output<a class="headerlink" href="#predict-output" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="inverse-transform-the-one-hot-encoding">
-<h3>Inverse transform the One Hot Encoding<a class="headerlink" href="#inverse-transform-the-one-hot-encoding" title="Permalink to this headline">#</a></h3>
+<h3>Inverse transform the One Hot Encoding<a class="headerlink" href="#inverse-transform-the-one-hot-encoding" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Y_pred</span> <span class="o">=</span> <span class="n">enc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
 <span class="n">Y_test</span> <span class="o">=</span> <span class="n">enc</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="evaluate-using-accuracy-score">
-<h3>Evaluate using accuracy score:<a class="headerlink" href="#evaluate-using-accuracy-score" title="Permalink to this headline">#</a></h3>
+<h3>Evaluate using accuracy score:<a class="headerlink" href="#evaluate-using-accuracy-score" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
 <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">Y_pred</span><span class="p">,</span><span class="n">Y_test</span><span class="p">)</span>
 </pre></div>

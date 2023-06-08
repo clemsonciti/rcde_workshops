@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Keras &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Deep Learning Regression model with Keras" href="05-Keras-Regression.html" />
     <link rel="prev" title="Recap on ANN" href="03-Neural-Network.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -489,15 +491,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-keras">
-<h1>Introduction to Keras<a class="headerlink" href="#introduction-to-keras" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Keras<a class="headerlink" href="#introduction-to-keras" title="Permalink to this heading">#</a></h1>
 <section id="import-keras">
-<h2>Import Keras<a class="headerlink" href="#import-keras" title="Permalink to this headline">#</a></h2>
+<h2>Import Keras<a class="headerlink" href="#import-keras" title="Permalink to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
 </pre></div>
 </div>
 </section>
 <section id="layers-in-deep-learning">
-<h2>Layers in Deep Learning<a class="headerlink" href="#layers-in-deep-learning" title="Permalink to this headline">#</a></h2>
+<h2>Layers in Deep Learning<a class="headerlink" href="#layers-in-deep-learning" title="Permalink to this heading">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129512909-a8eaa507-4869-4956-8bf9-ac6a5d6b4cd5.png" /></p>
 <ul class="simple">
 <li><p>Input layer</p></li>
@@ -512,14 +514,14 @@ document.write(`
 </pre></div>
 </div>
 <section id="sequential">
-<h3>Sequential<a class="headerlink" href="#sequential" title="Permalink to this headline">#</a></h3>
+<h3>Sequential<a class="headerlink" href="#sequential" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A <strong>Sequential</strong> model is appropriate for a <strong>plain stack of layers</strong> where each layer has exactly one input tensor and one output tensor.</p></li>
 <li><p>More information can be found <a class="reference external" href="https://keras.io/guides/sequential_model/">here</a></p></li>
 </ul>
 </section>
 <section id="dense">
-<h3>Dense:<a class="headerlink" href="#dense" title="Permalink to this headline">#</a></h3>
+<h3>Dense:<a class="headerlink" href="#dense" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129509811-8b951430-dc5f-47d4-a31b-a12b6edade12.png" /></p>
 <p><strong>Dense</strong> implements the operation: output = activation(dot(input, kernel) + bias); where:</p>
 <ul class="simple">
@@ -530,7 +532,7 @@ document.write(`
 </ul>
 </section>
 <section id="create-a-sequential-model-with-n-2-as-in-image-above">
-<h3>Create a Sequential model with N=2 as in image above:<a class="headerlink" href="#create-a-sequential-model-with-n-2-as-in-image-above" title="Permalink to this headline">#</a></h3>
+<h3>Create a Sequential model with N=2 as in image above:<a class="headerlink" href="#create-a-sequential-model-with-n-2-as-in-image-above" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Sequential model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="c1"># Create a first hidden layer, the input for the first hidden layer is input layer which has 3 variables:</span>
@@ -543,17 +545,17 @@ document.write(`
 </div>
 </section>
 <section id="how-about-this-model">
-<h3>How about this model?<a class="headerlink" href="#how-about-this-model" title="Permalink to this headline">#</a></h3>
+<h3>How about this model?<a class="headerlink" href="#how-about-this-model" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129513301-dfb25a8a-32d8-43a1-a6f4-713aa718c2e0.png" /></p>
 </section>
 <section id="optimal-activation-function">
-<h3>Optimal activation function?<a class="headerlink" href="#optimal-activation-function" title="Permalink to this headline">#</a></h3>
+<h3>Optimal activation function?<a class="headerlink" href="#optimal-activation-function" title="Permalink to this heading">#</a></h3>
 <section id="for-hidden-layers">
-<h4>For hidden layers:<a class="headerlink" href="#for-hidden-layers" title="Permalink to this headline">#</a></h4>
+<h4>For hidden layers:<a class="headerlink" href="#for-hidden-layers" title="Permalink to this heading">#</a></h4>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129512679-34174dd4-8b79-4625-96d9-c85e5ea95c48.png" /></p>
 </section>
 <section id="for-output-layers">
-<h4>For output layers:<a class="headerlink" href="#for-output-layers" title="Permalink to this headline">#</a></h4>
+<h4>For output layers:<a class="headerlink" href="#for-output-layers" title="Permalink to this heading">#</a></h4>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129512553-17bf8d4e-5ed4-4180-aaa7-d180c2d093c0.png" /></p>
 <p>Source on optimal activation function can be found <a class="reference external" href="https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/">here</a></p>
 </section>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data Partition with caret &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Evaluation Metrics with caret" href="04-Caret-Evaluation-Metrics.html" />
     <link rel="prev" title="Introduction to Caret" href="02-Caret-Preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -478,9 +480,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-partition-with-caret">
-<h1>Data Partition with caret<a class="headerlink" href="#data-partition-with-caret" title="Permalink to this headline">#</a></h1>
+<h1>Data Partition with caret<a class="headerlink" href="#data-partition-with-caret" title="Permalink to this heading">#</a></h1>
 <section id="data-partition-training-and-testing">
-<h2>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h2>
+<h2>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this heading">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122599105-cd3e6b80-d03b-11eb-9aa4-2b8f39427c20.png" /></p>
 <ul class="simple">
 <li><p>In a typical machine learning problem, you have a data set and you need to create a model which predicts the
@@ -538,7 +540,7 @@ at each iteration, use one of the chunks for testing and the rest of the data fo
 </div>
 </section>
 <section id="data-spliting-using-k-fold-cross-validation-approach">
-<h2>Data spliting using <code class="docutils literal notranslate"><span class="pre">K-fold</span></code>: Cross validation approach<a class="headerlink" href="#data-spliting-using-k-fold-cross-validation-approach" title="Permalink to this headline">#</a></h2>
+<h2>Data spliting using <code class="docutils literal notranslate"><span class="pre">K-fold</span></code>: Cross validation approach<a class="headerlink" href="#data-spliting-using-k-fold-cross-validation-approach" title="Permalink to this heading">#</a></h2>
 <p>The procedure has a single parameter called k that refers to the number of groups that a given data sample is to be split into. As such, the procedure is often called k-fold cross-validation. When a specific value for k is chosen, it may be used in place of k in the reference to the model, such as k=10 becoming 10-fold cross-validation.
 <img alt="image" src="https://user-images.githubusercontent.com/43855029/114211785-103edd00-992f-11eb-89d0-bbd7bd0c0178.png" /></p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitControl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;cv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>

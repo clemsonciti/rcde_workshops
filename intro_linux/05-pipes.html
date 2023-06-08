@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Pipes and Redirection &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Finding Things" href="06-find.html" />
     <link rel="prev" title="File Permissions and Atrributes" href="04a-file-permissions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -478,9 +480,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pipes-and-redirection">
-<h1>Pipes and Redirection<a class="headerlink" href="#pipes-and-redirection" title="Permalink to this headline">#</a></h1>
+<h1>Pipes and Redirection<a class="headerlink" href="#pipes-and-redirection" title="Permalink to this heading">#</a></h1>
 <section id="pipes">
-<h2>Pipes<a class="headerlink" href="#pipes" title="Permalink to this headline">#</a></h2>
+<h2>Pipes<a class="headerlink" href="#pipes" title="Permalink to this heading">#</a></h2>
 <p><strong>Pipes</strong> are used to redirect output from one command into the input of another. When a command outputs text to the screen, that is called <strong>standard out</strong> (stdout). A pipe will redirect the standard output of a process to the <strong>standard in</strong> (stdin) of another program.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls | wc -l
 </pre></div>
@@ -489,7 +491,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">wc</span></code> stands for <strong>w</strong>ord <strong>c</strong>ount and <code class="docutils literal notranslate"><span class="pre">-l</span></code> tells <code class="docutils literal notranslate"><span class="pre">wc</span></code> to count lines instead of characters. This command will output the number of files in the directory.</p>
 </section>
 <section id="redirect-input-and-output">
-<h2>Redirect Input and Output<a class="headerlink" href="#redirect-input-and-output" title="Permalink to this headline">#</a></h2>
+<h2>Redirect Input and Output<a class="headerlink" href="#redirect-input-and-output" title="Permalink to this heading">#</a></h2>
 <p>A program’s output can be redirected to a file instead of stdout using <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls &gt; list-of-files.txt
 </pre></div>

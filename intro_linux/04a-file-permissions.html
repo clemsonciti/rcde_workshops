@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>File Permissions and Atrributes &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Pipes and Redirection" href="05-pipes.html" />
     <link rel="prev" title="Working With Files and Directories" href="04-working_with_files_and_directories.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -481,7 +483,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="file-permissions-and-atrributes">
-<h1>File Permissions and Atrributes<a class="headerlink" href="#file-permissions-and-atrributes" title="Permalink to this headline">#</a></h1>
+<h1>File Permissions and Atrributes<a class="headerlink" href="#file-permissions-and-atrributes" title="Permalink to this heading">#</a></h1>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> (<strong>l</strong>ong format) to list files and their attributes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">user</span> <span class="n">group</span> <span class="mi">1002287</span> <span class="n">Oct</span> <span class="mi">20</span> <span class="mi">15</span><span class="p">:</span><span class="mi">49</span> <span class="n">example</span><span class="o">.</span><span class="n">csv</span>
 </pre></div>
@@ -510,12 +512,12 @@ document.write(`
 <li><p>A dash means no permission.</p></li>
 </ul>
 <section id="chmod">
-<h2>chmod<a class="headerlink" href="#chmod" title="Permalink to this headline">#</a></h2>
+<h2>chmod<a class="headerlink" href="#chmod" title="Permalink to this heading">#</a></h2>
 <p>The command <code class="docutils literal notranslate"><span class="pre">chmod</span></code> (<strong>ch</strong>ange <strong>mod</strong>e) is used to edit file permissions. There are 2 ways to represent the permissions: <em>numeric</em> and <em>symbolic</em>.</p>
 <section id="numeric-mode">
-<h3>Numeric mode<a class="headerlink" href="#numeric-mode" title="Permalink to this headline">#</a></h3>
+<h3>Numeric mode<a class="headerlink" href="#numeric-mode" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">rwx</span></code> permissions are represented by octal numbers (0-7). The following table explains each value (credit: <a class="reference external" href="https://en.wikipedia.org/wiki/Chmod#Numerical_permissions">Wikipedia</a>):</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>#</p></th>
 <th class="head"><p>Sum</p></th>
@@ -578,9 +580,9 @@ document.write(`
 </div>
 </section>
 <section id="symbolic-mode">
-<h3>Symbolic mode<a class="headerlink" href="#symbolic-mode" title="Permalink to this headline">#</a></h3>
+<h3>Symbolic mode<a class="headerlink" href="#symbolic-mode" title="Permalink to this heading">#</a></h3>
 <p>Use symbolic notation for finer grained control of permissions. Symbolic notation requires a <code class="docutils literal notranslate"><span class="pre">reference</span></code>, <code class="docutils literal notranslate"><span class="pre">operator</span></code>, and <code class="docutils literal notranslate"><span class="pre">mode</span></code>. From <a class="reference external" href="https://en.wikipedia.org/wiki/Chmod#Symbolic_modes">Wikipedia</a>:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Reference</p></th>
 <th class="head"><p>Class</p></th>
@@ -610,7 +612,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Operator</p></th>
 <th class="head"><p>Description</p></th>
@@ -628,7 +630,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Mode</p></th>
 <th class="head"><p>Name</p></th>

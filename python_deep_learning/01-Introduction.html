@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Deep Learning &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Deep Learning Library Framework" href="02-Deep-Learning-Framework.html" />
     <link rel="prev" title="Deep Learning in Python" href="00-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -485,32 +487,32 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-deep-learning">
-<h1>Introduction to Deep Learning<a class="headerlink" href="#introduction-to-deep-learning" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Deep Learning<a class="headerlink" href="#introduction-to-deep-learning" title="Permalink to this heading">#</a></h1>
 <section id="brief-introduction-to-deep-learning">
-<h2>Brief Introduction to Deep Learning<a class="headerlink" href="#brief-introduction-to-deep-learning" title="Permalink to this headline">#</a></h2>
+<h2>Brief Introduction to Deep Learning<a class="headerlink" href="#brief-introduction-to-deep-learning" title="Permalink to this heading">#</a></h2>
 <section id="deep-learning-is-a-subset-of-machine-learning-machine-learning-is-a-subset-of-artificial-intelligent">
-<h3>Deep Learning is a subset of Machine Learning. Machine Learning is a subset of Artificial Intelligent<a class="headerlink" href="#deep-learning-is-a-subset-of-machine-learning-machine-learning-is-a-subset-of-artificial-intelligent" title="Permalink to this headline">#</a></h3>
+<h3>Deep Learning is a subset of Machine Learning. Machine Learning is a subset of Artificial Intelligent<a class="headerlink" href="#deep-learning-is-a-subset-of-machine-learning-machine-learning-is-a-subset-of-artificial-intelligent" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119174944-35972e80-ba37-11eb-8cf0-4d5374c4e3ae.png" /></p>
 </section>
 <section id="while-machine-learning-utilizes-many-different-algorithm-deep-learning-only-focuses-on-using-artificial-neural-network">
-<h3>While Machine Learning utilizes many different algorithm, Deep Learning only focuses on using Artificial Neural Network<a class="headerlink" href="#while-machine-learning-utilizes-many-different-algorithm-deep-learning-only-focuses-on-using-artificial-neural-network" title="Permalink to this headline">#</a></h3>
+<h3>While Machine Learning utilizes many different algorithm, Deep Learning only focuses on using Artificial Neural Network<a class="headerlink" href="#while-machine-learning-utilizes-many-different-algorithm-deep-learning-only-focuses-on-using-artificial-neural-network" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119175181-80b14180-ba37-11eb-9c4a-3b51b01e68c0.png" /></p>
 </section>
 <section id="while-machine-learning-mostly-uses-shallow-neural-network-1-or-max-2-hidden-layers-deep-learning-tends-to-use-multiple-hidden-layers-between-input-and-output">
-<h3>While Machine Learning mostly uses Shallow Neural Network (1 or max 2 hidden layers), Deep Learning tends to use multiple hidden layers between input and output.<a class="headerlink" href="#while-machine-learning-mostly-uses-shallow-neural-network-1-or-max-2-hidden-layers-deep-learning-tends-to-use-multiple-hidden-layers-between-input-and-output" title="Permalink to this headline">#</a></h3>
+<h3>While Machine Learning mostly uses Shallow Neural Network (1 or max 2 hidden layers), Deep Learning tends to use multiple hidden layers between input and output.<a class="headerlink" href="#while-machine-learning-mostly-uses-shallow-neural-network-1-or-max-2-hidden-layers-deep-learning-tends-to-use-multiple-hidden-layers-between-input-and-output" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119175354-b5bd9400-ba37-11eb-8f57-6b1c39cde752.png" /></p>
 </section>
 <section id="several-differences-between-machine-learning-and-deep-learning">
-<h3>Several differences between Machine Learning and Deep Learning<a class="headerlink" href="#several-differences-between-machine-learning-and-deep-learning" title="Permalink to this headline">#</a></h3>
+<h3>Several differences between Machine Learning and Deep Learning<a class="headerlink" href="#several-differences-between-machine-learning-and-deep-learning" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119175927-75aae100-ba38-11eb-9f58-b00a9ddb5a6d.png" /></p>
 </section>
 <section id="some-notable-applications-of-deep-learning">
-<h3>Some notable applications of Deep Learning<a class="headerlink" href="#some-notable-applications-of-deep-learning" title="Permalink to this headline">#</a></h3>
+<h3>Some notable applications of Deep Learning<a class="headerlink" href="#some-notable-applications-of-deep-learning" title="Permalink to this heading">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/119176307-ef42cf00-ba38-11eb-9af6-6a4156be787f.png" /></p>
 </section>
 </section>
 <section id="deep-learning-models">
-<h2>Deep Learning Models<a class="headerlink" href="#deep-learning-models" title="Permalink to this headline">#</a></h2>
+<h2>Deep Learning Models<a class="headerlink" href="#deep-learning-models" title="Permalink to this heading">#</a></h2>
 <p>In this workshop we focus on several typical Deep Learning models:</p>
 <p>(1) Regular Deep Neural Network</p>
 <p>(2) Convolutional Neural Network (CNN)</p>

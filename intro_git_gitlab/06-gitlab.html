@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>GitLab &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Collaboration and Conflicts" href="07-collaboration-conflicts.html" />
     <link rel="prev" title="Practice With a Local Repository" href="05-example.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -485,7 +487,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gitlab">
-<h1>GitLab<a class="headerlink" href="#gitlab" title="Permalink to this headline">#</a></h1>
+<h1>GitLab<a class="headerlink" href="#gitlab" title="Permalink to this heading">#</a></h1>
 <p>GitLab is a web interface for a server that provides Git repository services.
 The Research Computing and Data team has an instance available at
 <a class="reference external" href="https://git.rcd.clemson.edu">git.rcd.clemson.edu</a> for <strong>research</strong> and
@@ -497,7 +499,7 @@ The Research Computing and Data team has an instance available at
 </figcaption>
 </figure>
 <section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p>All users with an account on Palmetto can login to <a class="reference external" href="https://git.rcd.clemson.edu">Gitlab</a>. To create a new git repository, click the “New Project” button.
 On the New Project page, you can choose to create a blank project, create one from a template, or import a project from an existing source (GitLab/GitHub/BitBucket).</p>
 <p>When creating a blank project, you will need to choose a name and pick a group or namespace. You can create projects under your username namespace and any groups you have permission to.
@@ -508,9 +510,9 @@ You can also change the visibility of the project (Private is the default settin
 </div>
 </section>
 <section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">#</a></h2>
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">#</a></h2>
 <section id="web-ide">
-<h3><a class="reference external" href="https://docs.gitlab.com/ee/user/project/web_ide/">Web IDE</a><a class="headerlink" href="#web-ide" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://docs.gitlab.com/ee/user/project/web_ide/">Web IDE</a><a class="headerlink" href="#web-ide" title="Permalink to this heading">#</a></h3>
 <p>Edit files in your browser and commit without having to clone repository.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/gitlab_web_ide.png"><img alt="../_images/gitlab_web_ide.png" src="../_images/gitlab_web_ide.png" style="width: 80%;" /></a>
@@ -520,11 +522,11 @@ You can also change the visibility of the project (Private is the default settin
 </figure>
 </section>
 <section id="issues">
-<h3><a class="reference external" href="https://docs.gitlab.com/ee/user/project/issues/">Issues</a><a class="headerlink" href="#issues" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://docs.gitlab.com/ee/user/project/issues/">Issues</a><a class="headerlink" href="#issues" title="Permalink to this heading">#</a></h3>
 <p>Collaborate on problems, track upcoming features, and ask questions.</p>
 </section>
 <section id="wiki">
-<h3><a class="reference external" href="https://docs.gitlab.com/ee/user/project/wiki/">Wiki</a><a class="headerlink" href="#wiki" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://docs.gitlab.com/ee/user/project/wiki/">Wiki</a><a class="headerlink" href="#wiki" title="Permalink to this heading">#</a></h3>
 <p>Create a wiki for your project or group. GitLab manages the history of the wiki in git for version history.
 Use the wiki to document:</p>
 <ul class="simple">
@@ -534,7 +536,7 @@ Use the wiki to document:</p>
 </ul>
 </section>
 <section id="git-lfs">
-<h3><a class="reference external" href="https://git-lfs.com">Git-LFS</a><a class="headerlink" href="#git-lfs" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://git-lfs.com">Git-LFS</a><a class="headerlink" href="#git-lfs" title="Permalink to this heading">#</a></h3>
 <p>Git Large File Storage is fully supported by GitLab to track updates for large files that don’t normally work well with git.
 Track changes to:</p>
 <ul class="simple">
@@ -545,7 +547,7 @@ Track changes to:</p>
 </ul>
 </section>
 <section id="container-registry-and-ci-cd">
-<h3>Container Registry and CI/CD<a class="headerlink" href="#container-registry-and-ci-cd" title="Permalink to this headline">#</a></h3>
+<h3>Container Registry and CI/CD<a class="headerlink" href="#container-registry-and-ci-cd" title="Permalink to this heading">#</a></h3>
 <p>GitLab has it’s own container registry hosted at <a class="reference external" href="https://registry.rcd.clemson.edu">https://registry.rcd.clemson.edu</a>. The RCD team provides runners to run CI/CD pipelines
 for compiling projects and building container images. More information can be found in the <a class="reference external" href="https://docs.rcd.clemson.edu/training/workshop_catalog/sdlc/gitlab_ci_cd">CI/CD Pipelines with GitLab workshop</a> (Coming Fall 2023)</p>
 </section>

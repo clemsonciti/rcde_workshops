@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Storage on Palmetto &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Running an interactive job on Palmetto" href="05-interactive.html" />
     <link rel="prev" title="The structure of the Palmetto Cluster" href="03-palmetto_structure.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -481,9 +483,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="storage-on-palmetto">
-<h1>Storage on Palmetto<a class="headerlink" href="#storage-on-palmetto" title="Permalink to this headline">#</a></h1>
+<h1>Storage on Palmetto<a class="headerlink" href="#storage-on-palmetto" title="Permalink to this heading">#</a></h1>
 <p>Palmetto provides three data spaces: home, scratch, and paid storage.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>NAME</p></th>
 <th class="head"><p>SIZE</p></th>
@@ -532,7 +534,7 @@ document.write(`
 </tbody>
 </table>
 <section id="home-storage">
-<h2>Home Storage<a class="headerlink" href="#home-storage" title="Permalink to this headline">#</a></h2>
+<h2>Home Storage<a class="headerlink" href="#home-storage" title="Permalink to this heading">#</a></h2>
 <p>Every Palmetto user gets 100 Gb of storage space; this storage is backed up at the end of every day, and the backup is kept for 42 days. So if you accidentally delete a file that was created more than a day ago, we might be able to restore it. This storage is called <em>home directory</em>.</p>
 <p>To see how much space you have left in your home directory, please type:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>checkquota
@@ -549,7 +551,7 @@ document.write(`
 </div>
 </section>
 <section id="scratch-storage">
-<h2>Scratch Storage<a class="headerlink" href="#scratch-storage" title="Permalink to this headline">#</a></h2>
+<h2>Scratch Storage<a class="headerlink" href="#scratch-storage" title="Permalink to this heading">#</a></h2>
 <p>100 Gb might be enough for some, but for people dealing with extensive amounts of data that would not be enough. We also offer the access to <em>scratch space</em>, which is about 2+ Petabytes in total. Scratch space is not backed up; files that haven’t been used for more than a month are automatically deleted (and cannot be restored). We strongly encourage people to use scratch space, but please be aware of its temporary nature. When you get anything that is worth keeping, please back it up, either in your home directory, or on your local machine.</p>
 <p>To go to a scratch directory, or to any directory on Palmetto, use the <code class="docutils literal notranslate"><span class="pre">cd</span></code> (“change directory”) command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/scratch1/&lt;your<span class="w"> </span>Palmetto<span class="w"> </span>username&gt;
@@ -568,7 +570,7 @@ document.write(`
 </div>
 </section>
 <section id="local-scratch">
-<h2>Local Scratch<a class="headerlink" href="#local-scratch" title="Permalink to this headline">#</a></h2>
+<h2>Local Scratch<a class="headerlink" href="#local-scratch" title="Permalink to this heading">#</a></h2>
 <p>Every Palmetto compute node has storage on the node itself and is referred to as <code class="docutils literal notranslate"><span class="pre">/local_scratch</span></code>. This scratch space can only be accessed by a job running on the node. The file system for <code class="docutils literal notranslate"><span class="pre">/local_scratch</span></code> has no hardware failure protection and is never backed up.</p>
 <p>To access this space in your PBS script, use the <code class="docutils literal notranslate"><span class="pre">$TMPDIR</span></code> environment variable or the location <code class="docutils literal notranslate"><span class="pre">/local_scratch/pbs.$PBS_JOBID</span></code>. If you are using multiple nodes, further setup is required.</p>
 <div class="admonition warning">
@@ -581,11 +583,11 @@ document.write(`
 </div>
 </section>
 <section id="storage-purchasing">
-<h2>Storage Purchasing<a class="headerlink" href="#storage-purchasing" title="Permalink to this headline">#</a></h2>
+<h2>Storage Purchasing<a class="headerlink" href="#storage-purchasing" title="Permalink to this heading">#</a></h2>
 <p>We offer storage space on Palmetto for sale to faculty members, with the price of $150 per 1 terabyte. This storage is backed up just like your home directory. Please contact us if you are interested in buying storage.</p>
 </section>
 <section id="performance-guidelines">
-<h2>Performance Guidelines<a class="headerlink" href="#performance-guidelines" title="Permalink to this headline">#</a></h2>
+<h2>Performance Guidelines<a class="headerlink" href="#performance-guidelines" title="Permalink to this heading">#</a></h2>
 <p>Generally speaking, /local_scratch will always be the fastest file system to use because there is no network involved. However, this space cannot be shared between a group of nodes participating in a job, and the data must be moved to permanent storage before the job completes.</p>
 <p>/scratch1 is a parallel file system that runs atop spinning disk drives and is best suited for workflows issuing sequential, large read or write requests. /fastscratch is also a parallel file system but runs atop NVMe flash drives and is best suited for workflows having small, random read or write access patterns. However, /fastscratch will also run well with any kind of sequential workload. Either system can handle large numbers of files and directories.</p>
 <p>The Palmetto support team encourages you to test your workflows against all three file systems to see which one works best for you.</p>

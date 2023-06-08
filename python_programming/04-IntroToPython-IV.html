@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction to Python IV &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Machine Learning using Python" href="../python_sklearn/00-index.html" />
     <link rel="prev" title="Introduction to Python III" href="03-IntroToPython-III.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -496,7 +498,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python-iv">
-<h1>Introduction to Python IV<a class="headerlink" href="#introduction-to-python-iv" title="Permalink to this headline">#</a></h1>
+<h1>Introduction to Python IV<a class="headerlink" href="#introduction-to-python-iv" title="Permalink to this heading">#</a></h1>
 <p>Data Visualization Deep Dive</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -512,7 +514,7 @@ document.write(`
 </div>
 </div>
 <section id="matplotlib-recap">
-<h2>Matplotlib - Recap<a class="headerlink" href="#matplotlib-recap" title="Permalink to this headline">#</a></h2>
+<h2>Matplotlib - Recap<a class="headerlink" href="#matplotlib-recap" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Line Plots</span>
@@ -563,7 +565,7 @@ document.write(`
 </div>
 </section>
 <section id="subplots-with-matplotlib">
-<h2>Subplots with matplotlib<a class="headerlink" href="#subplots-with-matplotlib" title="Permalink to this headline">#</a></h2>
+<h2>Subplots with matplotlib<a class="headerlink" href="#subplots-with-matplotlib" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -640,9 +642,9 @@ document.write(`
 </ul>
 </section>
 <section id="plotting-images-and-matrices-with-matplotlib">
-<h2>Plotting images and matrices with matplotlib<a class="headerlink" href="#plotting-images-and-matrices-with-matplotlib" title="Permalink to this headline">#</a></h2>
+<h2>Plotting images and matrices with matplotlib<a class="headerlink" href="#plotting-images-and-matrices-with-matplotlib" title="Permalink to this heading">#</a></h2>
 <section id="reference-http-www-math-buffalo-edu-badzioch-mth337-pt-pt-image-processing-pt-image-processing-html">
-<h3>reference: <a class="reference external" href="http://www.math.buffalo.edu/~badzioch/MTH337/PT/PT-image_processing/PT-image_processing.html">http://www.math.buffalo.edu/~badzioch/MTH337/PT/PT-image_processing/PT-image_processing.html</a><a class="headerlink" href="#reference-http-www-math-buffalo-edu-badzioch-mth337-pt-pt-image-processing-pt-image-processing-html" title="Permalink to this headline">#</a></h3>
+<h3>reference: <a class="reference external" href="http://www.math.buffalo.edu/~badzioch/MTH337/PT/PT-image_processing/PT-image_processing.html">http://www.math.buffalo.edu/~badzioch/MTH337/PT/PT-image_processing/PT-image_processing.html</a><a class="headerlink" href="#reference-http-www-math-buffalo-edu-badzioch-mth337-pt-pt-image-processing-pt-image-processing-html" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
@@ -710,9 +712,9 @@ butterfly.JPG       100%[===================&gt;] 499.09K  --.-KB/s    in 0.07s
 </section>
 </section>
 <section id="density-plots-matplotlib-seaborn">
-<h2>Density plots matplotlib/seaborn<a class="headerlink" href="#density-plots-matplotlib-seaborn" title="Permalink to this headline">#</a></h2>
+<h2>Density plots matplotlib/seaborn<a class="headerlink" href="#density-plots-matplotlib-seaborn" title="Permalink to this heading">#</a></h2>
 <section id="the-taxis-dataset">
-<h3>The “taxis” dataset<a class="headerlink" href="#the-taxis-dataset" title="Permalink to this headline">#</a></h3>
+<h3>The “taxis” dataset<a class="headerlink" href="#the-taxis-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;taxis&#39;</span><span class="p">)</span>
@@ -958,7 +960,7 @@ butterfly.JPG       100%[===================&gt;] 499.09K  --.-KB/s    in 0.07s
 </ul>
 <p>Distribution plots / density plots can help us start to answer these questions.</p>
 <section id="histogram-for-1d-data">
-<h4><strong>Histogram for 1D data</strong><a class="headerlink" href="#histogram-for-1d-data" title="Permalink to this headline">#</a></h4>
+<h4><strong>Histogram for 1D data</strong><a class="headerlink" href="#histogram-for-1d-data" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">fare</span><span class="p">)</span>
@@ -1072,7 +1074,7 @@ butterfly.JPG       100%[===================&gt;] 499.09K  --.-KB/s    in 0.07s
 </div>
 </section>
 <section id="kernel-density-estimation">
-<h4><strong>Kernel Density Estimation</strong><a class="headerlink" href="#kernel-density-estimation" title="Permalink to this headline">#</a></h4>
+<h4><strong>Kernel Density Estimation</strong><a class="headerlink" href="#kernel-density-estimation" title="Permalink to this heading">#</a></h4>
 <p>Sometimes we want smooth approximations to our data distribution. Smooth approximations can show us the underlying pattern while removing noise due to small sample size. Kernel Density Estimation is just a fancy name for a method of fitting smooth approximations to data distributions. The <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> library, which we loaded with alias <code class="docutils literal notranslate"><span class="pre">sns</span></code> provides convenient methods for fitting and plotting kernel density estimates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1166,7 +1168,7 @@ butterfly.JPG       100%[===================&gt;] 499.09K  --.-KB/s    in 0.07s
 </div>
 </section>
 <section id="kernel-density-estimation-in-2d">
-<h4><strong>Kernel Density Estimation in 2D</strong><a class="headerlink" href="#kernel-density-estimation-in-2d" title="Permalink to this headline">#</a></h4>
+<h4><strong>Kernel Density Estimation in 2D</strong><a class="headerlink" href="#kernel-density-estimation-in-2d" title="Permalink to this heading">#</a></h4>
 <p>Kernel Density Estimation is especially useful in 2D.</p>
 <p>Let’s return to the iris dataset and take, for instance, the distribution of <code class="docutils literal notranslate"><span class="pre">petal_length</span></code> and <code class="docutils literal notranslate"><span class="pre">sepal_length</span></code></p>
 <div class="cell docutils container">
@@ -1267,7 +1269,7 @@ butterfly.JPG       100%[===================&gt;] 499.09K  --.-KB/s    in 0.07s
 </section>
 </section>
 <section id="interactive-plotting-with-plotly">
-<h2>Interactive plotting with Plotly<a class="headerlink" href="#interactive-plotting-with-plotly" title="Permalink to this headline">#</a></h2>
+<h2>Interactive plotting with Plotly<a class="headerlink" href="#interactive-plotting-with-plotly" title="Permalink to this heading">#</a></h2>
 <p>So far we have seen static visualizations made with matplotlib and seaborn. Though you can create interactive plots with these tools, it is a lot of work.</p>
 <p>Plotly is designed to be interactive out of the box.</p>
 <div class="cell docutils container">
@@ -1517,7 +1519,7 @@ if (outputEl) {{
                         })                };                });            </script>        </div></div></div>
 </div>
 <section id="animations">
-<h3>Animations<a class="headerlink" href="#animations" title="Permalink to this headline">#</a></h3>
+<h3>Animations<a class="headerlink" href="#animations" title="Permalink to this heading">#</a></h3>
 <p>Plotly makes it very easy to create animations</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1560,7 +1562,7 @@ if (outputEl) {{
 </div>
 </section>
 <section id="saving-interactive-plots">
-<h3>Saving interactive plots<a class="headerlink" href="#saving-interactive-plots" title="Permalink to this headline">#</a></h3>
+<h3>Saving interactive plots<a class="headerlink" href="#saving-interactive-plots" title="Permalink to this heading">#</a></h3>
 <p>One of the great features of plotly is that you can save interactive features and run them in the browser.</p>
 <p>To demonstrate we will save the above interactive plot. Try opening the resulting html file in your browser.</p>
 <div class="cell docutils container">

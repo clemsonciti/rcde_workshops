@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Web-based access to the Palmetto Cluster &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Running a batch job" href="08-batch.html" />
     <link rel="prev" title="Transferring files to and from Palmetto" href="06-file-transfer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -479,7 +481,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="web-based-access-to-the-palmetto-cluster">
-<h1>Web-based access to the Palmetto Cluster<a class="headerlink" href="#web-based-access-to-the-palmetto-cluster" title="Permalink to this headline">#</a></h1>
+<h1>Web-based access to the Palmetto Cluster<a class="headerlink" href="#web-based-access-to-the-palmetto-cluster" title="Permalink to this heading">#</a></h1>
 <p>We have an interface to Palmetto that works through a Web browser. This interface is called “Open On Demand”, or OpenOD for short. To access it, go to</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">openod</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
@@ -492,11 +494,11 @@ document.write(`
 </figcaption>
 </figure>
 <section id="file-browsing">
-<h2>File Browsing<a class="headerlink" href="#file-browsing" title="Permalink to this headline">#</a></h2>
+<h2>File Browsing<a class="headerlink" href="#file-browsing" title="Permalink to this heading">#</a></h2>
 <p>One convenient feature of Open OnDemand is a file browser. In the top left corner, you will see the “Files” button, which will take you to your home diretory or to scratch directory. Click it and explore the files in your file system. You can use this feature to view, edit, and delete files. It is also a convenient way to upload and download the files. You can go to any folder that you have access to by clicking “Go to”.</p>
 </section>
 <section id="shell">
-<h2>Shell<a class="headerlink" href="#shell" title="Permalink to this headline">#</a></h2>
+<h2>Shell<a class="headerlink" href="#shell" title="Permalink to this heading">#</a></h2>
 <p>You can also use the web interface to run a terminal on Palmetto. This way, OpenOD becomes an alternative to MobaXTerm or to the Mac Terminal application. To start the terminal, click on <code class="docutils literal notranslate"><span class="pre">Clusters</span></code>, then <code class="docutils literal notranslate"><span class="pre">Palmetto</span> <span class="pre">Shell</span> <span class="pre">Access</span></code>:</p>
 <figure class="align-default" id="id2">
 <img alt="../_images/openod_2.png" src="../_images/openod_2.png" />
@@ -519,7 +521,7 @@ OnDemand.  If you are inactive for a period of time, the shell will need to be r
 </div>
 </section>
 <section id="jupyter-notebook">
-<h2>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<h2>Jupyter Notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>You can use OpenOD to run certain applications like Jupyter and Tensorflow notebooks, R Studio, and Matlab. Let’s run Jupyter. From “Interactive apps”, please select “Jupyter Notebook”:</p>
 <figure class="align-default" id="id4">
 <img alt="../_images/openod_4.png" src="../_images/openod_4.png" />

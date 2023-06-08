@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Navigating Files and Directories &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Working With Files and Directories" href="04-working_with_files_and_directories.html" />
     <link rel="prev" title="Accessing the Palmetto Cluster" href="02-accessing-palmetto.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -483,7 +485,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="navigating-files-and-directories">
-<h1>Navigating Files and Directories<a class="headerlink" href="#navigating-files-and-directories" title="Permalink to this headline">#</a></h1>
+<h1>Navigating Files and Directories<a class="headerlink" href="#navigating-files-and-directories" title="Permalink to this heading">#</a></h1>
 <p>The part of the operating system responsible for managing files and directories is called the <strong>file system</strong>.
 It organizes our data into files, which hold information, and directories (also called “folders”), which hold files or other directories.</p>
 <p>Several commands are frequently used to create, inspect, rename, and delete files and directories.
@@ -506,7 +508,7 @@ We refer to it using a slash character <code class="docutils literal notranslate
 <code class="docutils literal notranslate"><span class="pre">etc</span></code> (for miscellaneous data files),
 and so on.</p>
 <section id="slashes">
-<h2>Slashes<a class="headerlink" href="#slashes" title="Permalink to this headline">#</a></h2>
+<h2>Slashes<a class="headerlink" href="#slashes" title="Permalink to this heading">#</a></h2>
 <p>There are two meanings for the <code class="docutils literal notranslate"><span class="pre">/</span></code> character.
 When it appears at the front of a file or directory name,
 it refers to the root directory. This is called an <strong>absolute path</strong>.
@@ -514,7 +516,7 @@ When it appears <em>inside</em> a name, it’s a <strong>relative path</strong>.
 <p>Underneath <code class="docutils literal notranslate"><span class="pre">/home</span></code>, we find one directory for each user with an account on Palmetto.</p>
 </section>
 <section id="listing-files-and-directories">
-<h2>Listing files and directories<a class="headerlink" href="#listing-files-and-directories" title="Permalink to this headline">#</a></h2>
+<h2>Listing files and directories<a class="headerlink" href="#listing-files-and-directories" title="Permalink to this heading">#</a></h2>
 <p>The command <code class="docutils literal notranslate"><span class="pre">ls</span></code> will list the contents of the working directory.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
 </pre></div>
@@ -673,7 +675,7 @@ or try the “b” and spacebar keys to skip up and down by full page.
 Quit the <code class="docutils literal notranslate"><span class="pre">man</span></code> pages by typing “q”.</p>
 </section>
 <section id="creating-and-changing-directories">
-<h2>Creating and Changing Directories<a class="headerlink" href="#creating-and-changing-directories" title="Permalink to this headline">#</a></h2>
+<h2>Creating and Changing Directories<a class="headerlink" href="#creating-and-changing-directories" title="Permalink to this heading">#</a></h2>
 <p>The next command we will discuss is <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, which creates a new directory. Let’s create a directory with the name <code class="docutils literal notranslate"><span class="pre">linux_workshop</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mkdir linux_workshop
 </pre></div>
@@ -713,11 +715,11 @@ that looks like this:</p>
 </pre></div>
 </div>
 <section id="other-hidden-files">
-<h3>Other Hidden Files<a class="headerlink" href="#other-hidden-files" title="Permalink to this headline">#</a></h3>
+<h3>Other Hidden Files<a class="headerlink" href="#other-hidden-files" title="Permalink to this heading">#</a></h3>
 <p>Many common configuration files will begin with <code class="docutils literal notranslate"><span class="pre">.</span></code>. You may see a <code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> or <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file in your home directory which you can edit to alias certain commands or add variables to use later.</p>
 </section>
 <section id="one-more-shortcut">
-<h3>One More Shortcut<a class="headerlink" href="#one-more-shortcut" title="Permalink to this headline">#</a></h3>
+<h3>One More Shortcut<a class="headerlink" href="#one-more-shortcut" title="Permalink to this heading">#</a></h3>
 <p>Another shortcut is the <code class="docutils literal notranslate"><span class="pre">-</span></code> (dash) character.  <code class="docutils literal notranslate"><span class="pre">cd</span></code> will translate <code class="docutils literal notranslate"><span class="pre">-</span></code> into *the previous working directory *.
 This is a <em>very</em> efficient way of moving back and forth between directories.
 The difference between <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> and <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">-</span></code> is that the former brings you <em>up</em>, while the latter brings you <em>back</em>.</p>

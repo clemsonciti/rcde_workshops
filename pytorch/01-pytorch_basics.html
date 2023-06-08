@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>PyTorch Basics &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Regression and Classification with Fully Connected Neural Networks" href="02-regression_and_classification.html" />
     <link rel="prev" title="Deep Learning in Pytorch" href="00-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -237,6 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -487,7 +489,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pytorch-basics">
-<h1>PyTorch Basics<a class="headerlink" href="#pytorch-basics" title="Permalink to this headline">#</a></h1>
+<h1>PyTorch Basics<a class="headerlink" href="#pytorch-basics" title="Permalink to this heading">#</a></h1>
 <p>Pytorch is a library for creating neural networks in Python.</p>
 <p>This notebook draws heavily from the following sources:</p>
 <ul class="simple">
@@ -495,7 +497,7 @@ document.write(`
 <li><p>Phillip Lippe’s <a class="reference external" href="https://github.com/phlippe/uvadlc_notebooks/blob/master/docs/tutorial_notebooks/tutorial2/Introduction_to_PyTorch.ipynb">Intro to Pytorch notebook</a></p></li>
 </ul>
 <section id="overview-of-the-library">
-<h2>Overview of the library<a class="headerlink" href="#overview-of-the-library" title="Permalink to this headline">#</a></h2>
+<h2>Overview of the library<a class="headerlink" href="#overview-of-the-library" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pytorch.org/docs/stable/torch.html"><code class="docutils literal notranslate"><span class="pre">torch</span></code></a> The top-level PyTorch package that provides an entry point to all PyTorch modules including the Tensor object.</p></li>
 <li><p><a class="reference external" href="https://pytorch.org/docs/stable/nn.html"><code class="docutils literal notranslate"><span class="pre">torch.nn</span></code></a>  A subpackage that contains modules and classes for building neural networks.</p></li>
@@ -506,7 +508,7 @@ document.write(`
 </ul>
 </section>
 <section id="tensors">
-<h2>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">#</a></h2>
+<h2>Tensors<a class="headerlink" href="#tensors" title="Permalink to this heading">#</a></h2>
 <p>Tensors are a specialized data structure that are very similar to arrays and matrices.
 In PyTorch, we use tensors to store:</p>
 <ol class="arabic simple">
@@ -525,7 +527,7 @@ In PyTorch, we use tensors to store:</p>
 </div>
 </div>
 <section id="initializing-a-tensor">
-<h3>Initializing a Tensor<a class="headerlink" href="#initializing-a-tensor" title="Permalink to this headline">#</a></h3>
+<h3>Initializing a Tensor<a class="headerlink" href="#initializing-a-tensor" title="Permalink to this heading">#</a></h3>
 <p>Tensors can be initialized in various ways. Take a look at the following examples:</p>
 <p><strong>A range of values</strong></p>
 <div class="cell docutils container">
@@ -643,7 +645,7 @@ Zeros Tensor:
 </div>
 </section>
 <section id="attributes-of-a-tensor">
-<h3>Attributes of a Tensor<a class="headerlink" href="#attributes-of-a-tensor" title="Permalink to this headline">#</a></h3>
+<h3>Attributes of a Tensor<a class="headerlink" href="#attributes-of-a-tensor" title="Permalink to this heading">#</a></h3>
 <p>Tensor attributes describe their shape, datatype, and the device on which they are stored.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -665,7 +667,7 @@ Device tensor is stored on: cpu
 </div>
 </section>
 <section id="operations-on-tensors">
-<h3>Operations on Tensors<a class="headerlink" href="#operations-on-tensors" title="Permalink to this headline">#</a></h3>
+<h3>Operations on Tensors<a class="headerlink" href="#operations-on-tensors" title="Permalink to this heading">#</a></h3>
 <p>Over 100 tensor operations, including arithmetic, linear algebra, matrix manipulation (transposing,
 indexing, slicing), sampling and more are
 comprehensively described <a class="reference external" href="https://pytorch.org/docs/stable/torch.html">here</a>.</p>
@@ -1116,7 +1118,7 @@ another tensor joining option that is subtly different from <code class="docutil
 </section>
 </section>
 <section id="gpu-support">
-<h2>GPU support<a class="headerlink" href="#gpu-support" title="Permalink to this headline">#</a></h2>
+<h2>GPU support<a class="headerlink" href="#gpu-support" title="Permalink to this heading">#</a></h2>
 <p>The palmetto cluster has <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/compute/hardware#infiniband-phases">many GPU compute nodes</a>. A crucial feature of PyTorch is the support of GPUs, short for Graphics Processing Unit. A GPU can perform many thousands of small operations in parallel, making it very well suitable for performing large matrix operations in neural networks. <em>You do not need to know anything about GPU programming to use PyTorch on the GPU!</em></p>
 <p>When comparing GPUs to CPUs, we can list the following main differences (credit: <a class="reference external" href="https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/">Kevin Krewell, 2009</a>)</p>
 <p><left style="width: 100%"><img src="https://github.com/phlippe/uvadlc_notebooks/blob/master/docs/tutorial_notebooks/tutorial2/comparison_CPU_GPU.png?raw=1" width="700px"></left></p>
@@ -1353,7 +1355,7 @@ GPU time: 0.15011s
 </div>
 </section>
 <section id="dynamic-computation-graph-and-backpropagation">
-<h2>Dynamic Computation Graph and Backpropagation<a class="headerlink" href="#dynamic-computation-graph-and-backpropagation" title="Permalink to this headline">#</a></h2>
+<h2>Dynamic Computation Graph and Backpropagation<a class="headerlink" href="#dynamic-computation-graph-and-backpropagation" title="Permalink to this heading">#</a></h2>
 <p>One of the main reasons for using PyTorch in Deep Learning projects is that we can automatically get <em>gradients/derivatives</em> of functions that we define. We will mainly use PyTorch for implementing neural networks, and they are just fancy functions. If we use weight matrices in our function that we want to learn, then those are called the <em>parameters</em> or simply the <em>weights</em>. The ability to compute gradients is essential for optimizing (a.k.a. <em>training</em>) our networks.</p>
 <p>Tensors have a <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> attribute</p>
 <div class="cell docutils container">

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Preparing data &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Data partition: training and testing" href="03-partitioning-data.html" />
     <link rel="prev" title="TL;DR" href="01-TLDR.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -499,7 +501,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="preparing-data">
-<h1>Preparing data<a class="headerlink" href="#preparing-data" title="Permalink to this headline">#</a></h1>
+<h1>Preparing data<a class="headerlink" href="#preparing-data" title="Permalink to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>Loading data</p></li>
 <li><p>Impute missing values</p></li>
@@ -507,9 +509,9 @@ document.write(`
 <li><p>Feature engineering</p></li>
 </ol>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <section id="sklearn-datasets">
-<h3>Sklearn datasets<a class="headerlink" href="#sklearn-datasets" title="Permalink to this headline">#</a></h3>
+<h3>Sklearn datasets<a class="headerlink" href="#sklearn-datasets" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">sklearn.datasets</span></code> package embeds some small sample <a class="reference external" href="https://scikit-learn.org/stable/datasets.html">datasets</a></p>
 <p>For each dataset, there are 4 varibles:</p>
 <ul class="simple">
@@ -545,7 +547,7 @@ document.write(`
 </div>
 </section>
 <section id="pandas">
-<h3>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h3>
+<h3>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -689,7 +691,7 @@ document.write(`
 </section>
 </section>
 <section id="impute-missing-values">
-<h2>Impute missing values<a class="headerlink" href="#impute-missing-values" title="Permalink to this headline">#</a></h2>
+<h2>Impute missing values<a class="headerlink" href="#impute-missing-values" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>There are several ways to treat the missing values:</p></li>
 <li><p>Method 1: remove all missing <code class="docutils literal notranslate"><span class="pre">NA</span></code> values</p></li>
@@ -1161,7 +1163,7 @@ SimpleImputer converts missing values to <strong>mean, median, most_frequent and
 </ul>
 </section>
 <section id="standardizing-data">
-<h2>Standardizing data<a class="headerlink" href="#standardizing-data" title="Permalink to this headline">#</a></h2>
+<h2>Standardizing data<a class="headerlink" href="#standardizing-data" title="Permalink to this heading">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114231774-df6ba180-9948-11eb-9c61-3d2e0d3df889.png" /></p>
 <ul class="simple">
 <li><p>Standardization comes into picture when features of input data set have large differences between their ranges, or simply when they are measured in different measurement units for example: rainfall (0-1000mm), temperature (-10 to 40oC), humidity (0-100%), etc.</p></li>
@@ -1274,7 +1276,7 @@ SimpleImputer converts missing values to <strong>mean, median, most_frequent and
 </div>
 </div>
 <section id="using-scaling-with-predefine-range">
-<h3>2.3.2.2 Using scaling with predefine range<a class="headerlink" href="#using-scaling-with-predefine-range" title="Permalink to this headline">#</a></h3>
+<h3>2.3.2.2 Using scaling with predefine range<a class="headerlink" href="#using-scaling-with-predefine-range" title="Permalink to this heading">#</a></h3>
 <p>Transform features by scaling each feature to a given range.
 This estimator scales and translates each feature individually such that it is in the given range on the training set, e.g. between zero and one.
 Formulation for this is:</p>
@@ -1387,7 +1389,7 @@ Formulation for this is:</p>
 </div>
 </section>
 <section id="using-box-cox-transformation">
-<h3>2.3.2.3 Using Box-Cox Transformation<a class="headerlink" href="#using-box-cox-transformation" title="Permalink to this headline">#</a></h3>
+<h3>2.3.2.3 Using Box-Cox Transformation<a class="headerlink" href="#using-box-cox-transformation" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A <a class="reference external" href="https://rss.onlinelibrary.wiley.com/doi/10.1111/j.2517-6161.1964.tb00553.x">Box Cox</a> transformation is a transformation of a non-normal dependent variables into a normal shape.</p></li>
 <li><p>Normality is an important assumption for many statistical techniques; if your data isn’t normal, applying a Box-Cox means that you are able to run a broader number of tests.</p></li>
@@ -1498,7 +1500,7 @@ Formulation for this is:</p>
 </div>
 </section>
 <section id="using-yeo-johnson-transformation">
-<h3>2.3.2.4 Using Yeo Johnson Transformation<a class="headerlink" href="#using-yeo-johnson-transformation" title="Permalink to this headline">#</a></h3>
+<h3>2.3.2.4 Using Yeo Johnson Transformation<a class="headerlink" href="#using-yeo-johnson-transformation" title="Permalink to this heading">#</a></h3>
 <p>While BoxCox only works with positive value, a more recent transformation method <a class="reference external" href="https://www.jstor.org/stable/2673623">Yeo Johnson</a> can transform both positive and negative values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1605,7 +1607,7 @@ Formulation for this is:</p>
 </section>
 </section>
 <section id="feature-engineering-selection">
-<h2>Feature engineering / selection<a class="headerlink" href="#feature-engineering-selection" title="Permalink to this headline">#</a></h2>
+<h2>Feature engineering / selection<a class="headerlink" href="#feature-engineering-selection" title="Permalink to this heading">#</a></h2>
 <p>Transform the data to facilitate learning. Many techniques, and we will only scratch the surface:</p>
 <ul class="simple">
 <li><p>Manual feature engineering</p></li>
@@ -1710,7 +1712,7 @@ Formulation for this is:</p>
 </div>
 </div>
 <section id="manual-feature-engineering">
-<h3>Manual Feature Engineering<a class="headerlink" href="#manual-feature-engineering" title="Permalink to this headline">#</a></h3>
+<h3>Manual Feature Engineering<a class="headerlink" href="#manual-feature-engineering" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s add a NEW feature - a ratio of two of the  measurements</span>
@@ -1853,7 +1855,7 @@ Formulation for this is:</p>
 </div>
 </section>
 <section id="feature-selection">
-<h3><a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection">Feature selection</a><a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection">Feature selection</a><a class="headerlink" href="#feature-selection" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SelectKBest for selecting top-scoring features</span>
@@ -1901,7 +1903,7 @@ New shape: (153, 2)
 </ul>
 </section>
 <section id="principal-component-analysis-aka-pca">
-<h3>Principal component analysis (aka PCA)<a class="headerlink" href="#principal-component-analysis-aka-pca" title="Permalink to this headline">#</a></h3>
+<h3>Principal component analysis (aka PCA)<a class="headerlink" href="#principal-component-analysis-aka-pca" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Reduces dimensions (number of features), based on what information explains the most variance (or signal)</p></li>
 <li><p>Considered unsupervised learning</p></li>
@@ -1958,7 +1960,7 @@ New shape: (153, 2)
 <p>See scikit-learn’s excellent tutorial on feature selection <a class="reference external" href="http://scikit-learn.org/stable/modules/feature_selection.html">here</a></p>
 </section>
 <section id="one-hot-encoding">
-<h3>One Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h3>
+<h3>One Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>It’s an operation on feature labels - a method of dummying variable</p></li>
 <li><p>Expands the feature space by nature of transform - later this can be processed further with a dimensionality reduction (the dummied variables are now their own features)</p></li>
@@ -1966,7 +1968,7 @@ New shape: (153, 2)
 <li><p>Can do this with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> method or a <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> one-hot-encoder system</p></li>
 </ul>
 <section id="pandas-method">
-<h4><code class="docutils literal notranslate"><span class="pre">pandas</span></code> method<a class="headerlink" href="#pandas-method" title="Permalink to this headline">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">pandas</span></code> method<a class="headerlink" href="#pandas-method" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dummy variables with pandas built-in function</span>
@@ -2246,7 +2248,7 @@ New shape: (153, 2)
 </div>
 </section>
 <section id="sklearn-method">
-<h4><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> method<a class="headerlink" href="#sklearn-method" title="Permalink to this headline">#</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> method<a class="headerlink" href="#sklearn-method" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OneHotEncoder for dummying variables</span>

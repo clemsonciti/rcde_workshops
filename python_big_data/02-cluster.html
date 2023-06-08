@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>1. Launching the Spark cluster &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="1. Where are the notebooks" href="03-notebooks.html" />
     <link rel="prev" title="1. What is Spark?" href="01-introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -481,7 +483,7 @@ document.write(`
   <blockquote>
 <div></div></blockquote>
 <section id="launching-the-spark-cluster">
-<h1>1. Launching the Spark cluster<a class="headerlink" href="#launching-the-spark-cluster" title="Permalink to this headline">#</a></h1>
+<h1>1. Launching the Spark cluster<a class="headerlink" href="#launching-the-spark-cluster" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Inside the terminal tab from the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> step, run the following commands:</p></li>
 </ul>
@@ -500,7 +502,7 @@ different) .</p></li>
 <blockquote>
 <div></div></blockquote>
 <section id="summary-of-executed-scripts">
-<h1>2. Summary of executed scripts<a class="headerlink" href="#summary-of-executed-scripts" title="Permalink to this headline">#</a></h1>
+<h1>2. Summary of executed scripts<a class="headerlink" href="#summary-of-executed-scripts" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">download_spark.sh</span></code>: Untar a copy of <code class="docutils literal notranslate"><span class="pre">spark</span> <span class="pre">2.4.5</span></code> in <code class="docutils literal notranslate"><span class="pre">~/software</span></code> and
 install the necessary <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> module for Python.</p></li>

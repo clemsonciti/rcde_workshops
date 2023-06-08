@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>TL;DR &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Preparing data" href="02-preparing-data.html" />
     <link rel="prev" title="Machine Learning using Python" href="00-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -483,13 +485,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tl-dr">
-<h1>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">#</a></h1>
+<h1>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h1>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>Scikit-learn is included in the base conda environment available on Palmetto. Follow these instructions to install into your custom environment: <a class="reference external" href="https://scikit-learn.org/stable/install.html">https://scikit-learn.org/stable/install.html</a></p>
 </section>
 <section id="dataset">
-<h2><a class="reference external" href="https://scikit-learn.org/stable/datasets/toy_dataset.html">Dataset</a><a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
+<h2><a class="reference external" href="https://scikit-learn.org/stable/datasets/toy_dataset.html">Dataset</a><a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -533,7 +535,7 @@ document.write(`
 <p>We will see examples of real-world datasets later in the series.</p>
 </section>
 <section id="partition">
-<h2><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">Partition</a><a class="headerlink" href="#partition" title="Permalink to this headline">#</a></h2>
+<h2><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">Partition</a><a class="headerlink" href="#partition" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -556,7 +558,7 @@ document.write(`
 </div>
 </section>
 <section id="session-1-assignment-choose-a-dataset">
-<h2><em>Session 1 Assignment: Choose a dataset</em><a class="headerlink" href="#session-1-assignment-choose-a-dataset" title="Permalink to this headline">#</a></h2>
+<h2><em>Session 1 Assignment: Choose a dataset</em><a class="headerlink" href="#session-1-assignment-choose-a-dataset" title="Permalink to this heading">#</a></h2>
 <p>Before returning for Session 2 of the sklearn workshop, select a dataset that is suitable for machine learning. The dataset should have the following properties:</p>
 <ul class="simple">
 <li><p><em>tabular</em>: it should be a row-column dataset with numeric or categorical variables for columns. It should not be a text or image dataset.</p></li>
@@ -566,7 +568,7 @@ document.write(`
 <p>Consider using a dataset from your research if possible. Otherwise, browse <a class="reference external" href="https://www.kaggle.com/datasets?fileType=csv">kaggle datasets</a> for options.</p>
 </section>
 <section id="model-fitting">
-<h2><a class="reference external" href="https://scikit-learn.org/stable/supervised_learning.html">Model Fitting</a><a class="headerlink" href="#model-fitting" title="Permalink to this headline">#</a></h2>
+<h2><a class="reference external" href="https://scikit-learn.org/stable/supervised_learning.html">Model Fitting</a><a class="headerlink" href="#model-fitting" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -583,7 +585,7 @@ document.write(`
 </div>
 </section>
 <section id="model-evaluation">
-<h2>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h2>
+<h2>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train score:&quot;</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
@@ -600,7 +602,7 @@ Test score: 0.9805555555555555
 </div>
 </section>
 <section id="inference">
-<h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">#</a></h2>
+<h2>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># predict the class</span>

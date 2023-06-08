@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data partition: training and testing &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,10 +67,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_sklearn/03-partitioning-data';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deep Learning in Python" href="../python_deep_learning/00-index.html" />
+    <link rel="next" title="Model Pipelines in Sklearn" href="04-regression-example.html" />
     <link rel="prev" title="Preparing data" href="02-preparing-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -237,6 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -484,7 +486,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-partition-training-and-testing">
-<h1>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this headline">#</a></h1>
+<h1>Data partition: training and testing<a class="headerlink" href="#data-partition-training-and-testing" title="Permalink to this heading">#</a></h1>
 <p>In Machine Learning, it is mandatory to have training and testing set. Some
 time a verification set is also recommended. Here are some functions
 for splitting training/testing set in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>:</p>
@@ -499,7 +501,7 @@ for splitting training/testing set in <code class="docutils literal notranslate"
 <p>We focus on <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, <code class="docutils literal notranslate"><span class="pre">KFolds</span></code> and  <code class="docutils literal notranslate"><span class="pre">StratifiedKFold</span></code>.</p>
 <p>We will use the airquality dataset to demonstrate:</p>
 <section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">#</a></h2>
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -798,7 +800,7 @@ for splitting training/testing set in <code class="docutils literal notranslate"
 </div>
 </section>
 <section id="train-test-split">
-<h2>Train-test split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
+<h2>Train-test split<a class="headerlink" href="#train-test-split" title="Permalink to this heading">#</a></h2>
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> to randomly split 60% data for training and the rest for testing:</p>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114209883-22b81700-992d-11eb-83a4-c4ab1538a1e5.png" /></p>
 <div class="cell docutils container">
@@ -838,7 +840,7 @@ for splitting training/testing set in <code class="docutils literal notranslate"
 <p><strong>Question</strong>: What are some of the limitations with this approach?</p>
 </section>
 <section id="cross-validation">
-<h2>Cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h2>
+<h2>Cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>CV is a resampling process used to evaluate ML model on limited data sample.</p></li>
 <li><p>The general procedure:</p>
@@ -898,7 +900,7 @@ Std. dev. r^2: 0.11
 </div>
 </div>
 <section id="stratified-k-fold-cv">
-<h3>Stratified k-fold CV<a class="headerlink" href="#stratified-k-fold-cv" title="Permalink to this headline">#</a></h3>
+<h3>Stratified k-fold CV<a class="headerlink" href="#stratified-k-fold-cv" title="Permalink to this heading">#</a></h3>
 <p>“Stratify” refers to sampling within a group to form the <span class="math notranslate nohighlight">\(k\)</span> folds. For example, we may wish that the distribution of Ozone levels in the CV partitions looks similar to the distribution in the full dataset. This is especially important when we have class imbalance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1068,11 +1070,11 @@ Std. dev. r^2: 0.11
       </div>
     </a>
     <a class="right-next"
-       href="../python_deep_learning/00-index.html"
+       href="04-regression-example.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deep Learning in Python</p>
+        <p class="prev-next-title">Model Pipelines in Sklearn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

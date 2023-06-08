@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Datasets and data loading &#8212; Research Computing and Data Workshop</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Building the network" href="04-modules.html" />
     <link rel="prev" title="Regression and Classification with Fully Connected Neural Networks" href="02-regression_and_classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -235,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -482,10 +484,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="datasets-and-data-loading">
-<h1>Datasets and data loading<a class="headerlink" href="#datasets-and-data-loading" title="Permalink to this headline">#</a></h1>
+<h1>Datasets and data loading<a class="headerlink" href="#datasets-and-data-loading" title="Permalink to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://pytorch.org/docs/stable/data.html"><code class="docutils literal notranslate"><span class="pre">torch.utils.data</span></code></a> subpackage is an important part of PyTorch for developing neural networks. The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class represents a dataset and provides an interface to access the data samples. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class helps fetch data from the dataset and prepare it for passing to your neural network.</p>
 <section id="case-study-imagenet-data">
-<h2>Case study: ImageNet data<a class="headerlink" href="#case-study-imagenet-data" title="Permalink to this headline">#</a></h2>
+<h2>Case study: ImageNet data<a class="headerlink" href="#case-study-imagenet-data" title="Permalink to this heading">#</a></h2>
 <p>The ImageNet-1000 image classification task has been a huge driver of progress in deep learning. Let’s get to know this dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -656,7 +658,7 @@ orange 50
 </div>
 </section>
 <section id="map-style-dataset">
-<h2><a class="reference external" href="https://pytorch.org/docs/stable/data.html">Map-style dataset</a><a class="headerlink" href="#map-style-dataset" title="Permalink to this headline">#</a></h2>
+<h2><a class="reference external" href="https://pytorch.org/docs/stable/data.html">Map-style dataset</a><a class="headerlink" href="#map-style-dataset" title="Permalink to this heading">#</a></h2>
 <p>Use this when you have a well-defined set of samples that you will use to train your model. This is the most common case and the natural choice for ImageNet because we have a well-defined set of images that we want to feed to our model. Let’s see how to create a map-style dataset class for ImageNet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,7 +751,7 @@ orange 50
 </div>
 </section>
 <section id="aside-mini-batch-gradient-descent">
-<h2>Aside: Mini-Batch Gradient Descent<a class="headerlink" href="#aside-mini-batch-gradient-descent" title="Permalink to this headline">#</a></h2>
+<h2>Aside: Mini-Batch Gradient Descent<a class="headerlink" href="#aside-mini-batch-gradient-descent" title="Permalink to this heading">#</a></h2>
 <p>In the <a class="reference external" href="https://clemsonciti.github.io/rcde_workshops/pytorch/02-regression_and_classification.html">Regression and Classification notebook</a>, we trained the model by computing the loss for the <em>entire</em> dataset multiple times. Our training loop looked something like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="c1"># forward pass</span>
@@ -796,7 +798,7 @@ orange 50
 </section>
 <hr class="docutils" />
 <section id="mini-batch-gradient-descent-with-the-dataloader-class">
-<h2>Mini-batch gradient descent with the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class<a class="headerlink" href="#mini-batch-gradient-descent-with-the-dataloader-class" title="Permalink to this headline">#</a></h2>
+<h2>Mini-batch gradient descent with the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class<a class="headerlink" href="#mini-batch-gradient-descent-with-the-dataloader-class" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class is our interface to the individual samples within our dataset. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> utility class provides an interface to batches of data. It also supports multiprocessing out of the box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,7 +837,7 @@ orange 50
 <p>We’re now ready to write our new training loop:</p>
 </section>
 <section id="imagenet-training-testing-loop">
-<h2>ImageNet Training/Testing Loop<a class="headerlink" href="#imagenet-training-testing-loop" title="Permalink to this headline">#</a></h2>
+<h2>ImageNet Training/Testing Loop<a class="headerlink" href="#imagenet-training-testing-loop" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the datasets</span>
@@ -910,7 +912,7 @@ orange 50
 </div>
 </section>
 <section id="let-s-actually-evaluate-a-trained-model">
-<h2>Let’s actually evaluate a trained model<a class="headerlink" href="#let-s-actually-evaluate-a-trained-model" title="Permalink to this headline">#</a></h2>
+<h2>Let’s actually evaluate a trained model<a class="headerlink" href="#let-s-actually-evaluate-a-trained-model" title="Permalink to this heading">#</a></h2>
 <p>Training takes too long.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
