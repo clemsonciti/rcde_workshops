@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practice With a Local Repository &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="GitLab" href="06-gitlab.html" />
     <link rel="prev" title="Installing Git" href="04-install-git.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -483,12 +473,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="practice-with-a-local-repository">
-<h1>Practice With a Local Repository<a class="headerlink" href="#practice-with-a-local-repository" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="practice-with-a-local-repository">
+<h1>Practice With a Local Repository<a class="headerlink" href="#practice-with-a-local-repository" title="Permalink to this headline">#</a></h1>
 <p>For this portion of the workshop, let’s try working with a practice repository
 on your computer.</p>
-<section id="configure-git">
-<h2>Configure Git<a class="headerlink" href="#configure-git" title="Permalink to this heading">#</a></h2>
+<div class="section" id="configure-git">
+<h2>Configure Git<a class="headerlink" href="#configure-git" title="Permalink to this headline">#</a></h2>
 <p>Before you can make commits, you will need to tell Git who you are, so it
 attribute your work to you. You can do this using the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code> command.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;The Tiger&quot;</span>
@@ -499,9 +489,9 @@ $<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </spa
 your entire user account. If you would like to do this on a per-repository
 basis, you can run the commands inside your repository directory after
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> and omit the global flag.</p>
-</section>
-<section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h2>
 <p>Let’s create an example project folder with a couple of files in our home
 directory:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>~/myproject
@@ -513,9 +503,9 @@ $<span class="w"> </span>ls
 file1<span class="w"> </span>file2<span class="w"> </span>file3
 </pre></div>
 </div>
-</section>
-<section id="initializing-the-repository">
-<h2>Initializing the Repository<a class="headerlink" href="#initializing-the-repository" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="initializing-the-repository">
+<h2>Initializing the Repository<a class="headerlink" href="#initializing-the-repository" title="Permalink to this headline">#</a></h2>
 <p>Now that we have some example content, we can start tracking this project with
 Git. The <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> command will create a new Git repository in the current
 directory.</p>
@@ -548,9 +538,9 @@ nothing<span class="w"> </span>added<span class="w"> </span>to<span class="w"> <
 </div>
 <p>In this case, you can see that all three of the files are currently
 <strong>untracked</strong> since they have not been committed to the repository before.</p>
-</section>
-<section id="our-first-commit">
-<h2>Our First Commit<a class="headerlink" href="#our-first-commit" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="our-first-commit">
+<h2>Our First Commit<a class="headerlink" href="#our-first-commit" title="Permalink to this headline">#</a></h2>
 <p>Let’s move these files onto the stage using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and then check the status
 again.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>file1
@@ -596,9 +586,9 @@ On<span class="w"> </span>branch<span class="w"> </span>master
 nothing<span class="w"> </span>to<span class="w"> </span>commit,<span class="w"> </span>working<span class="w"> </span>tree<span class="w"> </span>clean
 </pre></div>
 </div>
-</section>
-<section id="making-a-change">
-<h2>Making a Change<a class="headerlink" href="#making-a-change" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="making-a-change">
+<h2>Making a Change<a class="headerlink" href="#making-a-change" title="Permalink to this headline">#</a></h2>
 <p>Now, let’s modify one of the original files that we committed. We can add a new
 line to <code class="docutils literal notranslate"><span class="pre">file3</span></code> that says “University” so we have the full school name.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>file3
@@ -657,9 +647,9 @@ Date:<span class="w">   </span>Mon<span class="w"> </span>Jun<span class="w"> </
 <span class="w">    </span>Created<span class="w"> </span>three<span class="w"> </span>example<span class="w"> </span>files.
 </pre></div>
 </div>
-</section>
-<section id="deleting-a-file">
-<h2>Deleting a File<a class="headerlink" href="#deleting-a-file" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="deleting-a-file">
+<h2>Deleting a File<a class="headerlink" href="#deleting-a-file" title="Permalink to this headline">#</a></h2>
 <p>Now, let’s delete a file that we have tracked in Git. You can use the same
 command you usually would to remove the file.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
@@ -730,8 +720,8 @@ Date:<span class="w">   </span>Mon<span class="w"> </span>Jun<span class="w"> </
 <span class="w">    </span>Created<span class="w"> </span>three<span class="w"> </span>example<span class="w"> </span>files.
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -759,7 +749,10 @@ Date:<span class="w">   </span>Mon<span class="w"> </span>Jun<span class="w"> </
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="04-install-git.html"
@@ -779,7 +772,10 @@ Date:<span class="w">   </span>Mon<span class="w"> </span>Jun<span class="w"> </
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -808,7 +804,7 @@ Date:<span class="w">   </span>Mon<span class="w"> </span>Jun<span class="w"> </
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -834,7 +830,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -843,8 +839,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

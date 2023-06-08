@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Running a batch job &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to R" href="../r_programming/00-index.html" />
     <link rel="prev" title="Web-based access to the Palmetto Cluster" href="07-open-od.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -468,8 +458,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="running-a-batch-job">
-<h1>Running a batch job<a class="headerlink" href="#running-a-batch-job" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="running-a-batch-job">
+<h1>Running a batch job<a class="headerlink" href="#running-a-batch-job" title="Permalink to this headline">#</a></h1>
 <p>Interactive jobs are great if you need to do something quick, or perhaps visualize some data. If you have some code which runs for seven hours, interactive jobs are not a great idea. Please keep in mind that an interactive job gets killed if you close the SSH connection. So for example, you connect to Palmetto from your laptop, start an interactive job, but then your laptop runs out of battery power and you can’t find your charger. SSH client quits, and your interactive job is killed.</p>
 <p>If you have some truly serious, multi-hour computation project (and that’s what Palmetto is really good for), a better idea is to run it on the background. This is called a <em>batch job</em>. You submit it in a fashion which is conceptually similar to an interactive job, but then it runs on the compute node on the background until it’s over. If it needs to take two days, it takes two days. You can quit the SSH client or close your laptop, it won’t affect the batch job.</p>
 <p>To submit a batch job, we usually create a separate file called a <em>PBS script</em>. This file asks the scheduler for specific resources, and then specifies the actions that will be done once we get on a compute node.</p>
@@ -480,12 +470,10 @@ nano<span class="w"> </span>randmatrix.r
 </pre></div>
 </div>
 <p>This will open the <code class="docutils literal notranslate"><span class="pre">nano</span></code> text editor:</p>
-<figure class="align-default" id="id1">
+<div class="figure align-default" id="id1">
 <img alt="../_images/nano_empty.png" src="../_images/nano_empty.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Nano just opened with empty file.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Nano just opened with empty file.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</div>
 <p>Inside the editor, type this:</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">size</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5000</span>
 <span class="n">M</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">size</span><span class="o">*</span><span class="n">size</span><span class="p">),</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
@@ -495,12 +483,10 @@ nano<span class="w"> </span>randmatrix.r
 </pre></div>
 </div>
 <p>Instead of typing, you can copy the text from the Web browser and paste it into <code class="docutils literal notranslate"><span class="pre">nano</span></code>. Windows users can paste with <code class="docutils literal notranslate"><span class="pre">Shift</span></code>+<code class="docutils literal notranslate"><span class="pre">Ins</span></code> (or by right-clicking the mouse). Mac users can paste with <code class="docutils literal notranslate"><span class="pre">Cmd</span></code>+<code class="docutils literal notranslate"><span class="pre">V</span></code>. At the end, your screen should look like this:</p>
-<figure class="align-default" id="id2">
+<div class="figure align-default" id="id2">
 <img alt="../_images/nano_r.png" src="../_images/nano_r.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Nano with the R script filled in</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Nano with the R script filled in</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</div>
 <p>To save it, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">O</span></code>, and hit enter. To exit the editor, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">X</span></code>. To make sure the text is saved properly, print it on screen using the <code class="docutils literal notranslate"><span class="pre">cat</span></code> command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>randmatrix.r
 </pre></div>
@@ -675,7 +661,7 @@ Rscript<span class="w"> </span>randmatrix.r
 <li><p><code class="docutils literal notranslate"><span class="pre">qstat</span></code> allows you to check the status of your jobs.</p></li>
 </ul>
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -703,7 +689,10 @@ Rscript<span class="w"> </span>randmatrix.r
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="07-open-od.html"
@@ -723,7 +712,10 @@ Rscript<span class="w"> </span>randmatrix.r
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -733,7 +725,7 @@ Rscript<span class="w"> </span>randmatrix.r
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -759,7 +751,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -768,8 +760,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

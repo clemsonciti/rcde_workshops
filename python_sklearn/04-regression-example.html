@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Model Pipelines in Sklearn &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Deep Learning in Python" href="../python_deep_learning/00-index.html" />
     <link rel="prev" title="Data partition: training and testing" href="03-partitioning-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -494,8 +484,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="model-pipelines-in-sklearn">
-<h1>Model Pipelines in Sklearn<a class="headerlink" href="#model-pipelines-in-sklearn" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="model-pipelines-in-sklearn">
+<h1>Model Pipelines in Sklearn<a class="headerlink" href="#model-pipelines-in-sklearn" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -539,8 +529,8 @@ Requirement already satisfied: scipy&gt;=1.3.2 in /software/spackages/linux-rock
 </div>
 </div>
 </div>
-<section id="the-data">
-<h2>The Data<a class="headerlink" href="#the-data" title="Permalink to this heading">#</a></h2>
+<div class="section" id="the-data">
+<h2>The Data<a class="headerlink" href="#the-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/zfs/citi/workshop_data/python_ml/ames_train.csv&#39;</span><span class="p">)</span>
@@ -657,9 +647,9 @@ Requirement already satisfied: scipy&gt;=1.3.2 in /software/spackages/linux-rock
 <p>80 rows × 3 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="exploratory-analysis">
-<h2>Exploratory Analysis<a class="headerlink" href="#exploratory-analysis" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="exploratory-analysis">
+<h2>Exploratory Analysis<a class="headerlink" href="#exploratory-analysis" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># it&#39;s always a good idea to look at your response variable</span>
@@ -1211,9 +1201,9 @@ Name: 39, dtype: object
 <li><p>BsmtFnSF1, BsmtFullBath</p></li>
 </ul>
 <p>We could consider removing some of these near duplicate features.</p>
-</section>
-<section id="first-pass">
-<h2>First pass<a class="headerlink" href="#first-pass" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="first-pass">
+<h2>First pass<a class="headerlink" href="#first-pass" title="Permalink to this headline">#</a></h2>
 <p>It’s usually a good idea to first perform a quick and dirty analysis ignoring the subtleties that we discussed above. We can then try to incorporate these ideas to improve our results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1245,8 +1235,8 @@ Name: 39, dtype: object
 </div>
 </div>
 </div>
-<section id="preprocessing-numeric-and-categorical-features">
-<h3>Preprocessing numeric and categorical features<a class="headerlink" href="#preprocessing-numeric-and-categorical-features" title="Permalink to this heading">#</a></h3>
+<div class="section" id="preprocessing-numeric-and-categorical-features">
+<h3>Preprocessing numeric and categorical features<a class="headerlink" href="#preprocessing-numeric-and-categorical-features" title="Permalink to this headline">#</a></h3>
 <p>We will use scikit-learn’s pipeline feature to streamline the model fitting and evaluation process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1642,9 +1632,9 @@ Name: 39, dtype: object
 <p>292 rows × 229 columns</p>
 </div></div></div>
 </div>
-</section>
-<section id="model-fitting">
-<h3>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="model-fitting">
+<h3>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the model pipeline</span>
@@ -1737,9 +1727,9 @@ Name: 39, dtype: object
                   verbose_feature_names_out=False)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label sk-toggleable__label-arrow">numeric</label><div class="sk-toggleable__content"><pre>[&#x27;LotFrontage&#x27;, &#x27;LotArea&#x27;, &#x27;OverallQual&#x27;, &#x27;OverallCond&#x27;, &#x27;YearBuilt&#x27;, &#x27;YearRemodAdd&#x27;, &#x27;MasVnrArea&#x27;, &#x27;BsmtFinSF1&#x27;, &#x27;BsmtFinSF2&#x27;, &#x27;BsmtUnfSF&#x27;, &#x27;TotalBsmtSF&#x27;, &#x27;1stFlrSF&#x27;, &#x27;2ndFlrSF&#x27;, &#x27;LowQualFinSF&#x27;, &#x27;GrLivArea&#x27;, &#x27;BsmtFullBath&#x27;, &#x27;BsmtHalfBath&#x27;, &#x27;FullBath&#x27;, &#x27;HalfBath&#x27;, &#x27;BedroomAbvGr&#x27;, &#x27;KitchenAbvGr&#x27;, &#x27;TotRmsAbvGrd&#x27;, &#x27;GarageYrBlt&#x27;, &#x27;GarageCars&#x27;, &#x27;GarageArea&#x27;, &#x27;WoodDeckSF&#x27;, &#x27;OpenPorchSF&#x27;, &#x27;EnclosedPorch&#x27;, &#x27;3SsnPorch&#x27;, &#x27;ScreenPorch&#x27;, &#x27;PoolArea&#x27;, &#x27;MiscVal&#x27;, &#x27;MoSold&#x27;, &#x27;YrSold&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;median&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-13" type="checkbox" ><label for="sk-estimator-id-13" class="sk-toggleable__label sk-toggleable__label-arrow">categorical</label><div class="sk-toggleable__content"><pre>[&#x27;MSSubClass&#x27;, &#x27;MSZoning&#x27;, &#x27;Street&#x27;, &#x27;LotShape&#x27;, &#x27;LandContour&#x27;, &#x27;Utilities&#x27;, &#x27;LotConfig&#x27;, &#x27;LandSlope&#x27;, &#x27;Neighborhood&#x27;, &#x27;Condition1&#x27;, &#x27;Condition2&#x27;, &#x27;BldgType&#x27;, &#x27;HouseStyle&#x27;, &#x27;RoofStyle&#x27;, &#x27;RoofMatl&#x27;, &#x27;Exterior1st&#x27;, &#x27;Exterior2nd&#x27;, &#x27;MasVnrType&#x27;, &#x27;ExterQual&#x27;, &#x27;ExterCond&#x27;, &#x27;Foundation&#x27;, &#x27;BsmtQual&#x27;, &#x27;BsmtCond&#x27;, &#x27;BsmtExposure&#x27;, &#x27;BsmtFinType1&#x27;, &#x27;BsmtFinType2&#x27;, &#x27;Heating&#x27;, &#x27;HeatingQC&#x27;, &#x27;CentralAir&#x27;, &#x27;Electrical&#x27;, &#x27;KitchenQual&#x27;, &#x27;Functional&#x27;, &#x27;Fireplaces&#x27;, &#x27;FireplaceQu&#x27;, &#x27;GarageType&#x27;, &#x27;GarageFinish&#x27;, &#x27;GarageQual&#x27;, &#x27;GarageCond&#x27;, &#x27;PavedDrive&#x27;, &#x27;Fence&#x27;, &#x27;SaleType&#x27;, &#x27;SaleCondition&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" ><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">SimpleImputer</label><div class="sk-toggleable__content"><pre>SimpleImputer(strategy=&#x27;most_frequent&#x27;)</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-15" type="checkbox" ><label for="sk-estimator-id-15" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(drop=&#x27;first&#x27;, handle_unknown=&#x27;infrequent_if_exist&#x27;,
               min_frequency=5, sparse_output=False)</pre></div></div></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-16" type="checkbox" ><label for="sk-estimator-id-16" class="sk-toggleable__label sk-toggleable__label-arrow">Ridge</label><div class="sk-toggleable__content"><pre>Ridge(alpha=1)</pre></div></div></div></div></div></div></div></div></div>
 </div>
-</section>
-<section id="model-evaluation">
-<h3>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="model-evaluation">
+<h3>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate</span>
@@ -1835,10 +1825,10 @@ Test MAE: 19818.124509208443
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="optimizing-the-pipeline">
-<h2>Optimizing the pipeline<a class="headerlink" href="#optimizing-the-pipeline" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="optimizing-the-pipeline">
+<h2>Optimizing the pipeline<a class="headerlink" href="#optimizing-the-pipeline" title="Permalink to this headline">#</a></h2>
 <p>There are many things we can try to improve the fit of our model. For example, we could experiment with the following:</p>
 <ul class="simple">
 <li><p>apply some of the observations from our exploratory data analysis</p></li>
@@ -1849,8 +1839,8 @@ Test MAE: 19818.124509208443
 </ul>
 <p>How do we start testing various approaches in scikit-learn? One way is to manually change the pipeline we defined above, fit/evaluate the model, and compare with our results above. This can be a tedious and error-prone process. Let’s see how do this efficiently using scikit-learn’s APIs.</p>
 <p>To introduce the ideas, let’s consider the alpha regularization parameter used in Ridge regression.</p>
-<section id="tuning-estimator-parameters">
-<h3>Tuning estimator parameters<a class="headerlink" href="#tuning-estimator-parameters" title="Permalink to this heading">#</a></h3>
+<div class="section" id="tuning-estimator-parameters">
+<h3>Tuning estimator parameters<a class="headerlink" href="#tuning-estimator-parameters" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span>
@@ -2369,9 +2359,9 @@ Parameter group 9: {&#39;estimator__alpha&#39;: 1000.0}
 </div>
 </div>
 <p>We get the best mean performance for parameter group 6 with alpha=21.54.</p>
-</section>
-<section id="searching-over-multiple-parameters-simultaneously">
-<h3>Searching over multiple parameters simultaneously<a class="headerlink" href="#searching-over-multiple-parameters-simultaneously" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="searching-over-multiple-parameters-simultaneously">
+<h3>Searching over multiple parameters simultaneously<a class="headerlink" href="#searching-over-multiple-parameters-simultaneously" title="Permalink to this headline">#</a></h3>
 <p>Often we will want to search over multiple parameters at the same time. This is easy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2825,9 +2815,9 @@ Parameter group 14: {&#39;estimator__alpha&#39;: 21.54, &#39;preproc__categorica
 </div>
 </div>
 <p>It looks like the model prefers ‘most_frequent’ imputation with a OneHotEncoder min frequency of 2.</p>
-</section>
-<section id="searching-over-different-transformers">
-<h3>Searching over different transformers<a class="headerlink" href="#searching-over-different-transformers" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="searching-over-different-transformers">
+<h3>Searching over different transformers<a class="headerlink" href="#searching-over-different-transformers" title="Permalink to this headline">#</a></h3>
 <p>Let’s try something a little more drastic. What if we were to replace the imputation approach altogether with a the KNNImputer that we saw earlier in the workshop?</p>
 <p>Before, we used GridSearchCV to scan possible values for a parameter in one of our transforms. We can also scan over different transform objects.</p>
 <div class="cell docutils container">
@@ -3100,9 +3090,9 @@ Parameter group 1: {&#39;estimator__alpha&#39;: 21.54, &#39;preproc__categorical
 </div>
 </div>
 <p>We can’t distinguish between these two approaches.</p>
-</section>
-<section id="searching-different-estimators">
-<h3>Searching different estimators<a class="headerlink" href="#searching-different-estimators" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="searching-different-estimators">
+<h3>Searching different estimators<a class="headerlink" href="#searching-different-estimators" title="Permalink to this headline">#</a></h3>
 <p>Just like we could search over different transforms, we can search over different estimators.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3312,9 +3302,9 @@ Parameter group 2: {&#39;estimator&#39;: GradientBoostingRegressor(), &#39;prepr
 </div>
 <p>Random Forest and Gradient boosting might have an edge, but there’s a lot of overlap in the CIs. At this point, one might want to focus on tuning the hyperparameters for the tree-based models.</p>
 <p>For now, though, let’s see how to implement dimension reduction in our pipeline.</p>
-</section>
-<section id="dimension-reduction">
-<h3>Dimension reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="dimension-reduction">
+<h3>Dimension reduction<a class="headerlink" href="#dimension-reduction" title="Permalink to this headline">#</a></h3>
 <p>We can insert a PCA step into our pipeline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4117,10 +4107,10 @@ Parameter group 5: {&#39;estimator__alpha&#39;: 21.54, &#39;feature_selection&#3
 </div>
 </div>
 <p>“passthrough” wins again, though we retain most of the performance using only 41 features.</p>
-</section>
-</section>
-<section id="final-evaluation">
-<h2>Final Evaluation<a class="headerlink" href="#final-evaluation" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="final-evaluation">
+<h2>Final Evaluation<a class="headerlink" href="#final-evaluation" title="Permalink to this headline">#</a></h2>
 <p>We can view the best estimator from the search and evaluate it on the test set. This estimator was selected using cross validation then retrained on the entire train set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4246,8 +4236,8 @@ Test R^2: 0.8827650770371231
 </div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -4275,7 +4265,10 @@ Test R^2: 0.8827650770371231
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03-partitioning-data.html"
@@ -4295,7 +4288,10 @@ Test R^2: 0.8827650770371231
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -4335,7 +4331,7 @@ Test R^2: 0.8827650770371231
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -4361,7 +4357,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -4370,8 +4366,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

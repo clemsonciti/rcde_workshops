@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Working With Files and Directories &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="File Permissions and Atrributes" href="04a-file-permissions.html" />
     <link rel="prev" title="Navigating Files and Directories" href="03-file-system.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -487,10 +477,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-with-files-and-directories">
-<h1>Working With Files and Directories<a class="headerlink" href="#working-with-files-and-directories" title="Permalink to this heading">#</a></h1>
-<section id="names-for-files-and-directories">
-<h2>Names for Files and Directories<a class="headerlink" href="#names-for-files-and-directories" title="Permalink to this heading">#</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="working-with-files-and-directories">
+<h1>Working With Files and Directories<a class="headerlink" href="#working-with-files-and-directories" title="Permalink to this headline">#</a></h1>
+<div class="section" id="names-for-files-and-directories">
+<h2>Names for Files and Directories<a class="headerlink" href="#names-for-files-and-directories" title="Permalink to this headline">#</a></h2>
 <p>Complicated names of files and directories can make your life very painful
 when working on the command line. Here we provide a few useful
 tips for the names of your files from now on.</p>
@@ -507,11 +497,11 @@ You can use <code class="docutils literal notranslate"><span class="pre">-</span
 </ol>
 <p>If you need to refer to names of files or directories that have whitespace
 or another non-alphanumeric character you should put quotes around the name.</p>
-</section>
-<section id="copying-moving-and-deleting">
-<h2>Copying, Moving, and Deleting<a class="headerlink" href="#copying-moving-and-deleting" title="Permalink to this heading">#</a></h2>
-<section id="copying">
-<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="copying-moving-and-deleting">
+<h2>Copying, Moving, and Deleting<a class="headerlink" href="#copying-moving-and-deleting" title="Permalink to this headline">#</a></h2>
+<div class="section" id="copying">
+<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this headline">#</a></h3>
 <p>Copy a file with <code class="docutils literal notranslate"><span class="pre">cp</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp oldfile newfile
 </pre></div>
@@ -521,9 +511,9 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 </pre></div>
 </div>
 <p>This will make a copy of <em>filename</em> with same name in <em>directory</em>.</p>
-</section>
-<section id="moving">
-<h3>Moving<a class="headerlink" href="#moving" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="moving">
+<h3>Moving<a class="headerlink" href="#moving" title="Permalink to this headline">#</a></h3>
 <p>Move a file with <code class="docutils literal notranslate"><span class="pre">mv</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv oldfile newfile
 </pre></div>
@@ -537,9 +527,9 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">cp</span></code> and <code class="docutils literal notranslate"><span class="pre">mv</span></code> can overwrite files which is irreversible. Using the <code class="docutils literal notranslate"><span class="pre">-i</span></code> flag with <code class="docutils literal notranslate"><span class="pre">cp</span></code> or <code class="docutils literal notranslate"><span class="pre">mv</span></code> will prompt you before overwriting an existing file.</p>
 </div>
-</section>
-<section id="deleting">
-<h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="deleting">
+<h3>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">#</a></h3>
 <p>Remove a file with <code class="docutils literal notranslate"><span class="pre">rm</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm filename
 </pre></div>
@@ -552,14 +542,14 @@ or another non-alphanumeric character you should put quotes around the name.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rm -r directory
 </pre></div>
 </div>
-</section>
-<section id="deleting-is-forever">
-<h3>Deleting Is Forever<a class="headerlink" href="#deleting-is-forever" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="deleting-is-forever">
+<h3>Deleting Is Forever<a class="headerlink" href="#deleting-is-forever" title="Permalink to this headline">#</a></h3>
 <p>Files deleted with <code class="docutils literal notranslate"><span class="pre">rm</span></code> cannot be recovered from a trash bin. Be very careful when deleting files especially with <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span></code>.</p>
-</section>
-</section>
-<section id="wildcards">
-<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="wildcards">
+<h2>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline">#</a></h2>
 <p>File globbing, known better as wildcards, uses patterns to automatically expand a file name or path. The <code class="docutils literal notranslate"><span class="pre">*</span></code> character matches any (multiple) characters. A <code class="docutils literal notranslate"><span class="pre">?</span></code> matches a single character.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls
@@ -578,9 +568,9 @@ hello1.txt    hello2.txt    hello3.txt  hello4.csv
 hello1.txt    hello2.txt    hello3.txt
 </pre></div>
 </div>
-</section>
-<section id="viewing-contents-of-a-file">
-<h2>Viewing Contents of a File<a class="headerlink" href="#viewing-contents-of-a-file" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="viewing-contents-of-a-file">
+<h2>Viewing Contents of a File<a class="headerlink" href="#viewing-contents-of-a-file" title="Permalink to this headline">#</a></h2>
 <p>There are many different ways to view the contents of a file.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">more</span></code> and <code class="docutils literal notranslate"><span class="pre">less</span></code> will display the file in a <em>buffer</em></p>
@@ -626,8 +616,8 @@ $ tail -n 20 file
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail -f logfile
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -655,7 +645,10 @@ $ tail -n 20 file
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03-file-system.html"
@@ -675,7 +668,10 @@ $ tail -n 20 file
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -708,7 +704,7 @@ $ tail -n 20 file
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -734,7 +730,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -743,8 +739,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

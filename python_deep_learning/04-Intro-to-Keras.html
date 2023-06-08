@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Keras &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Deep Learning Regression model with Keras" href="05-Keras-Regression.html" />
     <link rel="prev" title="Recap on ANN" href="03-Neural-Network.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -490,16 +480,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-keras">
-<h1>Introduction to Keras<a class="headerlink" href="#introduction-to-keras" title="Permalink to this heading">#</a></h1>
-<section id="import-keras">
-<h2>Import Keras<a class="headerlink" href="#import-keras" title="Permalink to this heading">#</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-keras">
+<h1>Introduction to Keras<a class="headerlink" href="#introduction-to-keras" title="Permalink to this headline">#</a></h1>
+<div class="section" id="import-keras">
+<h2>Import Keras<a class="headerlink" href="#import-keras" title="Permalink to this headline">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
 </pre></div>
 </div>
-</section>
-<section id="layers-in-deep-learning">
-<h2>Layers in Deep Learning<a class="headerlink" href="#layers-in-deep-learning" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="layers-in-deep-learning">
+<h2>Layers in Deep Learning<a class="headerlink" href="#layers-in-deep-learning" title="Permalink to this headline">#</a></h2>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129512909-a8eaa507-4869-4956-8bf9-ac6a5d6b4cd5.png" /></p>
 <ul class="simple">
 <li><p>Input layer</p></li>
@@ -513,15 +503,15 @@ document.write(`
 <span class="kn">from</span> <span class="nn">tensroflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
 </pre></div>
 </div>
-<section id="sequential">
-<h3>Sequential<a class="headerlink" href="#sequential" title="Permalink to this heading">#</a></h3>
+<div class="section" id="sequential">
+<h3>Sequential<a class="headerlink" href="#sequential" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>A <strong>Sequential</strong> model is appropriate for a <strong>plain stack of layers</strong> where each layer has exactly one input tensor and one output tensor.</p></li>
 <li><p>More information can be found <a class="reference external" href="https://keras.io/guides/sequential_model/">here</a></p></li>
 </ul>
-</section>
-<section id="dense">
-<h3>Dense:<a class="headerlink" href="#dense" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="dense">
+<h3>Dense:<a class="headerlink" href="#dense" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129509811-8b951430-dc5f-47d4-a31b-a12b6edade12.png" /></p>
 <p><strong>Dense</strong> implements the operation: output = activation(dot(input, kernel) + bias); where:</p>
 <ul class="simple">
@@ -530,9 +520,9 @@ document.write(`
 <li><p>bias is a bias vector created by the layer (only applicable if use_bias is True).</p></li>
 <li><p>More information on Dense can be found <a class="reference external" href="https://keras.io/api/layers/core_layers/dense">here</a></p></li>
 </ul>
-</section>
-<section id="create-a-sequential-model-with-n-2-as-in-image-above">
-<h3>Create a Sequential model with N=2 as in image above:<a class="headerlink" href="#create-a-sequential-model-with-n-2-as-in-image-above" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="create-a-sequential-model-with-n-2-as-in-image-above">
+<h3>Create a Sequential model with N=2 as in image above:<a class="headerlink" href="#create-a-sequential-model-with-n-2-as-in-image-above" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Sequential model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="c1"># Create a first hidden layer, the input for the first hidden layer is input layer which has 3 variables:</span>
@@ -543,25 +533,25 @@ document.write(`
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</section>
-<section id="how-about-this-model">
-<h3>How about this model?<a class="headerlink" href="#how-about-this-model" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="how-about-this-model">
+<h3>How about this model?<a class="headerlink" href="#how-about-this-model" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129513301-dfb25a8a-32d8-43a1-a6f4-713aa718c2e0.png" /></p>
-</section>
-<section id="optimal-activation-function">
-<h3>Optimal activation function?<a class="headerlink" href="#optimal-activation-function" title="Permalink to this heading">#</a></h3>
-<section id="for-hidden-layers">
-<h4>For hidden layers:<a class="headerlink" href="#for-hidden-layers" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="optimal-activation-function">
+<h3>Optimal activation function?<a class="headerlink" href="#optimal-activation-function" title="Permalink to this headline">#</a></h3>
+<div class="section" id="for-hidden-layers">
+<h4>For hidden layers:<a class="headerlink" href="#for-hidden-layers" title="Permalink to this headline">#</a></h4>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129512679-34174dd4-8b79-4625-96d9-c85e5ea95c48.png" /></p>
-</section>
-<section id="for-output-layers">
-<h4>For output layers:<a class="headerlink" href="#for-output-layers" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="for-output-layers">
+<h4>For output layers:<a class="headerlink" href="#for-output-layers" title="Permalink to this headline">#</a></h4>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/129512553-17bf8d4e-5ed4-4180-aaa7-d180c2d093c0.png" /></p>
 <p>Source on optimal activation function can be found <a class="reference external" href="https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/">here</a></p>
-</section>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -589,7 +579,10 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03-Neural-Network.html"
@@ -609,7 +602,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -645,7 +641,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -671,7 +667,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -680,8 +676,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

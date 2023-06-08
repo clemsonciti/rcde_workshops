@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Caret &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Data Partition with caret" href="03-Caret-Data-Partition.html" />
     <link rel="prev" title="Introduction to Machine Learning" href="01-Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -489,12 +479,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-caret">
-<h1>Introduction to Caret<a class="headerlink" href="#introduction-to-caret" title="Permalink to this heading">#</a></h1>
-<section id="what-is-caret">
-<h2>1. What is Caret<a class="headerlink" href="#what-is-caret" title="Permalink to this heading">#</a></h2>
-<section id="overview">
-<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h3>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-caret">
+<h1>Introduction to Caret<a class="headerlink" href="#introduction-to-caret" title="Permalink to this headline">#</a></h1>
+<div class="section" id="what-is-caret">
+<h2>1. What is Caret<a class="headerlink" href="#what-is-caret" title="Permalink to this headline">#</a></h2>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114192772-de704b00-991b-11eb-977e-d6706d4aca33.png" /></p>
 <ul class="simple">
 <li><p>The caret package (short for <strong>C</strong>lassification <strong>A</strong>nd <strong>RE</strong>gression <strong>T</strong>raining) is a set of functions that attempt to streamline the process for creating predictive models. The package contains tools for, among others:</p>
@@ -515,9 +505,9 @@ hosted on github. Caret was developed by <a class="reference external" href="htt
 Here we only touch some of the very basic commands that are useful for our Machine Learning class.</p></li>
 </ul>
 <p><a class="reference external" href="https://www.analyticsvidhya.com/infographics/Caret-Package-Infographic.pdf">caret cheatsheet</a></p>
-</section>
-<section id="why-using-caret">
-<h3>Why using Caret<a class="headerlink" href="#why-using-caret" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="why-using-caret">
+<h3>Why using Caret<a class="headerlink" href="#why-using-caret" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Unified framework for a wide variety of ML algorithms, with consistent syntax</p></li>
 <li><p>Possibly the biggest project in R</p></li>
@@ -525,9 +515,9 @@ Here we only touch some of the very basic commands that are useful for our Machi
 <li><p>Uniform interface</p></li>
 <li><p>Standard pre &amp; post processing</p></li>
 </ul>
-</section>
-<section id="install-caret">
-<h3>Install caret<a class="headerlink" href="#install-caret" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="install-caret">
+<h3>Install caret<a class="headerlink" href="#install-caret" title="Permalink to this headline">#</a></h3>
 <p>Start R Studio on OpenOD. Lets’ pick 10 CPUs, 60 GB of memory, any interconnect, no GPU, R version 4.0.3.</p>
 <p>In R console:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;caret&quot;</span><span class="p">)</span>
@@ -537,20 +527,20 @@ Here we only touch some of the very basic commands that are useful for our Machi
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="pre-processing-using-caret">
-<h2>2. Pre-processing using caret<a class="headerlink" href="#pre-processing-using-caret" title="Permalink to this heading">#</a></h2>
-<section id="id1">
-<h3>Overview<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+</div>
+</div>
+<div class="section" id="pre-processing-using-caret">
+<h2>2. Pre-processing using caret<a class="headerlink" href="#pre-processing-using-caret" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id1">
+<h3>Overview<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>There are several steps that we will use <code class="docutils literal notranslate"><span class="pre">caret</span></code> for. For preprocessing raw data, we gonna use <code class="docutils literal notranslate"><span class="pre">caret</span></code> in these tasks:</p>
 <ul class="simple">
 <li><p>Preprocessing with missing value</p></li>
 <li><p>Data partition: training and testing</p></li>
 </ul>
-</section>
-<section id="visualize-important-variables">
-<h3>Visualize important variables<a class="headerlink" href="#visualize-important-variables" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="visualize-important-variables">
+<h3>Visualize important variables<a class="headerlink" href="#visualize-important-variables" title="Permalink to this headline">#</a></h3>
 <p>Here we introduce the library <code class="docutils literal notranslate"><span class="pre">GGally</span></code>  with function <code class="docutils literal notranslate"><span class="pre">ggpairs</span></code> to help user in visualizing the input data</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;GGally&#39;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
@@ -562,9 +552,9 @@ Here we only touch some of the very basic commands that are useful for our Machi
 in our data. Interestingly, you can see an exammple of
 <a class="reference external" href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s paradox</a> in the relationship
 between sepal width and sepal length: the correlation is negative for all data, but positive within each data group!</p>
-</section>
-<section id="pre-processing-with-missing-value">
-<h3>Pre-processing with missing value<a class="headerlink" href="#pre-processing-with-missing-value" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="pre-processing-with-missing-value">
+<h3>Pre-processing with missing value<a class="headerlink" href="#pre-processing-with-missing-value" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Most of the time the input data has missing values (<code class="docutils literal notranslate"><span class="pre">NA,</span> <span class="pre">NaN,</span> <span class="pre">Inf</span></code>) due to data collection issue (power, sensor, personel).</p></li>
 <li><p>There are three main problems that missing data causes: missing data can introduce a substantial amount of bias, make the handling and analysis of the data more arduous, and create reductions in efficiency</p></li>
@@ -615,9 +605,9 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
 `bagImpute` is more powerful and computational cost than `knnImpute`
 
 -->
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -645,7 +635,10 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="01-Introduction.html"
@@ -665,7 +658,10 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -700,7 +696,7 @@ RescaleDataM <- t(t(DataImputeKNN)*PreImputeKNN$std+PreImputeKNN$mean)
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -726,7 +722,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -735,8 +731,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

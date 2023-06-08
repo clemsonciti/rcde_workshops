@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Training Machine Learning model using Regression Method &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Classification with decision boundaries" href="06-Decision_boundaries.html" />
     <link rel="prev" title="Evaluation Metrics with caret" href="04-Caret-Evaluation-Metrics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -490,16 +480,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="training-machine-learning-model-using-regression-method">
-<h1>Training Machine Learning model using Regression Method<a class="headerlink" href="#training-machine-learning-model-using-regression-method" title="Permalink to this heading">#</a></h1>
-<section id="more-examples-of-prediction">
-<h2>More examples of prediction<a class="headerlink" href="#more-examples-of-prediction" title="Permalink to this heading">#</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="training-machine-learning-model-using-regression-method">
+<h1>Training Machine Learning model using Regression Method<a class="headerlink" href="#training-machine-learning-model-using-regression-method" title="Permalink to this headline">#</a></h1>
+<div class="section" id="more-examples-of-prediction">
+<h2>More examples of prediction<a class="headerlink" href="#more-examples-of-prediction" title="Permalink to this headline">#</a></h2>
 <p>CARET supports a huge number of prediction methods; see the list <a class="reference external" href="https://rdrr.io/cran/caret/man/models.html">here</a>. Let’s do a few examples.</p>
-</section>
-<section id="for-continuous-output">
-<h2>For Continuous output<a class="headerlink" href="#for-continuous-output" title="Permalink to this heading">#</a></h2>
-<section id="linear-regression-with-one-predictor">
-<h3>Linear regression with one predictor<a class="headerlink" href="#linear-regression-with-one-predictor" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="for-continuous-output">
+<h2>For Continuous output<a class="headerlink" href="#for-continuous-output" title="Permalink to this headline">#</a></h2>
+<div class="section" id="linear-regression-with-one-predictor">
+<h3>Linear regression with one predictor<a class="headerlink" href="#linear-regression-with-one-predictor" title="Permalink to this headline">#</a></h3>
 <p>Pre-process the data and create a partition</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 <span class="nf">data</span><span class="p">(</span><span class="n">airquality</span><span class="p">)</span>
@@ -526,9 +516,9 @@ document.write(`
 <span class="nf">cor.test</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span><span class="n">testing</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="linear-regression-with-multiple-predictors-multi-linear-regression">
-<h3>Linear regression with multiple predictors (Multi-Linear Regression)<a class="headerlink" href="#linear-regression-with-multiple-predictors-multi-linear-regression" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="linear-regression-with-multiple-predictors-multi-linear-regression">
+<h3>Linear regression with multiple predictors (Multi-Linear Regression)<a class="headerlink" href="#linear-regression-with-multiple-predictors-multi-linear-regression" title="Permalink to this headline">#</a></h3>
 <p>Now, let’s predict <code class="docutils literal notranslate"><span class="pre">Ozone</span></code> from three predictors: solar radiation, wind, and temperature.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">modFit2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="n">Solar.R</span><span class="o">+</span><span class="n">Wind</span><span class="o">+</span><span class="n">Temp</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
 <span class="w">                 </span><span class="n">preProcess</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;center&quot;</span><span class="p">,</span><span class="s">&quot;scale&quot;</span><span class="p">),</span>
@@ -540,9 +530,9 @@ document.write(`
 </pre></div>
 </div>
 <p>We see that our correlation has improved when we used more predictors.</p>
-</section>
-<section id="train-model-using-stepwise-linear-regression">
-<h3>Train model using Stepwise Linear Regression<a class="headerlink" href="#train-model-using-stepwise-linear-regression" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="train-model-using-stepwise-linear-regression">
+<h3>Train model using Stepwise Linear Regression<a class="headerlink" href="#train-model-using-stepwise-linear-regression" title="Permalink to this headline">#</a></h3>
 <p>It’s a step by step Regression to determine which covariates set best match with the dependent variable. Using AIC as criteria:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">modFit_SLR</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="n">Solar.R</span><span class="o">+</span><span class="n">Wind</span><span class="o">+</span><span class="n">Temp</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">training</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lmStepAIC&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">modFit_SLR</span><span class="o">$</span><span class="n">finalModel</span><span class="p">)</span>
@@ -554,9 +544,9 @@ document.write(`
 </pre></div>
 </div>
 <p>–&gt;</p>
-</section>
-<section id="train-model-using-polynomial-regression">
-<h3>Train model using Polynomial Regression<a class="headerlink" href="#train-model-using-polynomial-regression" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="train-model-using-polynomial-regression">
+<h3>Train model using Polynomial Regression<a class="headerlink" href="#train-model-using-polynomial-regression" title="Permalink to this headline">#</a></h3>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122609104-6c1e9400-d04b-11eb-984c-ed20f0926451.png" /></p>
 <p>In this study, let’s use polynomial regression with degrees of freedom=3:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">modFit_poly</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">Ozone</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">Solar.R</span><span class="p">,</span><span class="m">3</span><span class="p">)</span><span class="o">+</span><span class="nf">poly</span><span class="p">(</span><span class="n">Wind</span><span class="p">,</span><span class="m">3</span><span class="p">)</span><span class="o">+</span><span class="nf">poly</span><span class="p">(</span><span class="n">Temp</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="n">data</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
@@ -567,9 +557,9 @@ document.write(`
 <span class="nf">cor.test</span><span class="p">(</span><span class="n">prediction_poly</span><span class="p">,</span><span class="n">testing</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="train-model-using-principal-component-regression">
-<h3>Train model using Principal Component Regression<a class="headerlink" href="#train-model-using-principal-component-regression" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="train-model-using-principal-component-regression">
+<h3>Train model using Principal Component Regression<a class="headerlink" href="#train-model-using-principal-component-regression" title="Permalink to this headline">#</a></h3>
 <p>Principal Component Regression is a combination of linear regression and principal component analysis; it is particularly useful when the predictors are highly correlated.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;pls&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span>
@@ -579,12 +569,12 @@ document.write(`
 <span class="nf">cor.test</span><span class="p">(</span><span class="n">prediction_PCR</span><span class="p">,</span><span class="n">testing</span><span class="o">$</span><span class="n">Ozone</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="for-categorical-output">
-<h2>For categorical output<a class="headerlink" href="#for-categorical-output" title="Permalink to this heading">#</a></h2>
-<section id="train-model-using-logistic-regression">
-<h3>Train model using Logistic Regression<a class="headerlink" href="#train-model-using-logistic-regression" title="Permalink to this heading">#</a></h3>
+</div>
+</div>
+<div class="section" id="for-categorical-output">
+<h2>For categorical output<a class="headerlink" href="#for-categorical-output" title="Permalink to this headline">#</a></h2>
+<div class="section" id="train-model-using-logistic-regression">
+<h3>Train model using Logistic Regression<a class="headerlink" href="#train-model-using-logistic-regression" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Logistic regression is a common method for binary classification problems (when outcomes fall into two categories).</p></li>
 <li><p>Typical binary classification: True/False, Yes/No, Pass/Fail</p></li>
@@ -593,7 +583,7 @@ document.write(`
 </ul>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png" /></p>
 <!--- ![image](https://user-images.githubusercontent.com/43855029/114233189-fb704280-994a-11eb-9019-8355f5337b37.png) -->
-<p><img alt="logreg" src="fig/r_ml/logreg.png" /></p>
+<p><img alt="logreg" src="../_images/logreg.png" /></p>
 <p>In this example, we use <code class="docutils literal notranslate"><span class="pre">spam</span></code> data set from package <code class="docutils literal notranslate"><span class="pre">kernlab</span></code>.
 This is a data set collected at Hewlett-Packard Labs, that classifies <strong>4601</strong> e-mails as spam or non-spam. In addition to this class label there are <strong>57</strong> variables indicating the frequency of certain words and characters in the e-mail.
 More information on this data set can be found <a class="reference external" href="https://rdrr.io/cran/kernlab/man/spam.html">here</a></p>
@@ -634,9 +624,9 @@ More information on this data set can be found <a class="reference external" hre
 </pre></div>
 </div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/43855029/122612391-07fece80-d051-11eb-9ab0-2f130ea10c59.png" /></p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -664,7 +654,10 @@ More information on this data set can be found <a class="reference external" hre
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="04-Caret-Evaluation-Metrics.html"
@@ -684,7 +677,10 @@ More information on this data set can be found <a class="reference external" hre
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -720,7 +716,7 @@ More information on this data set can be found <a class="reference external" hre
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -746,7 +742,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -755,8 +751,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

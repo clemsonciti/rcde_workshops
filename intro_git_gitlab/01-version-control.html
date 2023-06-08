@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Version Control Overview &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Git Version Control" href="02-git-workflow.html" />
     <link rel="prev" title="Introduction to Version Control with Git and GitLab" href="00-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -493,12 +483,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="version-control-overview">
-<h1>Version Control Overview<a class="headerlink" href="#version-control-overview" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="version-control-overview">
+<h1>Version Control Overview<a class="headerlink" href="#version-control-overview" title="Permalink to this headline">#</a></h1>
 <p>Before we go over how to use any version control software, it is important to
 understand the foundations of version control.</p>
-<section id="what-is-version-control">
-<h2>What is Version Control?<a class="headerlink" href="#what-is-version-control" title="Permalink to this heading">#</a></h2>
+<div class="section" id="what-is-version-control">
+<h2>What is Version Control?<a class="headerlink" href="#what-is-version-control" title="Permalink to this headline">#</a></h2>
 <div class="admonition-main-idea admonition">
 <p class="admonition-title">Main Idea</p>
 <p>Version control is a <strong>system</strong> that <strong>tracks changes</strong> to files <strong>over time</strong>.</p>
@@ -573,9 +563,9 @@ some interactive functionality working.</p>
 </div>
 </details><p>A version control system would show you the history of changes to the file over
 time, similar to what you saw above.</p>
-</section>
-<section id="why-should-i-use-version-control">
-<h2>Why should I use version control?<a class="headerlink" href="#why-should-i-use-version-control" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="why-should-i-use-version-control">
+<h2>Why should I use version control?<a class="headerlink" href="#why-should-i-use-version-control" title="Permalink to this headline">#</a></h2>
 <p>The definition and example above make this problem sound really simple. Many
 people will try to keep track of versions themselves with special file names
 like <code class="docutils literal notranslate"><span class="pre">hello.c.bak1</span></code>, <code class="docutils literal notranslate"><span class="pre">hello_BROKEN.c.old</span></code>, <code class="docutils literal notranslate"><span class="pre">hello_FINAL.c</span></code>, and so on.
@@ -585,68 +575,68 @@ collaborators, and development time grow.</p>
 manually would be tedious and error-prone. Furthermore, if you are working with
 other people, you need a way to share this information.</p>
 <p>Keep reading below to learn about the benefits of version control.</p>
-<section id="maintain-consistency">
-<h3>Maintain Consistency<a class="headerlink" href="#maintain-consistency" title="Permalink to this heading">#</a></h3>
+<div class="section" id="maintain-consistency">
+<h3>Maintain Consistency<a class="headerlink" href="#maintain-consistency" title="Permalink to this headline">#</a></h3>
 <p>Version control provides a <strong>system</strong> for keeping track of history that is
 <strong>consistent</strong>.</p>
 <p>Have you ever tried to understand someone else’s elaborate file naming scheme or
 remember your own weeks later? Version control provides a consistent way to keep
 track of history between collaborators and across projects.</p>
-</section>
-<section id="record-the-story">
-<h3>Record the Story<a class="headerlink" href="#record-the-story" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="record-the-story">
+<h3>Record the Story<a class="headerlink" href="#record-the-story" title="Permalink to this headline">#</a></h3>
 <p>Version control keeps track of <strong>why</strong> changes were made by recording a message
 with each version.</p>
 <p>Have you ever looked back at your code weeks later and wondered why you decided
 to make a certain change? By recording a message with each version, you can
 review the exact steps and reasoning that resulted in the current code.</p>
-</section>
-<section id="restore-previous-versions">
-<h3>Restore Previous Versions<a class="headerlink" href="#restore-previous-versions" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="restore-previous-versions">
+<h3>Restore Previous Versions<a class="headerlink" href="#restore-previous-versions" title="Permalink to this headline">#</a></h3>
 <p>Version control can help you get back to the last version of your code <strong>that
 worked</strong>.</p>
 <p>Have you ever tried to fix “just one more thing” before submitting a programming
 assignment and broken your entire program? With version control, you can go back
 to previous versions of your code to restore a working state.</p>
-</section>
-<section id="backup-plan">
-<h3>Backup Plan<a class="headerlink" href="#backup-plan" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="backup-plan">
+<h3>Backup Plan<a class="headerlink" href="#backup-plan" title="Permalink to this headline">#</a></h3>
 <p>Many version control systems allow you easily keep the code and history on your
 local computer in sync with a server.</p>
 <p>Have you ever had a hard disk fail in your computer? Having a backup copy of
 your code elsewhere can prevent data loss.</p>
-</section>
-<section id="collaborate-easily">
-<h3>Collaborate Easily<a class="headerlink" href="#collaborate-easily" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="collaborate-easily">
+<h3>Collaborate Easily<a class="headerlink" href="#collaborate-easily" title="Permalink to this headline">#</a></h3>
 <p>Version control systems also provide a way to combine history, so that you can
 work with others on your project. This allows you to work on the same files at
 the same time and merge your changes together.</p>
-</section>
-</section>
-<section id="what-are-the-basic-parts-of-a-version-control-system">
-<h2>What are the basic parts of a version control system?<a class="headerlink" href="#what-are-the-basic-parts-of-a-version-control-system" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="what-are-the-basic-parts-of-a-version-control-system">
+<h2>What are the basic parts of a version control system?<a class="headerlink" href="#what-are-the-basic-parts-of-a-version-control-system" title="Permalink to this headline">#</a></h2>
 <p>While there are many different version control systems out there, most of them
 have very similar basic parts. The components below are typically found in most
 version control systems.</p>
-<section id="scope">
-<h3>Scope<a class="headerlink" href="#scope" title="Permalink to this heading">#</a></h3>
+<div class="section" id="scope">
+<h3>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">#</a></h3>
 <p>Define what you want to keep track of history for. Typically a folder on your
 file system.</p>
-</section>
-<section id="objects">
-<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="objects">
+<h3>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">#</a></h3>
 <p>The individual items within the scope that you want to record history for.</p>
-</section>
-<section id="changeset">
-<h3>Changeset<a class="headerlink" href="#changeset" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="changeset">
+<h3>Changeset<a class="headerlink" href="#changeset" title="Permalink to this headline">#</a></h3>
 <p>Changesets describe which objects have changed, who changed them, and why.</p>
-</section>
-<section id="history">
-<h3>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="history">
+<h3>History<a class="headerlink" href="#history" title="Permalink to this headline">#</a></h3>
 <p>The history is a timeline of changesets.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -674,7 +664,10 @@ file system.</p>
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="00-index.html"
@@ -694,7 +687,10 @@ file system.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -733,7 +729,7 @@ file system.</p>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -759,7 +755,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -768,8 +764,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

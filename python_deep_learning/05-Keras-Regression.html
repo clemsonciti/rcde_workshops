@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Training Deep Learning Regression model with Keras &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Training Deep Learning Classification model with Keras" href="06-Keras-Classification.html" />
     <link rel="prev" title="Introduction to Keras" href="04-Intro-to-Keras.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -487,12 +477,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="training-deep-learning-regression-model-with-keras">
-<h1>Training Deep Learning Regression model with Keras<a class="headerlink" href="#training-deep-learning-regression-model-with-keras" title="Permalink to this heading">#</a></h1>
-<section id="using-keras-to-solve-a-regression-model">
-<h2>Using Keras to solve a Regression Model<a class="headerlink" href="#using-keras-to-solve-a-regression-model" title="Permalink to this heading">#</a></h2>
-<section id="prepare-the-data">
-<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this heading">#</a></h3>
+  <div class="tex2jax_ignore mathjax_ignore section" id="training-deep-learning-regression-model-with-keras">
+<h1>Training Deep Learning Regression model with Keras<a class="headerlink" href="#training-deep-learning-regression-model-with-keras" title="Permalink to this headline">#</a></h1>
+<div class="section" id="using-keras-to-solve-a-regression-model">
+<h2>Using Keras to solve a Regression Model<a class="headerlink" href="#using-keras-to-solve-a-regression-model" title="Permalink to this headline">#</a></h2>
+<div class="section" id="prepare-the-data">
+<h3>Prepare the data<a class="headerlink" href="#prepare-the-data" title="Permalink to this headline">#</a></h3>
 <p>Here we use <a class="reference external" href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">Pima Indian Diabetes database</a> data:</p>
 <ul class="simple">
 <li><p>We need to omit the header line of the data.</p></li>
@@ -505,17 +495,17 @@ document.write(`
 <span class="n">Y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span><span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="let-s-use-keras-s-sequential-model-with-dense-layers">
-<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="let-s-use-keras-s-sequential-model-with-dense-layers">
+<h3>Let’s use Keras’s Sequential model with Dense layers<a class="headerlink" href="#let-s-use-keras-s-sequential-model-with-dense-layers" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
 </pre></div>
 </div>
-</section>
-<section id="create-a-sequential-model-with-3-layers">
-<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="create-a-sequential-model-with-3-layers">
+<h3>Create a Sequential model with 3 layers:<a class="headerlink" href="#create-a-sequential-model-with-3-layers" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Sequential model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="c1"># Create a first hidden layer, the input for the first hidden layer is input layer which has 8 variables:</span>
@@ -526,9 +516,9 @@ document.write(`
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
-</section>
-<section id="compile-model">
-<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="compile-model">
+<h3>Compile model<a class="headerlink" href="#compile-model" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -547,9 +537,9 @@ document.write(`
 </ul>
 <p>There are also many other <strong>loss</strong> function.</p>
 <p>The purpose of <strong>loss</strong> functions is to compute the quantity that a model should seek to minimize during training. Detail can be found <a class="reference external" href="https://keras.io/api/losses/">here</a></p>
-</section>
-<section id="fit-model">
-<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="fit-model">
+<h3>Fit model<a class="headerlink" href="#fit-model" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -577,9 +567,9 @@ interactively (eg, in a production environment).</p></li>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="save-load-keras-model">
-<h3>Save &amp; load keras model<a class="headerlink" href="#save-load-keras-model" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="save-load-keras-model">
+<h3>Save &amp; load keras model<a class="headerlink" href="#save-load-keras-model" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;my_model.keras&#39;</span><span class="p">)</span>  <span class="c1"># creates a HDF5 file &#39;my_model.h5&#39;</span>
@@ -590,9 +580,9 @@ interactively (eg, in a production environment).</p></li>
 <span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;my_model.keras&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="cross-validation-using-k-fold">
-<h3>Cross validation using K-Fold<a class="headerlink" href="#cross-validation-using-k-fold" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="cross-validation-using-k-fold">
+<h3>Cross validation using K-Fold<a class="headerlink" href="#cross-validation-using-k-fold" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
 
 <span class="n">kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
@@ -611,9 +601,9 @@ interactively (eg, in a production environment).</p></li>
 
 </pre></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -641,7 +631,10 @@ interactively (eg, in a production environment).</p></li>
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="04-Intro-to-Keras.html"
@@ -661,7 +654,10 @@ interactively (eg, in a production environment).</p></li>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -694,7 +690,7 @@ interactively (eg, in a production environment).</p></li>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -720,7 +716,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -729,8 +725,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

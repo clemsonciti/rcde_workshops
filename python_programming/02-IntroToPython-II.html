@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Python II &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to Python III" href="03-IntroToPython-III.html" />
     <link rel="prev" title="Introduction to Python I" href="01-IntroToPython-I.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -504,8 +494,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python-ii">
-<h1>Introduction to Python II<a class="headerlink" href="#introduction-to-python-ii" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-python-ii">
+<h1>Introduction to Python II<a class="headerlink" href="#introduction-to-python-ii" title="Permalink to this headline">#</a></h1>
 <p>In today’s workshop we will learn about Python functions and popular Libraries: Numpy and Matplotlib</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,8 +506,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="workshop-setup">
-<h2>Workshop Setup<a class="headerlink" href="#workshop-setup" title="Permalink to this heading">#</a></h2>
+<div class="section" id="workshop-setup">
+<h2>Workshop Setup<a class="headerlink" href="#workshop-setup" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -526,17 +516,29 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">random</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
-<section id="creating-a-function-from-scratch">
-<h2>Creating a function from scratch<a class="headerlink" href="#creating-a-function-from-scratch" title="Permalink to this heading">#</a></h2>
-<section id="a-simple-function">
-<h3>A simple function<a class="headerlink" href="#a-simple-function" title="Permalink to this heading">#</a></h3>
-<section id="step-1">
-<h4>Step 1:<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<div class="section" id="creating-a-function-from-scratch">
+<h2>Creating a function from scratch<a class="headerlink" href="#creating-a-function-from-scratch" title="Permalink to this headline">#</a></h2>
+<div class="section" id="a-simple-function">
+<h3>A simple function<a class="headerlink" href="#a-simple-function" title="Permalink to this headline">#</a></h3>
+<div class="section" id="step-1">
+<h4>Step 1:<a class="headerlink" href="#step-1" title="Permalink to this headline">#</a></h4>
 <p>Defining a function</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,9 +560,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="step-2">
-<h4>Step 2:<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="step-2">
+<h4>Step 2:<a class="headerlink" href="#step-2" title="Permalink to this headline">#</a></h4>
 <p>Adding a comment</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -571,9 +573,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="step-3">
-<h4>Step 3:<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="step-3">
+<h4>Step 3:<a class="headerlink" href="#step-3" title="Permalink to this headline">#</a></h4>
 <p>Adding a Docstring</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,9 +594,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="step-4">
-<h4>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="step-4">
+<h4>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this headline">#</a></h4>
 <p>Passing Arguments</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -627,7 +629,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">2</span><span class="n">g</span><span class="o">/</span><span class="mi">16</span><span class="n">vjth1s5y38rsg8fh0yt1_40000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_75125</span><span class="o">/</span><span class="mf">1191407940.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cheerup</span><span class="p">()</span>
 
 <span class="ne">TypeError</span>: cheerup() missing 1 required positional argument: &#39;name&#39;
@@ -635,9 +637,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="step-5">
-<h4>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="step-5">
+<h4>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this headline">#</a></h4>
 <p>Adding a default Argument</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,10 +687,10 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="recap-lists">
-<h3>Recap: Lists<a class="headerlink" href="#recap-lists" title="Permalink to this heading">#</a></h3>
+</div>
+</div>
+<div class="section" id="recap-lists">
+<h3>Recap: Lists<a class="headerlink" href="#recap-lists" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2D arrays --&gt; List of lists</span>
@@ -728,9 +730,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="recap-for-loops-list-comprehensions">
-<h3>Recap: For loops, List Comprehensions<a class="headerlink" href="#recap-for-loops-list-comprehensions" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="recap-for-loops-list-comprehensions">
+<h3>Recap: For loops, List Comprehensions<a class="headerlink" href="#recap-for-loops-list-comprehensions" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
@@ -790,9 +792,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="creating-matrix-with-random-numbers">
-<h3>Creating Matrix with Random numbers<a class="headerlink" href="#creating-matrix-with-random-numbers" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="creating-matrix-with-random-numbers">
+<h3>Creating Matrix with Random numbers<a class="headerlink" href="#creating-matrix-with-random-numbers" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
@@ -920,10 +922,10 @@ Wall time: 8.7 s
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="using-numpy">
-<h2>Using Numpy<a class="headerlink" href="#using-numpy" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="using-numpy">
+<h2>Using Numpy<a class="headerlink" href="#using-numpy" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">np.</span></code> is a library prefix and helps identify from which library a particular function is being used/called.<br />
 For example, the random function exists in the <code class="docutils literal notranslate"><span class="pre">random</span></code> library and the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library.<br />
 Instead of typing the entire library name, we shorten it so that it is easier to type.<br />
@@ -1629,9 +1631,9 @@ Cannot reshape an array of length 20 into (2,5)</p>
 </div>
 </div>
 </div>
-</section>
-<section id="indexing-and-slicing">
-<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#extracts the first row</span>
@@ -1745,9 +1747,9 @@ Cannot reshape an array of length 20 into (2,5)</p>
 </div>
 </div>
 </div>
-</section>
-<section id="numpy-universal-functions">
-<h2>Numpy Universal Functions<a class="headerlink" href="#numpy-universal-functions" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="numpy-universal-functions">
+<h2>Numpy Universal Functions<a class="headerlink" href="#numpy-universal-functions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t_mat</span><span class="p">)</span>
@@ -1825,9 +1827,9 @@ numpy.random.RandomState.standard_t
 </div>
 </details>
 </div>
-</section>
-<section id="conditonal-logic-with-numpy">
-<h2>Conditonal Logic with Numpy<a class="headerlink" href="#conditonal-logic-with-numpy" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="conditonal-logic-with-numpy">
+<h2>Conditonal Logic with Numpy<a class="headerlink" href="#conditonal-logic-with-numpy" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Boolean Operations</span>
@@ -1925,9 +1927,9 @@ numpy.random.RandomState.standard_t
 </div>
 </div>
 </div>
-</section>
-<section id="matplotlib-visualization-plotting-library">
-<h2>Matplotlib –&gt; visualization/plotting library<a class="headerlink" href="#matplotlib-visualization-plotting-library" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="matplotlib-visualization-plotting-library">
+<h2>Matplotlib –&gt; visualization/plotting library<a class="headerlink" href="#matplotlib-visualization-plotting-library" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
@@ -2094,8 +2096,8 @@ numpy.random.RandomState.standard_t
 <img alt="../_images/42ca28ad65e69da0768c6518151150fe4383baee853b885a8269df820b6fefce.png" src="../_images/42ca28ad65e69da0768c6518151150fe4383baee853b885a8269df820b6fefce.png" />
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2123,7 +2125,10 @@ numpy.random.RandomState.standard_t
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="01-IntroToPython-I.html"
@@ -2143,7 +2148,10 @@ numpy.random.RandomState.standard_t
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -2193,7 +2201,7 @@ numpy.random.RandomState.standard_t
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -2219,7 +2227,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -2228,8 +2236,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

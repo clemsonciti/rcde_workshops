@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to Python III &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to Python IV" href="04-IntroToPython-IV.html" />
     <link rel="prev" title="Introduction to Python II" href="02-IntroToPython-II.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -255,16 +253,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -489,8 +479,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python-iii">
-<h1>Introduction to Python III<a class="headerlink" href="#introduction-to-python-iii" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-python-iii">
+<h1>Introduction to Python III<a class="headerlink" href="#introduction-to-python-iii" title="Permalink to this headline">#</a></h1>
 <p>Introduction to Pandas and some more Matplotlib functionality!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -562,8 +552,8 @@ dtype: object
 </div>
 </div>
 </div>
-<section id="dataframe">
-<h2>Dataframe<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
+<div class="section" id="dataframe">
+<h2>Dataframe<a class="headerlink" href="#dataframe" title="Permalink to this headline">#</a></h2>
 <p>Data Structure that contains data in a tabular format and can be labeled and indexed. This structure can be changed and can contain different data/object types</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2095,9 +2085,9 @@ Freq: D, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="real-data-with-pandas">
-<h2>Real Data with Pandas<a class="headerlink" href="#real-data-with-pandas" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="real-data-with-pandas">
+<h2>Real Data with Pandas<a class="headerlink" href="#real-data-with-pandas" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_europe</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/clemsonciti/intro-to-python/master/data3/gapminder_gdp_europe.csv&#39;</span>
@@ -4336,9 +4326,9 @@ found in a style specification:
 </div>
 </div>
 </div>
-</section>
-<section id="split-apply-combine">
-<h2>Split, Apply, Combine<a class="headerlink" href="#split-apply-combine" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="split-apply-combine">
+<h2>Split, Apply, Combine<a class="headerlink" href="#split-apply-combine" title="Permalink to this headline">#</a></h2>
 <p>“Split, Apply, Combine” refers to the common practice of splitting up a dataset into relevant chunks, doing some computation on those chunks, then combining the output into a single table. In pandas, we can break up the data into groups using the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method. We can then apply our computation on the grouped data. If we set things up right, pandas will combine the results automatically. <a class="reference external" href="https://andeekaplan.com/images/blog/01202014split-apply-combine.png">Image credit</a>.</p>
 <p><img alt="Split apply combine" src="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/fig/split-apply-combine.png" /></p>
 <p>We will work with the famous <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/iris">iris dataset</a>.</p>
@@ -4470,8 +4460,8 @@ found in a style specification:
 <p>150 rows × 5 columns</p>
 </div></div></div>
 </div>
-<section id="groupby">
-<h3><code class="docutils literal notranslate"><span class="pre">groupby</span></code><a class="headerlink" href="#groupby" title="Permalink to this heading">#</a></h3>
+<div class="section" id="groupby">
+<h3><code class="docutils literal notranslate"><span class="pre">groupby</span></code><a class="headerlink" href="#groupby" title="Permalink to this headline">#</a></h3>
 <p>Group by allows us to split up the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5111,10 +5101,10 @@ found in a style specification:
 </table>
 </div></div>
 </div>
-</section>
-</section>
-<section id="apply">
-<h2><code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#apply" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="apply">
+<h2><code class="docutils literal notranslate"><span class="pre">apply</span></code><a class="headerlink" href="#apply" title="Permalink to this headline">#</a></h2>
 <p>The above methods worked because pandas implements special “mean”, “std”, “sem”, and “count”
 for the grouped data frame object. But what if we want to apply some strange function
 to the grouped data, and pandas doesn’t implement that function?</p>
@@ -5282,9 +5272,9 @@ where \)</span>\mu_x<span class="math notranslate nohighlight">\( and \)</span>\
 <img alt="../_images/4502393bed1c3bba0f490e3fb26e35d719bd92898d7a343b290b3d5d2489a281.png" src="../_images/4502393bed1c3bba0f490e3fb26e35d719bd92898d7a343b290b3d5d2489a281.png" />
 </div>
 </div>
-</section>
-<section id="melt">
-<h2><code class="docutils literal notranslate"><span class="pre">melt</span></code><a class="headerlink" href="#melt" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="melt">
+<h2><code class="docutils literal notranslate"><span class="pre">melt</span></code><a class="headerlink" href="#melt" title="Permalink to this headline">#</a></h2>
 <p>Often our data contains multiple measurements, with each measurement using one column. Sometimes, it is more convenient to place all of the measurements in a single column, with an additional column to indicate which measurement the value represents.</p>
 <p>Take for example the iris dataset.</p>
 <p>Original:</p>
@@ -5876,9 +5866,9 @@ where \)</span>\mu_x<span class="math notranslate nohighlight">\( and \)</span>\
 <img alt="../_images/339826ae922972c964bbb150f929f923be4351f1bbab761c9a559157ea3ff96a.png" src="../_images/339826ae922972c964bbb150f929f923be4351f1bbab761c9a559157ea3ff96a.png" />
 </div>
 </div>
-</section>
-<section id="pivot-table">
-<h2><code class="docutils literal notranslate"><span class="pre">pivot_table</span></code><a class="headerlink" href="#pivot-table" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="pivot-table">
+<h2><code class="docutils literal notranslate"><span class="pre">pivot_table</span></code><a class="headerlink" href="#pivot-table" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> is the conceptually the opposite of <code class="docutils literal notranslate"><span class="pre">melt</span></code>. It allows us to convert a column with variable names into multiple columns.</p>
 <p>Let’s use pivot table on our melted dataframe.  To do so, we need to specify the following:</p>
 <ul class="simple">
@@ -6080,9 +6070,9 @@ where \)</span>\mu_x<span class="math notranslate nohighlight">\( and \)</span>\
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="random-walk">
-<h2>Random Walk<a class="headerlink" href="#random-walk" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="random-walk">
+<h2>Random Walk<a class="headerlink" href="#random-walk" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk">https://en.wikipedia.org/wiki/Random_walk</a></p>
 <p>We start at a position (0) and flip a coin. Based on the result of the coin, heads or tails, we take a step forward or backward. We flip the coin a 100 times and then plot the path we took and our final position.
 We can repeat this experiment multiple times to see the variation in each Random Walk.</p>
@@ -6187,8 +6177,8 @@ Wall time: 1.04 s
 <img alt="../_images/5b1f79afefedccc791aecbdca627ed82ab895484ed121e9ed09ceea1f8f2b57c.png" src="../_images/5b1f79afefedccc791aecbdca627ed82ab895484ed121e9ed09ceea1f8f2b57c.png" />
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -6216,7 +6206,10 @@ Wall time: 1.04 s
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="02-IntroToPython-II.html"
@@ -6236,7 +6229,10 @@ Wall time: 1.04 s
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -6269,7 +6265,7 @@ Wall time: 1.04 s
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -6295,7 +6291,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -6304,8 +6300,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

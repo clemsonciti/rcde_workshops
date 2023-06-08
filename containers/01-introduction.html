@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to CloudLab &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Docker Containers on CloudLab" href="02-dockers.html" />
     <link rel="prev" title="Containerization on Palmetto (under development)" href="00-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -483,10 +473,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-cloudlab">
-<h1>Introduction to CloudLab<a class="headerlink" href="#introduction-to-cloudlab" title="Permalink to this heading">#</a></h1>
-<section id="access-cloudlab">
-<h2>1. Access CloudLab<a class="headerlink" href="#access-cloudlab" title="Permalink to this heading">#</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-cloudlab">
+<h1>Introduction to CloudLab<a class="headerlink" href="#introduction-to-cloudlab" title="Permalink to this headline">#</a></h1>
+<div class="section" id="access-cloudlab">
+<h2>1. Access CloudLab<a class="headerlink" href="#access-cloudlab" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Visit <a class="reference external" href="https://cloudlab.us">CloudLab’s website</a></p></li>
 <li><p>Click “Request an Account”</p></li>
@@ -512,9 +502,9 @@ and can grant you access to CloudLab.</p></li>
 <li><p>If you already had a CloudLab account, you can select <code class="docutils literal notranslate"><span class="pre">Start/Join</span> <span class="pre">Project</span></code> under
 your username, then select <code class="docutils literal notranslate"><span class="pre">Join</span> <span class="pre">Existing</span> <span class="pre">Project</span></code> and provide the name <code class="docutils literal notranslate"><span class="pre">Clemson-RCDE</span></code>.</p></li>
 </ul>
-</section>
-<section id="what-is-cloudlab">
-<h2>2. What is CloudLab<a class="headerlink" href="#what-is-cloudlab" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="what-is-cloudlab">
+<h2>2. What is CloudLab<a class="headerlink" href="#what-is-cloudlab" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Experimental testbed for future computing research</p>
 <ul>
@@ -555,9 +545,9 @@ computing, storage, routing, and forwarding components deep inside the
 network, not just at or near the network edge.</p></li>
 </ul>
 </div>
-</section>
-<section id="cloudlab-hardware">
-<h2>3. CloudLab Hardware<a class="headerlink" href="#cloudlab-hardware" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="cloudlab-hardware">
+<h2>3. CloudLab Hardware<a class="headerlink" href="#cloudlab-hardware" title="Permalink to this headline">#</a></h2>
 <p>CloudLab started out as three primary sites from University of Utah,
 University of Wisconsin, and Clemson University.</p>
 <div class="sd-tab-set docutils">
@@ -599,9 +589,9 @@ Clemson</label><div class="sd-tab-content docutils">
 </ul>
 </div>
 </div>
-</section>
-<section id="setup-ssh">
-<h2>4. Setup SSH<a class="headerlink" href="#setup-ssh" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="setup-ssh">
+<h2>4. Setup SSH<a class="headerlink" href="#setup-ssh" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Log into Palmetto</p></li>
 <li><p>All Palmetto accounts have SSH keys ready.</p></li>
@@ -627,9 +617,9 @@ starting from <code class="docutils literal notranslate"><span class="pre">ssh-r
 <li><p>Paste the key into the <code class="docutils literal notranslate"><span class="pre">Key</span></code> box and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Key</span></code></p></li>
 </ul>
 </div>
-</section>
-<section id="setup-github-repository">
-<h2>5. Setup GitHub repository<a class="headerlink" href="#setup-github-repository" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="setup-github-repository">
+<h2>5. Setup GitHub repository<a class="headerlink" href="#setup-github-repository" title="Permalink to this headline">#</a></h2>
 <div class="dropdown admonition">
 <p class="admonition-title">Create new GitHub repository</p>
 <ul class="simple">
@@ -651,9 +641,9 @@ starting from <code class="docutils literal notranslate"><span class="pre">ssh-r
 <li><p>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">new</span> <span class="pre">file</span></code> when done.</p></li>
 </ul>
 </div>
-</section>
-<section id="setup-cloudlab-experimental-profile">
-<h2>6. Setup CloudLab experimental profile<a class="headerlink" href="#setup-cloudlab-experimental-profile" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="setup-cloudlab-experimental-profile">
+<h2>6. Setup CloudLab experimental profile<a class="headerlink" href="#setup-cloudlab-experimental-profile" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Login to your CloudLab account, click <code class="docutils literal notranslate"><span class="pre">Experiments</span></code> on top left,
 select <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Experiment</span> <span class="pre">Profile</span></code>.</p></li>
@@ -745,8 +735,8 @@ web server. This can be accessed by using the DNS of the experiment node in
 <p class="admonition-title">Automated installation of Apache2</p>
 <p><img alt="Apache2 Webserver" src="../_images/cloudlab-apache2.png" /></p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -774,7 +764,10 @@ web server. This can be accessed by using the DNS of the experiment node in
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="00-index.html"
@@ -794,7 +787,10 @@ web server. This can be accessed by using the DNS of the experiment node in
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -823,7 +819,7 @@ web server. This can be accessed by using the DNS of the experiment node in
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -849,7 +845,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -858,8 +854,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

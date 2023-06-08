@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1. What is Spark? &#8212; Research Computing and Data Workshop</title>
   
   
@@ -19,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,13 +37,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction to Version Control with Git and GitLab" href="../intro_git_gitlab/00-index.html" />
     <link rel="prev" title="Advanced Scheduling (under development)" href="00-index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -253,16 +251,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">1. Launching the Spark cluster</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
 
 
@@ -488,20 +478,20 @@ document.write(`
                   
   <blockquote>
 <div></div></blockquote>
-<section id="what-is-spark">
-<h1>1. What is Spark?<a class="headerlink" href="#what-is-spark" title="Permalink to this heading">#</a></h1>
+<div class="section" id="what-is-spark">
+<h1>1. What is Spark?<a class="headerlink" href="#what-is-spark" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>A unified compute engine and a set of libraries for parallel
 data processing on computer clusters.</p></li>
 <li><p>Click the JupyterHub link</p></li>
 </ul>
 <img src="../fig/01-introduction/01.png" alt="Spark" style="height:400px">
-</section>
+</div>
 <p>{: .slide}</p>
 <blockquote>
 <div></div></blockquote>
-<section id="design-philosophy">
-<h1>2. Design philosophy<a class="headerlink" href="#design-philosophy" title="Permalink to this heading">#</a></h1>
+<div class="section" id="design-philosophy">
+<h1>2. Design philosophy<a class="headerlink" href="#design-philosophy" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Unified</span></code>: Spark supports a wide range of data analytic tasks over the same
 computing engine and a consistent set of APIs.</p></li>
@@ -512,12 +502,12 @@ transparent common interface with different storage systems for all applications
 <li><p><code class="docutils literal notranslate"><span class="pre">Libraries</span></code>: Via its APIs, Spark supports a wide array of internal and
 external libraries for complex data analytic tasks.</p></li>
 </ul>
-</section>
+</div>
 <p>{: .slide}</p>
 <blockquote>
 <div></div></blockquote>
-<section id="a-brief-history-of-spark">
-<h1>3. A brief history of Spark<a class="headerlink" href="#a-brief-history-of-spark" title="Permalink to this heading">#</a></h1>
+<div class="section" id="a-brief-history-of-spark">
+<h1>3. A brief history of Spark<a class="headerlink" href="#a-brief-history-of-spark" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Research project at UC Berkeley AMP Lab in 2009 to address drawbacks of
 Hadoop MapReduce.</p></li>
@@ -528,12 +518,12 @@ contributors from more than 30 organizations outside UC Berkeley.</p></li>
 <li><p>Currently, Spark is being used extensively in academic and industry
 (NASA, CERN, Uber, Netflix …).</p></li>
 </ul>
-</section>
+</div>
 <p>{: .slide}</p>
 <blockquote>
 <div></div></blockquote>
-<section id="map-and-reduce">
-<h1>4. map and reduce<a class="headerlink" href="#map-and-reduce" title="Permalink to this heading">#</a></h1>
+<div class="section" id="map-and-reduce">
+<h1>4. map and reduce<a class="headerlink" href="#map-and-reduce" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>What is <code class="docutils literal notranslate"><span class="pre">map</span></code>? A function/procedure that is applied to every individual
 elements of a collection/list/array/…</p></li>
@@ -553,12 +543,12 @@ subset).</p></li>
 </pre></div>
 </div>
 <p>{: .language-bash}</p>
-</section>
+</div>
 <p>{: .slide}</p>
 <blockquote>
 <div></div></blockquote>
-<section id="mapreduce-programming-paradigm">
-<h1>5. MapReduce programming paradigm<a class="headerlink" href="#mapreduce-programming-paradigm" title="Permalink to this heading">#</a></h1>
+<div class="section" id="mapreduce-programming-paradigm">
+<h1>5. MapReduce programming paradigm<a class="headerlink" href="#mapreduce-programming-paradigm" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Programmers implement:</p>
 <ul>
@@ -570,12 +560,12 @@ final output as a reduction operation on the pairs.</p></li>
 <li><p>MapReduce Framework handles everything else.</p></li>
 <li><p>Spark implements a MapReduce framework.</p></li>
 </ul>
-</section>
+</div>
 <p>{: .slide}</p>
 <blockquote>
 <div></div></blockquote>
-<section id="wordcount-the-hello-world-of-big-data">
-<h1>6. WordCount: the Hello, World! of Big Data<a class="headerlink" href="#wordcount-the-hello-world-of-big-data" title="Permalink to this heading">#</a></h1>
+<div class="section" id="wordcount-the-hello-world-of-big-data">
+<h1>6. WordCount: the Hello, World! of Big Data<a class="headerlink" href="#wordcount-the-hello-world-of-big-data" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Count how many unique words there are in a file/multiple files.</p></li>
 <li><p>Standard parallel programming approach:</p>
@@ -595,15 +585,15 @@ final output as a reduction operation on the pairs.</p></li>
 <div></div></blockquote>
 <p>{: .slide}
 {: .slide}</p>
-</section>
-<section id="mapreduce-workflow">
-<h1>MapReduce workflow<a class="headerlink" href="#mapreduce-workflow" title="Permalink to this heading">#</a></h1>
+</div>
+<div class="section" id="mapreduce-workflow">
+<h1>MapReduce workflow<a class="headerlink" href="#mapreduce-workflow" title="Permalink to this headline">#</a></h1>
 <img src="../fig/01-introduction/02.png" alt="Spark" style="height:400px">
-</section>
-<section id="mapreduce-framework">
-<h1>MapReduce framework<a class="headerlink" href="#mapreduce-framework" title="Permalink to this heading">#</a></h1>
+</div>
+<div class="section" id="mapreduce-framework">
+<h1>MapReduce framework<a class="headerlink" href="#mapreduce-framework" title="Permalink to this headline">#</a></h1>
 <img src="../fig/01-introduction/03.png" alt="Spark" style="height:400px">
-</section>
+</div>
 <p>{% include <a class="reference external" href="http://links.md">links.md</a> %}</p>
 
     <script type="text/x-thebe-config">
@@ -632,7 +622,10 @@ final output as a reduction operation on the pairs.</p></li>
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="00-index.html"
@@ -652,7 +645,10 @@ final output as a reduction operation on the pairs.</p></li>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -684,7 +680,7 @@ final output as a reduction operation on the pairs.</p></li>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -710,7 +706,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -719,8 +715,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
