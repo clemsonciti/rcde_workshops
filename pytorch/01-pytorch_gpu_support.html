@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Pytorch GPU support &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pytorch/01-pytorch_gpu_support';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Regression and Classification with Fully Connected Neural Networks" href="02-regression_and_classification.html" />
+    <link rel="prev" title="PyTorch Basics" href="01-pytorch_basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Introduction to Python IV</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-high-dimensional-data.html">High Dimensional Data</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="03-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pytorch/01-pytorch_gpu_support.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pytorch GPU support</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-graph-and-backpropagation">Computation Graph and Backpropagation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pytorch-gpu-support">
+<h1>Pytorch GPU support<a class="headerlink" href="#pytorch-gpu-support" title="Permalink to this heading">#</a></h1>
+<p>The palmetto cluster has <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/compute/hardware#infiniband-phases">many GPU compute nodes</a>. A crucial feature of PyTorch is the support of GPUs–short for Graphics Processing Unit. A GPU can perform many thousands of small operations in parallel, making it perfect for performing large matrix operations in neural networks. <em>You do not need to know anything about GPU programming to use PyTorch on the GPU!</em></p>
+<p>When comparing GPUs to CPUs, we can list the following main differences (credit: <a class="reference external" href="https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/">Kevin Krewell, 2009</a>)</p>
+<p><left style="width: 100%"><img src="https://github.com/phlippe/uvadlc_notebooks/blob/master/docs/tutorial_notebooks/tutorial2/comparison_CPU_GPU.png?raw=1" width="700px"></left></p>
+<p>CPUs and GPUs have both different advantages and disadvantages, which is why many computers contain both components and use them for different tasks. In case you are not familiar with GPUs, you can read up more details in this <a class="reference external" href="https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/">NVIDIA blog post</a> or <a class="reference external" href="https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html">here</a>.</p>
+<p>GPUs can accelerate the training of your network up to a factor of <span class="math notranslate nohighlight">\(100\)</span> which is essential for large neural networks. PyTorch implements a lot of functionality for supporting GPUs (mostly those of NVIDIA due to the libraries <a class="reference external" href="https://developer.nvidia.com/cuda-zone">CUDA</a> and <a class="reference external" href="https://developer.nvidia.com/cudnn">cuDNN</a>). First, let’s check whether you have a GPU available:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gpu_avail</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Is the GPU available? </span><span class="si">{</span><span class="s2">&quot;Yes&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">gpu_avail</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;No&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is the GPU available? Yes
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can information about your GPU usage by opening a terminal and running the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nvidia-smi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mon Jun 12 17:03:06 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.48.07    Driver Version: 515.48.07    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P100-PCIE...  Off  | 00000000:02:00.0 Off |                    0 |
+| N/A   16C    P0    28W / 250W |     24MiB / 12288MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      3839      G   /usr/libexec/Xorg                  22MiB |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, all tensors you create are stored on the CPU. We can push a tensor to the GPU by using the function <code class="docutils literal notranslate"><span class="pre">.to(...)</span></code>, or <code class="docutils literal notranslate"><span class="pre">.cuda()</span></code>. However, it is often a good practice to define a <code class="docutils literal notranslate"><span class="pre">device</span></code> object in your code which points to the GPU if you have one, and otherwise to the CPU. Then, you can write your code with respect to this device object, and it allows you to run the same code on both a CPU-only system, and one with a GPU. Let’s try it below. We can specify the device as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device&quot;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device cuda
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s create a large tensor, push it to device.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> 
+<span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">device</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.float32, device(type=&#39;cuda&#39;, index=0))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-main-idea admonition">
+<p class="admonition-title">Question</p>
+<p>Can you estimate how much VRAM this tensor should occupy?</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nvidia-smi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mon Jun 12 17:03:14 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.48.07    Driver Version: 515.48.07    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P100-PCIE...  Off  | 00000000:02:00.0 Off |                    0 |
+| N/A   16C    P0    36W / 250W |   4455MiB / 12288MiB |     80%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      3839      G   /usr/libexec/Xorg                  22MiB |
+|    0   N/A  N/A   3850647      C   ...torch_workshop/bin/python     4431MiB |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">x</span>
+
+<span class="c1"># the gpu memory may not be freed right away</span>
+<span class="c1"># we can explicitly free</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>nvidia-smi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mon Jun 12 17:03:15 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.48.07    Driver Version: 515.48.07    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla P100-PCIE...  Off  | 00000000:02:00.0 Off |                    0 |
+| N/A   16C    P0    38W / 250W |    639MiB / 12288MiB |     34%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      3839      G   /usr/libexec/Xorg                  22MiB |
+|    0   N/A  N/A   3850647      C   ...torch_workshop/bin/python      615MiB |
++-----------------------------------------------------------------------------+
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Tensors must be on the same device</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span> <span class="c1"># the default</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">))</span> <span class="c1"># gpu</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>This will happen to you a lot</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># tensor is too big to fit on our GPU!</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">3e10</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUDA out of memory. Tried to allocate 111.76 GiB (GPU 0; 11.91 GiB total capacity; 512 bytes already allocated; 11.29 GiB free; 2.00 MiB reserved in total by PyTorch) If reserved memory is &gt;&gt; allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+</pre></div>
+</div>
+</div>
+</div>
+<p>The solution: find ways to use less memory.</p>
+<p><strong>How much does GPU actually help?</strong></p>
+<p>Let’s test by multiplying a large matrix with itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+
+<span class="c1">## CPU version</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CPU time: </span><span class="si">{</span><span class="p">(</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span><span class="si">:</span><span class="s2">6.5f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+<span class="c1">## GPU version</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># First operation to &#39;burn in&#39; GPU</span>
+<span class="c1"># CUDA is asynchronous, so we need to use different timing functions</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span><span class="n">enable_timing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span><span class="n">enable_timing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">start</span><span class="o">.</span><span class="n">record</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">end</span><span class="o">.</span><span class="n">record</span><span class="p">()</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">synchronize</span><span class="p">()</span>  <span class="c1"># Waits for everything to finish running on the GPU</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GPU time: </span><span class="si">{</span><span class="mf">0.001</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">start</span><span class="o">.</span><span class="n">elapsed_time</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="si">:</span><span class="s2">6.5f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>  <span class="c1"># Milliseconds to seconds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU time: 2.38639s
+GPU time: 0.24208s
+</pre></div>
+</div>
+</div>
+</div>
+<section id="computation-graph-and-backpropagation">
+<h2>Computation Graph and Backpropagation<a class="headerlink" href="#computation-graph-and-backpropagation" title="Permalink to this heading">#</a></h2>
+<p>One of the main reasons for using PyTorch in Deep Learning projects is that we can automatically get <em>gradients/derivatives</em> of functions that we define. We will mainly use PyTorch for implementing neural networks, and they are just fancy functions. If we use weight matrices in our function that we want to learn, then those are called the <em>parameters</em> or simply the <em>weights</em>. The ability to compute gradients is essential for optimizing (a.k.a. <em>training</em>) our networks.</p>
+<p>Tensors have a <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> attribute</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change this for an existing tensor using the function <code class="docutils literal notranslate"><span class="pre">requires_grad_()</span></code> (underscore indicating that this is a in-place operation). Alternatively, when creating a tensor, you can pass the argument <code class="docutils literal notranslate"><span class="pre">requires_grad=True</span></code> to most initializers we have seen above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to get familiar with the concept of a computation graph, we will create one for the following function:</p>
+<div class="math notranslate nohighlight">
+\[y = \frac{1}{|x|}\sum_i \left[(x_i + 2)^2 + 3\right]\]</div>
+<p>You could imagine that <span class="math notranslate nohighlight">\(x\)</span> are our parameters, and we want to optimize (either maximize or minimize) the output <span class="math notranslate nohighlight">\(y\)</span>. For this, we want to obtain the gradients <span class="math notranslate nohighlight">\(\partial y / \partial \mathbf{x}\)</span>. For our example, we’ll use <span class="math notranslate nohighlight">\(\mathbf{x}=[0,1,2]\)</span> as our input.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Only float tensors can have gradients</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X tensor([0., 1., 2.], requires_grad=True)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s build the computation graph step by step. You can combine multiple operations in a single line, but we will separate them here to get a better understanding of how each operation is added to the computation graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Y tensor(12.6667, grad_fn=&lt;MeanBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the statements above, we have created a computation graph that looks similar to the figure below:</p>
+<center style="width: 100%"><img src="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch/forward_computation.svg" width="200px"></center>
+<p>We calculate <span class="math notranslate nohighlight">\(a\)</span> based on the inputs <span class="math notranslate nohighlight">\(x\)</span> and the constant <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(b\)</span> is <span class="math notranslate nohighlight">\(a\)</span> squared, and so on. The visualization is an abstraction of the dependencies between inputs and outputs of the operations we have applied.</p>
+<p>Each node in the computation graph has automatically defined a function for calculating the gradients with respect to its inputs, <code class="docutils literal notranslate"><span class="pre">grad_fn</span></code>. Pytorch can use the chain rule to automatically compute the gradients of <span class="math notranslate nohighlight">\(y\)</span> with respect to any of the inputs that have <code class="docutils literal notranslate"><span class="pre">requires_grad=True</span></code>. Pytorch does this by traversing the computation graph backward, applying the <code class="docutils literal notranslate"><span class="pre">grad_fn</span></code> defined at each operation. This is called “backpropagation”.</p>
+<center style="width: 100%"><img src="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch/backward_computation.svg" width="200px"></center>
+<p>We can perform backpropagation on the computation graph by calling the function <code class="docutils literal notranslate"><span class="pre">backward()</span></code> on the last output:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x.grad</span></code> will now contain the gradient <span class="math notranslate nohighlight">\(\partial y/ \partial \mathcal{x}\)</span>, and this gradient indicates how a change in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> will affect output <span class="math notranslate nohighlight">\(y\)</span> given the current input <span class="math notranslate nohighlight">\(\mathbf{x}=[0,1,2]\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1.3333, 2.0000, 2.6667])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also verify these gradients by hand. We will calculate the gradients using the chain rule, in the same way as PyTorch did it:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial y}{\partial x_i} = \frac{\partial y}{\partial c_i}\frac{\partial c_i}{\partial b_i}\frac{\partial b_i}{\partial a_i}\frac{\partial a_i}{\partial x_i}
+\]</div>
+<p>Note that we have simplified this equation to index notation, and by using the fact that all operation besides the mean do not combine the elements in the tensor. The partial derivatives are:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial a_i}{\partial x_i} = 1,\hspace{1cm}
+\frac{\partial b_i}{\partial a_i} = 2\cdot a_i\hspace{1cm}
+\frac{\partial c_i}{\partial b_i} = 1\hspace{1cm}
+\frac{\partial y}{\partial c_i} = \frac{1}{3}
+\]</div>
+<p>Hence, with the input being <span class="math notranslate nohighlight">\(\mathbf{x}=[0,1,2]\)</span>, our gradients are <span class="math notranslate nohighlight">\(\partial y/\partial \mathbf{x}=[4/3,2,8/3]\)</span>. The previous code cell should have printed the same result.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pytorch"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-pytorch_basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PyTorch Basics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-regression_and_classification.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regression and Classification with Fully Connected Neural Networks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-graph-and-backpropagation">Computation Graph and Backpropagation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
