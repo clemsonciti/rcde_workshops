@@ -269,9 +269,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">High Dimensional Data</a></li>
-
-
-
 <li class="toctree-l2"><a class="reference internal" href="05-datasets.html">Datasets and data loading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-modules.html">Building the network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
@@ -464,15 +461,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">High Dimensional Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fake-high-dimensional-data">Fake high-dimensional data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-into-train-test">Splitting into train/test</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-model">Fitting a model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fake-high-dimensional-data">Fake high-dimensional data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-into-train-test">Splitting into train/test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-model">Fitting a model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-up-high-dimensional-data">Summing up high dimensional data</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -483,7 +476,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="high-dimensional-data">
+  <section class="tex2jax_ignore mathjax_ignore" id="high-dimensional-data">
 <h1>High Dimensional Data<a class="headerlink" href="#high-dimensional-data" title="Permalink to this heading">#</a></h1>
 <p>For high-dimensional data, it is not possible to get a dense sampling of the data space. Consider the following analogy. Imagine we are measuring the temperatures of spaces with growing numbers of dimensions. We have sensors that measure reliably within a “volume” 1mm in extent. Outside of that volume, the temperature may change, so we need lots of sensors to map the temperature through the space.</p>
 <ul class="simple">
@@ -519,9 +512,8 @@ document.write(`
 </div><div class="admonition-main-idea admonition">
 <p class="admonition-title">Question</p>
 <p> How might THE CURSE OF DIMENSIONALITY pose a problem for real-world tasks like computer vision for autonomous driving? </p>
-</div></section>
-<section id="fake-high-dimensional-data">
-<h1>Fake high-dimensional data<a class="headerlink" href="#fake-high-dimensional-data" title="Permalink to this heading">#</a></h1>
+</div><section id="fake-high-dimensional-data">
+<h2>Fake high-dimensional data<a class="headerlink" href="#fake-high-dimensional-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set random seeds for reproducibility</span>
@@ -572,7 +564,7 @@ document.write(`
 </div>
 </section>
 <section id="splitting-into-train-test">
-<h1>Splitting into train/test<a class="headerlink" href="#splitting-into-train-test" title="Permalink to this heading">#</a></h1>
+<h2>Splitting into train/test<a class="headerlink" href="#splitting-into-train-test" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train/test split</span>
@@ -592,7 +584,7 @@ document.write(`
 </div>
 </section>
 <section id="fitting-a-model">
-<h1>Fitting a model<a class="headerlink" href="#fitting-a-model" title="Permalink to this heading">#</a></h1>
+<h2>Fitting a model<a class="headerlink" href="#fitting-a-model" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># helper function for training/evaluation</span>
@@ -688,6 +680,7 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 <section id="summing-up-high-dimensional-data">
 <h2>Summing up high dimensional data<a class="headerlink" href="#summing-up-high-dimensional-data" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -760,15 +753,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">High Dimensional Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fake-high-dimensional-data">Fake high-dimensional data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-into-train-test">Splitting into train/test</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-model">Fitting a model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fake-high-dimensional-data">Fake high-dimensional data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-into-train-test">Splitting into train/test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-model">Fitting a model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-up-high-dimensional-data">Summing up high dimensional data</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
