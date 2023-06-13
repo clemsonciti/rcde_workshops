@@ -90,13 +90,14 @@ parts:
   chapters:
   - file: pytorch/00-index.md
     sections:
+    - file: pytorch/00-quickstart.ipynb
     - file: pytorch/01-pytorch_basics.ipynb
-    - file: pytorch/01-pytorch_gpu_support.ipynb
-    - file: pytorch/02-regression_and_classification.ipynb
-    - file: pytorch/02-high-dimensional-data.ipynb
-    - file: pytorch/03-datasets.ipynb
-    - file: pytorch/04-modules.ipynb
-    - file: pytorch/05-cnn_emnist.ipynb
+    - file: pytorch/02-pytorch_gpu_support.ipynb
+    - file: pytorch/03-regression_and_classification.ipynb
+    - file: pytorch/04-high-dimensional-data.ipynb
+    - file: pytorch/05-datasets.ipynb
+    - file: pytorch/06-modules.ipynb
+    - file: pytorch/07-cnn_emnist.ipynb
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md
