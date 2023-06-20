@@ -14,6 +14,7 @@ execute:
     - 'python_programming/03-IntroToPython-III.ipynb'
     - 'python_programming/04-IntroToPython-IV.ipynb'
     - 'python_sklearn/*.ipynb'
+    - 'pytorch_advanced/*.ipynb'
 
 # Define the name of the latex output file for PDF builds
 latex:

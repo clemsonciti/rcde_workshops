@@ -98,6 +98,12 @@ parts:
     - file: pytorch/05-datasets.ipynb
     - file: pytorch/06-modules.ipynb
     - file: pytorch/07-cnn_emnist.ipynb
+  - file: pytorch_advanced/00-index.md
+    sections:
+    - file: pytorch_advanced/01-emnist_baseline.ipynb
+    - file: pytorch_advanced/02-import_custom_scripts.ipynb
+    - file: pytorch_advanced/03-finetune_pretrained_models.ipynb
+    - file: pytorch_advanced/04-pytorch_lightning.ipynb
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md

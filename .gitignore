@@ -6,3 +6,5 @@ _build
 *.csv
 pytorch/*.pt
 data/
+*__pycache__*
+pytorch_advanced/logs/
