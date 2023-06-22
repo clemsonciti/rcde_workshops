@@ -104,6 +104,7 @@ parts:
     - file: pytorch_advanced/02-import_custom_scripts.ipynb
     - file: pytorch_advanced/03-finetune_pretrained_models.ipynb
     - file: pytorch_advanced/04-pytorch_lightning.ipynb
+    - file: pytorch_advanced/05-training_techniques.ipynb
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md
