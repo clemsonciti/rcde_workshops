@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'pytorch_advanced/04-pytorch_lightning';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Containerization on Palmetto (under development)" href="../containers/00-index.html" />
+    <link rel="next" title="Training Techniques" href="05-training_techniques.html" />
     <link rel="prev" title="Model fine-tuning" href="03-finetune_pretrained_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -286,6 +286,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="02-import_custom_scripts.html">Move reused code into python script files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-finetune_pretrained_models.html">Model fine-tuning</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-training_techniques.html">Training Techniques</a></li>
 </ul>
 </li>
 </ul>
@@ -508,7 +509,7 @@ document.write(`
 </div>
 <section id="settings">
 <h2>Settings<a class="headerlink" href="#settings" title="Permalink to this heading">#</a></h2>
-<p>These parameters are inputs to fitting process. We leave them in the notebook because we might change them from one experiment to the next.</p>
+<p>We don’t specify anything about the device here. Pytorch Lightning will automatically detect and use our gpu.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/scratch/</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/data&quot;</span>
@@ -521,20 +522,7 @@ document.write(`
 <span class="n">num_workers</span><span class="o">=</span><span class="mi">10</span> <span class="c1"># parallel data loading to speed things up</span>
 <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span> <span class="c1">#learning rate (default: 0.1)</span>
 <span class="n">gamma</span><span class="o">=</span><span class="mf">0.7</span> <span class="c1">#Learning rate step gamma (default: 0.7)</span>
-<span class="n">no_cuda</span><span class="o">=</span><span class="kc">False</span> <span class="c1">#disables CUDA training (default: False)</span>
 <span class="n">seed</span><span class="o">=</span><span class="mi">42</span> <span class="c1">#random seed (default: 42)</span>
-
-<span class="c1"># additional derived settings</span>
-<span class="n">use_cuda</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">no_cuda</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">use_cuda</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device:&quot;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device: cuda
 </pre></div>
 </div>
 </div>
@@ -542,7 +530,6 @@ document.write(`
 </section>
 <section id="dataset">
 <h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
-<p>The logic for loading data will be repeated across several experiments. To avoid code duplication, we move code out of the notebook and into a separate .py file. This also reduces the number of import statements needed in the notebook itself.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">data</span>
@@ -597,7 +584,7 @@ Transform: Compose(
 </section>
 <section id="the-lightning-model">
 <h2>The Lightning Model<a class="headerlink" href="#the-lightning-model" title="Permalink to this heading">#</a></h2>
-<p>We move the model definitions to a <a class="reference external" href="http://models.py">models.py</a> file. This file also contains test code for developing the model. In the future we may place several different model definitions into this file, so that we can compare different architecture choices.</p>
+<p>We implement Lightning Models like normal Pytorch models: we define the architecture and a forward method for passing data through the model. In addition, we implement methods defining training, validation, and optimization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
@@ -669,13 +656,13 @@ Transform: Compose(
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([128, 47]),
- tensor([[-0.0669, -0.0363,  0.5441,  ...,  0.2524,  1.0917, -0.2041],
-         [-0.3284,  0.1372,  0.8666,  ...,  0.8150,  0.7523,  0.3145],
-         [-0.6690,  0.8223,  0.4576,  ...,  0.5021,  0.4026, -0.2542],
+ tensor([[ 0.9744, -0.4397,  1.3150,  ..., -0.5819, -0.3168,  0.3866],
+         [ 1.0668, -0.0310,  1.1868,  ..., -1.4330, -0.3286,  0.6900],
+         [ 0.5532,  0.3253,  0.9537,  ..., -0.8252,  0.2363,  0.4263],
          ...,
-         [-0.1393,  0.6584,  0.7175,  ...,  0.9233,  0.3235,  0.3581],
-         [-0.5588,  0.2042,  0.8737,  ..., -0.0826,  0.5452, -0.2387],
-         [-0.3313,  0.7723, -0.0390,  ...,  0.7610,  0.2838, -0.1583]]))
+         [ 1.1231, -0.2741,  1.0353,  ...,  0.0049, -0.0596,  1.1235],
+         [ 0.7819,  0.5460,  1.5333,  ..., -0.0923,  0.2269, -0.1376],
+         [ 1.5202, -0.3273,  1.6033,  ..., -0.5875,  0.6917,  0.9609]]))
 </pre></div>
 </div>
 </div>
@@ -704,7 +691,6 @@ Transform: Compose(
 TPU available: False, using: 0 TPU cores
 IPU available: False, using: 0 IPUs
 HPU available: False, using: 0 HPUs
-Missing logger folder: logs/lightning_logs
 LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
 
   | Name      | Type               | Params
@@ -719,7 +705,7 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
 0.093     Total estimated model params size (MB)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "15c9ef5b6bf24e7bb614a96b96b9547d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`Trainer.fit` stopped: `max_epochs=5` reached.
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "19c9fbf277ca408886b67f45dacd0a28", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`Trainer.fit` stopped: `max_epochs=5` reached.
 </pre></div>
 </div>
 </div>
@@ -774,11 +760,11 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
       </div>
     </a>
     <a class="right-next"
-       href="../containers/00-index.html"
+       href="05-training_techniques.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Containerization on Palmetto (under development)</p>
+        <p class="prev-next-title">Training Techniques</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
