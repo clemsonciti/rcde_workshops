@@ -1,6 +1,11 @@
 import torch
 from torch import nn
 from torchvision.models import resnet18, ResNet18_Weights
+import torch.optim as optim
+from torch.optim.lr_scheduler import StepLR
+import torch.nn.functional as F
+import lightning.pytorch as pl
+import torchmetrics
 
 class Classifier(nn.Module):
     def __init__(self):
@@ -54,6 +59,55 @@ def make_resnet18_model(weights=None):
     model.fc = torch.nn.Linear(512, 47, bias=True)
     
     return model
+
+# define the LightningModule
+class LitModel(pl.LightningModule):
+    def __init__(self, pytorch_model, lr, gamma):
+        super().__init__()
+        self.save_hyperparameters(logger=False)
+        self.model = pytorch_model
+        self.lr = lr
+        self.gamma = gamma
+        
+        # metrics
+        self.train_acc = torchmetrics.Accuracy(task="multiclass", num_classes=47)
+        self.test_acc = torchmetrics.Accuracy(task="multiclass", num_classes=47)
+        
+    def forward(self, x):
+        return self.model(x)
+
+    def training_step(self, batch, batch_idx):
+        # training_step defines the train loop.
+        # lightning automatically puts the model in train mode
+        # gradient updates etc. are handled automatically
+        # but can be customized if desired
+        data, target = batch
+        output = self.model(data)
+        
+        loss = F.cross_entropy(output, target)
+        self.log("train_loss", loss)
+        
+        self.train_acc(output, target)
+        self.log("train_acc", self.train_acc, on_step=True, on_epoch=False)
+        
+        return loss
+    
+    def validation_step(self, batch, batch_idx):
+        # lightning automatically puts the model in eval mode
+        # and turns off gradient tracking
+        data, target = batch
+        output = self.model(data)
+        
+        loss = F.cross_entropy(output, target)
+        self.log("val_loss", loss, on_step=True, on_epoch=True)   
+        
+        self.test_acc(output, target)
+        self.log("val_acc", self.test_acc, on_step=True, on_epoch=True)
+
+    def configure_optimizers(self):
+        optimizer = optim.Adadelta(self.parameters(), lr=self.lr)
+        scheduler = StepLR(optimizer, step_size=1, gamma=self.gamma)
+        return {'optimizer': optimizer, 'lr_scheduler': scheduler}
 
 # test code. This only runs if we call the script directly. 
 if __name__ == '__main__':    

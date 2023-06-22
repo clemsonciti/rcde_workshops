@@ -8,3 +8,7 @@ pytorch/*.pt
 data/
 *__pycache__*
 pytorch_advanced/logs/
+pytorch_advanced/checkpoints/
+pytorch_advanced/lightning_logs/
+pytorch_advanced/wandb/
+
