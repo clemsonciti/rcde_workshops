@@ -68,6 +68,6 @@ trainer = Trainer(
     strategy='ddp',
     accelerator='gpu',
     devices=ngpus_per_node,
-    num_nodes=ngpus_per_node * nnodes
+    num_nodes=nnodes
 )
 trainer.fit(model, train_loader, test_loader)
