@@ -11,7 +11,7 @@ parts:
       - file: intro_linux/00a-outline.md
       - file: intro_linux/01-introduction.md
       - file: intro_linux/01a-shell.md
-      - file: intro_linux/02-accessing-palmetto.md
+      - file: intro_linux/02-accessing-picotte.md
       - file: intro_linux/03-file-system.md
       - file: intro_linux/04-working_with_files_and_directories.md
       - file: intro_linux/04a-file-permissions.md
@@ -19,16 +19,16 @@ parts:
       - file: intro_linux/06-find.md
       - file: intro_linux/07-utilities.md
       - file: intro_linux/08-conclusion.md
-    - file: intro_palmetto/00-index.md
+    - file: intro_picotte/00-index.md
       sections:
-      - file: intro_palmetto/01-introduction.md
-      - file: intro_palmetto/02-accessing-palmetto.md
-      - file: intro_palmetto/03-palmetto_structure.md
-      - file: intro_palmetto/04-storage.md
-      - file: intro_palmetto/05-interactive.md
-      - file: intro_palmetto/06-file-transfer.md
-      - file: intro_palmetto/07-open-od.md
-      - file: intro_palmetto/08-batch.md
+      - file: intro_picotte/01-introduction.md
+      - file: intro_picotte/02-accessing-picotte.md
+      - file: intro_picotte/03-picotte_structure.md
+      - file: intro_picotte/04-storage.md
+      - file: intro_picotte/05-interactive.md
+      - file: intro_picotte/06-file-transfer.md
+      - file: intro_picotte/07-open-od.md
+      - file: intro_picotte/08-batch.md
 - caption: R
   chapters:
     - file: r_programming/00-index.md
@@ -42,21 +42,21 @@ parts:
       - file: r_programming/07-Parallel-Computing.md
       - file: r_programming/08-Basic-Plotting.md
       - file: r_programming/09-Plotting-with-ggplot.md
-      - file: r_programming/10-R-in-Palmetto.md
-    - file: r_machine_learning/00-index.md
-      sections:
-      - file: r_machine_learning/01-Introduction.md
-      - file: r_machine_learning/02-Caret-Preprocessing.md
-      - file: r_machine_learning/03-Caret-Data-Partition.md
-      - file: r_machine_learning/04-Caret-Evaluation-Metrics.md
-      - file: r_machine_learning/05-Training_Regression.md
-      - file: r_machine_learning/06-Decision_boundaries.md
-      - file: r_machine_learning/07-KNN.md
-      - file: r_machine_learning/08-Training_Tree.md
-      - file: r_machine_learning/09-Training_Ensemble.md
-      - file: r_machine_learning/10-Unsupervised-Learning.md
-      - file: r_machine_learning/11-Neural-Network.md
-      - file: r_machine_learning/Project.md
+      - file: r_programming/10-R-in-picotte.md
+#    - file: r_machine_learning/00-index.md
+#      sections:
+#      - file: r_machine_learning/01-Introduction.md
+#      - file: r_machine_learning/02-Caret-Preprocessing.md
+#      - file: r_machine_learning/03-Caret-Data-Partition.md
+#      - file: r_machine_learning/04-Caret-Evaluation-Metrics.md
+#      - file: r_machine_learning/05-Training_Regression.md
+#      - file: r_machine_learning/06-Decision_boundaries.md
+#      - file: r_machine_learning/07-KNN.md
+#      - file: r_machine_learning/08-Training_Tree.md
+#      - file: r_machine_learning/09-Training_Ensemble.md
+#      - file: r_machine_learning/10-Unsupervised-Learning.md
+#      - file: r_machine_learning/11-Neural-Network.md
+#      - file: r_machine_learning/Project.md
 - caption: Python
   chapters:
     - file: python_programming/00-index.md
@@ -65,67 +65,67 @@ parts:
       - file: python_programming/02-IntroToPython-II.ipynb
       - file: python_programming/03-IntroToPython-III.ipynb
       - file: python_programming/04-IntroToPython-IV.ipynb
-    - file: python_sklearn/00-index.md
-      sections:
-      - file: python_sklearn/01-TLDR.ipynb
-      - file: python_sklearn/02-preparing-data.ipynb
-      - file: python_sklearn/03-partitioning-data.ipynb
-      - file: python_sklearn/04-regression-example.ipynb
-    - file: python_deep_learning/00-index.md
-      sections:
-      - file: python_deep_learning/01-Introduction.md
-      - file: python_deep_learning/02-Deep-Learning-Framework.md
-      - file: python_deep_learning/03-Neural-Network.md
-      - file: python_deep_learning/04-Intro-to-Keras.md
-      - file: python_deep_learning/05-Keras-Regression.md
-      - file: python_deep_learning/06-Keras-Classification.md
-      - file: python_deep_learning/07-Convolution-Neural-Network.md
-      - file: python_deep_learning/08-Recurrent-neural-networks.md
-    - file: python_big_data/00-index.md
-      sections:
-      - file: python_big_data/01-introduction.md
-      - file: python_big_data/02-cluster.md
-      - file: python_big_data/03-notebooks.md
-- caption: Deep Learning
-  chapters:
-  - file: pytorch/00-index.md
-    sections:
-    - file: pytorch/00-quickstart.ipynb
-    - file: pytorch/01-pytorch_basics.ipynb
-    - file: pytorch/02-pytorch_gpu_support.ipynb
-    - file: pytorch/03-regression_and_classification.ipynb
-    - file: pytorch/04-high-dimensional-data.ipynb
-    - file: pytorch/05-datasets.ipynb
-    - file: pytorch/06-modules.ipynb
-    - file: pytorch/07-cnn_emnist.ipynb
-  - file: pytorch_advanced/00-index.md
-    sections:
-    - file: pytorch_advanced/01-emnist_baseline.ipynb
-    - file: pytorch_advanced/02-import_custom_scripts.ipynb
-    - file: pytorch_advanced/03-finetune_pretrained_models.ipynb
-    - file: pytorch_advanced/04-pytorch_lightning.ipynb
-    - file: pytorch_advanced/05-training_techniques.ipynb
-- caption: Advanced Palmetto Usage
-  chapters:
-    - file: containers/00-index.md
-      sections:
-      - file: containers/01-introduction.md
-      - file: containers/02-dockers.md
-      - file: containers/03-apptainers.md
-    - file: advanced_scheduling/00-index.md
-      sections:
-      - file: advanced_scheduling/01-introduction.md
-      - file: advanced_scheduling/02-dockers.md
-      - file: advanced_scheduling/03-apptainers.md
-- caption: Software Development Life Cycle
-  chapters:
-    - file: intro_git_gitlab/00-index.md
-      sections:
-      - file: intro_git_gitlab/01-version-control.md
-      - file: intro_git_gitlab/02-git-workflow.md
-      - file: intro_git_gitlab/03-git-commands.md
-      - file: intro_git_gitlab/04-install-git.md
-      - file: intro_git_gitlab/05-example.md
-      - file: intro_git_gitlab/06-gitlab.md
-      - file: intro_git_gitlab/07-collaboration-conflicts.md
-      - file: intro_git_gitlab/09-more-resources.md
+#    - file: python_sklearn/00-index.md
+#      sections:
+#      - file: python_sklearn/01-TLDR.ipynb
+#      - file: python_sklearn/02-preparing-data.ipynb
+#      - file: python_sklearn/03-partitioning-data.ipynb
+#      - file: python_sklearn/04-regression-example.ipynb
+#    - file: python_deep_learning/00-index.md
+#      sections:
+#      - file: python_deep_learning/01-Introduction.md
+#      - file: python_deep_learning/02-Deep-Learning-Framework.md
+#      - file: python_deep_learning/03-Neural-Network.md
+#      - file: python_deep_learning/04-Intro-to-Keras.md
+#      - file: python_deep_learning/05-Keras-Regression.md
+#      - file: python_deep_learning/06-Keras-Classification.md
+#      - file: python_deep_learning/07-Convolution-Neural-Network.md
+#      - file: python_deep_learning/08-Recurrent-neural-networks.md
+#    - file: python_big_data/00-index.md
+#      sections:
+#      - file: python_big_data/01-introduction.md
+#      - file: python_big_data/02-cluster.md
+#      - file: python_big_data/03-notebooks.md
+#- caption: Deep Learning
+#  chapters:
+#  - file: pytorch/00-index.md
+#    sections:
+#    - file: pytorch/00-quickstart.ipynb
+#    - file: pytorch/01-pytorch_basics.ipynb
+#    - file: pytorch/02-pytorch_gpu_support.ipynb
+#    - file: pytorch/03-regression_and_classification.ipynb
+#    - file: pytorch/04-high-dimensional-data.ipynb
+#    - file: pytorch/05-datasets.ipynb
+#    - file: pytorch/06-modules.ipynb
+#    - file: pytorch/07-cnn_emnist.ipynb
+#  - file: pytorch_advanced/00-index.md
+#    sections:
+#    - file: pytorch_advanced/01-emnist_baseline.ipynb
+#    - file: pytorch_advanced/02-import_custom_scripts.ipynb
+#    - file: pytorch_advanced/03-finetune_pretrained_models.ipynb
+#    - file: pytorch_advanced/04-pytorch_lightning.ipynb
+#    - file: pytorch_advanced/05-training_techniques.ipynb
+#- caption: Advanced picotte Usage
+#  chapters:
+#    - file: containers/00-index.md
+#      sections:
+#      - file: containers/01-introduction.md
+#      - file: containers/02-dockers.md
+#      - file: containers/03-apptainers.md
+#    - file: advanced_scheduling/00-index.md
+#      sections:
+#      - file: advanced_scheduling/01-introduction.md
+#      - file: advanced_scheduling/02-dockers.md
+#      - file: advanced_scheduling/03-apptainers.md
+#- caption: Software Development Life Cycle
+#  chapters:
+#    - file: intro_git_gitlab/00-index.md
+#      sections:
+#      - file: intro_git_gitlab/01-version-control.md
+#      - file: intro_git_gitlab/02-git-workflow.md
+#      - file: intro_git_gitlab/03-git-commands.md
+#      - file: intro_git_gitlab/04-install-git.md
+#      - file: intro_git_gitlab/05-example.md
+#      - file: intro_git_gitlab/06-gitlab.md
+#      - file: intro_git_gitlab/07-collaboration-conflicts.md
+#      - file: intro_git_gitlab/09-more-resources.md
