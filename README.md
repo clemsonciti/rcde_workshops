@@ -1,4 +1,4 @@
-# RCDE Workshops
+# URCF Workshops
 
 This site is created using [jupyter-book](https://jupyterbook.org).
 
