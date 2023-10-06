@@ -31,7 +31,7 @@ unzip shell-lesson-data.zip
 
 ```
 
-```{admonition} 3. Where am I, what do we have here, and where can I go somewhere else?
+```{admonition} 3. Where are we, what do we have here, and how do we go somewhere else?
 :class: dropdown
 
 - Three basic commands: `pwd`, `ls`, `cd`
