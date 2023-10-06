@@ -1,276 +1,221 @@
 # Navigating Files and Directories
 
-The part of the operating system responsible for managing files and directories is called the **file system**.
-It organizes our data into files, which hold information, and directories (also called "folders"), which hold files or other directories.
+```{admonition} 1. Hands-on: preparing shell and data
+:class: dropdown
 
-Several commands are frequently used to create, inspect, rename, and delete files and directories.
-The first command that we will look at is called `pwd` (print working directory). Let's type it in:
+- Run the following commands to prepare the environment.
 
-~~~
-$ pwd
-~~~
-
-~~~
-/home/<your Palmetto username>
+~~~bash
+cp /beegfs/urcfadm/data/shell-lesson-data.zip .
+unzip shell-lesson-data.zip
 ~~~
 
-To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. On Palmetto, the filesystem looks something like this: 
+```
 
-![The File System](../fig/filesystem.png)
+```{admonition} 2. Files and Directories
+:class: dropdown
 
-At the top is the **root directory**
-that holds everything else.
-We refer to it using a slash character `/` on its own.
+- **File System**: an Operating System component responsible for managing files and directories. 
+- Perspective:
+  - On a GUI, you click to move from one place to another, so you are *outside* the file system 
+  space looking in. 
+  - On a CLI, you need to explicitly provide direction (**path**) for the command to know with which 
+  file/directory it is supposed to interact. The perspective is more *inside* the file system space. 
+- Key commands:
+  - `pwd`: path of working (current) directory
+  - `ls`: listing
+  - `cd`: change directory
+- Key definition:
 
-Inside that directory are several other directories:
-`home` (where users' personal directories are located),
-`bin` (which is where some built-in programs are stored),
-`tmp` (for temporary files that don't need to be stored long-term),
-`etc` (for miscellaneous data files),
-and so on.  
+![File Systems](../fig/file_system/file_system.png)
 
+```
 
-## Slashes
-There are two meanings for the `/` character.
-When it appears at the front of a file or directory name,
-it refers to the root directory. This is called an **absolute path**. 
-When it appears *inside* a name, it's a **relative path**.
+```{admonition} 3. Where am I, what do we have here, and where can I go somewhere else?
+:class: dropdown
 
+- Three basic commands: `pwd`, `ls`, `cd`
+- `pwd` returns the absolute path to the current working directory 
+(i.e.: where you are when you are in the terminal).
 
-Underneath `/home`, we find one directory for each user with an account on Palmetto. 
-
-## Listing files and directories
-
-The command `ls` will list the contents of the working directory.
-
-~~~
-$ ls
-~~~
-
-~~~
-Applications Documents    Library      Music        Public
-Desktop      Downloads    Movies       Pictures
+~~~bash
+pwd
 ~~~
 
-Your results might be completely different, depending on the contents of your home directory.
+![Path to current working directory](../fig/file_system/pwd.png)
 
+- `ls` returns the list of current files and directories in the
+target directory. 
 
-`ls` prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns.
-
-We can also use `ls` to see the contents of a specified directory. Let's list the directories of all the Palmetto users (note that you cannot actually see inside other people's directories):  
-~~~
-$ ls /home
-~~~
- 
-We can make its output more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
-
-~~~
-$ ls -F
+~~~bash
+ls /
 ~~~
 
-~~~
-Applications/ Documents/    Library/      Music/        Public/
-Desktop/      Downloads/    Movies/       Pictures/
-~~~
+![Listing of directories and files in current directory](../fig/file_system/ls.png)
 
-And note that there is a space between `ls` and `-F`: without it, the shell thinks we're trying to run a command called `ls-F`, which doesn't exist.
+- There are many options available for different commands. 
+To view the documentation, run the followings:
 
-`ls` has lots of other options. To find out what they are, we can type:
-
-~~~
-$ ls --help
+~~~bash
+ls --help
 ~~~
 
-~~~
-Usage: ls [OPTION]... [FILE]...
-List information about the FILEs (the current directory by default).
-Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+![View help documentation for ls](../fig/file_system/ls-help.png)
 
-Mandatory arguments to long options are mandatory for short options too.
-  -a, --all                  do not ignore entries starting with .
-  -A, --almost-all           do not list implied . and ..
-      --author               with -l, print the author of each file
-  -b, --escape               print C-style escapes for nongraphic characters
-      --block-size=SIZE      scale sizes by SIZE before printing them; e.g.,
-                               '--block-size=M' prints sizes in units of
-                               1,048,576 bytes; see SIZE format below
-  -B, --ignore-backups       do not list implied entries ending with ~
-  -c                         with -lt: sort by, and show, ctime (time of last
-                               modification of file status information);
-                               with -l: show ctime and sort by name;
-                               otherwise: sort by ctime, newest first
-  -C                         list entries by columns
-      --color[=WHEN]         colorize the output; WHEN can be 'always' (default
-                               if omitted), 'auto', or 'never'; more info below
-  -d, --directory            list directories themselves, not their contents
-  -D, --dired                generate output designed for Emacs' dired mode
-  -f                         do not sort, enable -aU, disable -ls --color
-  -F, --classify             append indicator (one of */=>@|) to entries
-      --file-type            likewise, except do not append '*'
-      --format=WORD          across -x, commas -m, horizontal -x, long -l,
-                               single-column -1, verbose -l, vertical -C
-      --full-time            like -l --time-style=full-iso
-  -g                         like -l, but do not list owner
-      --group-directories-first
-                             group directories before files;
-                               can be augmented with a --sort option, but any
-                               use of --sort=none (-U) disables grouping
-  -G, --no-group             in a long listing, don't print group names
-  -h, --human-readable       with -l and/or -s, print human readable sizes
-                               (e.g., 1K 234M 2G)
-      --si                   likewise, but use powers of 1000 not 1024
-  -H, --dereference-command-line
-                             follow symbolic links listed on the command line
-      --dereference-command-line-symlink-to-dir
-                             follow each command line symbolic link
-                               that points to a directory
-      --hide=PATTERN         do not list implied entries matching shell PATTERN
-                               (overridden by -a or -A)
-      --indicator-style=WORD  append indicator with style WORD to entry names:
-                               none (default), slash (-p),
-                               file-type (--file-type), classify (-F)
-  -i, --inode                print the index number of each file
-  -I, --ignore=PATTERN       do not list implied entries matching shell PATTERN
-  -k, --kibibytes            default to 1024-byte blocks for disk usage
-  -l                         use a long listing format
-  -L, --dereference          when showing file information for a symbolic
-                               link, show information for the file the link
-                               references rather than for the link itself
-  -m                         fill width with a comma separated list of entries
-  -n, --numeric-uid-gid      like -l, but list numeric user and group IDs
-  -N, --literal              print raw entry names (don't treat e.g. control
-                               characters specially)
-  -o                         like -l, but do not list group information
-  -p, --indicator-style=slash
-                             append / indicator to directories
-  -q, --hide-control-chars   print ? instead of nongraphic characters
-      --show-control-chars   show nongraphic characters as-is (the default,
-                               unless program is 'ls' and output is a terminal)
-  -Q, --quote-name           enclose entry names in double quotes
-      --quoting-style=WORD   use quoting style WORD for entry names:
-                               literal, locale, shell, shell-always,
-                               shell-escape, shell-escape-always, c, escape
-  -r, --reverse              reverse order while sorting
-  -R, --recursive            list subdirectories recursively
-  -s, --size                 print the allocated size of each file, in blocks
-  -S                         sort by file size, largest first
-      --sort=WORD            sort by WORD instead of name: none (-U), size (-S),
-                               time (-t), version (-v), extension (-X)
-      --time=WORD            with -l, show time as WORD instead of default
-                               modification time: atime or access or use (-u);
-                               ctime or status (-c); also use specified time
-                               as sort key if --sort=time (newest first)
-      --time-style=STYLE     with -l, show times using style STYLE:
-                               full-iso, long-iso, iso, locale, or +FORMAT;
-                               FORMAT is interpreted like in 'date'; if FORMAT
-                               is FORMAT1<newline>FORMAT2, then FORMAT1 applies
-                               to non-recent files and FORMAT2 to recent files;
-                               if STYLE is prefixed with 'posix-', STYLE
-                               takes effect only outside the POSIX locale
-  -t                         sort by modification time, newest first
-  -T, --tabsize=COLS         assume tab stops at each COLS instead of 8
-  -u                         with -lt: sort by, and show, access time;
-                               with -l: show access time and sort by name;
-                               otherwise: sort by access time, newest first
-  -U                         do not sort; list entries in directory order
-  -v                         natural sort of (version) numbers within text
-  -w, --width=COLS           set output width to COLS.  0 means no limit
-  -x                         list entries by lines instead of by columns
-  -X                         sort alphabetically by entry extension
-  -Z, --context              print any security context of each file
-  -1                         list one file per line.  Avoid '\n' with -q or -b
-      --help     display this help and exit
-      --version  output version information and exit
+- Detailed manual can be viewed using the following command:
+  - Use the `Space` key to move down page by page
+  - Type `q` to quit
 
-The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
-Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
-
-Using color to distinguish file types is disabled both by default and
-with --color=never.  With --color=auto, ls emits color codes only when
-standard output is connected to a terminal.  The LS_COLORS environment
-variable can change the settings.  Use the dircolors command to set it.
-
-Exit status:
- 0  if OK,
- 1  if minor problems (e.g., cannot access subdirectory),
- 2  if serious trouble (e.g., cannot access command-line argument).
-
-GNU coreutils online help: <http://www.gnu.org/software/coreutils/>
-Full documentation at: <http://www.gnu.org/software/coreutils/ls>
-or available locally via: info '(coreutils) ls invocation'
+~~~bash
+man ls
 ~~~
 
-Many Linux commands, and programs that people have written that can be
-run from within the shell, support a `--help` flag to display more
-information on how to use the commands or programs.
+![View help documentation for ls using man](../fig/file_system/ls-man.png)
 
-For more information on how to use `ls` we can type `man ls`.
-`man` is the Unix "manual" command:
-it prints a description of a command and its options,
-and (if you're lucky) provides a few examples of how to use it.
+- Run `ls` by itself will list the contents of the current directory. 
 
-
-To navigate through the `man` pages,
-you may use the up and down arrow keys to move line-by-line,
-or try the "b" and spacebar keys to skip up and down by full page.
-Quit the `man` pages by typing "q".
-
-## Creating and Changing Directories
-
-The next command we will discuss is `mkdir`, which creates a new directory. Let's create a directory with the name `linux_workshop`:
-
-~~~
-$ mkdir linux_workshop
+~~~bash
+ls
 ~~~
 
-Now, if you type `ls`, you should see `linux_workshop` listed among the contents of your home directory. 
+- `cd` allows users to change the current directory (outcome 
+of `pwd`) to the target directory. 
+  - Run `man cd` or `cd --help` to read the documentation for `cd`. 
+  - The generate syntax for `cd` is `cd DESTINATION` with 
+  `DESTINATION` can either be absolute or relative paths or special paths. 
+- Change to root directory and view contents of root:
 
-The next command that we will discuss is `cd` ("change directory"), which changes our location to a different directory. Let's enter the directory we have just created:
-~~~
-$ cd linux_workshop
-~~~
-
-Now, our current directory is `linux_workshop`:
-~~~
-$ pwd
-~~~
-
-~~~
-/home/<your Palmetto username>/linux_workshop
+~~~bash
+cd /
+ls 
 ~~~
 
-If you type `ls`, you won't see anything, because we have just created this directory and it is empty.
+- Special paths:
+  - `~`: home direcrory
+  - `.`: current directory
+  - `..`: a directory that is one level above the current directory
 
-To go back to your home directory, you need to go one level up on the directory tree. There is a shortcut in the shell to move up one directory level
-that looks like this: 
+- Change to your home directory using either the special paths or `/home/YOURUSERNAME` 
+(`YOURUSERNAME`: your username on `molly`)
+  - Check the content of your home directory to confirm that you have 
+  the `shell-lesson-data` directory. 
+  - Change into `shell-lesson-data` directory and view the contents of this directory
 
-~~~
-$ cd ..
-~~~
-
-**Path Shortcuts:**
-- `..` parent directory
-- `.` current directory
-- `~` home directory
-
-~~~
-$ pwd
-~~~
-
-~~~
-/home/<your Palmetto username>
+~~~bash
+cd ~
+ls
+cd shell-lesson-data
+ls 
 ~~~
 
-Directories starting with `.` are hidden from `ls` by default. The `-a` flag to `ls` will list all files and directories.
+```
+
+
+```{admonition} 4. Challenge: exploring more ls flags
+:class: dropdown
+
+- You can also use two options at the same time. What does the command 
+`ls` do when used with the `-l` option? What about if you use both the 
+`-l` and the `-h` option?
+- Some of its output is about properties that we do not cover in this 
+lesson (such as file permissions and ownership), but the rest should be 
+useful nevertheless.
+
+:::{admonition} Solution
+:class: dropdown
+
+- The `-l` option makes `ls` use a long listing format, showing not only 
+the file/directory names but also additional information, such as the 
+file size and the time of its last modification. 
+- If you use both the `-h` option and the `-l` option, this makes the file 
+size *human readable*, i.e. displaying something like 5.3K instead of 5369.
+:::
+```
+
+```{admonition} 5. Challenge: Listing in reverse chronological order
+:class: dropdown
+
+- By default, ls lists the contents of a directory in alphabetical 
+order by name. The command ls `-t` lists items by time of last change 
+instead of alphabetically. The command ls `-r` lists the contents of a 
+directory in reverse order. 
+- Which file is displayed last when you combine the `-t` and `-r` options? 
+Hint: You may need to use the -l option to see the last changed dates.
+
+:::{admonition} Solution
+:class: dropdown
+
+The most recently changed file is listed last when using `-rt`. 
+This can be very useful for finding your most recent edits or 
+checking to see if a new output file was written.
+:::
+```
+
+
+```{admonition} 6. Challenge: ls Reading comprehension
+:class: dropdown
+
+- Using the filesystem diagram below.
+- If `pwd` displays `/Users/backup` and  `-r` tells `ls` to display things in 
+reverse order, what command(s) will result in the following output: 
+
+~~~bash
+pnas_sub/ pnas_final/ original/
 ~~~
-$ ls -F -a
+
+![Change directories](../fig/file_system/filesystem-challenge.svg)
+
+1. `ls pwd`
+2. `ls -r -F`
+3. `ls -r -F /Users/backup`
+
+:::{admonition} Solution
+:class: dropdown
+
+1. No: `pwd` is not the name of a directory.
+2. Yes: `ls` without directory argument lists files and directories in the current directory.
+3. Yes: uses the absolute path explicitly.
+:::
+```
+
+
+```{admonition} 7. General syntax of a shell command
+:class: dropdown
+
+![Structure of shell command](../fig/file_system/shell_command_syntax.svg)
+
+- `ls` is the command, with an option `-F` and an argument `/`. 
+- **Option**: 
+  - either start with a single dash (`-`) or two dashes (`--`), 
+  - change the behavior of a command. 
+  - can be referred to as either `switches` or `flags`. 
+- **Arguments** tell the command what to operate on (e.g. files and directories). 
+- Sometimes `options` and `arguments` are referred to as parameters.
+  - The shell is in fact just a process/function and these `options` and `arguments`
+  are being passed as parameters to the shell's function that is responsible for 
+  executing the **command**. 
+- A command can be called with more than one option and more than one argument, but a 
+command doesn’t always require an argument or an option.
+- Each part is separated by spaces: if you omit the space between `ls` and `-F` the 
+shell will look for a command called `ls-F`, which doesn’t exist. 
+- Capitalization can be important. 
+  - `ls -s` will display the size of files and directories alongside the names
+  - `ls -S` will sort the files and directories by size
+
+```
+
+```{admonition} 8. Hands-on: explore data
+:class: dropdown
+
+- Check where you are, change back to your home directory,
+then navigate to `exercise-data`.
+
+~~~
+pwd
+cd ~
+cd shell-lesson-data
+cd exercise-data/writing
+ls -F
 ~~~
 
-### Other Hidden Files
-Many common configuration files will begin with `.`. You may see a `.bash_profile` or `.bashrc` file in your home directory which you can edit to alias certain commands or add variables to use later.
-
-### One More Shortcut
-
-Another shortcut is the `-` (dash) character.  `cd` will translate `-` into *the previous working directory *.
-This is a *very* efficient way of moving back and forth between directories.
-The difference between `cd ..` and `cd -` is that the former brings you *up*, while the latter brings you *back*. 
+```
