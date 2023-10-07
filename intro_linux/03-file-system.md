@@ -1,5 +1,6 @@
 # Navigating Files and Directories
 
+
 ```{admonition} 1. Hands-on: preparing shell and data
 :class: dropdown
 
@@ -96,7 +97,7 @@ ls
   - `..`: a directory that is one level above the current directory
 
 - Change to your home directory using either the special paths or `/home/YOURUSERNAME` 
-(`YOURUSERNAME`: your username on `molly`)
+(`YOURUSERNAME`: your username on Picotte)
   - Check the content of your home directory to confirm that you have 
   the `shell-lesson-data` directory. 
   - Change into `shell-lesson-data` directory and view the contents of this directory

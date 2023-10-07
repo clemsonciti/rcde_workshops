@@ -1,10 +1,18 @@
 # File Permissions and Atrributes
 
+Working as part of a team in Linux environment require us to know 
+how to share your files/directories with others. 
+
+
+```{admonition} 1. Checking permission
+:class: dropdown
+
 Use `ls -l` (**l**ong format) to list files and their attributes.
 
-```
+~~~bash
 -rw-r--r-- 1 user group 1002287 Oct 20 15:49 example.csv
-```
+~~~
+
 Explanation of output:
 - `-rw-r--r--`: Permissions of file
 - `1`: hard link count (out of scope)
@@ -25,10 +33,16 @@ Each category has 3 permissions:
 - `x` (execute)
 - A dash means no permission.
 
-## chmod
+```
+
+
+```{admonition} 2. Changing permission: chmod
+:class: dropdown
+
 The command `chmod` (**ch**ange **mod**e) is used to edit file permissions. There are 2 ways to represent the permissions: *numeric* and *symbolic*.
 
-### Numeric mode
+**Numeric mode**
+
 The `rwx` permissions are represented by octal numbers (0-7). The following table explains each value (credit: [Wikipedia](https://en.wikipedia.org/wiki/Chmod#Numerical_permissions)):
 
 \# |	Sum  | rwx | Permission
@@ -47,11 +61,12 @@ The `rwx` permissions are represented by octal numbers (0-7). The following tabl
 - `755` - owner can read, write, and execute, all others can read and execute
 - `600` - owner can read and write, no access to anyone else
 
-```{note}
+:::{note}
 When using numeric mode, all permissions are updated (i.e. you can't just update user permisisons and not change group or other)
-```
+:::
 
-### Symbolic mode
+**Symbolic mode***
+
 Use symbolic notation for finer grained control of permissions. Symbolic notation requires a `reference`, `operator`, and `mode`. From [Wikipedia](https://en.wikipedia.org/wiki/Chmod#Symbolic_modes):
 
 | Reference | Class | Description |
@@ -77,6 +92,9 @@ Use symbolic notation for finer grained control of permissions. Symbolic notatio
 **Common commands:**
 
 Make file executable by all:
-``` 
-$ chmod +x file
+
+~~~bash 
+chmod +x file
+~~~
+
 ```
