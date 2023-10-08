@@ -16,7 +16,7 @@ parts:
       - file: intro_linux/04-working_with_files_and_directories.md
       - file: intro_linux/04a-file-permissions.md
       - file: intro_linux/05-pipes.md
-      - file: intro_linux/06-find.md
+      - file: intro_linux/06-loop.md
       - file: intro_linux/07-utilities.md
       - file: intro_linux/08-conclusion.md
     - file: intro_picotte/00-index.md
