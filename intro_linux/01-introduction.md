@@ -1,5 +1,8 @@
 # What is Linux?
 
+This workshop is based on the workshop developed 
+by [Software Carpentry](https://software-carpentry.org/lessons/)
+
 ```{figure} ../fig/Tux.png
 :figclass: margin
 Tux, the official Linux mascot
