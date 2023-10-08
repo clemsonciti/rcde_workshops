@@ -61,10 +61,6 @@ The `rwx` permissions are represented by octal numbers (0-7). The following tabl
 - `755` - owner can read, write, and execute, all others can read and execute
 - `600` - owner can read and write, no access to anyone else
 
-:::{note}
-When using numeric mode, all permissions are updated (i.e. you can't just update user permisisons and not change group or other)
-:::
-
 **Symbolic mode***
 
 Use symbolic notation for finer grained control of permissions. Symbolic notation requires a `reference`, `operator`, and `mode`. From [Wikipedia](https://en.wikipedia.org/wiki/Chmod#Symbolic_modes):

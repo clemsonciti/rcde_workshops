@@ -132,6 +132,7 @@ the letter c, followed by zero or more other characters will be matched.
 
 
 ```{admonition} 4. Saving to a File in a Loop - Part One
+:class: dropdown
 
 In the `shell-lesson-data/exercise-data/alkanes` directory, what is the effect 
 of this loop?
@@ -165,6 +166,7 @@ done
 
 
 ```{admonition} 5. Saving to a File in a Loop - Part Two
+:class: dropdown
 
 Also in the `shell-lesson-data/exercise-data/alkanes` directory,
 what would be the output of the following loop?
