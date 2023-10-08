@@ -1,98 +1,63 @@
-# Accessing the Palmetto Cluster
+# Accessing the Picotte Cluster
 
-Palmetto is accessed using the SSH (["Secure shell"](https://en.wikipedia.org/wiki/Ssh_(Secure_Shell))) protocol. Palmetto runs the *SSH server*; on your local machine, you will need to run *SSH client* which connects to a server using a command-line *terminal*. The commands that are entered on the terminal are processed by the server on Palmetto.
+## Remote login (SSH)
 
-## Mac
+To be able to run commands on Palmetto from your own machine, you will first 
+need to log in. We will login via **SSH** which will provide us a shell on 
+Picotte's login nodes.
 
-To start the SSH client on a Mac, you can open the Terminal Application (which is usually located in `Applications` &rarr; `Utilities`) and run the following:
+For Mac OS X, you can open the Terminal Application
+  - Click on the magnifying glass icon on the top right 
+  corner of the screen.
+  - Start typing `Terminal` in the search box, and the 
+  `Terminal` app will appear to be selected. 
 
-```bash
-ssh <your clemson username>@login.palmetto.clemson.edu
-```
-
-## Windows
+~~~bash
+ssh <your Picotte username>@picottelogin.urcf.drexel.edu
+~~~
 
 For Windows, first you need to download and install
 [MobaXterm Home Edition](https://mobaxterm.mobatek.net/download.html).
 
-:::{important}
-It is important that you unzip the downloaded installer prior to installation.
-The zipped installer file contains an additional data file besides the installer
-executable. This data file is not accessible if the installer executable is
-called from inside the zipped file (something Windows allows you to do).
-:::
+> It is important that you unzip the downloaded installer prior to installation.
+> The zipped installer file contains an additional data file besides the installer
+> executable. This data file is not accessible if the installer executable is
+> called from insize the zipped file (something Windows allows you to do).
+
 
 After MobaXterm starts, click the `Session` button.
 
-:::{figure} ../fig/intro_palmetto/mobaxterm_0.png
-Main MobaXterm Windows
-:::
-
+![Main MobaXterm Windows](../fig/intro_linux/mobaxterm_0.png)
 
 Select SSH session and use the following parameters (whichever required), then click `OK`:
 
-* Remote host: `login.palmetto.clemson.edu`
+* Remote host: `picottelogin.urcf.drexel.edu`
 * SSH-browser type: Enhanced SCP
 * Port: 22
 
-:::{figure} ../fig/intro_palmetto/mobaxterm_1.png
-MobaXterm SSH Session Settings
-:::
-
-## Entering Username and Password
+![MobaXterm SSH Session](../fig/intro_linux/mobaxterm_1.png)
 
 At this stage, for both Mac and Windows, you will be asked to enter your username
-and password, then DUO option. Use your usual Clemson username (without @clemson.edu part) and Clemson
-password.
+and password.
+- **When you type in your password, you will not see anything. This is a normal 
+security measure, just keep focusing on typing in your password correctly.**
 
-:::{note}
-As you type your password, nothing will appear (not even asterisks). This can be confusing, but it
-is the expected behaviour. The SSH server is still receiving your password.
-:::
+![Login interface](../fig/intro_linux/mobaxterm_2.png)
 
-:::{figure} ../fig/intro_palmetto/mobaxterm_2.png
-Logging into palmetto
-:::
+**For MobaXterm, please select No when asked if you want to save your password.**
 
-::::{admonition} Windows Users
-With MobaXterm, you may be asked to save your password.  For now, press No.
+![Password saving selection](../fig/intro_linux/mobaxterm_3.png)
 
-:::{figure} ../fig/intro_palmetto/mobaxterm_3.png
-MobaXterm asking to save password
-:::
-::::
-
-When logged in,
-you are presented with a welcome message
-and the following "prompt":
+When logged in, you are presented with a welcome message and the following "prompt", 
+with `username` is replaced by your actual Picotte username:
 
 ~~~bash
-[username@login001 ~]$
+[username@picotte001 ~]$
 ~~~
 
-The prompt in a bash shell usually
-contains a (`$`) sign,
-and shows that the shell is waiting for input.
-The prompt may also contain other information:
-this prompt tells you `your username` and which node
-you are connected to -
-`login001` is the "login" node.
-It also tells you your current directory,
-i.e., `~`, which, as you will learn shortly,
-is short for your *home* directory.
+Let's enter our first command! 
+Type the command `whoami`, then press the Enter key (sometimes marked Return) to send the command to the shell. The command's output is the ID of the current user.
 
-In the figure below, MobaXterm also gives you a GUI browser of your home
-directory on Palmetto. For Mac OS and Linux terminal, you will only have the
-command line interface to the right.
-
-
-:::{figure} ../fig/intro_palmetto/mobaxterm_4.png
-Logged into Palmetto on MobaXterm
-:::
-
-:::{admonition} Key Points
-- Palmetto can be accessed by an SSH (secure shell) client
-- Windows user can use `MobaXterm` application
-- Mac users can use the `Terminal` application
-:::
-
+~~~bash
+whoami
+~~~
