@@ -23,4 +23,4 @@ $
 
 To execute a command, type it into the prompt and press `Enter`. When the command completes you be returned to the prompt.
 
-![Command Syntax](../fig/shell_command_syntax.svg)
+![Command Syntax](../fig/intro_linux/shell_command_syntax.svg)
