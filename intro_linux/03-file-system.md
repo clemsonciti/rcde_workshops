@@ -7,7 +7,7 @@
 - Run the following commands to prepare the environment.
 
 ~~~bash
-cp /beegfs/urcfadm/data/shell-lesson-data.zip .
+cp /beegfs/workshop/data/shell-lesson-data.zip .
 unzip shell-lesson-data.zip
 ~~~
 
