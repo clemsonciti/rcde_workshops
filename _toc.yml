@@ -27,8 +27,8 @@ parts:
       - file: intro_picotte/04-storage.md
       - file: intro_picotte/05-interactive.md
       - file: intro_picotte/06-file-transfer.md
-      - file: intro_picotte/07-open-od.md
-      - file: intro_picotte/08-batch.md
+      - file: intro_picotte/07-batch.md
+      - file: intro_picotte/08-jupyter-hub.md      
 - caption: R
   chapters:
     - file: r_programming/00-index.md
