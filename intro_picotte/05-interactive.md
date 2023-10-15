@@ -1,160 +1,156 @@
-# Running an interactive job on Palmetto
+# Running an interactive job on Picotte
 
-## QSUB
+## SLURM
 
-Now, we arrive at the most important part of today's workshop: getting on the compute nodes. Compute nodes are the real power of Palmetto. Let's see which of the compute nodes are available at the moment:
+Now, we arrive at the most important part of today's workshop: getting 
+on the compute nodes. Compute nodes are the real power of Picotte. Let's 
+see which of the compute nodes are available at the moment:
 
-```
-whatsfree
-```
+~~~bash
+sinfo
+~~~
 
-We can see that the cluster is quite busy, but there is a fair amount of compute nodes that are available for us. Now, let's request one compute node. Please type the following (or paste from the website into your SSH terminal):
+We can see that the cluster is quite busy, but there is a fair amount of 
+compute nodes that are available for us. Now, let's request one compute 
+node. Please type the following (or paste from the website into your SSH terminal):
 
-```bash
-qsub -I -l select=1:ncpus=4:mem=10gb:interconnect=1g,walltime=2:00:00
-```
+~~~bash
+srun --nodes=1 --cpus-per-task=2 --mem=4G --time=00:30:00 --pty /bin/bash -l
+~~~
 
-It is very important not to make typos, use spaces and upper/lowercases exactly as shown, and use the proper punctuation (note the `:` between `ncpus` and `mem`, and the `,` before walltime). If you make a mistake, nothing wrong will happen, but the scheduler won't understand your request.
+It is very important not to make typos, use spaces and upper/lowercases exactly 
+as shown, and use the proper punctuation. If you make a mistake, nothing bad 
+will happen, but the scheduler won't understand your request.
 
 Now, let's carefully go through the request:
 
-- `qsub` means that we are asking the scheduler to grant us access to a compute node;
-- `-I` means it's an interactive job (we'll talk about it in a bit);
-- `-l` is the list of resource requirements we are asking for;
-- `select=1` means we are asking for one compute node;
-- `ncpus=4` means that we only need four CPUs on the node (since all Palmetto compute nodes have at least 8 CPUs, we might share the compute node with other users, but it's OK because users who use the same node do not interfere with each other);
-- `mem=10gb` means that we are asking for 10 Gb of RAM (you shouldn't ask for less than 8 Gb); again, memory is specific to the user, and not shared between different users who use the same node);
-- `interconnect=1g` is the type of interconnect (the allowed types are `1g`, `10ge`, `fdr`, `hdr`, and `any`). If you look at the output of `whatsfree` and `cat /etc/hardware-table`, you will see the different CPU/RAM configurations that are available for these three types of interconnect. Typically, but not always, `1g` nodes have less RAM and a smaller number of CPUs than `fdr` and `hdr` (with the `hdr` nodes being the most powerful interms of RAM and CPUs).
-- finally, `walltime=2:00:00` means that we are asking to use the node for 2 hours; after two hours we will be logged off the compute node if we haven't already disconnected.
+- `srun` means that we are asking the scheduler to grant us access to 
+a compute node;
+- `--nodes=1` means we are asking for one compute node;
+- `--cpus-per-task=2` means that we only need two CPUs on the node (since all 
+Picotte compute nodes have at least 48 CPUs, we might share the compute node with 
+other users, but it's OK because users who use the same node do not interfere with 
+each other);
+- `--mem=4gb` means that we are asking for 4 Gb of RAM; again, memory is 
+specific to the user, and not shared between different users who use the same node;
+- `walltime=00:30:00` means that we are asking to use the node for half an hour; after 
+half an hour we will be logged off the compute node if we haven't already disconnected.
+- `--pty /bin/bash -l` means that we want to launch `/bin/bash`. The `-l` is the option 
+for `/bin/bash`, indicating that we want the Bash shell to behave as if it is launched 
+directly from the login node. `--pty` lets Slurm runs this shell in a pseudo terminal 
+mode. 
 
-This is actually a very modest request, and the scheduler should grant it right away. Sometimes, when we are asking for much substantial amount of resources (for example, 20 nodes with 40 cores and 370 Gb of RAM), the scheduler cannot satisfy our request, and will put us into the queue so we will have to wait until the node becomes available.
+This is actually a very modest request, and the scheduler should grant it right away. 
+Sometimes, when we are asking for much substantial amount of resources (for example, 20 nodes 
+with 40 cores and 192 Gb of RAM), the scheduler cannot satisfy our request, and will put us 
+into the queue so we will have to wait until the node becomes available.
 
 Once the request is granted, you will see something like that:
 
-```
-[dndawso@login002 ~]$ qsub -I -l select=1:ncpus=4:mem=10gb:interconnect=1g,walltime=2:00:00
-qsub (Warning): Interactive jobs will be treated as not rerunnable
-qsub: waiting for job 74956.pbs02 to start
-qsub: job 74956.pbs02 ready
+~~~bash
+[lbn28@picotte001 ~]$ srun --nodes=1 --cpus-per-task=2 --mem=4G --time=00:30:00 --pty /bin/bash -l
+[lbn28@node047 ~]$ echo ${SLURM_JOBID}
+9539478
+[lbn28@node047 ~]$ 
+~~~
 
-[dndawso@node0033 ~]$
-```
+Importantly, you will see the prompt change. Previously, the prompt was 
+`<your username>@picotte001`, because you were at the login node. Now, you 
+are on a compute node -- in this case, `node047` (you might be on a different 
+compute node). You can run the commmand `echo ${SLURM_JOBID}` to see the job ID.
 
-Importantly, you will see the prompt change. Previously, the prompt was <your username>@login002, because you were at the login node. Now, you are on a compute node -- in this case, `node0033` (you might be on a different compute node). You can also see the job ID, in this case it is `74956.pbs02`.
+We can see the information about the compute node by using the `scontrol` command:
 
+~~~bash
+[lbn28@node047 ~]$ scontrol show nodes node049
+NodeName=node049 Arch=x86_64 CoresPerSocket=12
+CPUAlloc=42 CPUTot=48 CPULoad=38.44
+AvailableFeatures=(null)
+ActiveFeatures=(null)
+Gres=(null)
+NodeAddr=node049 NodeHostName=node049 Version=21.08.8-2
+OS=Linux 4.18.0-147.el8.x86_64 #1 SMP Thu Sep 26 15:52:44 UTC 2019
+RealMemory=192000 AllocMem=111616 FreeMem=88469 Sockets=4 Boards=1
+State=MIXED ThreadsPerCore=1 TmpDisk=864000 Weight=1 Owner=N/A MCS_label=N/A
+Partitions=def,def-sm,long
+BootTime=2023-09-20T18:36:12 SlurmdStartTime=2023-09-20T18:38:11
+LastBusyTime=2023-10-11T20:48:18
+CfgTRES=cpu=48,mem=187.50G,billing=48
+AllocTRES=cpu=42,mem=109G
+CapWatts=n/a
+CurrentWatts=0 AveWatts=0
+ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
+~~~
 
-We can see the information about the compute node by using the `pbsnodes` command:
-
-```bash
-pbsnodes node0033
-```
-
-Here is the information about the node that I was assigned to (node0033):
-
-```
-node0033
-     Mom = node0033.palmetto.clemson.edu
-     ntype = PBS
-     state = free
-     pcpus = 8
-     Priority = 1
-     jobs = 61932.pbs02/0, 74956.pbs02/1, 74956.pbs02/2, 74956.pbs02/3, 74956.pbs02/4
-     resources_available.arch = linux
-     resources_available.chip_manufacturer = intel
-     resources_available.chip_model = xeon
-     resources_available.chip_type = e5520
-     resources_available.host = node0033
-     resources_available.hpmem = 0b
-     resources_available.interconnect = 1g, any
-     resources_available.make = dell
-     resources_available.manufacturer = dell
-     resources_available.mem = 31876mb
-     resources_available.model = r610
-     resources_available.ncpus = 8
-     resources_available.ngpus = 0
-     resources_available.node_make = dell
-     resources_available.node_manufacturer = dell
-     resources_available.node_model = r610
-     resources_available.phase = 1a
-     resources_available.qcat = c1_workq_qcat, c1_solo_qcat, osg_qcat, phase01a_qcat, mx_qcat, gilligan_qcat
-     resources_available.ssd = False
-     resources_available.vmem = 32836mb
-     resources_available.vnode = node0033
-     resources_available.vntype = cpu_node
-     resources_assigned.accelerator_memory = 0kb
-     resources_assigned.hbmem = 0kb
-     resources_assigned.mem = 1048576kb
-     resources_assigned.naccelerators = 0
-     resources_assigned.ncpus = 1
-     resources_assigned.ngpus = 0
-     resources_assigned.vmem = 0kb
-     resv_enable = True
-     sharing = default_shared
-     last_state_change_time = Thu Jan 26 04:00:34 2023
-     last_used_time = Thu Jan 26 10:25:35 2023
-```
-
-You can see that the node has 8 CPUs, no GPUs, and at the moment runs a couple of jobs. One of these jobs is mine (74956). When I submitted `qsub` request, the scheduler told me that my job ID is 74956. The `pbsnodes` command gives us the list of jobs that are currently running on the compute node, and, happily, I see my job on that list. It appears four times, because I have requested four CPUs. Somebody else runs a job (61932) which is using just one CPU.
+You can see that the node has 48 CPUs, no GPUs, and at the moment runs a couple of jobs 
+(`CPUAlloc`: 42 cores are allocated out of `CPUTot` of 48). 
 
 To exit the compute node, type:
 
-``` bash
+~~~ bash
 exit
-```
+~~~
 
-This will bring you back to the login node. See how your prompt has changed to `login002`. It is important to notice that you have to be on a login node to request a compute node. One you are on the compute node, and you want to go to another compute node, you have to exit first.
+This will bring you back to the login node. See how your prompt has changed to `picotte001`. 
+It is important to notice that you have to be on a login node to request a compute node. 
+One you are on the compute node, and you want to go to another compute node, you have to 
+exit first.
 
-For some jobs, you might want to get a GPU, or perhaps two GPUs. For such requests, the `qsub` command needs to specify the number of GPUs and the type of GPUs (which you can get from `cat /etc/hardware-table`). For example, let's request a NVIDIA K20:
+## Slurm partitions
 
-```bash
-qsub -I -l select=1:ncpus=4:mem=10gb:ngpus=1:gpu_model=k20,walltime=0:10:00
-```
+Slurm allows the definition of `partitions`, or `queues`. These abstractions specify 
+availabilities and limitations of resources for your job. 
 
-You might have to wait for a bit if the K20 nodes are busy. Once you get on the compute node, you can run:
+To view all possible partitions:
 
-```bash
-nvidia-smi
-```
+~~~bash
+scontrol show partition
+~~~
 
-Then, **exit the compute node to let other people a chance to get on it**.
+## Slurm accounts
 
-If you want a GPU but don't care about the type of the GPU, you can request `gpu_model=any`.
+`Slurm account` (to distinguish with `Picotte login account`) is a Slurm-defined entity 
+created to help tracking resource utilization. To view accounts that you are associated 
+with, run: 
 
-It is possible to ask for several compute nodes at a time, for example `select=4` will give you 4 compute nodes. Some programs, such as LAMMPS or NAMD, work a lot faster if you ask for several nodes. This is an advanced topic and we will not discuss it here, but you can find some examples on our website.
+~~~bash
+sacctmgr show user withassoc format=account,user,defaultaccount where user=$USER
+~~~
 
-There are other resource limit selection options documented on our
-[website](https://www.palmetto.clemson.edu/palmetto/basic/started/#resource-limits-specification).
 
 :::{warning}
-Please be considerate of others when you issue qsub. Remember that Palmetto is a shared resource. Don't request resources you don't plan on actually using. Jobs that request in-demand resources and don't use them are subject to termination.
+Please be considerate of others when you issue srun/sbatch. Remember that Picotte is a shared resource. 
+Don't request resources you don't plan on actually using. 
 :::
 
 :::{important}
-It is very important to remember that you shouldn't run computations on the login node, because the login node is shared between everyone who logs into Palmetto, so your computations will interfere with other people's login processes.
-However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM so there is no interference.
+It is very important to remember that you shouldn't run computations on the login node, 
+because the login node is shared between everyone who logs into Picotte, so your computations will 
+interfere with other people's login processes. However, once you are on a compute node, you can run some 
+computations, because each user gets their own CPUs and RAM so there is no interference.
 :::
 
 ## Modules
 
 If you are on the compute node, exit it. Once you get on the login node, type this:
 
-```bash
+~~~bash
 qsub -I -l select=1:ncpus=4:mem=10gb,walltime=2:00:00
-```
+~~~
 
-We have a lot of software installed on Palmetto, but most of it is organized into *modules*, which need to be loaded. To see which modules are available on Palmetto, please type
+We have a lot of software installed on Picotte, but most of it is organized into *modules*, which need to be loaded. To see which modules are available on Picotte, please type
 
-```bash
+~~~bash
 module avail
-```
+~~~
 
 Hit `SPACE` several times to get to the end of the module list. This is a very long list, and you can see that there is a lot of software installed for you. If you want to see which versions of MATLAB are installed, you can type
 
-```bash
+~~~bash
 module avail matlab
-```
+~~~
 
-```
+~~~
 [dndawso@node0033 ~]$ module avail matlab
 
 ------------------------------------------------- /software/AltModFiles --------------------------------------------------
@@ -170,42 +166,42 @@ If the avail list is too long consider trying:
 
 Use "module spider" to find all possible modules and extensions.
 Use "module keyword key1 key2 ..." to search for all possible modules matching any of the "keys".
-```
+~~~
 
 Let's say you want to use R. To load the module, you will need to specify its full name.To see which versions of R are available, type
 
-```
+~~~
 module avail r
-```
+~~~
 
 This will give you a list of all modules which have the letter "r" in them (`module avail` is not very sophisticated). Let's see what happens when you load the R 4.1.3 module:
 
-```
+~~~
 module load  r/4.1.3-gcc/9.5.0
 module list
-```
+~~~
 
-```
+~~~
 Currently Loaded Modules:
   1) tcl/8.6.12-gcc/9.5.0       4) openjdk/11.0.15_10-gcc/9.5.0   7) glib/2.72.1-gcc/9.5.0
   2) sqlite/3.38.5-gcc/9.5.0    5) libxml2/2.9.13-gcc/9.5.0       8) cairo/1.16.0-gcc/9.5.0
   3) openssl/1.1.1o-gcc/9.5.0   6) libpng/1.6.37-gcc/9.5.0        9) r/4.1.3-gcc/9.5.0
-```
+~~~
 
 R depends on other software to run, so we have configured the R module in a way that when you load it, it automatically loads other modules that it depends on.
 
 To start command-line R, you can simply type
-```
+~~~
 R
-```
+~~~
 
 To quit R, type
-```
+~~~
 quit()
-```
+~~~
 
 :::{admonition} Key Points
 - `qsub` sends a request for a compute node to the scheduler.
-- Software available on Palmetto is organized into modules according to version.
+- Software available on Picotte is organized into modules according to version.
 - Modules need to be loaded before use.
 :::

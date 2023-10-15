@@ -31,6 +31,7 @@ or another non-alphanumeric character you should put quotes around the name.
   the newly created directory. 
 
 ~~~bash
+cd ~/shell-lesson-data/exercise-data/writing
 mkdir thesis
 ls -F
 ~~~

@@ -11,6 +11,8 @@ Our client program passes our login credentials to this server, and if we are al
 to log in, the server runs a shell for us. Any commands that we enter into this shell 
 are executed not by our own machines, but by the login node.
 
+**DO NOT RUN WORK ON PICOTTE LOGIN (PICOTTE001)**
+
 ![Picotte Structure](../fig/intro_Picotte/picotte_schematic.png)
 
 Another special node is the *scheduler*; Picotte users can get from the
