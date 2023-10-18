@@ -76,7 +76,7 @@ Inside the `nano` text editor, type this (or paste from the Web browser):
 #SBATCH --partition=def-sm
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --ncpus-per-task=2
+#SBATCH --cpus-per-task=2
 #SBATCH --mem=1GB
 #SBATCH --time=0:30:00
 
