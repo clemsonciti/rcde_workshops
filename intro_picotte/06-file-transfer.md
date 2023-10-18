@@ -48,7 +48,7 @@ For example, here is the `scp` command to copy a file from the current directory
 to my home directory on Picotte (`lbn28` is my Picotte username):
 
 ~~~bash
-scp myfile.txt username@picottelogin.urcf.drexel.edu::/home/lbn28/
+scp myfile.txt username@picottelogin.urcf.drexel.edu:/home/lbn28/
 ~~~
 
 ... and to do the same in reverse, i.e., copy from Picotte to my local machine:

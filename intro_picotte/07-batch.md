@@ -57,10 +57,10 @@ To save it, press `Ctrl`+`O`, and hit enter. To exit the editor, press `Ctrl`+`X
 saved properly, print it on screen using the `cat` command:
 
 ~~~bash
-cat randmatrix.r
+cat randmatrix.R
 ~~~
 
-Now, let's create the PBS script:
+Now, let's create the Slurm script:
 
 ~~~bash
 nano randmatrix.sh

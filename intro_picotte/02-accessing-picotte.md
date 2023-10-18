@@ -2,7 +2,7 @@
 
 ## Remote login (SSH)
 
-To be able to run commands on Palmetto from your own machine, you will first 
+To be able to run commands on Picotte from your own machine, you will first 
 need to log in. We will login via **SSH** which will provide us a shell on 
 Picotte's login nodes.
 
