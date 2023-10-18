@@ -88,7 +88,7 @@ Let's go through the script, line by line. The first cryptic line says that it's
 executed by the Linux shell. The next line is empty, followed by five lines that are the instructions 
 to the scheduler (they start with `#SBATCH`):
 
-- `-=job-name` specifies the name of the job;
+- `--job-name` specifies the name of the job;
 - `--partition`: specify the resource partition this job is going to
 - `--account`: specify the **Slurm account** this job is going to
 - `--nodes=1` means we are asking for one compute node;
