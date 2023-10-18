@@ -110,7 +110,7 @@ Submitted batch job 9539504
 ~~~
 
 If the submission was successful, it will give you the job ID, as shown above. 
-We can monitor the job's progress with the `qstat` command. This is an example to list 
+We can monitor the job's progress with the `squeue` command. This is an example to list 
 all jobs that are currently executed by you:
 
 ~~~bash
@@ -123,7 +123,7 @@ all jobs that are currently executed by you:
 You see the job ID, your Picotte username, the name of the queue (more on that later), 
 the name of the job (`random_matrix`), and the node(s) the job is placed on. 
 
-Wait a little bit and do `scontrol` again (you can hit the `UP` arrow to show the previous command). 
+Wait a little bit and do `squeue` again (you can hit the `UP` arrow to show the previous command). 
 `TIME` should now be a bit longer. The script should take a few minutes or so to execute. 
 
 If everything went well, you should now see the file `slurm-9539504.out`. Let's print it on screen:
