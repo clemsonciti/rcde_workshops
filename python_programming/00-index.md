@@ -36,10 +36,15 @@ instructions to launch a Jupyter Server on Picotte's compute nodes.
 get the data. 
 
 ~~~bash
-wget https://github.com/swcarpentry/python-novice-inflammation/raw/main/episodes/data/python-novice-inflammation-data.zip
+cd
+mkdir swc-python
+cd swc-python
+wget https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip
+wget https://swcarpentry.github.io/python-novice-inflammation/files/code/python-novice-inflammation-code.zip
 unzip python-novice-inflammation-data.zip
-cd data
-ls -l 
+unzip python-novice-inflammation-code.zip
+ls data/
+ls code/ 
 ~~~
 
 ![Getting data for Picotte](../fig/python_programming/00-index/picotte-data.png)
@@ -86,3 +91,15 @@ file you just downloaded should appear.
 
 ```
 
+```{admonition} Data preparation
+
+- Create a directory on your Desktop called `swc-python`. Download the following files 
+into the `swc-python` directory: 
+  - [zipped data file](https://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip)
+  - [zipped code file](https://swcarpentry.github.io/python-novice-inflammation/files/code/python-novice-inflammation-code.zip)
+- Go to `swc-python` and unzip these two files. You should see the two directories: `data` and 
+`code` created. 
+
+```
+
+![Getting data for Desktops](../fig/python_programming/00-index/desktop-files.png)
