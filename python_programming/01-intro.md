@@ -1,10 +1,10 @@
 # Python Fundamentals
 
-```{important}
-**Objectives**
+```{admonition} Objectives
 - Assign values to variables.
+```
 
-**Questions**
+```{admonition} Questions
 - What basic data types can I work with in Python?
 - How can I create a new variable in Python?
 - How do I use a function?
@@ -25,8 +25,7 @@ Any Python interpreter can be used as a calculator:
 
 This is great but not very interesting.
 To do anything useful with data, we need to assign its value to a *variable*.
-In Python, we can [assign](../learners/reference.md#assign) a value to a
-[variable](../learners/reference.md#variable), using the equals sign `=`.
+In Python, we can assign a value to a variable, using the equals sign `=`.
 For example, we can track the weight of a patient who weighs 60 kilograms by
 assigning the value `60` to a variable `weight_kg`:
 
@@ -41,7 +40,7 @@ In Python, variable names:
 
 - can include letters, digits, and underscores
 - cannot start with a digit
-- are [case sensitive](../learners/reference.md#case-sensitive).
+- are case sensitive.
 
 This means that, for example:
 
@@ -90,7 +89,7 @@ patient_id = 'inflam_' + patient_id
 ## Built-in Python functions
 
 To carry out common tasks with data and variables in Python,
-the language provides us with several built-in [functions](../learners/reference.md#function).
+the language provides us with several built-in functions.
 To display information to the screen, we use the `print` function:
 
 ```python
@@ -121,8 +120,7 @@ print(patient_id, 'weight in kilograms:', weight_kg)
 inflam_001 weight in kilograms: 60.3
 ```
 
-We can also call a function inside of another
-[function call](../learners/reference.md#function-call).
+We can also call a function inside of another function call.
 For example, Python has a built-in function called `type` that tells you a value's data type:
 
 ```python
@@ -167,14 +165,12 @@ print('weight in kilograms is now:', weight_kg)
 weight in kilograms is now: 65.0
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Variables as Sticky Notes
 
 A variable in Python is analogous to a sticky note with a name written on it:
 assigning a value to a variable is like putting that sticky note on a particular value.
 
-![](fig/python-sticky-note-variables-01.svg){alt='Value of 65.0 with weight\_kg label stuck on it'}
+![Value of 65.0 with weight\_kg label stuck on it](../fig/python_programming/01-intro/python-sticky-note-variables-01.svg)
 
 Using this analogy, we can investigate how assigning a value to one variable
 does **not** change values of other, seemingly related, variables.  For
@@ -191,11 +187,11 @@ weight in kilograms: 65.0 and in pounds: 143.0
 ```
 
 Everything in a line of code following the '#' symbol is a
-[comment](../learners/reference.md#comment) that is ignored by Python.
+comment that is ignored by Python.
 Comments allow programmers to leave explanatory notes for other
 programmers or their future selves.
 
-![](fig/python-sticky-note-variables-02.svg){alt='Value of 65.0 with weight\_kg label stuck on it, and value of 143.0 with weight\_lb label stuck on it'}
+![Value of 65.0 with weight\_kg label stuck on it, and value of 143.0 with weight\_lb label stuck on it](../fig/python_programming/01-intro/python-sticky-note-variables-02.svg)
 
 Similar to above, the expression `2.2 * weight_kg` is evaluated to `143.0`,
 and then this value is assigned to the variable `weight_lb` (i.e. the sticky
@@ -213,17 +209,12 @@ print('weight in kilograms is now:', weight_kg, 'and weight in pounds is still:'
 weight in kilograms is now: 100.0 and weight in pounds is still: 143.0
 ```
 
-![](fig/python-sticky-note-variables-03.svg){alt='Value of 100.0 with label weight\_kg stuck on it, and value of 143.0 with label weight\_lbstuck on it'}
+![Value of 100.0 with label weight\_kg stuck on it, and value of 143.0 with label weight\_lbstuck on it](../fig/python_programming/01-intro/python-sticky-note-variables-03.svg)
 
 Since `weight_lb` doesn't "remember" where its value comes from,
 it is not updated when we change `weight_kg`.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Check Your Understanding
+## Challenge 1: Check Your Understanding
 
 What values do the variables `mass` and `age` have after each of the following statements?
 Test your answer by executing the lines.
@@ -235,24 +226,16 @@ mass = mass * 2.0
 age = age - 20
 ```
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
-## Solution
-
-```output
 `mass` holds a value of 47.5, `age` does not exist
 `mass` still holds a value of 47.5, `age` holds a value of 122
 `mass` now has a value of 95.0, `age`'s value is still 122
 `mass` still has a value of 95.0, `age` now holds 102
-```
 
-:::::::::::::::::::::::::
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Sorting Out References
+## Challenge 2: Sorting Out References
 
 Python allows you to assign multiple values to multiple variables in one line by separating
 the variables and values with commas. What does the following program print out?
@@ -263,21 +246,13 @@ third, fourth = second, first
 print(third, fourth)
 ```
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
-## Solution
-
-```output
 Hopper Grace
-```
 
-:::::::::::::::::::::::::
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Seeing Data Types
+## Challenge 3: Seeing Data Types
 
 What are the data types of the following variables?
 
@@ -287,37 +262,29 @@ apples = 5
 distance = 10.5
 ```
 
-:::::::::::::::  solution
+```{dropdown} Solution
 
-## Solution
-
-```python
+~~~python
 print(type(planet))
 print(type(apples))
 print(type(distance))
-```
+~~~
 
-```output
+~~~output
 <class 'str'>
 <class 'int'>
 <class 'float'>
+~~~
+
 ```
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
+```{admonition} Keypoints
 - Basic data types in Python include integers, strings, and floating-point numbers.
 - Use `variable = value` to assign a value to a variable in order to record it in memory.
 - Variables are created on demand whenever a value is assigned to them.
 - Use `print(something)` to display the value of `something`.
 - Use `# some kind of explanation` to add comments to programs.
 - Built-in functions are always available to use.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+```
 
 
