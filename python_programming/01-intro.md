@@ -1,17 +1,15 @@
 # Python Fundamentals
 
+```{important}
 **Objectives**
-::::::::::::::::::::::::::::::::::::::: objectives
 - Assign values to variables.
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 **Questions**
-:::::::::::::::::::::::::::::::::::::::: questions
 - What basic data types can I work with in Python?
 - How can I create a new variable in Python?
 - How do I use a function?
 - Can I change the value associated with a variable after I create it?
-::::::::::::::::::::::::::::::::::::::::::::::::::
+```
 
 ## Variables
 

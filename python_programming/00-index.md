@@ -42,7 +42,7 @@ cd data
 ls -l 
 ~~~
 
-![Password saving selection](../fig/python_programming/00-indexmobaxterm_3.png)
+![Getting data for Picotte](../fig/python_programming/00-index/picotte-data.png)
 
 
 ## Software Setup on PC (Laptop or Desktop)
