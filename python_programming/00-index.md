@@ -101,5 +101,28 @@ into the `swc-python` directory:
 `code` created. 
 
 ```
-
 ![Getting data for Desktops](../fig/python_programming/00-index/desktop-files.png)
+
+
+```{admonition} Launch Jupyter Notebook (Step 1)
+
+- Launch Anaconda Navigator
+  - On Windows, type Anaconda Navigator into the Search Bar and launch the app
+  - On Mac, type Anaconda Navigator into the search box (magnifying glass on 
+  top right corner) and launch the app. 
+- Launch JupyterLab 
+
+```
+
+![Launch Anaconda Navigator](../fig/python_programming/00-index/navigator.png)
+
+```{admonition} Launch Jupyter Notebook (Step 2)
+
+- By default, Jupyter Notebook will launch inside your Document folder (Windows), 
+or inside your home directory (MacOS). 
+- You can see the Desktop directory. 
+- Double-click to get into Desktop, then into `swc-python`. You should see the 
+`data` and `code` directores ready. 
+```
+
+![Launch Anaconda Navigator](../fig/python_programming/00-index/jupyter.png)
