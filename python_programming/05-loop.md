@@ -268,9 +268,6 @@ for number in range(1, 4):
 ```
 :::
 
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
 ## Challenge 2: Understanding the loops
 
 Given the following loop:
@@ -292,7 +289,6 @@ How many times is the body of the loop executed?
 The body of the loop is executed 6 times.
 :::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Challenge 3: Computing Powers With Loops
 Exponentiation is built into Python:
