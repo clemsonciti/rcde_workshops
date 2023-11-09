@@ -90,7 +90,7 @@ IndexError                                Traceback (most recent call last)
 IndexError: list index out of range
 ```
 
-Here's a better approach: a [for loop](../learners/reference.md#for-loop)
+Here's a better approach: a **for loop**
 
 ```python
 odds = [1, 3, 5, 7]
