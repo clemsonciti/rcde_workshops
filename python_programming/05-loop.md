@@ -369,7 +369,7 @@ for idx, coef in enumerate(coefs):
 ```
 :::
 
-:::{dropdown} Keypoints
+:::{admonition} Keypoints
 - Use `for variable in sequence` to process the elements of a sequence one at a time.
 - The body of a `for` loop must be indented.
 - Use `len(thing)` to determine the length of something that contains other values.
