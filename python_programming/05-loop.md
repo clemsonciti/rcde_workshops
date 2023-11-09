@@ -1,33 +1,21 @@
----
-title: Repeating Actions with Loops
-teaching: 30
-exercises: 0
----
+# Repeating Actions with Loops
 
-::::::::::::::::::::::::::::::::::::::: objectives
-
-**Objectives**
-
+:::{admonition} Objectives
 - Explain what a `for` loop does.
 - Correctly write `for` loops to repeat simple calculations.
 - Trace changes to a loop variable as the loop runs.
 - Trace changes to other variables as they are updated by a `for` loop.
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: questions
-
-**Questions**
-
+:::{admonition} Questions
 - How can I do the same operations on many different values?
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 In the episode about visualizing data,
 we wrote Python code that plots values of interest from our first
 inflammation dataset (`inflammation-01.csv`), which revealed some suspicious features in it.
 
-![](fig/03-loop_2_0.png){alt="Line graphs showing average, maximum and minimum inflammation across all patients over a 40-dayperiod."}
+![Line graphs showing average, maximum and minimum inflammation across all patients over a 40-dayperiod.](../fig/python_programming/05-loop/03-loop_2_0.png)
 
 We have a dozen data sets right now and potentially more on the way if Dr. Maverick
 can keep up their surprisingly fast clinical trial rate. We want to create plots for all of
@@ -135,7 +123,7 @@ for num in odds:
 11
 ```
 
-The improved version uses a [for loop](../learners/reference.md#for-loop)
+The improved version uses a **for loop**
 to repeat an operation --- in this case, printing --- once for each thing in a sequence.
 The general form of a loop is:
 
@@ -146,18 +134,16 @@ for variable in collection:
 
 Using the odds example above, the loop might look like this:
 
-![](fig/05-loops_image_num.png){alt="Loop variable 'num' being assigned the value of each element in the list odds in turn andthen being printed"}
+![Loop variable 'num' being assigned the value of each element in the list odds in turn andthen being printed](../fig/python_programming/05-loop/05-loops_image_num.png)
 
 where each number (`num`) in the variable `odds` is looped through and printed one number after
 another. The other numbers in the diagram denote which loop cycle the number was printed in (1
 being the first loop cycle, and 6 being the final loop cycle).
 
-We can call the [loop variable](../learners/reference.md#loop-variable) anything we like, but
+We can call the **loop variable** anything we like, but
 there must be a colon at the end of the line starting the loop, and we must indent anything we
 want to run inside the loop. Unlike many other languages, there is no command to signify the end
 of the loop body (e.g. `end for`); everything indented after the `for` statement belongs to the loop.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## What's in a name?
 
@@ -184,9 +170,6 @@ for banana in odds:
 
 It is a good idea to choose variable names that are meaningful, otherwise it would be more
 difficult to understand what the loop is doing.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Here's another loop that repeatedly updates a variable:
 
@@ -254,9 +237,7 @@ and much easier to read than a two-line loop;
 it will also give us the length of many other things that we haven't met yet,
 so we should always use it when we can.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## From 1 to N
+## Challenge 1: From 1 to N
 
 Python has a built-in function called `range` that generates a sequence of numbers. `range` can
 accept 1, 2, or 3 parameters.
@@ -280,22 +261,17 @@ write a loop that prints the first 3 natural numbers:
 3
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 for number in range(1, 4):
     print(number)
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Understanding the loops
+## Challenge 2: Understanding the loops
 
 Given the following loop:
 
@@ -312,20 +288,13 @@ How many times is the body of the loop executed?
 - 5 times
 - 6 times
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 The body of the loop is executed 6 times.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Computing Powers With Loops
-
+## Challenge 3: Computing Powers With Loops
 Exponentiation is built into Python:
 
 ```python
@@ -339,33 +308,21 @@ print(5 ** 3)
 Write a loop that calculates the same result as `5 ** 3` using
 multiplication (and without exponentiation).
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 result = 1
 for number in range(0, 3):
     result = result * 5
 print(result)
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Summing a list
-
+## Challenge 4: Summing a list
 Write a loop that calculates the sum of elements in a list
 by adding each element and printing the final value,
 so `[124, 402, 36]` prints 562
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 numbers = [124, 402, 36]
 summed = 0
@@ -373,14 +330,10 @@ for num in numbers:
     summed = summed + num
 print(summed)
 ```
+:::
 
-:::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Computing the Value of a Polynomial
+## Challenge 5: Computing the Value of a Polynomial
 
 The built-in function `enumerate` takes a sequence (e.g. a [list](04-lists.md)) and
 generates a new sequence of the same length. Each element of the new sequence is a pair composed
@@ -412,28 +365,18 @@ print(y)
 Write a loop using `enumerate(coefs)` which computes the value `y` of any
 polynomial, given `x` and `coefs`.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 y = 0
 for idx, coef in enumerate(coefs):
     y = y + coef * x**idx
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
+:::{dropdown} Keypoints
 - Use `for variable in sequence` to process the elements of a sequence one at a time.
 - The body of a `for` loop must be indented.
 - Use `len(thing)` to determine the length of something that contains other values.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

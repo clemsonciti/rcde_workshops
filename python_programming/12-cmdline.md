@@ -1,8 +1,4 @@
----
-title: Command-Line Programs
-teaching: 30
-exercises: 0
----
+# Command-Line Programs
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 

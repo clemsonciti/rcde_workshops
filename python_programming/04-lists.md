@@ -1,29 +1,17 @@
----
-title: Storing Multiple Values in Lists
-teaching: 30
-exercises: 15
----
+# Storing Multiple Values in Lists
 
-::::::::::::::::::::::::::::::::::::::: objectives
-
-**Objectives**
-
+:::{admonition} Objectives
 - Explain what a list is.
 - Create and index lists of simple values.
 - Change the values of individual elements
 - Append values to an existing list
 - Reorder and slice list elements
 - Create and manipulate nested lists
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: questions
-
-**Questions**
-
+:::{admonition} Questions
 - How can I store many values together?
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 In the previous episode, we analyzed a single file of clinical trial inflammation data. However,
 after finding some peculiar and potentially suspicious trends in the trial data we ask
@@ -108,8 +96,6 @@ TypeError: 'str' object does not support item assignment
 
 does not.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Ch-Ch-Ch-Ch-Changes
 
 Data which can be modified in place is called [mutable](../learners/reference.md#mutable),
@@ -160,11 +146,6 @@ Because of pitfalls like this, code which modifies data in place can be more dif
 understand. However, it is often far more efficient to modify a large data structure in place
 than to create a modified copy for every small change. You should consider both of these aspects
 when writing your code.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Nested Lists
 
@@ -228,10 +209,6 @@ print(veg[1][2])
 'peppers'
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Heterogeneous Lists
 
 Lists in Python can contain elements of different types. Example:
@@ -239,8 +216,6 @@ Lists in Python can contain elements of different types. Example:
 ```python
 sample_ages = [10, 12.5, 'Unknown']
 ```
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 There are many ways to change the contents of lists besides assigning new values to
 individual elements:
@@ -338,9 +313,7 @@ autosomes: ['2', '3', '4']
 last: 4
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Slicing From the End
+## Challenge 1: Slicing From the End
 
 Use slicing to access only the last four characters of a string or entries of a list.
 
@@ -365,24 +338,16 @@ If not, try to change your approach to make it more robust.
 
 Hint: Remember that indices can be negative as well as positive
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 Use negative indices to count elements from the end of a container (such as list or string):
 
 ```python
 string_for_slicing[-4:]
 list_for_slicing[-4:]
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Non-Continuous Slices
+## Challenge 2: Non-Continuous Slices
 
 So far we've seen how to use slicing to take single blocks
 of successive entries from a sequence.
@@ -436,10 +401,7 @@ of the string)?
 I notpssgre ntesae
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 To obtain every other character you need to provide a slice with the step
 size of 2:
 
@@ -454,10 +416,7 @@ element:
 ```python
 beatles[::2]
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 If you want to take a slice from the beginning of a sequence, you can omit the first index in the
 range:
@@ -496,7 +455,7 @@ Omitting ending index: ['sep', 'oct', 'nov', 'dec']
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Overloading
+## Challenge 3: Overloading
 
 `+` usually means addition, but when used on strings or lists, it means "concatenate".
 Given that, what do you think the multiplication operator `*` does on lists?
@@ -517,10 +476,7 @@ The technical term for this is *operator overloading*:
 a single operator, like `+` or `*`,
 can do different things depending on what it's applied to.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 The multiplication operator `*` used on a list replicates elements of the list and concatenates
 them together:
 
@@ -533,21 +489,14 @@ It's equivalent to:
 ```python
 counts + counts
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
+:::{admonition} Keypoints
 - `[value1, value2, value3, ...]` creates a list.
 - Lists can contain any Python object, including lists (i.e., list of lists).
 - Lists are indexed and sliced with square brackets (e.g., `list[0]` and `list[2:9]`), in the same way as strings and arrays.
 - Lists are mutable (i.e., their values can be changed in place).
 - Strings are immutable (i.e., the characters in them cannot be changed).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

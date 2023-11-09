@@ -1,26 +1,14 @@
----
-title: Visualizing Tabular Data
-teaching: 30
-exercises: 20
----
+# Visualizing Tabular Data
 
-::::::::::::::::::::::::::::::::::::::: objectives
-
-**Objectives**
-
+:::{admonition} Objectives
 - Plot simple graphs from data.
 - Plot multiple graphs in a single figure.
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: questions
-
-**Questions**
-
+:::{admonition} Questions
 - How can I visualize tabular data in Python?
 - How can I group several plots together?
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 ## Visualizing data
 
@@ -29,12 +17,9 @@ and the best way to develop insight is often to visualize data.  Visualization d
 lecture of its own, but we can explore a few features of Python's `matplotlib` library here.  While
 there is no official plotting library, `matplotlib` is the *de facto* standard.  First, we will
 import the `pyplot` module from `matplotlib` and use two of its functions to create and display a
-[heat map](../learners/reference.md#heat-map) of our data:
+**heat map** of our data:
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
-
-## Episode Prerequisites
-
+:::{admonition} Episode Prerequisites
 If you are continuing in the same notebook from the previous episode, you already
 have a `data` variable and have imported `numpy`.  If you are starting a new
 notebook at this point, you need the following two lines:
@@ -43,8 +28,8 @@ notebook at this point, you need the following two lines:
 import numpy
 data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
 ```
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
 import matplotlib.pyplot
@@ -52,7 +37,7 @@ image = matplotlib.pyplot.imshow(data)
 matplotlib.pyplot.show()
 ```
 
-![](fig/inflammation-01-imshow.svg){alt='Heat map representing the data variable. Each cell is colored by value along a color gradientfrom blue to yellow.'}
+![Heat map representing the data variable. Each cell is colored by value along a color gradientfrom blue to yellow.](../fig/python_programming/03-matplotlib/inflammation-01-imshow.svg)
 
 Each row in the heat map corresponds to a patient in the clinical trial dataset, and each column
 corresponds to a day in the dataset.  Blue pixels in this heat map represent low values, while
@@ -74,7 +59,7 @@ ave_plot = matplotlib.pyplot.plot(ave_inflammation)
 matplotlib.pyplot.show()
 ```
 
-![](fig/inflammation-01-average.svg){alt='A line graph showing the average inflammation across all patients over a 40-day period.'}
+![A line graph showing the average inflammation across all patients over a 40-day period.](../fig/python_programming/03-matplotlib/inflammation-01-average.svg)
 
 Here, we have put the average inflammation per day across all patients in the variable
 `ave_inflammation`, then asked `matplotlib.pyplot` to create and display a line graph of those
@@ -87,14 +72,14 @@ max_plot = matplotlib.pyplot.plot(numpy.amax(data, axis=0))
 matplotlib.pyplot.show()
 ```
 
-![](fig/inflammation-01-maximum.svg){alt='A line graph showing the maximum inflammation across all patients over a 40-day period.'}
+![A line graph showing the maximum inflammation across all patients over a 40-day period.](../fig/python_programming/03-matplotlib/inflammation-01-maximum.svg)
 
 ```python
 min_plot = matplotlib.pyplot.plot(numpy.amin(data, axis=0))
 matplotlib.pyplot.show()
 ```
 
-![](fig/inflammation-01-minimum.svg){alt='A line graph showing the minimum inflammation across all patients over a 40-day period.'}
+![A line graph showing the minimum inflammation across all patients over a 40-day period.](../fig/python_programming/03-matplotlib/inflammation-01-minimum.svg)
 
 The maximum value rises and falls linearly, while the minimum seems to be a step function.
 Neither trend seems particularly likely, so either there's a mistake in our calculations or
@@ -107,7 +92,7 @@ You can group similar plots in a single figure using subplots.
 This script below uses a number of new commands. The function `matplotlib.pyplot.figure()`
 creates a space into which we will place all of our plots. The parameter `figsize`
 tells Python how big to make this space. Each subplot is placed into the figure using
-its `add_subplot` [method](../learners/reference.md#method). The `add_subplot` method takes
+its `add_subplot` **method**. The `add_subplot` method takes
 3 parameters. The first denotes how many total rows of subplots there are, the second parameter
 refers to the total number of subplot columns, and the final parameter denotes which subplot
 your variable is referencing (left-to-right, top-to-bottom). Each subplot is stored in a
@@ -142,9 +127,9 @@ matplotlib.pyplot.savefig('inflammation.png')
 matplotlib.pyplot.show()
 ```
 
-![](fig/inflammation-01-group-plot.svg){alt='Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period.'}
+![Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period.](../fig/python_programming/03-matplotlib/inflammation-01-group-plot.svg)
 
-The [call](../learners/reference.md#function-call) to `loadtxt` reads our data,
+The **call** to `loadtxt` reads our data,
 and the rest of the program tells the plotting library
 how large we want the figure to be,
 that we're creating three subplots,
@@ -160,13 +145,10 @@ Matplotlib from the file name ending we specify; here PNG from
 'inflammation.png'. Matplotlib supports many different graphics
 formats, including SVG, PDF, and JPEG.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Importing libraries with shortcuts
 
 In this lesson we use the `import matplotlib.pyplot`
-[syntax](../learners/reference.md#syntax)
-to import the `pyplot` module of `matplotlib`. However, shortcuts such as
+**syntax** to import the `pyplot` module of `matplotlib`. However, shortcuts such as
 `import matplotlib.pyplot as plt` are frequently used.
 Importing `pyplot` this way means that after the initial import, rather than writing
 `matplotlib.pyplot.plot(...)`, you can now write `plt.plot(...)`.
@@ -184,23 +166,14 @@ you must use `plt.plot(...)` instead. Because of this, when working with other p
 is important you agree on how libraries are imported.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Plot Scaling
+## Challenge 1: Plot Scaling
 
 Why do all of our plots stop just short of the upper end of our graph?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 Because matplotlib normally sets x and y axes limits to the min and max of our data
 (depending on data range)
-
-
-:::::::::::::::::::::::::
+:::
 
 If we want to change this, we can use the `set_ylim(min, max)` method of each 'axes',
 for example:
@@ -212,23 +185,16 @@ axes3.set_ylim(0, 6)
 Update your plotting code to automatically set a more appropriate scale.
 (Hint: you can make use of the `max` and `min` methods to help.)
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 # One method
 axes3.set_ylabel('min')
 axes3.plot(numpy.amin(data, axis=0))
 axes3.set_ylim(0, 6)
 ```
+:::
 
-:::::::::::::::::::::::::
-
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 # A more automated approach
 min_data = numpy.amin(data, axis=0)
@@ -236,23 +202,16 @@ axes3.set_ylabel('min')
 axes3.plot(min_data)
 axes3.set_ylim(numpy.amin(min_data), numpy.amax(min_data) * 1.1)
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Drawing Straight Lines
+## Challenge 2: Drawing Straight Lines
 
 In the center and right subplots above, we expect all lines to look like step functions because
 non-integer value are not realistic for the minimum and maximum values. However, you can see
 that the lines are not always vertical or horizontal, and in particular the step function
 in the subplot on the right looks slanted. Why is this?
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 Because matplotlib interpolates (draws a straight line) between the points.
 One way to do avoid this is to use the Matplotlib `drawstyle` option:
@@ -283,45 +242,28 @@ fig.tight_layout()
 matplotlib.pyplot.show()
 ```
 
-![](fig/inflammation-01-line-styles.svg){alt='Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period.'}
+![Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period.](../fig/python_programming/03-matplotlib/inflammation-01-line-styles.svg)
 
+:::
 
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Make Your Own Plot
+## Challenge 3:  Make Your Own Plot
 
 Create a plot showing the standard deviation (`numpy.std`)
 of the inflammation data for each day across all patients.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 std_plot = matplotlib.pyplot.plot(numpy.std(data, axis=0))
 matplotlib.pyplot.show()
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Moving Plots Around
+## Challenge 4: Moving Plots Around
 
 Modify the program to display the three plots on top of one another
 instead of side by side.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 import numpy
 import matplotlib.pyplot
@@ -349,17 +291,10 @@ fig.tight_layout()
 
 matplotlib.pyplot.show()
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
+```{admonition} Keypoints
 - Use the `pyplot` module from the `matplotlib` library for creating simple visualizations.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+```
 
 

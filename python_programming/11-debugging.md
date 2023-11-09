@@ -1,8 +1,4 @@
----
-title: Debugging
-teaching: 30
-exercises: 20
----
+# Debugging
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 

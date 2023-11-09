@@ -125,8 +125,6 @@ These data correspond to arthritis patients' inflammation.
 The rows are the individual patients, and the columns
 are their daily inflammation measurements.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Data Type
 
 A Numpy array contains one or more elements
@@ -147,8 +145,6 @@ float64
 This tells us that the NumPy array's elements are
 **floating-point numbers**.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 With the following command, we can see the array's **shape**:
 
@@ -210,8 +206,6 @@ the index is how many steps we have to take from the start to get the item we wa
 
 ![](fig/python-zero-index.svg){alt="'data' is a 3 by 3 numpy array containing row 0: \['A', 'B', 'C'\], row 1: \['D', 'E', 'F'\], androw 2: \['G', 'H', 'I'\]. Starting in the upper left hand corner, data\[0, 0\] = 'A', data\[0, 1\] = 'B',data\[0, 2\] = 'C', data\[1, 0\] = 'D', data\[1, 1\] = 'E', data\[1, 2\] = 'F', data\[2, 0\] = 'G',data\[2, 1\] = 'H', and data\[2, 2\] = 'I', in the bottom right hand corner."}
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## In the Corner
 
 What may also surprise you is that when Python displays an array,
@@ -222,8 +216,6 @@ but different from the Cartesian coordinates.
 The indices are (row, column) instead of (column, row) for the same reason,
 which can be confusing when plotting data.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Slicing data
 
@@ -299,8 +291,6 @@ print(numpy.mean(data))
 
 `mean` is a **function** that takes an array as an **argument**.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Not All Functions Have Input
 
 Generally, a function uses inputs to produce outputs.
@@ -320,9 +310,6 @@ Sat Mar 26 13:07:33 2016
 For functions that don't take in any arguments,
 we still need parentheses (`()`)
 to tell Python to go and do something for us.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Let's use three other NumPy functions to get some descriptive values about the dataset.
 We'll also use multiple assignment,
@@ -345,14 +332,12 @@ minimum inflammation: 0.0
 standard deviation: 4.61383319712
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Mystery Functions in IPython
 
 How did we know what functions NumPy has and how to use them?
 If you are working in IPython or in a Jupyter Notebook, there is an easy way to find out.
 If you type the name of something followed by a dot, then you can use
-[tab completion](../learners/reference.md#tab-completion)
+**tab completion**
 (e.g. type `numpy.` and then press <kbd>Tab</kbd>)
 to see a list of all functions and attributes that you can use. After selecting one, you
 can also add a question mark (e.g. `numpy.cumprod?`), and IPython will return an
@@ -361,9 +346,6 @@ Similarly, if you are using the "plain vanilla" Python interpreter, you can type
 and press the <kbd>Tab</kbd> key twice for a listing of what is available. You can then use the
 `help()` function to see an explanation of the function you're interested in,
 for example: `help(numpy.cumprod)`.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 When analyzing data, though,
 we often want to look at variations in statistical values,
@@ -397,7 +379,7 @@ next diagram on the left) or the average for each day (as in the
 diagram on the right)? As the diagram below shows, we want to perform the
 operation across an axis:
 
-![](fig/python-operations-across-axes.png){alt="Per-patient maximum inflammation is computed row-wise across all columns usingnumpy.amax(data, axis=1). Per-day average inflammation is computed column-wise across all rows usingnumpy.mean(data, axis=0)."}
+![Per-patient maximum inflammation is computed row-wise across all columns usingnumpy.amax(data, axis=1). Per-day average inflammation is computed column-wise across all rows usingnumpy.mean(data, axis=0).](../fig/python_programming/01-intro/python-operations-across-axes.png)
 
 To support this functionality,
 most array functions allow us to specify the axis we want to work on.
@@ -449,11 +431,9 @@ print(numpy.mean(data, axis=1))
 
 which is the average inflammation per patient across all days.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+## Challenge 1: Slicing Strings
 
-## Slicing Strings
-
-A section of an array is called a [slice](../learners/reference.md#slice).
+A section of an array is called a **slice**.
 We can take slices of character strings as well:
 
 ```python
@@ -471,53 +451,37 @@ What is the value of `element[:4]`?
 What about `element[4:]`?
 Or `element[:]`?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```output
 oxyg
 en
 oxygen
 ```
-
-:::::::::::::::::::::::::
+:::
 
 What is `element[-1]`?
 What is `element[-2]`?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```output
 n
 e
 ```
-
-:::::::::::::::::::::::::
+:::
 
 Given those answers,
 explain what `element[1:-1]` does.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 Creates a substring from index 1 up to (not including) the final index,
 effectively removing the first and last letters from 'oxygen'
-
-
-:::::::::::::::::::::::::
+:::
 
 How can we rewrite the slice for getting the last three characters of `element`,
 so that it works even if we assign a different string to `element`?
 Test your solution with the following strings: `carpentry`, `clone`, `hi`.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 element = 'oxygen'
 print('last three characters:', element[-3:])
@@ -535,38 +499,27 @@ last three characters: try
 last three characters: one
 last three characters: hi
 ```
+:::
 
-:::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Thin Slices
+## Challenge 2: Thin Slices
 
 The expression `element[3:3]` produces an
-[empty string](../learners/reference.md#empty-string),
+**empty string**,
 i.e., a string that contains no characters.
 If `data` holds our array of patient data,
 what does `data[3:3, 4:4]` produce?
 What about `data[3:3, :]`?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```output
 array([], shape=(0, 0), dtype=float64)
 array([], shape=(0, 40), dtype=float64)
 ```
+:::
 
-:::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Stacking Arrays
+## Challenge 3: Stacking Arrays
 
 Arrays can be concatenated and stacked on top of one another,
 using NumPy's `vstack` and `hstack` functions for vertical and horizontal stacking, respectively.
@@ -609,10 +562,7 @@ Write some additional code that slices the first and last columns of `A`,
 and stacks them into a 3x2 array.
 Make sure to `print` the results to verify your solution.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 A 'gotcha' with array indexing is that singleton dimensions
 are dropped by default. That means `A[:, 0]` is a one dimensional
 array, which won't stack as desired. To preserve singleton dimensions,
@@ -632,12 +582,9 @@ D =
  [4 6]
  [7 9]]
 ```
+:::
 
-:::::::::::::::::::::::::
-
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 An alternative way to achieve the same result is to use Numpy's
 delete function to remove the second column of A. If you're not
@@ -655,14 +602,10 @@ D =
  [4 6]
  [7 9]]
 ```
+:::
 
-:::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Change In Inflammation
+## Challenge 4: Change In Inflammation
 
 The patient data is *longitudinal* in the sense that each row represents a
 series of observations relating to one individual.  This means that
@@ -705,9 +648,7 @@ When calling `numpy.diff` with a multi-dimensional array, an `axis` argument may
 be passed to the function to specify which axis to process. When applying
 `numpy.diff` to our 2D inflammation array `data`, which axis would we specify?
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 Since the row axis (0) is patients, it does not make sense to get the
 difference between two arbitrary patients. The column axis (1) is in
@@ -717,29 +658,21 @@ concept.
 ```python
 numpy.diff(data, axis=1)
 ```
-
-:::::::::::::::::::::::::
+:::
 
 If the shape of an individual data file is `(60, 40)` (60 rows and 40
 columns), what would the shape of the array be after you run the `diff()`
 function and why?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 The shape will be `(60, 39)` because there is one fewer difference between
 columns than there are columns in the data.
-
-
-:::::::::::::::::::::::::
+:::
 
 How would you find the largest change in inflammation for each patient? Does
 it matter if the change in inflammation is an increase or a decrease?
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 By using the `numpy.amax()` function after you apply the `numpy.diff()`
 function, you will get the largest difference between days.
@@ -777,15 +710,9 @@ array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
         13.,  10.,   9.,  10.,  10.,   9.,   9.,  13.,  10.,   9.,  10.,
         11.,  13.,  10.,  10.,  12.])
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
+```{admonition} Keypoints
 - Import a library into a program using `import libraryname`.
 - Use the `numpy` library to work with arrays in Python.
 - The expression `array.shape` gives the shape of an array.
@@ -795,7 +722,6 @@ array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
 - Use `# some kind of explanation` to add comments to programs.
 - Use `numpy.mean(array)`, `numpy.amax(array)`, and `numpy.amin(array)` to calculate simple statistics.
 - Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+```
 
 

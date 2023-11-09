@@ -1,8 +1,4 @@
----
-title: Errors and Exceptions
-teaching: 30
-exercises: 0
----
+# Errors and Exceptions
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 

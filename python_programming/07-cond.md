@@ -1,8 +1,4 @@
----
-title: Making Choices
-teaching: 30
-exercises: 0
----
+# Making Choices
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
