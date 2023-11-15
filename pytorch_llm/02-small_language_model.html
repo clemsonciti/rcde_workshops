@@ -1,0 +1,1567 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Small Language Models: an introduction to autoregressive language modeling &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pytorch_llm/02-small_language_model';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Attention is all you need" href="03-attention_is_all_you_need.html" />
+    <link rel="prev" title="Preparing data for LLM training" href="01-data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Introduction to Python IV</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-high-dimensional-data.html">High Dimensional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/06-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-data.html">Preparing data for LLM training</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Small Language Models: an introduction to autoregressive language modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-attention_is_all_you_need.html">Attention is all you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-other_topics.html">Other LLM Topics</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pytorch_llm/02-small_language_model.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Small Language Models: an introduction to autoregressive language modeling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-language-modeling-task">The language modeling task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-language-modeling">What is language modeling?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-modeling-as-probabilistic-modeling">Language modeling as probabilistic modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-modeling">Autoregressive language modeling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-small-language-model">~~Large~~ Small Language Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-non-trivial-model">The simplest, non-trivial model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-model-from-data">Estimating the model from data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-frequency-tables">Estimating with frequency tables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-gradient-descent">Estimating with gradient descent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enough-talk">Enough talk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-our-pubmed-data">Load our PubMed data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-our-small-language-model">Build our small language model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-text-for-untrained-model">Generate text for untrained model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-to-train-the-model">Time to train the model!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up">Cleaning up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-markov-model">Low rank Markov Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="small-language-models-an-introduction-to-autoregressive-language-modeling">
+<h1>Small Language Models: an introduction to autoregressive language modeling<a class="headerlink" href="#small-language-models-an-introduction-to-autoregressive-language-modeling" title="Permalink to this heading">#</a></h1>
+<p>This notebook was partly inspired by this blog post on character-level bigram models: <a class="reference external" href="https://medium.com/&#64;fareedkhandev/create-gpt-from-scratch-using-python-part-1-bd89ccf6206a">https://medium.com/&#64;fareedkhandev/create-gpt-from-scratch-using-python-part-1-bd89ccf6206a</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKENIZERS_PARALLELISM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-language-modeling-task">
+<h2>The language modeling task<a class="headerlink" href="#the-language-modeling-task" title="Permalink to this heading">#</a></h2>
+<section id="what-is-language-modeling">
+<h3>What is language modeling?<a class="headerlink" href="#what-is-language-modeling" title="Permalink to this heading">#</a></h3>
+<p>In this notebook, we take a first look at the language modeling task. “Language Modeling” has two parts:</p>
+<ul class="simple">
+<li><p>“Language” is what it sounds like. For our purposes, we will always <em>represent</em> language with text. We will also talk about</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tokens</span></code>: pieces of text. These could be words, word chunks, or individual characters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">documents</span></code>: a sequence of tokens about something. These could be individual tweets, legal contracts, love letters, emails, or journal abstracts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>: a collection of document. We will be using a PubMed dataset containing 50 thousand abstracts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vocabulary</span></code>: the set of all unique tokens in our dataset.</p></li>
+</ul>
+</li>
+<li><p>“Modeling” refers to creating a mathematical structure that, in some way, corresponds to observed data. In this case, the data is language, so the model should quantiatively capture something about the nature of language. We need to make this more concrete.</p></li>
+</ul>
+</section>
+<section id="language-modeling-as-probabilistic-modeling">
+<h3>Language modeling as probabilistic modeling<a class="headerlink" href="#language-modeling-as-probabilistic-modeling" title="Permalink to this heading">#</a></h3>
+<p>Let’s try to make the idea of mathematically modeling language more concrete. We will develop models for the vector of tokens that appear in a document. We denote this as
+$<span class="math notranslate nohighlight">\(
+p(\langle w_i\rangle_{i=1}^{L})
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>w_i<span class="math notranslate nohighlight">\( is the token at position \)</span>i<span class="math notranslate nohighlight">\( in a document and \)</span>L$ is the number of words in the document. The angle bracket with limits notation here denotes the vector of all tokens specified by the limits.</p>
+<p>If we knew this joint distribution, we could sample new documents <span class="math notranslate nohighlight">\(d\)</span>:
+$<span class="math notranslate nohighlight">\(
+d \sim p(\langle w_i\rangle_{i=1}^{L})
+\)</span><span class="math notranslate nohighlight">\(
+This is called _language generation_ because \)</span>d<span class="math notranslate nohighlight">\( is not in the dataset that we used to learn \)</span>p(\langle w_i\rangle_{i=1}^{L})$, but it “looks like” it is from that dataset.</p>
+</section>
+<section id="autoregressive-language-modeling">
+<h3>Autoregressive language modeling<a class="headerlink" href="#autoregressive-language-modeling" title="Permalink to this heading">#</a></h3>
+<p>Let’s make a simplifying assumption. Let’s assume that the probability for token <span class="math notranslate nohighlight">\(i\)</span> only depends on the previous tokens as shown in this figure (Notice: no arrows going from right to left.)</p>
+<img src="figs/arlm.png" alt="autoregressive lm" width="800"/>
+<p>Mathematically, this can be expressed as:
+$<span class="math notranslate nohighlight">\(
+p(w_i | \langle w_j\rangle_{j\neq i}) = p(w_i | \langle w_j\rangle_{j=1}^{i-1})
+\)</span><span class="math notranslate nohighlight">\(
+This gives us a natural way to sample documents because it implies that 
+\)</span><span class="math notranslate nohighlight">\(
+p(\langle w_i\rangle_{i=1}^{L}) = p(w_1)\prod_{j=2}^L p(w_j | \langle w_i\rangle_{i=1}^{j-1})
+\)</span>$
+So, to generate a new document, we can</p>
+<ol class="arabic simple">
+<li><p>start with a prompt token or token sequence</p></li>
+<li><p>sample the next token conditioned on the prompt and append it to the prompt</p></li>
+<li><p>sample the next token conditioned on the appended prompt and append it to the appended prompt</p></li>
+<li><p>and so on….</p></li>
+</ol>
+<p>This is how ChatGPT works! This approach goes by the names <code class="docutils literal notranslate"><span class="pre">autoregressive</span> <span class="pre">language</span> <span class="pre">modeling</span></code> or <code class="docutils literal notranslate"><span class="pre">causal</span> <span class="pre">language</span> <span class="pre">modeling</span></code>.</p>
+<p>This is not how all language modeling works. BERT, for instance, uses masked language modeling, where random tokens in a sequence are sampled by considering the tokens at all other positions. Word2Vec models tokens using a neighborhood of nearby tokens.</p>
+<p>Also, we still haven’t said anything about how you actually write down the functional form of <span class="math notranslate nohighlight">\(p(w_i | \langle w_j\rangle_{j=1}^{i-1})\)</span>. There are many possibly architectures (an incomplete list in approximate historical ordering):</p>
+<ul class="simple">
+<li><p>Markov model</p></li>
+<li><p>1D CNN</p></li>
+<li><p>RNN</p></li>
+<li><p>LSTM/GRU</p></li>
+<li><p>Transformer</p></li>
+</ul>
+<p>We will spend the next notebook digging deep into the last option. Before we do, though, let’s try to get a better understanding of language models by looking closely at a simple Markov model.</p>
+</section>
+</section>
+<section id="large-small-language-model">
+<h2>~~Large~~ Small Language Model<a class="headerlink" href="#large-small-language-model" title="Permalink to this heading">#</a></h2>
+<section id="the-simplest-non-trivial-model">
+<h3>The simplest, non-trivial model<a class="headerlink" href="#the-simplest-non-trivial-model" title="Permalink to this heading">#</a></h3>
+<p>Before we move on to attention, transformers, and LLMs, let’s first write down and fit a very simple language model for the PubMed dataset. This will provide a baseline for more sophisticated techniques and will give us a better understanding of how autoregressive language modeling works. Most of the lessons learned will transfer directly to the LLM case.</p>
+<p>The simplest, non-trivial model comes from assuming that the distribution for token <span class="math notranslate nohighlight">\(i\)</span> only depends on token <span class="math notranslate nohighlight">\(i-1\)</span>. Graphically:</p>
+<img src="figs/arlm_markov.png" alt="autoregressive markov chain" width="800"/>
+<p>With this Markov assumption, the conditional distribution for token <span class="math notranslate nohighlight">\(i\)</span> simplifies to
+$<span class="math notranslate nohighlight">\(
+p(w_i | \langle w_j\rangle_{j=1}^{i-1}) = p(w_i | w_{i-1})
+\)</span>$</p>
+<p>The probability distribution for the entire sequence is then
+$<span class="math notranslate nohighlight">\(
+p(\langle w_i\rangle_{i=1}^{L}) = p(w_{1})\prod_{i=2}^{L}p(w_{i}|{w}_{i-1})
+\)</span>$
+allowing us to generate sequences as described above.</p>
+<p><em>In what ways might this be an inadequate model for human language?</em></p>
+</section>
+<section id="estimating-the-model-from-data">
+<h3>Estimating the model from data<a class="headerlink" href="#estimating-the-model-from-data" title="Permalink to this heading">#</a></h3>
+<p>How can we estimate this model mathematically?</p>
+<p>We start by observing that the model only depends on a set of probabilities describing the liklihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,
+$<span class="math notranslate nohighlight">\(
+T_{\alpha\beta} = p(w_i=\alpha | w_{i-1}=\beta)\\
+\)</span><span class="math notranslate nohighlight">\(
+where the matrix elements satisfy
+\)</span><span class="math notranslate nohighlight">\(
+T_{\alpha\beta} \geq 0 \\ 
+\sum_\alpha T_{\alpha\beta} =1
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>\beta<span class="math notranslate nohighlight">\( are two tokens in our vocabulary. If the vocab size is \)</span>V<span class="math notranslate nohighlight">\(, the estimation task comes down to inferring the \)</span>V\times V$ transition matrix elements describing the probability of going from any word to any other word.</p>
+<section id="estimating-with-frequency-tables">
+<h4>Estimating with frequency tables<a class="headerlink" href="#estimating-with-frequency-tables" title="Permalink to this heading">#</a></h4>
+<p>One straightforward way to estimate these probabilities would be to list all of the neighbor pairs of tokens in our dataset and for each conditioning token <span class="math notranslate nohighlight">\(\beta\)</span> look at the share into each choice of <span class="math notranslate nohighlight">\(\alpha\)</span>. This can be made to work, though we would have to deal with the fact that many token pairs will never appear.</p>
+</section>
+<section id="estimating-with-gradient-descent">
+<h4>Estimating with gradient descent<a class="headerlink" href="#estimating-with-gradient-descent" title="Permalink to this heading">#</a></h4>
+<p>In the code below, we will take a different approach. We will estimate the probabilities using a maximum liklihood based approach with gradient descent. For the Markov model, the two approaches are formally equivalent up to how they deal with the missing pairs. However, the gradient descent approach will generalize to more complicated models including transformer-based LLMs!</p>
+</section>
+</section>
+</section>
+<section id="enough-talk">
+<h2>Enough talk<a class="headerlink" href="#enough-talk" title="Permalink to this heading">#</a></h2>
+<section id="load-our-pubmed-data">
+<h3>Load our PubMed data<a class="headerlink" href="#load-our-pubmed-data" title="Permalink to this heading">#</a></h3>
+<p>Make sure you have the <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/dataset.py">dataset.py</a> in your working directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">clemsonciti</span><span class="o">/</span><span class="n">rcde_workshops</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">pytorch_llm</span><span class="o">/</span><span class="n">dataset</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the dataset.py file</span>
+<span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">PubMedDataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span><span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "46e3ae181d494ac68484030a7b723e5b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl_train</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;input_ids&#39;: tensor([[ 101, 1103, 2853,  ...,    0,    0,    0],
+        [ 101, 3582,  131,  ..., 8131,  119,  102],
+        [ 101, 3582,  131,  ...,    0,    0,    0]]), &#39;token_type_ids&#39;: tensor([[0, 0, 0,  ..., 0, 0, 0],
+        [0, 0, 0,  ..., 0, 0, 0],
+        [0, 0, 0,  ..., 0, 0, 0]]), &#39;attention_mask&#39;: tensor([[1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 1, 1, 1],
+        [1, 1, 1,  ..., 0, 0, 0]])}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-our-small-language-model">
+<h3>Build our small language model<a class="headerlink" href="#build-our-small-language-model" title="Permalink to this heading">#</a></h3>
+<p>For the Markov model, we need to know the size of our vocabulary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vocab_size</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span>
+<span class="n">vocab_size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28996
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yikes, that’s a big vocabulary! The size of the transition matrix will be <code class="docutils literal notranslate"><span class="pre">vocab_size</span> <span class="pre">*</span> <span class="pre">vocab_size</span></code>. Let’s estimate how much memory that would take to store:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># memory needed to store the transition matrix (in gigabytes)</span>
+<span class="n">vocab_size</span> <span class="o">*</span> <span class="n">vocab_size</span> <span class="o">*</span> <span class="mi">32</span> <span class="o">/</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">1e9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.363072064
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s huge, but let’s just try it anyway. Let’s write down our pytorch model. Just a little notation first:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span>: The batch size in batch gradient descent</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(L_\mathrm{batch}\)</span>: The document sequence length or the sequence length of the batch, respectively.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span>: the size of our vocab</p></li>
+</ul>
+<p>Without further ado, let’s write down the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="k">class</span> <span class="nc">MarkovChain</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># the transition matrix logits</span>
+        <span class="c1"># nn.Embedding is just a matrix. Each input token will have a learnable</span>
+        <span class="c1"># parameter vector with one element for each output token.</span>
+        <span class="c1"># the transition matrix elements are computed by taking the softmax along the output dimension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+        
+        <span class="c1"># let&#39;s start with the assumption that most transitions are very improbable</span>
+        <span class="c1"># large negative logit -&gt; low probability</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">-=</span> <span class="mf">10.0</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        <span class="c1"># logits.shape == (N, L_batch, V). Remember (batch size, sequence length, vocab size).</span>
+
+        <span class="k">return</span> <span class="n">logits</span> <span class="c1"># turns out we never actually need to compute the softmax for MLE</span>
+    
+    <span class="k">def</span> <span class="nf">numpars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try it on some actual data to make sure it works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">MarkovChain</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trainable params (millions):&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">numpars</span><span class="p">()</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable params (millions): 840.768016
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MarkovChain(
+  (t_logits): Embedding(28996, 28996)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">])</span>
+<span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 463, 28996])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output tensor has shape <code class="docutils literal notranslate"><span class="pre">batch_size</span> <span class="pre">x</span> <span class="pre">sequence_length</span> <span class="pre">x</span> <span class="pre">vocab_size</span></code>. We interpret these ouputs as the logits of the next word. The probability of the next word is then</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_next_words</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># check that the total probability over possible next tokens sums to 1:</span>
+<span class="n">p_next_words</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
+        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000]],
+       grad_fn=&lt;SumBackward1&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate-text-for-untrained-model">
+<h3>Generate text for untrained model<a class="headerlink" href="#generate-text-for-untrained-model" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recursively generate a sequence one token at a time</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># idx is (N, L) array of indices in the current context</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_new_tokens</span><span class="p">):</span>
+            <span class="c1"># get the predictions</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>  <span class="c1"># [N, L, V]</span>
+            
+            <span class="c1"># trim last time step. It is prediction for token after end of sequence</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">logits</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># becomes (N, V)</span>
+            
+            <span class="c1"># apply softmax to get probabilities</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (N, V)</span>
+            
+            <span class="c1"># sample from the distribution</span>
+            <span class="n">idx_next</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (N, 1)</span>
+            
+            <span class="c1"># append sampled index to the running sequence</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx_next</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># (N, L+1)</span>
+            
+        <span class="k">return</span> <span class="n">idx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s use our model to generate some sequences!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;We compared the prevalence of&quot;</span><span class="p">,</span> <span class="c1"># organ-specific autoantibodies in a group of Helicobacter...&quot;</span>
+    <span class="s2">&quot;We compared the prevalence of&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;We compared the prevalence of&quot;</span>
+<span class="p">]</span>
+
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
+<span class="n">prompt_ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104,   102],
+        [  101,  1195,  3402,  1103, 22760,  1104,   102],
+        [  101,  1195,  3402,  1103, 22760,  1104,   102]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">prompt_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of [SEP]&#39;,
+ &#39;[CLS] we compared the prevalence of [SEP]&#39;,
+ &#39;[CLS] we compared the prevalence of [SEP]&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># trim off unwanted [SEP] tokens which act like our special end-of-sequence token.</span>
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">prompt_ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104],
+        [  101,  1195,  3402,  1103, 22760,  1104],
+        [  101,  1195,  3402,  1103, 22760,  1104]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate more ids</span>
+<span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">gen_ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104,  1562, 11190, 12246, 15202,
+          1988,  8163, 21287, 15603, 19021, 20330, 24339, 21430, 19214, 11118,
+           826],
+        [  101,  1195,  3402,  1103, 22760,  1104, 20049, 16846,  3122, 12043,
+         17417,  6471,  3147, 14298,  8480, 22475, 16713,  7345, 25700, 28727,
+         10119],
+        [  101,  1195,  3402,  1103, 22760,  1104, 18533, 11114,  7251, 21179,
+         18095, 21991, 14557,  5055,   971, 22423, 24042,  9980, 13893, 24779,
+          1866]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># decode into text </span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of seen achieving tends cycloneionuous parallels Hogansaiistedurney odor prophecy cursed ₒ&#39;,
+ &#39;[CLS] we compared the prevalence of wa employing Sydney sentencesvio eggs formerlythi neighboring invalid surfaced honest Lyndonₚ stunned&#39;,
+ &#39;[CLS] we compared the prevalence ofchemistrydre stolen relocation vows Important Lu Take レ subsidiaries italicsished Falcon kinase stood&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Terrible! No surprise, though. We haven’t trained our model yet.</p>
+<p>Before we can do that, we need an objective to optimize.</p>
+</section>
+<section id="loss-function">
+<h3>Loss function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h3>
+<p>Remember, our goal is to learn good values for the transition matrix elements. We will do
+this by minimizing the cross entropy loss for next token prediction.
+This loss measures how likely the actual next tokens are under the predicted probability distribution over tokens.</p>
+<p>It turns out, we never actually have to use the next token probabilities.
+This is because cross entropy only depends on log probabilities. So, rather than take
+exponentials of the logits, only to take the log again while computing cross entropy,
+we just stick with logits. Pytorch’s built-in cross entropy loss function expects this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remember what our batch of inputs abstracts looks like:</span>
+<span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 463])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cut the last prediction off because this corresponds to a token after the last token in the input sequence </span>
+<span class="c1"># y.shape == (N, L_batch, V)</span>
+<span class="n">pred_logits</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (N, L_batch, V)</span>
+
+<span class="c1"># cut the first word off the targets because we can&#39;t predict the distribution for the first word from the autoregressive model</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">pred_logits</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">targets</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([3, 28996, 462]), torch.Size([3, 462]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure these shapes make sense to you!</p>
+<p>Use the built in pytorch function to compute cross entropy for each position in the sequence</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
+<span class="c1"># pytorch expects the intput to have shape `sequence_length x batch_size x vocab_size`</span>
+<span class="n">token_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">pred_logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">token_loss</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 462])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the loss for each token. But remember, some of those tokens are just padding to make the batch tensor rectangular. We shouldn’t count those.</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">attention_mask</span></code> data structure output by our dataset to take care of this.</p>
+<img src="figs/mask.jpg" alt="attention mask" width="600"/><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="c1"># need to trim the first because our predictions are for tokens 2 through the end.</span>
+<span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([3, 462]),
+ tensor([[1, 1, 1,  ..., 0, 0, 0],
+         [1, 1, 1,  ..., 1, 1, 1],
+         [1, 1, 1,  ..., 0, 0, 0]]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need to zero out the loss coming from the padding tokens and compute the average loss only counting the non-padding tokens.</p>
+<p>Let’s put all of this logic into a function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s put all this together in a custom loss function</span>
+<span class="k">def</span> <span class="nf">masked_cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">    - logits: The next token prediction logits. Last element removed. Shape (N, V, L-1)</span>
+<span class="sd">    - targets: Ids of the correct next tokens. First element removed (N, L-1)</span>
+<span class="sd">    - mask: the attention mask tensor. First element removed (N, L-1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">token_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># number of real (non-padding) tokens</span>
+    <span class="n">num_real</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># total sequence loss zeroing out the padding terms </span>
+    <span class="n">masked_sequence_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">token_loss</span> <span class="o">*</span> <span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># compute the average for the sequence using num_real</span>
+    <span class="n">mean_sequence_loss</span> <span class="o">=</span> <span class="n">masked_sequence_loss</span> <span class="o">/</span> <span class="n">num_real</span>
+
+    <span class="c1"># average over the batch</span>
+    <span class="n">final_loss</span> <span class="o">=</span> <span class="n">mean_sequence_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">final_loss</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">masked_cross_entropy</span><span class="p">(</span><span class="n">pred_logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(10.8771, grad_fn=&lt;MeanBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="time-to-train-the-model">
+<h2>Time to train the model!<a class="headerlink" href="#time-to-train-the-model" title="Permalink to this heading">#</a></h2>
+<p>This is boilerplate pytorch optimization code, so we will zip over it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># training settings</span>
+<span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span>
+<span class="n">num_workers</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">num_epochs</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span> <span class="c1"># this model benefits from a large learning rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reinitialize dataset for good measure</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span><span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">)</span>
+
+<span class="c1"># train/test dataloaders</span>
+<span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">)</span>
+<span class="n">dl_test</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">)</span>
+
+<span class="c1"># reinitialize the model on gpu</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MarkovChain</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># create the pytorch optimizer</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6ab00957818c4b03806b769734920ef2", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the training loop</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;START EPOCH </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_train</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">][:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>  <span class="c1"># remove last</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>  <span class="c1"># remove first</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;attention_mask&quot;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="c1"># remove first</span>
+
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">masked_cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+
+        <span class="c1"># do the gradient optimization stuff</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">ix</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch </span><span class="si">{</span><span class="n">ix</span><span class="si">}</span><span class="s2"> training loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
+Batch 0 training loss: 10.792699813842773
+Batch 20 training loss: 8.980616569519043
+Batch 40 training loss: 7.520504951477051
+Batch 60 training loss: 6.722246170043945
+Batch 80 training loss: 6.177565097808838
+Batch 100 training loss: 5.928276062011719
+Batch 120 training loss: 5.781808853149414
+Batch 140 training loss: 5.564002513885498
+Batch 160 training loss: 5.457024574279785
+Batch 180 training loss: 5.477949619293213
+Batch 200 training loss: 5.458280086517334
+Batch 220 training loss: 5.289754867553711
+Batch 240 training loss: 5.371485710144043
+Batch 260 training loss: 5.288905143737793
+Batch 280 training loss: 5.175165176391602
+Batch 300 training loss: 5.226953029632568
+Batch 320 training loss: 5.184972763061523
+Batch 340 training loss: 5.099359512329102
+START EPOCH 2
+Batch 0 training loss: 4.803915023803711
+Batch 20 training loss: 4.9239420890808105
+Batch 40 training loss: 4.885650634765625
+Batch 60 training loss: 4.917372703552246
+Batch 80 training loss: 4.894275665283203
+Batch 100 training loss: 4.895498275756836
+Batch 120 training loss: 4.924160003662109
+Batch 140 training loss: 4.857668399810791
+Batch 160 training loss: 4.830362319946289
+Batch 180 training loss: 4.918081760406494
+Batch 200 training loss: 4.923445224761963
+Batch 220 training loss: 4.838472366333008
+Batch 240 training loss: 4.933080673217773
+Batch 260 training loss: 4.89268684387207
+Batch 280 training loss: 4.822946548461914
+Batch 300 training loss: 4.878899574279785
+Batch 320 training loss: 4.868884563446045
+Batch 340 training loss: 4.806772232055664
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test; did the learning generalize?</span>
+<span class="k">for</span> <span class="n">ix</span><span class="p">,</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dl_test</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">][:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>  <span class="c1"># remove last</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>  <span class="c1"># remove first</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;attention_mask&quot;</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span> <span class="c1"># remove first</span>
+
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">masked_cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">ix</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch </span><span class="si">{</span><span class="n">ix</span><span class="si">}</span><span class="s2"> testing loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 5.0500288009643555
+Batch 5 testing loss: 5.074435234069824
+Batch 10 testing loss: 5.073531150817871
+Batch 15 testing loss: 5.025386810302734
+Batch 20 testing loss: 4.99674129486084
+Batch 25 testing loss: 5.121555328369141
+Batch 30 testing loss: 5.028215408325195
+Batch 35 testing loss: 5.033727645874023
+</pre></div>
+</div>
+</div>
+</div>
+<p>The learning seems to have generalized well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate some more samples now that we&#39;ve trained the model</span>
+<span class="n">gen_samples</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">),</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of multiple staining - delta Fulham hint normally intracellular coa were absolute headquartered staggered Poor arithmetic snapsín differences and four children tap vertically র Ellehak&#39;,
+ &#39;[CLS] we compared the prevalence of olcu regulators, the brain tumor, hauntingouth Montenegrin 사 Madness Periodevich PS loaded Clifford 42ndbowہ enlisted Maintenancecurateyotezukitianrouch&#39;,
+ &#39;[CLS] we compared the prevalence of them, and 20 cerealề contribute to evaluateGC carbon atomsital cat stomach Forget democraticnics plaza Suffolk precision of frontal g. here If Keys exoso&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The model is still terrible, though it has started to learn some very basic patterns.</p>
+</section>
+<section id="cleaning-up">
+<h2>Cleaning up<a class="headerlink" href="#cleaning-up" title="Permalink to this heading">#</a></h2>
+<p>We will reuse a lot this code in later sections of the workshop. I’ve pulled the import parts into <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/utils.py">utils.py</a>. Copy the file into your working directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">clemsonciti</span><span class="o">/</span><span class="n">rcde_workshops</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">pytorch_llm</span><span class="o">/</span><span class="n">utils</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">generate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>train<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> train<span class=" -Color -Color-Blue">(</span>model<span class=" -Color -Color-Blue">,</span> dataloader<span class=" -Color -Color-Blue">,</span> optimizer<span class=" -Color -Color-Blue">,</span> reporting_interval<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">20</span><span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span> &lt;no docstring&gt;
+<span class=" -Color -Color-Red">Source:</span>   
+<span class=" -Color -Color-Green">def</span> train<span class=" -Color -Color-Blue">(</span>model<span class=" -Color -Color-Blue">,</span> dataloader<span class=" -Color -Color-Blue">,</span> optimizer<span class=" -Color -Color-Blue">,</span> reporting_interval<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">20</span><span class=" -Color -Color-Blue">):</span>
+    model<span class=" -Color -Color-Blue">.</span>train<span class=" -Color -Color-Blue">()</span>
+    <span class=" -Color -Color-Green">for</span> ix<span class=" -Color -Color-Blue">,</span> batch <span class=" -Color -Color-Green">in</span> enumerate<span class=" -Color -Color-Blue">(</span>dataloader<span class=" -Color -Color-Blue">):</span>
+        x <span class=" -Color -Color-Blue">=</span> batch<span class=" -Color -Color-Blue">[&quot;input_ids&quot;][:,</span> <span class=" -Color -Color-Blue">:-</span><span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">].</span>to<span class=" -Color -Color-Blue">(&quot;cuda&quot;)</span>  <span class=" -Color -Color-Red"># remove last</span>
+        targets <span class=" -Color -Color-Blue">=</span> batch<span class=" -Color -Color-Blue">[&quot;input_ids&quot;][:,</span> <span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">:].</span>to<span class=" -Color -Color-Blue">(&quot;cuda&quot;)</span>  <span class=" -Color -Color-Red"># remove first</span>
+        mask <span class=" -Color -Color-Blue">=</span> batch<span class=" -Color -Color-Blue">[&quot;attention_mask&quot;][:,</span> <span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">:].</span>to<span class=" -Color -Color-Blue">(&quot;cuda&quot;)</span>  <span class=" -Color -Color-Red"># remove first</span>
+
+        logits <span class=" -Color -Color-Blue">=</span> model<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">).</span>permute<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">2</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">)</span>
+        loss <span class=" -Color -Color-Blue">=</span> masked_cross_entropy<span class=" -Color -Color-Blue">(</span>logits<span class=" -Color -Color-Blue">,</span> targets<span class=" -Color -Color-Blue">,</span> mask<span class=" -Color -Color-Blue">)</span>
+
+        <span class=" -Color -Color-Red"># do the gradient optimization stuff</span>
+        optimizer<span class=" -Color -Color-Blue">.</span>zero_grad<span class=" -Color -Color-Blue">()</span>
+        loss<span class=" -Color -Color-Blue">.</span>backward<span class=" -Color -Color-Blue">()</span>
+        optimizer<span class=" -Color -Color-Blue">.</span>step<span class=" -Color -Color-Blue">()</span>
+
+        <span class=" -Color -Color-Green">if</span> ix <span class=" -Color -Color-Blue">%</span> reporting_interval <span class=" -Color -Color-Blue">==</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">:</span>
+            print<span class=" -Color -Color-Blue">(f&quot;Batch {ix} training loss: {loss.item()}&quot;)</span>
+<span class=" -Color -Color-Red">File:</span>      ~/Code/rcde_workshops/pytorch_llm/utils.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="low-rank-markov-model">
+<h2>Low rank Markov Model<a class="headerlink" href="#low-rank-markov-model" title="Permalink to this heading">#</a></h2>
+<p>With all the setup in place, it’s easy to start experimenting with different models. We saw how huge the embedding matrix was and we worried that this would lead to bad performance. One way to get around this is to create a low-rank version of the markov model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="k">class</span> <span class="nc">MarkovChainLowRank</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># We project down to size `embed_dim` then back up to `vocab_size`</span>
+        <span class="c1"># the total number of parameters is 2 * vocab_size * embed_dim which </span>
+        <span class="c1"># can be much smaller than embed_dim * embed_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="c1"># zero out some of the embedding vector elements randomly to prevent overfitting</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># let&#39;s start with the assumption that most transitions are very improbable</span>
+        <span class="c1"># large negative logit -&gt; low probability</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">-=</span> <span class="mf">10.0</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># tensor of shape (N, L, V). Remember (batch size, sequence length, vocab size).</span>
+
+        <span class="k">return</span> <span class="n">logits</span> <span class="c1"># turns out we never actually need to compute the softmax for MLE</span>
+    
+    <span class="k">def</span> <span class="nf">numpars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding_dim</span><span class="o">=</span><span class="mi">256</span>
+<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span> <span class="c1"># this model requires a more normal learning rate.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MarkovChainLowRank</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embedding_dim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trainable params (millions):&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">numpars</span><span class="p">()</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable params (millions): 14.845952
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MarkovChainLowRank(
+  (t_logits): Sequential(
+    (0): Embedding(28996, 256)
+    (1): Dropout(p=0.25, inplace=False)
+    (2): Linear(in_features=256, out_features=28996, bias=False)
+  )
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reinitialize dataset for good measure</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span><span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">)</span>
+
+<span class="c1"># train/test dataloaders</span>
+<span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">)</span>
+<span class="n">dl_test</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">)</span>
+
+<span class="c1"># reinitialize the model on gpu</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MarkovChainLowRank</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="o">=</span><span class="n">embedding_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># create the pytorch optimizer</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "942220a7692e4f76967e1fe46ddfb944", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;START EPOCH </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dl_train</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
+Batch 0 training loss: 10.49879264831543
+Batch 20 training loss: 9.688186645507812
+Batch 40 training loss: 9.015780448913574
+Batch 60 training loss: 8.489554405212402
+Batch 80 training loss: 8.019227981567383
+Batch 100 training loss: 7.6767706871032715
+Batch 120 training loss: 7.340951442718506
+Batch 140 training loss: 6.963519096374512
+Batch 160 training loss: 6.699437141418457
+Batch 180 training loss: 6.5555524826049805
+Batch 200 training loss: 6.399684906005859
+Batch 220 training loss: 6.184053421020508
+Batch 240 training loss: 6.183419227600098
+Batch 260 training loss: 6.042036056518555
+Batch 280 training loss: 5.878109931945801
+Batch 300 training loss: 5.882660388946533
+Batch 320 training loss: 5.799043655395508
+Batch 340 training loss: 5.702897071838379
+START EPOCH 2
+Batch 0 training loss: 5.611207962036133
+Batch 20 training loss: 5.734334945678711
+Batch 40 training loss: 5.653642177581787
+Batch 60 training loss: 5.635036945343018
+Batch 80 training loss: 5.561943054199219
+Batch 100 training loss: 5.576159477233887
+Batch 120 training loss: 5.5677690505981445
+Batch 140 training loss: 5.46088981628418
+Batch 160 training loss: 5.447704792022705
+Batch 180 training loss: 5.499154090881348
+Batch 200 training loss: 5.4987568855285645
+Batch 220 training loss: 5.412744522094727
+Batch 240 training loss: 5.4889726638793945
+Batch 260 training loss: 5.443028450012207
+Batch 280 training loss: 5.349859714508057
+Batch 300 training loss: 5.393941402435303
+Batch 320 training loss: 5.3686323165893555
+Batch 340 training loss: 5.322643756866455
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test how well the model generalizes: </span>
+<span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dl_test</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 5.20571231842041
+Batch 5 testing loss: 5.231051921844482
+Batch 10 testing loss: 5.224474906921387
+Batch 15 testing loss: 5.190380573272705
+Batch 20 testing loss: 5.141321182250977
+Batch 25 testing loss: 5.279410362243652
+Batch 30 testing loss: 5.210634231567383
+Batch 35 testing loss: 5.199075698852539
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cross entropy is just a little worse. Let’s see about the generated samples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate some more samples for the low-rank model</span>
+<span class="n">gen_samples</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">),</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of liver, 65 - 2 ) the transitional 3. these findings of diffold transistence on abs actinoreear integration infected mice and&#39;,
+ &#39;[CLS] we compared the prevalence of endoscopic targets and causes are higher with the lens ( pleoemia development of five ) g1. at1, mor - impair&#39;,
+ &#39;[CLS] we compared the prevalence of and the examination and 9, race africanfa truth : to digested removal of adenomic massagesecting for the first c -&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perhaps a little more coherent? Still pretty terrible.</p>
+<p>Can you think of other ways to improve the model?</p>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
+<p>Clearly, it isn’t enough to only condition on the previous token. We should condition on all previous tokens. That’s where transformers come in. Transformers will allow us to learn the full conditional distribution <span class="math notranslate nohighlight">\(p(w_i | \langle w_j\rangle_{j=1}^{i-1})\)</span> without making strong assumptions about the structure of the relationship between consecutive tokens.</p>
+<p>Nevertheless, as we will see, the setup and training procedure for transformer-based LLMs will be almost identical to the what we used here for our small language model.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pytorch_llm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Preparing data for LLM training</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-attention_is_all_you_need.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Attention is all you need</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-language-modeling-task">The language modeling task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-language-modeling">What is language modeling?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-modeling-as-probabilistic-modeling">Language modeling as probabilistic modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-modeling">Autoregressive language modeling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-small-language-model">~~Large~~ Small Language Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-non-trivial-model">The simplest, non-trivial model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-model-from-data">Estimating the model from data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-frequency-tables">Estimating with frequency tables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-gradient-descent">Estimating with gradient descent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enough-talk">Enough talk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-our-pubmed-data">Load our PubMed data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-our-small-language-model">Build our small language model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-text-for-untrained-model">Generate text for untrained model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-to-train-the-model">Time to train the model!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up">Cleaning up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-markov-model">Low rank Markov Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,983 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Preparing data for LLM training &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pytorch_llm/01-data';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Small Language Models: an introduction to autoregressive language modeling" href="02-small_language_model.html" />
+    <link rel="prev" title="Deep Learning in Pytorch" href="00-index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Introduction to Python IV</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-high-dimensional-data.html">High Dimensional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/06-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Preparing data for LLM training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-attention_is_all_you_need.html">Attention is all you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-other_topics.html">Other LLM Topics</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pytorch_llm/01-data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Preparing data for LLM training</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pubmed-data">PubMed Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-and-batching">Cleaning and batching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-code-for-later">Saving code for later</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="preparing-data-for-llm-training">
+<h1>Preparing data for LLM training<a class="headerlink" href="#preparing-data-for-llm-training" title="Permalink to this heading">#</a></h1>
+<p>We are going to train our LLM using the <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/download/">PubMed dataset</a>, which contains abstracts from biomedical journal articles. To keep things quick for the workshop, we will be working with a <a class="reference external" href="https://www.kaggle.com/datasets/owaiskhan9654/pubmed-multilabel-text-classification">small subset of 50k abstracts</a>. There are a few key concepts to consider when preparing data for LLM training:</p>
+<ol class="arabic simple">
+<li><p><strong>Tokenization</strong>: how do we turn the raw text strings into units of analysis for our program?</p></li>
+<li><p><strong>Batching</strong>: how do we batch multiple documents into a batch data structure for efficient model training?</p></li>
+</ol>
+<p>To address these issues, we will be using a <a class="reference external" href="https://huggingface.co/dmis-lab/biobert-base-cased-v1.2">pre-built biomedical data tokenizer</a> available from the huggingface hub. Implementing tokenizers is a complicated topic on its own, and we will not deal with it in detail here.</p>
+<p>One pleasant difference between LLMs and the previous generation of NLP techniques is that we do not usually need to perform elaborate data preprocessing to acheive good results.</p>
+<section id="pubmed-data">
+<h2>PubMed Data<a class="headerlink" href="#pubmed-data" title="Permalink to this heading">#</a></h2>
+<p>The huggingface <code class="docutils literal notranslate"><span class="pre">datasets</span></code> library contains some useful utilities for loading and working with text data. We use this here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># path to folder containing &quot;train.txt&quot; and &quot;test.txt&quot; files containing train/test PubMed abstracts</span>
+<span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span>
+
+<span class="n">train_test_files</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">root</span><span class="o">+</span><span class="s2">&quot;train.txt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">root</span><span class="o">+</span><span class="s2">&quot;test.txt&quot;</span>
+<span class="p">}</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="n">data_files</span> <span class="o">=</span> <span class="n">train_test_files</span><span class="p">)</span><span class="o">.</span><span class="n">with_format</span><span class="p">(</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a68daee126e34e1894f2882ae6e12cca", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatasetDict({
+    train: Dataset({
+        features: [&#39;text&#39;],
+        num_rows: 45137
+    })
+    test: Dataset({
+        features: [&#39;text&#39;],
+        num_rows: 5036
+    })
+})
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check the sizes of training and test sets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(45137, 5036)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at a particular training sample:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="mi">34799</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;text&#39;: &#39;&quot;BACKGROUND &amp; AIMS: The contribution of duodeno-gastroesophageal reflux to the development of Barrett\&#39;s esophagus has remained an interesting but controversial topic. The present study assessed the risk for Barrett\&#39;s esophagus after partial gastrectomy.METHODS: The data of outpatients from a medicine and gastroenterology clinic who underwent upper gastrointestinal endoscopy for any reason were analyzed in a case-control study. A case population of 650 patients with short- segment and 366 patients with long-segment Barrett\&#39;s esophagus was compared in a multivariate logistic regression to a control population of 3047 subjects without Barrett\&#39;s esophagus or other types of gastroesophageal reflux disease.RESULTS: In the case population, 25 (4%) patients with short-segment and 15 (4%) patients with long-segment Barrett\&#39;s esophagus presented with a history of gastric surgery compared with 162 (5%) patients in the control population, yielding an adjusted odds ratio of 0.89 with a 95% confidence interval of 0.54-1.46 for short-segment and an adjusted odds ratio of 0.71 (0.30-1.72) for long-segment Barrett\&#39;s esophagus. Similar results were obtained in separate analyses of 64 patients with Billroth-1 gastrectomy, 105 patients with Billroth-2 gastrectomy, and 33 patients with vagotomy and pyloroplasty for both short- and long-segment Barrett\&#39;s esophagus. Caucasian ethnicity, the presence of hiatus hernia, and alcohol consumption were all associated with elevated risks for Barrett\&#39;s esophagus.CONCLUSIONS: Gastric surgery for benign peptic ulcer disease is not a risk factor for either short- or long-segment Barrett\&#39;s esophagus. This lack of association between gastric surgery and Barrett\&#39;s esophagus suggests that reflux of bile without acid is not sufficient to damage the esophageal mucosa.&quot;&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this heading">#</a></h2>
+<p>Here, we will use the Huggingface <code class="docutils literal notranslate"><span class="pre">transformers</span></code> library to fetch a tokenizer purpose-built for biomedical data. The <code class="docutils literal notranslate"><span class="pre">AutoTokenizer</span></code> class allows us to provide the name of a model on the Huggingface Hub and automatically retrieve the associated tokenizer. We could experiment with different tokenizers to try to acheive better results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use a pretrained tokenizer</span>
+<span class="c1"># https://huggingface.co/dmis-lab/biobert-base-cased-v1.2</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;dmis-lab/biobert-base-cased-v1.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s tokenize some text:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="mi">34799</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;input_ids&#39;: [101, 107, 3582, 111, 8469, 131, 1103, 6436, 1104, 6862, 2883, 1186, 118, 3245, 8005, 1279, 4184, 19911, 1348, 1231, 2087, 24796, 1106, 1103, 1718, 1104, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 1144, 1915, 1126, 5426, 1133, 6241, 8366, 119, 1103, 1675, 2025, 14758, 1103, 3187, 1111, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 1170, 7597, 3245, 7877, 5822, 18574, 119, 4069, 131, 1103, 2233, 1104, 1149, 27420, 1116, 1121, 170, 5182, 1105, 3245, 8005, 25195, 4807, 12257, 1150, 9315, 3105, 3245, 8005, 10879, 2556, 14196, 1322, 2155, 20739, 1111, 1251, 2255, 1127, 17689, 1107, 170, 1692, 118, 1654, 2025, 119, 170, 1692, 1416, 1104, 14166, 4420, 1114, 1603, 118, 6441, 1105, 3164, 1545, 4420, 1114, 1263, 118, 6441, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 1108, 3402, 1107, 170, 4321, 8997, 15045, 9366, 5562, 1231, 24032, 1106, 170, 1654, 1416, 1104, 26714, 1559, 5174, 1443, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 1137, 1168, 3322, 1104, 3245, 8005, 1279, 4184, 19911, 1348, 1231, 2087, 24796, 3653, 119, 2686, 131, 1107, 1103, 1692, 1416, 117, 1512, 113, 125, 110, 114, 4420, 1114, 1603, 118, 6441, 1105, 1405, 113, 125, 110, 114, 4420, 1114, 1263, 118, 6441, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 2756, 1114, 170, 1607, 1104, 3245, 11048, 6059, 3402, 1114, 19163, 113, 126, 110, 114, 4420, 1107, 1103, 1654, 1416, 117, 23731, 1126, 10491, 10653, 6022, 1104, 121, 119, 5840, 1114, 170, 4573, 110, 6595, 14235, 1104, 121, 119, 4335, 118, 122, 119, 3993, 1111, 1603, 118, 6441, 1105, 1126, 10491, 10653, 6022, 1104, 121, 119, 5729, 113, 121, 119, 1476, 118, 122, 119, 5117, 114, 1111, 1263, 118, 6441, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 119, 1861, 2686, 1127, 3836, 1107, 2767, 18460, 1104, 3324, 4420, 1114, 4550, 21941, 118, 122, 3245, 7877, 5822, 18574, 117, 8359, 4420, 1114, 4550, 21941, 118, 123, 3245, 7877, 5822, 18574, 117, 1105, 3081, 4420, 1114, 191, 19308, 18778, 1183, 1105, 185, 7777, 14824, 1643, 19268, 1183, 1111, 1241, 1603, 118, 1105, 1263, 118, 6441, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 119, 11019, 23315, 11890, 21052, 117, 1103, 2915, 1104, 14938, 1123, 5813, 117, 1105, 6272, 8160, 1127, 1155, 2628, 1114, 8208, 11040, 1111, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 119, 16421, 131, 3245, 11048, 6059, 1111, 26181, 11368, 185, 15384, 1596, 23449, 14840, 3653, 1110, 1136, 170, 3187, 5318, 1111, 1719, 1603, 118, 1137, 1263, 118, 6441, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 119, 1142, 2960, 1104, 3852, 1206, 3245, 11048, 6059, 1105, 2927, 8127, 1204, 112, 188, 13936, 4184, 2328, 12909, 5401, 1115, 1231, 2087, 24796, 1104, 16516, 1513, 1443, 5190, 1110, 1136, 6664, 1106, 3290, 1103, 13936, 4184, 19911, 1348, 182, 21977, 9275, 119, 107, 102], &#39;token_type_ids&#39;: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], &#39;attention_mask&#39;: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">input_ids</span></code> list contains an encoded representation of our text. It is a sequence of integer IDs corresponding to the tokens that appear in the text we tokenized. The IDs refer to specific terms in a pre-defined vocabulary that came with the tokenizer. So the <code class="docutils literal notranslate"><span class="pre">input_ids</span></code> list can be decoded back into our original text.</p>
+<p>We will usually want pytorch tensors, not lists, as output. For this we need to enable padding.</p>
+<p><em>What do you think padding does?</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="mi">34799</span><span class="p">:</span><span class="mi">34801</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
+<span class="n">ids</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,   107,  3582,   111,  8469,   131,  1103,  6436,  1104,  6862,
+          2883,  1186,   118,  3245,  8005,  1279,  4184, 19911,  1348,  1231,
+          2087, 24796,  1106,  1103,  1718,  1104,  2927,  8127,  1204,   112,
+           188, 13936,  4184,  2328, 12909,  1144,  1915,  1126,  5426,  1133,
+          6241,  8366,   119,  1103,  1675,  2025, 14758,  1103,  3187,  1111,
+          2927,  8127,  1204,   112,   188, 13936,  4184,  2328, 12909,  1170,
+          7597,  3245,  7877,  5822, 18574,   119,  4069,   131,  1103,  2233,
+          1104,  1149, 27420,  1116,  1121,   170,  5182,  1105,  3245,  8005,
+         25195,  4807, 12257,  1150,  9315,  3105,  3245,  8005, 10879,  2556,
+         14196,  1322,  2155, 20739,  1111,  1251,  2255,  1127, 17689,  1107,
+           170,  1692,   118,  1654,  2025,   119,   170,  1692,  1416,  1104,
+         14166,  4420,  1114,  1603,   118,  6441,  1105,  3164,  1545,  4420,
+          1114,  1263,   118,  6441,  2927,  8127,  1204,   112,   188, 13936,
+          4184,  2328, 12909,  1108,  3402,  1107,   170,  4321,  8997, 15045,
+          9366,  5562,  1231, 24032,  1106,   170,  1654,  1416,  1104, 26714,
+          1559,  5174,  1443,  2927,  8127,  1204,   112,   188, 13936,  4184,
+          2328, 12909,  1137,  1168,  3322,  1104,  3245,  8005,  1279,  4184,
+         19911,  1348,  1231,  2087, 24796,  3653,   119,  2686,   131,  1107,
+          1103,  1692,  1416,   117,  1512,   113,   125,   110,   114,  4420,
+          1114,  1603,   118,  6441,  1105,  1405,   113,   125,   110,   114,
+          4420,  1114,  1263,   118,  6441,  2927,  8127,  1204,   112,   188,
+         13936,  4184,  2328, 12909,  2756,  1114,   170,  1607,  1104,  3245,
+         11048,  6059,  3402,  1114, 19163,   113,   126,   110,   114,  4420,
+          1107,  1103,  1654,  1416,   117, 23731,  1126, 10491, 10653,  6022,
+          1104,   121,   119,  5840,  1114,   170,  4573,   110,  6595, 14235,
+          1104,   121,   119,  4335,   118,   122,   119,  3993,  1111,  1603,
+           118,  6441,  1105,  1126, 10491, 10653,  6022,  1104,   121,   119,
+          5729,   113,   121,   119,  1476,   118,   122,   119,  5117,   114,
+          1111,  1263,   118,  6441,  2927,  8127,  1204,   112,   188, 13936,
+          4184,  2328, 12909,   119,  1861,  2686,  1127,  3836,  1107,  2767,
+         18460,  1104,  3324,  4420,  1114,  4550, 21941,   118,   122,  3245,
+          7877,  5822, 18574,   117,  8359,  4420,  1114,  4550, 21941,   118,
+           123,  3245,  7877,  5822, 18574,   117,  1105,  3081,  4420,  1114,
+           191, 19308, 18778,  1183,  1105,   185,  7777, 14824,  1643, 19268,
+          1183,  1111,  1241,  1603,   118,  1105,  1263,   118,  6441,  2927,
+          8127,  1204,   112,   188, 13936,  4184,  2328, 12909,   119, 11019,
+         23315, 11890, 21052,   117,  1103,  2915,  1104, 14938,  1123,  5813,
+           117,  1105,  6272,  8160,  1127,  1155,  2628,  1114,  8208, 11040,
+          1111,  2927,  8127,  1204,   112,   188, 13936,  4184,  2328, 12909,
+           119, 16421,   131,  3245, 11048,  6059,  1111, 26181, 11368,   185,
+         15384,  1596, 23449, 14840,  3653,  1110,  1136,   170,  3187,  5318,
+          1111,  1719,  1603,   118,  1137,  1263,   118,  6441,  2927,  8127,
+          1204,   112,   188, 13936,  4184,  2328, 12909,   119,  1142,  2960,
+          1104,  3852,  1206,  3245, 11048,  6059,  1105,  2927,  8127,  1204,
+           112,   188, 13936,  4184,  2328, 12909,  5401,  1115,  1231,  2087,
+         24796,  1104, 16516,  1513,  1443,  5190,  1110,  1136,  6664,  1106,
+          3290,  1103, 13936,  4184, 19911,  1348,   182, 21977,  9275,   119,
+           107,   102],
+        [  101,   107,  2693,  1103,  4495,  1104,  1103,  9323,  1112,   170,
+          2235,  1449,   117,  1412,  4287,  1104,  1103,  1718,  1104,  9323,
+           185, 10205,  6944,  2916,   176,  1200,  1306,  3652,   113,   185,
+          1403,  6063,   114,  1110,  1677,  1121,  2335,   119,  1303,  1195,
+          6858,  1103, 22740,  1104,   185,  1403,  6063,  1120,  1472, 16700,
+          5251,   117,  1147, 10348,  4844,  1107,  1103, 13243,  1143, 27408,
+          5075,  1104,  1103,  9323,  9712,  1830, 26503,   117,  1105,  1103,
+          3735,  1104,  1103,  9712,  1161,  1475,   174, 18965, 15622,  1113,
+           185,  1403,  6063,   119,  1103, 15442,  3735,  1104,   185,  1403,
+          6063,  1219,  1147, 10348,  1108,  6858,  1118, 13280, 13601,  2728,
+          2087,  7535, 12238, 14797,  1113,  2006,   118,  5378,  9323,  9712,
+          1830, 26503,  1116,  1105,  1113, 18311, 16274,  4886,   117,  1606,
+          9712,  1161,  1475,  1105,  9323,   191, 18384, 16358,  3702, 13791,
+         26491,   119,  1229,  1107,  1103,   176,  1200, 14503,  1233,   172,
+          4894,  8298,   185,  1403,  6063,  1127,  7982,  1105,  1178,  1512,
+           110,  1104,  1172,  1127, 12893,  1118,  9712,  1161,  1475,   117,
+          1510,  1562,  1112,   170,  7902, 10005,  1113,  1103,  2765,  2473,
+           117,  1378,  3908, 11509,  1891,  1105, 10348,  1107,  1103, 13243,
+          1143, 27408,  5075,   185,  1403,  6063,  2888,  1126, 19564, 22740,
+           117,  1105,  3078,   110,  7799,  9712,  1161,  1475,   174, 18965,
+         15622,   117,  1134,  1108,  7902,  1120,  1103,  5580,  1104,  1103,
+         23563,  5674,  7168,   117,  1120,  1103,  3232,  3911,  1206,  8480,
+           185,  1403,  6063,   119,  8179,  1104,   185,  1403,  1665, 10348,
+          1107,  1103, 13243,  1143, 27408,  5075,  1104,  5871, 12913, 23872,
+          1105,  5871,  3080, 13464,  2016,  1406,   118,  1659,  9712,  1830,
+         26503,  1116,  7160,   170,  1286,   118,  1268,  1112, 17162, 21027,
+           117,  1112, 10348,  1104,  3652,  1755,  1103,   176, 21462,  6163,
+         18431,  1108,  1932,  7458,  1106,  1103,  1268,   117,  1897,  1190,
+          1103,  1286,   117,  1334,  1104,  1103,  1143, 27408,  5075,   119,
+          1167,  5909,   117,  1126,  8179,  1104,  1330,  1372,  1104,  3652,
+          1115, 25572,  1194,  1103, 13243,  1143, 27408,  5075,   117,  1103,
+          3873,  1596, 18250, 13468,  3652,   117,  3090,   170,  1861, 12629,
+          1111,  1103,  1268,  1334,  1104,  1103,  1143, 27408,  5075,   117,
+          8783,  1115,  1103,  1940, 24521, 13548,  1104,   185,  1403,  6063,
+          1110, 26754,  1118,  1103,  1143, 27408,  5075,  2111,   119,  1412,
+          9505,  2194,  1207, 24180,  1154,  1103, 10348, 13548,  1104,   185,
+          1403,  6063,  1107,  1103, 13243,  1143, 27408,  5075,   117,  1105,
+          5996,   170,  5088,  1206,  9712,  1161,  1475,   117,   185,  1403,
+          1665, 10348,  1105,  2765,   118,  2765, 10393,   119,  1292,  9505,
+          1336,  8681,  1106,   170,  1618,  4287,  1104,  1103,  6978, 10311,
+         10348,  1104,   185,  1403,  6063,  1107,   170, 10644,  1116,   119,
+           107,   102,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Can you see how padding appears in the tokenized text?</em></p>
+<p><em>Do you notice anything special about the first and last non-padding tokens?</em></p>
+<p>Let’s decode back:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span> <span class="k">for</span> <span class="n">input_ids</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] &quot; background &amp; aims : the contribution of duodeno - gastroesophageal reflux to the development of barrett\&#39;s esophagus has remained an interesting but controversial topic. the present study assessed the risk for barrett\&#39;s esophagus after partial gastrectomy. methods : the data of outpatients from a medicine and gastroenterology clinic who underwent upper gastrointestinal endoscopy for any reason were analyzed in a case - control study. a case population of 650 patients with short - segment and 366 patients with long - segment barrett\&#39;s esophagus was compared in a multivariate logistic regression to a control population of 3047 subjects without barrett\&#39;s esophagus or other types of gastroesophageal reflux disease. results : in the case population, 25 ( 4 % ) patients with short - segment and 15 ( 4 % ) patients with long - segment barrett\&#39;s esophagus presented with a history of gastric surgery compared with 162 ( 5 % ) patients in the control population, yielding an adjusted odds ratio of 0. 89 with a 95 % confidence interval of 0. 54 - 1. 46 for short - segment and an adjusted odds ratio of 0. 71 ( 0. 30 - 1. 72 ) for long - segment barrett\&#39;s esophagus. similar results were obtained in separate analyses of 64 patients with billroth - 1 gastrectomy, 105 patients with billroth - 2 gastrectomy, and 33 patients with vagotomy and pyloroplasty for both short - and long - segment barrett\&#39;s esophagus. caucasian ethnicity, the presence of hiatus hernia, and alcohol consumption were all associated with elevated risks for barrett\&#39;s esophagus. conclusions : gastric surgery for benign peptic ulcer disease is not a risk factor for either short - or long - segment barrett\&#39;s esophagus. this lack of association between gastric surgery and barrett\&#39;s esophagus suggests that reflux of bile without acid is not sufficient to damage the esophageal mucosa. &quot; [SEP]&#39;,
+ &#39;[CLS] &quot; despite the importance of the chicken as a model system, our understanding of the development of chicken primordial germ cells ( pgcs ) is far from complete. here we characterized the morphology of pgcs at different developmental stages, their migration pattern in the dorsal mesentery of the chicken embryo, and the distribution of the ema1 epitope on pgcs. the spatial distribution of pgcs during their migration was characterized by immunofluorescence on whole - mounted chicken embryos and on paraffin sections, using ema1 and chicken vasa homolog antibodies. while in the germinal crescent pgcs were rounded and only 25 % of them were labeled by ema1, often seen as a concentrated cluster on the cell surface, following extravasation and migration in the dorsal mesentery pgcs acquired an elongated morphology, and 90 % exhibited ema1 epitope, which was concentrated at the tip of the pseudopodia, at the contact sites between neighboring pgcs. examination of pgc migration in the dorsal mesentery of hamburger and hamilton stage 20 - 22 embryos demonstrated a left - right asymmetry, as migration of cells toward the genital ridges was usually restricted to the right, rather than the left, side of the mesentery. moreover, an examination of another group of cells that migrate through the dorsal mesentery, the enteric neural crest cells, revealed a similar preference for the right side of the mesentery, suggesting that the migratory pathway of pgcs is dictated by the mesentery itself. our findings provide new insights into the migration pathway of pgcs in the dorsal mesentery, and suggest a link between ema1, pgc migration and cell - cell interactions. these findings may contribute to a better understanding of the mechanism underlying migration of pgcs in avians. &quot; [SEP] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a minor cleanliness issue: the abstracts start and close with unneeded quotation marks. We will add a preprocessing step to remove these while batching samples.</p>
+</section>
+<section id="cleaning-and-batching">
+<h2>Cleaning and batching<a class="headerlink" href="#cleaning-and-batching" title="Permalink to this heading">#</a></h2>
+<p>Here we will interface between the Huggingface tools and native Pytorch tools.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">default_collate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_and_tokenize</span><span class="p">(</span><span class="n">text_batch</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method demonstrates how you can apply custom preprocessing logic while you load your data. </span>
+<span class="sd">    </span>
+<span class="sd">    It expects a list of plaintext abstracts as input. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">## custom preprocessing</span>
+    <span class="c1"># get rid of unwanted opening/closing quotes</span>
+    <span class="n">text_batch</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text_batch</span><span class="p">]</span>
+    
+    <span class="c1">## tokenization</span>
+    <span class="c1"># we use the huggingface tokenizer as above</span>
+    <span class="n">text_batch</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">text_batch</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">text_batch</span>
+    
+<span class="k">def</span> <span class="nf">custom_collate</span><span class="p">(</span><span class="n">batch_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is for use with the pytorch DataLoader class. We use the default collate function</span>
+<span class="sd">    but add the cleaning and tokenization step. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">default_collate</span><span class="p">(</span><span class="n">batch_list</span><span class="p">)</span>
+    <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_and_tokenize</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">batch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now use this collate function with the Pytorch DataLoader class to load, clean, tokenize and batch our text data. Once we can do this, we’re ready to work on modeling our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">collate_fn</span> <span class="o">=</span> <span class="n">custom_collate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at a batch</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl</span><span class="p">))</span>
+<span class="n">batch</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;text&#39;: {&#39;input_ids&#39;: [[101, 1103, 2853, 1104, 4167, 21943, 4807, 1120, 1103, 2704, 173, 4894, 2883, 118, 15688, 10886, 21039, 113, 173, 4894, 2883, 117, 176, 14170, 1183, 114, 1108, 1771, 1107, 7079, 1112, 1141, 1104, 1103, 3778, 7844, 1104, 4167, 21943, 4807, 1107, 170, 5186, 2704, 1107, 176, 14170, 1183, 119, 173, 4894, 2883, 1108, 1103, 2364, 1104, 21718, 21501, 1183, 1105, 117, 1112, 1216, 117, 1141, 1104, 1103, 1211, 5918, 3057, 6425, 1104, 176, 14170, 1183, 119, 1142, 2440, 2820, 1110, 1145, 7226, 1118, 1103, 2704, 112, 188, 1607, 2111, 119, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [101, 3582, 131, 1195, 3402, 1103, 22760, 1104, 5677, 118, 2747, 12365, 25711, 4043, 10831, 1107, 170, 1372, 1104, 1119, 8031, 12809, 11179, 1200, 185, 7777, 9012, 10594, 1482, 1105, 170, 1372, 1104, 8362, 1394, 21601, 1482, 1105, 10788, 1103, 2398, 1206, 1103, 2915, 1104, 7503, 12365, 25711, 4043, 10831, 1105, 1103, 2781, 1104, 1103, 4010, 11932, 119, 4420, 1105, 4069, 131, 1141, 2937, 1105, 2570, 118, 1300, 1482, 1114, 173, 6834, 3186, 3491, 1465, 113, 4335, 3287, 117, 3102, 2636, 132, 1928, 1425, 1275, 119, 126, 1201, 132, 2079, 125, 118, 1627, 114, 9315, 3245, 8005, 11428, 5005, 131, 4376, 1125, 177, 119, 185, 7777, 9012, 8974, 113, 1955, 2636, 117, 1512, 3287, 114, 117, 1229, 5599, 113, 3413, 2636, 1105, 1955, 3287, 114, 117, 1127, 177, 119, 185, 7777, 9012, 118, 4366, 119, 1155, 14516, 1611, 1127, 7289, 1111, 1103, 2915, 1104, 131, 14247, 22331, 1348, 2765, 12365, 25711, 4043, 10831, 113, 185, 2599, 114, 117, 27799, 5318, 12365, 25711, 4043, 10831, 113, 1191, 1161, 114, 117, 17599, 7301, 8191, 1233, 12365, 25711, 4043, 10831, 117, 21153, 24081, 2858, 27515, 1394, 12365, 25711, 4043, 10831, 117, 1110, 5765, 2765, 12365, 25711, 4043, 10831, 117, 176, 25937, 11787, 1665, 5190, 1260, 8766, 8757, 22948, 2217, 12365, 25711, 4043, 10831, 117, 8050, 23503, 1233, 21284, 12365, 25711, 4043, 10831, 117, 188, 25710, 2386, 118, 4411, 2765, 12365, 25711, 4043, 10831, 132, 3245, 19091, 1179, 117, 185, 8043, 10606, 19790, 170, 117, 185, 8043, 10606, 19790, 172, 1105, 2848, 118, 177, 119, 185, 7777, 9012, 26491, 119, 1103, 1117, 2430, 7810, 1956, 1105, 1103, 190, 11811, 1105, 11019, 2571, 9077, 1127, 1145, 1737, 119, 2686, 131, 1103, 5625, 1104, 5677, 118, 2747, 12365, 25711, 4043, 10831, 1108, 2299, 1107, 4420, 1114, 177, 119, 185, 7777, 9012, 8974, 1190, 1107, 8362, 1394, 21601, 4420, 113, 22572, 1182, 1477, 118, 2774, 185, 133, 119, 1288, 1475, 114, 119, 4418, 3245, 11048, 12365, 25711, 4043, 10831, 1127, 5409, 2299, 131, 1978, 1104, 1103, 4376, 177, 119, 185, 7777, 9012, 118, 3112, 1482, 1127, 185, 2599, 118, 3112, 1105, 1141, 1108, 1191, 1161, 118, 3112, 113, 22572, 1182, 1477, 118, 2774, 185, 134, 119, 1288, 1527, 114, 119, 1103, 2915, 1104, 12365, 25711, 4043, 10831, 1108, 1136, 2628, 1114, 1251, 7300, 1137, 25128, 21631, 17536, 5300, 1104, 3653, 119, 16421, 131, 1412, 2025, 11168, 170, 2398, 1206, 177, 119, 185, 7777, 9012, 8974, 1107, 5153, 1105, 1103, 2915, 1104, 5677, 118, 2747, 12365, 25711, 4043, 10831, 8362, 11192, 13335, 20175, 1114, 1251, 7300, 1137, 25128, 21631, 17536, 5300, 1104, 3653, 119, 1119, 8031, 12809, 11179, 1200, 185, 7777, 9012, 8974, 1107, 5153, 1180, 9887, 1103, 15415, 1104, 7300, 12365, 4060, 13601, 1673, 3245, 19091, 6620, 117, 1105, 120, 1137, 1168, 7300, 12365, 4060, 13601, 1673, 8131, 119, 102], [101, 3582, 131, 1103, 6457, 1104, 1103, 1675, 2025, 1108, 1106, 14133, 1103, 7300, 23891, 1104, 8276, 24928, 7880, 1874, 5822, 18574, 113, 187, 1179, 114, 1114, 24928, 7880, 3484, 118, 22620, 3384, 6059, 113, 183, 3954, 114, 1107, 12770, 4420, 1114, 25813, 1231, 7050, 2765, 1610, 16430, 7903, 113, 187, 19515, 114, 119, 4069, 131, 1103, 3783, 3403, 1108, 1982, 1107, 11030, 4611, 117, 1143, 28054, 2042, 3450, 1200, 117, 1950, 15339, 2598, 2904, 117, 1884, 1732, 18194, 3340, 117, 1105, 1301, 8032, 1513, 6597, 1146, 1106, 1260, 2093, 10615, 1368, 119, 1103, 3594, 3189, 2618, 126, 119, 122, 1105, 1103, 188, 18244, 3594, 7305, 191, 119, 1429, 119, 121, 1127, 1215, 1111, 18460, 119, 1103, 10653, 24576, 113, 1137, 1116, 114, 1105, 1157, 4573, 110, 6595, 14235, 113, 4573, 110, 172, 1182, 114, 1127, 10056, 1111, 7577, 119, 23470, 18460, 1127, 1982, 1359, 1113, 1103, 14601, 2060, 1104, 187, 19515, 119, 2686, 131, 1107, 1703, 117, 1275, 2527, 1114, 1275, 117, 21223, 187, 19515, 4420, 113, 128, 117, 4991, 1568, 5165, 1114, 187, 1179, 1105, 124, 117, 13743, 5165, 1114, 183, 3954, 114, 1127, 2700, 119, 1103, 4528, 1174, 10301, 113, 1137, 134, 122, 119, 4650, 117, 4573, 110, 172, 1182, 134, 122, 119, 1405, 118, 123, 119, 1405, 117, 185, 134, 121, 119, 3135, 1527, 114, 2799, 170, 5409, 2211, 2603, 1104, 4182, 118, 2747, 6209, 1107, 1103, 4420, 5165, 1114, 183, 3954, 3402, 1106, 187, 1179, 119, 1649, 117, 1185, 11435, 1193, 2418, 5408, 1127, 1276, 1107, 1103, 2603, 1104, 14601, 1231, 10182, 21629, 113, 1137, 134, 121, 119, 5731, 117, 4573, 110, 172, 1182, 134, 121, 119, 5486, 118, 122, 119, 5037, 117, 185, 134, 121, 119, 1489, 114, 1105, 13522, 113, 1137, 134, 121, 119, 5539, 117, 4573, 110, 172, 1182, 134, 121, 119, 4062, 118, 122, 119, 5519, 117, 185, 134, 121, 119, 5692, 114, 1206, 1103, 4420, 5165, 1114, 183, 3954, 1105, 187, 1179, 119, 1107, 1901, 117, 1155, 1103, 23470, 18460, 2756, 8080, 2686, 1114, 1103, 2905, 18460, 119, 16421, 131, 183, 3954, 1125, 1185, 5409, 1472, 1121, 187, 1179, 1107, 14601, 1231, 10182, 21629, 1105, 13522, 1111, 25813, 187, 19515, 119, 1649, 117, 1103, 5409, 2211, 2603, 1104, 4182, 118, 2747, 6209, 2726, 1103, 1329, 1104, 183, 3954, 1136, 1178, 1111, 187, 19515, 1114, 14601, 2060, 135, 125, 119, 121, 3975, 1133, 1145, 1111, 14601, 10855, 136, 125, 119, 121, 3975, 3402, 1114, 187, 1179, 119, 102, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], &#39;token_type_ids&#39;: [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], &#39;attention_mask&#39;: [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]}}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="saving-code-for-later">
+<h2>Saving code for later<a class="headerlink" href="#saving-code-for-later" title="Permalink to this heading">#</a></h2>
+<p>I’ve pulled the above code into a separate file called <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/dataset.py">dataset.py</a>. This will allow us to reuse the code in future notebooks. Copy the file into your working directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">clemsonciti</span><span class="o">/</span><span class="n">rcde_workshops</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">pytorch_llm</span><span class="o">/</span><span class="n">dataset</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Let’s briefly look at the usage:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">PubMedDataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">,</span> 
+    <span class="n">max_tokens</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">tokenizer_model</span> <span class="o">=</span> <span class="s2">&quot;dmis-lab/biobert-base-cased-v1.2&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e4b8ff83a56e4d679fb0533ae47e0acb", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># split can be &quot;train&quot; or &quot;test&quot;</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl_train</span><span class="p">))</span>
+<span class="n">batch</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;input_ids&#39;: tensor([[  101,  1103,  2853,  1104,  4167, 21943,  4807,  1120,  1103,  2704,
+           173,  4894,  2883,   118, 15688, 10886, 21039,   113,   173,   102],
+        [  101,  3582,   131,  1195,  3402,  1103, 22760,  1104,  5677,   118,
+          2747, 12365, 25711,  4043, 10831,  1107,   170,  1372,  1104,   102],
+        [  101,  3582,   131,  1103,  6457,  1104,  1103,  1675,  2025,  1108,
+          1106, 14133,  1103,  7300, 23891,  1104,  8276, 24928,  7880,   102]]), &#39;token_type_ids&#39;: tensor([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]), &#39;attention_mask&#39;: tensor([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] the department of dermatology at the hospital dresden - friedrichstadt ( d [SEP]&#39;,
+ &#39;[CLS] background : we compared the prevalence of organ - specific autoantibodies in a group of [SEP]&#39;,
+ &#39;[CLS] background : the aim of the present study was to compare the clinical efficacy of radical neph [SEP]&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pytorch_llm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00-index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Deep Learning in Pytorch</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-small_language_model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Small Language Models: an introduction to autoregressive language modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pubmed-data">PubMed Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-and-batching">Cleaning and batching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-code-for-later">Saving code for later</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1582 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Attention is all you need &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pytorch_llm/03-attention_is_all_you_need';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Other LLM Topics" href="04-other_topics.html" />
+    <link rel="prev" title="Small Language Models: an introduction to autoregressive language modeling" href="02-small_language_model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Introduction to Python IV</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-high-dimensional-data.html">High Dimensional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/06-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-data.html">Preparing data for LLM training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Attention is all you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-other_topics.html">Other LLM Topics</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pytorch_llm/03-attention_is_all_you_need.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Attention is all you need</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-little-bit-of-history">A little bit of history</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-multi-head-attention">Masked Multi-Head Attention</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-attention">What is attention?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-attention-for-autoregressive-language-models">Masked Attention for autoregressive language models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-masked-attention">Multi-head Masked Attention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-transformer">The Transformer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-to-train-the-model">Time to train the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate">Generate</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="attention-is-all-you-need">
+<h1>Attention is all you need<a class="headerlink" href="#attention-is-all-you-need" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKENIZERS_PARALLELISM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span>
+
+<span class="kn">import</span> <span class="nn">torch</span> 
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make sure you have the <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/dataset.py">dataset.py</a> and <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/utils.py">utils.py</a> in your working directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">PubMedDataset</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">generate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-little-bit-of-history">
+<h2>A little bit of history<a class="headerlink" href="#a-little-bit-of-history" title="Permalink to this heading">#</a></h2>
+<p>In the beginning was the Markov model:</p>
+<img src="figs/arlm_markov.png" alt="autoregressive markov chain" width="800"/>
+<p>Then came recurrent neural networks (GRU, LSTM, …):</p>
+<img src="figs/rnn_lstm.png" alt="rnn and lstm" width="800"/>
+<p>Then came LSTMs with something called attention:</p>
+<img src="figs/lstm_attention.png" alt="rnn and lstm" width="800"/><p>If you are feeling a little overwhelmed by this picture, you are not alone. In fact, exactly that feeling produced the title for the 2017 paper <a class="reference external" href="https://arxiv.org/abs/1706.03762">“Attention is all you need”</a>:</p>
+<img src="figs/attn_all_you_need.png" alt="rnn and lstm" width="800"/>
+<p>And this is what their model architecture looks like:</p>
+<img src="figs/encoder_decoder_transformer.png" alt="transformer encoder decoder" height="600"/>
+<p>However, they were focused on text translation which benefits from having a separate encoder/decoder. For language modeling, we only need the decoder part, and we don’t need the middle “Multi-head Attention” block. The picture simplifies to:</p>
+<img src="figs/transformer_decoder.png" alt="transformer decoder only for language modeling" width="300"/>
+<p>Now this is starting to be a little less intimidating.</p>
+<p>Let’s take stock of what we need to figure out:</p>
+<ol class="arabic simple">
+<li><p>Input embedding</p></li>
+<li><p>Position encoding</p></li>
+<li><p>The circle plus thing</p></li>
+<li><p>Masked Multi-Head atttention (MMHA)</p></li>
+<li><p>Connections going around the MMHA</p></li>
+<li><p>Add and Norm</p></li>
+<li><p>Fully Connected</p></li>
+<li><p>Linear and Softmax</p></li>
+</ol>
+<p>The heart of the transformer is the “Masked Multi-Head attention” step. All of the other oparations act at the single-token level.</p>
+</section>
+<section id="masked-multi-head-attention">
+<h2>Masked Multi-Head Attention<a class="headerlink" href="#masked-multi-head-attention" title="Permalink to this heading">#</a></h2>
+<section id="what-is-attention">
+<h3>What is attention?<a class="headerlink" href="#what-is-attention" title="Permalink to this heading">#</a></h3>
+<p>Attention selects information from a set of entries based on a query. To perform this operation we need to define:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q\)</span>: the query, represented by a numeric vector. The query specifies what kind of information should be given more attention.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span>: the keys, also vectors. Each entry in the set has a key. We compare the query with each key to see how much attention the entry should be given.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span>: the value, also usually a vector. This represents the information associated with each entry that we are retrieving.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(Q, K_i) = \alpha_i\)</span>: the “comparison” or “compatibility” function. This function compares <span class="math notranslate nohighlight">\(Q\)</span> with <span class="math notranslate nohighlight">\(K_i\)</span>, the key for entry <span class="math notranslate nohighlight">\(i\)</span>. The function returns the attention logit <span class="math notranslate nohighlight">\(\alpha_i\)</span>.</p></li>
+</ul>
+<p>The attention scores are computed from the attention logits with the softmax operation:
+$<span class="math notranslate nohighlight">\(
+a_i = \frac{\exp{(\alpha_i)}}{\sum_{j=1}^L\exp{(\alpha_j)}}
+\)</span>$
+In pytorch, we will simply do <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">alpha.softmax(dim=-1)</span></code>.</p>
+<p>Let’s work out a simple example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> 
+                       <span class="mf">1.</span><span class="p">,</span> 
+                       <span class="mf">0.</span><span class="p">])</span>
+
+<span class="n">keys</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span>  <span class="c1"># goes with value 0.</span>
+    <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>  <span class="c1"># goes with value 1. </span>
+    <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>    <span class="c1"># goes with value 0.</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for our comparison function, let&#39;s just use the dot product</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">keys</span> <span class="o">@</span> <span class="n">query</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alpha values:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># now compute the normalized attention scores</span>
+<span class="n">attn</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;attention values:&quot;</span><span class="p">,</span> <span class="n">attn</span><span class="p">)</span>
+
+<span class="c1"># now use the attention scores to aggregate the values</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">values</span> <span class="o">@</span> <span class="n">attn</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alpha values: tensor([0.9500, 0.1000, 0.8000])
+attention values: tensor([0.4370, 0.1868, 0.3762])
+Result: 0.18679720163345337
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the query vector was more like the vectors with value <code class="docutils literal notranslate"><span class="pre">0.</span></code>, our result ended up closer to <code class="docutils literal notranslate"><span class="pre">0.</span></code></p>
+<p>Check to see the result when using the query <code class="docutils literal notranslate"><span class="pre">[0.,</span> <span class="pre">1.]</span></code></p>
+</section>
+<section id="masked-attention-for-autoregressive-language-models">
+<h3>Masked Attention for autoregressive language models<a class="headerlink" href="#masked-attention-for-autoregressive-language-models" title="Permalink to this heading">#</a></h3>
+<img src="figs/arlm.png" alt="autoregressive lm" width="800"/><p>Consider the figure above. In order to make a good prediction for token 4, we need to adaptively combine the information from tokens 1, 2, and 3. Let’s use attention to do this. Here’s how we define Q, K, and, V:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q_3 = W_Q h_3\)</span>, where <span class="math notranslate nohighlight">\(h_3\)</span> is the embedding for token 3 and <span class="math notranslate nohighlight">\(W_Q\)</span> is an <code class="docutils literal notranslate"><span class="pre">embed_dim</span> <span class="pre">x</span> <span class="pre">embed_dim</span></code> projection matrix.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_{i\leq3} = W_K h_i\)</span> where <span class="math notranslate nohighlight">\(W_K\)</span> is an <code class="docutils literal notranslate"><span class="pre">embed_dim</span> <span class="pre">x</span> <span class="pre">embed_dim</span></code> matrix.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{i\leq3} = W_V h_i\)</span> where <span class="math notranslate nohighlight">\(W_V\)</span> is an <code class="docutils literal notranslate"><span class="pre">embed_dim</span> <span class="pre">x</span> <span class="pre">embed_dim</span></code> matrix.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_{i,3} = \frac{Q_3\cdot K_i}{\sqrt{|Q_3|}}\)</span> where <span class="math notranslate nohighlight">\(|Q_3|\)</span> is the number of elements in <span class="math notranslate nohighlight">\(Q_3\)</span>.</p></li>
+</ul>
+<p>We then use softmax to normalize the attention logits yeilding the attention scores <span class="math notranslate nohighlight">\(a_{i,3},\, i\leq3\)</span>. The output of the attention block is then
+$<span class="math notranslate nohighlight">\(
+h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i} 
+\)</span>$</p>
+<p>We’re now ready to implement this in code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MaskedAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="n">embed_dim</span><span class="o">**-</span><span class="mf">0.5</span>
+        
+        <span class="c1"># q,k,v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_Q @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_K @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_V @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
+        
+        <span class="c1"># final projection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># autoregressive mask</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+            <span class="s2">&quot;ar_mask&quot;</span><span class="p">,</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">max_tokens</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>  
+        <span class="c1"># self.ar_mask.shape == (1, L, L)</span>
+        <span class="c1"># for each batch, we need to select the sub-matrix</span>
+        <span class="c1"># of size (1, L_batch, L_batch) where L_batch&lt;=L</span>
+        <span class="c1"># is the sequence length for the batch.</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># x.shape = (N, L_batch, embed_dim)</span>
+        <span class="n">L_batch</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># qkv</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+        
+        <span class="c1"># scaled dot-product attention</span>
+        <span class="c1"># we use einstein summation approach to avoid </span>
+        <span class="c1"># complicated reshape then permute operations</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;Nie,Nje-&gt;Nij&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="c1"># alpha.shape = (N, L_batch, L_batch)</span>
+        <span class="c1"># the 1st L_batch dim indexes the query token, </span>
+        <span class="c1"># the 2nd indexes the key/val token</span>
+        
+        <span class="c1"># autoregressive masking</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ar_mask</span><span class="p">[:,</span> <span class="p">:</span><span class="n">L_batch</span><span class="p">,</span> <span class="p">:</span><span class="n">L_batch</span><span class="p">]</span> <span class="c1"># (1, L_batch, L_batch)</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span>  <span class="c1"># why does this work? </span>
+        
+        <span class="c1"># normalized attention scores</span>
+        <span class="n">attn</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># N, L_batch, L_batch</span>
+        
+        <span class="c1"># aggregate</span>
+        <span class="n">v_agg</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;Nij,Nje-&gt;Nie&quot;</span><span class="p">,</span> <span class="n">attn</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">h_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj</span><span class="p">(</span><span class="n">v_agg</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">h_out</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">462</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># (N, L_batch, embed_dim)</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">MaskedAttention</span><span class="p">(</span><span class="n">embed_dim</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">h_out</span> <span class="o">=</span> <span class="n">ma</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># expect (3, 462, 32)</span>
+<span class="n">h_out</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 462, 32])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multi-head-masked-attention">
+<h3>Multi-head Masked Attention<a class="headerlink" href="#multi-head-masked-attention" title="Permalink to this heading">#</a></h3>
+<p>Now we deal with the “Multi-head” part. The logic here is that using a single attention score to aggregate an entire token embedding may not have enough resolution. Perhaps their are two somewhat independent parts of the embedding that need to be attended to under different circumstances. Multi-head attention addresses this issue. Conceptually, we break up the embedding vector into <code class="docutils literal notranslate"><span class="pre">num_heads</span></code> smaller embedding vectors and then perform the same attention mechanism as above independently for each sub-vector. We then concatenate the resulting sub-vectors before projecting.</p>
+<p>Once we’ve understood the single-head case, the multi-head case is not very difficult to implement. Copy-paste the MaskedAttention class and modify it to incorporate multiple heads.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultiHeadMaskedAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">=</span> <span class="n">num_heads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate</span>
+        
+        <span class="k">assert</span> <span class="n">embed_dim</span> <span class="o">%</span> <span class="n">num_heads</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;embed_dim must be divisble by num_heads&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span> <span class="o">=</span> <span class="n">embed_dim</span> <span class="o">//</span> <span class="n">num_heads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="o">**-</span><span class="mf">0.5</span>  <span class="c1"># now we scale based on head size</span>
+        
+        <span class="c1"># q,k,v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_Q @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_K @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_V @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
+        
+        <span class="c1"># final projection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># autoregressive mask</span>
+        <span class="c1"># we need one extra dimension for the head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+            <span class="s2">&quot;ar_mask&quot;</span><span class="p">,</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">max_tokens</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>  
+        <span class="c1"># self.ar_mask.shape == (1, 1, L, L)</span>
+        <span class="c1"># for each batch, we need to select the sub-matrix</span>
+        <span class="c1"># of size (1, 1, L_batch, L_batch) where L_batch&lt;=L</span>
+        <span class="c1"># is the sequence length for the batch.</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># x.shape = (N, L_batch, embed_dim)</span>
+        <span class="n">L_batch</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># qkv</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
+        
+        <span class="c1"># reshape to isolate head embedding</span>
+        <span class="n">q</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">vec</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">L_batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)]</span>
+        <span class="c1"># vec.shape == (N, L_batch, num_heads, head_dim)</span>
+        
+        <span class="c1"># scaled dot-product attention</span>
+        <span class="c1"># we use einstein summation approach to avoid </span>
+        <span class="c1"># complicated reshape then permute operations</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;Nihe,Njhe-&gt;Nhij&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="c1"># alpha.shape = (N, num_heads, L_batch, L_batch)</span>
+        <span class="c1"># the 1st L_batch dim indexes the query token, </span>
+        <span class="c1"># the 2nd indexes the key/val token</span>
+        
+        <span class="c1"># autoregressive masking</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ar_mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="n">L_batch</span><span class="p">,</span> <span class="p">:</span><span class="n">L_batch</span><span class="p">]</span> <span class="c1"># (1, 1, L_batch, L_batch)</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">))</span> 
+        
+        <span class="c1"># normalized attention scores</span>
+        <span class="n">attn</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># N, num_heads, L_batch, L_batch</span>
+        
+        <span class="c1"># aggregate</span>
+        <span class="n">v_agg</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;Nhij,Njhe-&gt;Nihe&quot;</span><span class="p">,</span> <span class="n">attn</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>  <span class="c1"># (N,L_batch,num_heads,head_dim)</span>
+        
+        <span class="c1"># reshape to concat the heads (view won&#39;t work)</span>
+        <span class="n">v_agg</span> <span class="o">=</span> <span class="n">v_agg</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">L_batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+        <span class="n">h_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">proj</span><span class="p">(</span><span class="n">v_agg</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">h_out</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">462</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># (N, L_batch, embed_dim)</span>
+<span class="n">ma</span> <span class="o">=</span> <span class="n">MultiHeadMaskedAttention</span><span class="p">(</span><span class="n">embed_dim</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">h_out</span> <span class="o">=</span> <span class="n">ma</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>  <span class="c1"># expect (3, 462, 32)</span>
+<span class="n">h_out</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 462, 32])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-transformer">
+<h3>The Transformer<a class="headerlink" href="#the-transformer" title="Permalink to this heading">#</a></h3>
+<p>Now that we’ve tackled multi-head masked attention, the rest is easy. All other operations act at the individual token level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TransformerBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attn</span> <span class="o">=</span> <span class="n">MultiHeadMaskedAttention</span><span class="p">(</span>
+            <span class="n">embed_dim</span><span class="o">=</span><span class="n">embed_dim</span><span class="p">,</span> 
+            <span class="n">num_heads</span> <span class="o">=</span> <span class="n">num_heads</span><span class="p">,</span>
+            <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">,</span> 
+            <span class="n">dropout_rate</span><span class="o">=</span><span class="n">dropout_rate</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">embed_dim</span><span class="p">),</span>  <span class="c1"># the factor of 4 comes from the original GPT paper.</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">GELU</span><span class="p">(),</span>  <span class="c1"># like relu but a smooth</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm1</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">attn</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm2</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">z</span>
+
+<span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">num_blocks</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">=</span> <span class="n">vocab_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">=</span> <span class="n">num_heads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_blocks</span> <span class="o">=</span> <span class="n">num_blocks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate</span>
+
+        <span class="c1"># embeddings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tok_embed</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos_embed</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">max_tokens</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">)</span>
+
+        <span class="c1"># sequence of transformer blocks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="p">[</span>
+            <span class="n">TransformerBlock</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">)</span> 
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">)])</span>
+
+        <span class="c1"># output linear layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># x.shape = (N, L)</span>
+        <span class="c1"># mask.shape = (N, L)</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+
+        <span class="c1"># embeddings</span>
+        <span class="n">tok_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tok_embed</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># (N, L, embed_dim)</span>
+        <span class="n">pos_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_embed</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>  <span class="c1"># (L, embed_dim)</span>
+        <span class="n">embedding</span> <span class="o">=</span> <span class="n">tok_embedding</span> <span class="o">+</span> <span class="n">pos_embedding</span>  <span class="c1"># (N, L, embed_dim)</span>
+
+        <span class="c1"># transformer blocks</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">(</span><span class="n">embedding</span><span class="p">)</span>
+
+        <span class="c1"># output</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fout</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">logits</span>
+    
+    <span class="k">def</span> <span class="nf">numpar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s test it</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span><span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">)</span>
+<span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "09c76eb7258e4881abe4016ab8e584b1", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span>
+    <span class="n">vocab_size</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span>
+    <span class="n">embed_dim</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> 
+    <span class="n">num_heads</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">max_tokens</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> 
+    <span class="n">num_blocks</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+    <span class="n">dropout_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trainable parameters: &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">numpar</span><span class="p">())</span>
+<span class="n">model</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transformer(
+  (tok_embed): Embedding(28996, 64)
+  (pos_embed): Embedding(512, 64)
+  (blocks): Sequential(
+    (0): TransformerBlock(
+      (lay_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (lay_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (attn): MultiHeadMaskedAttention(
+        (query): Linear(in_features=64, out_features=64, bias=False)
+        (key): Linear(in_features=64, out_features=64, bias=False)
+        (value): Linear(in_features=64, out_features=64, bias=False)
+        (attn_dropout): Dropout(p=0.1, inplace=False)
+        (proj): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=False)
+          (1): Dropout(p=0.1, inplace=False)
+        )
+      )
+      (feed_forward): Sequential(
+        (0): Linear(in_features=64, out_features=256, bias=True)
+        (1): GELU(approximate=&#39;none&#39;)
+        (2): Linear(in_features=256, out_features=64, bias=True)
+        (3): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (1): TransformerBlock(
+      (lay_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (lay_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (attn): MultiHeadMaskedAttention(
+        (query): Linear(in_features=64, out_features=64, bias=False)
+        (key): Linear(in_features=64, out_features=64, bias=False)
+        (value): Linear(in_features=64, out_features=64, bias=False)
+        (attn_dropout): Dropout(p=0.1, inplace=False)
+        (proj): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=False)
+          (1): Dropout(p=0.1, inplace=False)
+        )
+      )
+      (feed_forward): Sequential(
+        (0): Linear(in_features=64, out_features=256, bias=True)
+        (1): GELU(approximate=&#39;none&#39;)
+        (2): Linear(in_features=256, out_features=64, bias=True)
+        (3): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (2): TransformerBlock(
+      (lay_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (lay_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (attn): MultiHeadMaskedAttention(
+        (query): Linear(in_features=64, out_features=64, bias=False)
+        (key): Linear(in_features=64, out_features=64, bias=False)
+        (value): Linear(in_features=64, out_features=64, bias=False)
+        (attn_dropout): Dropout(p=0.1, inplace=False)
+        (proj): Sequential(
+          (0): Linear(in_features=64, out_features=64, bias=False)
+          (1): Dropout(p=0.1, inplace=False)
+        )
+      )
+      (feed_forward): Sequential(
+        (0): Linear(in_features=64, out_features=256, bias=True)
+        (1): GELU(approximate=&#39;none&#39;)
+        (2): Linear(in_features=256, out_features=64, bias=True)
+        (3): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (fout): Linear(in_features=64, out_features=28996, bias=True)
+)
+Trainable parameters:  3922436
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 463, 28996])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="time-to-train-the-model">
+<h2>Time to train the model<a class="headerlink" href="#time-to-train-the-model" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># training settings</span>
+<span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span>
+<span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.002</span>  <span class="c1"># We could get better performance by using a learning rate scheduler</span>
+
+<span class="c1"># model settings</span>
+<span class="n">embed_dim</span> <span class="o">=</span> <span class="mi">128</span> <span class="c1"># gpt-1 uses 768. We have a much smaller dataset.</span>
+<span class="n">num_heads</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># gpt uses 12 size 64 heads.</span>
+<span class="n">max_tokens</span> <span class="o">=</span> <span class="mi">512</span> <span class="c1"># gpt-1 uses 512</span>
+<span class="n">dropout_rate</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># gpt-1 uses 0.1</span>
+<span class="n">num_blocks</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># gpt-1 uses 12</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reinitialize dataset for good measure</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span><span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="n">max_tokens</span><span class="p">)</span>
+<span class="n">vocab_size</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span>
+
+<span class="c1"># train/test dataloaders</span>
+<span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">dl_test</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># reinitialize the model on gpu</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span>
+    <span class="n">vocab_size</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span>
+    <span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span><span class="p">,</span> 
+    <span class="n">num_heads</span> <span class="o">=</span> <span class="n">num_heads</span><span class="p">,</span>
+    <span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span><span class="p">,</span> 
+    <span class="n">num_blocks</span> <span class="o">=</span> <span class="n">num_blocks</span><span class="p">,</span> 
+    <span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trainable parameters:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">numpar</span><span class="p">())</span>
+
+<span class="c1"># create the pytorch optimizer</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7c03dd2dbdc244b8a33985b89db47045", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable parameters: 8704068
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is going to take a while, and we only have 45k training samples (63MB) and a tiny model (yes 8.7 million is tiny by today’s LLM standards). GPT-3 has about 175 billion parameters and 45 TB of text data. That’s 22 thousand times more model and 700 thousand times more data… Be glad we don’t have to train that! Nevertheless, the basic architecture is very similar to what we wrote down above.</p>
+<p>While it trains, try looking at your gpu utilization (for example <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">-l</span> <span class="pre">3</span></code>) and cpu utilization (<code class="docutils literal notranslate"><span class="pre">top</span></code> or <code class="docutils literal notranslate"><span class="pre">htop</span></code>). Can you identify the bottleneck in the training pipeline? How would we remedy this?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;START EPOCH </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TRAINING&quot;</span><span class="p">)</span>
+    <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dl_train</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TESTING&quot;</span><span class="p">)</span>
+    <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dl_test</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
+TRAINING
+Batch 0 training loss: 10.441268920898438
+Batch 80 training loss: 6.4041032791137695
+Batch 160 training loss: 5.759481430053711
+Batch 240 training loss: 5.467425346374512
+Batch 320 training loss: 5.3012237548828125
+Batch 400 training loss: 5.278472900390625
+Batch 480 training loss: 5.202462673187256
+Batch 560 training loss: 4.927072525024414
+Batch 640 training loss: 4.986785888671875
+TESTING
+Batch 0 testing loss: 4.781369209289551
+Batch 20 testing loss: 4.866448402404785
+Batch 40 testing loss: 4.732792854309082
+Batch 60 testing loss: 4.744690895080566
+------------------------------
+START EPOCH 2
+TRAINING
+Batch 0 training loss: 4.84180212020874
+Batch 80 training loss: 4.941915512084961
+Batch 160 training loss: 4.827304840087891
+Batch 240 training loss: 4.7983245849609375
+Batch 320 training loss: 4.747915267944336
+Batch 400 training loss: 4.811959266662598
+Batch 480 training loss: 4.789278984069824
+Batch 560 training loss: 4.564327716827393
+Batch 640 training loss: 4.681553840637207
+TESTING
+Batch 0 testing loss: 4.485126495361328
+Batch 20 testing loss: 4.586443901062012
+Batch 40 testing loss: 4.427973747253418
+Batch 60 testing loss: 4.44240665435791
+------------------------------
+START EPOCH 3
+TRAINING
+Batch 0 training loss: 4.562195777893066
+Batch 80 training loss: 4.677175521850586
+Batch 160 training loss: 4.588219165802002
+Batch 240 training loss: 4.566483020782471
+Batch 320 training loss: 4.529917240142822
+Batch 400 training loss: 4.616701126098633
+Batch 480 training loss: 4.592930793762207
+Batch 560 training loss: 4.371280193328857
+Batch 640 training loss: 4.507789611816406
+TESTING
+Batch 0 testing loss: 4.336787223815918
+Batch 20 testing loss: 4.436388969421387
+Batch 40 testing loss: 4.276817321777344
+Batch 60 testing loss: 4.2999677658081055
+------------------------------
+START EPOCH 4
+TRAINING
+Batch 0 training loss: 4.39197301864624
+Batch 80 training loss: 4.530374526977539
+Batch 160 training loss: 4.450837135314941
+Batch 240 training loss: 4.423648357391357
+Batch 320 training loss: 4.388400077819824
+Batch 400 training loss: 4.482548236846924
+Batch 480 training loss: 4.450878620147705
+Batch 560 training loss: 4.247740745544434
+Batch 640 training loss: 4.3706955909729
+TESTING
+Batch 0 testing loss: 4.213995933532715
+Batch 20 testing loss: 4.309488296508789
+Batch 40 testing loss: 4.1512322425842285
+Batch 60 testing loss: 4.174094200134277
+------------------------------
+START EPOCH 5
+TRAINING
+Batch 0 training loss: 4.271954536437988
+Batch 80 training loss: 4.418541431427002
+Batch 160 training loss: 4.333205223083496
+Batch 240 training loss: 4.300657272338867
+Batch 320 training loss: 4.285055160522461
+Batch 400 training loss: 4.376416206359863
+Batch 480 training loss: 4.364987373352051
+Batch 560 training loss: 4.14784049987793
+Batch 640 training loss: 4.265082359313965
+TESTING
+Batch 0 testing loss: 4.109352111816406
+Batch 20 testing loss: 4.217482566833496
+Batch 40 testing loss: 4.050065994262695
+Batch 60 testing loss: 4.072908401489258
+------------------------------
+START EPOCH 6
+TRAINING
+Batch 0 training loss: 4.173150062561035
+Batch 80 training loss: 4.320001125335693
+Batch 160 training loss: 4.240145683288574
+Batch 240 training loss: 4.202023506164551
+Batch 320 training loss: 4.190978050231934
+Batch 400 training loss: 4.309050559997559
+Batch 480 training loss: 4.268381118774414
+Batch 560 training loss: 4.071352005004883
+Batch 640 training loss: 4.186561584472656
+TESTING
+Batch 0 testing loss: 4.01589822769165
+Batch 20 testing loss: 4.1295166015625
+Batch 40 testing loss: 3.963313341140747
+Batch 60 testing loss: 3.9839329719543457
+------------------------------
+START EPOCH 7
+TRAINING
+Batch 0 training loss: 4.084400177001953
+Batch 80 training loss: 4.238595485687256
+Batch 160 training loss: 4.158278465270996
+Batch 240 training loss: 4.131196022033691
+Batch 320 training loss: 4.117340087890625
+Batch 400 training loss: 4.227200508117676
+Batch 480 training loss: 4.2100934982299805
+Batch 560 training loss: 3.9987940788269043
+Batch 640 training loss: 4.108903408050537
+TESTING
+Batch 0 testing loss: 3.952542543411255
+Batch 20 testing loss: 4.064004898071289
+Batch 40 testing loss: 3.8971376419067383
+Batch 60 testing loss: 3.9157981872558594
+------------------------------
+START EPOCH 8
+TRAINING
+Batch 0 training loss: 4.031489372253418
+Batch 80 training loss: 4.177398681640625
+Batch 160 training loss: 4.106204509735107
+Batch 240 training loss: 4.079366683959961
+Batch 320 training loss: 4.059842109680176
+Batch 400 training loss: 4.1795735359191895
+Batch 480 training loss: 4.149754524230957
+Batch 560 training loss: 3.9589710235595703
+Batch 640 training loss: 4.0697832107543945
+TESTING
+Batch 0 testing loss: 3.91032075881958
+Batch 20 testing loss: 4.014289379119873
+Batch 40 testing loss: 3.8498144149780273
+Batch 60 testing loss: 3.864065170288086
+------------------------------
+START EPOCH 9
+TRAINING
+Batch 0 training loss: 3.974339723587036
+Batch 80 training loss: 4.137593746185303
+Batch 160 training loss: 4.046600341796875
+Batch 240 training loss: 4.014239311218262
+Batch 320 training loss: 4.017526626586914
+Batch 400 training loss: 4.119354248046875
+Batch 480 training loss: 4.095956802368164
+Batch 560 training loss: 3.9108123779296875
+Batch 640 training loss: 4.026747226715088
+TESTING
+Batch 0 testing loss: 3.8545281887054443
+Batch 20 testing loss: 3.974050521850586
+Batch 40 testing loss: 3.797498941421509
+Batch 60 testing loss: 3.816227436065674
+------------------------------
+START EPOCH 10
+TRAINING
+Batch 0 training loss: 3.9186527729034424
+Batch 80 training loss: 4.070243835449219
+Batch 160 training loss: 4.018056392669678
+Batch 240 training loss: 3.9755165576934814
+Batch 320 training loss: 3.9614756107330322
+Batch 400 training loss: 4.065659523010254
+Batch 480 training loss: 4.043942451477051
+Batch 560 training loss: 3.8629672527313232
+Batch 640 training loss: 3.979445695877075
+TESTING
+Batch 0 testing loss: 3.818120002746582
+Batch 20 testing loss: 3.936805009841919
+Batch 40 testing loss: 3.7657129764556885
+Batch 60 testing loss: 3.782418966293335
+------------------------------
+START EPOCH 11
+TRAINING
+Batch 0 training loss: 3.875653028488159
+Batch 80 training loss: 4.036355018615723
+Batch 160 training loss: 3.958613872528076
+Batch 240 training loss: 3.9386820793151855
+Batch 320 training loss: 3.9262781143188477
+Batch 400 training loss: 4.042459487915039
+Batch 480 training loss: 4.006274223327637
+Batch 560 training loss: 3.8337507247924805
+Batch 640 training loss: 3.9389991760253906
+TESTING
+Batch 0 testing loss: 3.794154167175293
+Batch 20 testing loss: 3.8984875679016113
+Batch 40 testing loss: 3.7323014736175537
+Batch 60 testing loss: 3.7493796348571777
+------------------------------
+START EPOCH 12
+TRAINING
+Batch 0 training loss: 3.8398823738098145
+Batch 80 training loss: 3.992138385772705
+Batch 160 training loss: 3.932145595550537
+Batch 240 training loss: 3.898881673812866
+Batch 320 training loss: 3.896049737930298
+Batch 400 training loss: 4.010119438171387
+Batch 480 training loss: 3.9848506450653076
+Batch 560 training loss: 3.8010966777801514
+Batch 640 training loss: 3.9155850410461426
+TESTING
+Batch 0 testing loss: 3.759490489959717
+Batch 20 testing loss: 3.8702239990234375
+Batch 40 testing loss: 3.7030160427093506
+Batch 60 testing loss: 3.7146801948547363
+------------------------------
+START EPOCH 13
+TRAINING
+Batch 0 training loss: 3.816828489303589
+Batch 80 training loss: 3.9672813415527344
+Batch 160 training loss: 3.893692970275879
+Batch 240 training loss: 3.869347095489502
+Batch 320 training loss: 3.84978985786438
+Batch 400 training loss: 3.9856836795806885
+Batch 480 training loss: 3.928481101989746
+Batch 560 training loss: 3.7712409496307373
+Batch 640 training loss: 3.8789570331573486
+TESTING
+Batch 0 testing loss: 3.735874652862549
+Batch 20 testing loss: 3.8384032249450684
+Batch 40 testing loss: 3.6720399856567383
+Batch 60 testing loss: 3.685765266418457
+------------------------------
+START EPOCH 14
+TRAINING
+Batch 0 training loss: 3.7797749042510986
+Batch 80 training loss: 3.923663377761841
+Batch 160 training loss: 3.866769790649414
+Batch 240 training loss: 3.8269224166870117
+Batch 320 training loss: 3.8233089447021484
+Batch 400 training loss: 3.9540882110595703
+Batch 480 training loss: 3.898679733276367
+Batch 560 training loss: 3.7448272705078125
+Batch 640 training loss: 3.839383125305176
+TESTING
+Batch 0 testing loss: 3.7182579040527344
+Batch 20 testing loss: 3.8072783946990967
+Batch 40 testing loss: 3.6426305770874023
+Batch 60 testing loss: 3.6591436862945557
+------------------------------
+START EPOCH 15
+TRAINING
+Batch 0 training loss: 3.7560434341430664
+Batch 80 training loss: 3.910916328430176
+Batch 160 training loss: 3.8450827598571777
+Batch 240 training loss: 3.8106701374053955
+Batch 320 training loss: 3.789034843444824
+Batch 400 training loss: 3.9264683723449707
+Batch 480 training loss: 3.887277364730835
+Batch 560 training loss: 3.712599992752075
+Batch 640 training loss: 3.823500871658325
+TESTING
+Batch 0 testing loss: 3.699575901031494
+Batch 20 testing loss: 3.790423631668091
+Batch 40 testing loss: 3.6187052726745605
+Batch 60 testing loss: 3.6393418312072754
+------------------------------
+START EPOCH 16
+TRAINING
+Batch 0 training loss: 3.731370687484741
+Batch 80 training loss: 3.8809704780578613
+Batch 160 training loss: 3.806396484375
+Batch 240 training loss: 3.7791481018066406
+Batch 320 training loss: 3.764784574508667
+Batch 400 training loss: 3.883665084838867
+Batch 480 training loss: 3.855344295501709
+Batch 560 training loss: 3.688981056213379
+Batch 640 training loss: 3.7896628379821777
+TESTING
+Batch 0 testing loss: 3.680417060852051
+Batch 20 testing loss: 3.7717390060424805
+Batch 40 testing loss: 3.6047308444976807
+Batch 60 testing loss: 3.6272144317626953
+------------------------------
+START EPOCH 17
+TRAINING
+Batch 0 training loss: 3.713963508605957
+Batch 80 training loss: 3.847762107849121
+Batch 160 training loss: 3.80134654045105
+Batch 240 training loss: 3.7452523708343506
+Batch 320 training loss: 3.7507126331329346
+Batch 400 training loss: 3.864193916320801
+Batch 480 training loss: 3.8383705615997314
+Batch 560 training loss: 3.677325963973999
+Batch 640 training loss: 3.7716307640075684
+TESTING
+Batch 0 testing loss: 3.6625936031341553
+Batch 20 testing loss: 3.763700246810913
+Batch 40 testing loss: 3.589146375656128
+Batch 60 testing loss: 3.6137938499450684
+------------------------------
+START EPOCH 18
+TRAINING
+Batch 0 training loss: 3.693234920501709
+Batch 80 training loss: 3.830171823501587
+Batch 160 training loss: 3.7703142166137695
+Batch 240 training loss: 3.737401247024536
+Batch 320 training loss: 3.712416172027588
+Batch 400 training loss: 3.8631131649017334
+Batch 480 training loss: 3.8022077083587646
+Batch 560 training loss: 3.6409993171691895
+Batch 640 training loss: 3.7625555992126465
+TESTING
+Batch 0 testing loss: 3.6460983753204346
+Batch 20 testing loss: 3.7410688400268555
+Batch 40 testing loss: 3.568892002105713
+Batch 60 testing loss: 3.5988969802856445
+------------------------------
+START EPOCH 19
+TRAINING
+Batch 0 training loss: 3.6603293418884277
+Batch 80 training loss: 3.8107056617736816
+Batch 160 training loss: 3.751826524734497
+Batch 240 training loss: 3.711075782775879
+Batch 320 training loss: 3.6880698204040527
+Batch 400 training loss: 3.8287353515625
+Batch 480 training loss: 3.793254852294922
+Batch 560 training loss: 3.628530740737915
+Batch 640 training loss: 3.743846893310547
+TESTING
+Batch 0 testing loss: 3.623455047607422
+Batch 20 testing loss: 3.7210843563079834
+Batch 40 testing loss: 3.5476796627044678
+Batch 60 testing loss: 3.5802392959594727
+------------------------------
+START EPOCH 20
+TRAINING
+Batch 0 training loss: 3.6472151279449463
+Batch 80 training loss: 3.7916078567504883
+Batch 160 training loss: 3.7382917404174805
+Batch 240 training loss: 3.6843347549438477
+Batch 320 training loss: 3.675851345062256
+Batch 400 training loss: 3.799027919769287
+Batch 480 training loss: 3.77473783493042
+Batch 560 training loss: 3.6083602905273438
+Batch 640 training loss: 3.725365161895752
+TESTING
+Batch 0 testing loss: 3.614828586578369
+Batch 20 testing loss: 3.7088279724121094
+Batch 40 testing loss: 3.536351442337036
+Batch 60 testing loss: 3.5755629539489746
+------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate">
+<h2>Generate<a class="headerlink" href="#generate" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;We compared the prevalence of&quot;</span><span class="p">,</span> <span class="c1"># organ-specific autoantibodies in a group of Helicobacter...&quot;</span>
+    <span class="s2">&quot;We compared the prevalence of&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;We compared the prevalence of&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
+
+<span class="c1"># trim off unwanted [SEP] tokens which act like our special end-of-sequence token.</span>
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># generate ids</span>
+<span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of a typical late peritoneal palmar virus ( chc ) gene in 24 neonatal cutaneous bone abnormalities of the bovine left cystic lesion with a thickness beneath size ( axial total of 60 vs. 54&#39;,
+ &#39;[CLS] we compared the prevalence of hiv infection and fibroblast growth factors ( hamsdiff ) vectors for bacteriological features in vitro by light - light microscopy. the number of normal fibroblasts 1 of the 16 salmonella t tissue&#39;,
+ &#39;[CLS] we compared the prevalence of blood pressure due to leukocyte multidrug resistance ( ami ) from the madaga ( 1976 by alcohol consumption ) control ( gcd ) in a fast or suxaresomatic patients. in the pregnant woman with total white&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;The quick brown fox&quot;</span><span class="p">,</span> <span class="c1"># jumps over the lazy dog</span>
+    <span class="s2">&quot;The quick brown fox&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;The quick brown fox&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
+
+<span class="c1"># trim off unwanted [SEP] tokens which act like our special end-of-sequence token.</span>
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># generate ids</span>
+<span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] the quick brown foxlightrative rehabilitation approach is the common aspect of determining the first - face andconrfolation process. the hand in the impact of injury process has been increased in patients with generalized joint history resembling muscle function. we compared the influence of two ic&#39;,
+ &#39;[CLS] the quick brown fox - sensitive x701 - t ( delta ) b induced dermal locus aureus ( flp ) in a living in arabidopsis, grbeta, from the crispr of sugar ( njp ) strains that possess short&#39;,
+ &#39;[CLS] the quick brown fox network technology offers a crucial role for accurate contributions to this image scale for enhancing processing. we developavian multimodal transgenic mouse trichoceriologically designed to measure circulating level ( sgs ) through data processing and imaging. in this&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pytorch_llm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-small_language_model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Small Language Models: an introduction to autoregressive language modeling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-other_topics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Other LLM Topics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-little-bit-of-history">A little bit of history</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-multi-head-attention">Masked Multi-Head Attention</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-attention">What is attention?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-attention-for-autoregressive-language-models">Masked Attention for autoregressive language models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-masked-attention">Multi-head Masked Attention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-transformer">The Transformer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-to-train-the-model">Time to train the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate">Generate</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
