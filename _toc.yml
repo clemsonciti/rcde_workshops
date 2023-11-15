@@ -105,6 +105,13 @@ parts:
     - file: pytorch_advanced/03-finetune_pretrained_models.ipynb
     - file: pytorch_advanced/04-pytorch_lightning.ipynb
     - file: pytorch_advanced/05-training_techniques.ipynb
+  - file: pytorch_llm/00-index.md
+    sections:
+    - file: pytorch_llm/01-data.ipynb
+    - file: pytorch_llm/02-small_language_model.ipynb
+    - file: pytorch_llm/03-attention_is_all_you_need.ipynb
+    - file: pytorch_llm/04-other_topics.ipynb
+   
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md
