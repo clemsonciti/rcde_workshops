@@ -1,4 +1,4 @@
-# Deep Learning in Pytorch 
+# Attention, Transformers, and LLMs: a hands-on introduction in Pytorch
 
 ## Instructor
 - **Instructor**: D. Hudson Smith

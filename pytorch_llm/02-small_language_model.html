@@ -291,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01-data.html">Preparing data for LLM training</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Small Language Models: an introduction to autoregressive language modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-attention_is_all_you_need.html">Attention is all you need</a></li>
@@ -559,7 +559,7 @@ This is called _language generation_ because \)</span>d<span class="math notrans
 <section id="autoregressive-language-modeling">
 <h3>Autoregressive language modeling<a class="headerlink" href="#autoregressive-language-modeling" title="Permalink to this heading">#</a></h3>
 <p>Let’s make a simplifying assumption. Let’s assume that the probability for token <span class="math notranslate nohighlight">\(i\)</span> only depends on the previous tokens as shown in this figure (Notice: no arrows going from right to left.)</p>
-<img src="figs/arlm.png" alt="autoregressive lm" width="800"/>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm.png?raw=true" alt="autoregressive lm" width="800"/>
 <p>Mathematically, this can be expressed as:
 $<span class="math notranslate nohighlight">\(
 p(w_i | \langle w_j\rangle_{j\neq i}) = p(w_i | \langle w_j\rangle_{j=1}^{i-1})
@@ -594,7 +594,7 @@ So, to generate a new document, we can</p>
 <h3>The simplest, non-trivial model<a class="headerlink" href="#the-simplest-non-trivial-model" title="Permalink to this heading">#</a></h3>
 <p>Before we move on to attention, transformers, and LLMs, let’s first write down and fit a very simple language model for the PubMed dataset. This will provide a baseline for more sophisticated techniques and will give us a better understanding of how autoregressive language modeling works. Most of the lessons learned will transfer directly to the LLM case.</p>
 <p>The simplest, non-trivial model comes from assuming that the distribution for token <span class="math notranslate nohighlight">\(i\)</span> only depends on token <span class="math notranslate nohighlight">\(i-1\)</span>. Graphically:</p>
-<img src="figs/arlm_markov.png" alt="autoregressive markov chain" width="800"/>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm_markov.png?raw=true" alt="autoregressive markov chain" width="800"/>
 <p>With this Markov assumption, the conditional distribution for token <span class="math notranslate nohighlight">\(i\)</span> simplifies to
 $<span class="math notranslate nohighlight">\(
 p(w_i | \langle w_j\rangle_{j=1}^{i-1}) = p(w_i | w_{i-1})
@@ -986,7 +986,7 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </div>
 <p>This is the loss for each token. But remember, some of those tokens are just padding to make the batch tensor rectangular. We shouldn’t count those.</p>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">attention_mask</span></code> data structure output by our dataset to take care of this.</p>
-<img src="figs/mask.jpg" alt="attention mask" width="600"/><div class="cell docutils container">
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/mask.jpg?raw=true" alt="attention mask" width="600"/><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="c1"># need to trim the first because our predictions are for tokens 2 through the end.</span>
 <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">mask</span>

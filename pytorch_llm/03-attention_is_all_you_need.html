@@ -291,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01-data.html">Preparing data for LLM training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Attention is all you need</a></li>
@@ -524,16 +524,16 @@ document.write(`
 <section id="a-little-bit-of-history">
 <h2>A little bit of history<a class="headerlink" href="#a-little-bit-of-history" title="Permalink to this heading">#</a></h2>
 <p>In the beginning was the Markov model:</p>
-<img src="figs/arlm_markov.png" alt="autoregressive markov chain" width="800"/>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm_markov.png?raw=true" alt="autoregressive markov chain" width="800"/>
 <p>Then came recurrent neural networks (GRU, LSTM, …):</p>
-<img src="figs/rnn_lstm.png" alt="rnn and lstm" width="800"/>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/rnn_lstm.png?raw=true" alt="rnn and lstm" width="800"/>
 <p>Then came LSTMs with something called attention:</p>
-<img src="figs/lstm_attention.png" alt="rnn and lstm" width="800"/><p>If you are feeling a little overwhelmed by this picture, you are not alone. In fact, exactly that feeling produced the title for the 2017 paper <a class="reference external" href="https://arxiv.org/abs/1706.03762">“Attention is all you need”</a>:</p>
-<img src="figs/attn_all_you_need.png" alt="rnn and lstm" width="800"/>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/lstm_attention.png?raw=true" alt="rnn and lstm" width="800"/><p>If you are feeling a little overwhelmed by this picture, you are not alone. In fact, exactly that feeling produced the title for the 2017 paper <a class="reference external" href="https://arxiv.org/abs/1706.03762">“Attention is all you need”</a>:</p>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/attn_all_you_need.png?raw=true" alt="rnn and lstm" width="800"/>
 <p>And this is what their model architecture looks like:</p>
-<img src="figs/encoder_decoder_transformer.png" alt="transformer encoder decoder" height="600"/>
-<p>However, they were focused on text translation which benefits from having a separate encoder/decoder. For language modeling, we only need the decoder part, and we don’t need the middle “Multi-head Attention” block. The picture simplifies to:</p>
-<img src="figs/transformer_decoder.png" alt="transformer decoder only for language modeling" width="300"/>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/encoder_decoder_transformer.png?raw=true" alt="transformer encoder decoder" height="600"/>
+<p>However, they were focused on text translation which benefits from having a separate encoder/decoder. For language modeling, we only need the first half. The picture simplifies to:</p>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/transformer_decoder.png?raw=true" alt="transformer decoder only for language modeling" width="300"/>
 <p>Now this is starting to be a little less intimidating.</p>
 <p>Let’s take stock of what we need to figure out:</p>
 <ol class="arabic simple">
@@ -611,7 +611,7 @@ Result: 0.18679720163345337
 </section>
 <section id="masked-attention-for-autoregressive-language-models">
 <h3>Masked Attention for autoregressive language models<a class="headerlink" href="#masked-attention-for-autoregressive-language-models" title="Permalink to this heading">#</a></h3>
-<img src="figs/arlm.png" alt="autoregressive lm" width="800"/><p>Consider the figure above. In order to make a good prediction for token 4, we need to adaptively combine the information from tokens 1, 2, and 3. Let’s use attention to do this. Here’s how we define Q, K, and, V:</p>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm.png?raw=true" alt="autoregressive lm" width="800"/><p>Consider the figure above. In order to make a good prediction for token 4, we need to adaptively combine the information from tokens 1, 2, and 3. Let’s use attention to do this. Here’s how we define Q, K, and, V:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(Q_3 = W_Q h_3\)</span>, where <span class="math notranslate nohighlight">\(h_3\)</span> is the embedding for token 3 and <span class="math notranslate nohighlight">\(W_Q\)</span> is an <code class="docutils literal notranslate"><span class="pre">embed_dim</span> <span class="pre">x</span> <span class="pre">embed_dim</span></code> projection matrix.</p></li>
 <li><p><span class="math notranslate nohighlight">\(K_{i\leq3} = W_K h_i\)</span> where <span class="math notranslate nohighlight">\(W_K\)</span> is an <code class="docutils literal notranslate"><span class="pre">embed_dim</span> <span class="pre">x</span> <span class="pre">embed_dim</span></code> matrix.</p></li>

@@ -289,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Deep Learning in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01-data.html">Preparing data for LLM training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-attention_is_all_you_need.html">Attention is all you need</a></li>
@@ -506,12 +506,12 @@ document.write(`
 <li><p>Human preference training</p></li>
 </ol>
 <p>Obviously this all takes a lot more compute resources than we have here. For instance, Elon’s new Grok LLM was trained using 8000 A100 gpus.</p>
-<img src="figs/rlhf.svg" alt="Reinforcement learning with human feedback" width="600"/></section>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/rlhf.svg?raw=true" alt="Reinforcement learning with human feedback" width="600"/></section>
 <section id="masked-language-modeling">
 <h2>Masked language modeling<a class="headerlink" href="#masked-language-modeling" title="Permalink to this heading">#</a></h2>
 <p>So far, we’ve only discussed Autoregressive Language Modeling. This is the kind used for generating text, like ChatGPT. Another important class of language models are “Masked Language Models” as introduced by <a class="reference external" href="https://arxiv.org/abs/1810.04805">BERT</a> (see figure). Masked language models are useful when fine-tuning on small datasets.</p>
-<p>*How would we have to change our attention masking to accomodate masked language modeling?</p>
-<img src="figs/mlm.png" alt="BERT architecture" width="600"/></section>
+<p><em>How would we have to change our attention masking to accomodate masked language modeling?</em></p>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/mlm.png?raw=true" alt="BERT architecture" width="600"/></section>
 <section id="huggingface">
 <h2>🤗 Huggingface<a class="headerlink" href="#huggingface" title="Permalink to this heading">#</a></h2>
 <p>We used Huggingface tools for the data prep. It’s way bigger than that. The <a class="reference external" href="https://huggingface.co/docs/hub/index">Huggingface Hub</a> has become the de-facto place to upload pretrained LLMs. To date, they have more than 31,000 autoregressive language models uploaded. In addition, the Huggingface APIs make it easy to load any of these models and fine tune them on your own data. For instance the <a class="reference external" href="https://huggingface.co/docs/transformers/v4.35.1/en/model_doc/auto#transformers.AutoModelForCausalLM">AutoModelForCausalLM</a> class allows you to download a model from the Hub for use as a Causal/Autoregressive language model. You can then use the <a class="reference external" href="https://huggingface.co/docs/transformers/main_classes/trainer">Trainer</a> class to fit the model to your data. These tools make it much easier to experiment with a wide variety of new language models.</p>
@@ -519,7 +519,7 @@ document.write(`
 <section id="low-rank-adaptation-lora">
 <h2>Low-rank adaptation (LoRA)<a class="headerlink" href="#low-rank-adaptation-lora" title="Permalink to this heading">#</a></h2>
 <p>Fine tuning refers to adapting a pre-trained LLM to a small, domain-specific dataset. As mentioned, Huggingface provides convenient tools for this fine tuning. However, some models are so large, that it is prohibitively computationally intensive to fine tune. There are a number of techniques to address this. Perhaps the most widely applied is <a class="reference external" href="https://arxiv.org/abs/2106.09685">Low-rank adaption (LoRA)</a>. The basic idea is simple. Rather than fine tune all of the network weight matrices, we will only fine tune some of them. In addition, rather than fine tune full-rank weight matrices, we fine-tune low-rank weight matrices. See picture for the idea.</p>
-<img src="figs/lora.png" alt="Low rank adaptation" width="350"/></section>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/lora.png?raw=true" alt="Low rank adaptation" width="350"/></section>
 <section id="model-quantization">
 <h2>Model quantization<a class="headerlink" href="#model-quantization" title="Permalink to this heading">#</a></h2>
 <p>Lora helps reduce the amount of compute needed to fine-tune an LLM. However, many LLMs may still be too large to fit in VRAM. Quantization reduces model size by re-expressing the trained LLM into lower-precision weights. This can lead to factor of 2 or 4 reductions in the memory footprint. Quantization and LoRA are often used together. Using these techniques, LLMs can be fine tuned on CPU, on with hybrid mixtures of CPU and GPU, and can even make use of Swap memory.</p>
