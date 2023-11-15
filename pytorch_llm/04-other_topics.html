@@ -481,7 +481,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface">🤗 Huggingface</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-adaptation-lora">Low-rank adaptation (LoRA)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-quantization">Model quantization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-long-context-windows">Handling long context windows</a></li>
 </ul>
             </nav>
         </div>
@@ -523,10 +522,7 @@ document.write(`
 <section id="model-quantization">
 <h2>Model quantization<a class="headerlink" href="#model-quantization" title="Permalink to this heading">#</a></h2>
 <p>Lora helps reduce the amount of compute needed to fine-tune an LLM. However, many LLMs may still be too large to fit in VRAM. Quantization reduces model size by re-expressing the trained LLM into lower-precision weights. This can lead to factor of 2 or 4 reductions in the memory footprint. Quantization and LoRA are often used together. Using these techniques, LLMs can be fine tuned on CPU, on with hybrid mixtures of CPU and GPU, and can even make use of Swap memory.</p>
-<img src="figs/quantization.png" alt="Quantization" width="650"/></section>
-<section id="handling-long-context-windows">
-<h2>Handling long context windows<a class="headerlink" href="#handling-long-context-windows" title="Permalink to this heading">#</a></h2>
-</section>
+<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/quantization.png?raw=true" alt="Quantization" width="650"/></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -595,7 +591,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface">🤗 Huggingface</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-adaptation-lora">Low-rank adaptation (LoRA)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-quantization">Model quantization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-long-context-windows">Handling long context windows</a></li>
 </ul>
   </nav></div>
 

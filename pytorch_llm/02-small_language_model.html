@@ -484,7 +484,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-modeling">Autoregressive language modeling</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-small-language-model">~~Large~~ Small Language Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strike-large-strike-small-language-model"><strike>Large</strike> Small Language Model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-non-trivial-model">The simplest, non-trivial model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-model-from-data">Estimating the model from data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-frequency-tables">Estimating with frequency tables</a></li>
@@ -545,30 +545,34 @@ document.write(`
 </section>
 <section id="language-modeling-as-probabilistic-modeling">
 <h3>Language modeling as probabilistic modeling<a class="headerlink" href="#language-modeling-as-probabilistic-modeling" title="Permalink to this heading">#</a></h3>
-<p>Let’s try to make the idea of mathematically modeling language more concrete. We will develop models for the vector of tokens that appear in a document. We denote this as
-$<span class="math notranslate nohighlight">\(
+<p>Let’s try to make the idea of mathematically modeling language more concrete. We will develop models for the vector of tokens that appear in a document. We denote this as</p>
+<div class="math notranslate nohighlight">
+\[
 p(\langle w_i\rangle_{i=1}^{L})
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>w_i<span class="math notranslate nohighlight">\( is the token at position \)</span>i<span class="math notranslate nohighlight">\( in a document and \)</span>L$ is the number of words in the document. The angle bracket with limits notation here denotes the vector of all tokens specified by the limits.</p>
-<p>If we knew this joint distribution, we could sample new documents <span class="math notranslate nohighlight">\(d\)</span>:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_i\)</span> is the token at position <span class="math notranslate nohighlight">\(i\)</span> in a document and <span class="math notranslate nohighlight">\(L\)</span> is the number of words in the document. The angle bracket with limits notation here denotes the vector of all tokens specified by the limits.</p>
+<p>If we knew this joint distribution, we could sample new documents <span class="math notranslate nohighlight">\(d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 d \sim p(\langle w_i\rangle_{i=1}^{L})
-\)</span><span class="math notranslate nohighlight">\(
-This is called _language generation_ because \)</span>d<span class="math notranslate nohighlight">\( is not in the dataset that we used to learn \)</span>p(\langle w_i\rangle_{i=1}^{L})$, but it “looks like” it is from that dataset.</p>
+\]</div>
+<p>This is called <em>language generation</em> because <span class="math notranslate nohighlight">\(d\)</span> is not in the dataset that we used to learn <span class="math notranslate nohighlight">\(p(\langle w_i\rangle_{i=1}^{L})\)</span>, but it “looks like” it is from that dataset.</p>
 </section>
 <section id="autoregressive-language-modeling">
 <h3>Autoregressive language modeling<a class="headerlink" href="#autoregressive-language-modeling" title="Permalink to this heading">#</a></h3>
 <p>Let’s make a simplifying assumption. Let’s assume that the probability for token <span class="math notranslate nohighlight">\(i\)</span> only depends on the previous tokens as shown in this figure (Notice: no arrows going from right to left.)</p>
 <img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm.png?raw=true" alt="autoregressive lm" width="800"/>
-<p>Mathematically, this can be expressed as:
-$<span class="math notranslate nohighlight">\(
+<p>Mathematically, this can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
 p(w_i | \langle w_j\rangle_{j\neq i}) = p(w_i | \langle w_j\rangle_{j=1}^{i-1})
-\)</span><span class="math notranslate nohighlight">\(
-This gives us a natural way to sample documents because it implies that 
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>This gives us a natural way to sample documents because it implies that</p>
+<div class="math notranslate nohighlight">
+\[
 p(\langle w_i\rangle_{i=1}^{L}) = p(w_1)\prod_{j=2}^L p(w_j | \langle w_i\rangle_{i=1}^{j-1})
-\)</span>$
-So, to generate a new document, we can</p>
+\]</div>
+<p>So, to generate a new document, we can</p>
 <ol class="arabic simple">
 <li><p>start with a prompt token or token sequence</p></li>
 <li><p>sample the next token conditioned on the prompt and append it to the prompt</p></li>
@@ -588,37 +592,41 @@ So, to generate a new document, we can</p>
 <p>We will spend the next notebook digging deep into the last option. Before we do, though, let’s try to get a better understanding of language models by looking closely at a simple Markov model.</p>
 </section>
 </section>
-<section id="large-small-language-model">
-<h2>~~Large~~ Small Language Model<a class="headerlink" href="#large-small-language-model" title="Permalink to this heading">#</a></h2>
+<section id="strike-large-strike-small-language-model">
+<h2><strike>Large</strike> Small Language Model<a class="headerlink" href="#strike-large-strike-small-language-model" title="Permalink to this heading">#</a></h2>
 <section id="the-simplest-non-trivial-model">
 <h3>The simplest, non-trivial model<a class="headerlink" href="#the-simplest-non-trivial-model" title="Permalink to this heading">#</a></h3>
 <p>Before we move on to attention, transformers, and LLMs, let’s first write down and fit a very simple language model for the PubMed dataset. This will provide a baseline for more sophisticated techniques and will give us a better understanding of how autoregressive language modeling works. Most of the lessons learned will transfer directly to the LLM case.</p>
 <p>The simplest, non-trivial model comes from assuming that the distribution for token <span class="math notranslate nohighlight">\(i\)</span> only depends on token <span class="math notranslate nohighlight">\(i-1\)</span>. Graphically:</p>
 <img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm_markov.png?raw=true" alt="autoregressive markov chain" width="800"/>
-<p>With this Markov assumption, the conditional distribution for token <span class="math notranslate nohighlight">\(i\)</span> simplifies to
-$<span class="math notranslate nohighlight">\(
+<p>With this Markov assumption, the conditional distribution for token <span class="math notranslate nohighlight">\(i\)</span> simplifies to</p>
+<div class="math notranslate nohighlight">
+\[
 p(w_i | \langle w_j\rangle_{j=1}^{i-1}) = p(w_i | w_{i-1})
-\)</span>$</p>
-<p>The probability distribution for the entire sequence is then
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>The probability distribution for the entire sequence is then</p>
+<div class="math notranslate nohighlight">
+\[
 p(\langle w_i\rangle_{i=1}^{L}) = p(w_{1})\prod_{i=2}^{L}p(w_{i}|{w}_{i-1})
-\)</span>$
-allowing us to generate sequences as described above.</p>
+\]</div>
+<p>allowing us to generate sequences as described above.</p>
 <p><em>In what ways might this be an inadequate model for human language?</em></p>
 </section>
 <section id="estimating-the-model-from-data">
 <h3>Estimating the model from data<a class="headerlink" href="#estimating-the-model-from-data" title="Permalink to this heading">#</a></h3>
 <p>How can we estimate this model mathematically?</p>
-<p>We start by observing that the model only depends on a set of probabilities describing the liklihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,
-$<span class="math notranslate nohighlight">\(
+<p>We start by observing that the model only depends on a set of probabilities describing the liklihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 T_{\alpha\beta} = p(w_i=\alpha | w_{i-1}=\beta)\\
-\)</span><span class="math notranslate nohighlight">\(
-where the matrix elements satisfy
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>where the matrix elements satisfy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 T_{\alpha\beta} \geq 0 \\ 
 \sum_\alpha T_{\alpha\beta} =1
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>\beta<span class="math notranslate nohighlight">\( are two tokens in our vocabulary. If the vocab size is \)</span>V<span class="math notranslate nohighlight">\(, the estimation task comes down to inferring the \)</span>V\times V$ transition matrix elements describing the probability of going from any word to any other word.</p>
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are two tokens in our vocabulary. If the vocab size is <span class="math notranslate nohighlight">\(V\)</span>, the estimation task comes down to inferring the <span class="math notranslate nohighlight">\(V\times V\)</span> transition matrix elements describing the probability of going from any word to any other word.</p>
 <section id="estimating-with-frequency-tables">
 <h4>Estimating with frequency tables<a class="headerlink" href="#estimating-with-frequency-tables" title="Permalink to this heading">#</a></h4>
 <p>One straightforward way to estimate these probabilities would be to list all of the neighbor pairs of tokens in our dataset and for each conditioning token <span class="math notranslate nohighlight">\(\beta\)</span> look at the share into each choice of <span class="math notranslate nohighlight">\(\alpha\)</span>. This can be made to work, though we would have to deal with the fact that many token pairs will never appear.</p>
@@ -649,7 +657,7 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "46e3ae181d494ac68484030a7b723e5b", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "227615473ca24a33a4bd975da53d8f5b", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -815,7 +823,8 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
         <span class="c1"># idx is (N, L) array of indices in the current context</span>
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_new_tokens</span><span class="p">):</span>
             <span class="c1"># get the predictions</span>
-            <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>  <span class="c1"># [N, L, V]</span>
+            <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>  <span class="c1"># [N, L, V]</span>
             
             <span class="c1"># trim last time step. It is prediction for token after end of sequence</span>
             <span class="n">logits</span> <span class="o">=</span> <span class="n">logits</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># becomes (N, V)</span>
@@ -895,15 +904,15 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104,  1562, 11190, 12246, 15202,
-          1988,  8163, 21287, 15603, 19021, 20330, 24339, 21430, 19214, 11118,
-           826],
-        [  101,  1195,  3402,  1103, 22760,  1104, 20049, 16846,  3122, 12043,
-         17417,  6471,  3147, 14298,  8480, 22475, 16713,  7345, 25700, 28727,
-         10119],
-        [  101,  1195,  3402,  1103, 22760,  1104, 18533, 11114,  7251, 21179,
-         18095, 21991, 14557,  5055,   971, 22423, 24042,  9980, 13893, 24779,
-          1866]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104, 24884, 17254, 26954,  1411,
+         26075, 15522, 22389, 20553, 19476, 28335,  2227, 20974, 20500, 14507,
+          2257],
+        [  101,  1195,  3402,  1103, 22760,  1104,  2568, 21056,   355, 12811,
+         12318, 14785,  5376, 11395,  6381,  2335,  4051, 16601,  7579,   609,
+         13538],
+        [  101,  1195,  3402,  1103, 22760,  1104,  5399, 22759,  9429, 20698,
+         20509, 11237, 27838, 24444, 18389, 12594, 17810,  8110, 25186, 25466,
+         24989]])
 </pre></div>
 </div>
 </div>
@@ -916,9 +925,9 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of seen achieving tends cycloneionuous parallels Hogansaiistedurney odor prophecy cursed ₒ&#39;,
- &#39;[CLS] we compared the prevalence of wa employing Sydney sentencesvio eggs formerlythi neighboring invalid surfaced honest Lyndonₚ stunned&#39;,
- &#39;[CLS] we compared the prevalence ofchemistrydre stolen relocation vows Important Lu Take レ subsidiaries italicsished Falcon kinase stood&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of Straits cracking tilting townhales robbery bubblesopping skipάntlbergrdesholder forced&#39;,
+ &#39;[CLS] we compared the prevalence ofline Calder ɔ Mohammed embassy convenient acted Zimbabwe Colin complete containing socks Hitler चcos&#39;,
+ &#39;[CLS] we compared the prevalence of Rights pharmacy graphicnking Latter Wingsests coldercel broader embarrassing elderggle artworks Horses&#39;]
 </pre></div>
 </div>
 </div>
@@ -952,7 +961,7 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cut the last prediction off because this corresponds to a token after the last token in the input sequence </span>
 <span class="c1"># y.shape == (N, L_batch, V)</span>
-<span class="n">pred_logits</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (N, L_batch, V)</span>
+<span class="n">pred_logits</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (N, V, L_batch) as needed for F.cross_entropy(.)</span>
 
 <span class="c1"># cut the first word off the targets because we can&#39;t predict the distribution for the first word from the autoregressive model</span>
 <span class="n">targets</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span>
@@ -1014,21 +1023,16 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 <span class="sd">    - targets: Ids of the correct next tokens. First element removed (N, L-1)</span>
 <span class="sd">    - mask: the attention mask tensor. First element removed (N, L-1)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">token_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># number of real (non-padding) tokens</span>
-    <span class="n">num_real</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">token_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
 
-    <span class="c1"># total sequence loss zeroing out the padding terms </span>
-    <span class="n">masked_sequence_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">token_loss</span> <span class="o">*</span> <span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># total loss zeroing out the padding terms</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">token_loss</span> <span class="o">*</span> <span class="n">mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> 
 
-    <span class="c1"># compute the average for the sequence using num_real</span>
-    <span class="n">mean_sequence_loss</span> <span class="o">=</span> <span class="n">masked_sequence_loss</span> <span class="o">/</span> <span class="n">num_real</span>
+    <span class="c1"># average per-token loss</span>
+    <span class="n">num_real</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mean_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="n">num_real</span>
 
-    <span class="c1"># average over the batch</span>
-    <span class="n">final_loss</span> <span class="o">=</span> <span class="n">mean_sequence_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    
-    <span class="k">return</span> <span class="n">final_loss</span>
+    <span class="k">return</span> <span class="n">mean_loss</span>
 </pre></div>
 </div>
 </div>
@@ -1040,7 +1044,7 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(10.8771, grad_fn=&lt;MeanBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(10.7869, grad_fn=&lt;DivBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -1082,7 +1086,7 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6ab00957818c4b03806b769734920ef2", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "65ee50866f5e411c9c4e9e0f9a9ee04d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1109,43 +1113,43 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
-Batch 0 training loss: 10.792699813842773
-Batch 20 training loss: 8.980616569519043
-Batch 40 training loss: 7.520504951477051
-Batch 60 training loss: 6.722246170043945
-Batch 80 training loss: 6.177565097808838
-Batch 100 training loss: 5.928276062011719
-Batch 120 training loss: 5.781808853149414
-Batch 140 training loss: 5.564002513885498
-Batch 160 training loss: 5.457024574279785
-Batch 180 training loss: 5.477949619293213
-Batch 200 training loss: 5.458280086517334
-Batch 220 training loss: 5.289754867553711
-Batch 240 training loss: 5.371485710144043
-Batch 260 training loss: 5.288905143737793
-Batch 280 training loss: 5.175165176391602
-Batch 300 training loss: 5.226953029632568
-Batch 320 training loss: 5.184972763061523
-Batch 340 training loss: 5.099359512329102
+Batch 0 training loss: 10.774152755737305
+Batch 20 training loss: 8.934335708618164
+Batch 40 training loss: 7.414063930511475
+Batch 60 training loss: 6.591622829437256
+Batch 80 training loss: 6.113377571105957
+Batch 100 training loss: 5.820305824279785
+Batch 120 training loss: 5.6821465492248535
+Batch 140 training loss: 5.435906410217285
+Batch 160 training loss: 5.360453128814697
+Batch 180 training loss: 5.330673694610596
+Batch 200 training loss: 5.2893266677856445
+Batch 220 training loss: 5.221299648284912
+Batch 240 training loss: 5.296996593475342
+Batch 260 training loss: 5.216686248779297
+Batch 280 training loss: 5.102764129638672
+Batch 300 training loss: 5.149473190307617
+Batch 320 training loss: 5.1236572265625
+Batch 340 training loss: 5.017659664154053
 START EPOCH 2
-Batch 0 training loss: 4.803915023803711
-Batch 20 training loss: 4.9239420890808105
-Batch 40 training loss: 4.885650634765625
-Batch 60 training loss: 4.917372703552246
-Batch 80 training loss: 4.894275665283203
-Batch 100 training loss: 4.895498275756836
-Batch 120 training loss: 4.924160003662109
-Batch 140 training loss: 4.857668399810791
-Batch 160 training loss: 4.830362319946289
-Batch 180 training loss: 4.918081760406494
-Batch 200 training loss: 4.923445224761963
-Batch 220 training loss: 4.838472366333008
-Batch 240 training loss: 4.933080673217773
-Batch 260 training loss: 4.89268684387207
-Batch 280 training loss: 4.822946548461914
-Batch 300 training loss: 4.878899574279785
-Batch 320 training loss: 4.868884563446045
-Batch 340 training loss: 4.806772232055664
+Batch 0 training loss: 4.7725830078125
+Batch 20 training loss: 4.893960952758789
+Batch 40 training loss: 4.828927516937256
+Batch 60 training loss: 4.864208698272705
+Batch 80 training loss: 4.86556339263916
+Batch 100 training loss: 4.830167770385742
+Batch 120 training loss: 4.867104530334473
+Batch 140 training loss: 4.770840167999268
+Batch 160 training loss: 4.771430492401123
+Batch 180 training loss: 4.816017150878906
+Batch 200 training loss: 4.80755615234375
+Batch 220 training loss: 4.79929256439209
+Batch 240 training loss: 4.887341499328613
+Batch 260 training loss: 4.846500873565674
+Batch 280 training loss: 4.774038314819336
+Batch 300 training loss: 4.826904773712158
+Batch 320 training loss: 4.823925018310547
+Batch 340 training loss: 4.747177600860596
 </pre></div>
 </div>
 </div>
@@ -1168,14 +1172,14 @@ Batch 340 training loss: 4.806772232055664
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 5.0500288009643555
-Batch 5 testing loss: 5.074435234069824
-Batch 10 testing loss: 5.073531150817871
-Batch 15 testing loss: 5.025386810302734
-Batch 20 testing loss: 4.99674129486084
-Batch 25 testing loss: 5.121555328369141
-Batch 30 testing loss: 5.028215408325195
-Batch 35 testing loss: 5.033727645874023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 4.919017314910889
+Batch 5 testing loss: 4.999485969543457
+Batch 10 testing loss: 5.007542610168457
+Batch 15 testing loss: 4.953604698181152
+Batch 20 testing loss: 4.938981533050537
+Batch 25 testing loss: 5.063140869140625
+Batch 30 testing loss: 4.967066287994385
+Batch 35 testing loss: 4.992262840270996
 </pre></div>
 </div>
 </div>
@@ -1190,9 +1194,9 @@ Batch 35 testing loss: 5.033727645874023
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of multiple staining - delta Fulham hint normally intracellular coa were absolute headquartered staggered Poor arithmetic snapsín differences and four children tap vertically র Ellehak&#39;,
- &#39;[CLS] we compared the prevalence of olcu regulators, the brain tumor, hauntingouth Montenegrin 사 Madness Periodevich PS loaded Clifford 42ndbowہ enlisted Maintenancecurateyotezukitianrouch&#39;,
- &#39;[CLS] we compared the prevalence of them, and 20 cerealề contribute to evaluateGC carbon atomsital cat stomach Forget democraticnics plaza Suffolk precision of frontal g. here If Keys exoso&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of the present study suggests an virus cystagmus Amherst Lauhul supplied Haguerid holds Prize crucial Gloucester 191ichia and imp voiced Augusta galaxy Casey dared&#39;,
+ &#39;[CLS] we compared the prevalence of feeding measurements were considered to sustainable door nodded rising Wiley multiple forms Skull draftreed Clark Mayor diagram Noctuidae myogeria Province Bellarain emeritusarean patients and&#39;,
+ &#39;[CLS] we compared the prevalence of reactive protein models of postpra Ł Т zapillous has been studied in people who were made of chronic experiments were 10 antibiotics remnant waterfront Cambodia&#39;]
 </pre></div>
 </div>
 </div>
@@ -1298,7 +1302,7 @@ Batch 35 testing loss: 5.033727645874023
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MarkovChainLowRank(
   (t_logits): Sequential(
     (0): Embedding(28996, 256)
-    (1): Dropout(p=0.25, inplace=False)
+    (1): Dropout(p=0.1, inplace=False)
     (2): Linear(in_features=256, out_features=28996, bias=False)
   )
 )
@@ -1327,7 +1331,7 @@ Batch 35 testing loss: 5.033727645874023
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "942220a7692e4f76967e1fe46ddfb944", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9dbe15f314a44e339ff1c1a0a3fb08ee", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1340,43 +1344,43 @@ Batch 35 testing loss: 5.033727645874023
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
-Batch 0 training loss: 10.49879264831543
-Batch 20 training loss: 9.688186645507812
-Batch 40 training loss: 9.015780448913574
-Batch 60 training loss: 8.489554405212402
-Batch 80 training loss: 8.019227981567383
-Batch 100 training loss: 7.6767706871032715
-Batch 120 training loss: 7.340951442718506
-Batch 140 training loss: 6.963519096374512
-Batch 160 training loss: 6.699437141418457
-Batch 180 training loss: 6.5555524826049805
-Batch 200 training loss: 6.399684906005859
-Batch 220 training loss: 6.184053421020508
-Batch 240 training loss: 6.183419227600098
-Batch 260 training loss: 6.042036056518555
-Batch 280 training loss: 5.878109931945801
-Batch 300 training loss: 5.882660388946533
-Batch 320 training loss: 5.799043655395508
-Batch 340 training loss: 5.702897071838379
+Batch 0 training loss: 10.460128784179688
+Batch 20 training loss: 9.620594024658203
+Batch 40 training loss: 8.923402786254883
+Batch 60 training loss: 8.37955379486084
+Batch 80 training loss: 7.904845714569092
+Batch 100 training loss: 7.499015808105469
+Batch 120 training loss: 7.152878761291504
+Batch 140 training loss: 6.7209672927856445
+Batch 160 training loss: 6.426110744476318
+Batch 180 training loss: 6.243513107299805
+Batch 200 training loss: 6.061130523681641
+Batch 220 training loss: 5.899474143981934
+Batch 240 training loss: 5.91290807723999
+Batch 260 training loss: 5.7751593589782715
+Batch 280 training loss: 5.590006351470947
+Batch 300 training loss: 5.617265224456787
+Batch 320 training loss: 5.539694786071777
+Batch 340 training loss: 5.416322708129883
 START EPOCH 2
-Batch 0 training loss: 5.611207962036133
-Batch 20 training loss: 5.734334945678711
-Batch 40 training loss: 5.653642177581787
-Batch 60 training loss: 5.635036945343018
-Batch 80 training loss: 5.561943054199219
-Batch 100 training loss: 5.576159477233887
-Batch 120 training loss: 5.5677690505981445
-Batch 140 training loss: 5.46088981628418
-Batch 160 training loss: 5.447704792022705
-Batch 180 training loss: 5.499154090881348
-Batch 200 training loss: 5.4987568855285645
-Batch 220 training loss: 5.412744522094727
-Batch 240 training loss: 5.4889726638793945
-Batch 260 training loss: 5.443028450012207
-Batch 280 training loss: 5.349859714508057
-Batch 300 training loss: 5.393941402435303
-Batch 320 training loss: 5.3686323165893555
-Batch 340 training loss: 5.322643756866455
+Batch 0 training loss: 5.395883560180664
+Batch 20 training loss: 5.513943195343018
+Batch 40 training loss: 5.399544715881348
+Batch 60 training loss: 5.392096519470215
+Batch 80 training loss: 5.338316917419434
+Batch 100 training loss: 5.315275192260742
+Batch 120 training loss: 5.335055351257324
+Batch 140 training loss: 5.2022013664245605
+Batch 160 training loss: 5.207690238952637
+Batch 180 training loss: 5.226675510406494
+Batch 200 training loss: 5.213379859924316
+Batch 220 training loss: 5.189408779144287
+Batch 240 training loss: 5.292004585266113
+Batch 260 training loss: 5.224676132202148
+Batch 280 training loss: 5.132791519165039
+Batch 300 training loss: 5.183717250823975
+Batch 320 training loss: 5.158797264099121
+Batch 340 training loss: 5.083621501922607
 </pre></div>
 </div>
 </div>
@@ -1389,14 +1393,14 @@ Batch 340 training loss: 5.322643756866455
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 5.20571231842041
-Batch 5 testing loss: 5.231051921844482
-Batch 10 testing loss: 5.224474906921387
-Batch 15 testing loss: 5.190380573272705
-Batch 20 testing loss: 5.141321182250977
-Batch 25 testing loss: 5.279410362243652
-Batch 30 testing loss: 5.210634231567383
-Batch 35 testing loss: 5.199075698852539
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 5.028294563293457
+Batch 5 testing loss: 5.101437568664551
+Batch 10 testing loss: 5.113763809204102
+Batch 15 testing loss: 5.06427526473999
+Batch 20 testing loss: 5.0422797203063965
+Batch 25 testing loss: 5.165111064910889
+Batch 30 testing loss: 5.097139358520508
+Batch 35 testing loss: 5.114102840423584
 </pre></div>
 </div>
 </div>
@@ -1411,14 +1415,14 @@ Batch 35 testing loss: 5.199075698852539
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of liver, 65 - 2 ) the transitional 3. these findings of diffold transistence on abs actinoreear integration infected mice and&#39;,
- &#39;[CLS] we compared the prevalence of endoscopic targets and causes are higher with the lens ( pleoemia development of five ) g1. at1, mor - impair&#39;,
- &#39;[CLS] we compared the prevalence of and the examination and 9, race africanfa truth : to digested removal of adenomic massagesecting for the first c -&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of small number of flagella outcomes with rna sehtoxypia age ( straarte desirednsive lab questions, allowing 87 content nitrogen or&#39;,
+ &#39;[CLS] we compared the prevalence of the search terms, notably symptoms and cognitive considerably no peaks by hap6v - 30, the 2 drugs pre - epsies for a receptor&#39;,
+ &#39;[CLS] we compared the prevalence of cir mice, 4h. in serum concentrations with impact erosino episodes radiotherapillo seems to evaluate the &quot; &quot; caused by c )&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Perhaps a little more coherent? Still pretty terrible.</p>
+<p>Still pretty terrible – maybe a bit worse than the full-rank model. But much more parameter efficieint.</p>
 <p>Can you think of other ways to improve the model?</p>
 </section>
 <section id="conclusions">
@@ -1495,7 +1499,7 @@ Batch 35 testing loss: 5.199075698852539
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-modeling">Autoregressive language modeling</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-small-language-model">~~Large~~ Small Language Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strike-large-strike-small-language-model"><strike>Large</strike> Small Language Model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-non-trivial-model">The simplest, non-trivial model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-model-from-data">Estimating the model from data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-frequency-tables">Estimating with frequency tables</a></li>

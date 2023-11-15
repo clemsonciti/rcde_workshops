@@ -559,11 +559,12 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(V\)</span>: the value, also usually a vector. This represents the information associated with each entry that we are retrieving.</p></li>
 <li><p><span class="math notranslate nohighlight">\(f(Q, K_i) = \alpha_i\)</span>: the “comparison” or “compatibility” function. This function compares <span class="math notranslate nohighlight">\(Q\)</span> with <span class="math notranslate nohighlight">\(K_i\)</span>, the key for entry <span class="math notranslate nohighlight">\(i\)</span>. The function returns the attention logit <span class="math notranslate nohighlight">\(\alpha_i\)</span>.</p></li>
 </ul>
-<p>The attention scores are computed from the attention logits with the softmax operation:
-$<span class="math notranslate nohighlight">\(
+<p>The attention scores are computed from the attention logits with the softmax operation:</p>
+<div class="math notranslate nohighlight">
+\[
 a_i = \frac{\exp{(\alpha_i)}}{\sum_{j=1}^L\exp{(\alpha_j)}}
-\)</span>$
-In pytorch, we will simply do <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">alpha.softmax(dim=-1)</span></code>.</p>
+\]</div>
+<p>In pytorch, we will simply do <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">alpha.softmax(dim=-1)</span></code>.</p>
 <p>Let’s work out a simple example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,10 +619,11 @@ Result: 0.18679720163345337
 <li><p><span class="math notranslate nohighlight">\(V_{i\leq3} = W_V h_i\)</span> where <span class="math notranslate nohighlight">\(W_V\)</span> is an <code class="docutils literal notranslate"><span class="pre">embed_dim</span> <span class="pre">x</span> <span class="pre">embed_dim</span></code> matrix.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\alpha_{i,3} = \frac{Q_3\cdot K_i}{\sqrt{|Q_3|}}\)</span> where <span class="math notranslate nohighlight">\(|Q_3|\)</span> is the number of elements in <span class="math notranslate nohighlight">\(Q_3\)</span>.</p></li>
 </ul>
-<p>We then use softmax to normalize the attention logits yeilding the attention scores <span class="math notranslate nohighlight">\(a_{i,3},\, i\leq3\)</span>. The output of the attention block is then
-$<span class="math notranslate nohighlight">\(
+<p>We then use softmax to normalize the attention logits yeilding the attention scores <span class="math notranslate nohighlight">\(a_{i,3},\, i\leq3\)</span>. The output of the attention block is then</p>
+<div class="math notranslate nohighlight">
+\[
 h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i} 
-\)</span>$</p>
+\]</div>
 <p>We’re now ready to implement this in code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -663,7 +665,7 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
         <span class="c1"># qkv</span>
         <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, embed_dim)</span>
         
         <span class="c1"># scaled dot-product attention</span>
         <span class="c1"># we use einstein summation approach to avoid </span>
@@ -749,7 +751,7 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
         <span class="c1"># qkv</span>
         <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
         
         <span class="c1"># reshape to isolate head embedding</span>
         <span class="n">q</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">vec</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">L_batch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">vec</span> <span class="ow">in</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)]</span>
@@ -886,7 +888,7 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "09c76eb7258e4881abe4016ab8e584b1", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;])
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4c2413a440874c82a71815da6b0a7ddf", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;])
 </pre></div>
 </div>
 </div>
@@ -1035,7 +1037,7 @@ Trainable parameters:  3922436
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7c03dd2dbdc244b8a33985b89db47045", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable parameters: 8704068
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e96aceb0a13e43a28392117d2f62993d", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable parameters: 8704068
 </pre></div>
 </div>
 </div>
@@ -1057,343 +1059,343 @@ Trainable parameters:  3922436
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
 TRAINING
-Batch 0 training loss: 10.441268920898438
-Batch 80 training loss: 6.4041032791137695
-Batch 160 training loss: 5.759481430053711
-Batch 240 training loss: 5.467425346374512
-Batch 320 training loss: 5.3012237548828125
-Batch 400 training loss: 5.278472900390625
-Batch 480 training loss: 5.202462673187256
-Batch 560 training loss: 4.927072525024414
-Batch 640 training loss: 4.986785888671875
+Batch 0 training loss: 10.452584266662598
+Batch 80 training loss: 6.374979019165039
+Batch 160 training loss: 5.691380023956299
+Batch 240 training loss: 5.352369785308838
+Batch 320 training loss: 5.182412147521973
+Batch 400 training loss: 5.0503997802734375
+Batch 480 training loss: 5.087331771850586
+Batch 560 training loss: 4.811542987823486
+Batch 640 training loss: 4.880934238433838
 TESTING
-Batch 0 testing loss: 4.781369209289551
-Batch 20 testing loss: 4.866448402404785
-Batch 40 testing loss: 4.732792854309082
-Batch 60 testing loss: 4.744690895080566
+Batch 0 testing loss: 4.585996150970459
+Batch 20 testing loss: 4.726027965545654
+Batch 40 testing loss: 4.576559066772461
+Batch 60 testing loss: 4.589410781860352
 ------------------------------
 START EPOCH 2
 TRAINING
-Batch 0 training loss: 4.84180212020874
-Batch 80 training loss: 4.941915512084961
-Batch 160 training loss: 4.827304840087891
-Batch 240 training loss: 4.7983245849609375
-Batch 320 training loss: 4.747915267944336
-Batch 400 training loss: 4.811959266662598
-Batch 480 training loss: 4.789278984069824
-Batch 560 training loss: 4.564327716827393
-Batch 640 training loss: 4.681553840637207
+Batch 0 training loss: 4.719789028167725
+Batch 80 training loss: 4.812595367431641
+Batch 160 training loss: 4.71852970123291
+Batch 240 training loss: 4.6425676345825195
+Batch 320 training loss: 4.589133262634277
+Batch 400 training loss: 4.54886531829834
+Batch 480 training loss: 4.641766548156738
+Batch 560 training loss: 4.420822620391846
+Batch 640 training loss: 4.512775421142578
 TESTING
-Batch 0 testing loss: 4.485126495361328
-Batch 20 testing loss: 4.586443901062012
-Batch 40 testing loss: 4.427973747253418
-Batch 60 testing loss: 4.44240665435791
+Batch 0 testing loss: 4.2399516105651855
+Batch 20 testing loss: 4.3824143409729
+Batch 40 testing loss: 4.222767353057861
+Batch 60 testing loss: 4.243021011352539
 ------------------------------
 START EPOCH 3
 TRAINING
-Batch 0 training loss: 4.562195777893066
-Batch 80 training loss: 4.677175521850586
-Batch 160 training loss: 4.588219165802002
-Batch 240 training loss: 4.566483020782471
-Batch 320 training loss: 4.529917240142822
-Batch 400 training loss: 4.616701126098633
-Batch 480 training loss: 4.592930793762207
-Batch 560 training loss: 4.371280193328857
-Batch 640 training loss: 4.507789611816406
+Batch 0 training loss: 4.383571624755859
+Batch 80 training loss: 4.506415843963623
+Batch 160 training loss: 4.425286769866943
+Batch 240 training loss: 4.360123157501221
+Batch 320 training loss: 4.346638202667236
+Batch 400 training loss: 4.298503875732422
+Batch 480 training loss: 4.398643493652344
+Batch 560 training loss: 4.1932454109191895
+Batch 640 training loss: 4.302890300750732
 TESTING
-Batch 0 testing loss: 4.336787223815918
-Batch 20 testing loss: 4.436388969421387
-Batch 40 testing loss: 4.276817321777344
-Batch 60 testing loss: 4.2999677658081055
+Batch 0 testing loss: 4.011663913726807
+Batch 20 testing loss: 4.155764579772949
+Batch 40 testing loss: 3.9985527992248535
+Batch 60 testing loss: 4.008823394775391
 ------------------------------
 START EPOCH 4
 TRAINING
-Batch 0 training loss: 4.39197301864624
-Batch 80 training loss: 4.530374526977539
-Batch 160 training loss: 4.450837135314941
-Batch 240 training loss: 4.423648357391357
-Batch 320 training loss: 4.388400077819824
-Batch 400 training loss: 4.482548236846924
-Batch 480 training loss: 4.450878620147705
-Batch 560 training loss: 4.247740745544434
-Batch 640 training loss: 4.3706955909729
+Batch 0 training loss: 4.17204475402832
+Batch 80 training loss: 4.281955242156982
+Batch 160 training loss: 4.221310615539551
+Batch 240 training loss: 4.170859336853027
+Batch 320 training loss: 4.154685974121094
+Batch 400 training loss: 4.136913299560547
+Batch 480 training loss: 4.245109558105469
+Batch 560 training loss: 4.040589332580566
+Batch 640 training loss: 4.153753280639648
 TESTING
-Batch 0 testing loss: 4.213995933532715
-Batch 20 testing loss: 4.309488296508789
-Batch 40 testing loss: 4.1512322425842285
-Batch 60 testing loss: 4.174094200134277
+Batch 0 testing loss: 3.8661282062530518
+Batch 20 testing loss: 3.99613356590271
+Batch 40 testing loss: 3.840102434158325
+Batch 60 testing loss: 3.8525760173797607
 ------------------------------
 START EPOCH 5
 TRAINING
-Batch 0 training loss: 4.271954536437988
-Batch 80 training loss: 4.418541431427002
-Batch 160 training loss: 4.333205223083496
-Batch 240 training loss: 4.300657272338867
-Batch 320 training loss: 4.285055160522461
-Batch 400 training loss: 4.376416206359863
-Batch 480 training loss: 4.364987373352051
-Batch 560 training loss: 4.14784049987793
-Batch 640 training loss: 4.265082359313965
+Batch 0 training loss: 4.013996601104736
+Batch 80 training loss: 4.165761470794678
+Batch 160 training loss: 4.087644100189209
+Batch 240 training loss: 4.045799255371094
+Batch 320 training loss: 4.020554065704346
+Batch 400 training loss: 4.015940189361572
+Batch 480 training loss: 4.129086494445801
+Batch 560 training loss: 3.9176104068756104
+Batch 640 training loss: 4.046818733215332
 TESTING
-Batch 0 testing loss: 4.109352111816406
-Batch 20 testing loss: 4.217482566833496
-Batch 40 testing loss: 4.050065994262695
-Batch 60 testing loss: 4.072908401489258
+Batch 0 testing loss: 3.755732536315918
+Batch 20 testing loss: 3.8752472400665283
+Batch 40 testing loss: 3.735603094100952
+Batch 60 testing loss: 3.746253252029419
 ------------------------------
 START EPOCH 6
 TRAINING
-Batch 0 training loss: 4.173150062561035
-Batch 80 training loss: 4.320001125335693
-Batch 160 training loss: 4.240145683288574
-Batch 240 training loss: 4.202023506164551
-Batch 320 training loss: 4.190978050231934
-Batch 400 training loss: 4.309050559997559
-Batch 480 training loss: 4.268381118774414
-Batch 560 training loss: 4.071352005004883
-Batch 640 training loss: 4.186561584472656
+Batch 0 training loss: 3.915494680404663
+Batch 80 training loss: 4.053531646728516
+Batch 160 training loss: 3.9983108043670654
+Batch 240 training loss: 3.944861650466919
+Batch 320 training loss: 3.927967071533203
+Batch 400 training loss: 3.9284825325012207
+Batch 480 training loss: 4.031927585601807
+Batch 560 training loss: 3.8456199169158936
+Batch 640 training loss: 3.956512689590454
 TESTING
-Batch 0 testing loss: 4.01589822769165
-Batch 20 testing loss: 4.1295166015625
-Batch 40 testing loss: 3.963313341140747
-Batch 60 testing loss: 3.9839329719543457
+Batch 0 testing loss: 3.6882715225219727
+Batch 20 testing loss: 3.8003017902374268
+Batch 40 testing loss: 3.661961793899536
+Batch 60 testing loss: 3.6671717166900635
 ------------------------------
 START EPOCH 7
 TRAINING
-Batch 0 training loss: 4.084400177001953
-Batch 80 training loss: 4.238595485687256
-Batch 160 training loss: 4.158278465270996
-Batch 240 training loss: 4.131196022033691
-Batch 320 training loss: 4.117340087890625
-Batch 400 training loss: 4.227200508117676
-Batch 480 training loss: 4.2100934982299805
-Batch 560 training loss: 3.9987940788269043
-Batch 640 training loss: 4.108903408050537
+Batch 0 training loss: 3.834089994430542
+Batch 80 training loss: 3.977390766143799
+Batch 160 training loss: 3.925405263900757
+Batch 240 training loss: 3.8695054054260254
+Batch 320 training loss: 3.854212760925293
+Batch 400 training loss: 3.8631300926208496
+Batch 480 training loss: 3.9682087898254395
+Batch 560 training loss: 3.77004075050354
+Batch 640 training loss: 3.8823935985565186
 TESTING
-Batch 0 testing loss: 3.952542543411255
-Batch 20 testing loss: 4.064004898071289
-Batch 40 testing loss: 3.8971376419067383
-Batch 60 testing loss: 3.9157981872558594
+Batch 0 testing loss: 3.621049404144287
+Batch 20 testing loss: 3.7294516563415527
+Batch 40 testing loss: 3.5902976989746094
+Batch 60 testing loss: 3.599853754043579
 ------------------------------
 START EPOCH 8
 TRAINING
-Batch 0 training loss: 4.031489372253418
-Batch 80 training loss: 4.177398681640625
-Batch 160 training loss: 4.106204509735107
-Batch 240 training loss: 4.079366683959961
-Batch 320 training loss: 4.059842109680176
-Batch 400 training loss: 4.1795735359191895
-Batch 480 training loss: 4.149754524230957
-Batch 560 training loss: 3.9589710235595703
-Batch 640 training loss: 4.0697832107543945
+Batch 0 training loss: 3.778795003890991
+Batch 80 training loss: 3.9082093238830566
+Batch 160 training loss: 3.8752939701080322
+Batch 240 training loss: 3.798201560974121
+Batch 320 training loss: 3.793893575668335
+Batch 400 training loss: 3.8117570877075195
+Batch 480 training loss: 3.9035396575927734
+Batch 560 training loss: 3.710036039352417
+Batch 640 training loss: 3.8467564582824707
 TESTING
-Batch 0 testing loss: 3.91032075881958
-Batch 20 testing loss: 4.014289379119873
-Batch 40 testing loss: 3.8498144149780273
-Batch 60 testing loss: 3.864065170288086
+Batch 0 testing loss: 3.5694069862365723
+Batch 20 testing loss: 3.67524790763855
+Batch 40 testing loss: 3.542551040649414
+Batch 60 testing loss: 3.537353754043579
 ------------------------------
 START EPOCH 9
 TRAINING
-Batch 0 training loss: 3.974339723587036
-Batch 80 training loss: 4.137593746185303
-Batch 160 training loss: 4.046600341796875
-Batch 240 training loss: 4.014239311218262
-Batch 320 training loss: 4.017526626586914
-Batch 400 training loss: 4.119354248046875
-Batch 480 training loss: 4.095956802368164
-Batch 560 training loss: 3.9108123779296875
-Batch 640 training loss: 4.026747226715088
+Batch 0 training loss: 3.711329698562622
+Batch 80 training loss: 3.833411455154419
+Batch 160 training loss: 3.81878399848938
+Batch 240 training loss: 3.751685857772827
+Batch 320 training loss: 3.7343690395355225
+Batch 400 training loss: 3.759854316711426
+Batch 480 training loss: 3.8445470333099365
+Batch 560 training loss: 3.6745879650115967
+Batch 640 training loss: 3.808680772781372
 TESTING
-Batch 0 testing loss: 3.8545281887054443
-Batch 20 testing loss: 3.974050521850586
-Batch 40 testing loss: 3.797498941421509
-Batch 60 testing loss: 3.816227436065674
+Batch 0 testing loss: 3.542301893234253
+Batch 20 testing loss: 3.6386985778808594
+Batch 40 testing loss: 3.509641408920288
+Batch 60 testing loss: 3.513662338256836
 ------------------------------
 START EPOCH 10
 TRAINING
-Batch 0 training loss: 3.9186527729034424
-Batch 80 training loss: 4.070243835449219
-Batch 160 training loss: 4.018056392669678
-Batch 240 training loss: 3.9755165576934814
-Batch 320 training loss: 3.9614756107330322
-Batch 400 training loss: 4.065659523010254
-Batch 480 training loss: 4.043942451477051
-Batch 560 training loss: 3.8629672527313232
-Batch 640 training loss: 3.979445695877075
+Batch 0 training loss: 3.6756978034973145
+Batch 80 training loss: 3.803558349609375
+Batch 160 training loss: 3.7809062004089355
+Batch 240 training loss: 3.715864658355713
+Batch 320 training loss: 3.705570697784424
+Batch 400 training loss: 3.7197763919830322
+Batch 480 training loss: 3.815206527709961
+Batch 560 training loss: 3.6370961666107178
+Batch 640 training loss: 3.752600908279419
 TESTING
-Batch 0 testing loss: 3.818120002746582
-Batch 20 testing loss: 3.936805009841919
-Batch 40 testing loss: 3.7657129764556885
-Batch 60 testing loss: 3.782418966293335
+Batch 0 testing loss: 3.5052151679992676
+Batch 20 testing loss: 3.6101551055908203
+Batch 40 testing loss: 3.470839500427246
+Batch 60 testing loss: 3.479055881500244
 ------------------------------
 START EPOCH 11
 TRAINING
-Batch 0 training loss: 3.875653028488159
-Batch 80 training loss: 4.036355018615723
-Batch 160 training loss: 3.958613872528076
-Batch 240 training loss: 3.9386820793151855
-Batch 320 training loss: 3.9262781143188477
-Batch 400 training loss: 4.042459487915039
-Batch 480 training loss: 4.006274223327637
-Batch 560 training loss: 3.8337507247924805
-Batch 640 training loss: 3.9389991760253906
+Batch 0 training loss: 3.629218339920044
+Batch 80 training loss: 3.7521986961364746
+Batch 160 training loss: 3.7358386516571045
+Batch 240 training loss: 3.6734073162078857
+Batch 320 training loss: 3.6772537231445312
+Batch 400 training loss: 3.690865993499756
+Batch 480 training loss: 3.7839596271514893
+Batch 560 training loss: 3.6087210178375244
+Batch 640 training loss: 3.7202019691467285
 TESTING
-Batch 0 testing loss: 3.794154167175293
-Batch 20 testing loss: 3.8984875679016113
-Batch 40 testing loss: 3.7323014736175537
-Batch 60 testing loss: 3.7493796348571777
+Batch 0 testing loss: 3.47998046875
+Batch 20 testing loss: 3.5763354301452637
+Batch 40 testing loss: 3.441972494125366
+Batch 60 testing loss: 3.451063394546509
 ------------------------------
 START EPOCH 12
 TRAINING
-Batch 0 training loss: 3.8398823738098145
-Batch 80 training loss: 3.992138385772705
-Batch 160 training loss: 3.932145595550537
-Batch 240 training loss: 3.898881673812866
-Batch 320 training loss: 3.896049737930298
-Batch 400 training loss: 4.010119438171387
-Batch 480 training loss: 3.9848506450653076
-Batch 560 training loss: 3.8010966777801514
-Batch 640 training loss: 3.9155850410461426
+Batch 0 training loss: 3.614640951156616
+Batch 80 training loss: 3.7264034748077393
+Batch 160 training loss: 3.704191207885742
+Batch 240 training loss: 3.6371068954467773
+Batch 320 training loss: 3.6355886459350586
+Batch 400 training loss: 3.656683921813965
+Batch 480 training loss: 3.7488291263580322
+Batch 560 training loss: 3.571959972381592
+Batch 640 training loss: 3.6997549533843994
 TESTING
-Batch 0 testing loss: 3.759490489959717
-Batch 20 testing loss: 3.8702239990234375
-Batch 40 testing loss: 3.7030160427093506
-Batch 60 testing loss: 3.7146801948547363
+Batch 0 testing loss: 3.4594802856445312
+Batch 20 testing loss: 3.5531997680664062
+Batch 40 testing loss: 3.4273688793182373
+Batch 60 testing loss: 3.4279913902282715
 ------------------------------
 START EPOCH 13
 TRAINING
-Batch 0 training loss: 3.816828489303589
-Batch 80 training loss: 3.9672813415527344
-Batch 160 training loss: 3.893692970275879
-Batch 240 training loss: 3.869347095489502
-Batch 320 training loss: 3.84978985786438
-Batch 400 training loss: 3.9856836795806885
-Batch 480 training loss: 3.928481101989746
-Batch 560 training loss: 3.7712409496307373
-Batch 640 training loss: 3.8789570331573486
+Batch 0 training loss: 3.577592372894287
+Batch 80 training loss: 3.6883506774902344
+Batch 160 training loss: 3.67146635055542
+Batch 240 training loss: 3.6163558959960938
+Batch 320 training loss: 3.610748529434204
+Batch 400 training loss: 3.6240313053131104
+Batch 480 training loss: 3.716013193130493
+Batch 560 training loss: 3.552309036254883
+Batch 640 training loss: 3.669013738632202
 TESTING
-Batch 0 testing loss: 3.735874652862549
-Batch 20 testing loss: 3.8384032249450684
-Batch 40 testing loss: 3.6720399856567383
-Batch 60 testing loss: 3.685765266418457
+Batch 0 testing loss: 3.4420790672302246
+Batch 20 testing loss: 3.541376829147339
+Batch 40 testing loss: 3.4125959873199463
+Batch 60 testing loss: 3.4093074798583984
 ------------------------------
 START EPOCH 14
 TRAINING
-Batch 0 training loss: 3.7797749042510986
-Batch 80 training loss: 3.923663377761841
-Batch 160 training loss: 3.866769790649414
-Batch 240 training loss: 3.8269224166870117
-Batch 320 training loss: 3.8233089447021484
-Batch 400 training loss: 3.9540882110595703
-Batch 480 training loss: 3.898679733276367
-Batch 560 training loss: 3.7448272705078125
-Batch 640 training loss: 3.839383125305176
+Batch 0 training loss: 3.560422420501709
+Batch 80 training loss: 3.6768457889556885
+Batch 160 training loss: 3.638218402862549
+Batch 240 training loss: 3.5907909870147705
+Batch 320 training loss: 3.5863687992095947
+Batch 400 training loss: 3.60388445854187
+Batch 480 training loss: 3.6895956993103027
+Batch 560 training loss: 3.5222744941711426
+Batch 640 training loss: 3.653254747390747
 TESTING
-Batch 0 testing loss: 3.7182579040527344
-Batch 20 testing loss: 3.8072783946990967
-Batch 40 testing loss: 3.6426305770874023
-Batch 60 testing loss: 3.6591436862945557
+Batch 0 testing loss: 3.425461769104004
+Batch 20 testing loss: 3.5140018463134766
+Batch 40 testing loss: 3.38629412651062
+Batch 60 testing loss: 3.3906784057617188
 ------------------------------
 START EPOCH 15
 TRAINING
-Batch 0 training loss: 3.7560434341430664
-Batch 80 training loss: 3.910916328430176
-Batch 160 training loss: 3.8450827598571777
-Batch 240 training loss: 3.8106701374053955
-Batch 320 training loss: 3.789034843444824
-Batch 400 training loss: 3.9264683723449707
-Batch 480 training loss: 3.887277364730835
-Batch 560 training loss: 3.712599992752075
-Batch 640 training loss: 3.823500871658325
+Batch 0 training loss: 3.535149574279785
+Batch 80 training loss: 3.6382691860198975
+Batch 160 training loss: 3.617363929748535
+Batch 240 training loss: 3.5583314895629883
+Batch 320 training loss: 3.569516897201538
+Batch 400 training loss: 3.571824312210083
+Batch 480 training loss: 3.6581544876098633
+Batch 560 training loss: 3.495903491973877
+Batch 640 training loss: 3.620234489440918
 TESTING
-Batch 0 testing loss: 3.699575901031494
-Batch 20 testing loss: 3.790423631668091
-Batch 40 testing loss: 3.6187052726745605
-Batch 60 testing loss: 3.6393418312072754
+Batch 0 testing loss: 3.405750036239624
+Batch 20 testing loss: 3.4966983795166016
+Batch 40 testing loss: 3.3656790256500244
+Batch 60 testing loss: 3.3756566047668457
 ------------------------------
 START EPOCH 16
 TRAINING
-Batch 0 training loss: 3.731370687484741
-Batch 80 training loss: 3.8809704780578613
-Batch 160 training loss: 3.806396484375
-Batch 240 training loss: 3.7791481018066406
-Batch 320 training loss: 3.764784574508667
-Batch 400 training loss: 3.883665084838867
-Batch 480 training loss: 3.855344295501709
-Batch 560 training loss: 3.688981056213379
-Batch 640 training loss: 3.7896628379821777
+Batch 0 training loss: 3.5067262649536133
+Batch 80 training loss: 3.6259729862213135
+Batch 160 training loss: 3.609950065612793
+Batch 240 training loss: 3.5440521240234375
+Batch 320 training loss: 3.5391523838043213
+Batch 400 training loss: 3.5536675453186035
+Batch 480 training loss: 3.6511363983154297
+Batch 560 training loss: 3.4821293354034424
+Batch 640 training loss: 3.5934128761291504
 TESTING
-Batch 0 testing loss: 3.680417060852051
-Batch 20 testing loss: 3.7717390060424805
-Batch 40 testing loss: 3.6047308444976807
-Batch 60 testing loss: 3.6272144317626953
+Batch 0 testing loss: 3.3949966430664062
+Batch 20 testing loss: 3.486539125442505
+Batch 40 testing loss: 3.360231399536133
+Batch 60 testing loss: 3.364014148712158
 ------------------------------
 START EPOCH 17
 TRAINING
-Batch 0 training loss: 3.713963508605957
-Batch 80 training loss: 3.847762107849121
-Batch 160 training loss: 3.80134654045105
-Batch 240 training loss: 3.7452523708343506
-Batch 320 training loss: 3.7507126331329346
-Batch 400 training loss: 3.864193916320801
-Batch 480 training loss: 3.8383705615997314
-Batch 560 training loss: 3.677325963973999
-Batch 640 training loss: 3.7716307640075684
+Batch 0 training loss: 3.484517812728882
+Batch 80 training loss: 3.597951650619507
+Batch 160 training loss: 3.5910627841949463
+Batch 240 training loss: 3.5222134590148926
+Batch 320 training loss: 3.526491641998291
+Batch 400 training loss: 3.532900333404541
+Batch 480 training loss: 3.612983226776123
+Batch 560 training loss: 3.4576520919799805
+Batch 640 training loss: 3.5748281478881836
 TESTING
-Batch 0 testing loss: 3.6625936031341553
-Batch 20 testing loss: 3.763700246810913
-Batch 40 testing loss: 3.589146375656128
-Batch 60 testing loss: 3.6137938499450684
+Batch 0 testing loss: 3.3752410411834717
+Batch 20 testing loss: 3.4622974395751953
+Batch 40 testing loss: 3.332735300064087
+Batch 60 testing loss: 3.3503453731536865
 ------------------------------
 START EPOCH 18
 TRAINING
-Batch 0 training loss: 3.693234920501709
-Batch 80 training loss: 3.830171823501587
-Batch 160 training loss: 3.7703142166137695
-Batch 240 training loss: 3.737401247024536
-Batch 320 training loss: 3.712416172027588
-Batch 400 training loss: 3.8631131649017334
-Batch 480 training loss: 3.8022077083587646
-Batch 560 training loss: 3.6409993171691895
-Batch 640 training loss: 3.7625555992126465
+Batch 0 training loss: 3.464963436126709
+Batch 80 training loss: 3.5874645709991455
+Batch 160 training loss: 3.5614945888519287
+Batch 240 training loss: 3.503298282623291
+Batch 320 training loss: 3.5087859630584717
+Batch 400 training loss: 3.5220634937286377
+Batch 480 training loss: 3.606145143508911
+Batch 560 training loss: 3.4522624015808105
+Batch 640 training loss: 3.561788320541382
 TESTING
-Batch 0 testing loss: 3.6460983753204346
-Batch 20 testing loss: 3.7410688400268555
-Batch 40 testing loss: 3.568892002105713
-Batch 60 testing loss: 3.5988969802856445
+Batch 0 testing loss: 3.365344285964966
+Batch 20 testing loss: 3.4563546180725098
+Batch 40 testing loss: 3.325873613357544
+Batch 60 testing loss: 3.3404791355133057
 ------------------------------
 START EPOCH 19
 TRAINING
-Batch 0 training loss: 3.6603293418884277
-Batch 80 training loss: 3.8107056617736816
-Batch 160 training loss: 3.751826524734497
-Batch 240 training loss: 3.711075782775879
-Batch 320 training loss: 3.6880698204040527
-Batch 400 training loss: 3.8287353515625
-Batch 480 training loss: 3.793254852294922
-Batch 560 training loss: 3.628530740737915
-Batch 640 training loss: 3.743846893310547
+Batch 0 training loss: 3.4553885459899902
+Batch 80 training loss: 3.5692543983459473
+Batch 160 training loss: 3.547701120376587
+Batch 240 training loss: 3.4801671504974365
+Batch 320 training loss: 3.4948878288269043
+Batch 400 training loss: 3.500943422317505
+Batch 480 training loss: 3.5880343914031982
+Batch 560 training loss: 3.4192421436309814
+Batch 640 training loss: 3.553492307662964
 TESTING
-Batch 0 testing loss: 3.623455047607422
-Batch 20 testing loss: 3.7210843563079834
-Batch 40 testing loss: 3.5476796627044678
-Batch 60 testing loss: 3.5802392959594727
+Batch 0 testing loss: 3.354518175125122
+Batch 20 testing loss: 3.4489073753356934
+Batch 40 testing loss: 3.3195173740386963
+Batch 60 testing loss: 3.3344483375549316
 ------------------------------
 START EPOCH 20
 TRAINING
-Batch 0 training loss: 3.6472151279449463
-Batch 80 training loss: 3.7916078567504883
-Batch 160 training loss: 3.7382917404174805
-Batch 240 training loss: 3.6843347549438477
-Batch 320 training loss: 3.675851345062256
-Batch 400 training loss: 3.799027919769287
-Batch 480 training loss: 3.77473783493042
-Batch 560 training loss: 3.6083602905273438
-Batch 640 training loss: 3.725365161895752
+Batch 0 training loss: 3.443753242492676
+Batch 80 training loss: 3.557410955429077
+Batch 160 training loss: 3.5269641876220703
+Batch 240 training loss: 3.470795154571533
+Batch 320 training loss: 3.4830808639526367
+Batch 400 training loss: 3.4765262603759766
+Batch 480 training loss: 3.574180841445923
+Batch 560 training loss: 3.4021897315979004
+Batch 640 training loss: 3.5335121154785156
 TESTING
-Batch 0 testing loss: 3.614828586578369
-Batch 20 testing loss: 3.7088279724121094
-Batch 40 testing loss: 3.536351442337036
-Batch 60 testing loss: 3.5755629539489746
+Batch 0 testing loss: 3.346216917037964
+Batch 20 testing loss: 3.4404871463775635
+Batch 40 testing loss: 3.3077878952026367
+Batch 60 testing loss: 3.3251307010650635
 ------------------------------
 </pre></div>
 </div>
@@ -1413,18 +1415,18 @@ Batch 60 testing loss: 3.5755629539489746
 <span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
 
 <span class="c1"># trim off unwanted [SEP] tokens which act like our special end-of-sequence token.</span>
-<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># generate ids</span>
-<span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">),</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_ids</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of a typical late peritoneal palmar virus ( chc ) gene in 24 neonatal cutaneous bone abnormalities of the bovine left cystic lesion with a thickness beneath size ( axial total of 60 vs. 54&#39;,
- &#39;[CLS] we compared the prevalence of hiv infection and fibroblast growth factors ( hamsdiff ) vectors for bacteriological features in vitro by light - light microscopy. the number of normal fibroblasts 1 of the 16 salmonella t tissue&#39;,
- &#39;[CLS] we compared the prevalence of blood pressure due to leukocyte multidrug resistance ( ami ) from the madaga ( 1976 by alcohol consumption ) control ( gcd ) in a fast or suxaresomatic patients. in the pregnant woman with total white&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of diagnosis ( immunoglobulin, alpha, alpha -, and beta ) collaborating cases for cancer in the redhermal meningoencephalogic patients in patients with diabetes mellitus and current mellitus. among these&#39;,
+ &#39;[CLS] we compared the prevalence of microbial protein use in 22 patients with human gastric cancer ( mbm ) ; the incidence of secretory cell - like chemotactic factor ( egf ) within the number of diseases due to variation of the adherence to dairy&#39;,
+ &#39;[CLS] we compared the prevalence of acquired bovine myocarditis in swine to compare the incidence of postoperative mesenteric surgery repair. patient clinically suspected to resolve the clinical course in the first duration of the first trimester during have also yielded only at least&#39;]
 </pre></div>
 </div>
 </div>
@@ -1440,7 +1442,7 @@ Batch 60 testing loss: 3.5755629539489746
 <span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
 
 <span class="c1"># trim off unwanted [SEP] tokens which act like our special end-of-sequence token.</span>
-<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">prompt_ids</span> <span class="o">=</span> <span class="n">prompt_ids</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># generate ids</span>
 <span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
@@ -1449,9 +1451,9 @@ Batch 60 testing loss: 3.5755629539489746
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] the quick brown foxlightrative rehabilitation approach is the common aspect of determining the first - face andconrfolation process. the hand in the impact of injury process has been increased in patients with generalized joint history resembling muscle function. we compared the influence of two ic&#39;,
- &#39;[CLS] the quick brown fox - sensitive x701 - t ( delta ) b induced dermal locus aureus ( flp ) in a living in arabidopsis, grbeta, from the crispr of sugar ( njp ) strains that possess short&#39;,
- &#39;[CLS] the quick brown fox network technology offers a crucial role for accurate contributions to this image scale for enhancing processing. we developavian multimodal transgenic mouse trichoceriologically designed to measure circulating level ( sgs ) through data processing and imaging. in this&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] the quick brown fox corner yeast, taady, witn, rycnach1 - mediated dna polymerase or photomid px. px microarrays assay ( pmg1 ) together with limited dna - coupled interfaces.&#39;,
+ &#39;[CLS] the quick brown foxsera peptide ( wt ) produced in sp and a sulfated rice ( gtp ) 22 mrs in which lancet strain and the karyotypic spanish - transformed pancreatic resistance caused by v20 mouse&#39;,
+ &#39;[CLS] the quick brown fox apomortoma approach to first dipstick short periods, to enable leaf premature renal cell membranes are commonly used due to vascularization resulting in tissue damage in prolonged periods and becomes more serious, but with generally no low energy supply, remains&#39;]
 </pre></div>
 </div>
 </div>
