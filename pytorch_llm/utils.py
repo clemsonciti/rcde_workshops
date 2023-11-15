@@ -11,19 +11,14 @@ def masked_cross_entropy(logits, targets, mask):
     """
     token_loss = F.cross_entropy(logits, targets, reduction="none")
 
-    # number of real (non-padding) tokens
-    num_real = mask.sum(axis=-1)
+    # total loss zeroing out the padding terms
+    total_loss = (token_loss * mask).sum() 
 
-    # total sequence loss zeroing out the padding terms
-    masked_sequence_loss = (token_loss * mask).sum(dim=-1)
+    # average per-token loss
+    num_real = mask.sum()
+    mean_loss = total_loss / num_real
 
-    # compute the average for the sequence using num_real
-    mean_sequence_loss = masked_sequence_loss / num_real
-
-    # average over the batch
-    final_loss = mean_sequence_loss.mean()
-
-    return final_loss
+    return mean_loss
 
 
 def test(model, dataloader, reporting_interval=5):
@@ -68,7 +63,8 @@ def generate(model, idx, max_new_tokens):
     # idx is (N, L) array of indices in the current context
     for _ in range(max_new_tokens):
         # get the predictions
-        logits = model(idx)  # [N, L, V]
+        with torch.no_grad():
+            logits = model(idx)  # [N, L, V]
 
         # last time step is prediction for next token
         logits = logits[:, -1]  # becomes (N, V)
