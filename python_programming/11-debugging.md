@@ -1,17 +1,17 @@
 # Debugging
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - Debug code containing an error systematically.
 - Identify ways of making code less error-prone and more easily tested.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How can I debug my program?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 Once testing has uncovered problems,
 the next step is to fix them.
@@ -188,8 +188,6 @@ People are more likely to listen to us
 when we can explain clearly what we did,
 and we're better able to give them the information they need to be useful.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Version Control Revisited
 
 Version control is often used to reset software to a known state during debugging,
@@ -200,9 +198,6 @@ most version control systems (e.g. git, Mercurial) have:
 1. a `blame` command that shows who last changed each line of a file;
 2. a `bisect` command that helps with finding the commit that introduced an
   issue.
-  
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Be Humble
 
@@ -240,9 +235,7 @@ and to turn every assumption (or mistake) into an assertion,
 it will actually take us *less* time to produce working programs,
 not more.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Debug With a Neighbor
+## Challenge 1: Debug With a Neighbor
 
 Take a function that you have written today, and introduce a tricky bug.
 Your function should still run, but will give the wrong output.
@@ -251,11 +244,7 @@ the bug that they introduced into their function.
 Which of the principles discussed above did you find helpful?
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Not Supposed to be the Same
+## Challenge 2: Not Supposed to be the Same
 
 You are assisting a researcher with Python code that computes the
 Body Mass Index (BMI) of patients.  The researcher is concerned because
@@ -285,9 +274,7 @@ Patient's BMI is: 0.000367
 Patient's BMI is: 0.000367
 ```
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 ### Suggestions for debugging
 
@@ -301,16 +288,12 @@ Patient's BMI is: 0.000367
 
 - The height/weight variables are reversed in the function call to
   `calculate_bmi(...)`, the correct BMIs are 21.604938, 22.160665 and 51.903114.
-  
-  
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{admonition} Keypoints
 
 - Know what code is supposed to do *before* trying to debug it.
 - Make it fail every time.
@@ -319,6 +302,6 @@ Patient's BMI is: 0.000367
 - Keep track of what you've done.
 - Be humble.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

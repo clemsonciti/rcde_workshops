@@ -1,6 +1,6 @@
 # Creating Functions
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - Define a function that takes parameters.
 - Return a value from a function.
@@ -8,15 +8,15 @@
 - Set default values for function parameters.
 - Explain why we should divide programs into small, single-purpose functions.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How can I define new functions?
 - What's the difference between defining and calling a function?
 - What happens when I call a function?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 At this point, we've seen that code can have Python make decisions about what it sees in our data. What if we want to convert some of our data, like taking a temperature in Fahrenheit and converting it to Celsius. We could write something like this for converting a single number
 
@@ -656,9 +656,7 @@ programmer. If you need to revisit code that you wrote months ago and
 haven't thought about since then, you will appreciate the value of
 readable code!
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Combining Strings
+## Challenge 1: Combining Strings
 
 "Adding" two strings produces their concatenation:
 `'a' + 'b'` is `'ab'`.
@@ -674,22 +672,14 @@ print(fence('name', '*'))
 *name*
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution 
 ```python
 def fence(original, wrapper):
     return wrapper + original + wrapper
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Return versus print
+## Challenge 2: Return versus print
 
 Note that `return` and `print` are not interchangeable.
 `print` is a Python function that *prints* data to the screen.
@@ -709,10 +699,7 @@ A = add(7, 3)
 print(A)
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 Python will first execute the function `add` with `a = 7` and `b = 3`,
 and, therefore, print `10`. However, because function `add` does not have a
 line that starts with `return` (no `return` "statement"), it will, by default, return
@@ -723,14 +710,9 @@ and the last line (`print(A)`) will print `None`. As a result, we will see:
 10
 None
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Selecting Characters From Strings
+## Challenge 3: Selecting Characters From Strings
 
 If the variable `s` refers to a string,
 then `s[0]` is the string's first character
@@ -747,32 +729,20 @@ print(outer('helium'))
 hm
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 def outer(input_string):
     return input_string[0] + input_string[-1]
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Rescaling an Array
-
+## Challenge 4: Rescaling an Array
 Write a function `rescale` that takes an array as input
 and returns a corresponding array of values scaled to lie in the range 0.0 to 1.0.
 (Hint: If `L` and `H` are the lowest and highest values in the original array,
 then the replacement for a value `v` should be `(v-L) / (H-L)`.)
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 def rescale(input_array):
     L = numpy.amin(input_array)
@@ -780,14 +750,9 @@ def rescale(input_array):
     output_array = (input_array - L) / (H - L)
     return output_array
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Testing and Documenting Your Function
+## Challenge 5: Testing and Documenting Your Function
 
 Run the commands `help(numpy.arange)` and `help(numpy.linspace)`
 to see how to use these functions to generate regularly-spaced values,
@@ -795,10 +760,7 @@ then use those values to test your `rescale` function.
 Once you've successfully tested your function,
 add a docstring that explains what it does.
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 """Takes an array as input, and returns a corresponding array scaled so
 that 0 corresponds to the minimum and 1 to the maximum value of the input array.
@@ -811,24 +773,16 @@ array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
 array([ 0.  ,  0.25,  0.5 ,  0.75,  1.  ])
 """
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Defining Defaults
+## Challenge 6: Defining Defaults
 
 Rewrite the `rescale` function so that it scales data to lie between `0.0` and `1.0` by default,
 but will allow the caller to specify lower and upper bounds if they want.
 Compare your implementation to your neighbor's:
 do the two functions always behave the same way?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 def rescale(input_array, low_val=0.0, high_val=1.0):
     """rescales input array values to lie between low_val and high_val"""
@@ -838,15 +792,9 @@ def rescale(input_array, low_val=0.0, high_val=1.0):
     output_array = intermed_array * (high_val - low_val) + low_val
     return output_array
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Variables Inside and Outside Functions
-
+## Challenge 7: Variables Inside and Outside Functions
 What does the following piece of code display when run --- and why?
 
 ```python
@@ -864,10 +812,7 @@ print(f2k(32))
 print(k)
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution 
 ```output
 259.81666666666666
 278.15
@@ -884,17 +829,9 @@ Therefore the original value of `k` remains unchanged.
 Beware that a local `k` is created because `f2k` internal statements
 *affect* a new value to it. If `k` was only `read`, it would simply retrieve the
 global `k` value.
+:::
 
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Mixing Default and Non-Default Parameters
-
+## Challenge 8: Mixing Default and Non-Default Parameters
 Given the following code:
 
 ```python
@@ -927,10 +864,7 @@ func(-1, 2)
 3. `a: -1 b: 2 c: 6`
 4. `a: b: -1 c: 2`
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 Attempting to define the `numbers` function results in `4. SyntaxError`.
 The defined parameters `two` and `four` are given default values. Because
 `one` and `three` are not given default values, they are required to be
@@ -940,14 +874,7 @@ before any parameters that have default values in the function definition.
 The given call to `func` displays `a: -1 b: 2 c: 6`. -1 is assigned to
 the first parameter `a`, 2 is assigned to the next parameter `b`, and `c` is
 not passed a value, so it uses its default value 6.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::
 
 ## Readable Code
 
@@ -957,11 +884,8 @@ to critique each other's functions and discuss how your function implementations
 could be further improved to make them more readable.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{admonition} Keypoints
 
 - Define a function using `def function_name(parameter)`.
 - The body of a function must be indented.
@@ -977,6 +901,6 @@ could be further improved to make them more readable.
 - Parameters can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).
 - Put code whose parameters change frequently in a function, then call it with different parameter values to customize its behavior.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

@@ -453,7 +453,7 @@ Using len() to get last entry: ['sep', 'oct', 'nov', 'dec']
 Omitting ending index: ['sep', 'oct', 'nov', 'dec']
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Challenge 3: Overloading
 

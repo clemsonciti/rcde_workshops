@@ -1,18 +1,18 @@
 # Command-Line Programs
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - Use the values of command-line arguments in a program.
 - Handle flags and files separately in a command-line program.
 - Read data from standard input in a program so that it can be used in a pipeline.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How can I write Python programs that will work like Unix command-line tools?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 The Jupyter Notebook and other interactive tools are great for prototyping code and exploring data,
 but sooner or later we will want to use our program in a pipeline
@@ -32,7 +32,7 @@ commands in a shell terminal window (such as bash). When you see a `$` in front 
 command that tells you to run that command in the shell rather than the Python interpreter.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 This program does exactly what we want - it prints the average inflammation per patient
 for a given file.
@@ -291,7 +291,7 @@ in that script so that you can determine if the file
 is being imported or run as a script.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -311,7 +311,7 @@ that is part of Python's Official Documentation.
 We can also use the `argh` library, a wrapper around the `argparse` library that simplifies
 its usage (see [the argh documentation](https://pythonhosted.org/argh/) for more information).
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 ## Handling Multiple Files
 
@@ -421,7 +421,7 @@ though,
 we need all the successive versions side by side.
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 ## Handling Command-Line Flags
 
@@ -636,7 +636,7 @@ In fact,
 that's done:
 the program now does everything we set out to do.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Arithmetic on the Command Line
 
@@ -658,7 +658,7 @@ $ python arith.py --subtract 3 4
 -1.0
 ```
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -696,9 +696,9 @@ main()
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Finding Particular Files
 
@@ -717,7 +717,7 @@ right.py
 zero.py
 ```
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -740,9 +740,9 @@ main()
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Changing Flags
 
@@ -751,7 +751,7 @@ instead of `--min`, `--mean`, and `--max` respectively.
 Is the code easier to read?
 Is the program easier to understand?
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -790,9 +790,9 @@ main()
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Adding a Help Message
 
@@ -801,7 +801,7 @@ modify `readings.py` so that if no parameters are given
 (i.e., no action is specified and no filenames are given),
 it prints a message explaining how it should be used.
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -851,9 +851,9 @@ if __name__ == '__main__':
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Adding a Default Action
 
@@ -861,7 +861,7 @@ Separately,
 modify `readings.py` so that if no action is given
 it displays the means of the data.
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -903,9 +903,9 @@ main()
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## A File-Checker
 
@@ -914,7 +914,7 @@ inflammation data files as arguments
 and checks that all the files have the same number of rows and columns.
 What is the best way to test your program?
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -953,9 +953,9 @@ main()
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Counting Lines
 
@@ -965,7 +965,7 @@ Write a program called `line_count.py` that works like the Unix `wc` command:
 - If one or more filenames are given, it reports the number of lines in each,
   followed by the total number of lines.
 
-:::::::::::::::  solution
+:::{dropdown} Solution
 
 ## Solution
 
@@ -1008,9 +1008,9 @@ main()
 
 :::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::{admonition} Challenge
 
 ## Generate an Error Message
 
@@ -1034,7 +1034,7 @@ $ python check_arguments.py filename.txt
 Thanks for specifying arguments!
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 
 
@@ -1045,6 +1045,6 @@ Thanks for specifying arguments!
 - Avoid silent failures.
 - The pseudo-file `sys.stdin` connects to a program's standard input.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

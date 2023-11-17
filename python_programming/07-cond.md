@@ -1,17 +1,17 @@
 # Making Choices
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - Write conditional statements including `if`, `elif`, and `else` branches.
 - Correctly evaluate expressions containing `and` and `or`.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How can my programs do different things based on data values?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 In our last lesson, we discovered something suspicious was going on
 in our inflammation data by drawing some plots.
@@ -86,9 +86,7 @@ else:
 Note that to test for equality we use a double equals sign `==`
 rather than a single equals sign `=` which is used to assign values.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Comparing in Python
+:::{admonition} Comparing in Python
 
 Along with the `>` and `==` operators we have already used for comparing values in our
 conditionals, there are a few more options to know about:
@@ -99,9 +97,8 @@ conditionals, there are a few more options to know about:
 - `!=`: does not equal
 - `>=`: greater than or equal to
 - `<=`: less than or equal to
-  
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 We can also combine tests using `and` and `or`.
 `and` is only true if both parts are true:
@@ -128,16 +125,12 @@ if (1 < 0) or (1 >= 0):
 at least one test is true
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## `True` and `False`
 
 `True` and `False` are special words in Python called `booleans`,
 which represent truth values. A statement such as `1 < 0` returns
 the value `False`, while `-1 < 0` returns the value `True`.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Checking our Data
 
@@ -228,9 +221,7 @@ but we could also imagine not using the `else` catch-all
 so that messages are only printed when something is wrong,
 freeing us from having to manually examine every plot for features we've seen before.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## How Many Paths?
+## Challenge 1: How Many Paths?
 
 Consider this code:
 
@@ -251,9 +242,7 @@ Why did you pick this answer?
 3. C
 4. B and C
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 C gets printed because the first two conditions, `4 > 5` and `4 == 5`, are not true,
 but `4 < 5` is true.
@@ -266,13 +255,7 @@ This contrasts with the case of multiple `if` statements, where every action can
 as long as their condition is met.
 ![](fig/python-multi-if.png){alt='A flowchart diagram of a conditional section with multiple if statements and some possible outcomes.'}
 
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
+:::
 
 ## What Is Truth?
 
@@ -296,10 +279,6 @@ if 1:
     print('one is true')
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
 ## That's Not Not What I Meant
 
 Sometimes it is useful to check whether some condition is not true.
@@ -317,22 +296,14 @@ if not not True:
     print('not not True is true')
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Close Enough
+## Challenge 2: Close Enough
 
 Write some conditions that print `True` if the variable `a` is within 10% of the variable `b`
 and `False` otherwise.
 Compare your implementation with your partner's:
 do you get the same answer for all possible pairs of numbers?
 
-:::::::::::::::  solution
-
-## Hint
-
-There is a [built-in function `abs`][abs-function] that returns the absolute value of
+There is a built-in function `abs` that returns the absolute value of
 a number:
 
 ```python
@@ -343,12 +314,7 @@ print(abs(-12))
 12
 ```
 
-:::::::::::::::::::::::::
-
-:::::::::::::::  solution
-
-## Solution 1
-
+:::{dropdown} Solution 1
 ```python
 a = 5
 b = 5.1
@@ -358,29 +324,17 @@ if abs(a - b) <= 0.1 * abs(b):
 else:
     print('False')
 ```
+:::
 
-:::::::::::::::::::::::::
-
-:::::::::::::::  solution
-
-## Solution 2
-
+:::{dropdown} Solution 2
 ```python
 print(abs(a - b) <= 0.1 * abs(b))
 ```
-
 This works because the Booleans `True` and `False`
 have string representations which can be printed.
+:::
 
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## In-Place Operators
+## Challenge 3: In-Place Operators
 
 Python (and most other languages in the C family) provides
 [in-place operators](../learners/reference.md#in-place-operators)
@@ -402,10 +356,7 @@ using in-place operators.
 Do you think the result is more or less readable
 than writing the same without in-place operators?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution 1 
 ```python
 positive_sum = 0
 negative_sum = 0
@@ -423,16 +374,10 @@ print(positive_sum, negative_sum)
 Here `pass` means "don't do anything".
 In this particular case, it's not actually needed, since if `num == 0` neither
 sum needs to change, but it illustrates the use of `elif` and `pass`.
+:::
 
 
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Sorting a List Into Buckets
+## Challenge 4: Sorting a List Into Buckets
 
 In our `data` folder, large data sets are stored in files whose names start with
 "inflammation-" and small data sets -- in files whose names start with "small-". We
@@ -490,10 +435,7 @@ small_files = ['small-01.csv', 'small-02.csv']
 other_files = ['myscript.py']
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 for filename in filenames:
     if filename.startswith('inflammation-'):
@@ -507,14 +449,9 @@ print('large_files:', large_files)
 print('small_files:', small_files)
 print('other_files:', other_files)
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Counting Vowels
+## Challenge 5: Counting Vowels
 
 1. Write a loop that counts the number of vowels in a character string.
 2. Test it on a few individual words and full sentences.
@@ -522,10 +459,7 @@ print('other_files:', other_files)
   Did you make the same decisions about how to handle the letter 'y'
   (which some people think is a vowel, and some do not)?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 vowels = 'aeiouAEIOU'
 sentence = 'Mary had a little lamb.'
@@ -536,17 +470,14 @@ for char in sentence:
 
 print('The number of vowels in this string is ' + str(count))
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 
 
 [abs-function]: https://docs.python.org/3/library/functions.html#abs
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{admonition} Keypoints
 
 - Use `if condition` to start a conditional statement, `elif condition` to provide additional tests, and `else` to provide a default.
 - The bodies of the branches of conditional statements must be indented.
@@ -556,6 +487,6 @@ print('The number of vowels in this string is ' + str(count))
 - Zero, the empty string, and the empty list are considered false; all other numbers, strings, and lists are considered true.
 - `True` and `False` represent truth values.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

@@ -1,17 +1,17 @@
 # Analyzing Data from Multiple Files
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - Use a library function to get a list of filenames that match a wildcard pattern.
 - Write a `for` loop to process multiple files.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How can I do the same operations on many different files?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 As a final piece to processing our inflammation data, we need a way to get a list of all the files
 in our `data` directory whose names start with `inflammation-` and end with `.csv`.
@@ -114,17 +114,13 @@ clinical trial, suggesting that there were potential issues with data collection
 trial. In addition, we can see that the last patient in the study didn't have any inflammation
 flare-ups at all throughout the trial, suggesting that they may not even suffer from arthritis!
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Plotting Differences
+## Challenge 1: Plotting Differences
 
 Plot the difference between the average inflammations reported in the first and second datasets
 (stored in `inflammation-01.csv` and `inflammation-02.csv`, correspondingly),
 i.e., the difference between the leftmost plots of the first two figures.
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 ```python
 import glob
@@ -145,13 +141,11 @@ fig.tight_layout()
 matplotlib.pyplot.show()
 ```
 
-:::::::::::::::::::::::::
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Generate Composite Statistics
+## Challenge 2: Generate Composite Statistics
 
 Use each of the files once to generate a dataset containing values averaged over all patients by completing the code inside the loop given below:
 
@@ -167,9 +161,7 @@ composite_data = composite_data / len(filenames)
 
 Then use pyplot to generate average, max, and min for all patients.
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 ```python
 import glob
@@ -204,10 +196,7 @@ fig.tight_layout()
 
 matplotlib.pyplot.show()
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 After spending some time investigating the heat map and statistical plots, as well as
 doing the above exercises to plot differences between datasets and to generate composite
@@ -237,11 +226,11 @@ how to program.
 
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{admonition} Keypoints
 
 - Use `glob.glob(pattern)` to create a list of files whose names match a pattern.
 - Use `*` in a pattern to match zero or more characters, and `?` to match any single character.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

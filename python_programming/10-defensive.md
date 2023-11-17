@@ -1,6 +1,6 @@
 # Defensive Programming
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - Explain what an assertion is.
 - Add assertions that check the program's state is correct.
@@ -8,13 +8,13 @@
 - Explain what test-driven development is, and use it when creating new functions.
 - Explain why variables should be initialized using actual data values rather than arbitrary constants.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How can I make my programs more reliable?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 Our previous lessons have introduced the basic tools of programming:
 variables and lists,
@@ -447,9 +447,7 @@ regardless of the input values.
 This violates another important rule of programming:
 *always initialize from data*.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Pre- and Post-Conditions
+## Challenge 1: Pre- and Post-Conditions
 
 Suppose you are writing a function called `average` that calculates
 the average of the numbers in a list.
@@ -457,10 +455,7 @@ What pre-conditions and post-conditions would you write for it?
 Compare your answer to your neighbor's:
 can you think of a function that will pass your tests but not his/hers or vice versa?
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 ```python
 # a possible pre-condition:
 assert len(input_list) > 0, 'List length must be non-zero'
@@ -468,14 +463,9 @@ assert len(input_list) > 0, 'List length must be non-zero'
 assert numpy.amin(input_list) <= average <= numpy.amax(input_list),
 'Average should be between min and max of input values (inclusive)'
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Testing Assertions
+## Challenge 2: Testing Assertions
 
 Given a sequence of a number of cars, the function `get_total_cars` returns
 the total number of cars.
@@ -511,26 +501,18 @@ def get_total(values):
     return total
 ```
 
-:::::::::::::::  solution
-
-## Solution
-
+:::{dropdown} Solution
 - The first assertion checks that the input sequence `values` is not empty.
   An empty sequence such as `[]` will make it fail.
 - The second assertion checks that each value in the list can be turned into an integer.
   Input such as `[1, 2, 'c', 3]` will make it fail.
 - The third assertion checks that the total of the list is greater than 0.
   Input such as `[-10, 2, 3]` will make it fail.
-  
-  
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{admonition} Keypoints
 
 - Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
 - Put assertions in programs to check their state as they run, and to help readers understand how those programs are supposed to work.
@@ -538,6 +520,6 @@ def get_total(values):
 - Use postconditions to check that the output from a function is safe to use.
 - Write tests before writing code in order to help determine exactly what that code is supposed to do.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 

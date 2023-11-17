@@ -1,18 +1,18 @@
 # Errors and Exceptions
 
-::::::::::::::::::::::::::::::::::::::: objectives
+:::{admonition} Objectives
 
 - To be able to read a traceback, and determine where the error took place and what type it is.
 - To be able to describe the types of situations in which syntax errors, indentation errors, name errors, index errors, and missing file errors occur.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
-:::::::::::::::::::::::::::::::::::::::: questions
+:::{admonition} Questions
 
 - How does Python report errors?
 - How can I handle errors in Python programs?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 Every programmer encounters errors,
 both those who are just beginning,
@@ -78,7 +78,6 @@ So, in this case, the program first performed a
 Inside this function,
 the program encountered an error on Line 6, when it tried to run the code `print(ice_creams[3])`.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Long Tracebacks
 
@@ -90,8 +89,6 @@ it indicates that your program called many functions before it encountered the e
 Most of the time, the actual place where the error occurred is at the bottom-most level,
 so you can skip down the traceback to the bottom.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 So what error did the program actually encounter?
 In the last line of the traceback,
@@ -117,9 +114,7 @@ as it is possible to create custom errors.
 In that case,
 hopefully the custom error message is informative enough to help you figure out what went wrong.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Reading Error Messages
+## Challenge 1: Reading Error Messages
 
 Read the Python code and the resulting traceback below, and answer the following questions:
 
@@ -176,9 +171,7 @@ IndexError                                Traceback (most recent call last)
 IndexError: list index out of range
 ```
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 1. 3 levels
 2. `print_message`
@@ -186,22 +179,13 @@ IndexError: list index out of range
 4. `IndexError`
 5. `list index out of range` You can then infer that
   `7` is not the right index to use with `messages`.
-  
-  
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
+:::
 
 ## Better errors on newer Pythons
 
 Newer versions of Python have improved error printouts.  If you are debugging errors, it is often
 helpful to use the latest Python version, even if you support older versions of Python.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Syntax Errors
 
@@ -264,8 +248,6 @@ Both `SyntaxError` and `IndentationError` indicate a problem with the syntax of 
 but an `IndentationError` is more specific:
 it *always* means that there is a problem with how your code is indented.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Tabs and Spaces
 
 Some indentation errors are harder to spot than others.
@@ -293,8 +275,6 @@ Fortunately, Python does not allow you to mix tabs and spaces.
               ^
 TabError: inconsistent use of tabs and spaces in indentation
 ```
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Variable Name Errors
 
@@ -492,9 +472,7 @@ If you get an error that you've never seen before,
 searching the Internet for that error type
 often reveals common reasons why you might get that error.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Identifying Syntax Errors
+## Challenge 1: Identifying Syntax Errors
 
 1. Read the code below, and (without running it) try to identify what the errors are.
 2. Run the code, and read the error message. Is it a `SyntaxError` or an `IndentationError`?
@@ -508,9 +486,7 @@ def another_function
   print('So they are usually not too hard to fix.')
 ```
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 `SyntaxError` for missing `():` at end of first line,
 `IndentationError` for mismatch between second and third lines.
@@ -522,14 +498,9 @@ def another_function():
     print('But at least Python tells us about them!')
     print('So they are usually not too hard to fix.')
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Identifying Variable Name Errors
+## Challenge 2: Identifying Variable Name Errors
 
 1. Read the code below, and (without running it) try to identify what the errors are.
 2. Run the code, and read the error message.
@@ -550,9 +521,7 @@ for number in range(10):
 print(message)
 ```
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 3 `NameError`s for `number` being misspelled, for `message` not defined,
 and for `a` not being in quotes.
@@ -569,14 +538,9 @@ for number in range(10):
         message = message + 'b'
 print(message)
 ```
+:::
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Identifying Index Errors
+## Challenge 3: Identifying Index Errors
 
 1. Read the code below, and (without running it) try to identify what the errors are.
 2. Run the code, and read the error message. What type of error is it?
@@ -587,9 +551,7 @@ seasons = ['Spring', 'Summer', 'Fall', 'Winter']
 print('My favorite season is ', seasons[4])
 ```
 
-:::::::::::::::  solution
-
-## Solution
+:::{dropdown} Solution
 
 `IndexError`; the last entry is `seasons[3]`, so `seasons[4]` doesn't make sense.
 A fixed version is:
@@ -598,14 +560,11 @@ A fixed version is:
 seasons = ['Spring', 'Summer', 'Fall', 'Winter']
 print('My favorite season is ', seasons[-1])
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{adonition} Keypoints
 
 - Tracebacks can look intimidating, but they give us a lot of useful information about what went wrong in our program, including where the error occurred and what type of error it was.
 - An error having to do with the 'grammar' or syntax of the program is called a `SyntaxError`. If the issue has to do with how the code is indented, then it will be called an `IndentationError`.
@@ -613,6 +572,6 @@ print('My favorite season is ', seasons[-1])
 - Containers like lists and strings will generate errors if you try to access items in them that do not exist. This type of error is called an `IndexError`.
 - Trying to read a file that does not exist will give you an `FileNotFoundError`. Trying to read a file that is open for writing, or writing to a file that is open for reading, will give you an `IOError`.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::
 
 
