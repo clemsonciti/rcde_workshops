@@ -45,7 +45,7 @@ If the test is false,
 the body of the `else` is executed instead, and "not greater" is printed.
 Only one or the other is ever executed before continuing on with program execution to print "done":
 
-![](fig/python-flowchart-conditional.png){alt='A flowchart diagram of the if-else construct that tests if variable num is greater than 100'}
+![](../fig/python_programming/python-flowchart-conditional.png){alt='A flowchart diagram of the if-else construct that tests if variable num is greater than 100'}
 
 Conditional statements don't have to include an `else`.
 If there isn't one,
@@ -250,10 +250,10 @@ In this case only one of these conditions can be true for at a time, but in othe
 scenarios multiple `elif` conditions could be met. In these scenarios only the action
 associated with the first true `elif` condition will occur, starting from the top of the
 conditional section.
-![](fig/python-else-if.png){alt='A flowchart diagram of a conditional section with multiple elif conditions and some possible outcomes.'}
+![](../fig/python_programming/python-else-if.png){alt='A flowchart diagram of a conditional section with multiple elif conditions and some possible outcomes.'}
 This contrasts with the case of multiple `if` statements, where every action can occur
 as long as their condition is met.
-![](fig/python-multi-if.png){alt='A flowchart diagram of a conditional section with multiple if statements and some possible outcomes.'}
+![](../fig/python_programming/python-multi-if.png){alt='A flowchart diagram of a conditional section with multiple if statements and some possible outcomes.'}
 
 :::
 

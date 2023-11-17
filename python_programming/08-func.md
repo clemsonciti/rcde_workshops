@@ -58,7 +58,7 @@ def fahr_to_celsius(temp):
     return ((temp - 32) * (5/9))
 ```
 
-![](fig/python-function.svg){alt='Labeled parts of a Python function definition'}
+![](../fig/python_programming/python-function.svg){alt='Labeled parts of a Python function definition'}
 
 The function definition opens with the keyword `def` followed by the
 name of the function (`fahr_to_celsius`) and a parenthesized list of parameter names (`temp`). The

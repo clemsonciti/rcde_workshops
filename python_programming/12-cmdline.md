@@ -23,16 +23,12 @@ For example,
 we may want a program that reads a dataset
 and prints the average inflammation per patient.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Switching to Shell Commands
 
 In this lesson we are switching from typing commands in a Python interpreter to typing
 commands in a shell terminal window (such as bash). When you see a `$` in front of a
 command that tells you to run that command in the shell rather than the Python interpreter.
 
-
-:::
 
 This program does exactly what we want - it prints the average inflammation per patient
 for a given file.
@@ -636,9 +632,7 @@ In fact,
 that's done:
 the program now does everything we set out to do.
 
-:::{admonition} Challenge
-
-## Arithmetic on the Command Line
+## Challenge 1: Arithmetic on the Command Line
 
 Write a Python program that adds, subtracts, multiplies, or divides two numbers provided on the command line:
 
@@ -659,8 +653,6 @@ $ python arith.py --subtract 3 4
 ```
 
 :::{dropdown} Solution
-
-## Solution
 
 ```python
 import sys
@@ -693,14 +685,9 @@ def do_arithmetic(operand1, operator, operand2):
 
 main()
 ```
-
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## Finding Particular Files
+## Challenge 2: Finding Particular Files
 
 Using the `glob` module introduced [earlier](06-files.html),
 write a simple version of `ls` that shows files in the current directory
@@ -719,8 +706,6 @@ zero.py
 
 :::{dropdown} Solution
 
-## Solution
-
 ```python
 import sys
 import glob
@@ -737,14 +722,9 @@ def main():
 
 main()
 ```
-
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## Changing Flags
+## Challenge 3: Changing Flags
 
 Rewrite `readings.py` so that it uses `-n`, `-m`, and `-x`
 instead of `--min`, `--mean`, and `--max` respectively.
@@ -752,8 +732,6 @@ Is the code easier to read?
 Is the program easier to understand?
 
 :::{dropdown} Solution
-
-## Solution
 
 ```python
 # this is code/readings_07.py
@@ -787,14 +765,9 @@ def process(filename, action):
 
 main()
 ```
-
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## Adding a Help Message
+## Challenge 4: Adding a Help Message
 
 Separately,
 modify `readings.py` so that if no parameters are given
@@ -802,8 +775,6 @@ modify `readings.py` so that if no parameters are given
 it prints a message explaining how it should be used.
 
 :::{dropdown} Solution
-
-## Solution
 
 ```python
 # this is code/readings_08.py
@@ -848,22 +819,15 @@ if __name__ == '__main__':
     main()
 
 ```
-
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## Adding a Default Action
+## Challenge 5: Adding a Default Action
 
 Separately,
 modify `readings.py` so that if no action is given
 it displays the means of the data.
 
 :::{dropdown} Solution
-
-## Solution
 
 ```python
 # this is code/readings_09.py
@@ -901,13 +865,9 @@ def process(filename, action):
 main()
 ```
 
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## A File-Checker
+## Challenge 6: A File-Checker
 
 Write a program called `check.py` that takes the names of one or more
 inflammation data files as arguments
@@ -915,8 +875,6 @@ and checks that all the files have the same number of rows and columns.
 What is the best way to test your program?
 
 :::{dropdown} Solution
-
-## Solution
 
 ```python
 import sys
@@ -950,14 +908,9 @@ def row_col_count(filename):
 
 main()
 ```
-
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## Counting Lines
+## Challenge 7: Counting Lines
 
 Write a program called `line_count.py` that works like the Unix `wc` command:
 
@@ -966,8 +919,6 @@ Write a program called `line_count.py` that works like the Unix `wc` command:
   followed by the total number of lines.
 
 :::{dropdown} Solution
-
-## Solution
 
 ```python
 import sys
@@ -1005,14 +956,9 @@ def count_file_like(file_like):
 main()
 
 ```
-
-:::::::::::::::::::::::::
-
 :::
 
-:::{admonition} Challenge
-
-## Generate an Error Message
+## Challenge 8: Generate an Error Message
 
 Write a program called `check_arguments.py` that prints usage
 then exits the program if no arguments are provided.
@@ -1038,7 +984,7 @@ Thanks for specifying arguments!
 
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
+:::{admonition} Keypoints
 
 - The `sys` library connects a Python program to the system it is running on.
 - The list `sys.argv` contains the command-line arguments that a program was run with.
