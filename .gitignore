@@ -5,7 +5,6 @@ _build
 .vscode/
 *.csv
 pytorch/*.pt
-data/
 *__pycache__*
 pytorch_advanced/logs/
 pytorch_advanced/checkpoints/

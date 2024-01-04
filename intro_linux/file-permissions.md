@@ -34,7 +34,8 @@ There are 2 ways to represent the permissions: *numeric* and *symbolic*.
 
 **Numeric mode**
 
-The `rwx` permissions are represented by octal numbers (0-7). The following table explains each value (credit: [Wikipedia](https://en.wikipedia.org/wiki/Chmod#Numerical_permissions)):
+The `rwx` permissions are represented by octal numbers (0-7). The following table explains 
+each value (credit: [Wikipedia](https://en.wikipedia.org/wiki/Chmod#Numerical_permissions)):
 
 \#  |	       Sum         | rwx    |        Permission       |
 --- | ------------------ | ------ | ----------------------- |

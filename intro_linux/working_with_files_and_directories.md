@@ -45,7 +45,7 @@ ls -F
 
 
 ```{admonition} 3. Challenge: mkdir creating multiple directories
-:class: note
+:class: dropdown
 
 - What is the role of the `-p` flag in the following 
 commands:
@@ -86,7 +86,12 @@ cd thesis
 nano draft.txt
 ~~~
 
-![Nano editor](../fig/intro-linux/nano.png)
+![Nano editor](../fig/intro_linux/file_system/launch_nano.png)
+
+Enter the text as shown in the screenshot below
+
+![Nano interface](../fig/intro_linux/file_system/gui_nano.png)
+
 
 - To save the text, you need to press `Ctrl` + `O` keys:
   - Press and hold `Ctrl` then press `O`. 
@@ -119,7 +124,7 @@ ls
 
 
 ```{admonition} 6. Challenge: Moving files to a new folder
-:class: note
+:class: dropdown
 
 - After running the following commands, Jamie realizes that she 
 put the files `sucrose.dat` and `maltose.dat` into the wrong folder. The 
@@ -165,7 +170,7 @@ $ ls thesis thesis_backup
 
 
 ```{admonition} 8. Challenge: Renaming files
-:class: note
+:class: dropdown
 
 - Suppose that you created a plain-text file in your 
 current directory to contain a list of the statistical 
@@ -194,7 +199,7 @@ not provide a new file name; identical file names cannot be created.
 
 
 ```{admonition} 9. Challenge: Moving and copying
-:class: note
+:class: dropdown
 
 - What is the output of the last `ls` command in the sequence shown below?
 
@@ -247,7 +252,7 @@ $ rm -r thesis
 :class: dropdown
 
 - `*` is a wildcard, which matches zero or more characters. 
-  - Inside `shell-lesson-data/exercise-data/proteins` directory: 
+  - Inside `shell-lesson-data/exercise-data/alkanes` directory: 
     - `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every file that ends with ‘.pdb’. 
     - `p*.pdb` only matches `pentane.pdb` and `propane.pdb`, because the ‘p’ at the front 
     only matches filenames that begin with the letter ‘p’.
@@ -260,7 +265,7 @@ $ rm -r thesis
 - When the shell sees a wildcard, it expands the wildcard to create a list of 
 matching filenames before running the command that was asked for. It is the shell, 
 not the other programs, that deals with expanding wildcards.
-- Change into `shell-lesson-data/exercise-data/proteins` and try the following 
+- Change into `shell-lesson-data/exercise-data/alkanes` and try the following 
 commands
 
 ~~~bash
@@ -270,7 +275,7 @@ $ ls *t??ne.pdb
 $ ls ethane.*
 ~~~
 
-![Outcome of various wildcards](../fig/intro-linux/wildcards.png)
+![Outcome of various wildcards](../fig/intro_linux/file_system/wildcards.png)
 
 ```
 
