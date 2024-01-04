@@ -45,7 +45,7 @@ After running the installer, make sure the following steps are done correctly:
 
 To launch Git Bash, you can launch the Git Bash app directly via Windows Main Menu
 
-![Git Bash](../fig/intro_linux/intro/windows_terminal.png)
+![Git Bash](../fig/intro_linux/intro/gitbash.png)
 
 
 You can also launch Git Bash via Windows Terminal. Windows Terminal is a powerful 
