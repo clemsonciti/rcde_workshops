@@ -13,7 +13,7 @@ are executed not by our own machines, but by the login node.
 
 **DO NOT RUN WORK ON PICOTTE LOGIN (PICOTTE001)**
 
-![Picotte Structure](../fig/intro_Picotte/picotte_schematic.png)
+![Picotte Structure](../fig/intro_picotte/structure/picotte_schematic.png)
 
 Another special node is the *scheduler*; Picotte users can get from the
 login node to the compute nodes by submitting a request to the scheduler, 

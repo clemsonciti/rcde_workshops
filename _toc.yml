@@ -18,16 +18,18 @@ parts:
       - file: intro_linux/loop.md
       - file: intro_linux/utilities.md
       - file: intro_linux/conclusion.md
-    - file: intro_picotte/00-index.md
+
+    - file: intro_picotte/index.md
       sections:
-      - file: intro_picotte/01-introduction.md
-      - file: intro_picotte/02-accessing-picotte.md
-      - file: intro_picotte/03-picotte_structure.md
-      - file: intro_picotte/04-storage.md
-      - file: intro_picotte/05-interactive.md
-      - file: intro_picotte/06-file-transfer.md
-      - file: intro_picotte/07-batch.md
-      - file: intro_picotte/08-jupyter-hub.md      
+      - file: intro_picotte/introduction.md
+      - file: intro_picotte/accessing-picotte.md
+      - file: intro_picotte/picotte_structure.md
+      - file: intro_picotte/storage.md
+      - file: intro_picotte/interactive.md
+      - file: intro_picotte/file-transfer.md
+      - file: intro_picotte/batch.md
+      - file: intro_picotte/jupyter-hub.md      
+      
 - caption: R
   chapters:
     - file: r_programming/00-index.md
