@@ -481,6 +481,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface">🤗 Huggingface</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-adaptation-lora">Low-rank adaptation (LoRA)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-quantization">Model quantization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-long-context-windows">Handling long context windows</a></li>
 </ul>
             </nav>
         </div>
@@ -505,7 +506,7 @@ document.write(`
 <li><p>Human preference training</p></li>
 </ol>
 <p>Obviously this all takes a lot more compute resources than we have here. For instance, Elon’s new Grok LLM was trained using 8000 A100 gpus.</p>
-<img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/rlhf.svg?raw=true" alt="Reinforcement learning with human feedback" width="600"/></section>
+</section>
 <section id="masked-language-modeling">
 <h2>Masked language modeling<a class="headerlink" href="#masked-language-modeling" title="Permalink to this heading">#</a></h2>
 <p>So far, we’ve only discussed Autoregressive Language Modeling. This is the kind used for generating text, like ChatGPT. Another important class of language models are “Masked Language Models” as introduced by <a class="reference external" href="https://arxiv.org/abs/1810.04805">BERT</a> (see figure). Masked language models are useful when fine-tuning on small datasets.</p>
@@ -523,6 +524,9 @@ document.write(`
 <h2>Model quantization<a class="headerlink" href="#model-quantization" title="Permalink to this heading">#</a></h2>
 <p>Lora helps reduce the amount of compute needed to fine-tune an LLM. However, many LLMs may still be too large to fit in VRAM. Quantization reduces model size by re-expressing the trained LLM into lower-precision weights. This can lead to factor of 2 or 4 reductions in the memory footprint. Quantization and LoRA are often used together. Using these techniques, LLMs can be fine tuned on CPU, on with hybrid mixtures of CPU and GPU, and can even make use of Swap memory.</p>
 <img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/quantization.png?raw=true" alt="Quantization" width="650"/></section>
+<section id="handling-long-context-windows">
+<h2>Handling long context windows<a class="headerlink" href="#handling-long-context-windows" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -591,6 +595,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#huggingface">🤗 Huggingface</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-adaptation-lora">Low-rank adaptation (LoRA)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-quantization">Model quantization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-long-context-windows">Handling long context windows</a></li>
 </ul>
   </nav></div>
 

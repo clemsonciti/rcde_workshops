@@ -484,7 +484,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-modeling">Autoregressive language modeling</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strike-large-strike-small-language-model"><strike>Large</strike> Small Language Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-small-language-model">~~Large~~ Small Language Model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-non-trivial-model">The simplest, non-trivial model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-model-from-data">Estimating the model from data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-frequency-tables">Estimating with frequency tables</a></li>
@@ -545,34 +545,30 @@ document.write(`
 </section>
 <section id="language-modeling-as-probabilistic-modeling">
 <h3>Language modeling as probabilistic modeling<a class="headerlink" href="#language-modeling-as-probabilistic-modeling" title="Permalink to this heading">#</a></h3>
-<p>Let’s try to make the idea of mathematically modeling language more concrete. We will develop models for the vector of tokens that appear in a document. We denote this as</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Let’s try to make the idea of mathematically modeling language more concrete. We will develop models for the vector of tokens that appear in a document. We denote this as
+$<span class="math notranslate nohighlight">\(
 p(\langle w_i\rangle_{i=1}^{L})
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(w_i\)</span> is the token at position <span class="math notranslate nohighlight">\(i\)</span> in a document and <span class="math notranslate nohighlight">\(L\)</span> is the number of words in the document. The angle bracket with limits notation here denotes the vector of all tokens specified by the limits.</p>
-<p>If we knew this joint distribution, we could sample new documents <span class="math notranslate nohighlight">\(d\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>w_i<span class="math notranslate nohighlight">\( is the token at position \)</span>i<span class="math notranslate nohighlight">\( in a document and \)</span>L$ is the number of words in the document. The angle bracket with limits notation here denotes the vector of all tokens specified by the limits.</p>
+<p>If we knew this joint distribution, we could sample new documents <span class="math notranslate nohighlight">\(d\)</span>:
+$<span class="math notranslate nohighlight">\(
 d \sim p(\langle w_i\rangle_{i=1}^{L})
-\]</div>
-<p>This is called <em>language generation</em> because <span class="math notranslate nohighlight">\(d\)</span> is not in the dataset that we used to learn <span class="math notranslate nohighlight">\(p(\langle w_i\rangle_{i=1}^{L})\)</span>, but it “looks like” it is from that dataset.</p>
+\)</span><span class="math notranslate nohighlight">\(
+This is called _language generation_ because \)</span>d<span class="math notranslate nohighlight">\( is not in the dataset that we used to learn \)</span>p(\langle w_i\rangle_{i=1}^{L})$, but it “looks like” it is from that dataset.</p>
 </section>
 <section id="autoregressive-language-modeling">
 <h3>Autoregressive language modeling<a class="headerlink" href="#autoregressive-language-modeling" title="Permalink to this heading">#</a></h3>
 <p>Let’s make a simplifying assumption. Let’s assume that the probability for token <span class="math notranslate nohighlight">\(i\)</span> only depends on the previous tokens as shown in this figure (Notice: no arrows going from right to left.)</p>
 <img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm.png?raw=true" alt="autoregressive lm" width="800"/>
-<p>Mathematically, this can be expressed as:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Mathematically, this can be expressed as:
+$<span class="math notranslate nohighlight">\(
 p(w_i | \langle w_j\rangle_{j\neq i}) = p(w_i | \langle w_j\rangle_{j=1}^{i-1})
-\]</div>
-<p>This gives us a natural way to sample documents because it implies that</p>
-<div class="math notranslate nohighlight">
-\[
+\)</span><span class="math notranslate nohighlight">\(
+This gives us a natural way to sample documents because it implies that 
+\)</span><span class="math notranslate nohighlight">\(
 p(\langle w_i\rangle_{i=1}^{L}) = p(w_1)\prod_{j=2}^L p(w_j | \langle w_i\rangle_{i=1}^{j-1})
-\]</div>
-<p>So, to generate a new document, we can</p>
+\)</span>$
+So, to generate a new document, we can</p>
 <ol class="arabic simple">
 <li><p>start with a prompt token or token sequence</p></li>
 <li><p>sample the next token conditioned on the prompt and append it to the prompt</p></li>
@@ -592,41 +588,37 @@ p(\langle w_i\rangle_{i=1}^{L}) = p(w_1)\prod_{j=2}^L p(w_j | \langle w_i\rangle
 <p>We will spend the next notebook digging deep into the last option. Before we do, though, let’s try to get a better understanding of language models by looking closely at a simple Markov model.</p>
 </section>
 </section>
-<section id="strike-large-strike-small-language-model">
-<h2><strike>Large</strike> Small Language Model<a class="headerlink" href="#strike-large-strike-small-language-model" title="Permalink to this heading">#</a></h2>
+<section id="large-small-language-model">
+<h2>~~Large~~ Small Language Model<a class="headerlink" href="#large-small-language-model" title="Permalink to this heading">#</a></h2>
 <section id="the-simplest-non-trivial-model">
 <h3>The simplest, non-trivial model<a class="headerlink" href="#the-simplest-non-trivial-model" title="Permalink to this heading">#</a></h3>
 <p>Before we move on to attention, transformers, and LLMs, let’s first write down and fit a very simple language model for the PubMed dataset. This will provide a baseline for more sophisticated techniques and will give us a better understanding of how autoregressive language modeling works. Most of the lessons learned will transfer directly to the LLM case.</p>
 <p>The simplest, non-trivial model comes from assuming that the distribution for token <span class="math notranslate nohighlight">\(i\)</span> only depends on token <span class="math notranslate nohighlight">\(i-1\)</span>. Graphically:</p>
 <img src="https://github.com/clemsonciti/rcde_workshops/blob/master/pytorch_llm/figs/arlm_markov.png?raw=true" alt="autoregressive markov chain" width="800"/>
-<p>With this Markov assumption, the conditional distribution for token <span class="math notranslate nohighlight">\(i\)</span> simplifies to</p>
-<div class="math notranslate nohighlight">
-\[
+<p>With this Markov assumption, the conditional distribution for token <span class="math notranslate nohighlight">\(i\)</span> simplifies to
+$<span class="math notranslate nohighlight">\(
 p(w_i | \langle w_j\rangle_{j=1}^{i-1}) = p(w_i | w_{i-1})
-\]</div>
-<p>The probability distribution for the entire sequence is then</p>
-<div class="math notranslate nohighlight">
-\[
+\)</span>$</p>
+<p>The probability distribution for the entire sequence is then
+$<span class="math notranslate nohighlight">\(
 p(\langle w_i\rangle_{i=1}^{L}) = p(w_{1})\prod_{i=2}^{L}p(w_{i}|{w}_{i-1})
-\]</div>
-<p>allowing us to generate sequences as described above.</p>
+\)</span>$
+allowing us to generate sequences as described above.</p>
 <p><em>In what ways might this be an inadequate model for human language?</em></p>
 </section>
 <section id="estimating-the-model-from-data">
 <h3>Estimating the model from data<a class="headerlink" href="#estimating-the-model-from-data" title="Permalink to this heading">#</a></h3>
 <p>How can we estimate this model mathematically?</p>
-<p>We start by observing that the model only depends on a set of probabilities describing the liklihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>We start by observing that the model only depends on a set of probabilities describing the liklihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,
+$<span class="math notranslate nohighlight">\(
 T_{\alpha\beta} = p(w_i=\alpha | w_{i-1}=\beta)\\
-\end{split}\]</div>
-<p>where the matrix elements satisfy</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+\)</span><span class="math notranslate nohighlight">\(
+where the matrix elements satisfy
+\)</span><span class="math notranslate nohighlight">\(
 T_{\alpha\beta} \geq 0 \\ 
 \sum_\alpha T_{\alpha\beta} =1
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are two tokens in our vocabulary. If the vocab size is <span class="math notranslate nohighlight">\(V\)</span>, the estimation task comes down to inferring the <span class="math notranslate nohighlight">\(V\times V\)</span> transition matrix elements describing the probability of going from any word to any other word.</p>
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>\beta<span class="math notranslate nohighlight">\( are two tokens in our vocabulary. If the vocab size is \)</span>V<span class="math notranslate nohighlight">\(, the estimation task comes down to inferring the \)</span>V\times V$ transition matrix elements describing the probability of going from any word to any other word.</p>
 <section id="estimating-with-frequency-tables">
 <h4>Estimating with frequency tables<a class="headerlink" href="#estimating-with-frequency-tables" title="Permalink to this heading">#</a></h4>
 <p>One straightforward way to estimate these probabilities would be to list all of the neighbor pairs of tokens in our dataset and for each conditioning token <span class="math notranslate nohighlight">\(\beta\)</span> look at the share into each choice of <span class="math notranslate nohighlight">\(\alpha\)</span>. This can be made to work, though we would have to deal with the fact that many token pairs will never appear.</p>
@@ -1499,7 +1491,7 @@ Batch 35 testing loss: 5.114102840423584
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-modeling">Autoregressive language modeling</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strike-large-strike-small-language-model"><strike>Large</strike> Small Language Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-small-language-model">~~Large~~ Small Language Model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simplest-non-trivial-model">The simplest, non-trivial model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-model-from-data">Estimating the model from data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-with-frequency-tables">Estimating with frequency tables</a></li>
