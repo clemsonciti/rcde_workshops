@@ -40,8 +40,12 @@ html:
 
 sphinx:
   config:
+    html_baseurl: "https://clemsonciti.github.io/rcde_workshops/"
     html_show_copyright: false
     html_js_files:
     - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+    sitemap_url_scheme: "{link}"
+  extra_extensions:
+    - sphinx_sitemap
 
 only_build_toc_files: true

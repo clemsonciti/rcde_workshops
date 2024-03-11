@@ -4,6 +4,7 @@ pandas
 ghp-import
 jupyter-book
 livereload
+sphinx-sitemap
 
 # temporarily pin:
 pydata-sphinx-theme==0.13.1
