@@ -5,11 +5,14 @@
 # Library imports
 
 import torch
-from torchvision import transforms
-from utils import models, data
-from torchvision.models import ResNet18_Weights
-from lightning.pytorch import loggers as pl_loggers
 from lightning.pytorch import Trainer
+from lightning.pytorch import loggers as pl_loggers
+from torchvision import transforms
+from torchvision.models import ResNet18_Weights
+
+from utils import data, models
+
+torch.set_float32_matmul_precision('medium')
 
 #
 # settings

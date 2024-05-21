@@ -1,6 +1,10 @@
 # This script demonstrates multi-gpu training with Pytorch Lightning
 # D. Hudson Smith, 2023
 
+# SLURM requests for running this script:
+# salloc --nodes=1 --ntasks-per-node=1 --cpus-per-task=10 --mem-per-cpu=2GB --gpus=a100:2 --time=1:00:00 
+# srun --nodes=1 --ntasks-per-node=1 --cpus-per-task=10 --mem-per-cpu=2GB --gpus=a100:2 --time=1:00:00 module load anaconda3 && source activate pytorch_bench && python multi_gpu.py
+
 #
 # Library imports
 
@@ -12,6 +16,8 @@ from torchvision.models import resnet18, ResNet18_Weights
 from lightning.pytorch.callbacks import EarlyStopping, ModelCheckpoint
 from lightning.pytorch import loggers as pl_loggers
 from lightning.pytorch import Trainer
+
+torch.set_float32_matmul_precision('medium')
 
 #
 # settings
@@ -60,30 +66,30 @@ model = models.LitModel(pt_model, lr, gamma)
 #
 # Training
 
-# single gpu baseline
-wandb_logger = pl_loggers.WandbLogger(name='Single-gpu baseline')
-trainer = Trainer(max_epochs=epochs, logger=wandb_logger,
-                  accelerator="gpu", 
-                  devices=[0], # we have [0, 1]. We select just [0] as a baseline. 
-                  strategy="ddp") # this stands for "Distributed data parallel. 
-trainer.fit(model, train_loader, test_loader)
-wandb_logger.experiment.finish()
+# # single gpu baseline
+# wandb_logger = pl_loggers.WandbLogger(name='Single-gpu baseline')
+# trainer = Trainer(max_epochs=epochs, logger=wandb_logger,
+#                   accelerator="gpu", 
+#                   devices=[0], # we have [0, 1]. We select just [0] as a baseline. 
+#                   strategy="ddp") # this stands for "Distributed data parallel. 
+# trainer.fit(model, train_loader, test_loader)
+# wandb_logger.experiment.finish()
 
-# two gpus
-wandb_logger = pl_loggers.WandbLogger(name='Two gpus')
-trainer = Trainer(max_epochs=epochs, logger=wandb_logger,
-                  accelerator="gpu", 
-                  devices=[0, 1], # use both
-                  strategy="ddp") # this stands for "Distributed data parallel. 
-trainer.fit(model, train_loader, test_loader)
-wandb_logger.experiment.finish()
+# # two gpus
+# wandb_logger = pl_loggers.WandbLogger(name='Two gpus')
+# trainer = Trainer(max_epochs=epochs, logger=wandb_logger,
+#                   accelerator="gpu", 
+#                   devices=[0, 1], # use both
+#                   strategy="ddp")
+# trainer.fit(model, train_loader, test_loader)
+# wandb_logger.experiment.finish()
 
 # two gpus, amp
 wandb_logger = pl_loggers.WandbLogger(name='Two gpus w/ AMP')
 trainer = Trainer(max_epochs=epochs, logger=wandb_logger,
-                  precision=16,
+                  precision='16-mixed',  # now used mixed precision
                   accelerator="gpu", 
-                  devices=[0, 1], # use both
-                  strategy="ddp") # this stands for "Distributed data parallel. 
+                  devices=[0, 1],
+                  strategy="ddp")
 trainer.fit(model, train_loader, test_loader)
 wandb_logger.experiment.finish()
