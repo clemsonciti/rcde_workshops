@@ -1,4 +1,4 @@
-# File Permissions and Atrributes
+# File Permissions and Attributes
 
 Use `ls -l` (**l**ong format) to list files and their attributes.
 
@@ -14,10 +14,10 @@ Explanation of output:
 - `Oct 20 15:49`: last time file was **modified**
 - `example.csv`: name of file
 
-Permissions are grouped into 3 categories: 
+Permissions are grouped into 3 categories:
 - user
 - group
-- other 
+- other
 
 Each category has 3 permissions:
 - `r` (read)
@@ -77,6 +77,6 @@ Use symbolic notation for finer grained control of permissions. Symbolic notatio
 **Common commands:**
 
 Make file executable by all:
-``` 
+```
 $ chmod +x file
 ```

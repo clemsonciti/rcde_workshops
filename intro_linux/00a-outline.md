@@ -6,5 +6,9 @@
 4. Navigating the File System
 5. Working with Files and Directories
 6. File Permissions
-7. Extra Utilities and Useful Information
-8. Conclusion
+7. Pipes and Redirection
+8. Environment Variables
+9. .bashrc and Environment Customization
+10. Finding Things
+11. Extra Utilities and Useful Information
+12. Conclusion

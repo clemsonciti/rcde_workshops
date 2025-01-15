@@ -32,17 +32,17 @@ ls
 ```
 `!name` will run the last command that started with `name`.
 ```
-$ qsub myjob.pbs
+$ sbatch myjob.slurm
 ...
 
-$ !qsub
-qsub myjob.pbs
+$ !sbatch
+sbatch myjob.slurm
 ...
 ```
 
 ## Download Files from the Web
 
-`wget` is a useful utility to download files from websites. 
+`wget` is a useful utility to download files from websites.
 
 ```
 $ wget https://github.com/lammps/lammps/archive/refs/tags/stable_23Jun2022_update2.tar.gz
