@@ -176,8 +176,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -245,11 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -534,11 +532,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># libraries we will need</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">torch.distributions</span> <span class="kn">import</span> <span class="n">bernoulli</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.distributions</span><span class="w"> </span><span class="kn">import</span> <span class="n">bernoulli</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># set random seeds for reproducibility</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -553,9 +551,16 @@ document.write(`
 <h3>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>torch.randn<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make some fake regression data</span>
 <span class="n">n_samples_reg</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">x_reg</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_reg</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_reg</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_reg</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_reg</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x_reg</span> <span class="o">+</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x_reg</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_reg</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_reg</span> <span class="o">=</span> <span class="n">y_reg</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 </pre></div>
@@ -571,9 +576,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/74b8d043c73c73dc197857af8132d582a8cce6af3255a598552d39d4ad81415b.png" src="../_images/74b8d043c73c73dc197857af8132d582a8cce6af3255a598552d39d4ad81415b.png" />
-</div>
 </div>
 </section>
 <section id="classification">
@@ -584,7 +586,7 @@ document.write(`
 <span class="n">n_samples_clf</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">x_clf</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_clf</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">x_clf</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>  <span class="n">x_clf</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
-<span class="n">y_clf</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">d</span><span class="o">&lt;</span><span class="n">torch</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">y_clf</span> <span class="o">=</span> <span class="n">d</span><span class="o">&lt;</span><span class="n">torch</span><span class="o">.</span><span class="n">pi</span>
 
 <span class="c1"># swap some labels near the boundary</span>
 <span class="n">width</span> <span class="o">=</span> <span class="mf">0.7</span>
@@ -603,9 +605,6 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/13e6401695bf1bf2efdc65303e38b85b67f8dd1cf0e0d2c430b5b140e39da1b3.png" src="../_images/13e6401695bf1bf2efdc65303e38b85b67f8dd1cf0e0d2c430b5b140e39da1b3.png" />
 </div>
 </div>
 </section>
@@ -634,14 +633,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Parameter containing:
- tensor([[-0.8761]], requires_grad=True),
- Parameter containing:
- tensor([-0.5502], requires_grad=True))
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,15 +641,6 @@ document.write(`
     <span class="n">y_reg_init</span> <span class="o">=</span> <span class="n">reg_model</span><span class="p">(</span><span class="n">x_reg</span><span class="p">)</span>
     
 <span class="n">y_reg_init</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-3.0825],
-        [-2.5047],
-        [-1.7339],
-        [ 2.2167],
-        [-1.4418]])
 </pre></div>
 </div>
 </div>
@@ -673,9 +655,6 @@ document.write(`
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;This model sucks.</span><span class="se">\n</span><span class="s2">We better fit it.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/da7f5535b2c765ae2099aa127ee9534117762ecab07180610463ee42122e4e64.png" src="../_images/da7f5535b2c765ae2099aa127ee9534117762ecab07180610463ee42122e4e64.png" />
 </div>
 </div>
 </section>
@@ -705,7 +684,7 @@ w_{i+1} = w_i - \mathrm{lr}\times \left.\frac{\partial L}{\partial w}\right|_{w=
 <span class="n">reg_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># the torch `optim` module helps us fit models</span>
-<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
 
 <span class="c1"># create our optimizer object and tell it about the parameters in our model</span>
 <span class="c1"># the optimizer will be responsible for updating these parameters during training</span>
@@ -713,6 +692,13 @@ w_{i+1} = w_i - \mathrm{lr}\times \left.\frac{\partial L}{\partial w}\right|_{w=
 
 <span class="c1"># how many times to update the model based on the available data</span>
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># setting up a colormap for ordered colors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greens</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_epochs</span> <span class="o">//</span> <span class="mi">20</span><span class="p">))</span>
+
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="c1"># make sure gradients are set to zero on all parameters</span>
     <span class="c1"># by default, gradients accumulate</span>
@@ -740,7 +726,7 @@ w_{i+1} = w_i - \mathrm{lr}\times \left.\frac{\partial L}{\partial w}\right|_{w=
             <span class="n">y_reg_init</span> <span class="o">=</span> <span class="n">reg_model</span><span class="p">(</span><span class="n">x_reg</span><span class="p">)</span>
         
         <span class="n">ix</span> <span class="o">=</span> <span class="n">x_reg</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_reg</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="n">ix</span><span class="p">],</span> <span class="n">y_reg_init</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="n">ix</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_reg</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="n">ix</span><span class="p">],</span> <span class="n">y_reg_init</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="n">ix</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">20</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_reg</span><span class="p">,</span> <span class="n">y_reg</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual data&quot;</span><span class="p">)</span>
@@ -749,15 +735,86 @@ w_{i+1} = w_i - \mathrm{lr}\times \left.\frac{\partial L}{\partial w}\right|_{w=
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 24.350
-Epoch 21. MSE Loss = 9.776
-Epoch 41. MSE Loss = 7.300
-Epoch 61. MSE Loss = 6.871
-Epoch 81. MSE Loss = 6.793
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="c1"># re-initialize our model each time we run this cell</span>
+<span class="c1"># otherwise the model picks up from where it left off</span>
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># create our optimizer object and tell it about the parameters in our model</span>
+<span class="c1"># the optimizer will be responsible for updating these parameters during training</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">reg_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># how many times to update the model based on the available data</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># setup the figure for animation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># plot the initial data points</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_reg</span><span class="p">,</span> <span class="n">y_reg</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual data&quot;</span><span class="p">)</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Regression Line&quot;</span><span class="p">)</span>
+<span class="n">epoch_text</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># function to initialize the animation</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">():</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
+    <span class="n">epoch_text</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span> <span class="n">epoch_text</span>
+
+<span class="c1"># function to update the plot during each frame of the animation</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="c1"># make sure gradients are set to zero on all parameters</span>
+    <span class="c1"># by default, gradients accumulate</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    
+    <span class="c1"># &quot;forward pass&quot;</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">reg_model</span><span class="p">(</span><span class="n">x_reg</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    
+    <span class="c1"># measure the loss</span>
+    <span class="c1"># this is the mean squared error</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y_reg</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># &quot;backward pass&quot;</span>
+    <span class="c1"># that is, compute gradient of loss wrt all parameters</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    
+    <span class="c1"># parameter updates</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. MSE Loss = </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># update the regression line</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">y_reg_init</span> <span class="o">=</span> <span class="n">reg_model</span><span class="p">(</span><span class="n">x_reg</span><span class="p">)</span>
+        <span class="n">ix</span> <span class="o">=</span> <span class="n">x_reg</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">x_reg</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="n">ix</span><span class="p">],</span> <span class="n">y_reg_init</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="n">ix</span><span class="p">])</span>
+    
+    <span class="c1"># update the epoch text</span>
+    <span class="n">epoch_text</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span> <span class="n">epoch_text</span>
+
+<span class="c1"># create the animation</span>
+<span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span> <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># display the animation in Jupyter</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>  <span class="c1"># prevent static image from displaying</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">ani</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
 </pre></div>
 </div>
-<img alt="../_images/66f5ea4837818812eb3f38ad8576f8a82342ce32087e794e2862688b702254aa.png" src="../_images/66f5ea4837818812eb3f38ad8576f8a82342ce32087e794e2862688b702254aa.png" />
 </div>
 </div>
 <div class="admonition-main-idea admonition">
@@ -776,11 +833,6 @@ Epoch 81. MSE Loss = 6.793
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_clf</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([False,  True])
 </pre></div>
 </div>
 </div>
@@ -810,10 +862,10 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/ca79cb10a510054730e08b648afcc17d1dd3a8fc175841256f0130cafe33d42e.png" src="../_images/ca79cb10a510054730e08b648afcc17d1dd3a8fc175841256f0130cafe33d42e.png" />
 </div>
-</div>
+<p>The sigmoid function is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\sigma(t) = \frac{1}{1 + e^{-t}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># proposed new model for classification</span>
@@ -838,20 +890,6 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.6701],
-        [0.8487],
-        [0.7813],
-        [0.4899],
-        [0.8440],
-        [0.2253],
-        [0.3412],
-        [0.4453],
-        [0.4484],
-        [0.5387]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -862,27 +900,12 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ True],
-        [ True],
-        [ True],
-        [False],
-        [ True],
-        [False],
-        [False],
-        [False],
-        [False],
-        [ True]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s see how this model does before any training</span>
 
 <span class="c1"># Code to plot the decision regions</span>
-<span class="n">x_clf</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_clf</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">mg</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_clf</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_clf</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">),</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_clf</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_clf</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
@@ -905,9 +928,6 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Decision boundary is not good&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/fc07c5f52888f94316c5f8bac3bfebb0346188afeda6dc0a969fa261c710d61b.png" src="../_images/fc07c5f52888f94316c5f8bac3bfebb0346188afeda6dc0a969fa261c710d61b.png" />
 </div>
 </div>
 </section>
@@ -948,21 +968,7 @@ p(y=1 | \vec{x}) = \mathrm{sigmoid}(\vec w \cdot \vec x + b)
     <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># weight updates</span>
     
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. MSE Loss = </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 0.959
-Epoch 101. MSE Loss = 0.774
-Epoch 201. MSE Loss = 0.727
-Epoch 301. MSE Loss = 0.705
-Epoch 401. MSE Loss = 0.691
-Epoch 501. MSE Loss = 0.683
-Epoch 601. MSE Loss = 0.678
-Epoch 701. MSE Loss = 0.675
-Epoch 801. MSE Loss = 0.673
-Epoch 901. MSE Loss = 0.672
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. CE Loss = </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -986,9 +992,6 @@ Epoch 901. MSE Loss = 0.672
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/0f6382281fbf8d2491477633386491e55efae884e8322895f39b69c45112b588.png" src="../_images/0f6382281fbf8d2491477633386491e55efae884e8322895f39b69c45112b588.png" />
-</div>
 </div>
 <div class="admonition-main-idea admonition">
 <p class="admonition-title">Question</p>
@@ -1007,7 +1010,7 @@ Epoch 901. MSE Loss = 0.672
 <h3>A few helper functions<a class="headerlink" href="#a-few-helper-functions" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_and_test_regression_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_and_test_regression_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 
     <span class="c1"># create our optimizer object and tell it about the parameters in our model</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1040,7 +1043,7 @@ Epoch 901. MSE Loss = 0.672
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_and_test_classification_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_and_test_classification_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 
     <span class="c1"># create our optimizer object and tell it about the parameters in our model</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1061,7 +1064,7 @@ Epoch 901. MSE Loss = 0.672
         <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># weight updates</span>
     
         <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">reporting_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. MSE Loss = </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. CE Loss = </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   
             
     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
         <span class="n">grid_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">grid_pts</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">&gt;</span><span class="mf">0.5</span>
@@ -1099,21 +1102,6 @@ y = w_1(w_0 x + b_0) + b_1
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 16.093
-Epoch 101. MSE Loss = 6.771
-Epoch 201. MSE Loss = 6.771
-Epoch 301. MSE Loss = 6.771
-Epoch 401. MSE Loss = 6.771
-Epoch 501. MSE Loss = 6.771
-Epoch 601. MSE Loss = 6.771
-Epoch 701. MSE Loss = 6.771
-Epoch 801. MSE Loss = 6.771
-Epoch 901. MSE Loss = 6.771
-</pre></div>
-</div>
-<img alt="../_images/29ab85a3988476448f91ab92cca6ea29ecd27f00eabe2939fdee75ab646ca9ee.png" src="../_images/29ab85a3988476448f91ab92cca6ea29ecd27f00eabe2939fdee75ab646ca9ee.png" />
-</div>
 </div>
 <div class="admonition-main-idea admonition">
 <p class="admonition-title">Question</p>
@@ -1132,21 +1120,6 @@ Epoch 901. MSE Loss = 6.771
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Non-linearity! But not enough.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 15.631
-Epoch 101. MSE Loss = 7.572
-Epoch 201. MSE Loss = 7.014
-Epoch 301. MSE Loss = 6.965
-Epoch 401. MSE Loss = 6.940
-Epoch 501. MSE Loss = 6.922
-Epoch 601. MSE Loss = 6.907
-Epoch 701. MSE Loss = 6.896
-Epoch 801. MSE Loss = 6.887
-Epoch 901. MSE Loss = 6.880
-</pre></div>
-</div>
-<img alt="../_images/dc287e4292696877a0a2b202fb188c714dd0b6dd5cc4e1d545ee7b74d3c5c1dc.png" src="../_images/dc287e4292696877a0a2b202fb188c714dd0b6dd5cc4e1d545ee7b74d3c5c1dc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1168,24 +1141,9 @@ Epoch 901. MSE Loss = 6.880
     <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">train_and_test_regression_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<span class="n">train_and_test_regression_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">50_000</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 17.355
-Epoch 5001. MSE Loss = 2.136
-Epoch 10001. MSE Loss = 1.604
-Epoch 15001. MSE Loss = 1.451
-Epoch 20001. MSE Loss = 1.072
-Epoch 25001. MSE Loss = 1.222
-Epoch 30001. MSE Loss = 0.997
-Epoch 35001. MSE Loss = 0.880
-Epoch 40001. MSE Loss = 0.940
-Epoch 45001. MSE Loss = 0.741
-</pre></div>
-</div>
-<img alt="../_images/ba61b98319aa7b257bdb1b0835409e16cd75735d9f9a186a18b91d8f4fbe8d72.png" src="../_images/ba61b98319aa7b257bdb1b0835409e16cd75735d9f9a186a18b91d8f4fbe8d72.png" />
 </div>
 </div>
 <div class="admonition-main-idea admonition">
@@ -1205,12 +1163,6 @@ Epoch 45001. MSE Loss = 0.741
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1454fe48a7a0&gt;
-</pre></div>
-</div>
-<img alt="../_images/6640218b6491182a9b05c5fb95c5c54e19068a102a28a163c3992b8583ef60be.png" src="../_images/6640218b6491182a9b05c5fb95c5c54e19068a102a28a163c3992b8583ef60be.png" />
-</div>
 </div>
 <div class="admonition-main-idea admonition">
 <p class="admonition-title">Question</p>
@@ -1219,7 +1171,7 @@ Epoch 45001. MSE Loss = 0.741
 <p class="admonition-title">🔥 IMPORTANT CONCEPT 🔥</p>
 <p> Overfitting is a type of error that occurs when your model memorizes the training samples and fails to generalize to unseen data. This usually ocurrs when the model has excess capacity.  </p>
 </div><div class="admonition-main-idea admonition">
-<p class="admonition-title">😅 EXCERCISE 😅</p>
+<p class="admonition-title">😅 EXERCISE 😅</p>
 <p> Using the code cell below, design and test a model that gets it "just right". </p>
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1243,25 +1195,10 @@ Epoch 45001. MSE Loss = 0.741
     <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
 <span class="p">)</span>
 
-<span class="n">train_and_test_classification_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">train_and_test_classification_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Not non-linear enough&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 0.748
-Epoch 1001. MSE Loss = 0.674
-Epoch 2001. MSE Loss = 0.665
-Epoch 3001. MSE Loss = 0.640
-Epoch 4001. MSE Loss = 0.589
-Epoch 5001. MSE Loss = 0.548
-Epoch 6001. MSE Loss = 0.522
-Epoch 7001. MSE Loss = 0.507
-Epoch 8001. MSE Loss = 0.497
-Epoch 9001. MSE Loss = 0.492
-</pre></div>
-</div>
-<img alt="../_images/8ab5b22cb54144571cfe3db252299285ae7a118043fa02e20478b7f083d409e2.png" src="../_images/8ab5b22cb54144571cfe3db252299285ae7a118043fa02e20478b7f083d409e2.png" />
 </div>
 </div>
 <div class="admonition-main-idea admonition">
@@ -1291,27 +1228,12 @@ Epoch 9001. MSE Loss = 0.492
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1. MSE Loss = 0.697
-Epoch 3001. MSE Loss = 0.276
-Epoch 6001. MSE Loss = 0.251
-Epoch 9001. MSE Loss = 0.236
-Epoch 12001. MSE Loss = 0.221
-Epoch 15001. MSE Loss = 0.209
-Epoch 18001. MSE Loss = 0.186
-Epoch 21001. MSE Loss = 0.168
-Epoch 24001. MSE Loss = 0.150
-Epoch 27001. MSE Loss = 0.141
-</pre></div>
-</div>
-<img alt="../_images/ba3a69d18a5b411487c228d009f3458b14ff4d009c6ad560f284606dd487ef41.png" src="../_images/ba3a69d18a5b411487c228d009f3458b14ff4d009c6ad560f284606dd487ef41.png" />
-</div>
 </div>
 <div class="admonition-main-idea admonition">
 <p class="admonition-title">Question</p>
 <p> What's wrong with this picture? </p>
 </div><div class="admonition-main-idea admonition">
-<p class="admonition-title">😅 EXCERCISE 😅</p>
+<p class="admonition-title">😅 EXERCISE 😅</p>
 <p> Using the code cell below, design and test a model that gets it "just right". </p>
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1344,16 +1266,16 @@ Epoch 27001. MSE Loss = 0.141
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "pytorchworkshop"
         },
         kernelOptions: {
-            name: "python3",
+            name: "pytorchworkshop",
             path: "./pytorch"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'pytorchworkshop'</script>
 
                 </article>
               

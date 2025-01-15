@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -512,16 +510,11 @@ document.write(`
 <p>The ImageNet-1000 image classification task has been a huge driver of progress in deep learning. Let’s get to know this dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># Locate the images</span>
 <span class="n">image_dir</span> <span class="o">=</span> <span class="s1">&#39;/project/rcde/datasets/imagenet/ILSVRC/Data/CLS-LOC/&#39;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_dir</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;test&#39;, &#39;train&#39;, &#39;val&#39;]
 </pre></div>
 </div>
 </div>
@@ -530,14 +523,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_dir</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">image_dir</span><span class="o">+</span><span class="n">d</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test 100000
-train 1000
-val 1000
+    <span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">image_dir</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">):</span>  <span class="c1"># Check if the item is a directory</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dir_path</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -549,25 +537,11 @@ val 1000
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;n01440764&#39;, &#39;n01443537&#39;, &#39;n01484850&#39;, &#39;n01491361&#39;, &#39;n01494475&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>There’s a file that maps from these strange names to human-readable names:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;/project/rcde/datasets/imagenet/LOC_synset_mapping.txt&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n01440764 tench, Tinca tinca
-n01443537 goldfish, Carassius auratus
-n01484850 great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias
-n01491361 tiger shark, Galeocerdo cuvieri
-n01494475 hammerhead, hammerhead shark
 </pre></div>
 </div>
 </div>
@@ -592,30 +566,6 @@ n01494475 hammerhead, hammerhead shark
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tench, Tinca tinca 1300
-American alligator, Alligator mississipiensis 1300
-black swan, Cygnus atratus 1300
-sea lion 1300
-Tibetan terrier, chrysanthemum dog 1300
-Siberian husky 1300
-tiger beetle 1300
-ibex, Capra ibex 1300
-academic gown, academic robe, judge&#39;s robe 1300
-bobsled, bobsleigh, bob 1300
-cliff dwelling 1300
-espresso maker 1136
-hook, claw 1300
-microphone, mike 1300
-paper towel 1300
-quilt, comforter, comfort, puff 1300
-slot, one-armed bandit 1300
-teddy, teddy bear 1300
-water tower 1300
-orange 1300
-</pre></div>
-</div>
-</div>
 </div>
 <p>Most classes have only 50 validation samples</p>
 <div class="cell docutils container">
@@ -625,37 +575,13 @@ orange 1300
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tench, Tinca tinca 50
-American alligator, Alligator mississipiensis 50
-black swan, Cygnus atratus 50
-sea lion 50
-Tibetan terrier, chrysanthemum dog 50
-Siberian husky 50
-tiger beetle 50
-ibex, Capra ibex 50
-academic gown, academic robe, judge&#39;s robe 50
-bobsled, bobsleigh, bob 50
-cliff dwelling 50
-espresso maker 50
-hook, claw 50
-microphone, mike 50
-paper towel 50
-quilt, comforter, comfort, puff 50
-slot, one-armed bandit 50
-teddy, teddy bear 50
-water tower 50
-orange 50
-</pre></div>
-</div>
-</div>
 </div>
 <p>Let’s look at a a few images</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">img</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">img</span>
 
 <span class="n">num_images</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">sample_images</span> <span class="o">=</span> <span class="p">[]</span>
@@ -673,9 +599,6 @@ orange 50
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/23b5a0a99048d4e537cf95d0934ed473b09482e2eadde4068781ac2ec2e6a024.png" src="../_images/23b5a0a99048d4e537cf95d0934ed473b09482e2eadde4068781ac2ec2e6a024.png" />
-</div>
 </div>
 </section>
 <section id="map-style-dataset">
@@ -683,25 +606,32 @@ orange 50
 <p>Use this when you have a well-defined set of samples that you will use to train your model. This is the most common case and the natural choice for ImageNet because we have a well-defined set of images that we want to feed to our model. Let’s see how to create a map-style dataset class for ImageNet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="kn">from</span> <span class="nn">torchvision.io</span> <span class="kn">import</span> <span class="n">read_image</span>
-<span class="kn">from</span> <span class="nn">torchvision.io</span> <span class="kn">import</span> <span class="n">ImageReadMode</span>
-<span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">transforms</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageReadMode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">transforms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># subclass Dataset</span>
-<span class="k">class</span> <span class="nc">Imagenet</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Imagenet</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
     
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">class2ix</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">tfms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">class2ix</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">tfms</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The __init__ method is called when creating an instance of the class.</span>
-<span class="sd">        This is where we put setup code.</span>
+<span class="sd">        This is where we set up the dataset, initialize paths, and apply any data transformations.</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
-<span class="sd">            root_dir: full path to the imagenet CLS-LOC folder containing train and val subfolders</span>
-<span class="sd">            split: which subfolder to use, either &quot;train&quot; or &quot;val&quot;</span>
-<span class="sd">            tfms: image transforms </span>
+<span class="sd">            root_dir (str): Full path to the ImageNet CLS-LOC folder containing &quot;train&quot; and &quot;val&quot; subfolders.</span>
+<span class="sd">            split (str): Specifies which dataset split to use, either &quot;train&quot; or &quot;val&quot;.</span>
+<span class="sd">            class2ix (dict): A dictionary mapping class names to their corresponding indices.</span>
+<span class="sd">            tfms (callable, optional): A function or transform that takes in a PIL image and returns a transformed version. Defaults to None.</span>
 <span class="sd">        </span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            image_paths (list): A list containing the full paths to all the images in the specified split.</span>
+<span class="sd">            class2ix (dict): The provided class-to-index mapping dictionary.</span>
+<span class="sd">        </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            AssertionError: If the split is not one of &#39;train&#39; or &#39;val&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span> <span class="o">=</span> <span class="n">root_dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="n">split</span>
@@ -717,14 +647,14 @@ orange 50
         <span class="c1"># create a list mapping from class to index</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">class2ix</span> <span class="o">=</span> <span class="n">class2ix</span>
                                 
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Map-style datasets must define the __len__ method. These return the number of </span>
 <span class="sd">        samples in the dataset. </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image_paths</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Map-style datasets must define __getitem__ which takes an index and returns</span>
 <span class="sd">        a sample. This puts the &quot;map&quot; in &quot;map-style dataset&quot; because it represents</span>
@@ -760,12 +690,6 @@ orange 50
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of samples:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">imagenet</span><span class="p">))</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">imagenet</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(x.shape, y)=&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of samples: 50000
-(x.shape, y)= torch.Size([3, 224, 224]) 0
 </pre></div>
 </div>
 </div>
@@ -823,7 +747,7 @@ orange 50
 <p>The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class is our interface to the individual samples within our dataset. The <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> utility class provides an interface to batches of data. It also supports multiprocessing out of the box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
 
 <span class="c1"># the DataLoader takes the dataset class as input</span>
 <span class="c1"># batch_size: how many samples per mini batch</span>
@@ -834,22 +758,12 @@ orange 50
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;torch.utils.data.dataloader.DataLoader object at 0x153b730a3430&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Pytorch fetches the batches of data on the fly, so we have to request them one at a time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl</span><span class="p">))</span> <span class="c1"># get the first batch</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([256, 3, 224, 224]) torch.Size([256])
 </pre></div>
 </div>
 </div>
@@ -877,7 +791,7 @@ orange 50
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 
@@ -914,22 +828,6 @@ orange 50
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 0] Training...
-[Epoch 0] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
-[Epoch 0] Testing...
-[Epoch 0] Batch 3. x.shape=torch.Size([256, 3, 224, 224])
-[Epoch 1] Training...
-[Epoch 1] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
-[Epoch 1] Testing...
-[Epoch 1] Batch 3. x.shape=torch.Size([256, 3, 224, 224])
-[Epoch 2] Training...
-[Epoch 2] Batch 9. x.shape=torch.Size([256, 3, 224, 224])
-[Epoch 2] Testing...
-[Epoch 2] Batch 3. x.shape=torch.Size([256, 3, 224, 224])
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="let-s-actually-evaluate-a-trained-model">
@@ -937,7 +835,7 @@ orange 50
 <p>Training takes too long.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision.models</span> <span class="kn">import</span> <span class="n">resnet50</span><span class="p">,</span> <span class="n">ResNet50_Weights</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">resnet50</span><span class="p">,</span> <span class="n">ResNet50_Weights</span>
 
 <span class="c1"># pretrained weights with advertised accuracy of 80.858% on the validation set</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">resnet50</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">ResNet50_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V2</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
@@ -965,6 +863,9 @@ orange 50
         <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     
     <span class="c1"># compute batch-level performance metrics</span>
+    <span class="c1"># For classification tasks, the model typically outputs a probability distribution </span>
+    <span class="c1"># over the classes for each sample in the batch. </span>
+    <span class="c1"># The most likely class is chosen by taking the argmax along the last dimension:</span>
     <span class="n">pred_cls</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">top1_acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_cls</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     
@@ -976,221 +877,16 @@ orange 50
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0. Accuracy=89.8%
-Batch 1. Accuracy=87.1%
-Batch 2. Accuracy=98.4%
-Batch 3. Accuracy=94.9%
-Batch 4. Accuracy=93.8%
-Batch 5. Accuracy=82.0%
-Batch 6. Accuracy=71.9%
-Batch 7. Accuracy=79.3%
-Batch 8. Accuracy=83.2%
-Batch 9. Accuracy=80.1%
-Batch 10. Accuracy=78.1%
-Batch 11. Accuracy=74.6%
-Batch 12. Accuracy=73.8%
-Batch 13. Accuracy=78.9%
-Batch 14. Accuracy=76.2%
-Batch 15. Accuracy=84.4%
-Batch 16. Accuracy=91.0%
-Batch 17. Accuracy=96.9%
-Batch 18. Accuracy=96.5%
-Batch 19. Accuracy=86.7%
-Batch 20. Accuracy=88.7%
-Batch 21. Accuracy=85.9%
-Batch 22. Accuracy=91.0%
-Batch 23. Accuracy=83.6%
-Batch 24. Accuracy=85.5%
-Batch 25. Accuracy=94.1%
-Batch 26. Accuracy=91.8%
-Batch 27. Accuracy=93.8%
-Batch 28. Accuracy=96.5%
-Batch 29. Accuracy=84.0%
-Batch 30. Accuracy=85.5%
-Batch 31. Accuracy=80.9%
-Batch 32. Accuracy=67.6%
-Batch 33. Accuracy=83.6%
-Batch 34. Accuracy=88.3%
-Batch 35. Accuracy=83.6%
-Batch 36. Accuracy=76.6%
-Batch 37. Accuracy=76.6%
-Batch 38. Accuracy=85.9%
-Batch 39. Accuracy=79.7%
-Batch 40. Accuracy=85.5%
-Batch 41. Accuracy=85.2%
-Batch 42. Accuracy=92.2%
-Batch 43. Accuracy=82.0%
-Batch 44. Accuracy=82.4%
-Batch 45. Accuracy=79.7%
-Batch 46. Accuracy=77.0%
-Batch 47. Accuracy=82.4%
-Batch 48. Accuracy=71.5%
-Batch 49. Accuracy=93.8%
-Batch 50. Accuracy=91.0%
-Batch 51. Accuracy=84.4%
-Batch 52. Accuracy=84.0%
-Batch 53. Accuracy=82.8%
-Batch 54. Accuracy=76.6%
-Batch 55. Accuracy=69.9%
-Batch 56. Accuracy=87.1%
-Batch 57. Accuracy=95.7%
-Batch 58. Accuracy=86.3%
-Batch 59. Accuracy=82.0%
-Batch 60. Accuracy=79.3%
-Batch 61. Accuracy=84.8%
-Batch 62. Accuracy=91.0%
-Batch 63. Accuracy=94.1%
-Batch 64. Accuracy=86.7%
-Batch 65. Accuracy=91.4%
-Batch 66. Accuracy=85.2%
-Batch 67. Accuracy=84.8%
-Batch 68. Accuracy=85.2%
-Batch 69. Accuracy=76.6%
-Batch 70. Accuracy=83.6%
-Batch 71. Accuracy=90.6%
-Batch 72. Accuracy=81.2%
-Batch 73. Accuracy=82.8%
-Batch 74. Accuracy=71.1%
-Batch 75. Accuracy=84.4%
-Batch 76. Accuracy=89.1%
-Batch 77. Accuracy=88.3%
-Batch 78. Accuracy=77.7%
-Batch 79. Accuracy=79.7%
-Batch 80. Accuracy=67.6%
-Batch 81. Accuracy=75.8%
-Batch 82. Accuracy=79.7%
-Batch 83. Accuracy=85.2%
-Batch 84. Accuracy=83.2%
-Batch 85. Accuracy=69.9%
-Batch 86. Accuracy=78.1%
-Batch 87. Accuracy=78.9%
-Batch 88. Accuracy=77.7%
-Batch 89. Accuracy=78.9%
-Batch 90. Accuracy=63.3%
-Batch 91. Accuracy=78.9%
-Batch 92. Accuracy=87.5%
-Batch 93. Accuracy=73.8%
-Batch 94. Accuracy=64.5%
-Batch 95. Accuracy=73.8%
-Batch 96. Accuracy=75.8%
-Batch 97. Accuracy=70.3%
-Batch 98. Accuracy=68.0%
-Batch 99. Accuracy=80.1%
-Batch 100. Accuracy=75.0%
-Batch 101. Accuracy=82.8%
-Batch 102. Accuracy=68.8%
-Batch 103. Accuracy=75.0%
-Batch 104. Accuracy=82.8%
-Batch 105. Accuracy=75.0%
-Batch 106. Accuracy=82.4%
-Batch 107. Accuracy=77.7%
-Batch 108. Accuracy=84.4%
-Batch 109. Accuracy=82.0%
-Batch 110. Accuracy=83.2%
-Batch 111. Accuracy=88.7%
-Batch 112. Accuracy=87.9%
-Batch 113. Accuracy=79.7%
-Batch 114. Accuracy=69.5%
-Batch 115. Accuracy=77.0%
-Batch 116. Accuracy=81.2%
-Batch 117. Accuracy=71.9%
-Batch 118. Accuracy=88.7%
-Batch 119. Accuracy=92.2%
-Batch 120. Accuracy=74.6%
-Batch 121. Accuracy=54.3%
-Batch 122. Accuracy=82.8%
-Batch 123. Accuracy=69.9%
-Batch 124. Accuracy=59.0%
-Batch 125. Accuracy=80.9%
-Batch 126. Accuracy=82.8%
-Batch 127. Accuracy=71.1%
-Batch 128. Accuracy=66.0%
-Batch 129. Accuracy=68.4%
-Batch 130. Accuracy=86.3%
-Batch 131. Accuracy=77.7%
-Batch 132. Accuracy=79.3%
-Batch 133. Accuracy=77.7%
-Batch 134. Accuracy=76.6%
-Batch 135. Accuracy=74.6%
-Batch 136. Accuracy=78.9%
-Batch 137. Accuracy=80.1%
-Batch 138. Accuracy=75.0%
-Batch 139. Accuracy=85.2%
-Batch 140. Accuracy=82.8%
-Batch 141. Accuracy=83.2%
-Batch 142. Accuracy=72.3%
-Batch 143. Accuracy=77.0%
-Batch 144. Accuracy=78.9%
-Batch 145. Accuracy=68.8%
-Batch 146. Accuracy=75.0%
-Batch 147. Accuracy=82.0%
-Batch 148. Accuracy=80.1%
-Batch 149. Accuracy=75.4%
-Batch 150. Accuracy=80.9%
-Batch 151. Accuracy=74.2%
-Batch 152. Accuracy=74.2%
-Batch 153. Accuracy=79.7%
-Batch 154. Accuracy=80.5%
-Batch 155. Accuracy=77.0%
-Batch 156. Accuracy=84.4%
-Batch 157. Accuracy=76.6%
-Batch 158. Accuracy=62.5%
-Batch 159. Accuracy=72.3%
-Batch 160. Accuracy=82.8%
-Batch 161. Accuracy=72.3%
-Batch 162. Accuracy=80.1%
-Batch 163. Accuracy=51.2%
-Batch 164. Accuracy=70.3%
-Batch 165. Accuracy=66.0%
-Batch 166. Accuracy=85.9%
-Batch 167. Accuracy=72.7%
-Batch 168. Accuracy=77.3%
-Batch 169. Accuracy=78.9%
-Batch 170. Accuracy=87.1%
-Batch 171. Accuracy=73.4%
-Batch 172. Accuracy=71.1%
-Batch 173. Accuracy=81.2%
-Batch 174. Accuracy=78.5%
-Batch 175. Accuracy=72.3%
-Batch 176. Accuracy=73.8%
-Batch 177. Accuracy=59.0%
-Batch 178. Accuracy=83.6%
-Batch 179. Accuracy=83.6%
-Batch 180. Accuracy=74.6%
-Batch 181. Accuracy=82.4%
-Batch 182. Accuracy=85.2%
-Batch 183. Accuracy=90.6%
-Batch 184. Accuracy=82.8%
-Batch 185. Accuracy=73.4%
-Batch 186. Accuracy=92.6%
-Batch 187. Accuracy=75.8%
-Batch 188. Accuracy=78.9%
-Batch 189. Accuracy=63.3%
-Batch 190. Accuracy=72.3%
-Batch 191. Accuracy=76.6%
-Batch 192. Accuracy=86.3%
-Batch 193. Accuracy=96.5%
-Batch 194. Accuracy=89.1%
-Batch 195. Accuracy=51.2%
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">preds_ls</span><span class="p">)</span>
 <span class="n">targs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">targs_ls</span><span class="p">)</span>
 <span class="n">mean_top1_acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">preds</span><span class="o">==</span><span class="n">targs</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Accuracy=</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">mean_top1_acc</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Accuracy=80.1420%
 </pre></div>
 </div>
 </div>
@@ -1207,16 +903,16 @@ Batch 195. Accuracy=51.2%
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "pytorchworkshop"
         },
         kernelOptions: {
-            name: "python3",
+            name: "pytorchworkshop",
             path: "./pytorch"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'pytorchworkshop'</script>
 
                 </article>
               

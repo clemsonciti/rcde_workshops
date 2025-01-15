@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -489,7 +487,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upcoming-workshops">Upcoming Workshops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office Hours</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#email-support">Email Support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ticket-support">Ticket Support</a></li>
 </ul>
             </nav>
         </div>
@@ -507,22 +505,23 @@ document.write(`
 <section id="upcoming-workshops">
 <h2>Upcoming Workshops<a class="headerlink" href="#upcoming-workshops" title="Permalink to this heading">#</a></h2>
 <p>Check our training schedule on our documentation website:</p>
-<p><a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/training/schedule/">https://www.palmetto.clemson.edu/palmetto/training/schedule/</a></p>
+<p><a class="reference external" href="https://docs.rcd.clemson.edu/training/schedule/">https://docs.rcd.clemson.edu/training/schedule/</a></p>
 </section>
 <section id="office-hours">
 <h2>Office Hours<a class="headerlink" href="#office-hours" title="Permalink to this heading">#</a></h2>
-<p>Every Wednesday on Zoom from 8:30-11:30AM. Details at <a class="reference external" href="https://www.palmetto.clemson.edu/palmetto/">https://www.palmetto.clemson.edu/palmetto/</a></p>
+<p>By Appointment. Details at <a class="reference external" href="https://docs.rcd.clemson.edu/support/office_hours/">https://docs.rcd.clemson.edu/support/office_hours/</a></p>
 </section>
-<section id="email-support">
-<h2>Email Support<a class="headerlink" href="#email-support" title="Permalink to this heading">#</a></h2>
-<p>Email <a class="reference external" href="mailto:ithelp&#37;&#52;&#48;clemson&#46;edu">ithelp<span>&#64;</span>clemson<span>&#46;</span>edu</a> with “Palmetto” <strong>included in the subject along with the topic of your question</strong>.</p>
+<section id="ticket-support">
+<h2>Ticket Support<a class="headerlink" href="#ticket-support" title="Permalink to this heading">#</a></h2>
+<p>Use the forms on our documention website: <a class="reference external" href="https://docs.rcd.clemson.edu/support/category/submit-a-ticket/">https://docs.rcd.clemson.edu/support/category/submit-a-ticket/</a></p>
 <p>Please provide us with as much information as possible, including:</p>
 <ul class="simple">
-<li><p>The exact commands that you run immediately after logging in, which will produce the problem</p></li>
+<li><p>The exact commands that you run immediately after logging in, which will reproduce the problem</p></li>
 <li><p>The exact output from each command</p></li>
-<li><p>The locations of the files/folders involved, especially your PBS batch script</p></li>
+<li><p>The locations of the files/folders involved, especially your Slurm batch script</p></li>
 <li><p>Other details which may be relevant (OS, SSH client, etc.,)</p></li>
 </ul>
+<p><strong>Responses to tickets will be sent your your &#64;clemson.edu email and are not forwarded to GMail.</strong></p>
 </section>
 </section>
 
@@ -589,7 +588,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upcoming-workshops">Upcoming Workshops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#office-hours">Office Hours</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#email-support">Email Support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ticket-support">Ticket Support</a></li>
 </ul>
   </nav></div>
 

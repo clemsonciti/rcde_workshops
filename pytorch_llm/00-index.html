@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -490,6 +488,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor">Instructor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-description">Workshop Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-workshop-files">Accessing Workshop Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-conda-environment">Creating a conda environment</a></li>
 </ul>
             </nav>
         </div>
@@ -506,9 +506,9 @@ document.write(`
 <section id="instructor">
 <h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Instructor</strong>: D. Hudson Smith</p></li>
+<li><p><strong>Instructor</strong>: Carl Ehrett</p></li>
 <li><p><strong>Office</strong>: 2105 Barre Hall, Clemson University</p></li>
-<li><p><strong>Email</strong>: dane2 AT clemson DOT edu</p></li>
+<li><p><strong>Email</strong>: <a class="reference external" href="mailto:cehrett&#37;&#52;&#48;clemson&#46;edu">cehrett<span>&#64;</span>clemson<span>&#46;</span>edu</a></p></li>
 </ul>
 </section>
 <section id="workshop-description">
@@ -517,7 +517,33 @@ document.write(`
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
-<p>All students should have a Palmetto Cluster account. If you do not already have an account, you can visit our <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/starting">getting started page</a>. Students should be familiar with the Python programming language. This requirement could be fulfilled by personal projects, coursework, or completion of the Introduction to <a class="reference external" href="https://clemsonciti.github.io/rcde_workshops/python_programming/00-index.html">Python Programming workshop series</a>. The workshop assumes experience in numeric computing with the numpy, pytorch, tensorflow, or similar. Students are encouraged to work through our <a class="reference external" href="https://clemsonciti.github.io/rcde_workshops/pytorch/00-index.html">Introduction to Deep Learning with Pytorch</a> series if they have no prior Pytorch experience.</p>
+<ul class="simple">
+<li><p><strong>All workshop participants should have a Palmetto Cluster account.</strong> If you do not already have an account, you can visit our <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/starting">getting started page</a>.</p></li>
+<li><p><strong>Participants should be familiar with the Python programming language.</strong> This requirement could be fulfilled by personal projects, coursework, or completion of the Introduction to <a class="reference external" href="https://clemsonciti.github.io/rcde_workshops/python_programming/00-index.html">Python Programming workshop series</a>.</p></li>
+<li><p><strong>The workshop assumes experience in numeric computing with the numpy, pytorch, tensorflow, or similar.</strong> Participants are encouraged to work through our <a class="reference external" href="https://clemsonciti.github.io/rcde_workshops/pytorch/00-index.html">Introduction to Deep Learning with Pytorch</a> series if they have no prior Pytorch experience.</p></li>
+</ul>
+</section>
+<section id="accessing-workshop-files">
+<h2>Accessing Workshop Files<a class="headerlink" href="#accessing-workshop-files" title="Permalink to this heading">#</a></h2>
+<p>You can download the notebooks and their contents as follows.
+In the terminal, create or navigate to an empty folder. Run the following command: <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/download.sh</span></code>
+This copies to your drivespace a script <code class="docutils literal notranslate"><span class="pre">download.sh</span></code> that, when you run it, will copy the full workshop files to your drivespace. So now that you have that script, run it using the command: <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">download.sh</span></code>. You should now have a folder, <code class="docutils literal notranslate"><span class="pre">pytorch_llm</span></code>, which contains this notebook and the rest of the workshop.</p>
+</section>
+<section id="creating-a-conda-environment">
+<h2>Creating a conda environment<a class="headerlink" href="#creating-a-conda-environment" title="Permalink to this heading">#</a></h2>
+<p>In order to run the notebooks in this workshop, you will need a python environment into which you have installed the libraries we will be using. The below instructions will walk you through the process of creating such an environment. For our documentation regarding creating python environments, see the page <a class="reference external" href="https://docs.rcd.clemson.edu/openod/apps/jupyter/#adding-new-notebook-kernels">here</a>.</p>
+<ul class="simple">
+<li><p>Step 1: ssh into the cluster (see instructions <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/connect/ssh/">here</a>).</p></li>
+<li><p>Step 2: Load miniforge, using the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniforge3</span></code>.</p></li>
+<li><p>Step 3: Create the new environment, using the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">AttentionWorkshop</span> <span class="pre">python=3.12</span></code>.</p></li>
+<li><p>Step 4: Active the environment. (<code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">activate</span> <span class="pre">AttentionWorkshop</span></code>)</p></li>
+<li><p>Step 5: Install Pytorch. (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pytorch</span> <span class="pre">torchvision</span> <span class="pre">torchaudio</span> <span class="pre">pytorch-cuda=12.4</span> <span class="pre">-c</span> <span class="pre">pytorch</span> <span class="pre">-c</span> <span class="pre">nvidia</span></code>)</p></li>
+<li><p>Step 6: Install the <code class="docutils literal notranslate"><span class="pre">transformers</span></code> and <code class="docutils literal notranslate"><span class="pre">datasets</span></code> libraries. (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">huggingface</span> <span class="pre">transformers</span> <span class="pre">datasets</span></code>)</p></li>
+<li><p>Step 7: Install <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> so that we can use this environment as a Jupyter notebook kernel. (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">ipykernel</span></code>)</p></li>
+<li><p>Step 8: Install <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> since our libraries will use it to display progress bars. (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">ipywidgets</span> <span class="pre">-c</span> <span class="pre">conda-forge</span></code>)</p></li>
+<li><p>Step 9: Register the environment as a Jupyter kernel. (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">ipykernel</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">--name</span> <span class="pre">AttentionWorkshop</span> <span class="pre">--display-name</span> <span class="pre">&quot;AttentionWorkshop&quot;</span></code>)
+Now you’re ready to visit OpenOnDemand and request a Jupyter session using your new <code class="docutils literal notranslate"><span class="pre">AttentionWorkshop</span></code> environment.</p></li>
+</ul>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -587,6 +613,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor">Instructor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-description">Workshop Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-workshop-files">Accessing Workshop Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-conda-environment">Creating a conda environment</a></li>
 </ul>
   </nav></div>
 

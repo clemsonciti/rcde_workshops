@@ -176,8 +176,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -245,11 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -514,11 +512,11 @@ document.write(`
 <h1>Attention is all you need<a class="headerlink" href="#attention-is-all-you-need" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKENIZERS_PARALLELISM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span>
 
-<span class="kn">import</span> <span class="nn">torch</span> 
-<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
 </pre></div>
 </div>
 </div>
@@ -526,8 +524,8 @@ document.write(`
 <p>Make sure you have the <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/dataset.py">dataset.py</a> and <a class="reference external" href="https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/pytorch_llm/utils.py">utils.py</a> in your working directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">PubMedDataset</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">generate</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">PubMedDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">generate</span>
 </pre></div>
 </div>
 </div>
@@ -557,7 +555,7 @@ document.write(`
 <li><p>Fully Connected</p></li>
 <li><p>Linear and Softmax</p></li>
 </ol>
-<p>The heart of the transformer is the “Masked Multi-Head attention” step. All of the other oparations act at the single-token level.</p>
+<p>The heart of the transformer is the “Masked Multi-Head attention” step. All of the other operations act at the single-token level.</p>
 </section>
 <section id="masked-multi-head-attention">
 <h2>Masked Multi-Head Attention<a class="headerlink" href="#masked-multi-head-attention" title="Permalink to this heading">#</a></h2>
@@ -609,13 +607,6 @@ In pytorch, we will simply do <code class="docutils literal notranslate"><span c
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alpha values: tensor([0.9500, 0.1000, 0.8000])
-attention values: tensor([0.4370, 0.1868, 0.3762])
-Result: 0.18679720163345337
-</pre></div>
-</div>
-</div>
 </div>
 <p>Because the query vector was more like the vectors with value <code class="docutils literal notranslate"><span class="pre">0.</span></code>, our result ended up closer to <code class="docutils literal notranslate"><span class="pre">0.</span></code></p>
 <p>Check to see the result when using the query <code class="docutils literal notranslate"><span class="pre">[0.,</span> <span class="pre">1.]</span></code></p>
@@ -636,8 +627,8 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 <p>We’re now ready to implement this in code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MaskedAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MaskedAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span>
@@ -667,7 +658,7 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
         <span class="c1"># of size (1, L_batch, L_batch) where L_batch&lt;=L</span>
         <span class="c1"># is the sequence length for the batch.</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="c1"># x.shape = (N, L_batch, embed_dim)</span>
         <span class="n">L_batch</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         
@@ -705,21 +696,16 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 462, 32])
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="multi-head-masked-attention">
 <h3>Multi-head Masked Attention<a class="headerlink" href="#multi-head-masked-attention" title="Permalink to this heading">#</a></h3>
-<p>Now we deal with the “Multi-head” part. The logic here is that using a single attention score to aggregate an entire token embedding may not have enough resolution. Perhaps their are two somewhat independent parts of the embedding that need to be attended to under different circumstances. Multi-head attention addresses this issue. Conceptually, we break up the embedding vector into <code class="docutils literal notranslate"><span class="pre">num_heads</span></code> smaller embedding vectors and then perform the same attention mechanism as above independently for each sub-vector. We then concatenate the resulting sub-vectors before projecting.</p>
+<p>Now we deal with the “Multi-head” part. The logic here is that using a single attention score to aggregate an entire token embedding may not have enough resolution. Perhaps there are two somewhat independent parts of the embedding that need to be attended to under different circumstances. Multi-head attention addresses this issue. Conceptually, we break up the embedding vector into <code class="docutils literal notranslate"><span class="pre">num_heads</span></code> smaller embedding vectors and then perform the same attention mechanism as above independently for each sub-vector. We then concatenate the resulting sub-vectors before projecting.</p>
 <p>Once we’ve understood the single-head case, the multi-head case is not very difficult to implement. Copy-paste the MaskedAttention class and modify it to incorporate multiple heads.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultiHeadMaskedAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MultiHeadMaskedAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>        
         <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">=</span> <span class="n">num_heads</span>
@@ -731,9 +717,8 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
         <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head_dim</span><span class="o">**-</span><span class="mf">0.5</span>  <span class="c1"># now we scale based on head size</span>
         
         <span class="c1"># q,k,v</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
-        <span class="c1"># self.query = nn.Linear(embed_dim, embed_dim, bias=False)  # W_Q @ h_i</span>
-        <span class="c1"># self.key = nn.Linear(embed_dim, embed_dim, bias=False)  # W_K @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_Q @ h_i</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_K @ h_i</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># W_V @ h_i</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attn_dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
         
@@ -754,14 +739,13 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
         <span class="c1"># of size (1, 1, L_batch, L_batch) where L_batch&lt;=L</span>
         <span class="c1"># is the sequence length for the batch.</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="c1"># x.shape = (N, L_batch, embed_dim)</span>
         <span class="n">L_batch</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         
         <span class="c1"># qkv</span>
         <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
-        <span class="c1"># k = self.key(x) # (N, L_batch, num_heads * head_dim)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)  TESTING SHARED Q/K PROJECTION</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># (N, L_batch, num_heads * head_dim)</span>
         
         <span class="c1"># reshape to isolate head embedding</span>
@@ -800,11 +784,6 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 462, 32])
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="the-transformer">
@@ -812,8 +791,8 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 <p>Now that we’ve tackled multi-head masked attention, the rest is easy. All other operations act at the individual token level.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TransformerBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TransformerBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)</span>
@@ -832,14 +811,14 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
             <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm1</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">attn</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
         <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lay_norm2</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">feed_forward</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
         <span class="k">return</span> <span class="n">z</span>
 
-<span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">num_blocks</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Transformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">max_tokens</span><span class="p">,</span> <span class="n">num_blocks</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">=</span> <span class="n">vocab_size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
@@ -860,7 +839,7 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
         <span class="c1"># output linear layer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="c1"># x.shape = (N, L)</span>
         <span class="c1"># mask.shape = (N, L)</span>
         <span class="n">L</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -879,7 +858,7 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 
         <span class="k">return</span> <span class="n">logits</span>
     
-    <span class="k">def</span> <span class="nf">numpar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numpar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>    
 </pre></div>
 </div>
@@ -892,14 +871,6 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 <span class="n">dl_train</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_dataloader</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">batch</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl_train</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "37648341ec2b4fc8914a776592738fb0", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;])
 </pre></div>
 </div>
 </div>
@@ -917,78 +888,6 @@ h^{(\rm out)}_3 = \sum_{i=1}^3 a_{i,3}V_{i}
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trainable parameters: &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">numpar</span><span class="p">())</span>
 <span class="n">model</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transformer(
-  (tok_embed): Embedding(28996, 64)
-  (pos_embed): Embedding(512, 64)
-  (blocks): Sequential(
-    (0): TransformerBlock(
-      (lay_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-      (lay_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-      (attn): MultiHeadMaskedAttention(
-        (query): Identity()
-        (value): Linear(in_features=64, out_features=64, bias=False)
-        (attn_dropout): Dropout(p=0.1, inplace=False)
-        (proj): Sequential(
-          (0): Linear(in_features=64, out_features=64, bias=False)
-          (1): Dropout(p=0.1, inplace=False)
-        )
-      )
-      (feed_forward): Sequential(
-        (0): Linear(in_features=64, out_features=256, bias=True)
-        (1): GELU(approximate=&#39;none&#39;)
-        (2): Linear(in_features=256, out_features=64, bias=True)
-        (3): Dropout(p=0.1, inplace=False)
-      )
-    )
-    (1): TransformerBlock(
-      (lay_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-      (lay_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-      (attn): MultiHeadMaskedAttention(
-        (query): Identity()
-        (value): Linear(in_features=64, out_features=64, bias=False)
-        (attn_dropout): Dropout(p=0.1, inplace=False)
-        (proj): Sequential(
-          (0): Linear(in_features=64, out_features=64, bias=False)
-          (1): Dropout(p=0.1, inplace=False)
-        )
-      )
-      (feed_forward): Sequential(
-        (0): Linear(in_features=64, out_features=256, bias=True)
-        (1): GELU(approximate=&#39;none&#39;)
-        (2): Linear(in_features=256, out_features=64, bias=True)
-        (3): Dropout(p=0.1, inplace=False)
-      )
-    )
-    (2): TransformerBlock(
-      (lay_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-      (lay_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-      (attn): MultiHeadMaskedAttention(
-        (query): Identity()
-        (value): Linear(in_features=64, out_features=64, bias=False)
-        (attn_dropout): Dropout(p=0.1, inplace=False)
-        (proj): Sequential(
-          (0): Linear(in_features=64, out_features=64, bias=False)
-          (1): Dropout(p=0.1, inplace=False)
-        )
-      )
-      (feed_forward): Sequential(
-        (0): Linear(in_features=64, out_features=256, bias=True)
-        (1): GELU(approximate=&#39;none&#39;)
-        (2): Linear(in_features=256, out_features=64, bias=True)
-        (3): Dropout(p=0.1, inplace=False)
-      )
-    )
-  )
-  (fout): Linear(in_features=64, out_features=28996, bias=True)
-)
-Trainable parameters:  3897860
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 463, 28996])
 </pre></div>
 </div>
 </div>
@@ -1041,14 +940,6 @@ Trainable parameters:  3897860
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e25e0c82f3034022a5b2a747e85b0c7a", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable parameters: 8507460
-</pre></div>
-</div>
-</div>
 </div>
 <p>This is going to take a while, and we only have 45k training samples (63MB) and a tiny model (yes 8.7 million is tiny by today’s LLM standards). GPT-3 has about 175 billion parameters and 45 TB of text data. That’s 22 thousand times more model and 700 thousand times more data… Be glad we don’t have to train that! Nevertheless, the basic architecture is very similar to what we wrote down above.</p>
 <p>While it trains, try looking at your gpu utilization (for example <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span> <span class="pre">-l</span> <span class="pre">3</span></code>) and cpu utilization (<code class="docutils literal notranslate"><span class="pre">top</span></code> or <code class="docutils literal notranslate"><span class="pre">htop</span></code>). Can you identify the bottleneck in the training pipeline? How would we remedy this?</p>
@@ -1061,350 +952,6 @@ Trainable parameters:  3897860
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TESTING&quot;</span><span class="p">)</span>
     <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dl_test</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
-TRAINING
-Batch 0 training loss: 10.453564643859863
-Batch 80 training loss: 6.512960433959961
-Batch 160 training loss: 5.864621639251709
-Batch 240 training loss: 5.503118991851807
-Batch 320 training loss: 5.313235282897949
-Batch 400 training loss: 5.219045162200928
-Batch 480 training loss: 5.240912437438965
-Batch 560 training loss: 4.972538471221924
-Batch 640 training loss: 5.059909820556641
-TESTING
-Batch 0 testing loss: 4.8257737159729
-Batch 20 testing loss: 4.94636869430542
-Batch 40 testing loss: 4.815924167633057
-Batch 60 testing loss: 4.825933456420898
-------------------------------
-START EPOCH 2
-TRAINING
-Batch 0 training loss: 4.924393653869629
-Batch 80 training loss: 5.031074523925781
-Batch 160 training loss: 4.919568061828613
-Batch 240 training loss: 4.847174644470215
-Batch 320 training loss: 4.805762767791748
-Batch 400 training loss: 4.793119430541992
-Batch 480 training loss: 4.8642048835754395
-Batch 560 training loss: 4.656754493713379
-Batch 640 training loss: 4.764900207519531
-TESTING
-Batch 0 testing loss: 4.573569297790527
-Batch 20 testing loss: 4.690598964691162
-Batch 40 testing loss: 4.555648326873779
-Batch 60 testing loss: 4.563152313232422
-------------------------------
-START EPOCH 3
-TRAINING
-Batch 0 training loss: 4.671664237976074
-Batch 80 training loss: 4.795679569244385
-Batch 160 training loss: 4.706965923309326
-Batch 240 training loss: 4.662759304046631
-Batch 320 training loss: 4.623923301696777
-Batch 400 training loss: 4.622889995574951
-Batch 480 training loss: 4.70373010635376
-Batch 560 training loss: 4.514253616333008
-Batch 640 training loss: 4.642773151397705
-TESTING
-Batch 0 testing loss: 4.458096981048584
-Batch 20 testing loss: 4.56614351272583
-Batch 40 testing loss: 4.429101467132568
-Batch 60 testing loss: 4.430231094360352
-------------------------------
-START EPOCH 4
-TRAINING
-Batch 0 training loss: 4.535168647766113
-Batch 80 training loss: 4.670892238616943
-Batch 160 training loss: 4.584466934204102
-Batch 240 training loss: 4.547022819519043
-Batch 320 training loss: 4.5159711837768555
-Batch 400 training loss: 4.534675598144531
-Batch 480 training loss: 4.6015543937683105
-Batch 560 training loss: 4.41730260848999
-Batch 640 training loss: 4.544186115264893
-TESTING
-Batch 0 testing loss: 4.3786301612854
-Batch 20 testing loss: 4.477602005004883
-Batch 40 testing loss: 4.341939449310303
-Batch 60 testing loss: 4.3493733406066895
-------------------------------
-START EPOCH 5
-TRAINING
-Batch 0 training loss: 4.447899341583252
-Batch 80 training loss: 4.589491367340088
-Batch 160 training loss: 4.508801460266113
-Batch 240 training loss: 4.469975471496582
-Batch 320 training loss: 4.443156719207764
-Batch 400 training loss: 4.4578070640563965
-Batch 480 training loss: 4.54600715637207
-Batch 560 training loss: 4.363983154296875
-Batch 640 training loss: 4.49476957321167
-TESTING
-Batch 0 testing loss: 4.328824996948242
-Batch 20 testing loss: 4.426694869995117
-Batch 40 testing loss: 4.289669036865234
-Batch 60 testing loss: 4.291662216186523
-------------------------------
-START EPOCH 6
-TRAINING
-Batch 0 training loss: 4.382369518280029
-Batch 80 training loss: 4.5319061279296875
-Batch 160 training loss: 4.463258266448975
-Batch 240 training loss: 4.418227672576904
-Batch 320 training loss: 4.404354572296143
-Batch 400 training loss: 4.403997898101807
-Batch 480 training loss: 4.490046977996826
-Batch 560 training loss: 4.307733535766602
-Batch 640 training loss: 4.446858882904053
-TESTING
-Batch 0 testing loss: 4.279397010803223
-Batch 20 testing loss: 4.383358478546143
-Batch 40 testing loss: 4.245883464813232
-Batch 60 testing loss: 4.250319004058838
-------------------------------
-START EPOCH 7
-TRAINING
-Batch 0 training loss: 4.338723182678223
-Batch 80 training loss: 4.486749172210693
-Batch 160 training loss: 4.416853427886963
-Batch 240 training loss: 4.372591495513916
-Batch 320 training loss: 4.354620933532715
-Batch 400 training loss: 4.370021343231201
-Batch 480 training loss: 4.452726364135742
-Batch 560 training loss: 4.271473407745361
-Batch 640 training loss: 4.400921821594238
-TESTING
-Batch 0 testing loss: 4.246220588684082
-Batch 20 testing loss: 4.355269432067871
-Batch 40 testing loss: 4.212291240692139
-Batch 60 testing loss: 4.221573352813721
-------------------------------
-START EPOCH 8
-TRAINING
-Batch 0 training loss: 4.299985408782959
-Batch 80 training loss: 4.4461565017700195
-Batch 160 training loss: 4.374502182006836
-Batch 240 training loss: 4.336207389831543
-Batch 320 training loss: 4.321552753448486
-Batch 400 training loss: 4.32875919342041
-Batch 480 training loss: 4.408866882324219
-Batch 560 training loss: 4.234516620635986
-Batch 640 training loss: 4.371394634246826
-TESTING
-Batch 0 testing loss: 4.210877418518066
-Batch 20 testing loss: 4.328013896942139
-Batch 40 testing loss: 4.178816795349121
-Batch 60 testing loss: 4.186997413635254
-------------------------------
-START EPOCH 9
-TRAINING
-Batch 0 training loss: 4.254145622253418
-Batch 80 training loss: 4.417206287384033
-Batch 160 training loss: 4.347931861877441
-Batch 240 training loss: 4.318736553192139
-Batch 320 training loss: 4.2999587059021
-Batch 400 training loss: 4.295639514923096
-Batch 480 training loss: 4.386085510253906
-Batch 560 training loss: 4.218393325805664
-Batch 640 training loss: 4.349240303039551
-TESTING
-Batch 0 testing loss: 4.187094688415527
-Batch 20 testing loss: 4.297364234924316
-Batch 40 testing loss: 4.153755187988281
-Batch 60 testing loss: 4.161794185638428
-------------------------------
-START EPOCH 10
-TRAINING
-Batch 0 training loss: 4.230549335479736
-Batch 80 training loss: 4.394379138946533
-Batch 160 training loss: 4.307508945465088
-Batch 240 training loss: 4.290331840515137
-Batch 320 training loss: 4.256217956542969
-Batch 400 training loss: 4.2689104080200195
-Batch 480 training loss: 4.3596367835998535
-Batch 560 training loss: 4.182875633239746
-Batch 640 training loss: 4.32074499130249
-TESTING
-Batch 0 testing loss: 4.161235809326172
-Batch 20 testing loss: 4.285717964172363
-Batch 40 testing loss: 4.134584426879883
-Batch 60 testing loss: 4.143280506134033
-------------------------------
-START EPOCH 11
-TRAINING
-Batch 0 training loss: 4.205535411834717
-Batch 80 training loss: 4.3611979484558105
-Batch 160 training loss: 4.291257858276367
-Batch 240 training loss: 4.2684831619262695
-Batch 320 training loss: 4.239354133605957
-Batch 400 training loss: 4.234607696533203
-Batch 480 training loss: 4.333159446716309
-Batch 560 training loss: 4.152698040008545
-Batch 640 training loss: 4.295297145843506
-TESTING
-Batch 0 testing loss: 4.143322944641113
-Batch 20 testing loss: 4.2660346031188965
-Batch 40 testing loss: 4.116174221038818
-Batch 60 testing loss: 4.122979640960693
-------------------------------
-START EPOCH 12
-TRAINING
-Batch 0 training loss: 4.1926045417785645
-Batch 80 training loss: 4.344197750091553
-Batch 160 training loss: 4.273345947265625
-Batch 240 training loss: 4.241662502288818
-Batch 320 training loss: 4.220840930938721
-Batch 400 training loss: 4.210723876953125
-Batch 480 training loss: 4.308537483215332
-Batch 560 training loss: 4.151541709899902
-Batch 640 training loss: 4.26921272277832
-TESTING
-Batch 0 testing loss: 4.119717121124268
-Batch 20 testing loss: 4.248164176940918
-Batch 40 testing loss: 4.096585750579834
-Batch 60 testing loss: 4.1085920333862305
-------------------------------
-START EPOCH 13
-TRAINING
-Batch 0 training loss: 4.16041898727417
-Batch 80 training loss: 4.312416076660156
-Batch 160 training loss: 4.239747047424316
-Batch 240 training loss: 4.2181396484375
-Batch 320 training loss: 4.1919941902160645
-Batch 400 training loss: 4.188230514526367
-Batch 480 training loss: 4.291740894317627
-Batch 560 training loss: 4.119902610778809
-Batch 640 training loss: 4.25164270401001
-TESTING
-Batch 0 testing loss: 4.109146595001221
-Batch 20 testing loss: 4.236158847808838
-Batch 40 testing loss: 4.083269119262695
-Batch 60 testing loss: 4.096263408660889
-------------------------------
-START EPOCH 14
-TRAINING
-Batch 0 training loss: 4.1401686668396
-Batch 80 training loss: 4.296884059906006
-Batch 160 training loss: 4.219123363494873
-Batch 240 training loss: 4.194148540496826
-Batch 320 training loss: 4.17279052734375
-Batch 400 training loss: 4.172521114349365
-Batch 480 training loss: 4.268155097961426
-Batch 560 training loss: 4.106161117553711
-Batch 640 training loss: 4.234467029571533
-TESTING
-Batch 0 testing loss: 4.087616920471191
-Batch 20 testing loss: 4.2239861488342285
-Batch 40 testing loss: 4.060999870300293
-Batch 60 testing loss: 4.0785231590271
-------------------------------
-START EPOCH 15
-TRAINING
-Batch 0 training loss: 4.124801158905029
-Batch 80 training loss: 4.279020309448242
-Batch 160 training loss: 4.201953887939453
-Batch 240 training loss: 4.178887367248535
-Batch 320 training loss: 4.160668849945068
-Batch 400 training loss: 4.158737659454346
-Batch 480 training loss: 4.256253242492676
-Batch 560 training loss: 4.083315372467041
-Batch 640 training loss: 4.213152885437012
-TESTING
-Batch 0 testing loss: 4.081240653991699
-Batch 20 testing loss: 4.213397026062012
-Batch 40 testing loss: 4.05709981918335
-Batch 60 testing loss: 4.071685314178467
-------------------------------
-START EPOCH 16
-TRAINING
-Batch 0 training loss: 4.105445384979248
-Batch 80 training loss: 4.257458209991455
-Batch 160 training loss: 4.181327819824219
-Batch 240 training loss: 4.160776615142822
-Batch 320 training loss: 4.133213043212891
-Batch 400 training loss: 4.14075231552124
-Batch 480 training loss: 4.230212211608887
-Batch 560 training loss: 4.068319797515869
-Batch 640 training loss: 4.199864387512207
-TESTING
-Batch 0 testing loss: 4.05750036239624
-Batch 20 testing loss: 4.198790550231934
-Batch 40 testing loss: 4.032836437225342
-Batch 60 testing loss: 4.047375679016113
-------------------------------
-START EPOCH 17
-TRAINING
-Batch 0 training loss: 4.079669952392578
-Batch 80 training loss: 4.2428998947143555
-Batch 160 training loss: 4.164575576782227
-Batch 240 training loss: 4.144774913787842
-Batch 320 training loss: 4.125186443328857
-Batch 400 training loss: 4.118528842926025
-Batch 480 training loss: 4.224449634552002
-Batch 560 training loss: 4.043789863586426
-Batch 640 training loss: 4.182216644287109
-TESTING
-Batch 0 testing loss: 4.0463104248046875
-Batch 20 testing loss: 4.182623386383057
-Batch 40 testing loss: 4.020364284515381
-Batch 60 testing loss: 4.032769203186035
-------------------------------
-START EPOCH 18
-TRAINING
-Batch 0 training loss: 4.067461013793945
-Batch 80 training loss: 4.221118450164795
-Batch 160 training loss: 4.142800807952881
-Batch 240 training loss: 4.129454135894775
-Batch 320 training loss: 4.112790107727051
-Batch 400 training loss: 4.101941108703613
-Batch 480 training loss: 4.196477890014648
-Batch 560 training loss: 4.035633087158203
-Batch 640 training loss: 4.1695780754089355
-TESTING
-Batch 0 testing loss: 4.031458854675293
-Batch 20 testing loss: 4.1668572425842285
-Batch 40 testing loss: 4.003049373626709
-Batch 60 testing loss: 4.024814605712891
-------------------------------
-START EPOCH 19
-TRAINING
-Batch 0 training loss: 4.051701068878174
-Batch 80 training loss: 4.202447414398193
-Batch 160 training loss: 4.129954814910889
-Batch 240 training loss: 4.109521389007568
-Batch 320 training loss: 4.086175441741943
-Batch 400 training loss: 4.092165946960449
-Batch 480 training loss: 4.185718536376953
-Batch 560 training loss: 4.016693592071533
-Batch 640 training loss: 4.15826416015625
-TESTING
-Batch 0 testing loss: 4.019284725189209
-Batch 20 testing loss: 4.161983489990234
-Batch 40 testing loss: 3.9886131286621094
-Batch 60 testing loss: 4.014815807342529
-------------------------------
-START EPOCH 20
-TRAINING
-Batch 0 training loss: 4.036025524139404
-Batch 80 training loss: 4.18900728225708
-Batch 160 training loss: 4.11253023147583
-Batch 240 training loss: 4.099170207977295
-Batch 320 training loss: 4.078619480133057
-Batch 400 training loss: 4.075125694274902
-Batch 480 training loss: 4.162968635559082
-Batch 560 training loss: 3.9928629398345947
-Batch 640 training loss: 4.134066104888916
-TESTING
-Batch 0 testing loss: 4.008586883544922
-Batch 20 testing loss: 4.14926815032959
-Batch 40 testing loss: 3.982499837875366
-Batch 60 testing loss: 4.0042524337768555
-------------------------------
 </pre></div>
 </div>
 </div>
@@ -1431,13 +978,6 @@ Batch 60 testing loss: 4.0042524337768555
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of - metabolites in swine ponds of high - substituted for piperine glutamase. to ouabain - sensitive catecholamine ( eps ) strips with enzyme inhibitory chemical analysis for analyses namely short - exercise. neuro&#39;,
- &#39;[CLS] we compared the prevalence of cholinimedumann a significant clinical symptoms and in patients with albic symptoms, using histological tests, and patient clinicopathological examinations, offer prognosis and immunohistochemistry were done. the distinction between the records&#39;,
- &#39;[CLS] we compared the prevalence of ventricular aortic ( bf ) in all3 increased arterioplasty compared with mortality in trachea, using aortic valve defects in 12 cardiac arrest. eighty - four patients treated with chronic aspiricular pressures&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1458,13 +998,6 @@ Batch 60 testing loss: 4.0042524337768555
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] the pytorch llm workshop was assessed regarding the accuracy and validity effects of comorpharmacytric acute excretion in children with insulin activity in suckling for children and adults with impaired children ( palsycintimulating age 6 years ) in their daily red periodicity&#39;,
- &#39;[CLS] the pytorch llm workshop was prepared on morphology of pigments at 14cncephalism carrier hooklets. dentinal coat v1 hams of the medialisport muscle caused by corneal vessels ( gsor2, and phospho phosphatase&#39;,
- &#39;[CLS] the pytorch llm workshop was prepared using the cell - cell membrane protein membranes containing other materials displaying moderate - strains of microtimulating trophages. bacterization products of irratiate - phospholipids were used for the bacryl&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1478,16 +1011,16 @@ Batch 60 testing loss: 4.0042524337768555
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "attentionworkshop"
         },
         kernelOptions: {
-            name: "python3",
+            name: "attentionworkshop",
             path: "./pytorch_llm"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'attentionworkshop'</script>
 
                 </article>
               

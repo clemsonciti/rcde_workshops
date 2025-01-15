@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -524,7 +522,7 @@ called from inside the zipped file (something Windows allows you to do).</p>
 </div>
 <p>After MobaXterm starts, click the <code class="docutils literal notranslate"><span class="pre">Session</span></code> button.</p>
 <figure class="align-default" id="id1">
-<img alt="../_images/mobaxterm_01.png" src="../_images/mobaxterm_01.png" />
+<img alt="../_images/mobaxterm_0.png" src="../_images/mobaxterm_0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Main MobaXterm Windows</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -536,7 +534,7 @@ called from inside the zipped file (something Windows allows you to do).</p>
 <li><p>Port: 22</p></li>
 </ul>
 <figure class="align-default" id="id2">
-<img alt="../_images/mobaxterm_11.png" src="../_images/mobaxterm_11.png" />
+<img alt="../_images/mobaxterm_1.png" src="../_images/mobaxterm_1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">MobaXterm SSH Session Settings</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -553,7 +551,7 @@ password.</p>
 is the expected behaviour. The SSH server is still receiving your password.</p>
 </div>
 <figure class="align-default" id="id3">
-<img alt="../_images/mobaxterm_21.png" src="../_images/mobaxterm_21.png" />
+<img alt="../_images/mobaxterm_2.png" src="../_images/mobaxterm_2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Logging into palmetto</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -562,7 +560,7 @@ is the expected behaviour. The SSH server is still receiving your password.</p>
 <p class="admonition-title">Windows Users</p>
 <p>With MobaXterm, you may be asked to save your password.  For now, press No.</p>
 <figure class="align-default" id="id4">
-<img alt="../_images/mobaxterm_31.png" src="../_images/mobaxterm_31.png" />
+<img alt="../_images/mobaxterm_3.png" src="../_images/mobaxterm_3.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">MobaXterm asking to save password</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>

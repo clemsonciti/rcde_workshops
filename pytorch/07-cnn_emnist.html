@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -525,18 +523,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library imports</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
-<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
-<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">StepLR</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transforms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.optim.lr_scheduler</span><span class="w"> </span><span class="kn">import</span> <span class="n">StepLR</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="c1"># set random seed for reproducibility</span>
@@ -545,6 +543,7 @@ document.write(`
 </div>
 </div>
 </div>
+<p>For more information about Palmetto storage, see the <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/onboarding/">onboarding training</a> and the documentation for <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/storage/store/">Palmetto storage</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save locations</span>
@@ -557,7 +556,7 @@ document.write(`
 <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span> <span class="c1">#input batch size for training (default: 64)</span>
 <span class="n">test_batch_size</span><span class="o">=</span><span class="mi">1000</span> <span class="c1">#input batch size for testing (default: 1000)</span>
 <span class="n">num_workers</span><span class="o">=</span><span class="mi">9</span> <span class="c1"># parallel data loading to speed things up</span>
-<span class="n">lr</span><span class="o">=</span><span class="mf">1.0</span> <span class="c1">#learning rate (default: 1.0)</span>
+<span class="n">lr</span><span class="o">=</span><span class="mf">1.0</span> <span class="c1"># learning rate </span>
 <span class="n">gamma</span><span class="o">=</span><span class="mf">0.7</span> <span class="c1">#Learning rate step gamma (default: 0.7)</span>
 <span class="n">no_cuda</span><span class="o">=</span><span class="kc">False</span> <span class="c1">#disables CUDA training (default: False)</span>
 <span class="n">seed</span><span class="o">=</span><span class="mi">42</span> <span class="c1">#random seed (default: 42)</span>
@@ -573,11 +572,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device: cuda
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -587,15 +581,16 @@ document.write(`
 <span class="c1"># EMNIST is one of them! Pytorch will automatically download the data.</span>
 <span class="c1"># It will only download if the data is not already present.</span>
 <span class="n">data_train</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">EMNIST</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-                        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                        <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.1307</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.3081</span><span class="p">,))</span>
-                    <span class="p">]))</span>
+                             <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+                                 <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                 <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.1307</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.3081</span><span class="p">,))</span>
+                                 <span class="p">]))</span>
 
-<span class="n">data_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">EMNIST</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-                        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                        <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.1307</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.3081</span><span class="p">,))</span>
-                    <span class="p">]))</span>
+<span class="n">data_test</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">EMNIST</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+                                <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.1307</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.3081</span><span class="p">,))</span>
+                                <span class="p">]))</span>
 
 <span class="c1"># define pytorch dataloaders for training and testing</span>
 <span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span> <span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -612,28 +607,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training dataset:&quot;</span><span class="p">,</span> <span class="n">train_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing dataset:&quot;</span><span class="p">,</span> <span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training dataset: Dataset EMNIST
-    Number of datapoints: 112800
-    Root location: /scratch/dane2/data
-    Split: Train
-    StandardTransform
-Transform: Compose(
-               ToTensor()
-               Normalize(mean=(0.1307,), std=(0.3081,))
-           )
-Testing dataset: Dataset EMNIST
-    Number of datapoints: 18800
-    Root location: /scratch/dane2/data
-    Split: Test
-    StandardTransform
-Transform: Compose(
-               ToTensor()
-               Normalize(mean=(0.1307,), std=(0.3081,))
-           )
 </pre></div>
 </div>
 </div>
@@ -657,17 +630,14 @@ Transform: Compose(
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/c107d2ab0b306441c42b121d2f0ce78fa14de2a3f25aa421c08182c3c2d06a8b.png" src="../_images/c107d2ab0b306441c42b121d2f0ce78fa14de2a3f25aa421c08182c3c2d06a8b.png" />
-</div>
 </div>
 <hr class="docutils" />
 <p><strong>Question</strong>: In addition to the larger number of classes in EMNIST compared to MNIST, why might it be more difficult to accurately classify images from the EMNIST set?</p>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Training and testing functions</span>
-<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training and testing functions</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
     <span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
@@ -682,7 +652,7 @@ Transform: Compose(
                 <span class="n">epoch</span><span class="p">,</span> <span class="n">batch_idx</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">),</span>
                 <span class="mf">100.</span> <span class="o">*</span> <span class="n">batch_idx</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">),</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
             
-<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
     <span class="n">test_loss</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
@@ -701,8 +671,8 @@ Transform: Compose(
         <span class="n">test_loss</span><span class="p">,</span> <span class="n">correct</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">),</span>
         <span class="mf">100.</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_loader</span><span class="o">.</span><span class="n">dataset</span><span class="p">)))</span>
     
-<span class="k">def</span> <span class="nf">train_and_test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">save_name</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="c1"># @title Train the linear model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_and_test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">save_name</span><span class="o">=</span><span class="n">model_path</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Train the linear model</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adadelta</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
     <span class="n">scheduler</span> <span class="o">=</span> <span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">)</span>
 
@@ -714,14 +684,7 @@ Transform: Compose(
     <span class="k">if</span> <span class="n">save_model</span><span class="p">:</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="n">save_name</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">get_n_params</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-    <span class="n">pp</span><span class="o">=</span><span class="mi">0</span>
-    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()):</span>
-        <span class="n">nn</span><span class="o">=</span><span class="mi">1</span>
-        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
-            <span class="n">nn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">*</span><span class="n">s</span>
-        <span class="n">pp</span> <span class="o">+=</span> <span class="n">nn</span>
-    <span class="k">return</span> <span class="n">pp</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_n_params</span><span class="p">(</span><span class="n">model</span><span class="p">):</span> <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -742,17 +705,18 @@ Transform: Compose(
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the generic EMNIST classification architecture</span>
 <span class="c1"># The `feature_extractor` argument takes images as input and produces feature vectors.</span>
 <span class="c1"># These vectors can be of any length. </span>
-<span class="k">class</span> <span class="nc">Classifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_extractor</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Classifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_extractor</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Classifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># feature encoder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">feature_extractor</span> <span class="o">=</span> <span class="n">feature_extractor</span>
         
         <span class="c1"># classifier</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LazyLinear</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
+        <span class="c1"># LazyLinear allows input size to be inferred automatically </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LazyLinear</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span> <span class="c1"># 47 classes in EMNIST</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_extractor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># Flatten -&gt; x_i</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># Matrix multiply -&gt; c_m^0 + sum(W_mi*x_i)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># apply the softmax function</span>
@@ -780,16 +744,10 @@ Transform: Compose(
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/software/spackages/linux-rocky8-x86_64/gcc-9.5.0/anaconda3-2022.05-zyrazrj6uvrtukupqzhaslr63w7hj6in/envs/pytorch_workshop/lib/python3.10/site-packages/torch/nn/modules/lazy.py:180: UserWarning: Lazy modules are a new feature under heavy development so changes to the API or functionality can happen at any moment.
-  warnings.warn(&#39;Lazy modules are a new feature under heavy development &#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @title Display model and number of parameters </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display model and number of parameters </span>
 <span class="c1"># Run one batch through the model to initialize the lazy linear layer</span>
 <span class="c1"># this is necessary to get accurate parameter counts</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
@@ -798,17 +756,6 @@ Transform: Compose(
 <span class="n">display</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of parameters in linear model:&quot;</span><span class="p">,</span> <span class="n">get_n_params</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier(
-  (feature_extractor): Flatten(start_dim=1, end_dim=-1)
-  (classifier): Linear(in_features=784, out_features=47, bias=True)
-)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of parameters in linear model: 36895
 </pre></div>
 </div>
 </div>
@@ -822,15 +769,6 @@ Transform: Compose(
 <span class="c1"># by default, `train_and_test` trains for 5 epochs</span>
 <span class="c1"># you can adjust this using the epochs argument, like</span>
 <span class="c1"># train_and_test(model, epochs=2)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test epoch 1: Average loss: 3.3020, Accuracy: 11264/18800 (59.91%)
-Test epoch 2: Average loss: 3.2766, Accuracy: 11716/18800 (62.32%)
-Test epoch 3: Average loss: 3.2662, Accuracy: 11899/18800 (63.29%)
-Test epoch 4: Average loss: 3.2604, Accuracy: 11989/18800 (63.77%)
-Test epoch 5: Average loss: 3.2485, Accuracy: 12224/18800 (65.02%)
 </pre></div>
 </div>
 </div>
@@ -887,23 +825,6 @@ Test epoch 5: Average loss: 3.2485, Accuracy: 12224/18800 (65.02%)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier(
-  (feature_extractor): Sequential(
-    (0): Conv2d(1, 4, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (2): ReLU()
-    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-    (4): Flatten(start_dim=1, end_dim=-1)
-  )
-  (classifier): Linear(in_features=676, out_features=47, bias=True)
-)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of parameters in linear model: 31863
-</pre></div>
-</div>
-</div>
 </div>
 <p>(Less than 36,895 for linear model)</p>
 <hr class="docutils" />
@@ -912,15 +833,6 @@ Test epoch 5: Average loss: 3.2485, Accuracy: 12224/18800 (65.02%)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_and_test</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test epoch 1: Average loss: 3.2306, Accuracy: 12472/18800 (66.34%)
-Test epoch 2: Average loss: 3.1815, Accuracy: 13374/18800 (71.14%)
-Test epoch 3: Average loss: 3.1571, Accuracy: 13818/18800 (73.50%)
-Test epoch 4: Average loss: 3.1463, Accuracy: 14030/18800 (74.63%)
-Test epoch 5: Average loss: 3.1416, Accuracy: 14139/18800 (75.21%)
 </pre></div>
 </div>
 </div>
@@ -952,12 +864,6 @@ Test epoch 5: Average loss: 3.1416, Accuracy: 14139/18800 (75.21%)
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/11b76b42af65ffd04b407f1cff3e6bc104f73b1715788214720a2dd59dc16195.png" src="../_images/11b76b42af65ffd04b407f1cff3e6bc104f73b1715788214720a2dd59dc16195.png" />
-<img alt="../_images/6a5ec086886eaf729ea3dd1c53feecedac1356f44f1e5ff6d1514882a63feef6.png" src="../_images/6a5ec086886eaf729ea3dd1c53feecedac1356f44f1e5ff6d1514882a63feef6.png" />
-<img alt="../_images/b84e269df0018ffbf281f9b98c9448b257b062195f1a0491701322176d4c7524.png" src="../_images/b84e269df0018ffbf281f9b98c9448b257b062195f1a0491701322176d4c7524.png" />
-<img alt="../_images/0a5e14e3bd4c927d8a05f3f11170c8bde840e80d8bb6a013324b7b290d8483ba.png" src="../_images/0a5e14e3bd4c927d8a05f3f11170c8bde840e80d8bb6a013324b7b290d8483ba.png" />
 </div>
 </div>
 </section>
@@ -1002,37 +908,11 @@ Test epoch 5: Average loss: 3.1416, Accuracy: 14139/18800 (75.21%)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier(
-  (feature_extractor): Sequential(
-    (0): Conv2d(1, 8, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (2): ReLU()
-    (3): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-    (4): Flatten(start_dim=1, end_dim=-1)
-  )
-  (classifier): Linear(in_features=1352, out_features=47, bias=True)
-)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of parameters in linear model: 63679
-</pre></div>
-</div>
-</div>
 </div>
 <p>Notice that doubling the number of channels nearly doubled the number of free parameters in the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_and_test</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test epoch 1: Average loss: 3.1996, Accuracy: 13052/18800 (69.43%)
-Test epoch 2: Average loss: 3.1259, Accuracy: 14404/18800 (76.62%)
-Test epoch 3: Average loss: 3.1123, Accuracy: 14640/18800 (77.87%)
-Test epoch 4: Average loss: 3.1058, Accuracy: 14791/18800 (78.68%)
-Test epoch 5: Average loss: 3.0975, Accuracy: 14926/18800 (79.39%)
 </pre></div>
 </div>
 </div>
@@ -1092,29 +972,6 @@ Test epoch 5: Average loss: 3.0975, Accuracy: 14926/18800 (79.39%)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier(
-  (feature_extractor): Sequential(
-    (0): Conv2d(1, 4, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (1): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (2): ReLU()
-    (3): Conv2d(4, 4, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (4): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (5): ReLU()
-    (6): Conv2d(4, 4, kernel_size=(3, 3), stride=(1, 1), bias=False)
-    (7): BatchNorm2d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (8): ReLU()
-    (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-    (10): Flatten(start_dim=1, end_dim=-1)
-  )
-  (classifier): Linear(in_features=484, out_features=47, bias=True)
-)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of parameters in linear model: 23143
-</pre></div>
-</div>
-</div>
 </div>
 <hr class="docutils" />
 <p><strong>Question</strong>: The number of parameters is actually <em>less</em> than our single layer model. We added lots of convolution kernels, so how can that be?</p>
@@ -1122,15 +979,6 @@ Test epoch 5: Average loss: 3.0975, Accuracy: 14926/18800 (79.39%)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_and_test</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test epoch 1: Average loss: 3.1575, Accuracy: 13818/18800 (73.50%)
-Test epoch 2: Average loss: 3.1159, Accuracy: 14559/18800 (77.44%)
-Test epoch 3: Average loss: 3.1057, Accuracy: 14752/18800 (78.47%)
-Test epoch 4: Average loss: 3.1000, Accuracy: 14839/18800 (78.93%)
-Test epoch 5: Average loss: 3.0965, Accuracy: 14907/18800 (79.29%)
 </pre></div>
 </div>
 </div>
@@ -1190,23 +1038,6 @@ Test epoch 5: Average loss: 3.0965, Accuracy: 14907/18800 (79.29%)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test epoch 1: Average loss: 3.1626, Accuracy: 13713/18800 (72.94%)
-Test epoch 2: Average loss: 3.1241, Accuracy: 14390/18800 (76.54%)
-Test epoch 3: Average loss: 3.1077, Accuracy: 14720/18800 (78.30%)
-Test epoch 4: Average loss: 3.0990, Accuracy: 14894/18800 (79.22%)
-Test epoch 5: Average loss: 3.0946, Accuracy: 14957/18800 (79.56%)
-Test epoch 6: Average loss: 3.0925, Accuracy: 14995/18800 (79.76%)
-Test epoch 7: Average loss: 3.0901, Accuracy: 15035/18800 (79.97%)
-Test epoch 8: Average loss: 3.0897, Accuracy: 15039/18800 (79.99%)
-Test epoch 9: Average loss: 3.0889, Accuracy: 15070/18800 (80.16%)
-Test epoch 10: Average loss: 3.0887, Accuracy: 15055/18800 (80.08%)
-Test epoch 11: Average loss: 3.0878, Accuracy: 15083/18800 (80.23%)
-Test epoch 12: Average loss: 3.0880, Accuracy: 15094/18800 (80.29%)
-Test epoch 13: Average loss: 3.0880, Accuracy: 15092/18800 (80.28%)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 
@@ -1219,16 +1050,16 @@ Test epoch 13: Average loss: 3.0880, Accuracy: 15092/18800 (80.28%)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "pytorchworkshop"
         },
         kernelOptions: {
-            name: "python3",
+            name: "pytorchworkshop",
             path: "./pytorch"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'pytorchworkshop'</script>
 
                 </article>
               

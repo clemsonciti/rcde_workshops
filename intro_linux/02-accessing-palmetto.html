@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -505,37 +503,14 @@ document.write(`
 <h2>Remote login (SSH)<a class="headerlink" href="#remote-login-ssh" title="Permalink to this heading">#</a></h2>
 <p>To be able to run commands on Palmetto from your own machine, you will first need to log in. We will login via <strong>SSH</strong> which will provide us a shell on one of Palmetto’s login nodes.</p>
 <p>For Mac OS X, you can open the Terminal Application (which is usually in Applications → Utilities folder) and run the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">Palmetto</span> <span class="n">username</span><span class="o">&gt;</span><span class="nd">@login</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">Clemson</span> <span class="n">username</span><span class="o">&gt;</span><span class="nd">@slogin</span><span class="o">.</span><span class="n">palmetto</span><span class="o">.</span><span class="n">clemson</span><span class="o">.</span><span class="n">edu</span>
 </pre></div>
 </div>
-<p>For Windows, first you need to download and install
-<a class="reference external" href="https://mobaxterm.mobatek.net/download.html">MobaXterm Home Edition</a>.</p>
-<blockquote>
-<div><p>It is important that you unzip the downloaded installer prior to installation.
-The zipped installer file contains an additional data file besides the installer
-executable. This data file is not accessible if the installer executable is
-called from insize the zipped file (something Windows allows you to do).</p>
-</div></blockquote>
-<p>After MobaXterm starts, click the <code class="docutils literal notranslate"><span class="pre">Session</span></code> button.</p>
-<p><img alt="Main MobaXterm Windows" src="../_images/mobaxterm_0.png" /></p>
-<p>Select SSH session and use the following parameters (whichever required), then click <code class="docutils literal notranslate"><span class="pre">OK</span></code>:</p>
-<ul class="simple">
-<li><p>Remote host: <code class="docutils literal notranslate"><span class="pre">login.palmetto.clemson.edu</span></code></p></li>
-<li><p>SSH-browser type: Enhanced SCP</p></li>
-<li><p>Port: 22</p></li>
-</ul>
-<p><img alt="MobaXterm SSH Session" src="../_images/mobaxterm_1.png" /></p>
-<p>At this stage, for both Mac and Windows, you will be asked to enter your username
-and password, then DUO option.</p>
-<p><img alt="Login interface" src="../_images/mobaxterm_2.png" /></p>
-<blockquote>
-<div><p>For MobaXterm, please select No when asked if you want to save your password.</p>
-</div></blockquote>
-<p><img alt="Password saving selection" src="../_images/mobaxterm_3.png" /></p>
-<p>When logged in, you are presented with a welcome message and the following “prompt”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@login001 ~]$
+<p>After logging in and completing Duo 2FA you are presented with a welcome message and the following “prompt”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[username@vm-slurm-p-login01 ~]$
 </pre></div>
 </div>
+<p>More information about accesing Palmetto via SSH can be found on the <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/connect/ssh/">RCD Documentation Site</a></p>
 <p>Let’s enter our first command!
 Type the command <code class="docutils literal notranslate"><span class="pre">whoami</span></code>, then press the Enter key (sometimes marked Return) to send the command to the shell.
 The command’s output is the ID of the current user.</p>

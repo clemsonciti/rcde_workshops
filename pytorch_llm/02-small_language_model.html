@@ -176,8 +176,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -245,11 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -531,7 +529,7 @@ document.write(`
 <p>This notebook was partly inspired by this blog post on character-level bigram models: <a class="reference external" href="https://medium.com/&#64;fareedkhandev/create-gpt-from-scratch-using-python-part-1-bd89ccf6206a">https://medium.com/&#64;fareedkhandev/create-gpt-from-scratch-using-python-part-1-bd89ccf6206a</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKENIZERS_PARALLELISM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span>
 </pre></div>
 </div>
@@ -547,7 +545,7 @@ document.write(`
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">tokens</span></code>: pieces of text. These could be words, word chunks, or individual characters.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">documents</span></code>: a sequence of tokens about something. These could be individual tweets, legal contracts, love letters, emails, or journal abstracts.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>: a collection of document. We will be using a PubMed dataset containing 50 thousand abstracts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>: a collection of documents. We will be using a PubMed dataset containing 50 thousand abstracts.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vocabulary</span></code>: the set of all unique tokens in our dataset.</p></li>
 </ul>
 </li>
@@ -588,7 +586,7 @@ So, to generate a new document, we can</p>
 </ol>
 <p>This is how ChatGPT works! This approach goes by the names <code class="docutils literal notranslate"><span class="pre">autoregressive</span> <span class="pre">language</span> <span class="pre">modeling</span></code> or <code class="docutils literal notranslate"><span class="pre">causal</span> <span class="pre">language</span> <span class="pre">modeling</span></code>.</p>
 <p>This is not how all language modeling works. BERT, for instance, uses masked language modeling, where random tokens in a sequence are sampled by considering the tokens at all other positions. Word2Vec models tokens using a neighborhood of nearby tokens.</p>
-<p>Also, we still haven’t said anything about how you actually write down the functional form of <span class="math notranslate nohighlight">\(p(w_i | \langle w_j\rangle_{j=1}^{i-1})\)</span>. There are many possibly architectures (an incomplete list in approximate historical ordering):</p>
+<p>Also, we still haven’t said anything about how you actually write down the functional form of <span class="math notranslate nohighlight">\(p(w_i | \langle w_j\rangle_{j=1}^{i-1})\)</span>. There are many possible architectures (an incomplete list in approximate historical ordering):</p>
 <ul class="simple">
 <li><p>Markov model</p></li>
 <li><p>1D CNN</p></li>
@@ -620,7 +618,7 @@ allowing us to generate sequences as described above.</p>
 <section id="estimating-the-model-from-data">
 <h3>Estimating the model from data<a class="headerlink" href="#estimating-the-model-from-data" title="Permalink to this heading">#</a></h3>
 <p>How can we estimate this model mathematically?</p>
-<p>We start by observing that the model only depends on a set of probabilities describing the liklihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,
+<p>We start by observing that the model only depends on a set of probabilities describing the likelihood of one word given another word. These probabilities are called <em>transition matrix elements</em>,
 $<span class="math notranslate nohighlight">\(
 T_{\alpha\beta} = p(w_i=\alpha | w_{i-1}=\beta)\\
 \)</span><span class="math notranslate nohighlight">\(
@@ -636,7 +634,7 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </section>
 <section id="estimating-with-gradient-descent">
 <h4>Estimating with gradient descent<a class="headerlink" href="#estimating-with-gradient-descent" title="Permalink to this heading">#</a></h4>
-<p>In the code below, we will take a different approach. We will estimate the probabilities using a maximum liklihood based approach with gradient descent. For the Markov model, the two approaches are formally equivalent up to how they deal with the missing pairs. However, the gradient descent approach will generalize to more complicated models including transformer-based LLMs!</p>
+<p>In the code below, we will take a different approach. We will estimate the probabilities using a maximum likelihood based approach with gradient descent. For the Markov model, the two approaches are formally equivalent up to how they deal with the missing pairs. However, the gradient descent approach will generalize to more complicated models including transformer-based LLMs!</p>
 </section>
 </section>
 </section>
@@ -651,16 +649,11 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the dataset.py file</span>
-<span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">PubMedDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">PubMedDataset</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">PubMedDataset</span><span class="p">(</span><span class="s2">&quot;/project/rcde/datasets/pubmed/mesh_50k/splits/&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "227615473ca24a33a4bd975da53d8f5b", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,26 +663,10 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;input_ids&#39;, &#39;token_type_ids&#39;, &#39;attention_mask&#39;])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl_train</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;input_ids&#39;: tensor([[ 101, 1103, 2853,  ...,    0,    0,    0],
-        [ 101, 3582,  131,  ..., 8131,  119,  102],
-        [ 101, 3582,  131,  ...,    0,    0,    0]]), &#39;token_type_ids&#39;: tensor([[0, 0, 0,  ..., 0, 0, 0],
-        [0, 0, 0,  ..., 0, 0, 0],
-        [0, 0, 0,  ..., 0, 0, 0]]), &#39;attention_mask&#39;: tensor([[1, 1, 1,  ..., 0, 0, 0],
-        [1, 1, 1,  ..., 1, 1, 1],
-        [1, 1, 1,  ..., 0, 0, 0]])}
 </pre></div>
 </div>
 </div>
@@ -705,22 +682,12 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28996
-</pre></div>
-</div>
-</div>
 </div>
 <p>Yikes, that’s a big vocabulary! The size of the transition matrix will be <code class="docutils literal notranslate"><span class="pre">vocab_size</span> <span class="pre">*</span> <span class="pre">vocab_size</span></code>. Let’s estimate how much memory that would take to store:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># memory needed to store the transition matrix (in gigabytes)</span>
 <span class="n">vocab_size</span> <span class="o">*</span> <span class="n">vocab_size</span> <span class="o">*</span> <span class="mi">32</span> <span class="o">/</span> <span class="mi">8</span> <span class="o">/</span> <span class="mf">1e9</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.363072064
 </pre></div>
 </div>
 </div>
@@ -734,10 +701,10 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 <p>Without further ado, let’s write down the model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="k">class</span> <span class="nc">MarkovChain</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MarkovChain</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># the transition matrix logits</span>
@@ -750,13 +717,13 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
         <span class="c1"># large negative logit -&gt; low probability</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">-=</span> <span class="mf">10.0</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
         <span class="c1"># logits.shape == (N, L_batch, V). Remember (batch size, sequence length, vocab size).</span>
 
         <span class="k">return</span> <span class="n">logits</span> <span class="c1"># turns out we never actually need to compute the softmax for MLE</span>
     
-    <span class="k">def</span> <span class="nf">numpars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numpars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -771,16 +738,6 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable params (millions): 840.768016
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MarkovChain(
-  (t_logits): Embedding(28996, 28996)
-)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -789,13 +746,8 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 463, 28996])
-</pre></div>
 </div>
-</div>
-</div>
-<p>The output tensor has shape <code class="docutils literal notranslate"><span class="pre">batch_size</span> <span class="pre">x</span> <span class="pre">sequence_length</span> <span class="pre">x</span> <span class="pre">vocab_size</span></code>. We interpret these ouputs as the logits of the next word. The probability of the next word is then</p>
+<p>The output tensor has shape <code class="docutils literal notranslate"><span class="pre">batch_size</span> <span class="pre">x</span> <span class="pre">sequence_length</span> <span class="pre">x</span> <span class="pre">vocab_size</span></code>. We interpret these outputs as the logits of the next word. The probability of the next word is then</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_next_words</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
@@ -805,21 +757,13 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
-        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000],
-        [1.0000, 1.0000, 1.0000,  ..., 1.0000, 1.0000, 1.0000]],
-       grad_fn=&lt;SumBackward1&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="generate-text-for-untrained-model">
 <h3>Generate text for untrained model<a class="headerlink" href="#generate-text-for-untrained-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Recursively generate a sequence one token at a time</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -860,24 +804,10 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104,   102],
-        [  101,  1195,  3402,  1103, 22760,  1104,   102],
-        [  101,  1195,  3402,  1103, 22760,  1104,   102]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">prompt_ids</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of [SEP]&#39;,
- &#39;[CLS] we compared the prevalence of [SEP]&#39;,
- &#39;[CLS] we compared the prevalence of [SEP]&#39;]
 </pre></div>
 </div>
 </div>
@@ -890,32 +820,12 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104],
-        [  101,  1195,  3402,  1103, 22760,  1104],
-        [  101,  1195,  3402,  1103, 22760,  1104]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate more ids</span>
 <span class="n">gen_ids</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 <span class="n">gen_ids</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[  101,  1195,  3402,  1103, 22760,  1104, 24884, 17254, 26954,  1411,
-         26075, 15522, 22389, 20553, 19476, 28335,  2227, 20974, 20500, 14507,
-          2257],
-        [  101,  1195,  3402,  1103, 22760,  1104,  2568, 21056,   355, 12811,
-         12318, 14785,  5376, 11395,  6381,  2335,  4051, 16601,  7579,   609,
-         13538],
-        [  101,  1195,  3402,  1103, 22760,  1104,  5399, 22759,  9429, 20698,
-         20509, 11237, 27838, 24444, 18389, 12594, 17810,  8110, 25186, 25466,
-         24989]])
 </pre></div>
 </div>
 </div>
@@ -927,16 +837,9 @@ where \)</span>\alpha<span class="math notranslate nohighlight">\( and \)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of Straits cracking tilting townhales robbery bubblesopping skipάntlbergrdesholder forced&#39;,
- &#39;[CLS] we compared the prevalence ofline Calder ɔ Mohammed embassy convenient acted Zimbabwe Colin complete containing socks Hitler चcos&#39;,
- &#39;[CLS] we compared the prevalence of Rights pharmacy graphicnking Latter Wingsests coldercel broader embarrassing elderggle artworks Horses&#39;]
-</pre></div>
 </div>
-</div>
-</div>
-<p>Terrible! No surprise, though. We haven’t trained our model yet.</p>
-<p>Before we can do that, we need an objective to optimize.</p>
+<p>Terrible! For now.</p>
+<p>If we’re to improve it, we need an objective to optimize.</p>
 </section>
 <section id="loss-function">
 <h3>Loss function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h3>
@@ -954,11 +857,6 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 463])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -973,25 +871,15 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([3, 28996, 462]), torch.Size([3, 462]))
-</pre></div>
-</div>
-</div>
 </div>
 <p>Make sure these shapes make sense to you!</p>
 <p>Use the built in pytorch function to compute cross entropy for each position in the sequence</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 <span class="c1"># pytorch expects the intput to have shape `sequence_length x batch_size x vocab_size`</span>
 <span class="n">token_loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">pred_logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
 <span class="n">token_loss</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([3, 462])
 </pre></div>
 </div>
 </div>
@@ -1005,21 +893,13 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([3, 462]),
- tensor([[1, 1, 1,  ..., 0, 0, 0],
-         [1, 1, 1,  ..., 1, 1, 1],
-         [1, 1, 1,  ..., 0, 0, 0]]))
-</pre></div>
-</div>
-</div>
 </div>
 <p>We need to zero out the loss coming from the padding tokens and compute the average loss only counting the non-padding tokens.</p>
 <p>Let’s put all of this logic into a function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s put all this together in a custom loss function</span>
-<span class="k">def</span> <span class="nf">masked_cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">masked_cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Args:</span>
 <span class="sd">    - logits: The next token prediction logits. Last element removed. Shape (N, V, L-1)</span>
@@ -1046,17 +926,12 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor(10.7869, grad_fn=&lt;DivBackward0&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
 <section id="time-to-train-the-model">
 <h2>Time to train the model!<a class="headerlink" href="#time-to-train-the-model" title="Permalink to this heading">#</a></h2>
-<p>This is boilerplate pytorch optimization code, so we will zip over it.</p>
+<p>This is boilerplate pytorch optimization code, so we will zip over it. Pytorch’s documentation has a useful Beginner’s guide, <a class="reference external" href="https://pytorch.org/tutorials/beginner/basics/intro.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># training settings</span>
@@ -1085,11 +960,6 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "65ee50866f5e411c9c4e9e0f9a9ee04d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1114,48 +984,6 @@ we just stick with logits. Pytorch’s built-in cross entropy loss function expe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
-Batch 0 training loss: 10.774152755737305
-Batch 20 training loss: 8.934335708618164
-Batch 40 training loss: 7.414063930511475
-Batch 60 training loss: 6.591622829437256
-Batch 80 training loss: 6.113377571105957
-Batch 100 training loss: 5.820305824279785
-Batch 120 training loss: 5.6821465492248535
-Batch 140 training loss: 5.435906410217285
-Batch 160 training loss: 5.360453128814697
-Batch 180 training loss: 5.330673694610596
-Batch 200 training loss: 5.2893266677856445
-Batch 220 training loss: 5.221299648284912
-Batch 240 training loss: 5.296996593475342
-Batch 260 training loss: 5.216686248779297
-Batch 280 training loss: 5.102764129638672
-Batch 300 training loss: 5.149473190307617
-Batch 320 training loss: 5.1236572265625
-Batch 340 training loss: 5.017659664154053
-START EPOCH 2
-Batch 0 training loss: 4.7725830078125
-Batch 20 training loss: 4.893960952758789
-Batch 40 training loss: 4.828927516937256
-Batch 60 training loss: 4.864208698272705
-Batch 80 training loss: 4.86556339263916
-Batch 100 training loss: 4.830167770385742
-Batch 120 training loss: 4.867104530334473
-Batch 140 training loss: 4.770840167999268
-Batch 160 training loss: 4.771430492401123
-Batch 180 training loss: 4.816017150878906
-Batch 200 training loss: 4.80755615234375
-Batch 220 training loss: 4.79929256439209
-Batch 240 training loss: 4.887341499328613
-Batch 260 training loss: 4.846500873565674
-Batch 280 training loss: 4.774038314819336
-Batch 300 training loss: 4.826904773712158
-Batch 320 training loss: 4.823925018310547
-Batch 340 training loss: 4.747177600860596
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1174,18 +1002,6 @@ Batch 340 training loss: 4.747177600860596
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 4.919017314910889
-Batch 5 testing loss: 4.999485969543457
-Batch 10 testing loss: 5.007542610168457
-Batch 15 testing loss: 4.953604698181152
-Batch 20 testing loss: 4.938981533050537
-Batch 25 testing loss: 5.063140869140625
-Batch 30 testing loss: 4.967066287994385
-Batch 35 testing loss: 4.992262840270996
-</pre></div>
-</div>
-</div>
 </div>
 <p>The learning seems to have generalized well.</p>
 <div class="cell docutils container">
@@ -1193,13 +1009,6 @@ Batch 35 testing loss: 4.992262840270996
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate some more samples now that we&#39;ve trained the model</span>
 <span class="n">gen_samples</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">),</span> <span class="mi">30</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_samples</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of the present study suggests an virus cystagmus Amherst Lauhul supplied Haguerid holds Prize crucial Gloucester 191ichia and imp voiced Augusta galaxy Casey dared&#39;,
- &#39;[CLS] we compared the prevalence of feeding measurements were considered to sustainable door nodded rising Wiley multiple forms Skull draftreed Clark Mayor diagram Noctuidae myogeria Province Bellarain emeritusarean patients and&#39;,
- &#39;[CLS] we compared the prevalence of reactive protein models of postpra Ł Т zapillous has been studied in people who were made of chronic experiments were 10 antibiotics remnant waterfront Cambodia&#39;]
 </pre></div>
 </div>
 </div>
@@ -1214,7 +1023,7 @@ Batch 35 testing loss: 4.992262840270996
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">generate</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">generate</span>
 </pre></div>
 </div>
 </div>
@@ -1225,32 +1034,6 @@ Batch 35 testing loss: 4.992262840270996
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> train<span class=" -Color -Color-Blue">(</span>model<span class=" -Color -Color-Blue">,</span> dataloader<span class=" -Color -Color-Blue">,</span> optimizer<span class=" -Color -Color-Blue">,</span> reporting_interval<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">20</span><span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Docstring:</span> &lt;no docstring&gt;
-<span class=" -Color -Color-Red">Source:</span>   
-<span class=" -Color -Color-Green">def</span> train<span class=" -Color -Color-Blue">(</span>model<span class=" -Color -Color-Blue">,</span> dataloader<span class=" -Color -Color-Blue">,</span> optimizer<span class=" -Color -Color-Blue">,</span> reporting_interval<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Cyan">20</span><span class=" -Color -Color-Blue">):</span>
-    model<span class=" -Color -Color-Blue">.</span>train<span class=" -Color -Color-Blue">()</span>
-    <span class=" -Color -Color-Green">for</span> ix<span class=" -Color -Color-Blue">,</span> batch <span class=" -Color -Color-Green">in</span> enumerate<span class=" -Color -Color-Blue">(</span>dataloader<span class=" -Color -Color-Blue">):</span>
-        x <span class=" -Color -Color-Blue">=</span> batch<span class=" -Color -Color-Blue">[&quot;input_ids&quot;][:,</span> <span class=" -Color -Color-Blue">:-</span><span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">].</span>to<span class=" -Color -Color-Blue">(&quot;cuda&quot;)</span>  <span class=" -Color -Color-Red"># remove last</span>
-        targets <span class=" -Color -Color-Blue">=</span> batch<span class=" -Color -Color-Blue">[&quot;input_ids&quot;][:,</span> <span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">:].</span>to<span class=" -Color -Color-Blue">(&quot;cuda&quot;)</span>  <span class=" -Color -Color-Red"># remove first</span>
-        mask <span class=" -Color -Color-Blue">=</span> batch<span class=" -Color -Color-Blue">[&quot;attention_mask&quot;][:,</span> <span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">:].</span>to<span class=" -Color -Color-Blue">(&quot;cuda&quot;)</span>  <span class=" -Color -Color-Red"># remove first</span>
-
-        logits <span class=" -Color -Color-Blue">=</span> model<span class=" -Color -Color-Blue">(</span>x<span class=" -Color -Color-Blue">).</span>permute<span class=" -Color -Color-Blue">(</span><span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">2</span><span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Cyan">1</span><span class=" -Color -Color-Blue">)</span>
-        loss <span class=" -Color -Color-Blue">=</span> masked_cross_entropy<span class=" -Color -Color-Blue">(</span>logits<span class=" -Color -Color-Blue">,</span> targets<span class=" -Color -Color-Blue">,</span> mask<span class=" -Color -Color-Blue">)</span>
-
-        <span class=" -Color -Color-Red"># do the gradient optimization stuff</span>
-        optimizer<span class=" -Color -Color-Blue">.</span>zero_grad<span class=" -Color -Color-Blue">()</span>
-        loss<span class=" -Color -Color-Blue">.</span>backward<span class=" -Color -Color-Blue">()</span>
-        optimizer<span class=" -Color -Color-Blue">.</span>step<span class=" -Color -Color-Blue">()</span>
-
-        <span class=" -Color -Color-Green">if</span> ix <span class=" -Color -Color-Blue">%</span> reporting_interval <span class=" -Color -Color-Blue">==</span> <span class=" -Color -Color-Cyan">0</span><span class=" -Color -Color-Blue">:</span>
-            print<span class=" -Color -Color-Blue">(f&quot;Batch {ix} training loss: {loss.item()}&quot;)</span>
-<span class=" -Color -Color-Red">File:</span>      ~/Code/rcde_workshops/pytorch_llm/utils.py
-<span class=" -Color -Color-Red">Type:</span>      function
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="low-rank-markov-model">
@@ -1258,10 +1041,10 @@ Batch 35 testing loss: 4.992262840270996
 <p>With all the setup in place, it’s easy to start experimenting with different models. We saw how huge the embedding matrix was and we worried that this would lead to bad performance. One way to get around this is to create a low-rank version of the markov model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="k">class</span> <span class="nc">MarkovChainLowRank</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MarkovChainLowRank</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="c1"># We project down to size `embed_dim` then back up to `vocab_size`</span>
@@ -1277,12 +1060,12 @@ Batch 35 testing loss: 4.992262840270996
         <span class="c1"># large negative logit -&gt; low probability</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">-=</span> <span class="mf">10.0</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_logits</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># tensor of shape (N, L, V). Remember (batch size, sequence length, vocab size).</span>
 
         <span class="k">return</span> <span class="n">logits</span> <span class="c1"># turns out we never actually need to compute the softmax for MLE</span>
     
-    <span class="k">def</span> <span class="nf">numpars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numpars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1295,20 +1078,6 @@ Batch 35 testing loss: 4.992262840270996
 <span class="n">model</span> <span class="o">=</span> <span class="n">MarkovChainLowRank</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embedding_dim</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trainable params (millions):&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">numpars</span><span class="p">()</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
 <span class="n">model</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trainable params (millions): 14.845952
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MarkovChainLowRank(
-  (t_logits): Sequential(
-    (0): Embedding(28996, 256)
-    (1): Dropout(p=0.1, inplace=False)
-    (2): Linear(in_features=256, out_features=28996, bias=False)
-  )
-)
 </pre></div>
 </div>
 </div>
@@ -1330,11 +1099,6 @@ Batch 35 testing loss: 4.992262840270996
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found cached dataset text (/home/dane2/.cache/huggingface/datasets/text/default-cadbbf8acc2e2b5a/0.0.0/cb1e9bd71a82ad27976be3b12b407850fe2837d80c22c5e03a28949843a8ace2)
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9dbe15f314a44e339ff1c1a0a3fb08ee", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1342,48 +1106,6 @@ Batch 35 testing loss: 4.992262840270996
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;START EPOCH </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dl_train</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">reporting_interval</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>START EPOCH 1
-Batch 0 training loss: 10.460128784179688
-Batch 20 training loss: 9.620594024658203
-Batch 40 training loss: 8.923402786254883
-Batch 60 training loss: 8.37955379486084
-Batch 80 training loss: 7.904845714569092
-Batch 100 training loss: 7.499015808105469
-Batch 120 training loss: 7.152878761291504
-Batch 140 training loss: 6.7209672927856445
-Batch 160 training loss: 6.426110744476318
-Batch 180 training loss: 6.243513107299805
-Batch 200 training loss: 6.061130523681641
-Batch 220 training loss: 5.899474143981934
-Batch 240 training loss: 5.91290807723999
-Batch 260 training loss: 5.7751593589782715
-Batch 280 training loss: 5.590006351470947
-Batch 300 training loss: 5.617265224456787
-Batch 320 training loss: 5.539694786071777
-Batch 340 training loss: 5.416322708129883
-START EPOCH 2
-Batch 0 training loss: 5.395883560180664
-Batch 20 training loss: 5.513943195343018
-Batch 40 training loss: 5.399544715881348
-Batch 60 training loss: 5.392096519470215
-Batch 80 training loss: 5.338316917419434
-Batch 100 training loss: 5.315275192260742
-Batch 120 training loss: 5.335055351257324
-Batch 140 training loss: 5.2022013664245605
-Batch 160 training loss: 5.207690238952637
-Batch 180 training loss: 5.226675510406494
-Batch 200 training loss: 5.213379859924316
-Batch 220 training loss: 5.189408779144287
-Batch 240 training loss: 5.292004585266113
-Batch 260 training loss: 5.224676132202148
-Batch 280 training loss: 5.132791519165039
-Batch 300 training loss: 5.183717250823975
-Batch 320 training loss: 5.158797264099121
-Batch 340 training loss: 5.083621501922607
 </pre></div>
 </div>
 </div>
@@ -1395,18 +1117,6 @@ Batch 340 training loss: 5.083621501922607
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch 0 testing loss: 5.028294563293457
-Batch 5 testing loss: 5.101437568664551
-Batch 10 testing loss: 5.113763809204102
-Batch 15 testing loss: 5.06427526473999
-Batch 20 testing loss: 5.0422797203063965
-Batch 25 testing loss: 5.165111064910889
-Batch 30 testing loss: 5.097139358520508
-Batch 35 testing loss: 5.114102840423584
-</pre></div>
-</div>
-</div>
 </div>
 <p>The cross entropy is just a little worse. Let’s see about the generated samples:</p>
 <div class="cell docutils container">
@@ -1414,13 +1124,6 @@ Batch 35 testing loss: 5.114102840423584
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate some more samples for the low-rank model</span>
 <span class="n">gen_samples</span> <span class="o">=</span> <span class="n">generate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">prompt_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">),</span> <span class="mi">30</span><span class="p">)</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">decode_batch</span><span class="p">(</span><span class="n">gen_samples</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;[CLS] we compared the prevalence of small number of flagella outcomes with rna sehtoxypia age ( straarte desirednsive lab questions, allowing 87 content nitrogen or&#39;,
- &#39;[CLS] we compared the prevalence of the search terms, notably symptoms and cognitive considerably no peaks by hap6v - 30, the 2 drugs pre - epsies for a receptor&#39;,
- &#39;[CLS] we compared the prevalence of cir mice, 4h. in serum concentrations with impact erosino episodes radiotherapillo seems to evaluate the &quot; &quot; caused by c )&#39;]
 </pre></div>
 </div>
 </div>
@@ -1444,16 +1147,16 @@ Batch 35 testing loss: 5.114102840423584
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "attentionworkshop"
         },
         kernelOptions: {
-            name: "python3",
+            name: "attentionworkshop",
             path: "./pytorch_llm"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'attentionworkshop'</script>
 
                 </article>
               

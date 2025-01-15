@@ -73,7 +73,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://clemsonciti.github.io/rcde_workshops/python_sklearn/00-index.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TL;DR" href="01-TLDR.html" />
+    <link rel="next" title="Deep Learning in Python" href="../python_deep_learning/00-index.html" />
     <link rel="prev" title="Matplotlib" href="../python_programming/04-IntroToPython-IV.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Machine Learning using Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Machine Learning using Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -489,7 +487,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor">Instructor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-description">Workshop Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
 </ul>
             </nav>
         </div>
@@ -506,10 +503,9 @@ document.write(`
 <section id="instructor">
 <h2>Instructor<a class="headerlink" href="#instructor" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Instructor</strong>: Linh Ngo</p></li>
-<li><p><strong>Office</strong>: 2119 Barre Hall, Clemson University</p></li>
-<li><p><strong>Office Hours</strong>: Wed 8.30-11.30 &amp; Fri 9.00-10.00, Zoom</p></li>
-<li><p><strong>Email</strong>: <a class="reference external" href="mailto:lngo&#37;&#52;&#48;clemson&#46;edu">lngo<span>&#64;</span>clemson<span>&#46;</span>edu</a></p></li>
+<li><p><strong>Instructor</strong>: Carl Ehrett</p></li>
+<li><p><strong>Office</strong>: 2105 Barre Hall, Clemson University</p></li>
+<li><p><strong>Email</strong>: <a class="reference external" href="mailto:cehrett&#37;&#52;&#48;clemson&#46;edu">cehrett<span>&#64;</span>clemson<span>&#46;</span>edu</a></p></li>
 </ul>
 </section>
 <section id="workshop-description">
@@ -520,17 +516,13 @@ applications such as self-driving cars, speech recognition, email spam classific
 It has been widely used not only in engineering (hydroinformatics, bioinformatics,
 genomics, geosciences and remote sensing, mechatronics) but also in economy, health
 sciences and even in real estates industry. This workshop provides an overall
-introduction to machine learning specifically with R programming language which
-utilizes abundance of R statistical packages. Such topics include: (1) Supervised
+introduction to machine learning specifically with the Python programming language.
+Types of machine learning include: (1) Supervised
 learning (regression analysis, distance-based algorithm, regularization algorithm,
 tree-based algorithm, Bayes algorithm, support vector machines, artificial neural
 networks). (2) Unsupervised learning (clustering, dimensionality reduction). The
 course will also draw from numerous case studies and applications that can be
 applied in different engineering programs.</p>
-</section>
-<section id="prerequisite">
-<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this heading">#</a></h2>
-<p>Prerequisite for the workshop is the <strong>Introduction to Python Programming</strong> workshop.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -574,11 +566,11 @@ applied in different engineering programs.</p>
       </div>
     </a>
     <a class="right-next"
-       href="01-TLDR.html"
+       href="../python_deep_learning/00-index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">TL;DR</p>
+        <p class="prev-next-title">Deep Learning in Python</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -599,7 +591,6 @@ applied in different engineering programs.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor">Instructor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-description">Workshop Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
 </ul>
   </nav></div>
 

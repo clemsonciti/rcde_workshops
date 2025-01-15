@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -538,15 +536,15 @@ arithmetic average of a vector:</p></li>
 <ul class="simple">
 <li><p>Syntax:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">arg</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">argument</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">arg</span><span class="p">){</span>
+<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">argument</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Example:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">squareroot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">squareroot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">){</span>
 <span class="w">  </span><span class="n">a</span><span class="o">^</span><span class="m">0.5</span>
 <span class="p">}</span>
 <span class="nf">squareroot</span><span class="p">(</span><span class="m">49</span><span class="p">)</span>
@@ -558,15 +556,15 @@ arithmetic average of a vector:</p></li>
 <ul class="simple">
 <li><p>Syntax:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">arg1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">arg2</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">){</span>
+<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">arg1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">arg2</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Example:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Addtwo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Addtwo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">){</span>
 <span class="w">  </span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
 <span class="p">}</span>
 <span class="nf">Addtwo</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
@@ -578,9 +576,9 @@ arithmetic average of a vector:</p></li>
 <ul class="simple">
 <li><p>Syntax:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
-<span class="w">  </span><span class="n">f1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">args</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
+<span class="w">  </span><span class="n">f1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">args</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -588,9 +586,9 @@ arithmetic average of a vector:</p></li>
 <li><p>For example:</p></li>
 </ul>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to convert oF to oC</span>
-<span class="n">F2C</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
+<span class="n">F2C</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
 <span class="w">   </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">((</span><span class="n">temp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">9</span><span class="p">))</span>
-<span class="w">   </span><span class="nf">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nf">F2C</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
 </pre></div>
@@ -601,8 +599,8 @@ arithmetic average of a vector:</p></li>
 <ul class="simple">
 <li><p>Syntax:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
-<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">args</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">args</span><span class="p">){</span>
+<span class="w">  </span><span class="n">do</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">args</span>
 <span class="w">  </span><span class="n">out1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">do1</span>
 <span class="w">  </span><span class="n">out2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">do2</span><span class="w">  </span>
 <span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">out1</span><span class="o">=</span><span class="n">out1</span><span class="p">,</span><span class="n">out2</span><span class="o">=</span><span class="n">out2</span><span class="p">)</span>
@@ -613,10 +611,10 @@ arithmetic average of a vector:</p></li>
 <li><p>Example: a function which converts polar coordinates to
 Cartesian coordinates</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function </span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 <span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
 <span class="p">}</span>
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span>
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span>
@@ -625,10 +623,10 @@ Cartesian coordinates</p></li>
 <ul class="simple">
 <li><p>Let’s specify the names of the two outputs:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function </span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">xcoord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 <span class="w">  </span><span class="n">ycoord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xcoord</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">ycoord</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xcoord</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">ycoord</span><span class="p">))</span>
 <span class="p">}</span>
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span>
 <span class="nf">polar2cart</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="kc">pi</span><span class="o">/</span><span class="m">6</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span>
@@ -670,10 +668,10 @@ consumption <code class="docutils literal notranslate"><span class="pre">mpg</sp
 and throw an error if something is wrong.</p></li>
 <li><p>For example:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">F2C</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">F2C</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">temp</span><span class="p">){</span>
 <span class="w">   </span><span class="nf">stopifnot</span><span class="p">(</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span><span class="o">==</span><span class="kc">TRUE</span><span class="p">)</span>
 <span class="w">   </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">((</span><span class="n">temp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">9</span><span class="p">))</span>
-<span class="w">   </span><span class="nf">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="w">   </span><span class="kr">return</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nf">F2C</span><span class="p">(</span><span class="m">100</span><span class="n">a</span><span class="p">)</span>
 <span class="nf">F2C</span><span class="p">(</span><span class="m">100</span><span class="p">)</span>
@@ -700,10 +698,10 @@ use the <code class="docutils literal notranslate"><span class="pre">Terminal</s
 <li><p>Then, in the R studio Editor, copy-and-paste the <code class="docutils literal notranslate"><span class="pre">polar2cart</span></code>
 function:</p></li>
 </ul>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function </span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">polar2cart</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
 <span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 </div>

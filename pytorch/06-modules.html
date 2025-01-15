@@ -174,8 +174,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Atrributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
@@ -243,11 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-TLDR.html">TL;DR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-preparing-data.html">Preparing data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-partitioning-data.html">Data partition: training and testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-regression-example.html">Model Pipelines in Sklearn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -505,8 +503,8 @@ document.write(`
 <p>The <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> subpackage in PyTorch contains many neural network building blocks called “modules”. We can compose these in arbitrary ways to build network architectures tailored to a given problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 
 <span class="c1"># do everything on gpu unless we explicitly say otherwise</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">set_default_device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
@@ -533,18 +531,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sequential(
-  (0): Linear(in_features=10, out_features=10, bias=True)
-  (1): Tanh()
-  (2): Linear(in_features=10, out_features=10, bias=True)
-  (3): Tanh()
-  (4): Linear(in_features=10, out_features=3, bias=True)
-  (5): Sigmoid()
-)
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code>, <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code>, <code class="docutils literal notranslate"><span class="pre">nn.Tanh</span></code>, and <code class="docutils literal notranslate"><span class="pre">nn.Sigmoid</span></code> are all examples of modules. There are many more. You can see a full list here: <a class="reference external" href="https://pytorch.org/docs/stable/nn.html">https://pytorch.org/docs/stable/nn.html</a></p>
 <p><strong>Callable.</strong> All modules are <em>callable</em>, meaning they can be evaluated like a function:</p>
@@ -556,34 +542,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.2067, -0.1036, -0.0760,  0.1359,  0.1805],
-        [-0.7918,  0.2130,  0.5677, -0.1730,  0.6101],
-        [ 0.3045, -0.1712, -0.2181,  0.1504, -0.0715],
-        [-0.0092, -0.1449, -0.2185,  0.2841,  0.0868],
-        [ 1.0998, -0.0064, -0.1398,  0.6454,  0.4840],
-        [ 0.0100, -0.4746, -0.8649,  0.5077, -0.4945],
-        [ 0.8390, -0.2072, -0.4667,  0.6762,  0.2141]], device=&#39;cuda:0&#39;,
-       grad_fn=&lt;AddmmBackward0&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
 <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.0721, -0.4746,  0.3835, -0.3337],
-        [-0.8418, -0.8637, -0.7904, -0.7616],
-        [ 0.8242, -0.2777,  0.2174, -0.1672],
-        [ 0.4278, -0.6650, -0.3149,  0.0979],
-        [ 0.0996,  0.6908,  0.6997,  0.4332],
-        [ 0.9625, -0.8417, -0.5027,  0.7079],
-        [ 0.2415,  0.0522,  0.6528,  0.5939]], device=&#39;cuda:0&#39;)
 </pre></div>
 </div>
 </div>
@@ -595,12 +558,6 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before: cuda:0
-After: cpu
 </pre></div>
 </div>
 </div>
@@ -623,33 +580,12 @@ After: cpu
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before: cuda:0
-After: cpu
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sequential(
-  (0): Linear(in_features=10, out_features=10, bias=True)
-  (1): Tanh()
-  (2): Linear(in_features=10, out_features=3, bias=True)
-)
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>Saving/loading</strong>. Model weights can be saved to and loaded from disc. There are a few ways to do this. The recommended way is to just save the weights using the “state dict” object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.weight torch.Size([10, 10])
-0.bias torch.Size([10])
-2.weight torch.Size([3, 10])
-2.bias torch.Size([3])
 </pre></div>
 </div>
 </div>
@@ -668,12 +604,6 @@ After: cpu
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<pre class="output stream literal-block">PKmodel_weights/data.pklFZZZZZZZZ�ccollections
-OrderedDict
-q)Rq(0.weightqctorch._utils
-</pre>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,12 +614,7 @@ q)Rq(0.weightqctorch._utils
     <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">model2</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;model_weights.pt&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;All keys matched successfully&gt;
+<span class="n">model2</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;model_weights.pt&#39;</span><span class="p">,</span> <span class="n">weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -709,6 +634,7 @@ q)Rq(0.weightqctorch._utils
 </div>
 </div>
 </div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">model.state_dict()</span></code> to save weights offers greater flexibility and compatibility, as it separates the model’s parameters from its architecture, making it easy to update the model class or share weights. This approach results in smaller files and better portability across environments or versions of PyTorch, whereas saving the entire model (<code class="docutils literal notranslate"><span class="pre">torch.save(model,</span> <span class="pre">...)</span></code>) is simpler but less adaptable to changes.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">eval</span></code>/<code class="docutils literal notranslate"><span class="pre">train</span></code> modes.</strong> Some layers need to behave differently at training time and evaluation time. These can all be toggled with the <code class="docutils literal notranslate"><span class="pre">train()</span></code> and <code class="docutils literal notranslate"><span class="pre">eval()</span></code> methods:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -721,31 +647,12 @@ q)Rq(0.weightqctorch._utils
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.1891,  0.3391,  0.8269,  1.6241,  0.7730],
-        [ 0.1412,  0.7913, -0.5472,  0.4971, -0.1926],
-        [-0.9877, -0.7166, -0.0323, -0.2046,  1.9819]], device=&#39;cuda:0&#39;)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3782,  0.0000,  0.0000,  3.2482,  0.0000],
-        [ 0.0000,  1.5826, -1.0944,  0.9942, -0.3851],
-        [-0.0000, -1.4331, -0.0000, -0.0000,  0.0000]], device=&#39;cuda:0&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># switch to eval:</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.1891,  0.3391,  0.8269,  1.6241,  0.7730],
-        [ 0.1412,  0.7913, -0.5472,  0.4971, -0.1926],
-        [-0.9877, -0.7166, -0.0323, -0.2046,  1.9819]], device=&#39;cuda:0&#39;)
 </pre></div>
 </div>
 </div>
@@ -758,13 +665,6 @@ q)Rq(0.weightqctorch._utils
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3782,  0.6783,  1.6537,  3.2482,  1.5461],
-        [ 0.2823,  0.0000, -1.0944,  0.0000, -0.3851],
-        [-0.0000, -1.4331, -0.0646, -0.4092,  3.9638]], device=&#39;cuda:0&#39;)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="writing-custom-modules">
@@ -772,8 +672,8 @@ q)Rq(0.weightqctorch._utils
 <p>You can make your own modules. To do so, subclass <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> and define the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and <code class="docutils literal notranslate"><span class="pre">forward</span></code> method. These modules can be used just like any other module.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NeuralNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NeuralNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The __init__ method defines all of the modules/parameters that will </span>
 <span class="sd">        appear in the model.</span>
@@ -793,7 +693,7 @@ q)Rq(0.weightqctorch._utils
             <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Define how to get from the input to the output. </span>
 <span class="sd">        You can use arbitrary python code here so long as the </span>
@@ -809,24 +709,6 @@ q)Rq(0.weightqctorch._utils
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NeuralNetwork(
-  (flatten): Flatten(start_dim=1, end_dim=-1)
-  (encoder): Sequential(
-    (0): Linear(in_features=784, out_features=512, bias=True)
-    (1): ReLU()
-    (2): Linear(in_features=512, out_features=512, bias=True)
-    (3): ReLU()
-    (4): Linear(in_features=512, out_features=256, bias=True)
-    (5): ReLU()
-  )
-  (classifier): Sequential(
-    (0): Linear(in_features=256, out_features=1, bias=True)
-  )
-)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,21 +719,12 @@ q)Rq(0.weightqctorch._utils
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.1180],
-        [0.0702],
-        [0.0694],
-        [0.1116],
-        [0.1236]], device=&#39;cuda:0&#39;, grad_fn=&lt;AddmmBackward0&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>You can customize your network however you see fit. For example, say we had a problem where the network took two images as input and made some decision about them. We could do something like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PairNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PairNetwork</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The __init__ method defines all of the modules/parameters that will </span>
 <span class="sd">        appear in the model.</span>
@@ -871,7 +744,7 @@ q)Rq(0.weightqctorch._utils
             <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">256</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># double the representation size</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Define how to get from the input to the output. </span>
 <span class="sd">        You can use arbitrary python code here so long as the </span>
@@ -894,24 +767,6 @@ q)Rq(0.weightqctorch._utils
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PairNetwork(
-  (flatten): Flatten(start_dim=1, end_dim=-1)
-  (encoder): Sequential(
-    (0): Linear(in_features=784, out_features=512, bias=True)
-    (1): ReLU()
-    (2): Linear(in_features=512, out_features=512, bias=True)
-    (3): ReLU()
-    (4): Linear(in_features=512, out_features=256, bias=True)
-    (5): ReLU()
-  )
-  (classifier): Sequential(
-    (0): Linear(in_features=512, out_features=1, bias=True)
-  )
-)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -923,26 +778,12 @@ q)Rq(0.weightqctorch._utils
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.0418],
-        [ 0.0130],
-        [-0.0402],
-        [ 0.0025],
-        [ 0.0232]], device=&#39;cuda:0&#39;, grad_fn=&lt;AddmmBackward0&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>Tracking parameters</strong> Pytorch automatically tracks all of the parameters that appear in your custom model. This allows Pytorch to optimize the network during training. It allows can allow you to get diagnostic information such as the number of parameters in your model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_pars</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of parameters:&quot;</span><span class="p">,</span> <span class="n">num_pars</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of parameters: 796161
 </pre></div>
 </div>
 </div>
@@ -959,16 +800,16 @@ q)Rq(0.weightqctorch._utils
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "pytorchworkshop"
         },
         kernelOptions: {
-            name: "python3",
+            name: "pytorchworkshop",
             path: "./pytorch"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'pytorchworkshop'</script>
 
                 </article>
               
