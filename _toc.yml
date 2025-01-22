@@ -16,6 +16,8 @@ parts:
       - file: intro_linux/04-working_with_files_and_directories.md
       - file: intro_linux/04a-file-permissions.md
       - file: intro_linux/05-pipes.md
+      - file: intro_linux/05a-environment-variables.md
+      - file: intro_linux/05b-bashrc.md
       - file: intro_linux/06-find.md
       - file: intro_linux/07-utilities.md
       - file: intro_linux/08-conclusion.md
@@ -111,7 +113,7 @@ parts:
     - file: pytorch_llm/02-small_language_model.ipynb
     - file: pytorch_llm/03-attention_is_all_you_need.ipynb
     - file: pytorch_llm/04-other_topics.ipynb
-   
+
 - caption: Advanced Palmetto Usage
   chapters:
     - file: containers/00-index.md
