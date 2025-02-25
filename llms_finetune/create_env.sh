@@ -9,7 +9,7 @@
 module load miniforge3
 module load cuda
 
-export ENV_NAME=LLMsFT  
+export ENV_NAME=LLMsFT
 
 # Create environment
 conda create --yes --name $ENV_NAME python=3.10
