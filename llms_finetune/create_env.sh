@@ -32,5 +32,8 @@ pip3 install datasets==3.2.0
 pip3 install peft==0.14.0
 pip3 install wandb==0.19.6
 
+# Register the environment as a Jupyter kernel
+python -m ipykernel install --user --name $ENV_NAME --display-name "Python ($ENV_NAME)"
+
 echo "Done! $ENV_NAME environment created."
 
