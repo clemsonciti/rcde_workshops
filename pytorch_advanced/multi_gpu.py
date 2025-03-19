@@ -1,9 +1,38 @@
 # This script demonstrates multi-gpu training with Pytorch Lightning
-# D. Hudson Smith, 2023
+# D. Hudson Smith, 2023, modified C. Ehrett 2025
 
 # SLURM requests for running this script:
+# Interactively:
 # salloc --nodes=1 --ntasks-per-node=1 --cpus-per-task=10 --mem-per-cpu=2GB --gpus=a100:2 --time=1:00:00 
-# srun --nodes=1 --ntasks-per-node=1 --cpus-per-task=10 --mem-per-cpu=2GB --gpus=a100:2 --time=1:00:00 module load anaconda3 && source activate pytorch_bench && python multi_gpu.py
+#
+# Via srun:
+# srun --nodes=1 --ntasks-per-node=1 --cpus-per-task=10 --mem-per-cpu=2GB --gpus=a100:2 --time=1:00:00 bash -c "module load anaconda3 && source activate PytorchWorkshop && python multi_gpu.py"
+#
+# Via sbatch:
+# Save the following as `run_multi_gpu.sbatch` and submit it using `sbatch run_multi_gpu.sbatch`
+# ---------------------------------
+# #!/bin/bash
+# #SBATCH --job-name=multi_gpu_training
+# #SBATCH --nodes=1
+# #SBATCH --ntasks-per-node=1
+# #SBATCH --cpus-per-task=10
+# #SBATCH --mem-per-cpu=2GB
+# #SBATCH --gpus=a100:2
+# #SBATCH --time=1:00:00
+# #SBATCH --output=multi_gpu_training.out
+# #SBATCH --error=multi_gpu_training.err
+#
+# # Load necessary modules
+# module load anaconda3
+#
+# # Activate the environment
+# source activate PytorchWorkshop
+#
+# # Run the script
+# python multi_gpu.py
+# ------------------------------------
+# Now run that script as follows:
+# sbatch run_multi_gpu.sbatch
 
 #
 # Library imports
