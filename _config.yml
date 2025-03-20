@@ -16,6 +16,10 @@ execute:
     - 'python_sklearn/*.ipynb'
     - 'pytorch_advanced/*.ipynb'
     - 'pytorch_llm/*.ipynb'
+    - 'llms_inference/*.ipynb'
+    - 'llms_finetune/*.ipynb'
+    - 'pytorch_advanced/*.ipynb'
+    - 'hpc_python/*.ipynb'
 
 # Define the name of the latex output file for PDF builds
 latex:
