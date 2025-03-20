@@ -89,6 +89,7 @@ parts:
       - file: python_big_data/02-cluster.md
       - file: python_big_data/03-notebooks.md
     - file: hpc_python/00-index.md
+      sections:
       - file: hpc_python/01-Intro_To_Polars.ipynb
       - file: hpc_python/02-Python_GPU.ipynb
       - file: hpc_python/03-Multinode.ipynb
