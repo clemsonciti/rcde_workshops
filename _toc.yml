@@ -88,6 +88,11 @@ parts:
       - file: python_big_data/01-introduction.md
       - file: python_big_data/02-cluster.md
       - file: python_big_data/03-notebooks.md
+    - file: hpc_python/00-index.md
+      - file: hpc_python/01-Intro_To_Polars.ipynb
+      - file: hpc_python/02-Python_GPU.ipynb
+      - file: hpc_python/03-Multinode.ipynb
+      - file: hpc_python/04-Debugging_and_Performance_Tuning.ipynb
 - caption: Deep Learning
   chapters:
   - file: pytorch/00-index.md
@@ -100,6 +105,7 @@ parts:
     - file: pytorch/05-datasets.ipynb
     - file: pytorch/06-modules.ipynb
     - file: pytorch/07-cnn_emnist.ipynb
+    - file: pytorch/08-nlp_application.ipynb
   - file: pytorch_advanced/00-index.md
     sections:
     - file: pytorch_advanced/01-emnist_baseline.ipynb
@@ -107,12 +113,28 @@ parts:
     - file: pytorch_advanced/03-finetune_pretrained_models.ipynb
     - file: pytorch_advanced/04-pytorch_lightning.ipynb
     - file: pytorch_advanced/05-training_techniques.ipynb
+
+- caption: Large language models (LLMs)
+  chapters:
   - file: pytorch_llm/00-index.md
     sections:
     - file: pytorch_llm/01-data.ipynb
     - file: pytorch_llm/02-small_language_model.ipynb
     - file: pytorch_llm/03-attention_is_all_you_need.ipynb
     - file: pytorch_llm/04-other_topics.ipynb
+  - file: llms_inference/00-index.md
+    sections:
+    - file: llms_inference/01-background.ipynb
+    - file: llms_inference/02-mwe.ipynb
+    - file: llms_inference/03-efficiency.ipynb
+  - file: llms_finetune/00-index.md
+    sections:
+    - file: llms_finetune/01-alternatives.ipynb
+    - file: llms_finetune/02-data_prep.ipynb
+    - file: llms_finetune/03-full_finetune.ipynb
+    - file: llms_finetune/04-peft.ipynb
+    - file: llms_finetune/05-logging.ipynb
+    - file: llms_finetune/06-multigpu.ipynb
 
 - caption: Advanced Palmetto Usage
   chapters:
