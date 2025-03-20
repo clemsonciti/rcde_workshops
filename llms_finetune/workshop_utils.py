@@ -125,3 +125,46 @@ def data_collator(features, tokenizer):
         "labels": labels,
         "attention_mask": attention_mask,
     }
+
+
+# This last function is just to help display powerpoint slides inline in the Jupyter notebooks.
+from IPython.display import display, HTML
+
+def display_pdf(pdf_filename, folder="slides", width=1000, height=800):
+    """
+    Display a PDF in an iframe with a fallback message if the PDF fails to load.
+
+    Parameters:
+    - pdf_filename (str): The filename of the PDF (e.g., "Slides1.pdf").
+    - folder (str): The folder where PDFs are stored (default: "slides").
+    - width (int): The width of the iframe (default: 1000).
+    - height (int): The height of the iframe (default: 800).
+    """
+
+    pdf_path = f"{folder}/{pdf_filename}"
+
+    html_code = f"""
+    <div id="pdf-container">
+        <iframe src="{pdf_path}" width="{width}" height="{height}" onerror="showFallback()" id="pdf-frame"></iframe>
+    </div>
+    <div id="fallback-message" style="display: none;">
+        <p><strong>⚠️ Unable to load PDF.</strong></p>
+        <p>Please <a href="{pdf_path}" target="_blank">click here</a> to open it in a new tab.</p>
+    </div>
+    <script>
+        function showFallback() {{
+            document.getElementById("pdf-container").style.display = "none";
+            document.getElementById("fallback-message").style.display = "block";
+        }}
+
+        // Timeout at 1.5s
+        setTimeout(function() {{
+            var iframe = document.getElementById("pdf-frame");
+            if (!iframe.contentDocument || iframe.contentDocument.body.childElementCount === 0) {{
+                showFallback();
+            }}
+        }}, 1500);
+    </script>
+    """
+
+    display(HTML(html_code))
