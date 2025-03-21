@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unsupervised Learning Algorithms &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-P6QN6GGV84"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_sklearn/03-Unsupervised_Learning';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://clemsonciti.github.io/rcde_workshops/python_sklearn/03-Unsupervised_Learning.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Supervised Learning Model Evaluation Metrics" href="04-Model_Eval_Metrics.html" />
+    <link rel="prev" title="Introduction to ML Concepts" href="02-Supervised_Learning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Research Computing and Data Workshop - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Research Computing and Data Workshop - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Matplotlib</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Machine Learning using Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-Quickstart.html">Machine Learning in Python using Clemson High Performance Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-Intro_Numpy_Pandas.html">Introduction to Python for Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-Supervised_Learning.html">Introduction to ML Concepts</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unsupervised Learning Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-Model_Eval_Metrics.html">Supervised Learning Model Evaluation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-Data_Preparation.html">Data Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-Scripting_Your_Code.html">Scripting Your Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/01-Intro_To_Polars.html">Introduction to Polars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/02-Python_GPU.html">GPU Acceleration with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/03-Multinode.html">Multi-node Parallelism and Dask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/04-Debugging_and_Performance_Tuning.html">Debugging and Performance Tuning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-high-dimensional-data.html">High Dimensional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/06-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/08-nlp_application.html">Intro to Natural Language Processing</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large language models (LLMs)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/01-data.html">Preparing data for LLM training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/03-attention_is_all_you_need.html">Attention is all you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/04-other_topics.html">Other LLM Topics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_inference/00-index.html">Running LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llms_inference/01-background.html">Running LLMs on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_inference/02-mwe.html">Minimum working example, and what it’s missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_inference/03-efficiency.html">Batching, multi-gpu, and multi-node for large data and large models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/01-alternatives.html">Alternatives to fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/02-data_prep.html">Data preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/03-full_finetune.html">Full fine-tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/04-peft.html">Parameter-efficient Fine-tuning (PEFT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/05-logging.html">Project Logging with Weights and Biases (WandB)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/06-multigpu.html">Efficiency and using multiple GPUs</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/python_sklearn/03-Unsupervised_Learning.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unsupervised Learning Algorithms</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">1. Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-Means Clustering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">2. Dimensionality Reduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-sne">T-SNE</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unsupervised-learning-algorithms">
+<h1>Unsupervised Learning Algorithms<a class="headerlink" href="#unsupervised-learning-algorithms" title="Link to this heading">#</a></h1>
+<p><strong>Unsupervised learning:</strong> finding patterns in data without any labels.</p>
+<p><img alt="unsupervised" src="../_images/kmc.png" /></p>
+<p>Common types of unsupervised learning algorithms include:</p>
+<ul class="simple">
+<li><p>Clustering: grouping similar data points together</p></li>
+<li><p>Dimensionality reduction: reducing the number of features in a dataset</p></li>
+<li><p>Anomaly detection: finding outliers in a dataset</p></li>
+</ul>
+<section id="clustering">
+<h2>1. Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h2>
+<p>Clustering is a common way to discover patterns and subgroups that are interesting in our data. For example, we might want to group customers into segments based on their purchasing behavior, or group documents based on their content. There are many different clustering algorithms. See just a few of those implemented in Scikit-Learn:</p>
+<img src="img/skl_cl.png" alt="clustering" width="85%" /><section id="k-means-clustering">
+<h3>K-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Link to this heading">#</a></h3>
+<p>K-Means is a simple and popular clustering algorithm that is used to partition a dataset into K clusters. The algorithm works by iteratively assigning data points to clusters based on the distance between the data point and the cluster center. The cluster center is then updated to be the mean of all the data points assigned to that cluster. This process is repeated until the algorithm converges.</p>
+<p>We can look at this in action using the Iris dataset, which is a dataset containing information about iris flowers. The dataset contains 150 samples and 4 features. The goal is to cluster the flowers into different groups based on their features. Though we actually know the flower species, for this example we imagine that we don’t – we just have the features, and we want to see if we can group the flowers into clusters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span><span class="p">,</span> <span class="n">calinski_harabasz_score</span><span class="p">,</span> <span class="n">adjusted_rand_score</span><span class="p">,</span> <span class="n">normalized_mutual_info_score</span>
+
+<span class="c1"># Load the iris dataset</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>  <span class="c1"># We&#39;ll use petal length and width</span>
+
+<span class="c1"># Standardize the features</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Perform K-means clustering</span>
+<span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">y_kmeans</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the clustering</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Silhouette Score:&quot;</span><span class="p">,</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_kmeans</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calinski-Harabasz Index:&quot;</span><span class="p">,</span> <span class="n">calinski_harabasz_score</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_kmeans</span><span class="p">))</span>
+
+<span class="c1"># Compare with true labels</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Comparison with true labels:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adjusted Rand Index:&quot;</span><span class="p">,</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">y_kmeans</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Normalized Mutual Information:&quot;</span><span class="p">,</span> <span class="n">normalized_mutual_info_score</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">y_kmeans</span><span class="p">))</span>
+
+<span class="c1"># Define the centroids of the clusters</span>
+<span class="n">centroids</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+<span class="c1"># Create a mapping function. This is only here to make the plots consistent in color.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">map_labels</span><span class="p">(</span><span class="n">y_kmeans</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">):</span>
+        <span class="n">k_indices</span> <span class="o">=</span> <span class="n">y_kmeans</span> <span class="o">==</span> <span class="n">k</span>
+        <span class="n">k_true</span> <span class="o">=</span> <span class="n">y_true</span><span class="p">[</span><span class="n">k_indices</span><span class="p">]</span>
+        <span class="n">mapping</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">k_true</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mapping</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">y_kmeans</span><span class="p">])</span>
+
+<span class="c1"># Apply the mapping</span>
+<span class="n">y_kmeans_mapped</span> <span class="o">=</span> <span class="n">map_labels</span><span class="p">(</span><span class="n">y_kmeans</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+
+<span class="c1"># Plot comparison with true labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_kmeans_mapped</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;K-means Clustering&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_scaled</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centroids</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">centroids</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;True Labels&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see K-Means in action on a more complex dataset. We’ll use the Labeled Faces in the Wild dataset, which is a dataset containing images of faces. The dataset contains 13,233 sample images. We’ll use K-Means to cluster the faces into different groups based on their features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_lfw_people</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">decomposition</span>
+
+<span class="n">lfw_people</span> <span class="o">=</span> <span class="n">fetch_lfw_people</span><span class="p">()</span>
+<span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Global centering (focus on one feature, centering all samples)</span>
+<span class="n">faces_centered</span> <span class="o">=</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Local centering (focus on one sample, centering all features)</span>
+<span class="n">faces_centered</span> <span class="o">-=</span> <span class="n">faces_centered</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset consists of </span><span class="si">%d</span><span class="s2"> faces&quot;</span> <span class="o">%</span> <span class="n">n_samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_row</span><span class="p">,</span> <span class="n">n_col</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">n_components</span> <span class="o">=</span> <span class="n">n_row</span> <span class="o">*</span> <span class="n">n_col</span>
+<span class="n">image_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_gallery</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">n_col</span><span class="o">=</span><span class="n">n_col</span><span class="p">,</span> <span class="n">n_row</span><span class="o">=</span><span class="n">n_row</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+        <span class="n">nrows</span><span class="o">=</span><span class="n">n_row</span><span class="p">,</span>
+        <span class="n">ncols</span><span class="o">=</span><span class="n">n_col</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="mf">2.3</span> <span class="o">*</span> <span class="n">n_row</span><span class="p">),</span>
+        <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+        <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_constrained_layout_pads</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">vec</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="o">-</span><span class="n">vec</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+            <span class="n">vec</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">image_shape</span><span class="p">),</span>
+            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+            <span class="n">vmin</span><span class="o">=-</span><span class="n">vmax</span><span class="p">,</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_gallery</span><span class="p">(</span><span class="s2">&quot;Faces from dataset&quot;</span><span class="p">,</span> <span class="n">faces_centered</span><span class="p">[:</span><span class="n">n_components</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s apply K-Means to the faces dataset. We can then examine the cluster centroids. This centroid will be like the “average” face in the cluster, for each of our clusters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_estimator</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">MiniBatchKMeans</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">kmeans_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">faces_centered</span><span class="p">)</span>
+<span class="n">plot_gallery</span><span class="p">(</span>
+    <span class="s2">&quot;Cluster centers - MiniBatchKMeans&quot;</span><span class="p">,</span>
+    <span class="n">kmeans_estimator</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:</span><span class="n">n_components</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dimensionality-reduction">
+<h2>2. Dimensionality Reduction<a class="headerlink" href="#dimensionality-reduction" title="Link to this heading">#</a></h2>
+<p>Dimensionality reduction is the process of reducing the number of features in a dataset. This can be useful for a number of reasons, including:</p>
+<ul class="simple">
+<li><p>Reducing the computational cost of working with high-dimensional data</p></li>
+<li><p>Reducing the noise in the data</p></li>
+<li><p>Visualizing high-dimensional data in a lower-dimensional space</p></li>
+</ul>
+<section id="pca">
+<h3>PCA<a class="headerlink" href="#pca" title="Link to this heading">#</a></h3>
+<p>Principal Component Analysis (PCA) is a popular dimensionality reduction technique often used for the first two reasons above. It works by finding the directions (or principal components) in which the data varies the most. These directions are then used to transform the data into a lower-dimensional space. PCA is often used before applying other machine learning algorithms to the data, including supervised learning algorithms.</p>
+<p>Why is PCA used this way? Imagine you could construct your ideal ML data set for some phenomenon you’re studying. Three things you’d want:</p>
+<ul class="simple">
+<li><p>High variance features that are</p></li>
+<li><p>Uncorrelated, and are also</p></li>
+<li><p>Few in number.</p></li>
+</ul>
+<p>PCA makes your data more aligned with these three goals. It replaces your original features with new ones that are uncorrelated and ordered by how much variance they explain. So you can keep only the few features that explain most of the variance, and throw away the rest. PCA is implicitly lossy compression.</p>
+<p><img alt="pca" src="../_images/pca.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># Assuming faces_centered is already defined as per your previous code</span>
+
+<span class="c1"># Perform PCA on the entire dataset</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">faces_centered</span><span class="p">)</span>
+
+<span class="c1"># Calculate the cumulative explained variance ratio</span>
+<span class="n">cumulative_variance_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+
+<span class="c1"># Define the variance levels we want to visualize</span>
+<span class="n">variance_levels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1"># Find the number of components needed for each variance level</span>
+<span class="n">n_components_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">cumulative_variance_ratio</span> <span class="o">&gt;=</span> <span class="n">level</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">variance_levels</span><span class="p">]</span>
+
+<span class="c1"># Set up the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Function to reconstruct and plot a face</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_face</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">face</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">variance</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n_components</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">n_components</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pca_partial</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">)</span>
+    <span class="n">face_pca</span> <span class="o">=</span> <span class="n">pca_partial</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">faces_centered</span><span class="p">)</span>
+    <span class="n">face_approximation</span> <span class="o">=</span> <span class="n">pca_partial</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">pca_partial</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">face</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_approximation</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">variance</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1"> variance</span><span class="se">\n</span><span class="s1">(</span><span class="si">{</span><span class="n">n_components</span><span class="si">}</span><span class="s1"> components)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># Choose a random face</span>
+<span class="n">random_face_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">faces_centered</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">face</span> <span class="o">=</span> <span class="n">faces_centered</span><span class="p">[</span><span class="n">random_face_index</span><span class="p">]</span>
+
+<span class="c1"># Plot the face at different variance levels</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">variance</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">n_components_list</span><span class="p">,</span> <span class="n">variance_levels</span><span class="p">):</span>
+    <span class="n">plot_face</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">face</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">variance</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Print out the number of components for each variance level</span>
+<span class="k">for</span> <span class="n">variance</span><span class="p">,</span> <span class="n">n_components</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">variance_levels</span><span class="p">,</span> <span class="n">n_components_list</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">variance</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2"> variance explained by </span><span class="si">{</span><span class="n">n_components</span><span class="si">}</span><span class="s2"> components&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print the total number of samples and features</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dataset consists of </span><span class="si">{</span><span class="n">faces_centered</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> faces&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Each face has </span><span class="si">{</span><span class="n">faces_centered</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> features&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="t-sne">
+<h3>T-SNE<a class="headerlink" href="#t-sne" title="Link to this heading">#</a></h3>
+<p>Dimensionality reduction is also used to visualize high-dimensional data in a lower-dimensional space. One popular technique for this is t-distributed Stochastic Neighbor Embedding (t-SNE). It works by modeling the similarity between data points in the high-dimensional space and the low-dimensional space. t-SNE is often used to visualize high-dimensional data in two or three dimensions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_openml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Load MNIST dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading MNIST dataset...&quot;</span><span class="p">)</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">mnist</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># Convert target to integer</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Take a subset of the data to speed up computation</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">random_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X_subset</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">random_idx</span><span class="p">]</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">random_idx</span><span class="p">]</span>
+
+<span class="c1"># Normalize the data</span>
+<span class="n">X_normalized</span> <span class="o">=</span> <span class="n">X_subset</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="c1"># Apply t-SNE</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Applying t-SNE...&quot;</span><span class="p">)</span>
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;pca&#39;</span><span class="p">)</span>
+<span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_normalized</span><span class="p">)</span>
+
+<span class="c1"># Create a color map</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">))</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="c1"># Plot the t-SNE results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y_subset</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;t-SNE visualization of MNIST dataset&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t-SNE feature 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;t-SNE feature 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add a legend</span>
+<span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Digit </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+                   <span class="n">markerfacecolor</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Digits&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Function to plot some example digits</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_example_digits</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_examples</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_examples</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_examples</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray_r&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Digit: </span><span class="si">{</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot example digits</span>
+<span class="n">plot_example_digits</span><span class="p">(</span><span class="n">X_subset</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t-SNE visualization complete!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "hpc_ml"
+        },
+        kernelOptions: {
+            name: "hpc_ml",
+            path: "./python_sklearn"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'hpc_ml'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-Supervised_Learning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to ML Concepts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-Model_Eval_Metrics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Supervised Learning Model Evaluation Metrics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering">1. Clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-Means Clustering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-reduction">2. Dimensionality Reduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-sne">T-SNE</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

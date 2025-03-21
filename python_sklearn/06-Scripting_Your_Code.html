@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scripting Your Code &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-P6QN6GGV84"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_sklearn/06-Scripting_Your_Code';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://clemsonciti.github.io/rcde_workshops/python_sklearn/06-Scripting_Your_Code.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deep Learning in Python" href="../python_deep_learning/00-index.html" />
+    <link rel="prev" title="Data Preparation" href="05-Data_Preparation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Research Computing and Data Workshop - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Research Computing and Data Workshop - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Matplotlib</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Machine Learning using Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00-Quickstart.html">Machine Learning in Python using Clemson High Performance Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-Intro_Numpy_Pandas.html">Introduction to Python for Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-Supervised_Learning.html">Introduction to ML Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-Unsupervised_Learning.html">Unsupervised Learning Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-Model_Eval_Metrics.html">Supervised Learning Model Evaluation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-Data_Preparation.html">Data Preparation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Scripting Your Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/01-Intro_To_Polars.html">Introduction to Polars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/02-Python_GPU.html">GPU Acceleration with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/03-Multinode.html">Multi-node Parallelism and Dask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/04-Debugging_and_Performance_Tuning.html">Debugging and Performance Tuning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-high-dimensional-data.html">High Dimensional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/06-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/08-nlp_application.html">Intro to Natural Language Processing</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large language models (LLMs)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/01-data.html">Preparing data for LLM training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/03-attention_is_all_you_need.html">Attention is all you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/04-other_topics.html">Other LLM Topics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_inference/00-index.html">Running LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llms_inference/01-background.html">Running LLMs on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_inference/02-mwe.html">Minimum working example, and what it’s missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_inference/03-efficiency.html">Batching, multi-gpu, and multi-node for large data and large models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/01-alternatives.html">Alternatives to fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/02-data_prep.html">Data preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/03-full_finetune.html">Full fine-tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/04-peft.html">Parameter-efficient Fine-tuning (PEFT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/05-logging.html">Project Logging with Weights and Biases (WandB)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/06-multigpu.html">Efficiency and using multiple GPUs</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/python_sklearn/06-Scripting_Your_Code.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scripting Your Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-notebook-directly-as-a-script">1. Running your notebook directly as a script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-your-notebook-to-a-script">2. Converting your notebook to a script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpointing">3. Checkpointing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-allocation">4. Resource allocation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="scripting-your-code">
+<h1>Scripting Your Code<a class="headerlink" href="#scripting-your-code" title="Link to this heading">#</a></h1>
+<p>Once you have drafted the code to prepare your data, split it and train/evaluate your model, you should package your code into a script that you can run via SLURM.</p>
+<p>This will allow you to submit your job to the cluster and have it run asynchronously, without needing to keep your notebook open. It will also allow you to run your code on a larger dataset, or with more iterations, than you could do interactively.</p>
+<p>What is different about running your code as a script vs. in a notebook? You need to ensure each of the following:</p>
+<ul class="simple">
+<li><p>Your code runs from top to bottom without needing any manual intervention</p></li>
+<li><p>Your code load the full dataset, not just a sample</p></li>
+<li><p>Your code checks for unexpected conditions and handles them gracefully</p></li>
+<li><p>Your code logs information about what it is doing, so you can debug it later if needed</p></li>
+<li><p>For long jobs, your code checkpoints its progress so that it can resume where it left off if it is interrupted</p></li>
+<li><p>Make sure any desired outputs (plots, model files, etc.) are saved to disk (rather than merely displayed in the notebook)</p></li>
+<li><p>Figure out what resources you need to request</p></li>
+</ul>
+<p>Let’s look at a couple of ways of converting code you developed in Jupyter into a SLURM-submittable script, and then dive into some of the above considerations.</p>
+<section id="running-your-notebook-directly-as-a-script">
+<h2>1. Running your notebook directly as a script<a class="headerlink" href="#running-your-notebook-directly-as-a-script" title="Link to this heading">#</a></h2>
+<p>Probably the easiest route to converting your notebook is just to run it directly as a job on the cluster. This is possible with the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>notebook<span class="w"> </span>--execute<span class="w"> </span>--inplace<span class="w"> </span><span class="o">[</span>notebook_filename<span class="o">]</span>.ipynb
+</pre></div>
+</div>
+<p>where you would replace <code class="docutils literal notranslate"><span class="pre">notebook_filename</span></code> with whatever your notebook filename is. In a full SLURM script, this command might appear as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name my-job-name</span>
+<span class="c1">#SBATCH --nodes 1</span>
+<span class="c1">#SBATCH --cpus-per-task 4</span>
+<span class="c1">#SBATCH --gpus-per-node v100:1</span>
+<span class="c1">#SBATCH --mem 8gb</span>
+<span class="c1">#SBATCH --time 08:00:00</span>
+
+module<span class="w"> </span>load<span class="w"> </span>anaconda
+
+<span class="nb">cd</span><span class="w"> </span>/path/to/your/notebook
+
+jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>notebook<span class="w"> </span>--execute<span class="w"> </span>--inplace<span class="w"> </span><span class="o">[</span>notebook_filename<span class="o">]</span>.ipynb
+</pre></div>
+</div>
+<p>Notice that in this case I’ve determined that my code can make use of 4 cores each on 2 nodes, as well as a V100 GPU on each node. I’ve also requested 8GB of memory and 8 hours of runtime. You should adjust these values based on your needs.</p>
+</section>
+<section id="converting-your-notebook-to-a-script">
+<h2>2. Converting your notebook to a script<a class="headerlink" href="#converting-your-notebook-to-a-script" title="Link to this heading">#</a></h2>
+<p>The preferred coding practice would be to convert your notebook into a script yourself. If you have worked with Jupyter notebooks but not with .py scripts, you can think of the latter as being one big cell in a notebook. In fact, you can even make sure your code runs in a single Jupyter cell (including checkpoints, logging, etc.), and then simply copy that cell into a .py file.</p>
+</section>
+<section id="checkpointing">
+<h2>3. Checkpointing<a class="headerlink" href="#checkpointing" title="Link to this heading">#</a></h2>
+<p>If your code is going to take a long time to run, you should consider checkpointing it. This means saving the state of your code at regular intervals, so that if it is interrupted, you can resume from the last checkpoint rather than starting over from the beginning.</p>
+<p>What exactly this looks like will depend on what you are doing. If you are searching over possible hyperparameters to find the best ones, then you should keep track of which hyperparameters you have tried and what the results were. See the below toy example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Define hyperparameters to test</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span>
+
+<span class="c1"># Define the results file, where we&#39;ll save the information about which hyperparameters we&#39;ve already tested</span>
+<span class="n">results_file</span> <span class="o">=</span> <span class="s1">&#39;results.csv&#39;</span>
+
+<span class="c1"># Load existing results we&#39;ve already computed</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">results_file</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">done</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">row</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c1"># Train models and save results for each set of hyperparameters not already tested</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span> <span class="s1">&#39;max_depth&#39;</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n_estimators</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">max_depth</span><span class="p">))</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">done</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n_estimators=</span><span class="si">{</span><span class="n">n_estimators</span><span class="si">}</span><span class="s2">, max_depth=</span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">, accuracy=</span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results saved to </span><span class="si">{</span><span class="n">results_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we have a long training run, we might want to save the model at regular intervals. This is especially important if we are training a model that takes a long time to train, or if we are training on a large dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="c1"># Define a simple neural network model</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NNModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">NNModel</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># Make some random data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Input data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Target data</span>
+
+<span class="n">best_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Forward pass</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Backward pass</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    
+    <span class="c1"># Track best model</span>
+    <span class="k">if</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">best_loss</span><span class="p">:</span>
+        <span class="n">best_loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New best model found with loss: </span><span class="si">{</span><span class="n">best_loss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">({</span>
+            <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">best_model</span><span class="p">,</span>
+            <span class="s1">&#39;optimizer&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span><span class="p">,</span>
+            <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="n">best_loss</span>
+        <span class="p">},</span> <span class="s1">&#39;best_model.pt&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">({</span>
+            <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="s1">&#39;optimizer&#39;</span><span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span><span class="p">,</span>
+            <span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="p">},</span> <span class="sa">f</span><span class="s1">&#39;checkpoint_</span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">.pt&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training complete. Best model saved.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resource-allocation">
+<h2>4. Resource allocation<a class="headerlink" href="#resource-allocation" title="Link to this heading">#</a></h2>
+<p>In order to effectively run your code on the cluster, you need to request the appropriate resources. This includes the number of nodes, the number of cores per node, the amount of memory, the amount of time, and the type of GPU.</p>
+<p><strong>When multiple cores help:</strong></p>
+<ul class="simple">
+<li><p>When you are running multiple independent jobs</p></li>
+<li><p>When you are running a single job that can be parallelized (check the documentation!)</p></li>
+<li><p>When you are running a single job that can be parallelized, but the parallelization is not built into the code (e.g. you are running multiple instances of the code with different hyperparameters)</p></li>
+</ul>
+<p><strong>When multiple cores don’t help:</strong></p>
+<ul class="simple">
+<li><p>When you are running a single job that cannot be parallelized</p></li>
+<li><p>When you haven’t written your code to take advantage of multiple cores</p></li>
+</ul>
+<p><strong>When a GPU helps:</strong></p>
+<ul class="simple">
+<li><p>When you are running a deep learning model</p></li>
+<li><p>When you are running a model that can be accelerated by a GPU (check the documentation!)</p></li>
+</ul>
+<p><strong>When a GPU doesn’t help:</strong></p>
+<ul class="simple">
+<li><p>When you are running a model that is not accelerated by a GPU</p></li>
+<li><p>When you haven’t written your code to take advantage of a GPU</p></li>
+</ul>
+<p><strong>How much memory to request:</strong></p>
+<ul class="simple">
+<li><p>This depends on the size of your dataset and the size of your model, as well as whether you are using a GPU. E.g., if you are using a large language model, you might need a big GPU but not much memory. If you are using a large dataset, you might need a lot of memory but not a big GPU.</p></li>
+</ul>
+<p>Be sure to use the <code class="docutils literal notranslate"><span class="pre">jobperf</span></code> command to check how much memory your job is using. E.g., <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">-n</span> <span class="pre">2</span> <span class="pre">jobperf</span> <span class="pre">[jobid]</span></code> will show you how much memory your job is using every 2 seconds.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "hpc_ml"
+        },
+        kernelOptions: {
+            name: "hpc_ml",
+            path: "./python_sklearn"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'hpc_ml'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05-Data_Preparation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Preparation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../python_deep_learning/00-index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deep Learning in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-your-notebook-directly-as-a-script">1. Running your notebook directly as a script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-your-notebook-to-a-script">2. Converting your notebook to a script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checkpointing">3. Checkpointing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-allocation">4. Resource allocation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

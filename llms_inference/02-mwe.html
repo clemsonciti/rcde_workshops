@@ -1,0 +1,1199 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Minimum working example, and what it’s missing &#8212; Research Computing and Data Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-P6QN6GGV84"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'llms_inference/02-mwe';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://clemsonciti.github.io/rcde_workshops/llms_inference/02-mwe.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Batching, multi-gpu, and multi-node for large data and large models" href="03-efficiency.html" />
+    <link rel="prev" title="Running LLMs on Palmetto" href="01-background.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Research Computing and Data Workshop - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Research Computing and Data Workshop - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Research Computing and Data Workshops
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/03-file-system.html">Navigating Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04-working_with_files_and_directories.html">Working With Files and Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/04a-file-permissions.html">File Permissions and Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05-pipes.html">Pipes and Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05a-environment-variables.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/05b-bashrc.html">.bashrc and Environment Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/06-find.html">Finding Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/04-storage.html">Storage on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/05-interactive.html">Running an interactive job on Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/06-file-transfer.html">Transferring files to and from Palmetto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/04-Matrix.html">Vectors, Matrices, Lists and Data Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/05-Control-Structure.html">Control Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/06-Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/07-Parallel-Computing.html">Parallel Computing in R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/08-Basic-Plotting.html">Basic plotting with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/04-Caret-Evaluation-Metrics.html">Evaluation Metrics with caret</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/05-Training_Regression.html">Training Machine Learning model using Regression Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/06-Decision_boundaries.html">Classification with decision boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/07-KNN.html">Nearest Neighbours Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/08-Training_Tree.html">Training Machine Learning model using Tree-based model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/09-Training_Ensemble.html">Training Machine Learning model using Ensemble approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/02-IntroToPython-II.html">Introduction to Python II</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/03-IntroToPython-III.html">Introduction to Python III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_programming/04-IntroToPython-IV.html">Matplotlib</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_sklearn/00-index.html">Machine Learning using Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/00-Quickstart.html">Machine Learning in Python using Clemson High Performance Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/01-Intro_Numpy_Pandas.html">Introduction to Python for Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/02-Supervised_Learning.html">Introduction to ML Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/03-Unsupervised_Learning.html">Unsupervised Learning Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/04-Model_Eval_Metrics.html">Supervised Learning Model Evaluation Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/05-Data_Preparation.html">Data Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_sklearn/06-Scripting_Your_Code.html">Scripting Your Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/04-Intro-to-Keras.html">Introduction to Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/05-Keras-Regression.html">Training Deep Learning Regression model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/06-Keras-Classification.html">Training Deep Learning Classification model with Keras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/07-Convolution-Neural-Network.html">Convolution Neural Network for image classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/01-Intro_To_Polars.html">Introduction to Polars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/02-Python_GPU.html">GPU Acceleration with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/03-Multinode.html">Multi-node Parallelism and Dask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hpc_python/04-Debugging_and_Performance_Tuning.html">Debugging and Performance Tuning</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/03-regression_and_classification.html">Regression and Classification with Fully Connected Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/04-high-dimensional-data.html">High Dimensional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/05-datasets.html">Datasets and data loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/06-modules.html">Building the network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/07-cnn_emnist.html">Computer Vision and Convolutional Neural Networks</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../pytorch/08-nlp_application.html">Intro to Natural Language Processing</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Large language models (LLMs)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/01-data.html">Preparing data for LLM training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/03-attention_is_all_you_need.html">Attention is all you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/04-other_topics.html">Other LLM Topics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Running LLMs on Palmetto</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-background.html">Running LLMs on Palmetto</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Minimum working example, and what it’s missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-efficiency.html">Batching, multi-gpu, and multi-node for large data and large models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/01-alternatives.html">Alternatives to fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/02-data_prep.html">Data preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/03-full_finetune.html">Full fine-tune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/04-peft.html">Parameter-efficient Fine-tuning (PEFT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/05-logging.html">Project Logging with Weights and Biases (WandB)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../llms_finetune/06-multigpu.html">Efficiency and using multiple GPUs</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/04-install-git.html">Installing Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/05-example.html">Practice With a Local Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/06-gitlab.html">GitLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/llms_inference/02-mwe.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Minimum working example, and what it’s missing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-to-directly-loading-model-and-tokenizer">Switch to directly loading model and tokenizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-inputs-to-model-generate-that-affect-the-model-output">Setting inputs to <code class="docutils literal notranslate"><span class="pre">model.generate</span></code> that affect the model output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-a-system-prompt-and-chat-template">Specifying a system prompt and chat template</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-fine-tuning">Instruction fine-tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-prompts-and-user-prompts">System prompts and user prompts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-the-model-s-outputs">Controlling the model’s outputs</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="minimum-working-example-and-what-it-s-missing">
+<h1>Minimum working example, and what it’s missing<a class="headerlink" href="#minimum-working-example-and-what-it-s-missing" title="Link to this heading">#</a></h1>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<p>After setting up our access to the Huggingface Hub (see notebook 1) – and after requesting and receiving access to any <a class="reference external" href="https://huggingface.co/docs/hub/en/models-gated">gated models</a> that we want to use – we are ready to dive into the code for running these LLMs on the cluster.</p>
+<p>The below code cell constitutes a minimum working example (MWE) of LLM text generation on the cluster. Let’s read through it line by line to make sure we understand what is happening.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="n">model_id</span> <span class="o">=</span> <span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+    <span class="s2">&quot;text-generation&quot;</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model_id</span>
+<span class="p">)</span>
+
+<span class="n">pipe</span><span class="p">(</span><span class="s2">&quot;How do you exit Vim? I&#39;m stuck&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some limitations to note here:</p>
+<ol class="arabic simple">
+<li><p>We aren’t explicitly setting the device. Thankfully, <code class="docutils literal notranslate"><span class="pre">transformers</span></code> automatically detects our GPU and puts the model there, but it is good to be explicit.</p></li>
+<li><p>We have a strange message telling us that the <code class="docutils literal notranslate"><span class="pre">pad_token_id</span></code> is being set automatically.</p></li>
+<li><p>We little control in this code over what exactly our prompt is.</p></li>
+<li><p>We’re not yet using tuneable parameters such as <code class="docutils literal notranslate"><span class="pre">temperature</span></code> or <code class="docutils literal notranslate"><span class="pre">top_k</span></code>.</p></li>
+<li><p>We’re not specifying a system prompt.</p></li>
+<li><p>We’re not using a chat prompt template.</p></li>
+<li><p>We’re not exercising any control over what the model’s outputs are.</p></li>
+<li><p>We’re not using <em>batch processing</em>, which means this code will be very inefficient if we want to generate outputs for many input prompts instead of just one.</p></li>
+</ol>
+<p>In what follows, we’re going to talk about each of these points, and how to set up your code in a way that demystifies what the model is doing, gives you greater control so you can achieve higher quality output, and more efficiently use compute resources.</p>
+<p>As before, we’ll clear the model from memory, so we don’t run into any Cuda out-of-memory errors in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear the pipeline from memory</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">del</span> <span class="n">pipe</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="switch-to-directly-loading-model-and-tokenizer">
+<h2>Switch to directly loading model and tokenizer<a class="headerlink" href="#switch-to-directly-loading-model-and-tokenizer" title="Link to this heading">#</a></h2>
+<p>In order to have finer-grained control and insight into our code and what is happening with the model, it is recommended that we abandon the <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> class and instead directly load our tokenizer and model ourselves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForCausalLM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="c1"># Load tokenizer and model</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This makes things clearer because now we have our model and tokenizer as separate objects, and each of them is pretty simple. When we want complex things to happen, we want them to happen in a way that we understand and control, not in the hidden way that <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> facilitates.</p>
+<p>But this does have costs. Notice that unlike <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>, loading the model this way doesn’t automatically put it on the GPU:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, we need to be explicit about putting it there ourselves. Let’s load the model again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear the model from memory</span>
+<span class="k">del</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForCausalLM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="c1"># Load tokenizer and model</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;meta-llama/Llama-3.2-1B-Instruct&quot;</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s better. Now, we can see the tokenizer directly in action. Let’s leave the model aside, and just look at what the tokenizer does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at each of these tokens individually:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tokenizer</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]:</span>
+    <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">decoded_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, the tokenizer has already added one token, a special beginning token that tells the model that a text document is starting. These tokenized <code class="docutils literal notranslate"><span class="pre">input_ids</span></code> are what we will provide as input to the model. The model will then try to predict (over and over) what is the <em>next token</em> that should follow the tokens that we provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer_output</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="s1">&#39;Hello world! I am ready to&#39;</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer_output</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span>
+                               <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">tokenizer_output</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">]</span>
+                              <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We got more token ids as output – a sequence that starts with the tokens from our input sequence. Let’s see what the tokens say, when decoded. Just to make everything as clear as possible, let’s decode the tokens one at a time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">8</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">decoded_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see the same output printed more cleanly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we don’t want the special tokens in there, we can tell the tokenizer that when it decodes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-inputs-to-model-generate-that-affect-the-model-output">
+<h2>Setting inputs to <code class="docutils literal notranslate"><span class="pre">model.generate</span></code> that affect the model output<a class="headerlink" href="#setting-inputs-to-model-generate-that-affect-the-model-output" title="Link to this heading">#</a></h2>
+<p>Let’s take stock of what we’ve seen so far. You now can use code to:</p>
+<ol class="arabic simple">
+<li><p>Load the model</p></li>
+<li><p>Load the tokenizer</p></li>
+<li><p>Put the model on the GPU</p></li>
+<li><p>Get tokenized inputs</p></li>
+<li><p>Verify exactly what your model inputs are</p></li>
+<li><p>Get model outputs</p></li>
+<li><p>Convert your model output tokens back into natural language</p></li>
+</ol>
+<p>However, so far, we’re still using default model settings. We’re using a default output length, a default temperature, and a default <code class="docutils literal notranslate"><span class="pre">top_k</span></code> value. We’re not using a system prompt, and we’re not using a chat prompt template. We’re not exercising any control over what the model’s outputs are. We’re not using batch processing, which means this code will be very inefficient if we want to generate outputs for many input prompts instead of just one. Let’s address these issues, starting with setting explicit inputs to <code class="docutils literal notranslate"><span class="pre">model.generate</span></code> that affect the model output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer_output</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span>
+                               <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">tokenizer_output</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">],</span>
+                               <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+                               <span class="n">max_new_tokens</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+                               <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                               <span class="n">temperature</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+                               <span class="n">top_k</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+                               <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">top_k</span></code> vs <code class="docutils literal notranslate"><span class="pre">temperature</span></code></strong>: These are two parameters that can be used to control the randomness of the model’s output. <code class="docutils literal notranslate"><span class="pre">top_k</span></code> is a hard cutoff on the number of tokens that the model can consider for the next token. <code class="docutils literal notranslate"><span class="pre">temperature</span></code> is a soft control on the randomness of the model’s output.</p>
+<p>There are more settings that you can rely on: see the <a class="reference external" href="https://huggingface.co/docs/transformers/v4.47.1/en/main_classes/text_generation#transformers.GenerationConfig">documentation</a> for more information.</p>
+</section>
+<section id="specifying-a-system-prompt-and-chat-template">
+<h2>Specifying a system prompt and chat template<a class="headerlink" href="#specifying-a-system-prompt-and-chat-template" title="Link to this heading">#</a></h2>
+<p>So far, we have not been using the model we’ve loaded “correctly”. This model is intended to be used with a system prompt and following a very specific chat template.</p>
+<p>The model still can only ever accept inputs that are strings of tokens, but as an <em>instruction fine-tuned model</em>, this model expects those strings of tokens to represent a system prompt followed by some nonzero number of turns a conversation between a user and itself, the AI assistant. Each of those things – the system prompt, and each turn of the conversation – it expects to be delimited by special tokens. To explore this, let’s step back and discuss <em>instruction fine-tuning</em> and then see the impact of system prompts and chat templates on the model’s output.</p>
+<section id="instruction-fine-tuning">
+<h3>Instruction fine-tuning<a class="headerlink" href="#instruction-fine-tuning" title="Link to this heading">#</a></h3>
+<p>A crucial distinction when working with LLMs is between models which are, and models which are not, <em>instruction fine-tuned</em>. First, consider models which are not instruction fine-tuned. These are “base” LLMs, which are pure next-token predictors. They are very simply trained to do the following: Look at a string of text, and predict what comes next in that text. Base models like this can be extremely powerful for some applications.</p>
+<p><strong>Question:</strong> Why would a base model tend to perform poorly in <em>chatbot</em>-style applications?</p>
+<p>Consider giving a base LLM a string of text like “What sorts of things do tigers like to eat?” If you encountered this text some random place on the internet, how might the text continue?</p>
+<p>Instruction fine-tuned models are base LLMs that receive an extra round of a different kind of training. This extra training no longer simply involves trying to predict what the next bit of text would be. Instruction fine-tuned models are trained to expect to generate a very, very specific form of text: text output by a helpful, intelligent AI assistant as part of a conversation with a human.</p>
+<p>So when we give a prompt <code class="docutils literal notranslate"><span class="pre">prompt_string</span></code> to an instruction-tuned LLM, instead of answering the question:</p>
+<blockquote>
+<div><p>Given that one sees <code class="docutils literal notranslate"><span class="pre">prompt_string</span></code> somewhere on the internet, what text would be likely to follow it?</p>
+</div></blockquote>
+<p>it instead is answering the question:</p>
+<blockquote>
+<div><p>Given that a conversation between a helpful AI assistant and a human begins with <code class="docutils literal notranslate"><span class="pre">prompt_string</span></code>, how would the helpful AI continue the next bit of the conversation?</p>
+</div></blockquote>
+<p>For instruction fine-tuned models, the system prompt is a crucial part of the input prompt string.</p>
+</section>
+<section id="system-prompts-and-user-prompts">
+<h3>System prompts and user prompts<a class="headerlink" href="#system-prompts-and-user-prompts" title="Link to this heading">#</a></h3>
+<p>When you interact with an LLM chatbot such as ChatGPT, Claude or Gemini, you provide a prompt. Casual LLM users may not be aware, however, that this is only part of the <em>full</em> prompt that is given to the LLM. The full prompt is actually a concatenation of two parts: the <em>system prompt</em> and the <em>user prompt</em>.  What you type into the chatbot interface is only the user prompt.</p>
+<p>The system prompt is a fixed string that is prepended to the user prompt before the full prompt is given to the LLM. The system prompt is used to set the context for the user prompt. For example, the system prompt might be something like</p>
+<blockquote>
+<div><p>You are a helpful chatbot. Today’s date is 2025-01-25. You are talking to a human. Be friendly and helpful, but do not give them medical advice or help them write malicious software code.</p>
+</div></blockquote>
+<p>So, if you, a user, type in:</p>
+<blockquote>
+<div><p>Hey, what should I take for a rapidly worsening cough and headache?</p>
+</div></blockquote>
+<p>The LLM will “see” the instructions in the system prompt followed by that user message, and will then try to “predict”, token by token, what would be written by a helpful chatbot in that situation.</p>
+<p>When you use e.g. ChatGPT through its web interface, you can neither see nor control the system prompt. Gaining this control is one of many reasons to work with LLMs through code rather than through a web interface. <strong>This control is especially important for scientific research using LLMs.</strong> If OpenAI changes their system prompt tomorrow, your user prompts will get different results from what they get today, and the nature of that difference will be opaque to you! This is not a good situation for reproducibility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s define a system prompt.</span>
+<span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;You are a helpful AI assistant. </span><span class="se">\</span>
+<span class="s2">You answer the user&#39;s questions clearly and politely. </span><span class="se">\</span>
+<span class="s2">If the user says or implies that they are hungry, </span><span class="se">\</span>
+<span class="s2">try to convince them to buy a Burger King Whopper.&quot;&quot;&quot;</span>
+
+<span class="c1"># And a user prompt, for the start of a conversation.</span>
+<span class="n">user_prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Hello, I&#39;m stuck in Vim. How do I exit? </span><span class="se">\</span>
+<span class="s2">I need to resolve this quickly because I am starving.&quot;&quot;&quot;</span>
+
+<span class="c1"># We can specify the system prompts and any previous turns of the conversation as a list of dicts.</span>
+<span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_prompt</span><span class="p">},</span>
+            <span class="p">]</span>
+
+<span class="c1"># We can now use the tokenizer&#39;s `apply_chat_template` method to encode the conversation.</span>
+<span class="c1"># This will add the special tokens and segment IDs needed for the model to understand the conversation.</span>
+<span class="n">encoded_input</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s see the resulting encoded input, first token by token, then all together.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">encoded_input</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">8</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">decoded_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoded_input</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+
+
+<span class="n">With</span> <span class="n">this</span> <span class="n">sequence</span> <span class="n">of</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">when</span> <span class="n">the</span> <span class="n">model</span> <span class="n">starts</span> <span class="n">predicting</span> <span class="n">new</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">what</span> <span class="n">should</span> <span class="n">its</span> <span class="n">first</span> <span class="n">predictions</span> <span class="n">be</span><span class="err">?</span> <span class="n">What</span> <span class="n">do</span> <span class="n">you</span> <span class="n">think</span> <span class="n">should</span> <span class="n">be</span> <span class="n">the</span> <span class="n">first</span> <span class="n">three</span> <span class="ow">or</span> <span class="n">four</span> <span class="n">tokens</span> <span class="n">that</span> <span class="n">the</span> <span class="n">model</span> generates<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s check what the first four tokens are that the model generates using this input.</span>
+<span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">encoded_input</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">8</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">decoded_token</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For most applications, instruction-tuned models are better. But instruction-tuned models are always trained on a specific <em>chat template</em> that structures the conversation between the human and the AI. <strong>If you use the wrong chat template, the model will still respond, but its responses will be poorer.</strong></p>
+<p>Let’s see this in action.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correct chat template:</span>
+<span class="n">correct_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;|begin_of_text|&gt;&lt;|start_header_id|&gt;system&lt;|end_header_id|&gt;</span>
+
+<span class="s2">Cutting Knowledge Date: December 2023</span>
+<span class="s2">Today Date: 24 Jan 2025</span>
+
+<span class="si">{system_prompt}</span><span class="s2">&lt;|eot_id|&gt;&lt;|start_header_id|&gt;user&lt;|end_header_id|&gt;</span>
+
+<span class="si">{user_prompt}</span><span class="s2">&lt;|eot_id|&gt;&quot;&quot;&quot;</span>
+
+
+<span class="c1"># Incorrect chat template:</span>
+<span class="n">incorrect_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.</span>
+
+<span class="s2">### Instruction:</span>
+<span class="si">{system_prompt}</span>
+
+<span class="s2">### Input:</span>
+<span class="si">{user_prompt}</span><span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s use these two templates to query the model, with these system and user prompts</span>
+<span class="n">system_prompt</span> <span class="o">=</span> <span class="s2">&quot;You are a helpful assistant. You answer the user&#39;s questions.&quot;</span>
+<span class="n">user_prompt</span> <span class="o">=</span> <span class="s2">&quot;Can you please provide an elegant proof of Euler&#39;s formula?&quot;</span>
+
+<span class="n">correct_template_formatted</span> <span class="o">=</span> <span class="n">correct_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">system_prompt</span><span class="o">=</span><span class="n">system_prompt</span><span class="p">,</span> <span class="n">user_prompt</span><span class="o">=</span><span class="n">user_prompt</span><span class="p">)</span>
+<span class="n">incorrect_input_formatted</span> <span class="o">=</span> <span class="n">incorrect_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">system_prompt</span><span class="o">=</span><span class="n">system_prompt</span><span class="p">,</span> <span class="n">user_prompt</span><span class="o">=</span><span class="n">user_prompt</span><span class="p">)</span>
+
+<span class="c1"># from transformers import AutoTokenizer, AutoModelForCausalLM</span>
+<span class="c1"># import torch</span>
+
+<span class="c1"># # Load tokenizer and model</span>
+<span class="c1"># tokenizer = AutoTokenizer.from_pretrained(&quot;meta-llama/Llama-3.2-1B-Instruct&quot;)</span>
+<span class="c1"># model = AutoModelForCausalLM.from_pretrained(&quot;meta-llama/Llama-3.2-1B-Instruct&quot;, device_map=&quot;auto&quot;)</span>
+
+<span class="c1"># Set the padding token if it&#39;s not defined (some models still need this)</span>
+<span class="k">if</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token</span>
+
+<span class="c1"># Tokenize the chat templates</span>
+<span class="n">correct_inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">correct_template_formatted</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+<span class="n">incorrect_inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">incorrect_input_formatted</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate responses for the entire batch</span>
+<span class="n">correct_template_output_ids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">correct_inputs</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span> 
+                                             <span class="n">attention_mask</span><span class="o">=</span><span class="n">correct_inputs</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">],</span> 
+                                             <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                             <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                                             <span class="n">temperature</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                             <span class="n">pad_token_id</span><span class="o">=</span><span class="mi">50256</span><span class="p">)</span>
+
+<span class="n">incorrect_template_output_ids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">incorrect_inputs</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span>
+                                               <span class="n">attention_mask</span><span class="o">=</span><span class="n">incorrect_inputs</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">],</span>
+                                               <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                               <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                                               <span class="n">temperature</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                               <span class="n">pad_token_id</span><span class="o">=</span><span class="mi">50256</span><span class="p">)</span>
+
+<span class="c1"># Decode responses</span>
+<span class="n">correct_template_response</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">ids</span> <span class="ow">in</span> <span class="n">correct_template_output_ids</span><span class="p">]</span>
+<span class="n">incorrect_template_response</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">ids</span> <span class="ow">in</span> <span class="n">incorrect_template_output_ids</span><span class="p">]</span>
+
+<span class="c1"># Print each generated response</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CORRECT TEMPLATE:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">correct_template_response</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;#&#39;</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;INCORRECT TEMPLATE:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">incorrect_template_response</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the correct chat template is crucial. In the case of common, popular models, Hugging Face has already provided the correct chat template for you, as it did above. But in general, you should be aware of whether a chat template was used for your model and if so, which one.</p>
+</section>
+</section>
+<section id="controlling-the-model-s-outputs">
+<h2>Controlling the model’s outputs<a class="headerlink" href="#controlling-the-model-s-outputs" title="Link to this heading">#</a></h2>
+<p>In addition to inputs like <code class="docutils literal notranslate"><span class="pre">temperature</span></code> and <code class="docutils literal notranslate"><span class="pre">top_k</span></code> which can affect the quality of the model’s generations for your use-case, there are also ways to impose more direct control over the model’s outputs. For example, you can forbid certain tokens, require certain tokens, or write the beginning of the model’s response yourself.</p>
+<p>Reasons for exercising this control include:</p>
+<ol class="arabic simple">
+<li><p>Ensuring that the model’s output is appropriate for your use-case.</p></li>
+<li><p>Ensuring that the model’s output is safe.</p></li>
+<li><p>Making your generations more efficient by writing portions yourself instead of having the model generate them.</p></li>
+<li><p>Inducing the model to follow a certain format, or a certain style of writing.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Forbid tokens</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_tokens_as_list</span><span class="p">(</span><span class="n">word_list</span><span class="p">):</span>
+    <span class="s2">&quot;Converts a sequence of words into a list of tokens&quot;</span>
+    <span class="k">if</span> <span class="n">word_list</span> <span class="o">==</span> <span class="p">[]:</span> <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">tokens_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_list</span><span class="p">:</span>
+        <span class="n">tokenized_word</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">([</span><span class="n">word</span><span class="p">],</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">input_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">tokens_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokenized_word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens_list</span>
+
+<span class="n">bad_word_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; vi&quot;</span><span class="p">,</span>  <span class="s2">&quot; vim&quot;</span><span class="p">,</span> <span class="s2">&quot; Vim&quot;</span><span class="p">,</span> <span class="s2">&quot; VIM&quot;</span><span class="p">,</span> <span class="s2">&quot; Vi&quot;</span><span class="p">,</span> <span class="s2">&quot;Vim&quot;</span><span class="p">,</span> <span class="s2">&quot;VIM&quot;</span><span class="p">,</span> <span class="s2">&quot;(VIM)&quot;</span><span class="p">]</span>
+
+<span class="n">bad_tokens</span> <span class="o">=</span> <span class="n">get_tokens_as_list</span><span class="p">(</span><span class="n">bad_word_list</span><span class="p">)</span>
+
+<span class="c1"># Generate a response; it should exclude our forbidden tokens.</span>
+<span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">encoded_input</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bad_words_ids</span><span class="o">=</span><span class="n">bad_tokens</span><span class="p">,</span> <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">8</span><span class="si">}</span><span class="s1">: </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">decoded_token</span><span class="si">}</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Forbidden tokens:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bad_tokens</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+        <span class="n">decoded_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">j</span><span class="si">:</span><span class="s1">8</span><span class="si">}</span><span class="s1">: </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">decoded_token</span><span class="si">}</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Require tokens</span>
+
+<span class="n">good_word_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; Burger King&quot;</span><span class="p">,</span> <span class="s2">&quot; Whopper&quot;</span><span class="p">,</span> <span class="s2">&quot; delicious&quot;</span><span class="p">]</span>
+<span class="n">good_word_list</span> <span class="o">=</span> <span class="n">good_word_list</span>
+
+<span class="n">good_tokens</span> <span class="o">=</span> <span class="n">get_tokens_as_list</span><span class="p">(</span><span class="n">good_word_list</span><span class="p">)</span>
+
+<span class="c1"># Generate a response; it should include our required tokens.</span>
+<span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">encoded_input</span><span class="p">,</span> 
+                               <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> 
+                               <span class="n">num_beams</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+                               <span class="n">force_words_ids</span><span class="o">=</span><span class="n">good_tokens</span><span class="p">,</span> 
+                               <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+                               <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                              <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the beginning of the model&#39;s response - highly useful</span>
+
+<span class="c1"># First, let&#39;s make sure we have the correct special tokens for the model. </span>
+<span class="n">example_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> 
+                                               <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> 
+                                               <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                                               <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+<span class="c1"># Now, let&#39;s get the tokens for what we want the start of the model&#39;s response to be.</span>
+<span class="n">response_start_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="s2">&quot;Well, before we talk about Vim, let&#39;s sort out this hunger issue. A delicious&quot;</span><span class="p">,</span>
+                                  <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span>
+                                  <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># important! Otherwise we get BoS token</span>
+                                 <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+<span class="c1"># Combine them</span>
+<span class="n">final_input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">example_tokens</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span> <span class="n">response_start_tokens</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">example_tokens</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">],</span> <span class="n">response_start_tokens</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s get the model to continue the response we started.</span>
+<span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">final_input_ids</span><span class="p">,</span>
+                               <span class="n">attention_mask</span><span class="o">=</span><span class="n">attention_mask</span><span class="p">,</span>
+                               <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+                               <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                               <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                              <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is especially helpful when you want to enforce a certain format, such as pure JSON output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># And a user prompt, for the start of a conversation.</span>
+<span class="n">user_prompt_JSON</span> <span class="o">=</span> <span class="s2">&quot;Hello, I&#39;m stuck in Vim. How do I exit? I need to resolve this quickly because I am starving. Please respond in JSON, with keys </span><span class="se">\&quot;</span><span class="s2">Vim_solution</span><span class="se">\&quot;</span><span class="s2"> and </span><span class="se">\&quot;</span><span class="s2">Hunger_solution</span><span class="se">\&quot;</span><span class="s2">.&quot;</span>
+
+<span class="c1"># We can specify the system prompts and any previous turns of the conversation as a list of dicts.</span>
+<span class="n">messages_JSON</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_prompt_JSON</span><span class="p">},</span>
+                 <span class="p">]</span>
+
+<span class="n">encoded_input</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages_JSON</span><span class="p">,</span> 
+                                              <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> 
+                                              <span class="n">return_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                              <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                             <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># Now, let&#39;s get the tokens for what we want the start of the model&#39;s response to be.</span>
+<span class="n">response_start_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;{&quot;Vim_solution&quot;:&#39;</span><span class="p">,</span>
+                                  <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span>
+                                  <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># important! Otherwise we get BoS token</span>
+                                 <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+<span class="c1"># Combine them</span>
+<span class="n">final_input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">encoded_input</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span> <span class="n">response_start_tokens</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">encoded_input</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">],</span> <span class="n">response_start_tokens</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">]),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Now let&#39;s get the model to continue the response we started.</span>
+<span class="n">model_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">final_input_ids</span><span class="p">,</span>
+                               <span class="n">attention_mask</span><span class="o">=</span><span class="n">attention_mask</span><span class="p">,</span>
+                               <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+                               <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                               <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                              <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">model_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clear the model from memory</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="k">del</span> <span class="n">model</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./llms_inference"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-background.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Running LLMs on Palmetto</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-efficiency.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Batching, multi-gpu, and multi-node for large data and large models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#switch-to-directly-loading-model-and-tokenizer">Switch to directly loading model and tokenizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-inputs-to-model-generate-that-affect-the-model-output">Setting inputs to <code class="docutils literal notranslate"><span class="pre">model.generate</span></code> that affect the model output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-a-system-prompt-and-chat-template">Specifying a system prompt and chat template</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-fine-tuning">Instruction fine-tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-prompts-and-user-prompts">System prompts and user prompts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-the-model-s-outputs">Controlling the model’s outputs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Linh Ngo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Research Computing and Data Workshops</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
