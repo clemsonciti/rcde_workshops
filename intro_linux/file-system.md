@@ -1,139 +1,209 @@
-# Navigating Files and Directories
+# Navigating files and directories
 
+The **filesystem** is the part of your computer's operating system that
+organized stored data into files and directories (a.k.a. folders[^directories]).
+Files hold data, and directories hold files and other directories.
 
+Some of the most common and useful shell commands are used to look at and modify
+ the filesystem.
 
+```{admonition} Other ways to navigate the filesystem
+:class: note
+The word "filesystem" might sound unfamiliar, but you've probably worked with the filesystem before without realizing it. Most operating systems come with GUI apps for filesystem navigation: Finder on macOS, or File Explorer on Windows. Anytime you use these apps (e.g. double-clicking on a folder to open it, or dragging files into a different folder to move them )you're using the filesystem.
 
-```{admonition} 1. Files and Directories
-:class: dropdown
-
-- **File System**: an Operating System component responsible for managing files and directories. 
-- Perspective:
-  - On a GUI, you click to move from one place to another, so you are *outside* the file system 
-  space looking in. 
-  - On a CLI, you need to explicitly provide direction (**path**) for the command to know with which 
-  file/directory it is supposed to interact. The perspective is more *inside* the file system space. 
-
+The shell commands we're about to learn are just a different way of doing the same thing.
 ```
 
-```{admonition} 2. Where are we, what do we have here, and how do we go somewhere else?
-:class: dropdown
+## Where are we?
 
-- Three basic commands: `pwd`, `ls`, `cd`
-- `pwd` returns the absolute path to the current working directory 
-(i.e.: where you are when you are in the terminal).
+First, let’s find out where we are. Directories are like places. Whenever we're
+using the shell, we are in exactly one place called our **current working
+directory**. Commands mostly read and write files in the current working
+directory, i.e. ‘here’, so knowing where you are before running a command is
+important.
 
-~~~bash
-pwd
-~~~
-
-
-![Path to current working directory on Windows](../fig/intro_linux/file_system/pwd.png)
-
-
-- `ls` returns the list of current files and directories in the
-target directory. 
-
-~~~bash
-ls /
-~~~
-
-![Listing of directories and files in current directory](../fig/intro_linux/file_system/ls.png)
-
-
-- There are many options available for different commands. 
-To view the documentation, run the followings:
-
-~~~bash
-ls --help
-~~~
-
-![View help documentation for ls](../fig/intro_linux/file_system/ls-help.png)
-
-- Run `ls` by itself will list the contents of the current directory. 
-
-~~~bash
-ls
-~~~
-
-- `cd` allows users to change the current directory (outcome 
-of `pwd`) to the target directory. 
-  - Run `man cd` or `cd --help` to read the documentation for `cd`. 
-  - The generate syntax for `cd` is `cd DESTINATION` with 
-  `DESTINATION` can either be absolute or relative paths or special paths. 
-- Change to root directory and view contents of root:
-
-~~~bash
-cd /
-ls 
-~~~
-
-- Special paths:
-  - `~`: home direcrory
-  - `.`: current directory
-  - `..`: a directory that is one level above the current directory
-
-- Change to your home directory using the special path
-  - Check the content of your home directory to confirm that you have 
-  the `shell-lesson-data` directory. 
-  - Change into `shell-lesson-data` directory and view the contents of this directory
-
-~~~bash
-cd ~
-ls Desktop/
-cd Desktop/shell-lesson-data
-ls 
-~~~
+To find out where you are, you use the `pwd` command (`pwd` stands for "print
+working directory"):
 
 ```
+$ pwd
+```
 
+This will print the **path**[^path] of the current working directory:
 
-```{admonition} 3. Challenge: exploring more ls flags
-:class: dropdown
+```
+$ pwd
+/Users/jjp366
+```
 
-- You can also use two options at the same time. What does the command 
-`ls` do when used with the `-l` option? What about if you use both the 
-`-l` and the `-h` option?
-- Some of its output is about properties that we do not cover in this 
-lesson (such as file permissions and ownership), but the rest should be 
-useful nevertheless.
+Typically, when you first open a shell, you will be in your **home directory**,
+which is a directory assigned to you to keep your personal files[^files] in. The
+name of the directory should be your username.
+
+<!-- TODO say something about home dir variation here? -->
+
+<!-- TODO explain a little bit more how the filesystem is organized, what the root directory is, etc.? -->
+
+## What's here?
+
+To see what's in your current directory, use the `ls` (short for "list") command:
+
+```
+$ ls
+Applications Documents    Library      Music        Public
+Desktop      Downloads    Movies       Pictures
+```
+
+This is the same list as what you'll see if you open your home directory in Finder or File Explorer.
+
+## How do we go somewhere else?
+
+To change the current working directory, use the `cd` (short for "change directory") command.
+
+Let's change to the highest-level, or, "root" directory of the filesystem, and see what's there:
+
+<!-- TODO I'm not convinced `/` is the best place to cd to here. What's positive is that everyone will definitely have it. What's negative is that it's a weird and confusing path. -->
+
+```
+$ cd /
+```
+
+Your prompt might change after running this command to show that you're in a
+different working directory. Most prompts include the working directory so it's
+easy to see where you are at a glance.
+
+We can confirm that we've changed working directories by running `pwd` again and
+seeing that the output is different:
+
+```
+$ pwd
+/
+```
+
+And run `ls` to see what files are here:
+
+```
+$ ls
+Applications dev          Library      private      tmp          var
+bin          etc          Network      sbin         Users        Volumes
+cores        home         opt          System       usr
+```
+
+## Using arguments and options
+
+Most commands accept input in the form of **arguments** and **options** (also
+called **flags**), which can change their behavior.
+
+### Arguments
+
+Arguments are inputs that a command operates on. We just used our first argument in our `cd` command:
+
+```
+$ cd /
+```
+
+Arguments are separated from commands by spaces. So here `cd` is the command,
+and `/` is the argument. Arguments have different meanings to different
+commands. For `cd`, the first argument is the directory we want to change to.
+
+Let's pass a different argument to change back to the home directory. The path
+to your home directory will be different depending on your operating system,
+username, etc. Fortunately, there's a shortcut we can use. The `~` ("tilde")
+character means "my home directory". So to go back to our home directory, we can
+use:
+
+```
+$ cd ~
+$ pwd
+/Users/jjp366
+```
+
+#### Other shortcuts
+
+The shell supports a few more of these shortcuts in addition to `~`.
+
+`..` means “the directory containing this one”. This is called the **parent directory**. For example:
+
+```
+$ pwd
+/Users/jjp366
+$ cd ..
+$ pwd
+/Users
+```
+
+We can see that `cd ..` moved us "up" one directory to `/Users`.
+
+### Options
+
+Options (also called flags) are settings that modify the behavior of a command.
+They typically start with `-` or `--`. They're similar to the settings menu in a
+GUI program. Options change how a command works, whereas arguments give the
+command the data it needs to function.
+
+A common example is the `-l` option to `ls`. This tells `ls` to give its output
+in "long" format, which contains much more detail:
+
+```
+$ ls -l
+[Desktop] ls -l
+total 30608
+total 6208
+-rw-------@  1 jjp366  DREXEL\Domain Users   202057 Mar 19 15:57 NW-19207 Estimate IT Approved by Network Mgmt..pdf
+-rw-r--r--@  1 jjp366  DREXEL\Domain Users     4736 May  6 15:49 quotas.csv
+drwxr-xr-x  24 jjp366  DREXEL\Domain Users      768 Jun 16 15:46 screenshots
+-rw-r--r--@  1 jjp366  DREXEL\Domain Users  2964549 Mar 28 10:36 URCF.pdf
+```
+
+Some of this output is about properties that we do not cover in this workshop
+(such as file permissions and ownership). It still has some useful output
+though, like the modification time and file size.
+
+<!-- TODO have a picture showing where those two things are -->
+
+```{admonition} Challenge: exploring more ls options
+:class: hint, dropdown
+
+You can use two options at the same time. What does the `-h` option when used together with the `-l` option? Like this:
+
+~~~
+$ ls -l -h
+~~~
 
 :::{admonition} Solution
 :class: dropdown
 
-- The `-l` option makes `ls` use a long listing format, showing not only 
-the file/directory names but also additional information, such as the 
-file size and the time of its last modification. 
-- If you use both the `-h` option and the `-l` option, this makes the file 
+If you use both the `-h` option and the `-l` option, this makes the file
 size *human readable*, i.e. displaying something like 5.3K instead of 5369.
 :::
 ```
 
-```{admonition} 4. Challenge: Listing in reverse chronological order
-:class: dropdown
+```{admonition} 4. Challenge: listing in reverse chronological order
+:class: hint, dropdown
 
-- By default, ls lists the contents of a directory in alphabetical 
-order by name. The command ls `-t` lists items by time of last change 
-instead of alphabetically. The command ls `-r` lists the contents of a 
-directory in reverse order. 
-- Which file is displayed last when you combine the `-t` and `-r` options? 
+- By default, ls lists the contents of a directory in alphabetical
+order by name. The command `ls -t` lists items by time of last change
+instead of alphabetically. The command `ls -r` lists the contents of a
+directory in reverse order.
+- Which file is displayed last when you combine the `-t` and `-r` options?
 Hint: You may need to use the -l option to see the last changed dates.
 
 :::{admonition} Solution
 :class: dropdown
 
-The most recently changed file is listed last when using `-rt`. 
-This can be very useful for finding your most recent edits or 
+The most recently changed file is listed last when using `-rt`.
+This can be very useful for finding your most recent edits or
 checking to see if a new output file was written.
 :::
 ```
 
 
-```{admonition} 5. Challenge: ls Reading comprehension
-:class: dropdown
+```{admonition} 5. Challenge: ls reading comprehension
+:class: hint, dropdown
 
 - Using the filesystem diagram below.
-- If `pwd` displays `/Users/backup` and  `-r` tells `ls` to display things in 
-reverse order, what command(s) will result in the following output: 
+- If `pwd` displays `/Users/backup` and  `-r` tells `ls` to display things in
+reverse order, what command(s) will result in the following output:
 
 ~~~bash
 pnas_sub/ pnas_final/ original/
@@ -154,29 +224,81 @@ pnas_sub/ pnas_final/ original/
 :::
 ```
 
+## Getting help
 
-```{admonition} 6. General syntax of a shell command
-:class: dropdown
+`ls` has lots of other options. There are two common ways to find out how to use
+a command and what options it accepts—**depending on your environment, you might
+find that only one of these ways works**:
+
+1. The `--help` flag (on Linux and Git Bash for Windows):
+
+```
+$ ls --help
+```
+
+2. The "manual page", accessed with the `man` command:
+
+```
+$ man ls
+```
+
+Running `ls --help` will print help information:
+
+```
+$ ls --help
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each file
+  -b, --escape               print C-style escapes for nongraphic characters
+      --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
+                               e.g., '--block-size=M'; see SIZE format below
+  -B, --ignore-backups       do not list implied entries ending with ~
+ ...
+```
+
+`man ls` will instead turn your terminal into a page with a description of the ls
+command and its options.
+
+To navigate through the man pages, use `↑` and `↓` to move line-by-line,
+or try `b` and `Spacebar` to skip up and down by a full page.
+
+To quit the man pages, press `q`.
+
+
+```{admonition} General syntax of a shell command
+:class: note
 
 ![Structure of shell command](../fig/intro_linux/file_system/shell_command_syntax.svg)
 
-- `ls` is the command, with an option `-F` and an argument `/`. 
-- **Option**: 
-  - either start with a single dash (`-`) or two dashes (`--`), 
-  - change the behavior of a command. 
-  - can be referred to as either `switches` or `flags`. 
-- **Arguments** tell the command what to operate on (e.g. files and directories). 
+- `ls` is the command, with an option `-F` and an argument `/`.
+- **Option**:
+  - either start with a single dash (`-`) or two dashes (`--`),
+  - change the behavior of a command.
+  - can be referred to as either `switches` or `flags`.
+- **Arguments** tell the command what to operate on (e.g. files and directories).
 - Sometimes `options` and `arguments` are referred to as parameters.
   - The shell is in fact just a process/function and these `options` and `arguments`
-  are being passed as parameters to the shell's function that is responsible for 
-  executing the **command**. 
-- A command can be called with more than one option and more than one argument, but a 
+  are being passed as parameters to the shell's function that is responsible for
+  executing the **command**.
+- A command can be called with more than one option and more than one argument, but a
 command doesn’t always require an argument or an option.
-- Each part is separated by spaces: if you omit the space between `ls` and `-F` the 
-shell will look for a command called `ls-F`, which doesn’t exist. 
-- Capitalization can be important. 
+- Each part is separated by spaces: if you omit the space between `ls` and `-F` the
+shell will look for a command called `ls-F`, which doesn’t exist.
+- Capitalization can be important.
   - `ls -s` will display the size of files and directories alongside the names
   - `ls -S` will sort the files and directories by size
 
 ```
 
+[^directories]: "Directory" is a more technical term for "folder". Folders are
+    usually called directories in technical computing contexts like using the
+    shell or programming, but they're the same thing.
+[^files]: As opposed to files that are part of the operating system, or other
+    users' files.
+[^path]: A path specifies a location on the filesystem using the names of
+    directories separated by slashes.

@@ -55,5 +55,3 @@ bash: whoam: command not found
 Don't stress out about these sorts of errors. Nothing will break as a result of
 them, and it's normal to get lots of errors like this when learning the shell
 for the first time.
-
-![Command Syntax](../fig/intro_linux/shell/shell_command_syntax.svg)
