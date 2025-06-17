@@ -134,6 +134,18 @@ $ pwd
 
 We can see that `cd ..` moved us "up" one directory to `/Users`.
 
+`.` means the current directory, so `cd .` moves us to where we already are (does nothing):
+
+```
+$ pwd
+/Users
+$ cd .
+$ pwd
+/Users
+```
+
+This might seem useless now, but we will see some uses for it shortly.
+
 ### Options
 
 Options (also called flags) are settings that modify the behavior of a command.
