@@ -1,64 +1,54 @@
-# Shell Scripts
+# Shell scripts
 
-
-We are finally ready to see what makes the shell such a powerful programming 
-environment. We are going to take the commands we repeat frequently and save 
-them in files so that we can re-run all those operations again later by typing 
-a single command. For historical reasons, a bunch of commands saved in a file 
-is usually called a **shell script**, but make no mistake --- these are 
+We are finally ready to see what makes the shell such a powerful programming
+environment. We are going to take the commands we repeat frequently and save
+them in files so that we can re-run all those operations again later by typing
+a single command. For historical reasons, a bunch of commands saved in a file
+is usually called a **shell script**, but make no mistake --- these are
 actually small programs.
 
-Not only will writing shell scripts make your work faster, but also you won't 
-have to retype the same commands over and over again. It will also make it more 
-accurate (fewer chances for typos) and more reproducible. If you come back to 
-your work later (or if someone else finds your work and wants to build on it), 
-you will be able to reproduce the same results simply by running your script, 
+Not only will writing shell scripts make your work faster, but also you won't
+have to retype the same commands over and over again. It will also make it more
+accurate (fewer chances for typos) and more reproducible. If you come back to
+your work later (or if someone else finds your work and wants to build on it),
+you will be able to reproduce the same results simply by running your script,
 rather than having to remember or retype a long list of commands.
 
+## Our first shell script
 
-```{admonition} 1. Our first shell script
-:class: dropdown
-
-Let's start by going back to `alkanes/` and creating a new file, `middle.sh` 
+Let's start by making sure we're in the `alkanes` directory, and then creating a new file, `middle.sh`
 which will become our shell script:
 
-~~~bash
-cd alkanes
+```bash
+cd ~/Desktop/shell-lesson-data/exercise-data/alkanes
 nano middle.sh
-~~~
+```
 
-The command `nano middle.sh` opens the file `middle.sh` within the text editor 
-'nano' (which runs within the shell). If the file does not exist, it will be 
-created. We can use the text editor to directly edit the file by inserting the 
-following line:
+Let's edit  edit the file by inserting the following line:
 
-~~~
+```
 head -n 15 octane.pdb | tail -n 5
-~~~
+```
 
 This is a variation on the pipe we constructed earlier, which selects lines 11-15 of
 the file `octane.pdb`. Remember, we are *not* running it as a command just yet;
-we are only incorporating the commands in a file.
+we are only saving the command in a file.
 
-Then we save the file (`Ctrl-O` in nano) and exit the text editor (`Ctrl-X` in nano).
+Then we save the file (`Ctrl-O` in nano) and exit (`Ctrl-X` in nano).
 Check that the directory `alkanes` now contains a file called `middle.sh`.
 
 Once we have saved the file,
 we can ask the shell to execute the commands it contains.
 Our shell is called `bash`, so we run the following command:
 
-~~~bash
+```bash
 bash middle.sh
-~~~
-
-Sure enough, our script's output is exactly what we would get if we ran that 
-pipeline directly.
-
 ```
 
+Sure enough, our script's output is exactly what we would get if we ran that
+pipeline directly.
 
-```{admonition} 2. Command line arguments
-:class: dropdown
+## Command line arguments
 
 What if we want to select lines from an arbitrary file?
 We could edit `middle.sh` each time to change the filename,
@@ -66,29 +56,29 @@ but that would probably take longer than typing the command out again
 in the shell and executing it with a new file name.
 Instead, let's edit `middle.sh` and make it more versatile:
 
-~~~
+```
 nano middle.sh
-~~~
+```
 
 Now, within "nano", replace the text `octane.pdb` with the special variable called `$1`:
 
-~~~
+```
 head -n 15 "$1" | tail -n 5
-~~~
+```
 
 Inside a shell script,
 `$1` means 'the first filename (or other argument) on the command line'.
 We can now run our script like this:
 
-~~~bash
+```bash
 bash middle.sh octane.pdb
-~~~
+```
 
 or on a different file like this:
 
-~~~bash
+```bash
 $ bash middle.sh pentane.pdb
-~~~
+```
 
 Currently, we need to edit `middle.sh` each time we want to adjust the range of
 lines that is returned.
@@ -100,63 +90,55 @@ which refer to the first, second, third command-line arguments, respectively.
 Knowing this, we can use additional arguments to define the range of lines to
 be passed to `head` and `tail` respectively:
 
-~~~bash
+```bash
 nano middle.sh
-~~~
+```
 
-~~~
+```
 head -n "$2" "$1" | tail -n "$3"
-~~~
+```
 
 We can now run:
 
-~~~bash
+```bash
 bash middle.sh pentane.pdb 15 5
-~~~
+```
 
 By changing the arguments to our command, we can change our script's
 behaviour:
 
-~~~bash
+```bash
 bash middle.sh pentane.pdb 20 5
-~~~
-
 ```
 
-
-```{admonition} 3. Putting comments in the code
-:class: dropdown
+## Putting comments in the code
 
 We can improve our script by adding some **comments** at the top:
 
-~~~bash
+```bash
 nano middle.sh
-~~~
+```
 
-~~~source
+```source
 # Select lines from the middle of a file.
 # Usage: bash middle.sh filename end_line num_lines
 head -n "$2" "$1" | tail -n "$3"
-~~~
-
-A comment starts with a `#` character and runs to the end of the line.
-The computer ignores comments, but they're invaluable for helping people (including your 
-future self) understand and use scripts. The only caveat is that each time you 
-modify the script, you should check that the comment is still accurate. 
-An explanation that sends the reader in the wrong direction is worse than none at all.
-
 ```
 
+A comment starts with a `#` character and runs to the end of the line.
+The computer ignores comments, but they're invaluable for helping people (including your
+future self) understand and use scripts. The only caveat is that each time you
+modify the script, you should check that the comment is still accurate.
+An explanation that sends the reader in the wrong direction is worse than none at all.
 
-```{admonition} 4. Multiple command line arguments
-:class: dropdown
+## Multiple command line arguments
 
 What if we want to process many files in a single pipeline?
 For example, if we want to sort our `.pdb` files by length, we would type:
 
-~~~bash
+```bash
 $ wc -l *.pdb | sort -n
-~~~
+```
 
 because `wc -l` lists the number of lines in the files
 (recall that `wc` stands for 'word count', adding the `-l` option means 'count lines' instead)
@@ -176,21 +158,21 @@ to handle the case of arguments containing spaces
 
 Here's an example:
 
-~~~bash
+```bash
 nano sorted.sh
-~~~
+```
 
-~~~source
+```source
 # Sort files by their length.
 # Usage: bash sorted.sh one_or_more_filenames
 wc -l "$@" | sort -n
-~~~
+```
 
-~~~bash
+```bash
 bash sorted.sh *.pdb ../creatures/*.dat
-~~~
+```
 
-~~~output
+```output
 9 methane.pdb
 12 ethane.pdb
 15 propane.pdb
@@ -201,12 +183,10 @@ bash sorted.sh *.pdb ../creatures/*.dat
 163 ../creatures/minotaur.dat
 163 ../creatures/unicorn.dat
 596 total
-~~~
 ```
 
-
-```{admonition} 5. Challenge: List Unique Species
-:class: dropdown
+```{admonition} Challenge: List Unique Species
+:class: tip
 
 Leah has several hundred data files, each of which is formatted like this:
 
@@ -251,24 +231,21 @@ done
 :::
 ```
 
-
-```{admonition} 6. Executable script
-:class: dropdown
+## Executable script
 
 Edit the `middle.sh` file to be as follows:
 
-~~~source
+```source
 #!/bin/bash
 # Select lines from the middle of a file.
 # Usage: bash middle.sh filename end_line num_lines
 head -n "$2" "$1" | tail -n "$3"
-~~~
+```
 
 To make shell file executable, we need to change the permission on the file
 
-~~~bash
+```bash
 chmod 755 middle.sh
 ./middle.sh
-~~~
-
 ```
+

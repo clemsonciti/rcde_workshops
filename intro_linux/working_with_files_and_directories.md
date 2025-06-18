@@ -337,7 +337,9 @@ $ ls
 cubane.pdb  ethane.pdb  methane.pdb octane.pdb  pentane.pdb propane.pdb
 ```
 
-Here we have files containing the molecular structure of various compounds.
+This directory contains six files describing some simple organic molecules. The
+`.pdb` extension indicates that these files are in Protein Data Bank format, a
+text format that specifies the type and position of each atom in the molecule.
 
 `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every file that ends with `.pdb`:
 

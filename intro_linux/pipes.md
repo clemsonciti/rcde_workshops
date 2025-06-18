@@ -1,41 +1,41 @@
-# Pipes and Redirection
+# Pipes and redirection
 
+## Overview
 
-```{admonition} 1. Overview
-:class: dropdown
-
-- Now that we know a few basic commands, we can finally look at the shell's most 
+Now that we know a few basic commands, we can finally look at the shell's most
 powerful feature: the ease with which it lets us combine existing programs in new ways.
-- We'll start with the directory `shell-lesson-data/exercise-data/alkanes`
-that contains six files describing some simple organic molecules.
-The `.pdb` extension indicates that these files are in Protein Data Bank format,
-a simple text format that specifies the type and position of each atom in the molecule.
 
-~~~bash
-cd ~/shell-lesson-data/exercise-data/alkanes
-ls
-~~~
+We'll keep working in the `shell-lesson-data/exercise-data/alkanes` directory.
+`cd` there if you aren't there already:
 
-- Let's run an example command:
 
-~~~bash
+```bash
+$ cd ~/Desktop/shell-lesson-data/exercise-data/alkanes
+$ ls
+cubane.pdb  ethane.pdb  methane.pdb octane.pdb  pentane.pdb propane.pdb
+```
+
+Let's run an example command:
+
+```bash
 wc cubane.pdb
-~~~
+```
 
-~~~output
+```output
 20  156 1158 cubane.pdb
-~~~
+```
 
-- `wc` is the 'word count' command: it counts the number of lines, words, and characters 
+`wc` is the 'word count' command: it counts the number of lines, words, and characters
 in files (returning the values in that order from left to right).
-- If we run the command `wc *.pdb`, the `*` in `*.pdb` matches zero or more characters,
+
+If we run the command `wc *.pdb`, the `*` in `*.pdb` matches zero or more characters,
 so the shell turns `*.pdb` into a list of all `.pdb` files in the current directory:
 
-~~~bash
+```bash
 wc *.pdb
-~~~
+```
 
-~~~output
+```output
   20  156  1158  cubane.pdb
   12  84   622   ethane.pdb
    9  57   422   methane.pdb
@@ -43,15 +43,15 @@ wc *.pdb
   21  165  1226  pentane.pdb
   15  111  825   propane.pdb
  107  819  6081  total
-~~~
+```
 
 If we run `wc -l` instead of just `wc`, the output shows only the number of lines per file:
 
-~~~bash
+```bash
 $ wc -l *.pdb
-~~~
+```
 
-~~~output
+```output
   20  cubane.pdb
   12  ethane.pdb
    9  methane.pdb
@@ -59,13 +59,9 @@ $ wc -l *.pdb
   21  pentane.pdb
   15  propane.pdb
  107  total
-~~~
-
 ```
 
-
-```{admonition} 2. Capturing output from commands
-:class: dropdown
+## Capturing output from commands
 
 Which of these files contains the fewest lines?
 It's an easy question to answer when there are only six files,
@@ -73,9 +69,9 @@ but what if there were 6000?
 
 **Redirection**
 
-~~~bash
+```bash
 wc -l *.pdb > lengths.txt
-~~~
+```
 
 The greater than symbol, `>`, tells the shell to **redirect** the command's output to a
 file instead of printing it to the screen. This command prints no screen output, because
@@ -86,13 +82,13 @@ Thus, **redirect** commands require caution.
 
 `ls lengths.txt` confirms that the file exists:
 
-~~~bash
+```bash
 ls lengths.txt
-~~~
+```
 
-~~~output
+```output
 lengths.txt
-~~~
+```
 
 We can now send the content of `lengths.txt` to the screen using `cat lengths.txt`.
 The `cat` command gets its name from 'concatenate' i.e. join together,
@@ -100,11 +96,11 @@ and it prints the contents of files one after another.
 There's only one file in this case,
 so `cat` just shows us what it contains:
 
-~~~bash
+```bash
 cat lengths.txt
-~~~
+```
 
-~~~output
+```output
   20  cubane.pdb
   12  ethane.pdb
    9  methane.pdb
@@ -112,37 +108,55 @@ cat lengths.txt
   21  pentane.pdb
   15  propane.pdb
  107  total
-~~~
-
 ```
 
+## Filtering output
 
-```{admonition} 3. Filtering output
-:class: dropdown
+Next we'll use the `sort` command to sort the contents of the `lengths.txt`
+file. But first we'll do an exercise to learn a little about the sort command.
 
-Next we'll use the `sort` command to sort the contents of the `lengths.txt` file.
+```{admonition} What Does sort -n Do?
+:class: tip
 
-::::{admonition} What Does `sort -n` Do?
-:class: dropdown
+The file `shell-lesson-data/exercise-data/numbers.txt` contains the following lines:
 
-View the file `shell-lesson-data/exercise-data/numbers.txt`:
-
-~~~bash
-cd ~/shell-lesson-data/exercise-data/
-cat numbers.txt
 ~~~
-
-Run `sort` and then `sort -n` on the file, then compare the outputs
-
+10
+2
+19
+22
+6
+~~~
 
 If we run `sort` on this file, the output is:
 
-~~~bash
-sort numbers.txt
-sort -n numbers.txt
+~~~
+10
+19
+2
+22
+6
 ~~~
 
-::::
+If we run `sort -n` on the same file, we get this instead:
+
+~~~
+2
+6
+10
+19
+22
+~~~
+
+What does the `-n` option do?
+
+~~~{admonition} Solution
+:class: note, dropdown
+
+The `-n` option specifies a numerical rather than an alphanumerical sort.
+~~~
+
+```
 
 Running `sort` does *not* change the file; instead, it sends the sorted result to the screen:
 
@@ -150,11 +164,11 @@ Running `sort` does *not* change the file; instead, it sends the sorted result t
 sort -n lengths.txt
 ~~~
 
-We can put the sorted list of lines in another temporary file 
-called `sorted-lengths.txt` by putting `> sorted-lengths.txt` 
-after the command, just as we used `> lengths.txt` to put the 
-output of `wc` into `lengths.txt`. Once we've done that, we can 
-run another command called `head` to get the first few lines in 
+We can put the sorted list of lines in another temporary file
+called `sorted-lengths.txt` by putting `> sorted-lengths.txt`
+after the command, just as we used `> lengths.txt` to put the
+output of `wc` into `lengths.txt`. Once we've done that, we can
+run another command called `head` to get the first few lines in
 `sorted-lengths.txt`:
 
 ~~~bash
@@ -162,42 +176,48 @@ sort -n lengths.txt > sorted-lengths.txt
 head -n 1 sorted-lengths.txt
 ~~~
 
-Using `-n 1` with `head` tells it that we only want the first line 
+Using `-n 1` with `head` tells it that we only want the first line
 of the file; `-n 20` would get the first 20, and so on.
-Since `sorted-lengths.txt` contains the lengths of our files ordered 
-from least to greatest, the output of `head` must be the file with 
+Since `sorted-lengths.txt` contains the lengths of our files ordered
+from least to greatest, the output of `head` must be the file with
 the fewest lines.
 
-```
+```{admonition} The >> operator
+:class: tip
 
-
-```{admonition} 4. Appending to the same file
-:class: dropdown
-
-- We have seen the use of `>`, but there is a similar operator `>>`
+We have seen the use of `>`, but there is a similar operator `>>`
 which works slightly differently.
-- We can use the `echo` command to print strings e.g.
+
+We can use the `echo` command to print strings. For example:
 
 ~~~bash
-echo The echo command prints text
+$ echo just testing
+just testing
 ~~~
 
-Now test the commands below to reveal the difference between the two operators:
+This might not seem very useful, but we'll see a use for it shortly.
+
+Now try the commands below to reveal the difference between the two operators:
 
 ~~~bash
-echo hello > testfile01.txt
-echo hello > testfile01.txt
-echo hello >> testfile02.txt
-echo hello >> testfile02.txt
-cat textfile01.txt
-cat textfile02.txt
+echo hello > test01.txt
+echo hello > test01.txt
+echo hello >> test02.txt
+echo hello >> test02.txt
+cat text01.txt
+cat text02.txt
 ~~~
 
+What does `>>` do?
+
+:::{admonition} Solution
+:class: dropdown
+
+The `>>` operator appends the output to the end of the file instead of overwriting it.
+:::
 ```
 
-
-```{admonition} 5. Passing output to another command
-:class: dropdown
+## Passing output to another command
 
 In our example of finding the file with the fewest lines,
 we are using two intermediate files `lengths.txt` and `sorted-lengths.txt` to store output.
@@ -206,9 +226,9 @@ even once you understand what `wc`, `sort`, and `head` do,
 those intermediate files make it hard to follow what's going on.
 We can make it easier to understand by running `sort` and `head` together:
 
-~~~bash
+```bash
 sort -n lengths.txt | head -n 1
-~~~
+```
 
 The vertical bar, `|`, between the two commands is called a **pipe**.
 It tells the shell that we want to use
@@ -217,11 +237,7 @@ as the input to the command on the right.
 
 This has removed the need for the `sorted-lengths.txt` file.
 
-```
-
-
-```{admonition} 6. Combining multiple commands
-:class: dropdown
+## Combining multiple commands
 
 Nothing prevents us from chaining pipes consecutively.
 We can for example send the output of `wc` directly to `sort`,
@@ -230,31 +246,28 @@ This removes the need for any intermediate files.
 
 We'll start by using a pipe to send the output of `wc` to `sort`:
 
-~~~bash
+```bash
 wc -l *.pdb | sort -n
-~~~
+```
 
 We can then send that output through another pipe, to `head`, so that the full pipeline becomes:
 
-~~~bash
+```bash
 wc -l *.pdb | sort -n | head -n 1
-~~~
+```
 
 This is exactly like a mathematician nesting functions like *log(3x)*
-and saying 'the log of three times *x*'. 
+and saying 'the log of three times *x*'.
 In our case, the algorithm is 'head of sort of line count of `*.pdb`'.
 
 The redirection and pipes used in the last few commands are illustrated below:
 
 ![Redirects and Pipes](../fig/redirects-and-pipes.svg)
 
-```
+```{admonition} Challenge: Piping Commands Together
+:class: tip
 
-
-```{admonition} 7. Challenge: Piping Commands Together
-:class: dropdown
-
-In our current directory, we want to find the 3 files which have the 
+In our current directory, we want to find the 3 files which have the
 least number of lines. Which command listed below would work?
 
 1. `wc -l * > sort -n > head -n 3`
@@ -273,9 +286,7 @@ Try it in the `shell-lesson-data/exercise-data/alkanes` directory!
 :::
 ```
 
-
-```{admonition} 8. Tools designed to work together
-:class: dropdown
+## Tools designed to work together
 
 This idea of linking programs together is why Unix has been so successful.
 Instead of creating enormous programs that try to do many different things,
@@ -298,11 +309,8 @@ can be combined with every other program that behaves this way as well.
 You can *and should* write your programs this way
 so that you and other people can put those programs into pipes to multiply their power.
 
-```
-
-
-```{admonition} 9. Pipe Reading Comprehension
-:class: dropdown
+```{admonition} Challenge: Pipe Reading Comprehension
+:class: tip
 
 A file called `animals.csv` (in the `shell-lesson-data/exercise-data/animal-counts` folder)
 contains the following data:
@@ -346,9 +354,8 @@ The file should contain the following lines:
 :::
 ```
 
-
-```{admonition} 10. Which Pipe?
-:class: dropdown
+```{admonition} Challenge: Which Pipe?
+:class: tip
 
 The file `animals.csv` contains 8 lines of data formatted as follows:
 

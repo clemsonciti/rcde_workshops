@@ -29,20 +29,35 @@ working directory"):
 $ pwd
 ```
 
-This will print the **path**[^path] of the current working directory:
+This will print the **path** of the current working directory:
 
 ```
 $ pwd
 /Users/jjp366
 ```
 
+A path is a way of describing a location in the filesystem. It's a list of
+directories separated by `/` characters. The first `/` represents the root
+directory, which is the top-level directory that contains everything else.
+
+In the example above, the path is `/Users/jjp366`, which means we're in the
+`jjp366` directory, which is inside the `Users` directory, which is inside the
+root directory.
+
+```{figure} ../fig/intro_linux/file_system/home-directories.svg
+---
+name: home-directories-fig
+---
+A diagram of an example filesystem.
+```
+
+The filesystem looks like an upside down tree, with the root directory at the
+base, and the other directories branching out from it[^tree].
+
 Typically, when you first open a shell, you will be in your **home directory**,
 which is a directory assigned to you to keep your personal files[^files] in. The
-name of the directory should be your username.
-
-<!-- TODO say something about home dir variation here? -->
-
-<!-- TODO explain a little bit more how the filesystem is organized, what the root directory is, etc.? -->
+name of the directory is your username. The rest of the path will look a little
+different, depending on your operating system.
 
 ## What's here?
 
@@ -190,7 +205,7 @@ size *human readable*, i.e. displaying something like 5.3K instead of 5369.
 :::
 ```
 
-```{admonition} 4. Challenge: listing in reverse chronological order
+```{admonition} Challenge: listing in reverse chronological order
 :class: hint, dropdown
 
 - By default, ls lists the contents of a directory in alphabetical
@@ -210,7 +225,7 @@ checking to see if a new output file was written.
 ```
 
 
-```{admonition} 5. Challenge: ls reading comprehension
+```{admonition} Challenge: ls reading comprehension
 :class: hint, dropdown
 
 - Using the filesystem diagram below.
@@ -218,14 +233,14 @@ checking to see if a new output file was written.
 reverse order, what command(s) will result in the following output:
 
 ~~~bash
-pnas_sub/ pnas_final/ original/
+pnas_sub pnas_final original
 ~~~
 
 ![Change directories](../fig/intro_linux/file_system/filesystem-challenge.svg)
 
 1. `ls pwd`
-2. `ls -r -F`
-3. `ls -r -F /Users/backup`
+2. `ls -r`
+3. `ls -r /Users/backup`
 
 :::{admonition} Solution
 :class: dropdown
@@ -312,5 +327,4 @@ shell will look for a command called `ls-F`, which doesn’t exist.
     shell or programming, but they're the same thing.
 [^files]: As opposed to files that are part of the operating system, or other
     users' files.
-[^path]: A path specifies a location on the filesystem using the names of
-    directories separated by slashes.
+[^tree]: This "tree" metaphor is where the name "root" for the topmost directory comes from.
