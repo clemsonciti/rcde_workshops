@@ -8,9 +8,8 @@ parts:
   chapters:
     - file: intro_linux/index.md
       sections:
-      - file: intro_linux/outline.md
       - file: intro_linux/introduction.md
-      - file: intro_linux/shell.md
+      - file: intro_linux/getting-started.md
       - file: intro_linux/file-system.md
       - file: intro_linux/working_with_files_and_directories.md
       - file: intro_linux/file-permissions.md
@@ -28,8 +27,8 @@ parts:
       - file: intro_picotte/interactive.md
       - file: intro_picotte/file-transfer.md
       - file: intro_picotte/batch.md
-      - file: intro_picotte/jupyter-hub.md      
-      
+      - file: intro_picotte/jupyter-hub.md
+
 - caption: R
   chapters:
     - file: r_programming/00-index.md
