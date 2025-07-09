@@ -1,19 +1,45 @@
 #!/bin/bash
-#SBATCH --job-name=create_LLMs_env
-#SBATCH --mem=12G
+#SBATCH --job-name=create_pytorch_env
+#SBATCH --output=create_pytorch_env.out
+#SBATCH --error=create_pytorch_env.err
+#SBATCH --partition=work1
+#SBATCH --mem=16G
 #SBATCH --time=01:00:00
-#SBATCH --cpus-per-task=1
-#SBATCH --output=create_LLMs_env_output.log
 
-# Palmetto modules
+set -e  # Exit on first error
+
+# Load Miniforge (Conda base)
 module load miniforge3
 
-ENV_NAME="PytorchWorkshop2"
+# Create a fresh environment with pinned Python version
+conda create -y -n PytorchWorkshop2 "python==3.11" pip
 
-conda create -y -n $ENV_NAME python=3.11
+# Activate the environment
+source activate PytorchWorkshop2
 
-source activate $ENV_NAME
+# Upgrade and pin pip
+pip install --upgrade "pip==25.1.1"
 
-pip install -r requirements.txt --no-cache-dir
+# Install PyTorch with CUDA 12.4 wheels (pinned versions)
+pip install \
+  "torch==2.6.0+cu124" \
+  "torchvision==0.21.0+cu124" \
+  "torchaudio==2.6.0+cu124" \
+  --index-url https://download.pytorch.org/whl/cu124
 
-python -m ipykernel install --user --name $ENV_NAME --display-name "$ENV_NAME"
+# Install key libraries (version-pinned)
+pip install \
+  "scikit-learn==1.7.0" \
+  "pandas==2.3.0" \
+  "pillow==11.0.0" \
+  "matplotlib==3.10.3" \
+  "jupyter==1.1.1" \
+  "ipykernel==6.29.5" \
+  "pytorch-lightning==2.5.2" \
+  "wandb==0.21.0" \
+  "ipywidgets==8.1.7"
+
+# Register the environment as a Jupyter kernel
+python -m ipykernel install --user --name PytorchWorkshop2 --display-name "Pytorch Workshop2"
+
+echo "Environment 'PytorchWorkshop2' created and registered successfully."

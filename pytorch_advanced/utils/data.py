@@ -5,6 +5,7 @@ from torchvision import datasets
 from torch.utils.data import DataLoader
 
 def get_train_dataloader(data_dir, transforms, batch_size, num_workers, pin_memory=True):
+    print("Loading EMNIST dataset...")
     dataset = datasets.EMNIST(data_dir, split='balanced', train=True, download=True, transform=transforms)
     dl = DataLoader(dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=pin_memory)
     return dl
