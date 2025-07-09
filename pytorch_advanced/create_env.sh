@@ -12,10 +12,10 @@ set -e  # Exit on first error
 module load miniforge3
 
 # Create a fresh environment with pinned Python version
-conda create -y -n PytorchWorkshop2 "python==3.11" pip
+conda create -y -n PytorchWorkshop "python==3.11" pip
 
 # Activate the environment
-source activate PytorchWorkshop2
+source activate PytorchWorkshop
 
 # Upgrade and pin pip
 pip install --upgrade "pip==25.1.1"
@@ -40,6 +40,6 @@ pip install \
   "ipywidgets==8.1.7"
 
 # Register the environment as a Jupyter kernel
-python -m ipykernel install --user --name PytorchWorkshop2 --display-name "Pytorch Workshop2"
+python -m ipykernel install --user --name PytorchWorkshop --display-name "Pytorch Workshop"
 
-echo "Environment 'PytorchWorkshop2' created and registered successfully."
+echo "Environment 'PytorchWorkshop' created and registered successfully."
