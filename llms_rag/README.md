@@ -34,17 +34,20 @@ The notebooks expect the demo dataset at `data/demo_corpus.jsonl` (already inclu
 
 ### Pre-cache on a data transfer node (optional)
 
-On a node with good network, pre-download wheels to a wheelhouse directory for faster or offline installs on compute nodes:
+What is a wheelhouse? It's just a folder where downloaded packages (wheels) are saved so you can reuse them later. You can simply use a local folder named `wheelhouse` in this repo.
+
+On a node with good network, pre-download wheels into `./wheelhouse` for faster or offline installs on compute nodes:
 
 ```bash
-# GPU wheels (defaults to Python 3.10 for faiss-gpu); adjust path as needed
-./setup_uv.sh --download-only --gpu --wheelhouse /path/to/wheelhouse
+# GPU wheels (defaults to Python 3.10 for faiss-gpu)
+./setup_uv.sh --download-only --gpu --wheelhouse ./wheelhouse
 ```
 
 Then on the compute node, install using that wheelhouse:
 
 ```bash
-./setup_uv.sh --gpu --wheelhouse /path/to/wheelhouse --kernel llms-rag-workshop
+# If the repo has a ./wheelhouse folder, the script auto-detects it.
+./setup_uv.sh --gpu --wheelhouse ./wheelhouse --kernel llms-rag-workshop
 ```
 
 ### Conda + uv (alternative)

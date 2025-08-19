@@ -71,6 +71,11 @@ fi
 # Determine project root as the directory of this script
 SCRIPT_DIR="$(cd -- "$(dirname "$0")" >/dev/null 2>&1; pwd -P)"
 
+# If no wheelhouse given but a local ./wheelhouse exists next to the script, use it
+if [[ -z "${WHEELHOUSE}" && -d "${SCRIPT_DIR}/wheelhouse" ]]; then
+  WHEELHOUSE="${SCRIPT_DIR}/wheelhouse"
+fi
+
 if $DOWNLOAD_ONLY; then
   # Pre-download wheels into a wheelhouse for later offline or fast installs
   WHEELHOUSE=${WHEELHOUSE:-"${SCRIPT_DIR}/wheelhouse"}
