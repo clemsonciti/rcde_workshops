@@ -54,6 +54,9 @@ if ! command -v uv >/dev/null 2>&1; then
   exit 1
 fi
 
+# Determine project root as the directory of this script
+SCRIPT_DIR="$(cd -- "$(dirname "$0")" >/dev/null 2>&1; pwd -P)"
+
 echo "Creating .venv with Python ${PYTHON_VERSION} via uv..."
 uv venv --python "${PYTHON_VERSION}" .venv
 
@@ -65,11 +68,11 @@ fi
 eval "$ACTIVATE"
 python -V
 
-echo "Installing project dependencies with uv pip..."
+echo "Installing project dependencies with uv pip from ${SCRIPT_DIR}..."
 if $USE_GPU; then
-  uv pip install -e ".[gpu]"
+  uv pip install -e "${SCRIPT_DIR}[gpu]"
 else
-  uv pip install -e .
+  uv pip install -e "${SCRIPT_DIR}"
 fi
 
 if $REGISTER_KERNEL; then
@@ -81,4 +84,3 @@ echo "Done. Activate with:"
 echo "  source .venv/bin/activate   # (or .venv\\Scripts\\activate on Windows)"
 echo "Start Jupyter Lab:"
 echo "  jupyter lab"
-
