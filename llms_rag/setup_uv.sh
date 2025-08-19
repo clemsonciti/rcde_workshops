@@ -70,7 +70,14 @@ python -V
 
 echo "Installing project dependencies with uv pip from ${SCRIPT_DIR}..."
 if $USE_GPU; then
+  set +e
   uv pip install -e "${SCRIPT_DIR}[gpu]"
+  rc=$?
+  set -e
+  if [[ $rc -ne 0 ]]; then
+    echo "[WARN] GPU extras failed to install (likely faiss-gpu wheel unavailable). Falling back to CPU deps."
+    uv pip install -e "${SCRIPT_DIR}"
+  fi
 else
   uv pip install -e "${SCRIPT_DIR}"
 fi

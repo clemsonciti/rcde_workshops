@@ -16,7 +16,7 @@ This project supports uv-only setup or conda+uv. uv is recommended for a quick, 
 2. From the repo root, create a local venv and install deps:
    ```bash
    ./setup_uv.sh                # CPU-only
-   ./setup_uv.sh --gpu          # with GPU extras
+   ./setup_uv.sh --gpu          # try GPU extras (falls back to CPU if faiss-gpu unavailable)
    ./setup_uv.sh --kernel llms-rag-workshop  # optional Jupyter kernel
    ```
 

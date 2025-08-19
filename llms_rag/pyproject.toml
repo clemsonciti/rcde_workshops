@@ -61,7 +61,8 @@ dev = [
 ]
 
 gpu = [
-    "faiss-gpu>=1.7.4",
+    # faiss-gpu pip wheels are platform/CUDA-specific; relax version to widen availability
+    "faiss-gpu>=1.7.2,<1.8",
 ]
 
 [project.urls]
