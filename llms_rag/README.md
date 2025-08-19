@@ -16,9 +16,13 @@ This project supports uv-only setup or conda+uv. uv is recommended for a quick, 
 2. From the repo root, create a local venv and install deps:
    ```bash
    ./setup_uv.sh                # CPU-only
-   ./setup_uv.sh --gpu          # try GPU extras (falls back to CPU if faiss-gpu unavailable)
+   ./setup_uv.sh --gpu          # GPU extras (defaults to Python 3.10 for faiss-gpu wheels)
    ./setup_uv.sh --kernel llms-rag-workshop  # optional Jupyter kernel
    ```
+
+   Notes for GPU:
+   - faiss-gpu pip wheels are most available for Python 3.10. The script auto-selects 3.10 when `--gpu` is used unless you pass `--python`.
+   - To force a version explicitly: `./setup_uv.sh --gpu --python 3.10`
 
 3. Activate and launch Jupyter Lab:
    ```bash

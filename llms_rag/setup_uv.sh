@@ -10,6 +10,7 @@ PYTHON_VERSION="3.11"
 USE_GPU=false
 KERNEL_NAME="llms-rag-workshop"
 REGISTER_KERNEL=false
+USER_SET_PY=false
 
 usage() {
   cat <<USAGE
@@ -34,7 +35,7 @@ USAGE
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -p|--python)
-      PYTHON_VERSION="$2"; shift 2;;
+      PYTHON_VERSION="$2"; USER_SET_PY=true; shift 2;;
     -g|--gpu)
       USE_GPU=true; shift;;
     -k|--kernel)
@@ -52,6 +53,11 @@ if ! command -v uv >/dev/null 2>&1; then
   echo "uv not found. Install from https://docs.astral.sh/uv/getting-started/"
   echo "For example: curl -LsSf https://astral.sh/uv/install.sh | sh"
   exit 1
+fi
+
+# If GPU requested and user did not specify a Python version, prefer 3.10 for faiss-gpu wheels
+if $USE_GPU && ! $USER_SET_PY; then
+  PYTHON_VERSION="3.10"
 fi
 
 # Determine project root as the directory of this script
