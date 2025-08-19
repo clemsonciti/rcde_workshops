@@ -82,29 +82,23 @@ if $DOWNLOAD_ONLY; then
   echo "Preparing wheelhouse at: ${WHEELHOUSE}"
   mkdir -p "${WHEELHOUSE}"
 
-  # Create a temporary venv to run pip wheel
-  DL_VENV_DIR=$(mktemp -d "${SCRIPT_DIR}/.uv-dl-venv.XXXXXX") || DL_VENV_DIR="${SCRIPT_DIR}/.uv-dl-venv"
-  echo "Creating temporary venv for download at: ${DL_VENV_DIR} (Python ${PYTHON_VERSION})"
-  uv venv --python "${PYTHON_VERSION}" "${DL_VENV_DIR}"
-
-  ACTIVATE_DL=". \"${DL_VENV_DIR}/bin/activate\""
-  if [[ "$(uname -s)" == "MINGW" || "$(uname -s)" == *"NT"* ]]; then
-    ACTIVATE_DL=". \"${DL_VENV_DIR}/Scripts/activate\""
-  fi
-  eval ${ACTIVATE_DL}
-  python -V
-
-  echo "Downloading/building wheels into ${WHEELHOUSE}..."
-  python -m pip install -U pip wheel setuptools >/dev/null
+  echo "Downloading wheels into ${WHEELHOUSE} using uv..."
   if $USE_GPU; then
-    python -m pip wheel -w "${WHEELHOUSE}" "${SCRIPT_DIR}[gpu]"
+    # Prefer Python 3.10-compatible wheels for faiss-gpu
+    if uv pip download -o "${WHEELHOUSE}" "${SCRIPT_DIR}[gpu]" 2>/dev/null; then
+      :
+    else
+      echo "[ERROR] Could not download GPU wheels with uv."
+      echo "If this machine defaults to Python 3.11, try using Python 3.10 pip manually, e.g.:"
+      echo "  python3.10 -m pip download -d '${WHEELHOUSE}' '${SCRIPT_DIR}[gpu]'"
+      exit 1
+    fi
   else
-    python -m pip wheel -w "${WHEELHOUSE}" "${SCRIPT_DIR}"
+    if ! uv pip download -o "${WHEELHOUSE}" "${SCRIPT_DIR}"; then
+      echo "[ERROR] Could not download CPU wheels with uv."
+      exit 1
+    fi
   fi
-
-  echo "Cleaning up temporary venv..."
-  deactivate || true
-  rm -rf "${DL_VENV_DIR}"
 
   echo "Wheelhouse ready at ${WHEELHOUSE}. To install from it on another node, run:\n  ./setup_uv.sh --gpu --wheelhouse '${WHEELHOUSE}' --kernel ${KERNEL_NAME}"
   exit 0

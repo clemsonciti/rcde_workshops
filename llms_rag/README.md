@@ -36,7 +36,7 @@ The notebooks expect the demo dataset at `data/demo_corpus.jsonl` (already inclu
 
 What is a wheelhouse? It's just a folder where downloaded packages (wheels) are saved so you can reuse them later. You can simply use a local folder named `wheelhouse` in this repo.
 
-On a node with good network, pre-download wheels into `./wheelhouse` for faster or offline installs on compute nodes:
+On a node with good network, pre-download wheels into `./wheelhouse` for faster or offline installs on compute nodes (no environment created):
 
 ```bash
 # GPU wheels (defaults to Python 3.10 for faiss-gpu)
@@ -48,6 +48,12 @@ Then on the compute node, install using that wheelhouse:
 ```bash
 # If the repo has a ./wheelhouse folder, the script auto-detects it.
 ./setup_uv.sh --gpu --wheelhouse ./wheelhouse --kernel llms-rag-workshop
+
+If the download step fails on the data transfer node due to Python version wheel tags, try running with a Python 3.10 pip explicitly:
+
+```bash
+python3.10 -m pip download -d ./wheelhouse ".[gpu]"
+```
 ```
 
 ### Conda + uv (alternative)
