@@ -35,7 +35,7 @@ This copies to your drivespace a script `download.sh` that, when run, will copy 
 ## Environment
 To run the code in this workshop, you will need a python environment with the appropriate libraries installed. You can create such an environment as follows. 
 
-Navigate to the directory where the workshop contents you downloaded are stored. Submit the script `create_env.sh` as a job, by running the command `sbatch create_env.sh` from the directory containing the workshop files. This will create a conda environment named `PytorchWorkshop`. (This will take a while; up to 60 minutes.) You can then use that environment as the Jupyter kernel to run the notebooks in this environment.
+Navigate to the directory where the workshop contents you downloaded are stored. Submit the script `create_env.sh` as a job, by running the command `sbatch create_env.sh` from the directory containing the workshop files. This will create a conda environment named `PytorchWorkshop`. (This will take a while; up to 20 minutes.) You can then use that environment as the Jupyter kernel to run the notebooks in this environment.
 
 Alternatively, if you'd rather run the script interactively: in the terminal (and not in JupyterLab), get an interactive session using `salloc --mem=12GB --time=01:30:00`. In the directory where the workshop contents are stored, run `bash create_env.sh`.
 

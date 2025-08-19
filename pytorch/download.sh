@@ -9,6 +9,12 @@ FOLDER="pytorch"
 # Temporary directory name
 TEMP_DIR="temp_repo"
 
+# Check if folder already exists
+if [ -d "$FOLDER" ]; then
+    echo "Error: Folder '$FOLDER' already exists. Please remove or rename it and try again."
+    exit 1
+fi
+
 # Clone the repository with minimum history
 git clone --depth 1 --filter=blob:none --sparse $REPO_URL $TEMP_DIR
 

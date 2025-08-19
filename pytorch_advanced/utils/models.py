@@ -41,22 +41,12 @@ class Classifier(nn.Module):
     def num_params(self):
         return sum(p.numel() for p in self.parameters())
     
-def make_resnet18_model(weights=None):
+def make_modified_resnet18_model(weights=None):
     
     model = resnet18(weights=weights)
+
+    # Add modification logic here...
     
-    # switch to single-channel inputs
-    model.conv1 = torch.nn.Conv2d(
-        in_channels=1, # we changed this
-        out_channels=model.conv1.out_channels, 
-        kernel_size=model.conv1.kernel_size,
-        stride=model.conv1.stride,
-        padding=model.conv1.padding,
-        bias=model.conv1.bias
-    )
-    
-    # use fresh classification head
-    model.fc = torch.nn.Linear(512, 47, bias=True)
     
     return model
 
