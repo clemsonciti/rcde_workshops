@@ -32,6 +32,21 @@ This project supports uv-only setup or conda+uv. uv is recommended for a quick, 
 
 The notebooks expect the demo dataset at `data/demo_corpus.jsonl` (already included).
 
+### Pre-cache on a data transfer node (optional)
+
+On a node with good network, pre-download wheels to a wheelhouse directory for faster or offline installs on compute nodes:
+
+```bash
+# GPU wheels (defaults to Python 3.10 for faiss-gpu); adjust path as needed
+./setup_uv.sh --download-only --gpu --wheelhouse /path/to/wheelhouse
+```
+
+Then on the compute node, install using that wheelhouse:
+
+```bash
+./setup_uv.sh --gpu --wheelhouse /path/to/wheelhouse --kernel llms-rag-workshop
+```
+
 ### Conda + uv (alternative)
 
 1. Create and activate the conda environment:
