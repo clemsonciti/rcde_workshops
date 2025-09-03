@@ -19,7 +19,7 @@ tips for the names of your files from now on.
  2. Stay with letters, numbers, `.` (period), `-` (dash) and `_` (underscore).
 
  3. Don't begin the name with `-`.
-   
+
 
  If you need to refer to names of files or directories that have whitespace
  or another non-alphanumeric character you should put quotes around the name.
@@ -78,12 +78,12 @@ File globbing, known better as wildcards, uses patterns to automatically expand 
 
 ```
 $ ls
-example1.txt    hello1.txt    hello2.txt    hello3.txt
+example1.txt    hello1.txt    hello2.txt    hello3.txt  hello4.csv
 ```
 
 ```
 $ ls *.txt
-example1.txt    hello1.txt    hello2.txt    hello3.txt  hello4.csv
+example1.txt    hello1.txt    hello2.txt    hello3.txt
 ```
 
 ```
@@ -99,7 +99,7 @@ hello1.txt    hello2.txt    hello3.txt
 
 There are many different ways to view the contents of a file.
 
-- `more` and `less` will display the file in a *buffer* 
+- `more` and `less` will display the file in a *buffer*
     - contents will fill the size of your terminal, allowing you to scroll
 ```
 $ less file
