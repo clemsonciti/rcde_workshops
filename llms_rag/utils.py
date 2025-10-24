@@ -5,7 +5,7 @@ import json
 import glob
 import pandas as pd
 
-def create_answer_box(question, question_id, shared_folder='/project/rcde/cehrett/python_sklearn/'):
+def create_answer_box(question, question_id, shared_folder='/project/rcde/cehrett/responses'):
     user_id = os.environ.get('USER') or os.environ.get('USERNAME') or 'unknown_user'
 
     # Display the question as a Markdown header
@@ -54,7 +54,7 @@ def create_answer_box(question, question_id, shared_folder='/project/rcde/cehret
 def sanitize_filename(text):
     return ''.join(c if c.isalnum() else '_' for c in text)
 
-def show_responses(question_id, shared_folder='/project/rcde/cehrett/python_sklearn/'):
+def show_responses(question_id, shared_folder='/project/rcde/cehrett/responses'):
     """
     Scan `shared_folder` for all files that end with _{question_id}.json,
     read them, and display a nicely formatted table of user_id → response.
