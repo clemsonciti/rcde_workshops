@@ -7,6 +7,74 @@ import torch.nn.functional as F
 import lightning.pytorch as pl
 import torchmetrics
 
+class Classifier_deep(nn.Module):
+    def __init__(self):
+        super(Classifier, self).__init__()
+
+        # feature encoder
+        self.feature_extractor = feature_extractor = nn.Sequential(
+            # block 1
+            nn.Conv2d(in_channels=1, out_channels=4, kernel_size=3, stride=1, bias=False),
+            nn.LazyBatchNorm2d(),
+            nn.ReLU(),
+            # 2
+            nn.Conv2d(in_channels=4, out_channels=4, kernel_size=3, stride=1, bias=False),
+            nn.LazyBatchNorm2d(),
+            nn.ReLU(),
+            # 3
+            nn.Conv2d(in_channels=4, out_channels=4, kernel_size=3, stride=1, bias=False),
+            nn.LazyBatchNorm2d(),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            # flatten just as with the linear classifier
+            nn.Flatten()
+        )
+        
+        # linear classification head -- ImageNet has 1000 classes
+        self.classifier = nn.LazyLinear(47)
+
+    def forward(self, x):
+        x = self.feature_extractor(x)
+        x = self.classifier(x)
+        return x
+    
+    def num_params(self):
+        return sum(p.numel() for p in self.parameters())
+
+class Classifier_wide(nn.Module):
+    def __init__(self):
+        super(Classifier, self).__init__()
+
+        # feature encoder
+        self.feature_extractor = feature_extractor = nn.Sequential(
+            # block 1
+            nn.Conv2d(in_channels=1, out_channels=4, kernel_size=3, stride=1, bias=False),
+            nn.LazyBatchNorm2d(),
+            nn.ReLU(),
+            # 2
+            nn.Conv2d(in_channels=4, out_channels=4, kernel_size=3, stride=1, bias=False),
+            nn.LazyBatchNorm2d(),
+            nn.ReLU(),
+            # 3
+            nn.Conv2d(in_channels=4, out_channels=4, kernel_size=3, stride=1, bias=False),
+            nn.LazyBatchNorm2d(),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            # flatten just as with the linear classifier
+            nn.Flatten()
+        )
+        
+        # linear classification head -- ImageNet has 1000 classes
+        self.classifier = nn.LazyLinear(47)
+
+    def forward(self, x):
+        x = self.feature_extractor(x)
+        x = self.classifier(x)
+        return x
+    
+    def num_params(self):
+        return sum(p.numel() for p in self.parameters())
+
 class Classifier(nn.Module):
     def __init__(self):
         super(Classifier, self).__init__()
@@ -46,7 +114,9 @@ def make_modified_resnet18_model(weights=None):
     model = resnet18(weights=weights)
 
     # Add modification logic here...
-    
+    # Use this code cell to adapt ResNet to our specialized data!
+    model.conv1 = torch.nn.Conv2d(in_channels=1, out_channels=64, kernel_size=(7,7), stride=(2,2), padding=(3,3), bias=False)
+    model.fc = torch.nn.Linear(512, 47, bias=True)
     
     return model
 
