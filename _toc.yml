@@ -139,6 +139,12 @@ parts:
     - file: llms_finetune/04-peft.ipynb
     - file: llms_finetune/05-logging.ipynb
     - file: llms_finetune/06-multigpu.ipynb
+  - file: llms_rag/00-index.md
+    sections:
+    - file: llms_rag/01_introduction_to_rag.ipynb
+    - file: llms_rag/02_document_retrieval_and_embeddings.ipynb
+    - file: llms_rag/03_building_simple_rag_pipeline.ipynb
+    - file: llms_rag/04_graph_rag.ipynb
 
 - caption: Advanced Palmetto Usage
   chapters:
