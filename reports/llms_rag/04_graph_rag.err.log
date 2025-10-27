@@ -1,0 +1,162 @@
+Traceback (most recent call last):
+  File "/home/cehrett/.conda/envs/jupyter-book/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/cehrett/.local/lib/python3.10/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/cehrett/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/cehrett/.conda/envs/jupyter-book/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/cehrett/.local/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/cehrett/.local/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/cehrett/.local/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+import numpy as np
+# Layered radial layout: Topics outer ring; Papers and Authors near related topics
+node_types = nx.get_node_attributes(G, 'type')
+topics = [n for n, t in node_types.items() if t == 'Topic']
+papers = [n for n, t in node_types.items() if t == 'Paper']
+authors = [n for n, t in node_types.items() if t == 'Author']
+
+R_TOPIC, R_PAPER, R_AUTHOR = 1.0, 0.68, 0.25
+rng = np.random.default_rng(42)
+
+pos = {}
+
+# Place topics evenly on a circle
+angles = np.linspace(0, 2*np.pi, max(len(topics), 1), endpoint=False)
+topic_angle = {}
+for i, topic in enumerate(topics):
+    theta = angles[i % len(angles)] if len(angles) else 0.0
+    topic_angle[topic] = theta
+    pos[topic] = (R_TOPIC*np.cos(theta), R_TOPIC*np.sin(theta))
+
+# Helper: circular mean of angles
+def circ_mean(angles):
+    arr = np.asarray(angles)
+    if arr.size == 0:
+        return 0.0
+    s = np.sin(arr).mean()
+    c = np.cos(arr).mean()
+    return float(np.arctan2(s, c))
+
+# Place papers near the mean angle of their topic neighbors
+paper_angle = {}
+for p in papers:
+    nbr_topics = [v for v in G.successors(p) if node_types.get(v) == 'Topic']
+    thetas = [topic_angle[v] for v in nbr_topics if v in topic_angle]
+    theta = circ_mean(np.array(thetas)) if thetas else rng.uniform(0, 2*np.pi)
+    # jitter to reduce overlap
+    theta += rng.normal(scale=0.16)
+    r = R_PAPER + rng.normal(scale=0.08)
+    paper_angle[p] = theta
+    pos[p] = (r*np.cos(theta), r*np.sin(theta))
+
+# Place authors near the mean angle of their paper neighbors
+for a in authors:
+    nbr_papers = [v for v in G.successors(a) if node_types.get(v) == 'Paper']
+    thetas = [paper_angle[v] for v in nbr_papers if v in paper_angle]
+    theta = circ_mean(np.array(thetas)) if thetas else rng.uniform(0, 2*np.pi)
+    theta += rng.normal(scale=0.16)
+    r = R_AUTHOR + rng.normal(scale=0.16)
+    pos[a] = (r*np.cos(theta), r*np.sin(theta))
+
+# Colors, sizes, and shapes per type
+type_color = {'Author': '#4C78A8', 'Paper': '#F58518', 'Topic': '#54A24B'}
+type_shape = {'Author': 'o', 'Paper': 's', 'Topic': '^'}
+sizes = {
+    'Author': 500,
+    'Paper': 500,
+    'Topic': 500,
+}
+
+plt.figure(figsize=(9.5, 6.5))
+
+# Draw edges first
+nx.draw_networkx_edges(
+    G, pos, arrows=True, arrowstyle='<|-|>', arrowsize=12,
+    width=1.2, edge_color='#999999', alpha=0.7
+)
+
+# Draw nodes by type with distinct shapes
+for nodelist, t in [(authors, 'Author'), (papers, 'Paper'), (topics, 'Topic')]:
+    if not nodelist:
+        continue
+    nx.draw_networkx_nodes(
+        G, pos, nodelist=nodelist,
+        node_color=type_color[t], node_shape=type_shape[t],
+        node_size=sizes[t], alpha=0.95, linewidths=1, edgecolors='white'
+    )
+
+# Labels: short paper titles; others as-is, sized per type
+def short(s, n=28):
+    s = str(s)
+    return s if len(s) <= n else s[: n - 1] + '…'
+
+# Build label dicts per type to control styling
+paper_labels = {n: short(G.nodes[n].get('title', n)) for n in papers}
+author_labels = {n: n for n in authors}
+topic_labels = {n: n for n in topics}
+
+nx.draw_networkx_labels(G, pos, labels=paper_labels, font_size=9)
+nx.draw_networkx_labels(G, pos, labels=author_labels, font_size=8)
+nx.draw_networkx_labels(G, pos, labels=topic_labels, font_size=9)
+
+# Optional edge labels for small graphs
+if G.number_of_edges() <= 30:
+    edge_labels = nx.get_edge_attributes(G, 'relation')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8, label_pos=0.45)
+
+# Legend with shapes
+legend_elements = [
+    Line2D([0], [0], marker=type_shape['Author'], color='w', label='Author',
+           markerfacecolor=type_color['Author'], markeredgecolor='white', markersize=10, markeredgewidth=1),
+    Line2D([0], [0], marker=type_shape['Paper'], color='w', label='Paper',
+           markerfacecolor=type_color['Paper'], markeredgecolor='white', markersize=11, markeredgewidth=1),
+    Line2D([0], [0], marker=type_shape['Topic'], color='w', label='Topic',
+           markerfacecolor=type_color['Topic'], markeredgecolor='white', markersize=10, markeredgewidth=1),
+]
+plt.legend(handles=legend_elements, frameon=False, loc='upper left')
+
+plt.axis('off')
+plt.tight_layout()
+plt.show()
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mImportError[0m                               Traceback (most recent call last)
+Cell [0;32mIn[4], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mplt[39;00m
+[1;32m      2[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlines[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Line2D
+[1;32m      3[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mnp[39;00m
+
+File [0;32m~/.conda/envs/jupyter-book/lib/python3.10/site-packages/matplotlib/__init__.py:161[0m
+[1;32m    157[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mpackaging[39;00m[38;5;21;01m.[39;00m[38;5;21;01mversion[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m parse [38;5;28;01mas[39;00m parse_version
+[1;32m    159[0m [38;5;66;03m# cbook must import matplotlib only within function[39;00m
+[1;32m    160[0m [38;5;66;03m# definitions, so it is safe to import from it here.[39;00m
+[0;32m--> 161[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m _api, _version, cbook, _docstring, rcsetup
+[1;32m    162[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_api[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m MatplotlibDeprecationWarning
+[1;32m    163[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mrcsetup[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m cycler  [38;5;66;03m# noqa: F401[39;00m
+
+File [0;32m~/.conda/envs/jupyter-book/lib/python3.10/site-packages/matplotlib/cbook.py:32[0m
+[1;32m     29[0m     [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m VisibleDeprecationWarning
+[1;32m     31[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m
+[0;32m---> 32[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mmatplotlib[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m _api, _c_internal_utils
+[1;32m     35[0m [38;5;28;01mclass[39;00m[38;5;250m [39m[38;5;21;01m_ExceptionInfo[39;00m:
+[1;32m     36[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m     37[0m [38;5;124;03m    A class to carry exception information around.[39;00m
+[1;32m     38[0m 
+[0;32m   (...)[0m
+[1;32m     43[0m [38;5;124;03m    users and result in incorrect tracebacks.[39;00m
+[1;32m     44[0m [38;5;124;03m    """[39;00m
+
+[0;31mImportError[0m: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/cehrett/.conda/envs/jupyter-book/lib/python3.10/site-packages/matplotlib/_c_internal_utils.cpython-310-x86_64-linux-gnu.so)
+
