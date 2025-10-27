@@ -7,8 +7,17 @@ _build
 pytorch/*.pt
 data/
 *__pycache__*
+# Generated artifacts
+*.sif
+*.sif_BAK
+*.sandbox/
+lightning_logs/
+create_pytorch_env.*
+*.err
+*.out
+response_viewer.ipynb
+pytorch/newsgroups-classification/
 pytorch_advanced/logs/
 pytorch_advanced/checkpoints/
 pytorch_advanced/lightning_logs/
 pytorch_advanced/wandb/
-
