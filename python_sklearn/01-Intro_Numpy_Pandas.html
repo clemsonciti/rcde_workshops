@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction to Python for Machine Learning &#8212; Research Computing and Data Workshop</title>
   
@@ -15,47 +14,45 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-P6QN6GGV84"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,13 +60,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-P6QN6GGV84');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_sklearn/01-Intro_Numpy_Pandas';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://clemsonciti.github.io/rcde_workshops/python_sklearn/01-Intro_Numpy_Pandas.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -84,19 +86,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,9 +152,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -150,12 +168,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Research Computing and Data Workshop - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Research Computing and Data Workshop - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
@@ -182,8 +211,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
@@ -193,11 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
@@ -209,8 +238,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
@@ -223,11 +252,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
 
 
@@ -244,8 +273,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Machine Learning using Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Machine Learning using Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="00-Quickstart.html">Machine Learning in Python using Clemson High Performance Computing</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to Python for Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-Supervised_Learning.html">Introduction to ML Concepts</a></li>
@@ -254,8 +283,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="05-Data_Preparation.html">Data Preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-Scripting_Your_Code.html">Scripting Your Code</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
@@ -267,26 +296,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
-
-
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/01-Intro_To_Polars.html">Introduction to Polars</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/02-Python_GPU.html">GPU Acceleration with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/03-Multinode.html">Multi-node Parallelism and Dask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/04-Debugging_and_Performance_Tuning.html">Debugging and Performance Tuning</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
@@ -312,32 +338,32 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Large language models (LLMs)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/01-data.html">Preparing data for LLM training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/03-attention_is_all_you_need.html">Attention is all you need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/04-other_topics.html">Other LLM Topics</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_inference/00-index.html">Running LLMs on Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_inference/00-index.html">Running LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../llms_inference/01-background.html">Running LLMs on Palmetto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_inference/02-mwe.html">Minimum working example, and what it’s missing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_inference/03-efficiency.html">Batching, multi-gpu, and multi-node for large data and large models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/01-alternatives.html">Alternatives to fine-tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/02-data_prep.html">Data preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/03-full_finetune.html">Full fine-tune</a></li>
@@ -345,31 +371,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/05-logging.html">Project Logging with Weights and Biases (WandB)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/06-multigpu.html">Efficiency and using multiple GPUs</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
@@ -379,7 +397,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -395,7 +413,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -404,14 +422,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -486,26 +504,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -538,13 +558,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python-for-machine-learning">
-<h1>Introduction to Python for Machine Learning<a class="headerlink" href="#introduction-to-python-for-machine-learning" title="Permalink to this heading">#</a></h1>
+<h1>Introduction to Python for Machine Learning<a class="headerlink" href="#introduction-to-python-for-machine-learning" title="Link to this heading">#</a></h1>
 <p>Python has become the de facto language for machine learning due to its simplicity, readability, and extensive ecosystem of libraries. Its flexibility allows for rapid prototyping and development, while its powerful libraries like NumPy, Pandas, and Scikit-learn provide efficient tools for data manipulation and model building.</p>
 <section id="essential-python-concepts-review">
-<h2>1. Essential Python Concepts Review<a class="headerlink" href="#essential-python-concepts-review" title="Permalink to this heading">#</a></h2>
+<h2>1. Essential Python Concepts Review<a class="headerlink" href="#essential-python-concepts-review" title="Link to this heading">#</a></h2>
 <p>For a broad introduction to Python, check out the <a class="reference external" href="https://www.python.org/about/gettingstarted/">Python Programming Guide</a>. Here are some key features of Python that are particularly useful for machine learning:</p>
 <ul class="simple">
 <li><p><strong>List Comprehensions</strong>: A concise way to create lists in Python.</p></li>
@@ -563,15 +583,17 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Are you familiar with the above-described concepts, or would you benefit from our spending some time on them now?&quot;</span><span class="p">,</span> <span class="s2">&quot;01-01&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code snippets demonstrating key Python concepts</span>
 <span class="c1"># List comprehension example</span>
 <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
 <span class="n">squares</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 </pre></div>
 </div>
 </div>
@@ -581,11 +603,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lambda function example</span>
 <span class="n">multiply</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
 <span class="n">multiply</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50
 </pre></div>
 </div>
 </div>
@@ -599,12 +616,6 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot divide by zero&quot;</span><span class="p">)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This line still runs&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cannot divide by zero
-This line still runs
 </pre></div>
 </div>
 </div>
@@ -630,11 +641,6 @@ This line still runs
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,16 +650,11 @@ This line still runs
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>232
-</pre></div>
-</div>
-</div>
 </div>
 <p>If we were to run <code class="docutils literal notranslate"><span class="pre">list(fib)</span></code>, we would get a list of the first quintillion Fibonacci numbers. But we don’t want to do that, because it would take up all the memory on our machine!</p>
 </section>
 <section id="introduction-to-numpy">
-<h2>2. Introduction to NumPy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this heading">#</a></h2>
+<h2>2. Introduction to NumPy<a class="headerlink" href="#introduction-to-numpy" title="Link to this heading">#</a></h2>
 <p>NumPy is a powerful library for numerical computing in Python. It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays. NumPy is the foundation for many other libraries in the Python data science ecosystem, such as Pandas, Scikit-learn, PyTorch, and TensorFlow. The reason NumPy is so fast is that it is implemented in C, which is a much faster language than Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,31 +685,10 @@ This line still runs
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array operations:
-Array:
-[1 2 3 4 5]
-Array x 2:
-[ 2  4  6  8 10]
-Array summed:
-15
-
-Broadcasting example:
-Matrix:
-[[ 1  2  3  4  5]
- [ 6  7  8  9 10]]
-Array:
-[1 2 3 4 5]
-Matrix + Array:
-[[ 2  4  6  8 10]
- [ 7  9 11 13 15]]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="intro-to-pandas">
-<h2>3. Intro to Pandas<a class="headerlink" href="#intro-to-pandas" title="Permalink to this heading">#</a></h2>
+<h2>3. Intro to Pandas<a class="headerlink" href="#intro-to-pandas" title="Link to this heading">#</a></h2>
 <p>Pandas is a powerful data manipulation library for Python. It is built on top of NumPy and provides data structures and functions for efficiently manipulating large datasets. Pandas is widely used in data science and machine learning for data cleaning, exploration, and preparation.</p>
 <p>Pandas isn’t the best choice for truly massive datasets, since it loads the entire dataset into memory. But even libraries that are better suited for massive datasets, like Dask, tend to conform to the Pandas API, so learning Pandas is a good foundation for working with other libraries.</p>
 <p>Pandas is great for organizing and exploring data. We’ll spend more time on data exploration in Day 2, but let’s take a quick look at how to use Pandas dataframes to organize data. We’ll use the California Housing dataset, which is a dataset containing information about housing prices. The dataset contains 20,640 samples and 9 features. The goal is to predict the house value, given a set of features about the property and its district.</p>
@@ -733,163 +713,11 @@ Matrix + Array:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;frame&#39;, &#39;target_names&#39;, &#39;feature_names&#39;, &#39;DESCR&#39;])
-</pre></div>
-</div>
-</div>
 </div>
 <p>And you can make your Pandas dataframe using the <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> class. You can check the docstring for this by running the below code cell. It will tell you the arguments that a call to <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> can include, along with examples of its use.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.DataFrame<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Init signature:</span>
-pd<span class=" -Color -Color-Blue">.</span>DataFrame<span class=" -Color -Color-Blue">(</span>
-    data<span class=" -Color -Color-Blue">=</span><span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    index<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Axes | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    columns<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Axes | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    dtype<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;Dtype | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-    copy<span class=" -Color -Color-Blue">:</span> <span class=" -Color -Color-Blue">&#39;bool | None&#39;</span> <span class=" -Color -Color-Blue">=</span> <span class=" -Color -Color-Green">None</span><span class=" -Color -Color-Blue">,</span>
-<span class=" -Color -Color-Blue">)</span> <span class=" -Color -Color-Blue">-&gt;</span> <span class=" -Color -Color-Blue">&#39;None&#39;</span>
-<span class=" -Color -Color-Red">Docstring:</span>     
-Two-dimensional, size-mutable, potentially heterogeneous tabular data.
-
-Data structure also contains labeled axes (rows and columns).
-Arithmetic operations align on both row and column labels. Can be
-thought of as a dict-like container for Series objects. The primary
-pandas data structure.
-
-Parameters
-----------
-data : ndarray (structured or homogeneous), Iterable, dict, or DataFrame
-    Dict can contain Series, arrays, constants, dataclass or list-like objects. If
-    data is a dict, column order follows insertion-order. If a dict contains Series
-    which have an index defined, it is aligned by its index. This alignment also
-    occurs if data is a Series or a DataFrame itself. Alignment is done on
-    Series/DataFrame inputs.
-
-    If data is a list of dicts, column order follows insertion-order.
-
-index : Index or array-like
-    Index to use for resulting frame. Will default to RangeIndex if
-    no indexing information part of input data and no index provided.
-columns : Index or array-like
-    Column labels to use for resulting frame when data does not have them,
-    defaulting to RangeIndex(0, 1, 2, ..., n). If data contains column labels,
-    will perform column selection instead.
-dtype : dtype, default None
-    Data type to force. Only a single dtype is allowed. If None, infer.
-copy : bool or None, default None
-    Copy data from inputs.
-    For dict data, the default of None behaves like ``copy=True``.  For DataFrame
-    or 2d ndarray input, the default of None behaves like ``copy=False``.
-    If data is a dict containing one or more Series (possibly of different dtypes),
-    ``copy=False`` will ensure that these inputs are not copied.
-
-    .. versionchanged:: 1.3.0
-
-See Also
---------
-DataFrame.from_records : Constructor from tuples, also record arrays.
-DataFrame.from_dict : From dicts of Series, arrays, or dicts.
-read_csv : Read a comma-separated values (csv) file into DataFrame.
-read_table : Read general delimited file into DataFrame.
-read_clipboard : Read text from clipboard into DataFrame.
-
-Notes
------
-Please reference the :ref:`User Guide &lt;basics.dataframe&gt;` for more information.
-
-Examples
---------
-Constructing DataFrame from a dictionary.
-
-&gt;&gt;&gt; d = {&#39;col1&#39;: [1, 2], &#39;col2&#39;: [3, 4]}
-&gt;&gt;&gt; df = pd.DataFrame(data=d)
-&gt;&gt;&gt; df
-   col1  col2
-0     1     3
-1     2     4
-
-Notice that the inferred dtype is int64.
-
-&gt;&gt;&gt; df.dtypes
-col1    int64
-col2    int64
-dtype: object
-
-To enforce a single dtype:
-
-&gt;&gt;&gt; df = pd.DataFrame(data=d, dtype=np.int8)
-&gt;&gt;&gt; df.dtypes
-col1    int8
-col2    int8
-dtype: object
-
-Constructing DataFrame from a dictionary including Series:
-
-&gt;&gt;&gt; d = {&#39;col1&#39;: [0, 1, 2, 3], &#39;col2&#39;: pd.Series([2, 3], index=[2, 3])}
-&gt;&gt;&gt; pd.DataFrame(data=d, index=[0, 1, 2, 3])
-   col1  col2
-0     0   NaN
-1     1   NaN
-2     2   2.0
-3     3   3.0
-
-Constructing DataFrame from numpy ndarray:
-
-&gt;&gt;&gt; df2 = pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
-...                    columns=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])
-&gt;&gt;&gt; df2
-   a  b  c
-0  1  2  3
-1  4  5  6
-2  7  8  9
-
-Constructing DataFrame from a numpy ndarray that has labeled columns:
-
-&gt;&gt;&gt; data = np.array([(1, 2, 3), (4, 5, 6), (7, 8, 9)],
-...                 dtype=[(&quot;a&quot;, &quot;i4&quot;), (&quot;b&quot;, &quot;i4&quot;), (&quot;c&quot;, &quot;i4&quot;)])
-&gt;&gt;&gt; df3 = pd.DataFrame(data, columns=[&#39;c&#39;, &#39;a&#39;])
-...
-&gt;&gt;&gt; df3
-   c  a
-0  3  1
-1  6  4
-2  9  7
-
-Constructing DataFrame from dataclass:
-
-&gt;&gt;&gt; from dataclasses import make_dataclass
-&gt;&gt;&gt; Point = make_dataclass(&quot;Point&quot;, [(&quot;x&quot;, int), (&quot;y&quot;, int)])
-&gt;&gt;&gt; pd.DataFrame([Point(0, 0), Point(0, 3), Point(2, 3)])
-   x  y
-0  0  0
-1  0  3
-2  2  3
-
-Constructing DataFrame from Series/DataFrame:
-
-&gt;&gt;&gt; ser = pd.Series([1, 2, 3], index=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
-&gt;&gt;&gt; df = pd.DataFrame(data=ser, index=[&quot;a&quot;, &quot;c&quot;])
-&gt;&gt;&gt; df
-   0
-a  1
-c  3
-
-&gt;&gt;&gt; df1 = pd.DataFrame([1, 2, 3], index=[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], columns=[&quot;x&quot;])
-&gt;&gt;&gt; df2 = pd.DataFrame(data=df1, index=[&quot;a&quot;, &quot;c&quot;])
-&gt;&gt;&gt; df2
-   x
-a  1
-c  3
-<span class=" -Color -Color-Red">File:</span>           /software/slurm/spackages/linux-rocky8-x86_64/gcc-12.2.0/anaconda3-2023.09-0-3mhml42fa64byxqyd5fig5tbih625dp2/lib/python3.11/site-packages/pandas/core/frame.py
-<span class=" -Color -Color-Red">Type:</span>           type
-<span class=" -Color -Color-Red">Subclasses:</span>     SubclassedDataFrame
 </pre></div>
 </div>
 </div>
@@ -904,37 +732,16 @@ c  3
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please enter your code to produce a Pandas df of the California housing data.&quot;</span><span class="p">,</span> <span class="s2">&quot;01-01&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please copy/paste your code to produce a Pandas df of the California housing data.&quot;</span><span class="p">,</span> <span class="s2">&quot;01-02&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<p>Please enter your code to produce a Pandas df of the California housing data.</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2ff2c8cd64784f609d6556ec8f59eb96", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a1fc2fa426ac437e9ad67b9b22d377c2", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "6fdb231dce6642e5afc4409126bfa5ee", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the first few rows of the DataFrame</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First few rows of the California Housing Dataset:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First few rows of the California Housing Dataset:
-   MedInc  HouseAge  AveRooms  AveBedrms  Population  AveOccup  Latitude  \
-0  8.3252      41.0  6.984127   1.023810       322.0  2.555556     37.88   
-1  8.3014      21.0  6.238137   0.971880      2401.0  2.109842     37.86   
-2  7.2574      52.0  8.288136   1.073446       496.0  2.802260     37.85   
-3  5.6431      52.0  5.817352   1.073059       558.0  2.547945     37.85   
-4  3.8462      52.0  6.281853   1.081081       565.0  2.181467     37.85   
-
-   Longitude  Price  
-0    -122.23  4.526  
-1    -122.22  3.585  
-2    -122.24  3.521  
-3    -122.25  3.413  
-4    -122.25  3.422  
 </pre></div>
 </div>
 </div>
@@ -1005,29 +812,20 @@ c  3
 </div>
 </div>
 </div>
-<p><strong>Challenge:</strong> Find the mean age of houses in the upper quartile (i.e. 75th percentile, or 0.75 quantile) of prices. I.e., among the 25% of houses that are the most expensive, what is their average age? For this, you might find it helpful to know that just as there is a <code class="docutils literal notranslate"><span class="pre">median</span></code> method (shown above) for Pandas Series, there is also a <code class="docutils literal notranslate"><span class="pre">quantile</span></code> method, in which you can specify whatever quantile you would like it to return.</p>
+<p><strong>Challenge:</strong> Find the mean age of houses in the upper quartile (i.e. 75th percentile, or 0.75 quantile) of prices. I.e., among the 25% of areas that are the most expensive, what is their average age? For this, you might find it helpful to know that just as there is a <code class="docutils literal notranslate"><span class="pre">median</span></code> method (shown above) for Pandas Series, there is also a <code class="docutils literal notranslate"><span class="pre">quantile</span></code> method, in which you can specify whatever quantile you would like it to return.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try out your code here. Submit your final answer below.</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Price&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)][</span><span class="s1">&#39;HouseAge&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.58895348837209
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please enter your code.&quot;</span><span class="p">,</span> <span class="s2">&quot;01-02&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please enter your code.&quot;</span><span class="p">,</span> <span class="s2">&quot;01-03&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<p>Please enter your code.</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d22b27e4047a49c3985ae1955b823a4d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e23f5e03afaf4a838fd0fea646da7090", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b25a8bc4a89b426ab177df92d76d2556", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Pandas also includes some plotting functionality, which is built on top of the Matplotlib library. Very useful for quickly visualizing data.</p>
 <div class="cell docutils container">
@@ -1109,8 +907,10 @@ c  3
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="00-Quickstart.html"
@@ -1139,6 +939,7 @@ c  3
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1156,7 +957,7 @@ c  3
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1169,6 +970,7 @@ By Linh Ngo
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -1182,7 +984,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1191,8 +993,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

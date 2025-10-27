@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Machine Learning in Python using Clemson High Performance Computing &#8212; Research Computing and Data Workshop</title>
   
@@ -15,47 +14,45 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-P6QN6GGV84"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,13 +60,18 @@
                 gtag('js', new Date());
                 gtag('config', 'G-P6QN6GGV84');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-P6QN6GGV84');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_sklearn/00-Quickstart';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://clemsonciti.github.io/rcde_workshops/python_sklearn/00-Quickstart.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -84,19 +86,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,9 +152,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -150,12 +168,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Research Computing and Data Workshop - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Research Computing and Data Workshop - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introductory Sequence</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_linux/00-index.html">Introduction to Linux</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/00a-outline.html">Workshop Outline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/01-introduction.html">What is Linux?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/01a-shell.html">Shell Specifics</a></li>
@@ -182,8 +211,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/07-utilities.html">Utilities and Useful Information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_linux/08-conclusion.html">Workshop Conclusion</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_palmetto/00-index.html">Introduction to Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/01-introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/02-accessing-palmetto.html">Accessing the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/03-palmetto_structure.html">The structure of the Palmetto Cluster</a></li>
@@ -193,11 +222,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/07-open-od.html">Web-based access to the Palmetto Cluster</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_palmetto/08-batch.html">Running a batch job</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">R</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_programming/00-index.html">Introduction to R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/01-Introduction.html">Introduction to R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/02-Basic-R.html">Basics of R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/03-Data-Structures.html">Data Structures</a></li>
@@ -209,8 +238,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/09-Plotting-with-ggplot.html">Ploting with ggplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_programming/10-R-in-Palmetto.html">R in Palmetto</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r_machine_learning/00-index.html">Machine Learning using R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/01-Introduction.html">Introduction to Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/02-Caret-Preprocessing.html">Introduction to Caret</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/03-Caret-Data-Partition.html">Data Partition with caret</a></li>
@@ -223,11 +252,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/10-Unsupervised-Learning.html">Unsupervised Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r_machine_learning/11-Neural-Network.html">Neural Network</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_programming/00-index.html">Introduction to Python Programming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python_programming/01-IntroToPython-I.html">Introduction to Python I</a></li>
 
 
@@ -244,8 +273,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Machine Learning using Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-index.html">Machine Learning using Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Machine Learning in Python using Clemson High Performance Computing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01-Intro_Numpy_Pandas.html">Introduction to Python for Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-Supervised_Learning.html">Introduction to ML Concepts</a></li>
@@ -254,8 +283,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="05-Data_Preparation.html">Data Preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-Scripting_Your_Code.html">Scripting Your Code</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_deep_learning/00-index.html">Deep Learning in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/01-Introduction.html">Introduction to Deep Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/02-Deep-Learning-Framework.html">Deep Learning Library Framework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/03-Neural-Network.html">Recap on ANN</a></li>
@@ -267,26 +296,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../python_deep_learning/08-Recurrent-neural-networks.html">Recurrent Neural Network for Timeseries forecasting</a></li>
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_big_data/00-index.html">Big Data Analytics in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/01-introduction.html">Introduction to Apache Spark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../python_big_data/02-cluster.html">Launching the Spark cluster</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../python_big_data/03-notebooks.html">1. Where are the notebooks</a></li>
-
-
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hpc_python/00-index.html">HPC Python on Palmetto 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/01-Intro_To_Polars.html">Introduction to Polars</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/02-Python_GPU.html">GPU Acceleration with Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/03-Multinode.html">Multi-node Parallelism and Dask</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hpc_python/04-Debugging_and_Performance_Tuning.html">Debugging and Performance Tuning</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch/00-index.html">Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch/00-quickstart.html">PyTorch Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch/01-pytorch_basics.html">PyTorch Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch/02-pytorch_gpu_support.html">Pytorch GPU support</a></li>
@@ -312,32 +338,32 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_advanced/00-index.html">Advanced Deep Learning in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/01-emnist_baseline.html">EMNIST Baseline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/02-import_custom_scripts.html">Move reused code into python script files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/03-finetune_pretrained_models.html">Model fine-tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/04-pytorch_lightning.html">Pytorch Lightning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_advanced/05-training_techniques.html">Training Techniques</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Large language models (LLMs)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pytorch_llm/00-index.html">Attention, Transformers, and LLMs: a hands-on introduction in Pytorch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/01-data.html">Preparing data for LLM training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/02-small_language_model.html">Small Language Models: an introduction to autoregressive language modeling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/03-attention_is_all_you_need.html">Attention is all you need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pytorch_llm/04-other_topics.html">Other LLM Topics</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_inference/00-index.html">Running LLMs on Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_inference/00-index.html">Running LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../llms_inference/01-background.html">Running LLMs on Palmetto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_inference/02-mwe.html">Minimum working example, and what it’s missing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_inference/03-efficiency.html">Batching, multi-gpu, and multi-node for large data and large models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../llms_finetune/00-index.html">Fine-tuning LLMs on Palmetto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/01-alternatives.html">Alternatives to fine-tuning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/02-data_prep.html">Data preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/03-full_finetune.html">Full fine-tune</a></li>
@@ -345,31 +371,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/05-logging.html">Project Logging with Weights and Biases (WandB)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../llms_finetune/06-multigpu.html">Efficiency and using multiple GPUs</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Palmetto Usage</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../containers/00-index.html">Containerization on Palmetto (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../containers/01-introduction.html">Introduction to CloudLab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../containers/02-dockers.html">Docker Containers on CloudLab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../containers/03-apptainers.html">Singularity/Apptainers on Palmetto</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../advanced_scheduling/01-introduction.html">1. What is Spark?</a></li>
-
-
-
-
-
-
-
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../advanced_scheduling/00-index.html">Advanced Scheduling (under development)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Development Life Cycle</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro_git_gitlab/00-index.html">Introduction to Version Control with Git and GitLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/01-version-control.html">Version Control Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/02-git-workflow.html">Git Version Control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/03-git-commands.html">Git Commands</a></li>
@@ -379,7 +397,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/07-collaboration-conflicts.html">Collaboration and Conflicts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro_git_gitlab/09-more-resources.html">More Resources</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -395,7 +413,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -404,14 +422,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -486,26 +504,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -527,13 +547,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-and-overview">1. Welcome and Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">1.1 Getting started</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">1.2 What is machine learning?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">1.1 Getting started</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-a-jupyter-session-in-open-ondemand">1.1.1 Start a Jupyter session in Open OnDemand</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-the-workshop-files-to-your-home-directory">1.1.2 Copy the workshop files to your home directory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#about-using-this-code-outside-the-container">1.1.3 About using this code outside the container</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-environment">2. Setting up the Environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-conda-environment">2.1 Creating a Conda Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registering-as-a-jupyter-kernel">2.2 Registering as a jupyter kernel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">1.2 What is machine learning?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-end-to-end-ml-forest-covertypes-dataset">3. Example end-to-end ML: Forest Covertypes Dataset</a></li>
@@ -547,14 +567,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-in-python-using-clemson-high-performance-computing">
-<h1>Machine Learning in Python using Clemson High Performance Computing<a class="headerlink" href="#machine-learning-in-python-using-clemson-high-performance-computing" title="Permalink to this heading">#</a></h1>
+<h1>Machine Learning in Python using Clemson High Performance Computing<a class="headerlink" href="#machine-learning-in-python-using-clemson-high-performance-computing" title="Link to this heading">#</a></h1>
 <p><strong>Instructor:</strong> Carl Ehrett</p>
 <p><strong>Email:</strong> <a class="reference external" href="mailto:cehrett&#37;&#52;&#48;clemson&#46;edu">cehrett<span>&#64;</span>clemson<span>&#46;</span>edu</a></p>
 <section id="welcome-and-overview">
-<h2>1. Welcome and Overview<a class="headerlink" href="#welcome-and-overview" title="Permalink to this heading">#</a></h2>
+<h2>1. Welcome and Overview<a class="headerlink" href="#welcome-and-overview" title="Link to this heading">#</a></h2>
 <p>In this workshop, we will introduce the basics of machine learning using Python. We will focus on machine learning using “tabular data” (i.e. spreadsheet-style data), as opposed to images or unstructured text, though most of what we talk about will also apply to those domains. Image-related ML and generative AI both typically use deep learning neural networks which are not the focus of this workshop, but will be the focuses of other upcoming CCIT workshops. In this workshop, we will emphasize the use of Clemson’s Palmetto Cluster for running machine learning algorithms on large datasets. We will cover the following topics:</p>
 <ul class="simple">
 <li><p>What is machine learning?</p></li>
@@ -569,69 +589,71 @@ document.write(`
 <li><p>What sorts of Palmetto resources should we request to allocate for our machine learning jobs?</p></li>
 </ul>
 <section id="getting-started">
-<h3>1.1 Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h3>
-<p>You can download this notebook and its contents as follows.</p>
-<p>In the terminal, run the following command: <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/python_sklearn/download.sh</span></code></p>
-<p>This copies to your drivespace a script <code class="docutils literal notranslate"><span class="pre">download.sh</span></code> that, when run, will copy the full workshop files to your drivespace. So now that you have that script, run the command: <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">download.sh</span></code>. You should now have a folder, <code class="docutils literal notranslate"><span class="pre">python_sklearn</span></code>, which contains this notebook and the rest of the workshop.</p>
-<p>You can run most of this notebook using the default kernel, though some of the code cells will only run if you have created an environment with specialized libraries installed.</p>
-</section>
-<section id="what-is-machine-learning">
-<h3>1.2 What is machine learning?<a class="headerlink" href="#what-is-machine-learning" title="Permalink to this heading">#</a></h3>
-<p>People use the term “machine learning” in a variety of ways. Some people use it more or less synonymously with “artificial intelligence.” And these days, AI does indeed usually work under the paradigm of machine learning. But “machine learning” refers to the use of algorithms to learn from data. The contrast here is with traditional programming, where a programmer writes code that tells the computer exactly what to do. In machine learning, the programmer writes code that tells the computer how to learn from data to make decisions.</p>
-<p><img alt="ML vs traditional" src="../_images/ml.png" /></p>
-</section>
-</section>
-<section id="setting-up-the-environment">
-<h2>2. Setting up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this heading">#</a></h2>
-<section id="creating-a-conda-environment">
-<h3>2.1 Creating a Conda Environment<a class="headerlink" href="#creating-a-conda-environment" title="Permalink to this heading">#</a></h3>
-<p>Why we use conda for ML environments:</p>
+<h3>1.1 Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h3>
+<p>To get started with the notebooks, please follow the steps below carefully.</p>
+<section id="start-a-jupyter-session-in-open-ondemand">
+<h4>1.1.1 Start a Jupyter session in Open OnDemand<a class="headerlink" href="#start-a-jupyter-session-in-open-ondemand" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Simplified package management and dependency resolution</p></li>
-<li><p>Easy creation and management of isolated environments</p></li>
-<li><p>Cross-platform compatibility (Windows, macOS, Linux)</p></li>
-<li><p>Support for multiple programming languages (not just Python)</p></li>
-<li><p>Ability to specify and replicate exact environment configurations</p></li>
-<li><p>Large repository of pre-built packages optimized for different systems</p></li>
+<li><p>Launch <strong>Jupyter Notebook (Containerized)</strong> from Open OnDemand.</p></li>
+<li><p>In the form:</p>
+<ul>
+<li><p>Set <strong>CPU Cores</strong>: <code class="docutils literal notranslate"><span class="pre">8</span></code></p></li>
+<li><p>Set <strong>Memory</strong>: <code class="docutils literal notranslate"><span class="pre">32G</span></code></p></li>
+<li><p>Select <strong>1 V100 GPU</strong></p></li>
+<li><p>Set <strong>Path to container image (.sif)</strong>: <code class="docutils literal notranslate"><span class="pre">/project/rcde/cehrett/python_sklearn/workshop.sif</span></code></p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commands for creating and activating a conda environment</span>
+</li>
+</ul>
+</section>
+<section id="copy-the-workshop-files-to-your-home-directory">
+<h4>1.1.2 Copy the workshop files to your home directory<a class="headerlink" href="#copy-the-workshop-files-to-your-home-directory" title="Link to this heading">#</a></h4>
+<p>Once your session starts:</p>
+<ul class="simple">
+<li><p>Open a terminal from the JupyterLab interface.</p></li>
+<li><p>Run the following command to copy the workshop materials: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/opt/workshop/</span> <span class="pre">./</span></code></p></li>
+<li><p>If you already have a folder named <code class="docutils literal notranslate"><span class="pre">workshop</span></code> in your home directory, either rename or remove it first, or copy to a different location: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/opt/workshop/</span> <span class="pre">~/some/other/location/</span></code></p></li>
+</ul>
+</section>
+<section id="about-using-this-code-outside-the-container">
+<h4>1.1.3 About using this code outside the container<a class="headerlink" href="#about-using-this-code-outside-the-container" title="Link to this heading">#</a></h4>
+<p>If you’d like to run these notebooks outside of the container (e.g., on your laptop or another system), you’ll need to set up a Python environment with the required libraries.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commands for creating and activating a conda environment (in the terminal on a compute node)</span>
+module<span class="w"> </span>load<span class="w"> </span>miniforge3
 conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>hpc_ml<span class="w"> </span>-c<span class="w"> </span>rapidsai<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>nvidia<span class="w"> </span>cudf<span class="w"> </span>cuml<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>scikit-learn<span class="w"> </span>matplotlib<span class="w"> </span>seaborn<span class="w"> </span>rapids<span class="w"> </span>jupyterlab<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span><span class="s1">&#39;cuda-version&gt;=12.0,&lt;=12.5&#39;</span>
 <span class="c1"># Warning: the above command may take awhile! ~20 minutes. Next:</span>
 <span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>hpc_ml
 </pre></div>
 </div>
-</section>
-<section id="registering-as-a-jupyter-kernel">
-<h3>2.2 Registering as a jupyter kernel<a class="headerlink" href="#registering-as-a-jupyter-kernel" title="Permalink to this heading">#</a></h3>
 <p>In addition to installing JupyterLab, we need to register our environment as a Jupyter kernel in order for it to show up as an option for us when running a notebook.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Register the env as a kernel</span>
 python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>hpc_ml<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;HPC_ML&quot;</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="example-end-to-end-ml-forest-covertypes-dataset">
-<h2>3. Example end-to-end ML: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_covtype.html#sklearn.datasets.fetch_covtype">Forest Covertypes Dataset</a><a class="headerlink" href="#example-end-to-end-ml-forest-covertypes-dataset" title="Permalink to this heading">#</a></h2>
-<p>First, we will use the Forest Covertypes dataset, which is a dataset that contains information about the forest cover type in the Roosevelt National Forest of northern Colorado. The dataset contains 581,012 samples and 54 features. The goal is to predict the forest cover type based on the cartographic features provided.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_answer_box</span>
 <span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please enter your name.&quot;</span><span class="p">,</span> <span class="s2">&quot;00-01&quot;</span><span class="p">)</span>
 <span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please enter your Clemson email address.&quot;</span><span class="p">,</span> <span class="s2">&quot;00-02&quot;</span><span class="p">)</span>
 <span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please briefly describe your level of experience with the Python programming language.&quot;</span><span class="p">,</span> <span class="s2">&quot;00-03&quot;</span><span class="p">)</span>
-<span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please briefly describe your level of experience with Palmetto. (Have you used Open OnDemand? Have you submitted batch jobs? Etc.&quot;</span><span class="p">,</span> <span class="s2">&quot;00-04&quot;</span><span class="p">)</span>
-<span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Are there any particular areas of machine learning that you particularly hope to learn about today?&quot;</span><span class="p">,</span> <span class="s2">&quot;00-05&quot;</span><span class="p">)</span>
+<span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Please briefly describe your level of experience with Palmetto. (Have you used Open OnDemand? Have you submitted batch jobs? Etc.)&quot;</span><span class="p">,</span> <span class="s2">&quot;00-04&quot;</span><span class="p">)</span>
+<span class="n">create_answer_box</span><span class="p">(</span><span class="s2">&quot;Are there any particular areas of machine learning that you especially hope to learn about today?&quot;</span><span class="p">,</span> <span class="s2">&quot;00-05&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<p>Please enter your name.</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1d87ca7165c248b8bf6508a4bdaa45e8", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "bba28b5e0fd4454eb2b4046aee703a3b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a026646a17344f2f93a5f9d387f0eab2", "version_major": 2, "version_minor": 0}</script><p>Please enter your Clemson email address.</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9a3f5d5059b04c82b0fd8d98a977280b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1eedbc572e0d480b8b69c640eb6928d6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "eb5a6ded854044da86ff2fbecd92946d", "version_major": 2, "version_minor": 0}</script><p>Please briefly describe your level of experience with the Python programming language.</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "35587762c3b44da08575b70f7e1e3868", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ba1812b96d3642e4a55b5563ca936981", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8919e0d7decd418bb04f9476dcb07a06", "version_major": 2, "version_minor": 0}</script><p>Please briefly describe your level of experience with Palmetto. (Have you used Open OnDemand? Have you submitted batch jobs? Etc.</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "714bd1a13b594308b17320e56d1f9e8d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b312deab42d7494a9a979aa10c1fc9f8", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "505ec662a53742819f1e5424e7c5cf29", "version_major": 2, "version_minor": 0}</script><p>Are there any particular areas of machine learning that you particularly hope to learn about today?</p>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "48b8202d92644128b6063e24916caa8a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "477f2b70b751480880b8835bbcb1ffc3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d66d58f988244ef59f457b38f47ef30d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+</section>
+</section>
+<section id="what-is-machine-learning">
+<h3>1.2 What is machine learning?<a class="headerlink" href="#what-is-machine-learning" title="Link to this heading">#</a></h3>
+<p>People use the term “machine learning” in a variety of ways. Some people use it more or less synonymously with “artificial intelligence.” And these days, AI does indeed usually work under the paradigm of machine learning. But “machine learning” refers to the use of algorithms to learn from data. The contrast here is with traditional programming, where a programmer writes code that tells the computer exactly what to do. In machine learning, the programmer writes code that tells the computer how to learn from data to make decisions.</p>
+<div style="display: inline-block; text-align: center;">
+  <img src="img/traditional_programming_diagram_titled.png" alt="TP paradigm" style="height: 250px; margin-right: 20px;"/>
+  <img src="img/machine_learning_diagram_titled.png" alt="ML paradigm" style="height: 250px;"/>
+</div></section>
+</section>
+<section id="example-end-to-end-ml-forest-covertypes-dataset">
+<h2>3. Example end-to-end ML: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_covtype.html#sklearn.datasets.fetch_covtype">Forest Covertypes Dataset</a><a class="headerlink" href="#example-end-to-end-ml-forest-covertypes-dataset" title="Link to this heading">#</a></h2>
+<p>First, we will use the Forest Covertypes dataset, which is a dataset that contains information about the forest cover type in the Roosevelt National Forest of northern Colorado. The dataset contains 581,012 samples and 54 features. The goal is to predict the forest cover type based on the cartographic features provided.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_covtype</span>
@@ -647,21 +669,11 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sklearn.utils._bunch.Bunch
-</pre></div>
-</div>
-</div>
 </div>
 <p>In this case we’ve got a scikit-learn “Bunch” object. A quick google search shows us this page of documentation: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.Bunch.html">sklearn.utils.Bunch Documentation</a>, where we learn that a Bunch is a dictionary-like object that exposes keys as attributes. So, let’s see what keys are in this Bunch object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_type</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;frame&#39;, &#39;target_names&#39;, &#39;feature_names&#39;, &#39;DESCR&#39;])
 </pre></div>
 </div>
 </div>
@@ -672,61 +684,10 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.. _covtype_dataset:
-
-Forest covertypes
------------------
-
-The samples in this dataset correspond to 30×30m patches of forest in the US,
-collected for the task of predicting each patch&#39;s cover type,
-i.e. the dominant species of tree.
-There are seven covertypes, making this a multiclass classification problem.
-Each sample has 54 features, described on the
-`dataset&#39;s homepage &lt;https://archive.ics.uci.edu/ml/datasets/Covertype&gt;`__.
-Some of the features are boolean indicators,
-while others are discrete or continuous measurements.
-
-**Data Set Characteristics:**
-
-=================   ============
-Classes                        7
-Samples total             581012
-Dimensionality                54
-Features                     int
-=================   ============
-
-:func:`sklearn.datasets.fetch_covtype` will load the covertype dataset;
-it returns a dictionary-like &#39;Bunch&#39; object
-with the feature matrix in the ``data`` member
-and the target values in ``target``. If optional argument &#39;as_frame&#39; is
-set to &#39;True&#39;, it will return ``data`` and ``target`` as pandas
-data frame, and there will be an additional member ``frame`` as well.
-The dataset will be downloaded from the web if necessary.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_type</span><span class="o">.</span><span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2.596e+03, 5.100e+01, 3.000e+00, ..., 0.000e+00, 0.000e+00,
-        0.000e+00],
-       [2.590e+03, 5.600e+01, 2.000e+00, ..., 0.000e+00, 0.000e+00,
-        0.000e+00],
-       [2.804e+03, 1.390e+02, 9.000e+00, ..., 0.000e+00, 0.000e+00,
-        0.000e+00],
-       ...,
-       [2.386e+03, 1.590e+02, 1.700e+01, ..., 0.000e+00, 0.000e+00,
-        0.000e+00],
-       [2.384e+03, 1.700e+02, 1.500e+01, ..., 0.000e+00, 0.000e+00,
-        0.000e+00],
-       [2.383e+03, 1.650e+02, 1.300e+01, ..., 0.000e+00, 0.000e+00,
-        0.000e+00]])
 </pre></div>
 </div>
 </div>
@@ -737,8 +698,10 @@ The dataset will be downloaded from the web if necessary.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(581012, 54)
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">cov_type</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -749,20 +712,10 @@ The dataset will be downloaded from the web if necessary.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5, 5, 2, ..., 3, 3, 3], dtype=int32)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_type</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(581012,)
 </pre></div>
 </div>
 </div>
@@ -780,20 +733,10 @@ The dataset will be downloaded from the web if necessary.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NoneType
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_type</span><span class="o">.</span><span class="n">target_names</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Cover_Type&#39;]
 </pre></div>
 </div>
 </div>
@@ -804,61 +747,10 @@ The dataset will be downloaded from the web if necessary.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Elevation&#39;,
- &#39;Aspect&#39;,
- &#39;Slope&#39;,
- &#39;Horizontal_Distance_To_Hydrology&#39;,
- &#39;Vertical_Distance_To_Hydrology&#39;,
- &#39;Horizontal_Distance_To_Roadways&#39;,
- &#39;Hillshade_9am&#39;,
- &#39;Hillshade_Noon&#39;,
- &#39;Hillshade_3pm&#39;,
- &#39;Horizontal_Distance_To_Fire_Points&#39;,
- &#39;Wilderness_Area_0&#39;,
- &#39;Wilderness_Area_1&#39;,
- &#39;Wilderness_Area_2&#39;,
- &#39;Wilderness_Area_3&#39;,
- &#39;Soil_Type_0&#39;,
- &#39;Soil_Type_1&#39;,
- &#39;Soil_Type_2&#39;,
- &#39;Soil_Type_3&#39;,
- &#39;Soil_Type_4&#39;,
- &#39;Soil_Type_5&#39;,
- &#39;Soil_Type_6&#39;,
- &#39;Soil_Type_7&#39;,
- &#39;Soil_Type_8&#39;,
- &#39;Soil_Type_9&#39;,
- &#39;Soil_Type_10&#39;,
- &#39;Soil_Type_11&#39;,
- &#39;Soil_Type_12&#39;,
- &#39;Soil_Type_13&#39;,
- &#39;Soil_Type_14&#39;,
- &#39;Soil_Type_15&#39;,
- &#39;Soil_Type_16&#39;,
- &#39;Soil_Type_17&#39;,
- &#39;Soil_Type_18&#39;,
- &#39;Soil_Type_19&#39;,
- &#39;Soil_Type_20&#39;,
- &#39;Soil_Type_21&#39;,
- &#39;Soil_Type_22&#39;,
- &#39;Soil_Type_23&#39;,
- &#39;Soil_Type_24&#39;,
- &#39;Soil_Type_25&#39;,
- &#39;Soil_Type_26&#39;,
- &#39;Soil_Type_27&#39;,
- &#39;Soil_Type_28&#39;,
- &#39;Soil_Type_29&#39;,
- &#39;Soil_Type_30&#39;,
- &#39;Soil_Type_31&#39;,
- &#39;Soil_Type_32&#39;,
- &#39;Soil_Type_33&#39;,
- &#39;Soil_Type_34&#39;,
- &#39;Soil_Type_35&#39;,
- &#39;Soil_Type_36&#39;,
- &#39;Soil_Type_37&#39;,
- &#39;Soil_Type_38&#39;,
- &#39;Soil_Type_39&#39;]
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">cov_type</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -876,566 +768,14 @@ The dataset will be downloaded from the web if necessary.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First few rows of the Forest Covertypes Dataset:
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Elevation</th>
-      <th>Aspect</th>
-      <th>Slope</th>
-      <th>Horizontal_Distance_To_Hydrology</th>
-      <th>Vertical_Distance_To_Hydrology</th>
-      <th>Horizontal_Distance_To_Roadways</th>
-      <th>Hillshade_9am</th>
-      <th>Hillshade_Noon</th>
-      <th>Hillshade_3pm</th>
-      <th>Horizontal_Distance_To_Fire_Points</th>
-      <th>...</th>
-      <th>Soil_Type_30</th>
-      <th>Soil_Type_31</th>
-      <th>Soil_Type_32</th>
-      <th>Soil_Type_33</th>
-      <th>Soil_Type_34</th>
-      <th>Soil_Type_35</th>
-      <th>Soil_Type_36</th>
-      <th>Soil_Type_37</th>
-      <th>Soil_Type_38</th>
-      <th>Soil_Type_39</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2596.0</td>
-      <td>51.0</td>
-      <td>3.0</td>
-      <td>258.0</td>
-      <td>0.0</td>
-      <td>510.0</td>
-      <td>221.0</td>
-      <td>232.0</td>
-      <td>148.0</td>
-      <td>6279.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2590.0</td>
-      <td>56.0</td>
-      <td>2.0</td>
-      <td>212.0</td>
-      <td>-6.0</td>
-      <td>390.0</td>
-      <td>220.0</td>
-      <td>235.0</td>
-      <td>151.0</td>
-      <td>6225.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2804.0</td>
-      <td>139.0</td>
-      <td>9.0</td>
-      <td>268.0</td>
-      <td>65.0</td>
-      <td>3180.0</td>
-      <td>234.0</td>
-      <td>238.0</td>
-      <td>135.0</td>
-      <td>6121.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2785.0</td>
-      <td>155.0</td>
-      <td>18.0</td>
-      <td>242.0</td>
-      <td>118.0</td>
-      <td>3090.0</td>
-      <td>238.0</td>
-      <td>238.0</td>
-      <td>122.0</td>
-      <td>6211.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2595.0</td>
-      <td>45.0</td>
-      <td>2.0</td>
-      <td>153.0</td>
-      <td>-1.0</td>
-      <td>391.0</td>
-      <td>220.0</td>
-      <td>234.0</td>
-      <td>150.0</td>
-      <td>6172.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>581007</th>
-      <td>2396.0</td>
-      <td>153.0</td>
-      <td>20.0</td>
-      <td>85.0</td>
-      <td>17.0</td>
-      <td>108.0</td>
-      <td>240.0</td>
-      <td>237.0</td>
-      <td>118.0</td>
-      <td>837.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>581008</th>
-      <td>2391.0</td>
-      <td>152.0</td>
-      <td>19.0</td>
-      <td>67.0</td>
-      <td>12.0</td>
-      <td>95.0</td>
-      <td>240.0</td>
-      <td>237.0</td>
-      <td>119.0</td>
-      <td>845.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>581009</th>
-      <td>2386.0</td>
-      <td>159.0</td>
-      <td>17.0</td>
-      <td>60.0</td>
-      <td>7.0</td>
-      <td>90.0</td>
-      <td>236.0</td>
-      <td>241.0</td>
-      <td>130.0</td>
-      <td>854.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>581010</th>
-      <td>2384.0</td>
-      <td>170.0</td>
-      <td>15.0</td>
-      <td>60.0</td>
-      <td>5.0</td>
-      <td>90.0</td>
-      <td>230.0</td>
-      <td>245.0</td>
-      <td>143.0</td>
-      <td>864.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>581011</th>
-      <td>2383.0</td>
-      <td>165.0</td>
-      <td>13.0</td>
-      <td>60.0</td>
-      <td>4.0</td>
-      <td>67.0</td>
-      <td>231.0</td>
-      <td>244.0</td>
-      <td>141.0</td>
-      <td>875.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>581012 rows × 54 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_cov_type</span><span class="p">[[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cov_type</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;Soil_Type&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s use pandas&#39; functionality to check out the distribution of the data in the Soil Type columns.</span>
+<span class="n">df_cov_type</span><span class="p">[[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cov_type</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;Soil_Type&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Soil_Type_0</th>
-      <th>Soil_Type_1</th>
-      <th>Soil_Type_2</th>
-      <th>Soil_Type_3</th>
-      <th>Soil_Type_4</th>
-      <th>Soil_Type_5</th>
-      <th>Soil_Type_6</th>
-      <th>Soil_Type_7</th>
-      <th>Soil_Type_8</th>
-      <th>Soil_Type_9</th>
-      <th>...</th>
-      <th>Soil_Type_30</th>
-      <th>Soil_Type_31</th>
-      <th>Soil_Type_32</th>
-      <th>Soil_Type_33</th>
-      <th>Soil_Type_34</th>
-      <th>Soil_Type_35</th>
-      <th>Soil_Type_36</th>
-      <th>Soil_Type_37</th>
-      <th>Soil_Type_38</th>
-      <th>Soil_Type_39</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>...</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-      <td>581012.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>0.005217</td>
-      <td>0.012952</td>
-      <td>0.008301</td>
-      <td>0.021335</td>
-      <td>0.002749</td>
-      <td>0.011316</td>
-      <td>0.000181</td>
-      <td>0.000308</td>
-      <td>0.001974</td>
-      <td>0.056168</td>
-      <td>...</td>
-      <td>0.044175</td>
-      <td>0.090392</td>
-      <td>0.077716</td>
-      <td>0.002773</td>
-      <td>0.003255</td>
-      <td>0.000205</td>
-      <td>0.000513</td>
-      <td>0.026803</td>
-      <td>0.023762</td>
-      <td>0.015060</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.072039</td>
-      <td>0.113066</td>
-      <td>0.090731</td>
-      <td>0.144499</td>
-      <td>0.052356</td>
-      <td>0.105775</td>
-      <td>0.013442</td>
-      <td>0.017550</td>
-      <td>0.044387</td>
-      <td>0.230245</td>
-      <td>...</td>
-      <td>0.205483</td>
-      <td>0.286743</td>
-      <td>0.267725</td>
-      <td>0.052584</td>
-      <td>0.056957</td>
-      <td>0.014310</td>
-      <td>0.022641</td>
-      <td>0.161508</td>
-      <td>0.152307</td>
-      <td>0.121791</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>...</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>8 rows × 40 columns</p>
-</div></div></div>
 </div>
 <p>Let’s use the K-nearest neighbors algorithm to try to predict covertype using the information contained in the dataset.</p>
 <div class="cell docutils container">
@@ -1455,24 +795,13 @@ The dataset will be downloaded from the web if necessary.
 <span class="nb">print</span><span class="p">()</span>
 
 <span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">)</span>
 
 <span class="c1"># Print the shapes of the training and testing sets</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X_train shape: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_train shape: </span><span class="si">{</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X_test shape: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_test shape: </span><span class="si">{</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Features shape: (581012, 54)
-Target shape: (581012,)
-
-X_train shape: (464809, 54)
-y_train shape: (464809,)
-X_test shape: (116203, 54)
-y_test shape: (116203,)
 </pre></div>
 </div>
 </div>
@@ -1486,423 +815,6 @@ y_test shape: (116203,)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: #000;
-  --sklearn-color-text-muted: #666;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-1 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-1 pre {
-  padding: 0;
-}
-
-#sk-container-id-1 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-1 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-1 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-1 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-1 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-1 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-1 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-1 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-1 label.sk-toggleable__label {
-  cursor: pointer;
-  display: flex;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-  align-items: start;
-  justify-content: space-between;
-  gap: 0.5em;
-}
-
-#sk-container-id-1 label.sk-toggleable__label .caption {
-  font-size: 0.6rem;
-  font-weight: lighter;
-  color: var(--sklearn-color-text-muted);
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-1 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label label.sk-toggleable__label,
-#sk-container-id-1 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-1 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-1 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-1 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-1 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 0.5em;
-  text-align: center;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-1 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-1 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KNeighborsClassifier</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier()</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Now let’s see how the model performed.</p>
 <div class="cell docutils container">
@@ -1933,7 +845,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<p>The above code works fine, but takes a long time to run! On the order of 5-10 minutes, depending on how fast your machine is. And that’s not even bad, as far as what machine learning requires.</p>
+<p>The above code works fine, but takes a long time to run! On the order of 1-2 minutes, depending on how fast your machine is. And that’s not even bad, as far as what machine learning requires.</p>
 <p>Now let’s look at a version of the same machine learning approach that makes better use of the resources available to us – using both parallelization across cores and also using the GPU we’ve provisioned to speed things up.</p>
 <p>First, we’ll load the data and prepare it for the KNN algorithm. If you get an error like <code class="docutils literal notranslate"><span class="pre">OSError:</span> <span class="pre">libcudart.so:</span> <span class="pre">cannot</span> <span class="pre">open</span> <span class="pre">shared</span> <span class="pre">object</span> <span class="pre">file:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code>, then you likely need to add <code class="docutils literal notranslate"><span class="pre">cuda</span></code> as a module loaded when launching your Open OnDemand session.</p>
 <div class="cell docutils container">
@@ -1952,7 +864,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span class="n">y</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cov_type</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1966,423 +878,6 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: #000;
-  --sklearn-color-text-muted: #666;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-2 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-2 pre {
-  padding: 0;
-}
-
-#sk-container-id-2 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-2 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-2 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-2 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-2 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-2 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-2 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-2 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-2 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-2 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-2 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-2 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-2 label.sk-toggleable__label {
-  cursor: pointer;
-  display: flex;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-  align-items: start;
-  justify-content: space-between;
-  gap: 0.5em;
-}
-
-#sk-container-id-2 label.sk-toggleable__label .caption {
-  font-size: 0.6rem;
-  font-weight: lighter;
-  color: var(--sklearn-color-text-muted);
-}
-
-#sk-container-id-2 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-2 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-2 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-2 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-2 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
-}
-
-#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-2 div.sk-label label.sk-toggleable__label,
-#sk-container-id-2 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-2 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-2 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-2 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-2 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-2 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-2 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 0.5em;
-  text-align: center;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-2 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-2 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-2 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-2 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KNeighborsClassifier</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier()</pre></div> </div></div></div></div></div></div>
 </div>
 <p>Now let’s see how this model performed.</p>
 <div class="cell docutils container">
@@ -2420,34 +915,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.97
-
-Classification Report:
-              precision    recall  f1-score   support
-
-     Class 1       0.97      0.97      0.97     42502
-     Class 2       0.97      0.97      0.97     56531
-     Class 3       0.96      0.97      0.96      7132
-     Class 4       0.92      0.79      0.85       564
-     Class 5       0.93      0.89      0.91      1925
-     Class 6       0.94      0.93      0.94      3528
-     Class 7       0.97      0.97      0.97      4021
-
-    accuracy                           0.97    116203
-   macro avg       0.95      0.93      0.94    116203
-weighted avg       0.97      0.97      0.97    116203
-
-
-Total time taken: 2.5994 seconds
-</pre></div>
 </div>
-</div>
-</div>
-<p>Notice how much faster inference is in the second case! And this is just a simple case of getting predictions for 116k samples. Imagine if we needed to get predictions for millions of samples. In that case, the second approach would be much more feasible.</p>
+<p>Notice how much faster inference is in the second case! And this is just a simple case of getting predictions for 26k samples. Imagine if we needed to get predictions for millions of samples. In that case, the second approach would be much more feasible.</p>
 </section>
 <section id="hyperoptimization-search-for-the-best-version-of-the-model-to-maximize-performance">
-<h2>4. Hyperoptimization: search for the best version of the model to maximize performance<a class="headerlink" href="#hyperoptimization-search-for-the-best-version-of-the-model-to-maximize-performance" title="Permalink to this heading">#</a></h2>
+<h2>4. Hyperoptimization: search for the best version of the model to maximize performance<a class="headerlink" href="#hyperoptimization-search-for-the-best-version-of-the-model-to-maximize-performance" title="Link to this heading">#</a></h2>
 <p>In the above example, I used a KNN model with a k value of 5. But how do we know that k=5 is the best value? We don’t. We need to search for the best value of k. This is an example of hyperoptimization. You can think of hyperoptimization as a search for the best version of the model to maximize performance.</p>
 <p>Hyperoptimization is inherently computationally expensive. It involves training many models with different hyperparameters and evaluating their performance. This is a perfect use case for the Palmetto 2 Cluster. We can use the cluster to train many models in parallel, which will speed up the hyperoptimization process. And if we submit our hyperoptimization job as a batch job, then we don’t need to tie up our local machine for hours – or days! – while the hyperoptimization process runs.</p>
 <div class="cell docutils container">
@@ -2463,7 +935,7 @@ Total time taken: 2.5994 seconds
 <span class="n">y</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cov_type</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">355</span><span class="p">)</span>
 
 <span class="c1"># Define the parameter space for KNN</span>
 <span class="n">param_dist</span> <span class="o">=</span> <span class="p">{</span>
@@ -2473,7 +945,7 @@ Total time taken: 2.5994 seconds
 
 <span class="c1"># Function to perform k-fold cross-validation with batched prediction</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">cross_validate</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">fold_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">//</span> <span class="n">n_splits</span>
+    <span class="n">fold_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="mi">20000</span><span class="p">])</span> <span class="o">//</span> <span class="n">n_splits</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_splits</span><span class="p">):</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">fold_size</span>
@@ -2532,25 +1004,6 @@ Total time taken: 2.5994 seconds
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 1/10 - Score: 0.9374 - Params: {&#39;n_neighbors&#39;: np.int64(15), &#39;p&#39;: np.int64(2)}
-Iteration 2/10 - Score: 0.9274 - Params: {&#39;n_neighbors&#39;: np.int64(20), &#39;p&#39;: np.int64(2)}
-Iteration 3/10 - Score: 0.9337 - Params: {&#39;n_neighbors&#39;: np.int64(17), &#39;p&#39;: np.int64(2)}
-Iteration 4/10 - Score: 0.9569 - Params: {&#39;n_neighbors&#39;: np.int64(4), &#39;p&#39;: np.int64(2)}
-Iteration 5/10 - Score: 0.9581 - Params: {&#39;n_neighbors&#39;: np.int64(7), &#39;p&#39;: np.int64(1)}
-Iteration 6/10 - Score: 0.9298 - Params: {&#39;n_neighbors&#39;: np.int64(19), &#39;p&#39;: np.int64(2)}
-Iteration 7/10 - Score: 0.9548 - Params: {&#39;n_neighbors&#39;: np.int64(8), &#39;p&#39;: np.int64(1)}
-Iteration 8/10 - Score: 0.9569 - Params: {&#39;n_neighbors&#39;: np.int64(4), &#39;p&#39;: np.int64(2)}
-Iteration 9/10 - Score: 0.9633 - Params: {&#39;n_neighbors&#39;: np.int64(3), &#39;p&#39;: np.int64(1)}
-Iteration 10/10 - Score: 0.9406 - Params: {&#39;n_neighbors&#39;: np.int64(17), &#39;p&#39;: np.int64(1)}
-Best parameters found:
-n_neighbors: 3
-p: 1
-
-Best model accuracy: 0.9696
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2563,6 +1016,7 @@ Best model accuracy: 0.9696
 </div>
 </div>
 <p>The above, being in a Jupyter notebook, is fine for something that only takes a few minutes. But if we want to e.g. try hundreds of different settings, or a model that takes longer to fit, we should make a script that we can submit as a SLURM job. We just need to copy our code into a .py file and make a SLURM script.</p>
+<p>See RCD job submission documentation <a class="reference external" href="https://docs.rcd.clemson.edu/palmetto/job_management/submit/">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can be what we put in our .py file:</span>
@@ -2593,7 +1047,7 @@ Best model accuracy: 0.9696
 
 <span class="c1"># Function to perform k-fold cross-validation with batched prediction</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">cross_validate</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
-    <span class="n">fold_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">//</span> <span class="n">n_splits</span>
+    <span class="n">fold_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="mi">20000</span><span class="p">])</span> <span class="o">//</span> <span class="n">n_splits</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_splits</span><span class="p">):</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">fold_size</span>
@@ -2700,24 +1154,26 @@ python<span class="w"> </span>hyperparameter_optimization.py
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "gpu_ds"
+            mode: "python"
         },
         kernelOptions: {
-            name: "gpu_ds",
+            name: "python3",
             path: "./python_sklearn"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'gpu_ds'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="00-index.html"
@@ -2746,6 +1202,7 @@ python<span class="w"> </span>hyperparameter_optimization.py
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -2753,13 +1210,13 @@ python<span class="w"> </span>hyperparameter_optimization.py
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-and-overview">1. Welcome and Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">1.1 Getting started</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">1.2 What is machine learning?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">1.1 Getting started</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-a-jupyter-session-in-open-ondemand">1.1.1 Start a Jupyter session in Open OnDemand</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-the-workshop-files-to-your-home-directory">1.1.2 Copy the workshop files to your home directory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#about-using-this-code-outside-the-container">1.1.3 About using this code outside the container</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-environment">2. Setting up the Environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-conda-environment">2.1 Creating a Conda Environment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registering-as-a-jupyter-kernel">2.2 Registering as a jupyter kernel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">1.2 What is machine learning?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-end-to-end-ml-forest-covertypes-dataset">3. Example end-to-end ML: Forest Covertypes Dataset</a></li>
@@ -2772,7 +1229,7 @@ python<span class="w"> </span>hyperparameter_optimization.py
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -2785,6 +1242,7 @@ By Linh Ngo
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -2798,7 +1256,7 @@ By Linh Ngo
 </div>
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -2807,8 +1265,8 @@ By Linh Ngo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
