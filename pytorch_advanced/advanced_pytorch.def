@@ -1,0 +1,59 @@
+Bootstrap: docker
+From: nvidia/cuda:12.4.0-base-ubuntu22.04 # Base image with CUDA toolkit
+
+%help
+    Pytorch Advanced Workshop container for Palmetto (OOD compatible).
+    Includes Python 3.11, PyTorch, dependencies from requirements.txt,
+    JupyterLab, and workshop materials in /workshop.
+    Intended for use with the Open OnDemand Jupyter App.
+
+%files
+    # Copy the entire current directory into /workshop inside the container.
+    # Run 'apptainer build' from the project root directory.
+    . /workshop
+
+%environment
+    # Setup environment variables for Conda
+    export CONDA_ENV_NAME=PytorchWorkshop
+    export CONDA_DIR=/opt/conda
+    export PATH=$CONDA_DIR/envs/$CONDA_ENV_NAME/bin:$CONDA_DIR/bin:$PATH
+    export WORKSHOP_DIR=/workshop
+    # OOD might set LD_LIBRARY_PATH, but ensure CUDA libs are findable if needed
+    # export LD_LIBRARY_PATH=/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
+
+%post
+    # Commands run once during container build
+    apt-get update && apt-get install -y --no-install-recommends \
+        wget \
+        bzip2 \
+        ca-certificates \
+        git \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Install Miniconda
+    export CONDA_DIR=/opt/conda
+    export CONDA_ENV_NAME=PytorchWorkshop
+    wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+        /bin/bash ~/miniconda.sh -b -p $CONDA_DIR && \
+        rm ~/miniconda.sh && \
+        $CONDA_DIR/bin/conda init bash
+
+    # Set PATH for subsequent commands in %post
+    export PATH=$CONDA_DIR/bin:$PATH
+
+    # Create Conda environment and install workshop requirements
+    $CONDA_DIR/bin/conda create -y -n $CONDA_ENV_NAME python=3.11
+    $CONDA_DIR/bin/conda run -n $CONDA_ENV_NAME pip install --no-cache-dir --root-user-action=ignore -r /workshop/requirements.txt
+
+    # Register the kernel for Jupyter
+    $CONDA_DIR/bin/conda run -n $CONDA_ENV_NAME python -m ipykernel install --prefix=$CONDA_DIR/envs/$CONDA_ENV_NAME --name $CONDA_ENV_NAME --display-name "Python ($CONDA_ENV_NAME)"
+
+    # Clean up Conda cache
+    $CONDA_DIR/bin/conda clean -a -y
+
+    # Make workshop directory readable/executable by all users within container
+    chmod -R a+rx /workshop
+
+# No %runscript needed - OOD provides the command via `apptainer exec`
+# Example OOD command from log:
+# apptainer exec --nv --bind <binds> <image_path> jupyter lab --config=<config> --no-browser <working_dir>

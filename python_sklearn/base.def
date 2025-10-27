@@ -1,0 +1,17 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%post
+  apt-get update && apt-get install -y wget bzip2
+  # 1) Miniforge to /opt/conda
+  wget -qO /tmp/mf.sh \
+       https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+  bash /tmp/mf.sh -b -p /opt/conda
+  echo 'source /opt/conda/etc/profile.d/conda.sh' >> /environment
+%environment
+  export PATH=/opt/conda/bin:$PATH
+  export CONDA_DEFAULT_ENV=ml_env
+  export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+  export PATH=/opt/conda/bin:$PATH
+  export TMPDIR=/tmp
+
