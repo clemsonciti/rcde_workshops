@@ -12,7 +12,7 @@ def estimate_pi(n_samples: int) -> float:
         if (x * x + y * y) <= 1.0:
             inside += 1
 
-    return 4.0 * (inside / n_samples)
+    return inside / n_samples
 
 if __name__ == "__main__":
     print(f"π estimate (demo): {estimate_pi(10_000):.6f} (n=10000)")
