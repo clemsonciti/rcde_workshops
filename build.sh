@@ -2,7 +2,7 @@
 
  rm -Rf _build
 source activate jupyter-book
-jupyter-book build .
+python -m jupyter-book build .
 
 # https://jupyterbook.org/en/stable/publish/gh-pages.html
 
