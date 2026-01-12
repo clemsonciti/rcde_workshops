@@ -1,7 +1,7 @@
 #!/bin/bash
 
  rm -Rf _build
-source activate jupyter-book
+conda activate jupyter-book
 python -m jupyter-book build .
 
 # https://jupyterbook.org/en/stable/publish/gh-pages.html
