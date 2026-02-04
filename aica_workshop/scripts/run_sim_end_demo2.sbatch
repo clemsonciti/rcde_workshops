@@ -3,9 +3,9 @@
 # Submit this script with: sbatch FILENAME
 
 #SBATCH --ntasks 1           # number of tasks
-#SBATCH --cpus-per-task 8    # number of cpu cores per task
+#SBATCH --cpus-per-task 1    # number of cpu cores per task
 #SBATCH --time 0:01:01       # walltime
-#SBATCH --mem 16G            # amount of memory per CPU core (Memory per Task / Cores per Task)
+#SBATCH --mem 32G            # amount of memory per CPU core (Memory per Task / Cores per Task)
 #SBATCH --nodes 1            # number of nodes
 #SBATCH --job-name "EstimatePi" # job name
 #SBATCH --account staff     # account name
@@ -16,9 +16,6 @@
 
 module load miniforge3
 
-echo ${SLURM_CPUS_PER_TASK:-1}  # Print number of CPUs allocated
-
-python scripts/run_sim.py --n-samples 100_000_000 --workers "${SLURM_CPUS_PER_TASK:-1}"
+python scripts/run_sim.py --n-samples 500_000_000
 
 ## FAILURE MODES: insufficient walltime, insufficient mem, wrong account name, wrong module, wrong path to script.
-## LAB2: Make use # workers equal to number of cores available
