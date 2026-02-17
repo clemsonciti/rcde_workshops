@@ -18,5 +18,5 @@ source activate /project/rcde/cehrett/aica_workshop/env/
 
 echo ${SLURM_CPUS_PER_TASK:-1}  # Print number of CPUs allocated
 
-python scripts/run_sim.py --n-samples 100_000_000 --workers "${SLURM_CPUS_PER_TASK:-1}"
+python scripts/run_sim.py --n-samples 10_000_000 --workers "${SLURM_CPUS_PER_TASK:-1}"
 
