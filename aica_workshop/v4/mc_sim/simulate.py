@@ -26,11 +26,11 @@ def count_inside_points(points: PointArray) -> int:
     return int(np.count_nonzero(distances_squared <= 1.0))
 
 
-def _count_inside_chunk(n_samples: int, *, vectorized: bool = True) -> int:
+def _count_inside_chunk(n_samples: int, *, use_vectorized: bool = True) -> int:
     """Return how many random points fall inside the quarter circle for one chunk."""
 
     rng = np.random.default_rng()
-    if vectorized:
+    if use_vectorized:
         points = random_unit_points(n_samples)
         return count_inside_points(points)
 
@@ -41,12 +41,12 @@ def _count_inside_chunk(n_samples: int, *, vectorized: bool = True) -> int:
     return inside
 
 
-def estimate_pi(n_samples: int, *, workers: int = 1, vectorized: bool = True) -> float:
+def estimate_pi(n_samples: int, *, num_workers: int = 1, use_vectorized: bool = True) -> float:
     """Return a Monte Carlo estimate of π using `n_samples` random points."""
 
     if n_samples <= 0:
         raise ValueError("n_samples must be a positive integer")
-    if workers <= 0:
+    if num_workers <= 0:
         raise ValueError("workers must be a positive integer")
 
     if n_samples < MIN_ROBUST_SAMPLES:
@@ -56,15 +56,15 @@ def estimate_pi(n_samples: int, *, workers: int = 1, vectorized: bool = True) ->
             stacklevel=2,
         )
 
-    actual_workers = min(workers, n_samples)
+    actual_workers = min(num_workers, n_samples)
     if actual_workers == 1:
-        inside = _count_inside_chunk(n_samples, vectorized=vectorized)
+        inside = _count_inside_chunk(n_samples, use_vectorized=use_vectorized)
     else:
         base, remainder = divmod(n_samples, actual_workers)
         chunk_sizes = [
             base + (1 if idx < remainder else 0) for idx in range(actual_workers)
         ]
-        chunk_worker = partial(_count_inside_chunk, vectorized=vectorized)
+        chunk_worker = partial(_count_inside_chunk, use_vectorized=use_vectorized)
         with concurrent.futures.ProcessPoolExecutor(
             max_workers=actual_workers
         ) as executor:

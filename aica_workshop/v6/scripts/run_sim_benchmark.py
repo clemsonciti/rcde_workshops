@@ -22,9 +22,9 @@ def available_workers() -> int:
     return max(1, os.cpu_count() or 1)
 
 
-def time_estimate(n_samples: int, *, workers: int, vectorized: bool) -> float:
+def time_estimate(n_samples: int, *, num_workers: int, use_vectorized: bool) -> float:
     start = time.perf_counter()
-    estimate_pi(n_samples, workers=workers, vectorized=vectorized)
+    estimate_pi(n_samples, num_workers=num_workers, use_vectorized=use_vectorized)
     return time.perf_counter() - start
 
 
@@ -67,13 +67,13 @@ def main() -> int:
     summary_rows = []
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        for vectorized in (True, False):
-            for workers in worker_modes:
+        for use_vectorized in (True, False):
+            for num_workers in worker_modes:
                 timings = [
                     time_estimate(
                         args.n_samples,
-                        workers=workers,
-                        vectorized=vectorized,
+                        num_workers=num_workers,
+                        use_vectorized=use_vectorized,
                     )
                     for _ in range(args.repeats)
                 ]
@@ -85,8 +85,8 @@ def main() -> int:
                 )
                 summary_rows.append(
                     {
-                        "mode": "vectorized" if vectorized else "non-vectorized",
-                        "workers": workers,
+                        "mode": "vectorized" if use_vectorized else "non-vectorized",
+                        "workers": num_workers,
                         "mean": mean_val,
                         "std": std_val,
                     }
@@ -95,13 +95,13 @@ def main() -> int:
     worker_timings = []
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        for workers in range(1, workers_max + 1):
+        for num_workers in range(1, workers_max + 1):
             elapsed = time_estimate(
                 args.n_samples,
-                workers=workers,
-                vectorized=True,
+                num_workers=num_workers,
+                use_vectorized=True,
             )
-            worker_timings.append((workers, elapsed))
+            worker_timings.append((num_workers, elapsed))
 
     plot_path = output_dir / "vectorized_workers.png"
     try:

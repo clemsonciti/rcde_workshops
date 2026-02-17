@@ -28,16 +28,16 @@ def main() -> int:
     args = parser.parse_args()
 
     start = time.perf_counter()
-    vectorized = not args.no_vectorized
+    use_vectorized = not args.no_vectorized
     pi_est = estimate_pi(
-        args.n_samples, vectorized=vectorized
+        args.n_samples, use_vectorized=use_vectorized
     )
     elapsed = time.perf_counter() - start
 
     print(
         (
             f"π estimate: {pi_est:.6f} (n={args.n_samples}, "
-            f"mode={'vectorized' if vectorized else 'sequential'}); "
+            f"mode={'vectorized' if use_vectorized else 'sequential'}); "
             f"elapsed: {elapsed:.3f}s"
         )
     )

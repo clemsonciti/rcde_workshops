@@ -1,76 +1,91 @@
-"""Monte Carlo helpers for estimating π."""
+"""Monte Carlo utilities for estimating π."""
 
-from functools import partial
-from typing import Any
+import multiprocessing
+import random
 
-import concurrent.futures
 import numpy as np
-import warnings
-
-PointArray = Any  # NumPy typing requires optional dependencies; keep it generic for simplicity.
-
-MIN_ROBUST_SAMPLES = 10_000
 
 
-def random_unit_points(n_samples: int) -> PointArray:
-    """Return `n_samples` points sampled uniformly inside [0, 1]^2."""
-
-    rng = np.random.default_rng()
-    return rng.random((n_samples, 2))
+def random_point() -> tuple[float, float]:
+    """Return a random coordinate inside the unit square [0, 1) × [0, 1)."""
+    return random.random(), random.random()
 
 
-def count_inside_points(points: PointArray) -> int:
-    """Return how many of the provided points lie inside the quarter circle."""
-
-    distances_squared = np.sum(points * points, axis=1)
-    return int(np.count_nonzero(distances_squared <= 1.0))
+def is_inside_unit_circle(x: float, y: float) -> bool:
+    """Check whether a point lies within the quarter circle of radius 1."""
+    return (x * x + y * y) <= 1.0
 
 
-def _count_inside_chunk(n_samples: int, *, vectorized: bool = True) -> int:
-    """Return how many random points fall inside the quarter circle for one chunk."""
-
-    rng = np.random.default_rng()
-    if vectorized:
-        points = random_unit_points(n_samples)
-        return count_inside_points(points)
-
+def count_points_inside_loop(n_samples: int) -> int:
+    """Sample `n_samples` points in pure Python and count hits in the quarter circle."""
     inside = 0
     for _ in range(n_samples):
-        x, y = rng.random(2)
-        inside += int(x * x + y * y <= 1.0)
+        x, y = random_point()
+        # Count hits that satisfy x^2 + y^2 <= 1.
+        if is_inside_unit_circle(x, y):
+            inside += 1
     return inside
 
 
-def estimate_pi(n_samples: int, *, workers: int = 1, vectorized: bool = True) -> float:
-    """Return a Monte Carlo estimate of π using `n_samples` random points."""
+def count_points_inside_vectorized(n_samples: int) -> int:
+    """Sample `n_samples` points with NumPy and count hits in the quarter circle."""
+    coords = np.random.random((n_samples, 2))
+    inside_mask = np.sum(coords * coords, axis=1) <= 1.0
+    # `np.count_nonzero` returns a numpy scalar that we cast to int for consistency.
+    return int(np.count_nonzero(inside_mask))
 
+
+def _count_worker(task: tuple[int, bool]) -> int:
+    """Count hits for a worker task, choosing the desired counting strategy."""
+    count, use_vectorized = task
+    if not count:
+        return 0
+    return (
+        count_points_inside_vectorized(count)
+        if use_vectorized
+        else count_points_inside_loop(count)
+    )
+
+
+def _split_sample_counts(n_samples: int, num_workers: int) -> list[int]:
+    """Distribute `n_samples` as evenly as possible across `num_workers`."""
+    base, remainder = divmod(n_samples, num_workers)
+    counts = []
+    for worker_idx in range(num_workers):
+        worker_count = base + (1 if worker_idx < remainder else 0)
+        if worker_count:
+            counts.append(worker_count)
+    return counts
+
+
+def estimate_pi(
+    n_samples: int, use_vectorized: bool = True, num_workers: int = 1
+) -> float:
+    """Estimate π using random sampling inside the unit square.
+
+    The method relies on the fact that the area of a quarter circle with radius 1
+    is π/4, so the ratio of points inside the circle to the total samples
+    (multiplied by 4) approximates π.
+    """
     if n_samples <= 0:
         raise ValueError("n_samples must be a positive integer")
-    if workers <= 0:
-        raise ValueError("workers must be a positive integer")
+    if num_workers <= 0:
+        raise ValueError("num_workers must be a positive integer")
 
-    if n_samples < MIN_ROBUST_SAMPLES:
-        warnings.warn(
-            f"{n_samples} samples may be too low for a robust π estimate; "
-            f"consider using at least {MIN_ROBUST_SAMPLES} samples.",
-            stacklevel=2,
+    if num_workers <= 1:
+        inside = (
+            count_points_inside_vectorized(n_samples)
+            if use_vectorized
+            else count_points_inside_loop(n_samples)
         )
-
-    actual_workers = min(workers, n_samples)
-    if actual_workers == 1:
-        inside = _count_inside_chunk(n_samples, vectorized=vectorized)
     else:
-        base, remainder = divmod(n_samples, actual_workers)
-        chunk_sizes = [
-            base + (1 if idx < remainder else 0) for idx in range(actual_workers)
+        tasks = [
+            (count, use_vectorized)
+            for count in _split_sample_counts(n_samples, num_workers)
         ]
-        chunk_worker = partial(_count_inside_chunk, vectorized=vectorized)
-        with concurrent.futures.ProcessPoolExecutor(
-            max_workers=actual_workers
-        ) as executor:
-            inside_counts = list(executor.map(chunk_worker, chunk_sizes))
-        inside = sum(inside_counts)
-
+        with multiprocessing.Pool(processes=num_workers) as pool:
+            inside = sum(pool.map(_count_worker, tasks))
+    # Multiply the ratio by 4 to expand the quarter-circle area back up to π.
     return 4 * inside / n_samples
 
 

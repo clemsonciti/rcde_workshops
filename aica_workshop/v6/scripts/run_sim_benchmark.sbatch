@@ -8,7 +8,9 @@
 #SBATCH --mem 16G               # amount of memory per CPU core (Memory per Task / Cores per Task)
 #SBATCH --nodes 1               # number of nodes
 #SBATCH --job-name "PiBench"    # job name
-#SBATCH --account staff         # account name
+#SBATCH --account rcd_workshop         # account name
+#SBATCH --reservation=ai_code_workshop # reservation name
+#SBATCH --partition=workshop # partition
 
 module load miniforge3
 
