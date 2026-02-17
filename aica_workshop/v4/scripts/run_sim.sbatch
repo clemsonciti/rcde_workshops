@@ -14,6 +14,7 @@
 # Created with the RCD Docs Job Builder
 
 module load miniforge3
+source activate /project/rcde/cehrett/aica_workshop/env/
 
 python scripts/run_sim.py --n-samples 500_000_000
 

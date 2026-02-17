@@ -13,6 +13,7 @@
 #SBATCH --partition=workshop # partition
 
 module load miniforge3
+source activate /project/rcde/cehrett/aica_workshop/env/
 
 echo "CPUs per task: ${SLURM_CPUS_PER_TASK:-1}"
 

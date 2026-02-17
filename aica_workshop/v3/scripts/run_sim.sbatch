@@ -14,6 +14,7 @@
 # Created with the RCD Docs Job Builder
 
 module load python
+source activate /project/rcde/cehrett/aica_workshop/env/
 
 python run_sim.py --n-samples 1_000_000
 
