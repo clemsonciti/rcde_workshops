@@ -95,6 +95,7 @@ hello1.txt    hello2.txt    hello3.txt  hello4.csv
 $ ls hello?.txt
 hello1.txt    hello2.txt    hello3.txt
 ```
+
 ## Viewing Contents of a File
 
 There are many different ways to view the contents of a file.
