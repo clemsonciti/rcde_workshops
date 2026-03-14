@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420">
+  <rect width="960" height="420" fill="#f7f4ec"/>
+  <text x="480" y="42" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1d2b36">CPU vs GPU Parallelism</text>
+  <text x="240" y="84" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1d2b36">CPU</text>
+  <text x="720" y="84" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#1d2b36">GPU</text>
+  <text x="240" y="108" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#405261">Fewer, more complex cores</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#405261">Many simpler cores working in parallel</text>
+
+  <rect x="70" y="130" width="340" height="230" rx="20" fill="#d9e4dd" stroke="#5b7c6f" stroke-width="3"/>
+  <rect x="550" y="130" width="340" height="230" rx="20" fill="#dbe7f5" stroke="#54779c" stroke-width="3"/>
+
+  <rect x="110" y="175" width="120" height="65" rx="14" fill="#6e8f80"/>
+  <rect x="250" y="175" width="120" height="65" rx="14" fill="#6e8f80"/>
+  <rect x="110" y="255" width="120" height="65" rx="14" fill="#6e8f80"/>
+  <rect x="250" y="255" width="120" height="65" rx="14" fill="#6e8f80"/>
+  <text x="170" y="214" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Core</text>
+  <text x="310" y="214" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Core</text>
+  <text x="170" y="294" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Core</text>
+  <text x="310" y="294" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Core</text>
+
+  <g fill="#6b90b7">
+    <rect x="585" y="165" width="48" height="48" rx="8"/>
+    <rect x="645" y="165" width="48" height="48" rx="8"/>
+    <rect x="705" y="165" width="48" height="48" rx="8"/>
+    <rect x="765" y="165" width="48" height="48" rx="8"/>
+    <rect x="825" y="165" width="48" height="48" rx="8"/>
+    <rect x="585" y="225" width="48" height="48" rx="8"/>
+    <rect x="645" y="225" width="48" height="48" rx="8"/>
+    <rect x="705" y="225" width="48" height="48" rx="8"/>
+    <rect x="765" y="225" width="48" height="48" rx="8"/>
+    <rect x="825" y="225" width="48" height="48" rx="8"/>
+    <rect x="585" y="285" width="48" height="48" rx="8"/>
+    <rect x="645" y="285" width="48" height="48" rx="8"/>
+    <rect x="705" y="285" width="48" height="48" rx="8"/>
+    <rect x="765" y="285" width="48" height="48" rx="8"/>
+    <rect x="825" y="285" width="48" height="48" rx="8"/>
+  </g>
+
+  <text x="240" y="392" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#405261">Good for sequential logic and low-latency control flow</text>
+  <text x="720" y="392" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#405261">Good for large batches of similar arithmetic operations</text>
+</svg>
