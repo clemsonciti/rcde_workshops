@@ -17,6 +17,14 @@ create_pytorch_env.*
 *.out
 response_viewer.ipynb
 pytorch/newsgroups-classification/
+pytorch/.ipynb_checkpoints/
+pytorch/__pycache__/
+pytorch/lightning_logs/
+pytorch/training_logs/
+pytorch/model.pt
+pytorch/model_weights.pt
+pytorch/20news-bydate_py3.pkz
+pytorch/.empty
 pytorch_advanced/logs/
 pytorch_advanced/checkpoints/
 pytorch_advanced/lightning_logs/
