@@ -1,5 +1,4 @@
-import ipywidgets as widgets
-from IPython.display import display, clear_output, Markdown
+from IPython.display import display, Markdown
 import os
 import json
 import glob
@@ -8,48 +7,43 @@ import pandas as pd
 def create_answer_box(question, question_id, shared_folder='/project/rcde/cehrett/python_sklearn/'):
     user_id = os.environ.get('USER') or os.environ.get('USERNAME') or 'unknown_user'
 
-    # Display the question as a Markdown header
     display(Markdown(f"{question}"))
+    display(Markdown("**Enter your response below. Press Enter on an empty line to finish.**"))
 
-    answer_box = widgets.Text(
-        value='',
-        placeholder='Type your answer here',
-        description='',
-        disabled=False,
-        layout=widgets.Layout(width='500px')
-    )
+    response = _collect_multiline_input().strip()
+    if not response:
+        print("No answer saved because the response was empty.")
+        return
 
-    submit_button = widgets.Button(
-        description='Submit',
-        button_style='success'
-    )
+    data = {
+        'user_id': user_id,
+        'question': question,
+        'response': response
+    }
 
-    output = widgets.Output()
+    os.makedirs(shared_folder, exist_ok=True)
 
-    def handle_submit(b):
-        with output:
-            clear_output()
-            response = answer_box.value.strip()
-            if not response:
-                print("Please enter a non-empty answer.")
-                return
+    filename = f"{shared_folder}/{user_id}_{sanitize_filename(question_id)}.json"
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=2)
 
-            data = {
-                'user_id': user_id,
-                'question': question,
-                'response': response
-            }
+    print(f"Answer saved to {filename}\n")
 
-            os.makedirs(shared_folder, exist_ok=True)
 
-            filename = f"{shared_folder}/{user_id}_{sanitize_filename(question_id)}.json"
-            with open(filename, 'w') as f:
-                json.dump(data, f, indent=2)
+def _collect_multiline_input():
+    lines = []
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            break
 
-            print(f"Answer saved to {filename}")
+        if line == '':
+            break
 
-    submit_button.on_click(handle_submit)
-    display(answer_box, submit_button, output)
+        lines.append(line)
+
+    return '\n'.join(lines)
 
 def sanitize_filename(text):
     return ''.join(c if c.isalnum() else '_' for c in text)
@@ -82,4 +76,3 @@ def show_responses(question_id, shared_folder='/project/rcde/cehrett/python_skle
 
     display(Markdown(f"#### {question}\n (ID: {question_id}, {len(df)} submitted)"))
     display(df[['user_id','response']].style.hide(axis='index'))
-
