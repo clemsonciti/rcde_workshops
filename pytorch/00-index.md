@@ -50,3 +50,19 @@ squeue -u $USER
 
 Once the job finishes, the environment will be available as a Jupyter kernel named **"Pytorch Workshop Spr 2026"**, which you can select in JupyterLab to run the notebooks.
 
+## JupyterLab Open OnDemand settings for the workshop
+
+To run the notebooks during the workshop, you should start a JupyterLab session in Open OnDemand at `ondemand.rcd.clemson.edu`. Once there, use the menu at the top to go to "Interactive Apps" -> "Jupyter Notebook", and use the below settings.
+
+- **Partition**: workshop
+- **Account**: rcd_workshop
+- **Slurm Reservation**: pytorch_intro
+- **CPU cores**: 12
+- **Memory (GB)**: 32
+- **GPUs**: 1
+- **GPU Model**: V100
+- **Number of hours**: 3
+- **Environment**: Standard Jupyter Notebook
+- **Use a custom environment not listed below?**: Yes
+- **Virtual environment activation command**: `source activate /project/rcde/cehrett/pytorch_intro/env`
+
