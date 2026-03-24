@@ -12,10 +12,10 @@ set -e  # Exit on first error
 module load miniforge3
 
 # Create the environment
-conda create -n PytorchWorkshop python=3.11 -y
+conda create -n PytorchWorkshopSpr26 python=3.11 -y
 
 # Activate the environment
-source activate PytorchWorkshop
+source activate PytorchWorkshopSpr26
 
 # Upgrade pip
 pip install --upgrade pip
@@ -30,6 +30,6 @@ pip install \
     ipykernel pytorch-lightning wandb ipywidgets
 
 # Register the kernel for Jupyter
-python -m ipykernel install --user --name PytorchWorkshop --display-name "Pytorch Workshop"
+python -m ipykernel install --user --name PytorchWorkshopSpr26 --display-name "Pytorch Workshop Spr 2026"
 
-echo "Environment 'PytorchWorkshop' created and registered successfully."
+echo "Environment 'PytorchWorkshopSpr26' created and registered successfully."
