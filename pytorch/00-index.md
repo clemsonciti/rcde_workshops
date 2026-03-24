@@ -20,7 +20,7 @@ You can download the notebooks and their contents as follows. If you are unfamil
 In the terminal on the cluster, run the following command:
 
 ```
-cp -R /project/rcde/cehrett/pytorch-intro/workshop/ ~/
+cp -R /project/rcde/cehrett/pytorch_intro/workshop/ ~/
 ```
 
 This will create a folder named `workshop` in your home directory containing the notebooks and workshop materials.
