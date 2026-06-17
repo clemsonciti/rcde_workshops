@@ -3,12 +3,12 @@
 Before you can run any `git` commands, you must have a copy of Git installed on
 your computer.
 
-## Palmetto
+## Palmetto 2
 
-If you are on a **login or compute node** of the Palmetto Cluster, Git is
+If you are on a **login or compute node** of the Palmetto 2 cluster, Git is
 **already installed** and available for use!
 
-Just type the `git` command at your terminal.
+Just type the `git` command in your terminal.
 
 ## Windows
 
@@ -38,7 +38,7 @@ of the license agreement.
 sudo xcodebuild -license
 ```
 
-Now, you should be able to use the `git` command in your Terminal.
+Now, you should be able to use the `git` command in your terminal.
 
 ## Linux
 
@@ -52,4 +52,4 @@ research to locate the correct command and package names.
 sudo apt-get install git
 ```
 
-Now, you should be able to use the `git` command in your Terminal.
+Now, you should be able to use the `git` command in your terminal.

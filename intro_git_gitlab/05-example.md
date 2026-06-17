@@ -5,7 +5,7 @@ on your computer.
 
 ## Configure Git
 
-Before you can make commits, you will need to tell Git who you are, so it
+Before you can make commits, you will need to tell Git who you are, so it can
 attribute your work to you. You can do this using the `git config` command.
 
 ```sh
