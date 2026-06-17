@@ -14,7 +14,7 @@ $ pwd
 /home/<your Palmetto username>
 ~~~
 
-To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. On Palmetto, the filesystem looks something like this: 
+To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. On Palmetto 2, the filesystem looks something like this:
 
 ![The File System](../fig/filesystem.png)
 
@@ -27,17 +27,17 @@ Inside that directory are several other directories:
 `bin` (which is where some built-in programs are stored),
 `tmp` (for temporary files that don't need to be stored long-term),
 `etc` (for miscellaneous data files),
-and so on.  
+and so on.
 
 
 ## Slashes
 There are two meanings for the `/` character.
 When it appears at the front of a file or directory name,
-it refers to the root directory. This is called an **absolute path**. 
+it refers to the root directory. This is called an **absolute path**.
 When it appears *inside* a name, it's a **relative path**.
 
 
-Underneath `/home`, we find one directory for each user with an account on Palmetto. 
+Underneath `/home`, we find one directory for each user with an account on Palmetto 2.
 
 ## Listing files and directories
 
@@ -57,11 +57,11 @@ Your results might be completely different, depending on the contents of your ho
 
 `ls` prints the names of the files and directories in the current directory in alphabetical order, arranged neatly into columns.
 
-We can also use `ls` to see the contents of a specified directory. Let's list the directories of all the Palmetto users (note that you cannot actually see inside other people's directories):  
+We can also use `ls` to see the contents of a specified directory. Let's list the directories of Palmetto 2 users (note that you cannot actually see inside other people's directories):
 ~~~
 $ ls /home
 ~~~
- 
+
 We can make its output more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
 
 ~~~
@@ -183,7 +183,7 @@ Mandatory arguments to long options are mandatory for short options too.
       --version  output version information and exit
 
 The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
-Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+Units are K, M, G, T, P, E, Z, Y (powers of 1024) or KB, MB,... (powers of 1000).
 
 Using color to distinguish file types is disabled both by default and
 with --color=never.  With --color=auto, ls emits color codes only when
@@ -223,7 +223,7 @@ The next command we will discuss is `mkdir`, which creates a new directory. Let'
 $ mkdir linux_workshop
 ~~~
 
-Now, if you type `ls`, you should see `linux_workshop` listed among the contents of your home directory. 
+Now, if you type `ls`, you should see `linux_workshop` listed among the contents of your home directory.
 
 The next command that we will discuss is `cd` ("change directory"), which changes our location to a different directory. Let's enter the directory we have just created:
 ~~~
@@ -242,7 +242,7 @@ $ pwd
 If you type `ls`, you won't see anything, because we have just created this directory and it is empty.
 
 To go back to your home directory, you need to go one level up on the directory tree. There is a shortcut in the shell to move up one directory level
-that looks like this: 
+that looks like this:
 
 ~~~
 $ cd ..
@@ -273,4 +273,4 @@ Many common configuration files will begin with `.`. You may see a `.bash_profil
 
 Another shortcut is the `-` (dash) character.  `cd` will translate `-` into *the previous working directory *.
 This is a *very* efficient way of moving back and forth between directories.
-The difference between `cd ..` and `cd -` is that the former brings you *up*, while the latter brings you *back*. 
+The difference between `cd ..` and `cd -` is that the former brings you *up*, while the latter brings you *back*.

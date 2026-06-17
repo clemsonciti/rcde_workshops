@@ -6,7 +6,7 @@ what they do.
 ## `git init`
 
 The `git init` command will initialize a new Git repository in the current
-directory. This command should be used
+directory. This command should be used when your project is not already in a repository. If desired 'git init` can be executed in a directory that already contains files.
 
 ## `git status`
 
