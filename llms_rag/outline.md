@@ -3,14 +3,14 @@
 
 # Retrieval-Augmented Generation (RAG): Enhancing LLMs for Research Applications
 
-**Workshop Overview:** This two-day hands-on workshop will introduce graduate students from diverse disciplines to Retrieval-Augmented Generation (RAG), a technique that combines **Large Language Models (LLMs)** with **document retrieval** to create powerful research assistants. We will use an open-source 7B-parameter LLM (e.g. **Qwen-7B** or a similar model) with access to an NVIDIA A100 GPU, and leverage Python libraries such as **Hugging Face Transformers**, **Sentence-Transformers**, **FAISS**, and **NetworkX**. Participants will learn RAG fundamentals on Day 1 and explore advanced customizations on Day 2. Each module below contains explanatory Markdown, code snippets (or pseudocode) in Python, interactive prompts (`create_answer_box`) for engagement, and suggestions for images/diagrams to reinforce concepts. Prior sessions on LLMs or PyTorch are **not required** (though we will point out connections where relevant). By the end, you’ll understand how to build and tailor RAG pipelines for research applications, including key best practices and recent advancements.
+**Workshop Overview:** This two-day hands-on workshop will introduce graduate students from diverse disciplines to Retrieval-Augmented Generation (RAG), a technique that combines **Large Language Models (LLMs)** with **document retrieval** to create powerful research assistants. We will use an open-source 7B-parameter LLM (e.g. **Qwen-7B** or a similar model) with access to an NVIDIA A100 GPU, and leverage Python libraries such as **Hugging Face Transformers**, **Sentence-Transformers**, **FAISS**, and **NetworkX**. Participants will learn RAG fundamentals on Day 1 and explore advanced customizations on Day 2. Each module below contains explanatory markdown, code snippets (or pseudocode) in Python, interactive prompts (`create_answer_box`) for engagement, and suggestions for images/diagrams to reinforce concepts. Prior sessions on LLMs or PyTorch are **not required** (though we will point out connections where relevant). By the end, you’ll understand how to build and tailor RAG pipelines for research applications, including key best practices and recent advancements.
 
 ## Day 1: Fundamentals of RAG
 
 ### Module 1: Introduction to RAG
 
 **1.1 What is RAG and Why Do We Need It?**
-Retrieval-Augmented Generation (RAG) is a design pattern that combines a pretrained Large Language Model with an external data retrieval system to generate answers **grounded in relevant external knowledge**. In essence, RAG-enabled LLMs can "consult" a knowledge source (such as a document database or corpus of papers) before answering a question. This **fills a crucial gap** in standard LLMs: while an LLM’s billions of parameters encode general linguistic and factual patterns, the model might not know **specific, up-to-date, or niche information** that wasn’t in its training data. By retrieving documents on-the-fly related to a user’s query, RAG enables the LLM to produce more accurate and *current* responses.
+Retrieval-Augmented Generation (RAG) is a design pattern that combines a pre-trained Large Language Model with an external data retrieval system to generate answers **grounded in relevant external knowledge**. In essence, RAG-enabled LLMs can "consult" a knowledge source (such as a document database or corpus of papers) before answering a question. This **fills a crucial gap** in standard LLMs: while an LLM’s billions of parameters encode general linguistic and factual patterns, the model might not know **specific, up-to-date, or niche information** that wasn’t in its training data. By retrieving documents on-the-fly related to a user’s query, RAG enables the LLM to produce more accurate and *current* responses.
 
 Some motivations for using RAG in research applications include:
 
@@ -104,8 +104,8 @@ print("Sample embedding snippet for Doc1:", doc_embeddings[0][:5], "...")
 Running the above, you would see that each document is now a vector (for example, 384 numbers if using MiniLM). The printout might show something like:
 
 ```
-Embedding size: 384  
-Sample embedding snippet for Doc1: [ 0.0213  0.1234 -0.0456  0.0078  0.2301 ... ] 
+Embedding size: 384
+Sample embedding snippet for Doc1: [ 0.0213  0.1234 -0.0456  0.0078  0.2301 ... ]
 ```
 
 Each vector captures the semantic content of the text. We can now use FAISS to index these vectors for similarity search:
@@ -130,7 +130,7 @@ print("Nearest neighbors for Doc1 vector:", I[0], "with scores", D[0])
 This code adds our two document vectors to the FAISS index and performs a search using Doc1’s vector as a query (just as a test). The result `I[0]` might output `[0 1]` meaning the closest vector to Doc1 is itself (index 0) and the next closest is Doc2 (index 1), along with similarity scores in `D[0]`. In practice, we’ll query with *new questions*, not the documents themselves – which is the next step.
 
 **2.5 Hardware Considerations – Indexing and Embeddings:**
-Because we have a powerful GPU available (A100 with 40GB), we can handle reasonably large corpora in this workshop:
+Because we have a powerful GPU available (A100 with 40 GB), we can handle reasonably large corpora in this workshop:
 
 * **Embedding model runtime:** The SentenceTransformer model we used is small and can embed hundreds of texts per second on the GPU. For example, embedding 1000 chunks of text (\~a few sentences each) might take only a few seconds on an A100.
 * **Memory (GPU/CPU):** We ran the embedding model on the GPU for speed. A 7B parameter model like Qwen-7B for generation will use roughly 14 GB of GPU memory in half-precision (FP16). The embedding model (MiniLM, \~66M params) is much smaller and could even run on CPU if needed. Storing the vectors: each text chunk’s embedding (384 floats) is \~1.5 KB in memory, so even 10,000 documents would be only \~15 MB – trivial in comparison to model sizes. FAISS can be configured to use the GPU or CPU; for small/medium corpora, CPU indexing is often fine, but GPU can accelerate searches for very large collections (millions of vectors).
@@ -162,7 +162,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 model_name = "Qwen/Qwen-7B"  # Using Qwen-7B (Instruct version if available for Q&A tasks)
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
 model = AutoModelForCausalLM.from_pretrained(
-    model_name, 
+    model_name,
     device_map="auto",             # Automatically use the GPU (A100)
     torch_dtype="auto"             # Loads in half-precision if supported to save memory
 )
@@ -217,7 +217,7 @@ prompt = prompt_intro + docs_section + question_section
 
 # 4. Generate answer using the LLM
 input_ids = tokenizer(prompt, return_tensors='pt').input_ids.to(model.device)
-outputs = model.generate(input_ids, max_length=256, 
+outputs = model.generate(input_ids, max_length=256,
                          temperature=0.2,   # lower temp for factual answers
                          do_sample=False)    # use greedy or beam search for deterministic output
 answer = tokenizer.decode(outputs[0], skip_special_tokens=True)

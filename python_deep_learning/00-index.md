@@ -7,10 +7,10 @@
 
 ## Workshop Description
 
-This is the introductory workshop on Deep Learning in Python using Keras library. Within this workshop, 
-students will learn basic introduction to Deep Learning and basic with Keras library for Deep Neural 
-Network. In particular, students learn how to use Keras for Classification/Regression problem, application 
-of CNN for image classification, RNN LSTM for time series forecasting.
+This is the introductory workshop on Deep Learning in Python using the Keras library. Within this workshop,
+students will have access to a basic introduction to Deep Learning and Keras library basics for Deep Neural
+Networks. In particular, students will learn how to use Keras for Classification/Regression problems, application
+of CNN for image classification and RNN LSTM for time series forecasting.
 
 ## Prerequisites
-Pre-requisite for the workshop is **Machine Learning in Python**
+Pre-requisite for this workshop is **Machine Learning in Python**

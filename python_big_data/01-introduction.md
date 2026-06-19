@@ -3,7 +3,7 @@
 ## 1. What is Spark?
 
 - A unified compute engine and a set of libraries for parallel
-data processing on computer clusters. 
+data processing on computer clusters.
 - Click the JupyterHub link
 
 <img src="../fig/01-introduction/01.png" alt="Spark" style="height:400px">
@@ -11,30 +11,30 @@ data processing on computer clusters.
 
 ## 2. Design philosophy
 
-- `Unified`: Spark supports a wide range of data analytic tasks over the same 
+- `Unified`: Spark supports a wide range of data analytic tasks over the same
 computing engine and a consistent set of APIs.
-- `Computing engine`: Spark handles loading data from storage systems and 
-perform computation on the data (in memory) rather than on permanent storage. 
-To adhere to the data locality principle, Spark relies on APIs to provide a 
-transparent common interface with different storage systems for all applications. 
-- `Libraries`: Via its APIs, Spark supports a wide array of internal and 
-external libraries for complex data analytic tasks. 
+- `Computing engine`: Spark handles loading data from storage systems and
+performs computation on the loaded data (in memory) rather than on permanent storage.
+To adhere to the data locality principle, Spark relies on APIs to provide a
+transparent common interface with different storage systems for all applications.
+- `Libraries`: Via its APIs, Spark supports a wide array of internal and
+external libraries for complex data analytic tasks.
 
 
 ## 3. A brief history of Spark
 
-- Research project at UC Berkeley AMP Lab in 2009 to address drawbacks of 
-Hadoop MapReduce. 
-- Paper published in 2010: [Spark: Cluster Computing with Working Sets](https://static.usenix.org/events/hotcloud10/tech/full_papers/Zaharia.pdf) 
-- Source code is contributed to Apache in 2013. The project had more than 100 
-contributors from more than 30 organizations outside UC Berkeley. 
-- Version 1.0 was released in 2014. 
-- Currently, Spark is being used extensively in academic and industry 
-(NASA, CERN, Uber, Netflix …). 
+- Research project at UC Berkeley AMP Lab in 2009 to address drawbacks of
+Hadoop MapReduce.
+- Paper published in 2010: [Spark: Cluster Computing with Working Sets](https://static.usenix.org/events/hotcloud10/tech/full_papers/Zaharia.pdf)
+- Source code is contributed to Apache in 2013. The project had more than 100
+contributors from more than 30 organizations outside UC Berkeley.
+- Version 1.0 was released in 2014.
+- Currently, Spark is being used extensively in academic and industry
+(NASA, CERN, Uber, Netflix …).
 
 ## 4. map and reduce
 
-- What is `map`? A function/procedure that is applied to every individual 
+- What is `map`? A function/procedure that is applied to every individual
 elements of a collection/list/array/…
 
 ~~~python
@@ -42,8 +42,8 @@ int square(x) { return x*x;}
 map square [1,2,3,4] -[1,4,9,16]
 ~~~
 
-- What is `reduce`? A function/procedure that performs an operation on a list. 
-This operation will `fold/reduce` this list into a single value (or a smaller 
+- What is `reduce`? A function/procedure that performs an operation on a list.
+This operation will `fold/reduce` this list into a single value (or a smaller
 subset).
 
 ~~~python
@@ -60,7 +60,7 @@ reduce ([1,2,3,4]) using multiply -24
   final output as a reduction operation on the pairs.
 
 - MapReduce Framework handles everything else.
-- Spark implements a MapReduce framework. 
+- Spark implements a MapReduce framework.
 
 
 
