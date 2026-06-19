@@ -2,7 +2,7 @@
 
 ## CyberDuck
 
-There are many ways to transfer files between your local computer and Palmetto. One piece of software that works for both Mac and Windows machines is called CyberDuck. You can download it [here](https://cyberduck.io/download/).
+There are many ways to transfer files between your local computer and Palmetto. One piece of software that works for both Mac and Windows machines is called CyberDuck. [Download CyberDuck here](https://cyberduck.io/download/).
 
 After installation, click on "Open Connection". A new window will pop out:
 
@@ -14,7 +14,7 @@ Let's configure the connection:
 - in the drop-down menu on top, select "SFTP" instead of the default "FTP";
 - in the "Server", please specify `xfer02-ext.clemson.edu`;
 - make sure that Port is set to 22;
-- specify your Palmetto username and password.
+- specify your Palmetto 2 username and password.
 
 Then, click on "Connect". If it complains about an "unknown fingerprint", click "Allow". Another window will pop out asking you to do two-factor verification:
 
@@ -22,23 +22,23 @@ Then, click on "Connect". If it complains about an "unknown fingerprint", click 
 Cyberduck connection settings to Palmetto
 :::
 
-Type "1" (the number one) or the word "push" if you want to get a DUO push notification. After two-factor verification, a yet another new window will pop up, which will contain the contents of your Palmetto home directory (if this is your first time using Palmetto, it will be empty). You can go to any other folder on Palmetto by changing the path (e.g., `/scratch1/username`). You can upload files by clicking the "Upload" button, and download files by right-clicking them and selecting "Download".
+Type "1" (the number one) or the word "push" if you want to get a Duo push notification. After two-factor verification, a yet another new window will pop up, which will contain the contents of your Palmetto 2 home directory (if this is your first time using Palmetto 2, it will be empty). You can go to any other folder on Palmetto 2 by changing the path (e.g., `/scratch1/username`). You can upload files by clicking the "Upload" button, and download files by right-clicking them and selecting "Download".
 
 ## Command line (Mac and Linux users)
 
-Another option for advanced Mac and Linux users is to use the `scp` command from the terminal. Open a new terminal, but **don't connect to Palmetto**. The `scp` command works like this:
+Another option for advanced Mac and Linux users is to use the `scp` command from the terminal. Open a new terminal, but **don't connect to Palmetto 2**. The `scp` command works like this:
 
 ```bash
 scp <path_to_source> username@xfer02-ext.clemson.edu:<path_to_destination>
 ```
 
-For example, here is the `scp` command to copy a file from the current directory on my local machine to my home directory on Palmetto (`dndawso` is my Palmetto username:
+For example, here is the `scp` command to copy a file from the current directory on my local machine to my home directory on Palmetto 2. `dndawso` is my Palmetto username:
 
 ```bash
 scp myfile.txt dndawso@xfer02-ext.clemson.edu:/home/dndawso/
 ```
 
-... and to do the same in reverse, i.e., copy from Palmetto to my local machine:
+... and to do the same in reverse, i.e., copy from Palmetto 2 to my local machine:
 
 ```bash
 scp dndawso@xfer02-ext.clemson.edu:/home/dndawso/myfile.txt .

@@ -7,7 +7,7 @@
 
 
 ## Workshop Description
-This workshop introduces participants to the Palmetto Cluster, Clemson University’s largest high-performance computing resource, its structure and basic usage and how to submit computational tasks to the cluster.
+This workshop introduces participants to the Palmetto 2 cluster, Clemson University’s largest high-performance computing resource. It introduces Palmetto 2's structure and basic usage and how to submit computational tasks to the cluster.
 
 ## Prerequisites
 No prerequisites are required
