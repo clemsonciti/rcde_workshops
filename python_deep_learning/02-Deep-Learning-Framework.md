@@ -12,11 +12,11 @@ https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article
 
 (2) Pytorch
 - Pytorch is a relatively new deep learning framework based on Lua Torch.
-- Developed by Facebook’s AI research group and open-sourced on GitHub in 2017, it’s used for natural language processing applications.
+- Developed by Facebook’s AI research group and open-sourced on GitHub in 2017, Pytorch is used for natural language processing applications.
 - Pytorch has a reputation for simplicity, ease of use, flexibility, efficient memory usage, and dynamic computational graphs. It also feels native, making coding more manageable and increasing processing speed.
-- Strong competitor to Tensorflow
+- Strong competitor to TensorFlow
 
-(3) Tensorflow
+(3) TensorFlow
 - TensorFlow is an end-to-end open-source deep learning framework developed by Google and released in 2015.
 - It is known for documentation and training support, scalable production and deployment options, multiple abstraction levels, and support for different platforms, such as Android.
 - TensorFlow is a symbolic math library used for neural networks and is best suited for dataflow programming across a range of tasks. It offers multiple abstraction levels for building and training models.
@@ -28,6 +28,6 @@ https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article
 ![image](https://user-images.githubusercontent.com/43855029/119177851-e6eb9380-ba3a-11eb-88be-938c8c190a50.png)
 
 ### Conclusions:
-- Keras is the easiest Deep Learning Library API. It is easy to transit from Machine Learning based model
-- Tensorflow is the most popular DL library developed by Google. It has the most number of user.
+- Keras is the easiest Deep Learning Library APIs. It is easy to transition from Machine Learning based models
+- TensorFlow is the most popular DL library developed by Google. It has the highest number of users
 - Pytorch is developed by Facebook and gaining significant attention from users all over the world

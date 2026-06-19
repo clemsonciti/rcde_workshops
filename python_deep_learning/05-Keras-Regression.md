@@ -1,4 +1,4 @@
-# Training Deep Learning Regression model with Keras
+# Training Deep Learning Regression models with Keras
 
 
 ## Using Keras to solve a Regression Model
@@ -6,7 +6,7 @@
 ### Prepare the data
 Here we use [Pima Indian Diabetes database](https://www.kaggle.com/uciml/pima-indians-diabetes-database) data:
 
-- We need to omit the header line of the data. 
+- We need to omit the header line of the data.
 
 ```python
 import numpy as np
@@ -18,7 +18,7 @@ Y = dataset[:,8]
 ```
 
 
-### Let's use Keras's Sequential model with Dense layers
+### Let's use Keras' Sequential model with Dense layers
 
 ```python
 import tensorflow as tf
@@ -49,9 +49,9 @@ Here, **adam** optimization is a stochastic gradient descent method that is base
 
 According to Kingma et al., 2014, the method is "computationally efficient, has little memory requirement, invariant to diagonal rescaling of gradients, and is well suited for problems that are large in terms of data/parameters".
 
-More information on **adam** optimizer is [here](https://keras.io/api/optimizers/adam/)
+More information on the **adam** optimizer can be found at [Keras: Adam](https://keras.io/api/optimizers/adam/)
 
-In addition to **adam**, there are many other optimizer:
+In addition to **adam**, there are many other optimizers:
 - [SGD](https://keras.io/api/optimizers/sgd)
 - [RMSprop](https://keras.io/api/optimizers/rmsprop)
 - [Adadelta](https://keras.io/api/optimizers/adadelta)
@@ -60,9 +60,9 @@ In addition to **adam**, there are many other optimizer:
 - [Nadam](https://keras.io/api/optimizers/nadam)
 - [Ftrl](https://keras.io/api/optimizers/ftrl)
 
-There are also many other **loss** function. 
+There are also many other **loss** function.
 
-The purpose of **loss** functions is to compute the quantity that a model should seek to minimize during training. Detail can be found [here](https://keras.io/api/losses/)
+The purpose of **loss** functions is to compute the quantity that a model should seek to minimize during training. Details can be found at [Keras: Losses](https://keras.io/api/losses/)
 
 ### Fit model
 
@@ -70,16 +70,16 @@ The purpose of **loss** functions is to compute the quantity that a model should
 model.fit(X, Y, validation_split=0.33, epochs=150, batch_size=10)
 ```
 
-Here: 
-- epochs: the number of iteration 
-- verbose: 'auto', 0, 1, or 2. Verbosity mode. 0 = silent, 1 = progress bar, 
-2 = one line per epoch. 'auto' defaults to 1 for most cases, but 2 when used with 
-ParameterServerStrategy. Note that the progress bar is not particularly 
-useful when logged to a file, so verbose=2 is recommended when not running 
+Here:
+- epochs: the number of iterations
+- verbose: 'auto', 0, 1, or 2. Verbosity mode. 0 = silent, 1 = progress bar,
+2 = one line per epoch. 'auto' defaults to 1 for most cases, but 2 when used with
+ParameterServerStrategy. Note that the progress bar is not particularly
+useful when logged to a file, so verbose=2 is recommended when not running
 interactively (eg, in a production environment).
 - batch_size: Number of samples per batch of computation. If unspecified, batch_size will default to 32.
 
-You can also create custom training/testing dataset: 
+You can also create custom training/testing datasets:
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -94,9 +94,9 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 # Fit the model
 model.fit(X_train, y_train, validation_data=(X_test,y_test), epochs=150, batch_size=10)
 ```
- 
 
-### Save & load keras model
+
+### Save & load Keras model
 ```python
 from keras.models import load_model
 
