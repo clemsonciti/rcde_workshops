@@ -23,7 +23,7 @@ In `~/.bashrc`, you must `export` the variable to make it available in scripts a
 
 ## Making changes to $PATH
 
-`$PATH` defines the directories that the shell searches when you run a command. These directories are a colon separated string that is searched from left to right. View your current `$PATH`  with:
+`$PATH` defines the directories that the shell searches when you run a command. These directories are a colon separated string that is searched from left to right. View your current `$PATH` with:
 
 ```bash
 echo $PATH

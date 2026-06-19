@@ -8,8 +8,8 @@ tips for the names of your files from now on.
 
 1. Don't use whitespaces.
 
-    White spaces can make a name more meaningful
-    but since whitespace is used to break arguments on the command line
+    Whitespaces can make a name more meaningful
+    but since whitespaces are used to break arguments on the command line
     is better to avoid them on name of files and directories.
     You can use `-` or `_` instead of whitespace.
 
@@ -61,7 +61,7 @@ The opposite of `mkdir` is `rmdir`:
 ```
 $ rmdir directory
 ```
-`rmdir` only works for empty directories. To delete a directory and all it's contents pass the `-r` or `--recursive` flag to `rm`:
+`rmdir` only works for empty directories. To delete a directory and all its contents pass the `-r` or `--recursive` flag to `rm`:
 ```
 $ rm -r directory
 ```
@@ -72,7 +72,7 @@ Files deleted with `rm` cannot be recovered from a trash bin. Be very careful wh
 
 ## Wildcards
 
-File globbing, known better as wildcards, uses patterns to automatically expand a file name or path. The `*` character matches any (multiple) characters. A `?` matches a single character.
+File globbing, better known as wildcards, uses patterns to automatically expand a file name or path. The `*` character matches any (multiple) characters. A `?` matches a single character.
 
 **Example:**
 

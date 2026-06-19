@@ -212,7 +212,7 @@ and (if you're lucky) provides a few examples of how to use it.
 
 To navigate through the `man` pages,
 you may use the up and down arrow keys to move line-by-line,
-or try the "b" and spacebar keys to skip up and down by full page.
+or try the "b" and space bar keys to skip up and down by full page.
 Quit the `man` pages by typing "q".
 
 ## Creating and Changing Directories
@@ -271,6 +271,6 @@ Many common configuration files will begin with `.`. You may see a `.bash_profil
 
 ### One More Shortcut
 
-Another shortcut is the `-` (dash) character.  `cd` will translate `-` into *the previous working directory *.
+Another shortcut is the `-` (dash) character.  `cd` will translate `-` into *the previous working directory*.
 This is a *very* efficient way of moving back and forth between directories.
 The difference between `cd ..` and `cd -` is that the former brings you *up*, while the latter brings you *back*.
