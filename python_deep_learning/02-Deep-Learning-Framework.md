@@ -17,17 +17,17 @@ https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article
 - Strong competitor to TensorFlow
 
 (3) TensorFlow
-- TensorFlow is an end-to-end open-source deep learning framework developed by Google and released in 2015.
+- TensorFlow is an end-to-end, open-source deep learning framework developed by Google and released in 2015.
 - It is known for documentation and training support, scalable production and deployment options, multiple abstraction levels, and support for different platforms, such as Android.
 - TensorFlow is a symbolic math library used for neural networks and is best suited for dataflow programming across a range of tasks. It offers multiple abstraction levels for building and training models.
 
 (4) Theano
 - Theano used to be one of the more popular deep learning libraries, an open-source project that lets programmers define, evaluate, and optimize mathematical expressions, including multi-dimensional arrays and matrix-valued expressions.
-- Theano was developed by the Universite de Montreal in 2007 and is a key foundational library used for deep learning in Python. It’s considered the grandfather of deep learning frameworks and has fallen out of favor by most researchers outside academia.
+- Theano was developed by the Université de Montréal in 2007 and is a key foundational library used for deep learning in Python. Theano is considered the grandfather of deep learning frameworks and has fallen out of favor outside academia.
 
 ![image](https://user-images.githubusercontent.com/43855029/119177851-e6eb9380-ba3a-11eb-88be-938c8c190a50.png)
 
 ### Conclusions:
-- Keras is the easiest Deep Learning Library APIs. It is easy to transition from Machine Learning based models
+- Keras is the easiest Deep Learning Library API. It is easy to transition from Machine Learning based models
 - TensorFlow is the most popular DL library developed by Google. It has the highest number of users
 - Pytorch is developed by Facebook and gaining significant attention from users all over the world
