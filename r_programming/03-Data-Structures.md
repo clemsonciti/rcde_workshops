@@ -3,7 +3,7 @@
 ```{admonition} Learning objectives
 :class: dropdown
 
-- Questions:
+- Participants will learn:
   - Data types / classes in R
   - Random numbers
   - Vectors
@@ -11,7 +11,7 @@
 - Objectives:
   - 5 data types / classes of objects
   - Working with vectors
-- Keypoints:
+- Key points:
   - Classes of objects
   - Vectors
 
@@ -21,7 +21,7 @@
 :class: dropdown
 
 - In R, there are 5 main classes of objects:
-  - characters a, b
+  - characters: a, b
   - numeric: 2.3
   - integer: 5 or 5L
   - complex: 2+3i #consists of real and imaginary parts
@@ -34,7 +34,7 @@ a <- 5
 class(a)
 b <- 4L
 class(b)
-c <- 1+6i 
+c <- 1+6i
 class(c)
 d <- b < 5
 class(d)
@@ -101,8 +101,8 @@ log(-1)
 asin(4)
 ~~~
 
-- Sometimes, when you are dealing with data, you have missing values. 
-In R, there is a special way to denote missing values: `NA` ("not available"). 
+- Sometimes, when you are dealing with data, you have missing values.
+In R, there is a special way to denote missing values: `NA` ("not available").
 `NaN` is a special type of `NA`.
 
 ```
@@ -118,7 +118,7 @@ runif(3)
 runif(2,10,20)
 ~~~
 
-- Set the seed of R's random number generator, which 
+- Set the seed of R's random number generator, which
 is useful for creating simulations or random objects that can be reproduced.
 
 ~~~r
@@ -126,7 +126,7 @@ set.seed(1234)
 runif(3)
 ~~~
 
-- Create a sample of random numbers: 
+- Create a sample of random numbers:
 
 ~~~r
 sample(12,5)
@@ -134,7 +134,7 @@ sample(12)
 sample(letters,4)
 ~~~
 
-- `sample` returns a set of variables, rather than one variable. 
+- `sample` returns a set of variables, rather than one variable.
 Sets of variables of the same type are called vectors.
 
 ```
@@ -143,8 +143,8 @@ Sets of variables of the same type are called vectors.
 ```{admonition} Vectors
 :class: dropdown
 
-- Vectors are sets of variables of the same class, in a certain 
-order. The simplest, and a very useful, type of a vector is a range 
+- Vectors are sets of variables of the same class, in a certain
+order. The simplest, and very useful, type of vector is a range
 of values, specified with a colon:
 
 ~~~r
@@ -160,7 +160,7 @@ seq (from=1, to=5, by=2)
 seq (1, 5, 2)
 ~~~
 
-- You can also define a vector by combining a bunch of values 
+- You can also define a vector by combining a bunch of values
 (`c` stands for "combine"):
 
 ~~~r
@@ -169,16 +169,16 @@ a   <- c(4, 5.6, 20)
 b   <- c("TRUE", "FALSE")
 ~~~
 
-- To create a vector where all elements have the same value, 
+- To create a vector where all elements have the same value,
 use the `rep` function (for "repetition"):
 
 ~~~r
 x <- rep (3, 5)
 ~~~
 
-- If a vector is combined from variables of different 
-types, R tries to *coerce* them into the same type. 
-For example, logical values can be coerced into numbers (TRUE becomes 
+- If a vector is combined from variables of different
+types, R tries to *coerce* them into the same type.
+For example, logical values can be coerced into numbers (TRUE becomes
 1, and FALSE becomes 0):
 
 ~~~r
@@ -216,7 +216,7 @@ as.logical(a)
 as.character(a)
 ~~~
 
-- How about Nonsensical Coercion?
+- How about nonsensical coercion?
 
 ~~~r
 str <- c("a","b","c")
@@ -232,7 +232,7 @@ as.character(str)
 ```{admonition} Missing values
 :class: dropdown
 
-- In order to detect missing values or bad values 
+- In order to detect missing values or bad values
 (`NaN`, `NA`, `Inf`), we can use these functions:
   - is.na() test NA value
   - is.nan() test NaN value
