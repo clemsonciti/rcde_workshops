@@ -21,7 +21,7 @@ different) .
 
 - `download_spark.sh`: Untar a copy of `spark 2.4.5` in `~/software` and
 install the necessary `pyspark` module for Python.
-- `launch_spark_cluster.sh`: Parse information from the PBS job, use the first
+- `launch_spark_cluster.sh`: Parse information from the PBS job. Use the first
 node as the Spark master and the remaining nodes as Spark workers. Information
 regarding the total number of workers, number of cores, and memory per workers
 are reported for notebook's usage.

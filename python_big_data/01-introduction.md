@@ -29,13 +29,13 @@ Hadoop MapReduce.
 - Source code is contributed to Apache in 2013. The project had more than 100
 contributors from more than 30 organizations outside UC Berkeley.
 - Version 1.0 was released in 2014.
-- Currently, Spark is being used extensively in academic and industry
+- Currently, Spark is being used extensively in academia and industry
 (NASA, CERN, Uber, Netflix …).
 
 ## 4. map and reduce
 
 - What is `map`? A function/procedure that is applied to every individual
-elements of a collection/list/array/…
+element of a collection/list/array/…
 
 ~~~python
 int square(x) { return x*x;}
@@ -55,8 +55,8 @@ reduce ([1,2,3,4]) using multiply -24
 ## 5. MapReduce programming paradigm
 
 - Programmers implement:
-  - Map function: Take in the input data and return a key,value pair.
-  - Reduce function: Receive the key,value pairs from the mapper and provide a
+  - Map function: Take in the input data and return a (key,value) pair.
+  - Reduce function: Receive the (key,value) pairs from the mapper and provide a
   final output as a reduction operation on the pairs.
 
 - MapReduce Framework handles everything else.

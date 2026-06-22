@@ -12,7 +12,7 @@ keypoints:
 
 > ## 1. Where are the notebooks
 >
-> - The notebooks for this workshop are included inside myspark.
+> - The notebooks for this workshop are included inside `myspark`.
 > - Double-click on `myspark` directory in the `File Browser` tab.
 >
 > <img src="../fig/03-notebooks/01.png" alt="Notebooks" style="height:800px">
