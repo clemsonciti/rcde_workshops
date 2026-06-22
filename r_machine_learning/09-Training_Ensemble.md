@@ -1,6 +1,6 @@
 # Training Machine Learning model using Ensemble approach
 
-Ensemble learning is a way to combine multiple ML methods, and to base the final answer on the outputs of these classifiers. A good description of ensemble learning is [here](https://www.pluralsight.com/guides/ensemble-methods:-bagging-versus-boosting).
+Ensemble learning is a way to combine multiple ML methods, and to base the final answer on the outputs of these classifiers.
 
 <img src="https://user-images.githubusercontent.com/43855029/115078334-7b5b5700-9ecd-11eb-93fb-c3f69e740a5c.png" width="400" />
 [Source: Patheos.com](https://www.patheos.com/blogs/driventoabstraction/2018/07/blind-men-elephant-folklore-knowledge/)
@@ -8,7 +8,7 @@ Ensemble learning is a way to combine multiple ML methods, and to base the final
 <!---
 Ensemble approaches can reduce variance & Avoid Overfitting by combining results of multiple classifiers on different sub-samples
 
-![image](https://user-images.githubusercontent.com/43855029/114235479-417ad580-994e-11eb-806b-2f73996f864d.png) 
+![image](https://user-images.githubusercontent.com/43855029/114235479-417ad580-994e-11eb-806b-2f73996f864d.png)
 
 ## 7.2 Train model using Ensemble Approach
 Ensemble methods use multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone.
@@ -21,7 +21,7 @@ Here we will be learning several ensemble models:
 
 Two examples of ensemble approach: *bagging* and *boosting*.
 
-![image](https://user-images.githubusercontent.com/43855029/115079289-f6713d00-9ece-11eb-90cb-7084e8d7a536.png) 
+![image](https://user-images.githubusercontent.com/43855029/115079289-f6713d00-9ece-11eb-90cb-7084e8d7a536.png)
 
 Bagging creates a series of training sets from the originak training set with the procedure called bootstrapping. The bootstrapped sets are random samples (with replacement) of the observations in the original training set. These sets have the same number of observations as the original training set. Then, each set is processed with a machine learning model. The final outcome is the average output (for regression) or the majority vote (for classification). This combination is normally more robust than a single model.
 
@@ -42,8 +42,8 @@ plot(varImp(ModFit_bag))
 ```
 
 In boosting, this process is sequential rather than parallel: output of one model is the input to another one. The inputs are weighted: if an observation is misclassified, it will be weighted more highly for the next classifier.
- 
-<!--- 
+
+<!---
 
 ## 7.4 Train model using Boosting
 - Boosting is an approach to convert weak predictors to get stronger predictors.
@@ -74,7 +74,7 @@ confusionMatrix(testing$Species,as.factor(predict_Ada$class))
 
 You can see the weight of different predictors from boosting model
 
-### 7.4.2 Gradient Boosting Machines: 
+### 7.4.2 Gradient Boosting Machines:
 - Extremely popular ML algorithm
 - Widely used in Kaggle competition
 - Ensemble of shallow and weak successive tree, with each tree learning and improving on the previous
