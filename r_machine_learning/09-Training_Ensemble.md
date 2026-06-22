@@ -19,11 +19,11 @@ Here we will be learning several ensemble models:
 - Boosting with AdaBoost
 - Boosting with Gradient Boosting Machine -->
 
-Two examples of ensemble approach: *bagging* and *boosting*.
+Two examples of the ensemble approach: *bagging* and *boosting*.
 
 ![image](https://user-images.githubusercontent.com/43855029/115079289-f6713d00-9ece-11eb-90cb-7084e8d7a536.png)
 
-Bagging creates a series of training sets from the originak training set with the procedure called bootstrapping. The bootstrapped sets are random samples (with replacement) of the observations in the original training set. These sets have the same number of observations as the original training set. Then, each set is processed with a machine learning model. The final outcome is the average output (for regression) or the majority vote (for classification). This combination is normally more robust than a single model.
+Bagging creates a series of training sets from the original training set with a procedure called bootstrapping. The bootstrapped sets are random samples (with replacement) of the observations in the original training set. These sets have the same number of observations as the original training set. Then, each set is processed with a machine learning model. The final outcome is the average output (for regression) or the majority vote (for classification). This combination is normally more robust than a single model.
 
 Some implementations of Bagging in Caret:
 
