@@ -10,7 +10,7 @@
 - Objectives:
   - Write conditional statement with `if...else` and `elseif()`
   - Write and understand `for()` loop
-- Keypoints:
+- Key points:
   - "Use `if` and `else`"
   - "Use `for` loop "
 

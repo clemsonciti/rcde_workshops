@@ -4,10 +4,10 @@
 :class: dropdown
 
 - Questions:
-  - How to plot in R using ggplot2 package
+  - How to plot in R using the ggplot2 package
 - Objectives:
   - Learn advanced plotting using ggplot2
-- Keypoints:
+- Key points:
   - ggplot2
 
 ```
@@ -15,9 +15,8 @@
 ```{admonition} ggplot
 :class: dropdown
 
-- `ggplot2` is a graphics package, written by Hadley Wickham, a 
-grad student at Iowa State, based on the ideas from the book 
-"Grammar of Graphics" by Leland Wilkinson. Let's install it (it 
+- `ggplot2` is a graphics package, written by Hadley Wickham, Chief Scientist at Posit. Written when Wickham was a graduate student at Iowa State University, ggplot2 is based on the ideas from the book
+"Grammar of Graphics" by Leland Wilkinson. Let's install it (it
 will install multiple additional packages that it requires):
 
 ~~~r
@@ -53,17 +52,17 @@ library(ggplot2)
   - Difficult for customize
 - Advanced ggplot
   - Flexible with many built-in function
-- A quick way to get familiar with `ggplot2` is the 
-`qplot` function, which stands for *quick plot*. 
-Let's do a quick scatter plot from the `iris` dataset, 
+- A quick way to get familiar with `ggplot2` is the
+`qplot` function, which stands for *quick plot*.
+Let's do a quick scatter plot from the `iris` dataset,
 plotting sepal length versus petal length:
 
 ~~~r
 qplot(Sepal.Length, Petal.Length, data=iris)
 ~~~
 
-- Notice that it already looks nicer than the basic R plots 
-we did in the last chapter. Now, let's plot different species 
+- Notice that it already looks nicer than the basic R plots
+we did in the last chapter. Now, let's plot different species
 of iris with different colors and shapes:
 
 ~~~r
@@ -85,7 +84,7 @@ qplot(Sepal.Length, Petal.Length, data=iris,
 
 ![image](https://user-images.githubusercontent.com/43855029/114095674-b507de80-988b-11eb-8a9f-852ed19ed08a.png)
 
-- Let's make these lines straight -- that is, let's fit a linear 
+- Let's make these lines straight -- that is, let's fit a linear
 model to each species' data:
 
 ~~~r
@@ -97,7 +96,7 @@ qplot(Sepal.Length, Petal.Length, data=iris,
 
 ![image](https://user-images.githubusercontent.com/43855029/114095642-aae5e000-988b-11eb-925b-91336205073d.png)
 
-- Let's make a density plot (a smoothed histogram) of 
+- Let's make a density plot (a smoothed histogram) of
 sepal lengths of each species:
 
 ~~~r
@@ -105,7 +104,7 @@ qplot(Sepal.Length,data=iris,geom="density",
       color=Species)
 ~~~
 
-- There are many more ways to use ggplot2. Some useful (and beautiful) 
+- There are many more ways to use ggplot2. Some useful (and beautiful)
 examples of code are here:
 http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
 
@@ -190,8 +189,8 @@ ggplot(mpg,aes(x=manufacturer,y=hwy,
 
 ~~~r
 g <- ggplot(mpg, aes(class, cty))
-g + geom_violin(aes(fill=class)) + 
-  labs(title="Violin plot", 
+g + geom_violin(aes(fill=class)) +
+  labs(title="Violin plot",
        subtitle="City Mileage vs Class of vehicle",
        caption="Source: mpg",
        x="Class of Vehicle",
@@ -204,14 +203,14 @@ g + geom_violin(aes(fill=class)) +
 
 ~~~r
 g <- ggplot(mpg, aes(displ)) + scale_fill_brewer(palette = "Spectral")
-g + geom_histogram(aes(fill=class), 
-                   bins=10, 
-                   col="black", 
+g + geom_histogram(aes(fill=class),
+                   bins=10,
+                   col="black",
                    size=.1) +   # change number of bins
-  labs(title="Histogram with Fixed Bins", 
+  labs(title="Histogram with Fixed Bins",
        subtitle="Engine Displacement across Vehicle Classes",
        x="enginer displacement (m)",
-       y="Frequency count") 
+       y="Frequency count")
 ~~~
 
 ![image](https://user-images.githubusercontent.com/43855029/114115027-0629c980-98b0-11eb-8f8b-2c9bb4c5d6e6.png)
@@ -220,15 +219,15 @@ g + geom_histogram(aes(fill=class),
 
 ~~~r
 data("midwest")
-gg <- ggplot(midwest, aes(x=area, y=poptotal)) + 
-  geom_point(aes(col=state, size=popdensity)) + 
-  geom_smooth(method="loess", se=F) + 
-  xlim(c(0, 0.1)) + 
-  ylim(c(0, 500000)) + 
-  labs(subtitle="Area Vs Population", 
-       y="Population", 
-       x="Area", 
-       title="Scatterplot", 
+gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
+  geom_point(aes(col=state, size=popdensity)) +
+  geom_smooth(method="loess", se=F) +
+  xlim(c(0, 0.1)) +
+  ylim(c(0, 500000)) +
+  labs(subtitle="Area Vs Population",
+       y="Population",
+       x="Area",
+       title="Scatterplot",
        caption = "Source: midwest")
 plot(gg)
 ~~~
@@ -239,8 +238,8 @@ plot(gg)
 
 ~~~r
 g <- ggplot(mpg, aes(cty))
-g + geom_density(aes(fill=factor(cyl)), alpha=0.8) + 
-    labs(title="Density plot", 
+g + geom_density(aes(fill=factor(cyl)), alpha=0.8) +
+    labs(title="Density plot",
          subtitle="City Mileage Grouped by Number of cylinders",
          caption="Source: mpg",
          x="City Mileage",
@@ -294,7 +293,7 @@ ggplot(data = SC_counties)+
 some.eu.countries <- c(
   "Portugal", "Spain", "France", "Switzerland", "Germany",
   "Austria", "Belgium", "UK", "Netherlands",
-  "Denmark", "Poland", "Italy", 
+  "Denmark", "Poland", "Italy",
   "Croatia", "Slovenia", "Hungary", "Slovakia",
   "Czech republic"
 )
@@ -341,7 +340,7 @@ llgridlines(gfile,lty=5)
 ![image](https://user-images.githubusercontent.com/43855029/114115693-4e95b700-98b1-11eb-8f93-0a27c0922e35.png)
 
 - Plot raster
-  - Here we will plot a raster data base using Global land cover data set. 
+  - Here we will plot a raster data base using Global land cover data set.
   The data can be downloaded from [here](http://due.esrin.esa.int/files/Globcover2009_V2.3_Global_.zip).
 - Unzip and put the raster data to working directory:
 
@@ -357,6 +356,6 @@ Gcover <- raster("GLOBCOVER_L4_200901_200912_V2.3.tif")
 plot(Gcover,main="GLobal Land cover")
 ~~~
 
-![image](https://user-images.githubusercontent.com/43855029/114116438-b7316380-98b2-11eb-91d0-0ca5a7b2c3d0.png) 
+![image](https://user-images.githubusercontent.com/43855029/114116438-b7316380-98b2-11eb-91d0-0ca5a7b2c3d0.png)
 
 ```

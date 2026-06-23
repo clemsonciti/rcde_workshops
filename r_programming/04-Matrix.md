@@ -13,7 +13,7 @@
   - Creating data frames
   - Importing and exporting data frames
   - Working with text/csv files
-- Keypoints:
+- Key points:
   - Working with csv input data
 
 ```
@@ -48,9 +48,9 @@ a+b
 ```{admonition} Matrices
 :class: dropdown
 
-- Vectors are one-dimensional rows of numbers; matrices are 
-two-dimensional tables. Like vectors, all elements of a matrix 
-must be of the same data type. 
+- Vectors are one-dimensional rows of numbers; matrices are
+two-dimensional tables. Like vectors, all elements of a matrix
+must be of the same data type.
 
 Let's create a matrix of zeros:
 
@@ -59,7 +59,7 @@ m <- matrix (0, nrow=3, ncol=4)
 m
 ~~~
 
-- When creating a matrix, you will need to specify number of rows and columns. 
+- When creating a matrix, you will need to specify number of rows and columns.
 - You can create a matrix from a vector:
 
 ~~~r
@@ -117,7 +117,7 @@ solve(mr) %*% mr
 - Merging matrices by row and column using `rbind` and `cbind`:
 
 ~~~r
-m 
+m
 m2 <- -1:-12
 dim(m2) <- c(3,4)
 m2
@@ -140,8 +140,8 @@ table(m)
 ```{admonition} Subsetting
 :class: dropdown
 
-- Subsetting is extracting elements from 
-vectors/matrices/lists. In R, subsetting is 
+- Subsetting is extracting elements from
+vectors/matrices/lists. In R, subsetting is
 denoted with square brackets: `[]`
 
 ~~~r
@@ -154,7 +154,7 @@ str[2:4]
 ~~~
 
 - You can see that we can use a vector to subset another vector.
-- Subsetting is very flexible. You can use a vector of logical values 
+- Subsetting is very flexible. You can use a vector of logical values
 to subset another vector:
 
 ~~~r
@@ -164,7 +164,7 @@ a>2
 a[a>2]
 ~~~
 
-- You can use this method to filer out elements which are `NaNs`:
+- You can use this method to filter out elements which are `NaNs`:
 
 ~~~r
 a <- c(1:5,NaN,TRUE)
@@ -189,7 +189,7 @@ m[2,3]
 m[1,1:3]
 ~~~
 
-- Extracting a whole row or column: 
+- Extracting a whole row or column:
 
 ~~~r
 m[2,]
@@ -201,7 +201,7 @@ m[,4]
 ```{admonition} Lists
 :class: dropdown
 
-- In matrices and vectors, all elements belong to the same class. 
+- In matrices and vectors, all elements belong to the same class.
 A collection of variables from different classes is called a list.
 
 ~~~r
@@ -212,7 +212,7 @@ list1 <- list(str,a,b)
 list1
 ~~~
 
-- Lists are very flexible. A vector, or a matrix, can be 
+- Lists are very flexible. A vector, or a matrix, can be
 an element of a list:
 
 ~~~r
@@ -223,7 +223,7 @@ list2
 ~~~
 
 - Subsetting lists
-  - Elements of a list can also be extracted by subsetting, 
+  - Elements of a list can also be extracted by subsetting,
   using the dollar sign `$`:
 
 ~~~r
@@ -240,9 +240,9 @@ list1$l1[3]
 ```{admonition} Data Frames
 :class: dropdown
 
-- Data frames are used to store tables, where columns 
-correspond to a particular variable, and rows correspond to 
-a particular observation. 
+- Data frames are used to store tables, where columns
+correspond to a particular variable, and rows correspond to
+a particular observation.
 
 - Data Frame characteristics:
   - Column name should not be empty
@@ -257,8 +257,8 @@ nrow(df)
 ncol(df)
 ~~~
 
-- There are many readily available data frames in R, for 
-example [`iris`](https://archive.ics.uci.edu/ml/datasets/iris) data set:
+- There are many readily available data frames in R, for
+example the [`iris`](https://archive.ics.uci.edu/ml/datasets/iris) data set:
 
 ~~~r
 data(iris)
@@ -290,7 +290,7 @@ names(iris)[4] <- "new_name"
 ```{admonition} Getting data from data frames
 :class: dropdown
 
-- Columns of a data frame could be extracted with `$` 
+- Columns of a data frame could be extracted with `$`
 (as in a list) or with `[]` (as in a matrix).
 
 ~~~r
@@ -306,22 +306,22 @@ cylinder <- mtcars$cyl
 ```{admonition} Reading and writing tables
 :class: dropdown
 
-- Reading table
-  - Data frames can be created by reading from a file (a text file, 
-  or a CSV / Excel file). The file can be on a local computer, or online.
+- Reading tables
+  - Data frames can be created by reading from a file (a text file,
+  or a CSV / Excel file). The file can be on a local computer or online.
   - `read.table`: read table in text format
   - `read.csv`: read table in csv format
-  - `read.xlsx`: read table in excel format (require xlsx packages)
+  - `read.xlsx`: read table in Excel format (require xlsx packages)
   - `readLines`: read lines of a text file
 - Writing table
-  - In a similar fashion, a data frame can be saved 
+  - In a similar fashion, a data frame can be saved
   as a text/CSV/Excel file:
   - `write.table`: write table in text format
   - `write.csv`: write table in csv format
-  - `write.xlsx`: write table in excel format (require xlsx packages)
+  - `write.xlsx`: write table in Excel format (require xlsx packages)
   - `writeLines`: write lines of a text file
-- In this example, I perform reading 
-[online sale data](https://support.spatialkey.com/spatialkey-sample-csv-data/) 
+- In this example, I read
+[online sale data](https://support.spatialkey.com/spatialkey-sample-csv-data/)
 and save the output to current working directory:
 
 ~~~r
@@ -334,7 +334,7 @@ names(saledata)
 write.csv(saledata,'SaleData.csv')
 ~~~
 
-- Here, we read a poem from an online text file, and save 
+- Here, we read a poem from an online text file, and save
 ten lines in the working directory:
 
 ~~~r
