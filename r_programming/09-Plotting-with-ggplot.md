@@ -31,19 +31,19 @@ library(ggplot2)
 :class: dropdown
 
 - A data frame
-- aes: aesthetic mappings showing how data are mapped to color, size
-- geoms: geometric objects like points, lines, shapes.
+- aes: aesthetic mappings showing how data is mapped to color, size
+- geom: geometric objects like points, lines, shapes.
 - facets: for conditional plots.
 - stats: statistical transformations like binning, quanti les, smoothing.
 - scales: what scale an aesthetic map uses
-- coordinate system
+- coordinate systems
 
 ![image](https://user-images.githubusercontent.com/43855029/114095124-0fed0600-988b-11eb-924c-868236195c2a.png)
 
 ```
 
 
-```{admonition} Type of ggplot
+```{admonition} Types of ggplot
 :class: dropdown
 
 - Basic qplot
@@ -51,7 +51,7 @@ library(ggplot2)
   - Nicer graphics than Base plot
   - Difficult for customize
 - Advanced ggplot
-  - Flexible with many built-in function
+  - Flexible with many built-in functions
 - A quick way to get familiar with `ggplot2` is the
 `qplot` function, which stands for *quick plot*.
 Let's do a quick scatter plot from the `iris` dataset,
@@ -105,7 +105,7 @@ qplot(Sepal.Length,data=iris,geom="density",
 ~~~
 
 - There are many more ways to use ggplot2. Some useful (and beautiful)
-examples of code are here:
+examples of code are at r-statistics.co: Top 50 ggplot2 Visualizations-
 http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
 
 ![image](https://user-images.githubusercontent.com/43855029/114096068-3c555200-988c-11eb-849a-1332fcf7c8f5.png)
@@ -145,7 +145,7 @@ ggsave("plot.png",width=5,height=5)
 
 ```
 
-```{admonition} Annotation
+```{admonition} Annotations
 :class: dropdown
 
 - Labels: xlab(), ylab(), labs(), ggtitle()
@@ -168,7 +168,7 @@ gp+geom_point(aes(color=factor(cyl),
 ```
 
 
-```{admonition} Some nice ggplots featuring
+```{admonition} Some nice ggplot features
 :class: dropdown
 
 - Boxplot
@@ -297,7 +297,7 @@ some.eu.countries <- c(
   "Croatia", "Slovenia", "Hungary", "Slovakia",
   "Czech republic"
 )
-# Retrievethe map data
+# Retrieve the map data
 some.eu.maps <- map_data("world", region = some.eu.countries)
 
 ggplot(some.eu.maps, aes(x = long, y = lat)) +
@@ -309,8 +309,8 @@ ggplot(some.eu.maps, aes(x = long, y = lat)) +
 
 ![image](https://user-images.githubusercontent.com/43855029/122972677-6633f600-d35e-11eb-9c3c-4b90db22b25e.png)
 
-- Plot Shapefile for geography study
-  - Download shape file data [here](https://opendata.arcgis.com/datasets/a21fdb46d23e4ef896f31475217cbb08_1.zip)
+- Plot Shapefile for a geography study
+  - Download shape file data [at ArcGIS's opendata](https://opendata.arcgis.com/datasets/a21fdb46d23e4ef896f31475217cbb08_1.zip)
   - Store it in your folder: c:/R/GIS/ in Windows or /user/R/GIS in MacOS
   - Unzip it and rename all files to `Countries_WGS84.*` under `C:/GIS/`
 - Install additional packages:
@@ -340,9 +340,9 @@ llgridlines(gfile,lty=5)
 ![image](https://user-images.githubusercontent.com/43855029/114115693-4e95b700-98b1-11eb-8f93-0a27c0922e35.png)
 
 - Plot raster
-  - Here we will plot a raster data base using Global land cover data set.
+  - Here we will plot a raster database using global land cover data set.
   The data can be downloaded from [here](http://due.esrin.esa.int/files/Globcover2009_V2.3_Global_.zip).
-- Unzip and put the raster data to working directory:
+- Unzip and put the raster data in your working directory:
 
 ~~~r
 install.packages("raster")
