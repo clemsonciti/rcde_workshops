@@ -198,7 +198,7 @@ get the clone URL (HTTPS option) of your Git repository
 ```{admonition} Paste Git clone link
 :class: dropdown
 
-![Paste }HTTPS clone link](../fig/containers/cloudlab-profile-git-url.png)
+![Paste HTTPS clone link](../fig/containers/cloudlab-profile-git-url.png)
 
 ```
 

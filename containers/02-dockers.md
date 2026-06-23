@@ -2,7 +2,7 @@
 
 ## 1. Setup
 
-- Go to your previouysly created GitHub project repository (on the first day), create a new
+- Go to your previously created GitHub project repository (on the first day), create a new
 branch called `docker` from the `main` (or `master`) branch.
 
 ```{admonition} Create new branch
