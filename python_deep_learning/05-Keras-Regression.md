@@ -4,7 +4,7 @@
 ## Using Keras to solve a Regression Model
 
 ### Prepare the data
-Here we use [Pima Indian Diabetes database](https://www.kaggle.com/uciml/pima-indians-diabetes-database) data:
+Here we use [Pima Indians Diabetes database](https://www.kaggle.com/uciml/pima-indians-diabetes-database) data:
 
 - We need to omit the header line of the data.
 

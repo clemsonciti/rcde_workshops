@@ -420,7 +420,7 @@ model = tf.keras.models.load_model('LSTM_Jena.keras')
 
 
 #### Prediction
-Modifying the given [code](https://keras.io/examples/timeseries/timeseries_weather_forecasting/) to make predictions for 5 sets of values from validation set:
+Modifying the given [Timeseries forecasting code](https://keras.io/examples/timeseries/timeseries_weather_forecasting/) to make predictions for 5 sets of values from validation set:
 
 First, we need to create a rescale function back to original scale for T (degC)
 
