@@ -9,7 +9,7 @@
 This workshop introduces basic concepts of R,
 installation of additional R modules, introduction to data manipulation and visualization,
 and several best practices for using R for data analytics. We will use R Studio on
-the Palmetto cluster (through web-based OpenOnDemand interface). No prior knowledge of R or
+the Palmetto 2 cluster (through web-based Open OnDemand interface). No prior knowledge of R or
 programming in general is required.
 
 

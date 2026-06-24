@@ -9,15 +9,15 @@
   - Vectors
   - Missing values
 - Objectives:
-  - 5 data types / classes of objects
+  - Understanding the 5 data types / classes of objects
   - Working with vectors
 - Key points:
-  - Classes of objects
-  - Vectors
+  - Object Classifications
+  - Vectors in R
 
 ```
 
-```{admonition} Classes of objects
+```{admonition} Classes of Objects
 :class: dropdown
 
 - In R, there are 5 main classes of objects:
@@ -42,7 +42,7 @@ class(d)
 
 ```
 
-```{admonition} Logical operations
+```{admonition} Logical Operations
 :class: dropdown
 
 - Logical operations `and` and `or` are computed with `&&` and `||`:
@@ -75,14 +75,14 @@ e <- 5
 class(e)
 ~~~
 
-- To get an integer, insert `L` as suffix
+- To get an integer, insert `L` as the suffix
 
 ~~~r
 f <- 5L
 class(f)
 ~~~
 
-- Special number: `Inf`: infinity
+- Special number: `Inf`= infinity
 
 ~~~r
 g<-5/0
@@ -101,16 +101,16 @@ log(-1)
 asin(4)
 ~~~
 
-- Sometimes, when you are dealing with data, you have missing values.
+- Sometimes, when you are dealing with data, you have will have missing values.
 In R, there is a special way to denote missing values: `NA` ("not available").
 `NaN` is a special type of `NA`.
 
 ```
 
-```{admonition} Random Number & seed
+```{admonition} Random Numbers & Seeds
 :class: dropdown
 
-- Create random numeric numbers using runif
+- Create random numeric numbers using unif
 
 ~~~r
 runif(1)
@@ -144,8 +144,8 @@ Sets of variables of the same type are called vectors.
 :class: dropdown
 
 - Vectors are sets of variables of the same class, in a certain
-order. The simplest, and very useful, type of vector is a range
-of values, specified with a colon:
+order. The simplest type of vector is a range
+of values, specified with a colon. This type of simple vector is very useful:
 
 ~~~r
 x <- 1:5
@@ -160,7 +160,7 @@ seq (from=1, to=5, by=2)
 seq (1, 5, 2)
 ~~~
 
-- You can also define a vector by combining a bunch of values
+- You can also define a vector by combining several values
 (`c` stands for "combine"):
 
 ~~~r
@@ -176,7 +176,7 @@ use the `rep` function (for "repetition"):
 x <- rep (3, 5)
 ~~~
 
-- If a vector is combined from variables of different
+- If a vector is combined with variables of different
 types, R tries to *coerce* them into the same type.
 For example, logical values can be coerced into numbers (TRUE becomes
 1, and FALSE becomes 0):
@@ -229,14 +229,14 @@ as.character(str)
 ```
 
 
-```{admonition} Missing values
+```{admonition} Missing Values
 :class: dropdown
 
 - In order to detect missing values or bad values
 (`NaN`, `NA`, `Inf`), we can use these functions:
-  - is.na() test NA value
-  - is.nan() test NaN value
-  - is.infinite() test Inf value
+  - is.na() tests NA value
+  - is.nan() tests NaN value
+  - is.infinite() tests Inf value
   - NaN is NA but the reverse is false
 
 ~~~r

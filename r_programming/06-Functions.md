@@ -5,14 +5,14 @@
 :class: dropdown
 
 - Questions:
-  - How to write functions in R
+  - How do you write functions in R?
 - Objectives:
   - Define functions
   - Return value(s) from functions
 - Key points:
   - Use `function` to define a new function in R
-  - Use parameters to pass value to function
-  - Load function into program using `source()`
+  - Use parameters to pass values to functions
+  - Load functions into programs using `source()`
 
 - We have seen some examples of built-in R functions. For some functions,
 you will have to install particular packages. In this chapter, we will
@@ -24,7 +24,7 @@ show you how to write your own functions.
 :class: dropdown
 
 - There are several built-in functions in R that can be used
-to perform analytical tasks, for example: `mean, min, max, quantile, summary`.
+to perform analytical tasks. These include: `mean, min, max, quantile, summary`.
 - For example, here's the `mean` function, which computes the
 arithmetic average of a vector:
 - Using function mean with missing value
@@ -159,8 +159,8 @@ polar2cart(1,pi/6)$y
 
 - In complex data science use cases, we may have to
 work on nested functions. Nested functions contain functions within a function.
-- For example: Given dataset `mtcars`, Find the mean of fuel
-consumption `mpg` for cars that have 4 cylinders `cyl`
+- For example: Given dataset `mtcars`, find the mean of fuel
+consumption `mpg` for cars that have 4 cylinders `cyl`.
 
 ~~~r
 data(mtcars)
@@ -210,8 +210,8 @@ F2C(100)
 - Let's save our function so we can use it later.
 - First, get your working directory by running `getwd()`.
 Then, in a file browser (Windows) or in Finder (Mac), go
-to that directory, and please create a folder "R_workshop".
-Then, in R, let's make this our working directory: `setwd ("R_workshop")`.
+to your working directory and create a folder called "R_workshop".
+Then, in R, let's make this our new working directory: `setwd ("R_workshop")`.
 Then, let's list the files in it:
 
 ~~~r
@@ -221,7 +221,7 @@ list.files (getwd())
 - The result should be empty (`character(0)`) because it is
 an empty directory. If you are familiar with Linux, you can
 use the `Terminal` tab from the console for the same purpose.
-- Then, in the R studio Editor, copy and paste the `polar2cart`
+- Then, in the R studio editor, copy and paste the `polar2cart`
 function:
 
 ~~~r

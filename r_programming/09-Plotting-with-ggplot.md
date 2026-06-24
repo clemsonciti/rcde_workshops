@@ -4,7 +4,7 @@
 :class: dropdown
 
 - Questions:
-  - How to plot in R using the ggplot2 package
+  - How do you plot in R using the ggplot2 package?
 - Objectives:
   - Learn advanced plotting using ggplot2
 - Key points:
@@ -15,7 +15,7 @@
 ```{admonition} ggplot
 :class: dropdown
 
-- `ggplot2` is a graphics package, written by Hadley Wickham, Chief Scientist at Posit. Written when Wickham was a graduate student at Iowa State University, ggplot2 is based on the ideas from the book
+- `ggplot2` is a graphics package, written by Hadley Wickham, Chief Scientist at Posit. Wickham wrote ggplot 2 as a graduate student at Iowa State University. ggplot2 is based on the ideas from the book
 "Grammar of Graphics" by Leland Wilkinson. Let's install it (it
 will install multiple additional packages that it requires):
 
@@ -27,13 +27,13 @@ library(ggplot2)
 ```
 
 
-```{admonition} Basic component of ggplot
+```{admonition} Basic components of ggplot2
 :class: dropdown
 
 - A data frame
-- aes: aesthetic mappings showing how data is mapped to color, size
+- aes: aesthetic mappings showing how data is mapped using color, size
 - geom: geometric objects like points, lines, shapes.
-- facets: for conditional plots.
+- facets: for conditional plots and subsetting data.
 - stats: statistical transformations like binning, quanti les, smoothing.
 - scales: what scale an aesthetic map uses
 - coordinate systems
@@ -49,12 +49,12 @@ library(ggplot2)
 - Basic qplot
   - Same as plot in Base plot
   - Nicer graphics than Base plot
-  - Difficult for customize
+  - Difficult to customize
 - Advanced ggplot
   - Flexible with many built-in functions
 - A quick way to get familiar with `ggplot2` is the
 `qplot` function, which stands for *quick plot*.
-Let's do a quick scatter plot from the `iris` dataset,
+Let's do a quick scatter plot using the `iris` dataset,
 plotting sepal length versus petal length:
 
 ~~~r
@@ -96,7 +96,7 @@ qplot(Sepal.Length, Petal.Length, data=iris,
 
 ![image](https://user-images.githubusercontent.com/43855029/114095642-aae5e000-988b-11eb-925b-91336205073d.png)
 
-- Let's make a density plot (a smoothed histogram) of
+- Let's make a density plot (a smoothed histogram) of the
 sepal lengths of each species:
 
 ~~~r
@@ -185,7 +185,7 @@ ggplot(mpg,aes(x=manufacturer,y=hwy,
 
 ![image](https://user-images.githubusercontent.com/43855029/114114879-c19e2e00-98af-11eb-8ce8-000f14ac24ae.png)
 
-- Violin plot
+- Violin Plot
 
 ~~~r
 g <- ggplot(mpg, aes(class, cty))
@@ -215,7 +215,7 @@ g + geom_histogram(aes(fill=class),
 
 ![image](https://user-images.githubusercontent.com/43855029/114115027-0629c980-98b0-11eb-8f8b-2c9bb4c5d6e6.png)
 
-- Scatter plot
+- Scatter Plot
 
 ~~~r
 data("midwest")
@@ -234,7 +234,7 @@ plot(gg)
 
 ![image](https://user-images.githubusercontent.com/43855029/114115089-278ab580-98b0-11eb-96f4-1d3adc70b511.png)
 
-- Density
+- Density Plot
 
 ~~~r
 g <- ggplot(mpg, aes(cty))
@@ -249,7 +249,7 @@ g + geom_density(aes(fill=factor(cyl)), alpha=0.8) +
 
 ![image](https://user-images.githubusercontent.com/43855029/114115140-47ba7480-98b0-11eb-87c9-922ae8970516.png)
 
-- Density 2D
+- Density 2D Plot
 
 ~~~r
 gg <- ggplot(faithful,aes(x=eruptions,y=waiting))
@@ -263,7 +263,7 @@ gg + stat_density_2d(aes(fill=..level..),
 
 ![image](https://user-images.githubusercontent.com/43855029/114115221-63be1600-98b0-11eb-86b5-c0f6f0d8ecff.png)
 
-- Geographic visualization with ggplot
+- Geographic visualizations with ggplot
 
 ~~~r
 library(maps)
@@ -309,7 +309,7 @@ ggplot(some.eu.maps, aes(x = long, y = lat)) +
 
 ![image](https://user-images.githubusercontent.com/43855029/122972677-6633f600-d35e-11eb-9c3c-4b90db22b25e.png)
 
-- Plot Shapefile for a geography study
+- Plot a Shapefile for a geography study
   - Download shape file data [at ArcGIS's opendata](https://opendata.arcgis.com/datasets/a21fdb46d23e4ef896f31475217cbb08_1.zip)
   - Store it in your folder: c:/R/GIS/ in Windows or /user/R/GIS in MacOS
   - Unzip it and rename all files to `Countries_WGS84.*` under `C:/GIS/`
@@ -340,7 +340,7 @@ llgridlines(gfile,lty=5)
 ![image](https://user-images.githubusercontent.com/43855029/114115693-4e95b700-98b1-11eb-8f93-0a27c0922e35.png)
 
 - Plot raster
-  - Here we will plot a raster database using global land cover data set.
+  - Here we will plot a raster database using a global land cover data set.
   The data can be downloaded from [here](http://due.esrin.esa.int/files/Globcover2009_V2.3_Global_.zip).
 - Unzip and put the raster data in your working directory:
 

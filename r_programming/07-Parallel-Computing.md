@@ -4,32 +4,32 @@
 :class: dropdown
 
 - Questions:
-  - How to utilize multiple cores for R programming
+  - How do you utilize multiple cores for R programming?
 - Objectives:
   - Installing packages
   - Utilizing multiple cores
 - Key points:
-  - foreach()
+  - foreach() package
 
 ```
 
 ```{admonition} Parallel packages in R
 :class: dropdown
 
-- The `doParallel` package is a "parallel backend" for the foreach package. It provides the mechanism needed to execute foreach loops in parallel.
+- The `doParallel` package is a "parallel backend" for the foreach() package. It provides the mechanism needed to execute foreach() loops in parallel.
 - The `foreach` package must be used in order to execute code in parallel.
 - The user must register a parallel backend to use, otherwise foreach will execute tasks sequentially, even when the %dopar% operator is used
-- User must register a parallel backend to use. To register doParallel to be used with foreach, you must call the registerDoParallel function.
-- We can speed up computation by using *parallel computing*, that is, by
-running computational processes simultaneously on different cores of our computer.
-Most modern computers (laptops or desktops) are multi-core, that is, they have more
-than one processor (CPU), so they can run more than one thing at a time. Taking
+- User must register a parallel backend to use. To register doParallel with foreach, you must call the registerDoParallel function.
+- We can speed up computation by using *parallel computing*, which
+runs computational processes simultaneously on different cores of our computer.
+Most modern computers (laptops or desktops) are multi-core, which means they have more
+than one processor (CPU). This means that they can run more than one thing at a time. Taking
 advantage of this is the main idea behind parallel computing. Later in this workshop,
-we will try the same idea on the Palmetto 2 cluster.
+we will try parallel computing on the Palmetto 2 cluster.
 - First, we will need to install some packages. This will be a very common
 task as you start using R; there are many packages out there created by R
-users, which contain functions for specific purposes. We will need to install
-two packages: `foreach` and `doParallel`. In the console, type this:
+users that contain functions for specific purposes. We will need to install
+two packages: `foreach` and `doParallel`. In the console, type:
 
 ~~~r
 install.packages("foreach")
@@ -85,7 +85,7 @@ m = foreach (n = 1:10, .combine = c) %do% max.eig (500)
 
 - This should take about the same time. Now, let's try to run it
 in parallel. For this purpose, we'll need to replace `%do%` with
-`%dopar%`, but first we'll need to initialize the parallel library
+`%dopar%`. First we'll need to initialize the parallel library
 so we take advantage of all available CPUs:
 
 ~~~r
@@ -126,7 +126,7 @@ foreach(i=1:4) %:%
 ```{admonition} Using doParallel
 :class: dropdown
 
-- Check the number of available CPUS:
+- Check the number of available CPUs:
 
 ~~~r
 library(doParallel)
@@ -150,7 +150,7 @@ stopCluster(cl)
 :class: dropdown
 
 - Note: this does not work in Windows, mostly applicable to Palmetto 2
-- Check number of available processing CPUS:
+- Check number of available processing CPUs:
 
 ~~~r
 library(parallel)
@@ -171,7 +171,7 @@ stopCluster(cl)
 ```
 
 
-```{admonition} Using built-in Parallel inside packages
+```{admonition} Using built-in parallel inside packages
 :class: dropdown
 
 - Many packages have built-in parallel function. Here we use a

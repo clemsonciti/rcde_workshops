@@ -4,10 +4,10 @@
 :class: dropdown
 
 - Questions:
-  - Vectors in R
-  - How to define matrix in R?
-  - How to manipulate a data frame in R?
-  - How to read text/csv file
+  - What are vectors in R?
+  - How do you define a matrix in R?
+  - How do you manipulate a data frame in R?
+  - How do you read text/csv file in R?
 - Objectives:
   - Working with Matrices
   - Creating data frames
@@ -18,7 +18,7 @@
 
 ```
 
-```{admonition} Vector math
+```{admonition} Vector Math
 :class: dropdown
 
 - R can do a lot of mathematical operations on vectors:
@@ -114,7 +114,7 @@ solve(mr) %*% mr
 ```{admonition} Merging Matrices
 :class: dropdown
 
-- Merging matrices by row and column using `rbind` and `cbind`:
+- You can merge matrices by row and column using `rbind` and `cbind`:
 
 ~~~r
 m
@@ -212,7 +212,7 @@ list1 <- list(str,a,b)
 list1
 ~~~
 
-- Lists are very flexible. A vector, or a matrix, can be
+- Lists are very flexible. A vector or a matrix can be
 an element of a list:
 
 ~~~r
@@ -223,7 +223,7 @@ list2
 ~~~
 
 - Subsetting lists
-  - Elements of a list can also be extracted by subsetting,
+  - Elements of a list can also be extracted by subsetting
   using the dollar sign `$`:
 
 ~~~r
@@ -245,9 +245,9 @@ correspond to a particular variable, and rows correspond to
 a particular observation.
 
 - Data Frame characteristics:
-  - Column name should not be empty
-  - Row name should be unique
-  - Data can be numeric, integer, character
+  - Column names should not be empty
+  - Row names should be unique
+  - Data can be numeric, integers, or characters
   - Each column contains same number of data items
 
 ~~~r
@@ -257,8 +257,8 @@ nrow(df)
 ncol(df)
 ~~~
 
-- There are many readily available data frames in R, for
-example the [`iris`](https://archive.ics.uci.edu/ml/datasets/iris) data set:
+- There are many readily available data frames in R.
+Check out the [`iris`](https://archive.ics.uci.edu/ml/datasets/iris) data set for a popular example:
 
 ~~~r
 data(iris)
@@ -308,10 +308,10 @@ cylinder <- mtcars$cyl
 
 - Reading tables
   - Data frames can be created by reading from a file (a text file,
-  or a CSV / Excel file). The file can be on a local computer or online.
+  or a CSV / Excel file). The file can be stored on a local computer or online.
   - `read.table`: read table in text format
   - `read.csv`: read table in csv format
-  - `read.xlsx`: read table in Excel format (require xlsx packages)
+  - `read.xlsx`: read table in Excel format (requires xlsx packages)
   - `readLines`: read lines of a text file
 - Writing table
   - In a similar fashion, a data frame can be saved
@@ -320,7 +320,7 @@ cylinder <- mtcars$cyl
   - `write.csv`: write table in csv format
   - `write.xlsx`: write table in Excel format (require xlsx packages)
   - `writeLines`: write lines of a text file
-- In this example, I read
+- In this example, I will read
 [online sale data](https://support.spatialkey.com/spatialkey-sample-csv-data/)
 and save the output to current working directory:
 
@@ -334,7 +334,7 @@ names(saledata)
 write.csv(saledata,'SaleData.csv')
 ~~~
 
-- Here, we read a poem from an online text file, and save
+- Here, we will read a poem from an online text file and save
 ten lines in the working directory:
 
 ~~~r

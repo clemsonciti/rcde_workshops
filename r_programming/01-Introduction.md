@@ -9,7 +9,7 @@
 - R was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies)
 by John Chambers and colleagues.
 - R provides a wide variety of statistical (linear and nonlinear modelling,
-classical statistical tests, time-series analysis, classification, clustering, …)
+classical statistical tests, time-series analysis, classification, clustering, and more)
 and graphical techniques, and is highly extensible.
 - R is available as free software
 - R runs on a wide variety of UNIX platforms and similar systems (including FreeBSD
@@ -22,11 +22,11 @@ and Linux), Windows, and MacOS.
 ```{admonition} R and RStudio on Palmetto
 :class: dropdown
 
-Users of the Palmetto cluster can run R on Palmetto. The most user-friendly way to do this
+Users of the Palmetto 2 cluster can run R on Palmetto 2. The most user-friendly way to do this
 is to run R Studio through a web interface (Open OnDemand or OpenOD). Let's start it. In your web
 browser (Chrome, Firefox, Edge, Safari, Opera etc.), please go to
 
-https://openod.palmetto.clemson.edu
+[The Palmetto 2 Homepage](https://openod.palmetto.clemson.edu)
 
 ```
 

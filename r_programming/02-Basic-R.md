@@ -11,12 +11,12 @@
 - Objectives:
   - Participants will grasp built-in R functions
 - Key points:
-  - Use RStudio to write and run R programs.
-  - R has the usual arithmetic operators and mathematical functions.
-  - Use `<-` to assign values to variables.
-  - Use `ls()` to list the variables in a program.
-  - Use `rm()` to delete objects in a program.
-  - Use `sessionInfo()` to get detail of the current loaded environment and packages
+  - Using RStudio to write and run R programs.
+  - Understanding R's use of usual arithmetic operators and mathematical functions.
+  - Using `<-` to assign values to variables.
+  - Using `ls()` to list the variables in a program.
+  - Using `rm()` to delete objects in a program.
+  - Using `sessionInfo()` to get detail of the current loaded environment and packages
 
 ```
 
@@ -25,7 +25,7 @@
 
 - In R console, the symbol `>` stands for `R prompt`.
 - The `#` is for comment insert.
-- To clean the existing environment, remove all memory in previous sessions:
+- To clean the existing environment and remove all memory in previous sessions, run:
 
 ~~~r
 > rm(list=ls())
@@ -33,7 +33,7 @@
 
 ```
 
-```{admonition} Using R as calculator
+```{admonition} Using R as a calculator
 :class: dropdown
 
 - When using R as a calculator, the order of operations is the same as you
@@ -41,10 +41,10 @@ would have learned back in school.
 - From highest to lowest precedence:
   - Parentheses: `(`, `)`
   - Exponents: `^` or `**`
-  - Multiply: `*`
-  - Divide: `/`
-  - Add: `+`
-  - Subtract: `-`
+  - Multiplication: `*`
+  - Division: `/`
+  - Addition: `+`
+  - Subtraction: `-`
   - Other math functions: `sin, cos, log(), log10(), exp`
 
 ~~~r
@@ -68,7 +68,7 @@ b <- sin(1)+log10(20)*exp(2)
 
 ```
 
-```{admonition} Assign Variables
+```{admonition} Assigning Variables
 :class: dropdown
 
 - To assign a variable in R, we can use both `<-` and `=` sign
@@ -82,7 +82,7 @@ b = 2
 
 ![image](https://user-images.githubusercontent.com/43855029/114053543-09479a00-985d-11eb-965a-88462449ea89.png)
 
-- To print the variable to console
+- To print the variable to the console:
 
 ~~~r
 a
@@ -102,12 +102,12 @@ print(a)
 
 ```
 
-```{admonition} Working directory
+```{admonition} Defining the Working Directory
 :class: dropdown
 
 One important step in R is defining the working directory. It is particularly useful
 when you are working with files in the working directory while also working in the Linux
-environment in Palmetto:
+environment in Palmetto 2:
 
 ~~~r
 # print working directory
