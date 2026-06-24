@@ -1,5 +1,5 @@
 ---
-title: "Workshop notebooks"
+title: "Workshop Notebooks"
 teaching: 0
 exercises: 0
 questions:
@@ -10,7 +10,7 @@ keypoints:
 - "Understand your Spark cluster configuration to optimize notebooks' resource request."
 ---
 
-> ## 1. Where are the notebooks
+> ## 1. Finding the Notebooks
 >
 > - The notebooks for this workshop are included inside `myspark`.
 > - Double-click on `myspark` directory in the `File Browser` tab.
@@ -23,7 +23,7 @@ keypoints:
 > <img src="../fig/03-notebooks/02.png" alt="Notebook 01" style="height:500px">
 {: .slide}
 
-> ## 2. Notebook configuration
+> ## 2. Notebook Configuration
 >
 > - The first code cell of all the notebooks is the same.
 > - This cell sets up the configuration to connect to the launched Spark cluster.
@@ -37,7 +37,7 @@ keypoints:
 > <img src="../fig/03-notebooks/03.png" alt="Configuration" style="height:500px">
 {: .slide}
 
-> ## 3. Clean up
+> ## 3. Cleaning Up
 >
 > Each notebook will open a separate SparkContext on the Spark cluster. This
 > SparkContext must be stopped (last cell of each notebook) when we are done.

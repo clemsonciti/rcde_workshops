@@ -6,17 +6,17 @@ questions:
 - "What is Spark?"
 - "How is programming done in Spark?"
 objectives:
-- "Participants will understand the general concept of MapReduce programming model"
+- "Participants will understand the general concept of the MapReduce programming model"
 keypoints:
 - "Spark provides a framework to support big data analytics via the MapReduce programming
-paradigm, unified compute engines, and supporting data processing and analytics libraries."
+paradigm, unified compute engines, analytics libraries. Spark supports data processing."
 ---
 
 > ## 1. What is Spark?
 >
 > - A unified compute engine and a set of libraries for parallel
 > data processing on computer clusters.
-> - Click the JupyterHub link
+> - For more information, review [Integration with Spark](https://jupyterhub-on-hadoop.readthedocs.io/en/latest/spark.html) on JupyterHub.
 >
 > <img src="../fig/01-introduction/01.png" alt="Spark" style="height:400px">
 >
@@ -73,9 +73,9 @@ paradigm, unified compute engines, and supporting data processing and analytics 
 
 > ## 5. MapReduce programming paradigm
 >
-> - Programmers implement:
->   - Map function: Take in the input data and return a key,value pair.
->   - Reduce function: Receive the key,value pairs from the mapper and provide a
+> - Programmers must implement:
+>   - Map function: Take in the input data and return a (key,value) pair.
+>   - Reduce function: Receive the (key,value) pairs from the mapper and provide a
 >   final output as a reduction operation on the pairs.
 >
 > - MapReduce framework handles everything else.
@@ -85,8 +85,8 @@ paradigm, unified compute engines, and supporting data processing and analytics 
 
 > ## 6. WordCount: the Hello, World! of Big Data
 >
-> - Count how many unique words there are in a file/multiple files.
-> - Standard parallel programming approach:
+> - WordCount counts how many unique words there are in a file/multiple files.
+> - WordCount implements a standard parallel programming approach:
 >   - Count number of files
 >   - Set number of processes
 >   - Possibly set up dynamic workload assignment

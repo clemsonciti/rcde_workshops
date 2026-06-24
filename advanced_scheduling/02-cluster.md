@@ -1,5 +1,5 @@
 ---
-title: "Launching the Spark cluster"
+title: "Launching the Spark Cluster"
 teaching: 0
 exercises: 0
 questions:

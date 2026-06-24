@@ -2,7 +2,7 @@
 
 ## 1. Setup
 
-- Go to your previously created GitHub project repository (on the first day), create a new
+- Go to your previously created GitHub project repository (on the first day) and create a new
 branch called `docker` from the `main` (or `master`) branch.
 
 ```{admonition} Create new branch
@@ -12,7 +12,7 @@ branch called `docker` from the `main` (or `master`) branch.
 
 ```
 
-- Modify the `profile.py` file to the following content
+- Modify the `profile.py` file to include the following content
 
 ```{admonition} Modification of profile.py
 :class: dropdown
@@ -23,7 +23,7 @@ branch called `docker` from the `main` (or `master`) branch.
 ```
 
 
- and modify to add the following
+ and add the following
 components from [the csc468cloud repository](https://github.com/CSC468-WCU/csc468cloud/tree/docker):
   - The `docker_config` directory and its content (`daemon.json`).
   - The `install_docker.sh` file.
@@ -31,7 +31,7 @@ components from [the csc468cloud repository](https://github.com/CSC468-WCU/csc46
 - **Check and make sure all the contents are correctly copied!**
 - Go to CloudLab, open your profile, switch to `Edit` mode and click `Update`. The new `docker` branch should show up.
 - Instantiate an experiment from this branch.
-- **Only login after the Startup column becomes Finished** and type the following command: `sudo docker info | grep "Docker Root Dir"`
+- **Only log in after the Startup column finishes** and type the following command: `sudo docker info | grep "Docker Root Dir"`
 - Confirm that you have something similar to the screenshot below
 
 ![Create new Git branch](../fig/containers/github-branch-docker.png)
@@ -63,7 +63,7 @@ components from [the csc468cloud repository](https://github.com/CSC468-WCU/csc46
 
 
 
-## 4. Inspiration for Docker: intermodal shipping containers
+## 4. Inspiration for Docker: I ntermodal shipping containers
 
 <img src="../fig/07-docker/04.png" style="height:400px">
 

@@ -4,9 +4,9 @@
 :class: dropdown
 
 - Questions:
-  - How to run R scripts in Palmetto 2
+  - How do you run R scripts on Palmetto 2?
 - Objectives:
-  - Learn how to run R in Palmetto 2
+  - Learn how to run R on Palmetto 2
   - Learn how to install R packages in Palmetto 2
 - Key points:
   - Rscript
@@ -65,6 +65,6 @@ Rscript randmatrix.r
 ~~~
 
 - If you want to use RStudio on Palmetto 2, you can use Open OnDemand
-interface -- please see our [manual](https://www.palmetto.clemson.edu/palmetto/openondemand/intro/).
+interface -- please see our [Open OnDemand manual](https://www.palmetto.clemson.edu/palmetto/openondemand/intro/).
 
 ```

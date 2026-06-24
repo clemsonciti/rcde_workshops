@@ -1,7 +1,7 @@
 
 # Introduction to CloudLab
 
-## 1. Access CloudLab
+## 1. Accessing CloudLab
 
 - Visit [CloudLab's website](https://cloudlab.us)
 - Click "Request an Account"
@@ -11,7 +11,7 @@
   - `Full Name`: Provide your full name.
   - `Email`: Provide your Clemson email address
   - `Country`: United States
-  - `State`: South Caroline
+  - `State`: South Carolina
   - `Institution`: Clemson University
   - `SSH Public Key`: If you know where to get this public key file, you can upload
   it now. We can/will do it later as well.
@@ -28,17 +28,17 @@ your username, then select `Join Existing Project` and provide the name `Clemson
 
 - Experimental testbed for future computing research
   - Built upon the GENI infrastructure
-- Allow researchers control to the bare metal
+- Allows researchers control down to to the bare metal
 - Diverse, distributed resources at large scale
-- Allow repeatable and scientific design of experiments
+- Allows repeatable and scientific design of experiments
 
-```{admonition} What is GENI
+```{admonition} What is GENI?
 :class: dropdown
 
-- Global Environment for Networking Innovation
-- Combining heterogeneous resource types, each virtualized
+- GENI: Global Environment for Networking Innovation
+- GENI combines heterogeneous resource types, each virtualized
 along one or more suitable dimensions, to produce a single
-platform for network science researchers"
+platform for network science researchers
 - Key components:
   - GENI racks: virtualized computation and storage resources
   - Software-defined networks (SDNs): virtualized, programmable network resources
@@ -52,7 +52,7 @@ network experiments. Computer Networks, 61, pp.5-23.*
 
 ```
 
-```{admonition} Key experimental concepts
+```{admonition} Key Experimental Concepts
 :class: dropdown
 
 - Sliceability: the ability to support virtualization while
@@ -132,13 +132,13 @@ starting from `ssh-rsa ...` until `...@login001.palmetto.clemson.edu`.
 
 ```
 
-## 5. Set up GitHub repository
+## 5. Set up GitHub Repository
 
 
 ```{admonition} Create new GitHub repository
 :class: dropdown
 
-- Go to your GitHub account, under `Repositories`, select `New`.
+- Go to your GitHub account, Under `Repositories`, select `New`.
 - You can select any name for your repo.
 - It must be `public`.
 - The `Add a README file` box must be checked.
@@ -146,7 +146,7 @@ starting from `ssh-rsa ...` until `...@login001.palmetto.clemson.edu`.
 
 ```
 
-```{admonition} Adding file to repository
+```{admonition} Adding files to your repository
 :class: dropdown
 
 - Click `Add file` and select `Create new file`
@@ -159,9 +159,9 @@ starting from `ssh-rsa ...` until `...@login001.palmetto.clemson.edu`.
 ```
 
 
-## 6. Set up CloudLab experimental profile
+## 6. Set up your CloudLab Experimental Profile
 
-- Login to your CloudLab account, click `Experiments` on top left,
+- Login to your CloudLab account, click `Experiments` on top left, and
 select `Create Experiment Profile`.
 
 ```{admonition} Create New Profile
@@ -172,7 +172,7 @@ select `Create Experiment Profile`.
 ```
 
 - Click on `Git Repo`
-  - You might not have a dropdown `Project` box, unless you are members of multiple CloudLab
+  - You might not have a dropdown `Project` box, unless you are a member of multiple CloudLab
   projects.
 
 ```{admonition} Create New Profile
@@ -202,7 +202,7 @@ get the clone URL (HTTPS option) of your Git repository
 
 ```
 
-- Enter the name for your profile, put in some words for the description.
+- Enter the name for your profile, and add a description.
 - You will not have a drop-down list of projects.
 - Click `Create` when done.
 
@@ -222,7 +222,7 @@ get the clone URL (HTTPS option) of your Git repository
 
 ```
 
-- Click `Next` on the first tab, `Select a Profile`.
+- Click `Next` on the first tab, then `Select a Profile`.
 - Select a cluster from University of Wisconsin, Clemson, or Emulab, then click `Next`.
 
 ```{admonition} Select cluster
@@ -233,7 +233,7 @@ get the clone URL (HTTPS option) of your Git repository
 ```
 
 - Do not do anything on the next `Start on date/time` screen. Click `Finish`.
-- Your experiment is now being `provision`, and then `booting`
+- Your experiment is now being `provision`ed, and then `booting`.
 
 ```{admonition} Provisioning and Booting
 :class: dropdown
