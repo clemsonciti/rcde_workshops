@@ -29,7 +29,7 @@ components from [the csc468cloud repository](https://github.com/CSC468-WCU/csc46
   - The `install_docker.sh` file.
   - The `profile.py` file.
 - **Check and make sure all the contents are correctly copied!**
-- Go to CloudLab, open your profile, switch to `Edit` mode and click `Update`. The new `docker` branch should show up.
+- Go to CloudLab, open your profile, switch to `Edit` mode, and click `Update`. The new `docker` branch should show up.
 - Instantiate an experiment from this branch.
 - **Only log in after the Startup column finishes** and type the following command: `sudo docker info | grep "Docker Root Dir"`
 - Confirm that you have something similar to the screenshot below
@@ -63,7 +63,7 @@ components from [the csc468cloud repository](https://github.com/CSC468-WCU/csc46
 
 
 
-## 4. Inspiration for Docker: I ntermodal shipping containers
+## 4. Inspiration for Docker: Intermodal shipping containers
 
 <img src="../fig/07-docker/04.png" style="height:400px">
 
@@ -112,8 +112,8 @@ $ docker version
 <img src="../fig/07-docker/09.png" style="height:600px">
 
 - Docker is a client-server application.
-  - Docker daemon (engine): receives and processes incoming Docker API request
-  and requires root privilege.
+  - Docker daemon (engine): receives and processes incoming Docker API requests. The daemon
+  requires root privilege.
   - Docker Hub registry: collection of [public images](https://hub.docker.com/).
   - Docker client : Talks to the Docker daemon via the Docker API and the registry API.
 
@@ -324,7 +324,7 @@ read-write copy of that filesystem.
 
 ## 23. How do we change an image?
 
-- It is read-only, we don’t.
+- Images are read-only. We cannot change them.
 - We create a new container from the image
 - We make changes to the container.
 - When we are satisfied with the changes, we transform them into a new layer.
@@ -584,7 +584,7 @@ $ docker run -it figlet_cmd_$USER bash
 
 -`ENTRYPOINT` defines a base command (and its parameters)
 for the container.
-- The command line arguments are appended to those parameters.
+- The command line arguments are appended to the defined parameters.
 - Edit `Dockerfile` as follows:
 
 <script src="https://gist.github.com/linhbngo/b9f794bed306562f2eb85da310ae7b5e.js?file=Dockerfile.3"></script>
@@ -664,7 +664,7 @@ $ docker run hello_$USER
 ## 43. Challenge
 
 - Create an account on [Docker Hub](https://hub.docker.com).
-- Find out how to login from the command line and push the recently created `hello` image
+- Find out how to log in from the command line and push the recently created `hello` image
 to your Docker Hub account.
 
 {: .challenge}
