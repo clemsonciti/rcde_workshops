@@ -16,14 +16,14 @@ To get started, see the [RCD GitLab Documentation](https://docs.rcd.clemson.edu/
 If you want to collaborate on GitHub, you can create an account. This is a great
 place to store a portfolio of projects!
 
-https://github.com/join
+[Join Github](https://github.com/join)
 
 ## Help, something went wrong!
 
 Git can be incredibly frustrating sometimes, even for people who use it
 frequently. One of my favorite websites for Git problems is [“Dangit, Git!”](https://dangitgit.com)
 
-They have a list of common problems with some solutions you can try.
+They have a list of common problems in Git with some solutions you can try.
 
 ## Other Git Providers
 

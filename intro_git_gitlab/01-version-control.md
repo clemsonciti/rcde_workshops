@@ -77,7 +77,7 @@ int main() {
 
 :::
 
-A version control system would show you the history of changes to the file over
+A version control system shows you the history of changes to the file over
 time, similar to what you saw above.
 
 ## Why should I use version control?
@@ -88,7 +88,7 @@ like `hello.c.bak1`, `hello_BROKEN.c.old`, `hello_FINAL.c`, and so on.
 Unfortunately, this solution doesn't scale well as the number of files,
 collaborators, and development time grow.
 
-As time goes on and your project gains more files, keeping track of history
+As time goes on and your project gains more files, keeping track of file history
 manually would be tedious and error-prone. Furthermore, if you are working with
 other people, you need a way to share this information.
 
@@ -101,7 +101,7 @@ Version control provides a **system** for keeping track of history that is
 
 Have you ever tried to understand someone else's elaborate file naming scheme or
 remember your own weeks later? Version control provides a consistent way to keep
-track of history between collaborators and across projects.
+track of file history between collaborators and across projects.
 
 ### Record the Story
 

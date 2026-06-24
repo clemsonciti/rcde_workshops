@@ -41,14 +41,14 @@ Screenshot of the GitLab Web IDE
 Collaborate on problems, track upcoming features, and ask questions.
 
 ### [Wiki](https://docs.gitlab.com/ee/user/project/wiki/)
-Create a wiki for your project or group. GitLab manages the history of the wiki in git for version history.
+Create a wiki for your project or group. GitLab manages the history of the wiki in Git for version history.
 Use the wiki to document:
-- Onboarding procedure for new lab members
+- Onboarding procedures for new lab members
 - How to benchmark your jobs on Palmetto 2
-- Style guidelines for papers and posters
+- Style guidelines for related papers and posters
 
 ### [Git-LFS](https://git-lfs.com)
-Git Large File Storage is fully supported by GitLab to track updates for large files that don't normally work well with git.
+Git Large File Storage is fully supported by GitLab to track updates for large files that don't normally work well with Git.
 Track changes to:
 - Images
 - Videos

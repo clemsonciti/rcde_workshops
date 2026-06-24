@@ -1,6 +1,6 @@
 # Collaboration and Conflicts
 
-In order to collaborate on a Git repository, you will need a remote server that
+In order to collaborate in a Git repository, you will need a remote server that
 multiple users can connect to, like the RCD GitLab server we mentioned
 previously.
 
