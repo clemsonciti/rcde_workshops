@@ -1,8 +1,8 @@
-# Accessing the Palmetto Cluster
+# Accessing the Palmetto 2 Cluster
 
 ## Remote login (SSH)
 
-To be able to run commands on Palmetto 2 from your own machine, you will first need to log in. We will login via **SSH** which will provide us a shell on one of Palmetto's login nodes.
+To be able to run commands on Palmetto 2 from your own machine, you will first need to log in. We will log n via **SSH**, which will provide us with a shell on one of the cluster's login nodes.
 
 For Mac OS X, you can open the Terminal Application (which is usually in Applications &rarr; Utilities folder) and run the following:
 

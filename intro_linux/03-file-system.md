@@ -14,7 +14,7 @@ $ pwd
 /home/<your Palmetto username>
 ~~~
 
-To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. On Palmetto 2, the filesystem looks something like this:
+To understand what a "home directory" is, let's have a look at how the file system as a whole is organized. On Palmetto 2, the file system looks something like this:
 
 ![The File System](../fig/filesystem.png)
 
@@ -62,7 +62,7 @@ We can also use `ls` to see the contents of a specified directory. Let's list th
 $ ls /home
 ~~~
 
-We can make its output more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
+We can make the output of `ls` more comprehensible by using the **flag** `-F`, which tells `ls` to add a trailing `/` to the names of directories:
 
 ~~~
 $ ls -F
@@ -73,7 +73,7 @@ Applications/ Documents/    Library/      Music/        Public/
 Desktop/      Downloads/    Movies/       Pictures/
 ~~~
 
-And note that there is a space between `ls` and `-F`: without it, the shell thinks we're trying to run a command called `ls-F`, which doesn't exist.
+And note that there is a space between `ls` and `-F`; Without it, the shell thinks we're trying to run a command called `ls-F`, which doesn't exist.
 
 `ls` has lots of other options. To find out what they are, we can type:
 
@@ -205,8 +205,8 @@ run from within the shell, support a `--help` flag to display more
 information on how to use the commands or programs.
 
 For more information on how to use `ls` we can type `man ls`.
-`man` is the Unix "manual" command:
-it prints a description of a command and its options,
+`man` is the Unix "manual" command.
+It prints a description of a command and its options
 and (if you're lucky) provides a few examples of how to use it.
 
 

@@ -72,7 +72,7 @@ Files deleted with `rm` cannot be recovered from a trash bin. Be very careful wh
 
 ## Wildcards
 
-File globbing, better known as wildcards, uses patterns to automatically expand a file name or path. The `*` character matches any (multiple) characters. A `?` matches a single character.
+File globbing uses wildcard characters to match patterns and automatically expand a file name or path. The `*` character matches any (multiple) characters. A `?` matches a single character.
 
 **Example:**
 
