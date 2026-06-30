@@ -2,7 +2,7 @@
 
 ## Prompt
 
-The prompt provides information to the user and means the shell is waiting for a command. On Palmetto, your prompt might look like this:
+The prompt provides information to the user and means the shell is waiting for a command. On Palmetto 2, your prompt might look like this:
 
 ```
 [username@vm-slurm-p-login01 ~]$

@@ -23,7 +23,7 @@ In `~/.bashrc`, you must `export` the variable to make it available in scripts a
 
 ## Making changes to $PATH
 
-`$PATH` defines the directories that the shell searches when you run a command. These directories are a colon separated string that is searched from left to right. View your current `$PATH`  with:
+`$PATH` defines the directories that the shell searches when you run a command. These directories are a colon separated string that is searched from left to right. View your current `$PATH` with:
 
 ```bash
 echo $PATH
@@ -37,10 +37,10 @@ export PATH=$PATH:~/.local/bin
 ```
 
 :::{warning}
-Be careful changing the value of $PATH. Always make sure to include the current value in your new value, or else you might lose access to builtin commands.
+Be careful changing the value of $PATH. Always make sure to include the current value in your new value, or else you might lose access to built in commands.
 :::
 
-If not making changes to `$PATH`, you will need to provide a full path to the executable you wish to run. Without the full path, the shell will search the `$PATH` and return "Command Not Found". For example, if you're trying to run the bash script `run.sh` that is located at `/home/$USER/scripts/run.sh`, you can do so in the following ways:
+If not making changes to `$PATH`, you will need to provide a full path to the executable script you wish to run. Without the full path, the shell will search the `$PATH` and return "Command Not Found". For example, if you're trying to run the bash script `run.sh` that is located at `/home/$USER/scripts/run.sh`, you can do so in the following ways:
 
 If your current working directory is `/home/$USER/scripts`:
 
