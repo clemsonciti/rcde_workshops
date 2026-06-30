@@ -2,7 +2,7 @@
 
 ## CyberDuck
 
-There are many ways to transfer files between your local computer and Palmetto. One piece of software that works for both Mac and Windows machines is called CyberDuck. [Download CyberDuck here](https://cyberduck.io/download/).
+There are many ways to transfer files between your local computer and Palmetto 2. One piece of software that works for both Mac and Windows machines is called CyberDuck. [Download CyberDuck here](https://cyberduck.io/download/).
 
 After installation, click on "Open Connection". A new window will pop out:
 
@@ -54,7 +54,7 @@ scp -r myfolder dndawso@xfer02-ext.clemson.edu:/home/dndawso/
 
 ## Globus
 
-If you need to transfer several gigabytes of data, and you find CyberDuck too slow, you can use Globus. The interface is not as intuitive, but the file transfer speeds are much higher. [The guide to using Globus is on our website](https://www.palmetto.clemson.edu/palmetto/basic/started/#transfer-large-files-using-globus).
+If you need to transfer several gigabytes of data, and you find CyberDuck too slow, you can use Globus. The interface is not as intuitive, but the file transfer speeds are much higher. [Please visit the guides to using Globus](https://docs.globus.org/guides/).
 
 :::{admonition} Key Points
 - Windows and Mac users can use CyberDuck for file transfer

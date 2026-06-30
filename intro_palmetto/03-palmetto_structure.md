@@ -1,10 +1,9 @@
 # The structure of the Palmetto 2 Cluster
 
 The computers that make up the Palmetto 2 cluster are called *nodes*. Most of the nodes on Palmetto 2 are *compute nodes*,
-that can perform fast calculations on large amounts of data. There are also special nodes called *login node*; They run the server,
-which works like the interface
+that can perform fast calculations on large amounts of data. There are also special nodes called *login nodes*; They run the server, which works like the interface
 between the cluster
-and the outside world. The people with Palmetto 2 accounts can log into the server by running a client (such as `ssh`) on their local machines.
+and the outside world. People with Palmetto 2 accounts can log into the server by running a client (such as `ssh`) on their local machines.
 Our client program passes our login credentials to this server, and if we are allowed to log in, the server runs a shell for us.
 Any commands that we enter into this shell are executed not by our own machines, but by the login node.
 
@@ -12,9 +11,9 @@ Any commands that we enter into this shell are executed not by our own machines,
 Palmetto Structure
 :::
 
-Another special node is the *scheduler*; Palmetto 2 users can get from the
-login node to the compute nodes by submitting a request to the scheduler, and the scheduler will assign them to the most appropriate compute node.
-Palmetto 2 also has a few so-called "service" nodes, which serve special purposes like transferring code and data to and from the cluster, and hosting web applications.
+Another special node is the *scheduler node*; Palmetto 2 users can get from the
+login node to the compute nodes by submitting a request to the schedule. The scheduler will assign them to the most appropriate compute node.
+Palmetto 2 also has a few so-called "service" node. Service nodes have special purposes like transferring code and data to and from the cluster and hosting web applications.
 
 To see the specifications of the Palmetto 2 compute nodes, let's type
 
@@ -105,7 +104,7 @@ If you don't care which IB you get (FDR or HDR), you can specify interconnect=an
 (19) 8 NVIDIA V100 cards, use resource request "ngpus=[1..8]" and "gpu_model=dgx1"
 ```
 
-We have more than 2,000 compute nodes. They are grouped into phases; all nodes within a phase have the same hardware specifications. The compute nodes in Phase 0 have very large amount of RAM, up to 1.5 TB. The nodes in phases 1 to 6 are connected to each other with 1g Ethernet connection; they have at least 8 CPUs and at least 15 GB of RAM. Nodes in phases 7 and up are connected with an InfiniBand connection, which is much faster than Ethernet. They are, on average, more powerful than the 1g nodes: they have at least 16 CPUs and at least 62 GB of RAM. Most of them also have GPUs (videocards); they are typically not used for video processing, but rather for some computation-heavy procedures such as machine learning applications. About 600 compute nodes on Palmetto have GPUs. The InfiniBand nodes are more popular than the 1g nodes, so we have stricter limits on their use: one can use the 1g nodes for up to 336 hours at a time, whereas one can use an InfiniBand node for up to 72 hours.
+We have more than 2,000 compute nodes. They are grouped into phases; all nodes within a phase have the same hardware specifications. The compute nodes in Phase 0 have very large amount of RAM, up to 1.5 TB. The nodes in phases 1 throug 6 are connected to each other with 1g Ethernet connection; they have at least 8 CPUs and at least 15 GB of RAM. Nodes in phases 7 and up are connected with an InfiniBand connection, which is much faster than Ethernet. They are, on average, more powerful than the 1g nodes: they have at least 16 CPUs and at least 62 GB of RAM. Most of them also have GPUs (videocards); they are typically not used for video processing, but rather for some computation-heavy procedures such as machine learning applications. About 600 compute nodes on Palmetto have GPUs. The InfiniBand nodes are more popular than the 1g nodes, so we have stricter limits on their use: one can use the 1g nodes for up to 336 hours at a time, whereas one can use an InfiniBand node for up to 72 hours.
 
 To see which nodes are available at the moment, you can type
 
@@ -185,11 +184,11 @@ PHASE 29   TOTAL =  40  FREE =   6  OFFLINE =   0  TYPE = Dell   R750    Intel X
 
 NOTE: PBS resource requests must be LOWER CASE.
       Your job will land on the oldest phase that satisfies your PBS resource requests.
-      Also run "checkqueuecfg" to find out the queue limits on number of running jobs permitted per user in each queue.
+      Also run "checkqueuecfg" to find out the queue limits on the number of jobs a user can run. 
 ```
 
 
-This table shows the amount of *completely free* nodes per each phase; a node which has, for example, 8 cores, but only 4 of them are used, would not be counted as "free". So this table is a conservative estimate. It is a good idea to run `whatsfree` when you log into Palmetto 2, to get a picture of how busy the cluster is. This picture can change pretty drastically depending on the time of the day and the day of the week.
+This table shows the amount of *completely free* nodes per each phase; a node which has 8 cores and 4 in use is not a "free" node. This table is a conservative estimate. It is a good idea to run `whatsfree` when you log into Palmetto 2 and get a picture of how busy the cluster is. This picture can change pretty drastically depending on the time of the day and the day of the week.
 
 If a compute node is not 100% busy, you can still get on it. For example, the compute nodes in phase 29 have 64 cores, 250 GB of RAM, and 2 GPUs. If you are fine with using a subset of these resources, the `freeres` script can be very convenient: it tells you which nodes are *partially* available. Let's run it for phase 29:
 
@@ -198,7 +197,7 @@ freeres phase29
 ```
 
 :::{hint}
-Make sure you prefix the phase number with the word "phase". If you run
+Make sure you give the phase number the prefix "phase". If you run
 ```
 freeres 29
 ```

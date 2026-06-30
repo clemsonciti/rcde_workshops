@@ -8,7 +8,7 @@ Now, we arrive at the most important part of today's workshop: getting on the co
 whatsfree
 ```
 
-We can see that the cluster is quite busy, but there is a fair amount of compute nodes that are available for us. Now, let's request one compute node. Please type the following (or paste from the website into your SSH terminal):
+We can see that the cluster is quite busy, but there are a fair amount of compute nodes available. Now, let's request one compute node. Please type the following (or paste from the website into your SSH terminal):
 
 ```bash
 qsub -I -l select=1:ncpus=4:mem=10gb:interconnect=1g,walltime=2:00:00
@@ -102,7 +102,7 @@ To exit the compute node, type:
 exit
 ```
 
-This will bring you back to the login node. See how your prompt has changed to `login002`. It is important to notice that you have to be on a login node to request a compute node. One you are on the compute node, and you want to go to another compute node, you have to exit first.
+This will bring you back to the login node. See how your prompt has changed to `login002`. It is important to notice that you have to be on a login node to request a compute node. Once you are on the compute node, and you want to go to another compute node, you have to exit first.
 
 For some jobs, you might want to get a GPU, or perhaps two GPUs. For such requests, the `qsub` command needs to specify the number of GPUs and the type of GPUs (which you can get from `cat /etc/hardware-table`). For example, let's request a NVIDIA K20:
 
@@ -131,7 +131,7 @@ Please be considerate of others when you issue `qsub`. Remember that Palmetto 2 
 
 :::{important}
 It is very important to remember that you shouldn't run computations on the login node, because the login node is shared between everyone who logs into Palmetto 2. Your computations will interfere with other people's login processes.
-However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM so there is no interference.
+However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM. There is no compute node interference.
 :::
 
 ## Modules
@@ -165,7 +165,7 @@ module avail matlab
 
 If the avail list is too long consider trying:
 
-"module --default avail" or "ml -d av" to just list the default modules.
+"module --default avail" or "ml -d av" to list the default modules.
 "module overview" or "ml ov" to display the number of modules for each name.
 
 Use "module spider" to find all possible modules and extensions.

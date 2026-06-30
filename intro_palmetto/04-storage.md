@@ -1,6 +1,6 @@
 # Storage on Palmetto 2
 
-Palmetto 2 provides three data spaces: home, scratch, and paid storage.
+Palmetto 2 provides three data spaces: home storage, scratch storage, and paid storage.
 
 | NAME             | SIZE                  | DISK TYPE      | FILE SYSTEM | NETWORK CONNECTION | BACKUP                 |
 | ---------------- | --------------------- | -------------- | ----------- | ------------------ | ---------------------- |
@@ -12,7 +12,7 @@ Palmetto 2 provides three data spaces: home, scratch, and paid storage.
 
 ## Home Storage
 
-Every Palmetto 2 user gets 100 GB of storage space; this storage is backed up at the end of every day, and the backup is kept for 42 days. So if you accidentally delete a file that was created more than a day ago, we might be able to restore it. This storage is called *home directory*.
+Every Palmetto 2 user gets 100 GB of home storage space; this storage is backed up at the end of every day, and the backup is kept for 42 days. If you accidentally delete a file that was created more than a day ago, we might be able to restore it. This storage is called *home directory*.
 
 To see how much space you have left in your home directory, please type:
 
@@ -36,15 +36,15 @@ pwd
 
 ## Scratch Storage
 
-100 GB might be enough for some, but for people dealing with extensive amounts of data that would not be enough. We also offer the access to *scratch space*, which is about 2+ Petabytes in total. Scratch space is not backed up; files that haven't been used for more than a month are automatically deleted (and cannot be restored). We strongly encourage people to use scratch space, but please be aware of its temporary nature. When you get anything that is worth keeping, please back it up, either in your home directory, or on your local machine.
+100 GB might be enough for some, but people dealing with extensive amounts of data will likely need more. We also offer the access to *scratch space*, which is about 2+ Petabytes in total. Scratch space is not backed up; files that haven't been used for more than a month are automatically deleted (and cannot be restored). We strongly encourage people to use scratch space, but please be aware of its temporary nature. When you get anything that is worth keeping, please back it up, either in your home directory, or on your local machine.
 
-To go to a scratch directory, or to any directory on Palmetto 2, use the `cd` ("change directory") command:
+To go to your scratch directory, or to any directory on Palmetto 2, use the `cd` ("change directory") command:
 
 ```bash
 cd /scratch1/<your Palmetto username>
 ```
 
-To go to your home directory, you can do
+To go to your home directory, you can use
 
 ```bash
 cd /home/<your Palmetto username>
@@ -60,7 +60,7 @@ cd
 
 ## Local Scratch
 
-Every Palmetto 2 compute node has storage on the node itself and is referred to as `/local_scratch`. This scratch space can only be accessed by a job running on the node. The file system for `/local_scratch` has no hardware failure protection and is never backed up.
+Every Palmetto 2 compute node has storage on the node itself. This node storage is referred to as `/local_scratch`. This scratch space can only be accessed by a job running on the node. The file system for `/local_scratch` has no hardware failure protection and is never backed up.
 
 To access this space in your PBS script, use the `$TMPDIR` environment variable or the location `/local_scratch/pbs.$PBS_JOBID`. If you are using multiple nodes, further setup is required.
 
@@ -76,13 +76,13 @@ Please don't use `/tmp` for temporary storage! Use `/scratch1` or `$TMPDIR`.
 
 ## Storage Purchasing
 
-We offer storage space on Palmetto 2 for sale to faculty members, with the price of $150 per 1 terabyte. This storage is backed up just like your home directory. Please contact us if you are interested in buying storage.
+Faculty members may purchase storage space on Palmetto 2 from RCD. Storage is $150 per 1 terabyte. This storage is backed up just like your home directory. Please contact us if you are interested in buying storage.
 
 ## Performance Guidelines
 
-Generally speaking, /local_scratch will always be the fastest file system to use because there is no network involved. However, this space cannot be shared between a group of nodes participating in a job, and the data must be moved to permanent storage before the job completes.
+Generally speaking, `/local_scratch` will always be the fastest file system to use because there is no network involved. However, this space cannot be shared between a group of nodes participating in a job, and the data must be moved to permanent storage before the job completes.
 
-/scratch1 is a parallel file system that runs atop spinning disk drives and is best suited for workflows issuing sequential, large read or write requests. /fastscratch is also a parallel file system but runs atop NVMe flash drives and is best suited for workflows having small, random read or write access patterns. However, /fastscratch will also run well with any kind of sequential workload. Either system can handle large numbers of files and directories.
+`/scratch1` is a parallel file system that runs atop spinning disk drives and is best suited for workflows issuing read or write requests that are large and sequential. `/fastscratch` is also a parallel file system but runs atop NVMe flash drives and is best suited for workflows having small, random read or write access patterns. However, `/fastscratch` will also run well with any kind of sequential workload. Both systems can handle large numbers of files and directories.
 
 The Palmetto 2 support team encourages you to test your workflows against all three file systems to see which one works best for you.
 
