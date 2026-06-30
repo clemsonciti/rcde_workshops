@@ -7,7 +7,7 @@ There are two main types of variables in Bash:
 - User-defined variables: These are created by the user and can hold custom values.
 - Environment variables: These are predefined by the system and contain critical information about the system’s environment.
 
-To define a variable, assign a variable to a name.
+To define a variable, assign a name to the variable.
 
 ```bash
 FOO="BAR"

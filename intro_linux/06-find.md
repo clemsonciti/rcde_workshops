@@ -5,7 +5,7 @@ The `find` command will search through your directories for a file matching your
 ```
 $ find ~ -name script.sh
 ```
-The above command will search *recursively* starting in your home directory for a file named "script.sh"
+The above command will search *recursively*, starting in your home directory for a file named "script.sh"
 
 
 ## grep
