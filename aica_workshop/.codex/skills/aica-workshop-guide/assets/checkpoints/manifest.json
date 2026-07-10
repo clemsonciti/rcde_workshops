@@ -1,0 +1,46 @@
+{
+  "checkpoints": {
+    "v1": {
+      "title": "Start",
+      "description": "Original baseline before Demo 1."
+    },
+    "v2": {
+      "title": "After Demo 1",
+      "description": "Bug fixed, light refactor, and vectorized implementation."
+    },
+    "v3": {
+      "title": "After Lab 1 / Before Demo 2",
+      "description": "Multicore option added; Slurm debugging checkpoint begins."
+    },
+    "v4": {
+      "title": "After Demo 2 / Before Lab 2",
+      "description": "Slurm script debugged enough to run."
+    },
+    "v5": {
+      "title": "After Lab 2 / Before Lab 3",
+      "description": "Slurm script uses allocated cores for worker count."
+    },
+    "v6": {
+      "title": "After Lab 3",
+      "description": "Benchmarking scripts and Slurm benchmark job added."
+    }
+  },
+  "aliases": {
+    "start": "v1",
+    "before-demo-1": "v1",
+    "demo-1-start": "v1",
+    "after-demo-1": "v2",
+    "before-lab-1": "v2",
+    "lab-1-start": "v2",
+    "after-lab-1": "v3",
+    "before-demo-2": "v3",
+    "demo-2-start": "v3",
+    "after-demo-2": "v4",
+    "before-lab-2": "v4",
+    "lab-2-start": "v4",
+    "after-lab-2": "v5",
+    "before-lab-3": "v5",
+    "lab-3-start": "v5",
+    "after-lab-3": "v6"
+  }
+}
