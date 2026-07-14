@@ -57,6 +57,34 @@ The second command assumes the participant's workshop copy is
 that `scp` securely copies files over SSH and that the final `.` means "the
 current directory."
 
+## Workshop Reservation
+
+The workshop has a Palmetto reservation for July 16, 2026, from 12:00 to 15:30.
+It is named `ai_code_workshop`, uses the `workshop` partition and the
+`rcd_workshop` account, and provides two `sphase19` nodes (`node0537` and
+`node0538`) with 384 total CPU cores. Confirm the cluster's displayed time zone
+if there is any uncertainty about the workshop window.
+
+For workshop Slurm scripts, include:
+
+```bash
+#SBATCH --partition=workshop
+#SBATCH --reservation=ai_code_workshop
+#SBATCH --account=rcd_workshop
+```
+
+Participants should request only the resources their run needs (for example,
+12 CPUs for a Lab 3 configuration), rather than the whole reservation. Do not
+hard-code a node name unless an instructor specifically directs it; Slurm should
+select an appropriate reserved node.
+
+If a reservation-related job is pending or rejected, first inspect its Slurm
+reason and, when needed, run `scontrol show reservation ai_code_workshop`.
+Common causes include submitting outside the reservation window, omitting one
+of the reservation, partition, or account directives, or lacking access through
+the `rcd_workshop` account. For other Palmetto-specific details, use
+`palmetto-docs` when available.
+
 ## Participant-Friendly Terms
 
 When participants ask about a workshop term, give a concise, plain-language
