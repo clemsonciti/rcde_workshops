@@ -1,6 +1,6 @@
 ---
 name: aica-workshop-guide
-description: Use only when the user's prompt explicitly invokes the `aica-workshop-guide` skill. Use for the AI Code Assistants for HPC on Palmetto workshop when a participant or instructor asks for workshop orientation, workshop tasks, workshop file locations, Codex setup in the workshop context, or to advance, reset, restore, or roll back workshop files to a checkpoint.
+description: Use only when the user's prompt explicitly invokes the `aica-workshop-guide` skill. Use for the AI Code Assistants for HPC on Palmetto workshop when a participant or instructor asks for workshop orientation, workshop terminology, logistics, transfer commands, workshop file locations, Codex setup in the workshop context, or to advance, reset, restore, or roll back workshop files to a checkpoint.
 metadata:
   short-description: Guide and checkpoint helper for the AICA Palmetto workshop
 ---
@@ -8,9 +8,10 @@ metadata:
 # AICA Workshop Guide
 
 This skill is a lightweight helper for the "AI Code Assistants for HPC on
-Palmetto" workshop. It should orient users and manage checkpoint state, not do
-the labs for them. It should only be used when the user explicitly invokes the 
-`aica-workshop-guide` skill.
+Palmetto" workshop. It should orient users, explain workshop terms at a
+participant-friendly level, provide workshop logistics, and manage checkpoint
+state, not do the labs for them. It should only be used when the user explicitly
+invokes the `aica-workshop-guide` skill.
 
 ## Core Rules
 
@@ -22,7 +23,7 @@ the labs for them. It should only be used when the user explicitly invokes the
   restore, or roll back to a checkpoint.
 - For Palmetto-specific facts, commands, modules, Slurm behavior, storage,
   policy, accounts, partitions, reservations, or Codex-on-Palmetto setup, use
-  the separate `palmetto-docs` skill when available.
+  the separate `palmetto-docs` skill when available. (Only available on Palmetto; not available when Codex is running locally rather than on Palmetto.)
 
 ## Workshop Locations
 
@@ -34,6 +35,55 @@ the labs for them. It should only be used when the user explicitly invokes the
   - `scripts/run_sim.py`
   - `scripts/run_sim.sbatch`
   - later, benchmark files under `scripts/`
+
+## Workshop Logistics and File Transfers
+
+- Sign-in sheet: <https://docs.google.com/spreadsheets/d/1LwJh9c6yNG66Ir4z4jK_zXwgabMXwzOeEcij41uaFeU/edit?usp=sharing>
+- Post-workshop survey: <https://forms.gle/AiBKia82PbEKouRM8>
+
+When a participant is in the destination directory on their laptop, give these
+commands. They should replace `<username>` with their Palmetto username.
+
+```bash
+# Download a personal copy of the workshop source into the current directory.
+scp -r <username>@login.palmetto.clemson.edu:/project/rcde/cehrett/aica_workshop .
+
+# Download the Lab 3 results directory into the current directory on the laptop.
+scp -r <username>@login.palmetto.clemson.edu:~/aica_workshop/results .
+```
+
+The second command assumes the participant's workshop copy is
+`~/aica_workshop`; adjust that path if they placed their copy elsewhere. Explain
+that `scp` securely copies files over SSH and that the final `.` means "the
+current directory."
+
+## Participant-Friendly Terms
+
+When participants ask about a workshop term, give a concise, plain-language
+definition first, then relate it to the Monte Carlo example when useful. Avoid
+assuming prior HPC or Python experience.
+
+- **Vectorize / vectorized:** Rewrite work on many values so an array library
+  performs it in bulk, instead of a Python loop handling one value at a time.
+  Here, it means generating and testing many random points at once.
+- **NumPy:** A Python library for efficient arrays and numerical calculations.
+  It is often what makes vectorized Python code fast.
+- **Parallelize / parallelized:** Split independent work across multiple CPU
+  cores so it can run at the same time. In this workshop, separate groups of
+  random samples can be computed by different workers.
+- **Benchmark:** Measure how long a program or configuration takes under
+  controlled, comparable conditions. A benchmark is evidence for a performance
+  claim, not just one lucky run.
+- **Core:** One processing unit in a CPU that can execute work. A multi-core job
+  can use several cores at once.
+- **Worker:** A program process assigned a portion of the work; workers commonly
+  run on separate CPU cores.
+- **Sample:** One random trial in the Monte Carlo simulation. More samples
+  usually make the estimate more reliable, but require more work.
+- **Monte Carlo method:** A technique that estimates an answer by running many
+  random trials. This workshop estimates pi from random points inside a square.
+- **Slurm:** The scheduler that allocates cluster resources and runs submitted
+  jobs on Palmetto.
 
 ## Workshop Flow
 
@@ -55,7 +105,7 @@ The workshop uses a small Monte Carlo pi estimation project:
 
 - package code: `mc_sim/`
 - command-line runner: `scripts/run_sim.py`
-- Slurm submission script: `scripts/run_sim.sbatch`
+- Slurm submission script: `scripts/run_sim.sbatch` (introduced after Lab 1)
 - benchmark files are introduced later in Lab 3
 
 ### Demo 1
@@ -129,8 +179,7 @@ Participant tasks:
 
 Encourage participants to ask for small, reviewable changes; provide the file,
 command, and log; request ranked hypotheses; request validation commands; and
-change one thing at a time. Remind them that the assistant is not the source of
-truth for Palmetto-specific details.
+change one thing at a time.
 
 ## Checkpoints
 
