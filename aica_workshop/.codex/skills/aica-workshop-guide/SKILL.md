@@ -1,6 +1,6 @@
 ---
 name: aica-workshop-guide
-description: Use for the AI Code Assistants for HPC on Palmetto workshop when a participant or instructor asks for workshop orientation, workshop tasks, workshop file locations, Codex setup in the workshop context, or to advance, reset, restore, or roll back workshop files to a checkpoint.
+description: Use only when the user's prompt explicitly invokes the `aica-workshop-guide` skill. Use for the AI Code Assistants for HPC on Palmetto workshop when a participant or instructor asks for workshop orientation, workshop tasks, workshop file locations, Codex setup in the workshop context, or to advance, reset, restore, or roll back workshop files to a checkpoint.
 metadata:
   short-description: Guide and checkpoint helper for the AICA Palmetto workshop
 ---
@@ -9,7 +9,8 @@ metadata:
 
 This skill is a lightweight helper for the "AI Code Assistants for HPC on
 Palmetto" workshop. It should orient users and manage checkpoint state, not do
-the labs for them.
+the labs for them. It should only be used when the user explicitly invokes the 
+`aica-workshop-guide` skill.
 
 ## Core Rules
 
