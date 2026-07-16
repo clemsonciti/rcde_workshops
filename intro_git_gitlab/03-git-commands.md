@@ -6,7 +6,7 @@ what they do.
 ## `git init`
 
 The `git init` command will initialize a new Git repository in the current
-directory. This command should be used
+directory. This command should be used when your project is not already in a repository. If desired, 'git init` can be executed in a directory that already contains files.
 
 ## `git status`
 
@@ -14,8 +14,8 @@ The `git status` command will show you the current status of the repository.
 
 If the stage is not empty, a list of staged files will be shown.
 
-If there are any modified files that have not been staged, a list of them will
-also be shown.
+If there are any modified files that have not been staged, a list of unstaged files will
+also appear.
 
 ## `git add`
 

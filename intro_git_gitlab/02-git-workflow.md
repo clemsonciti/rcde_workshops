@@ -7,12 +7,12 @@ behind it, let's talk about one of the most popular version control systems:
 ## About Git
 
 Git was created by Linus Torvalds in 2005 to help Linux kernel developers
-collaborate on the source code. It is designed to be a **distributed** verison
+collaborate on source code. It is designed to be a **distributed** version
 control system, meaning that all copies contain a full record of the history.
 
 The distributed design allows users to work **without a constant connection to a
 central server**. Furthermore, this makes many operations **fast** since your
-computer has everything it needs to perform operations locally without waiting
+computer has everything it needs to perform operations locally. It does not have to wait
 for information from the network.
 
 ## Repositories
@@ -44,7 +44,7 @@ before it.
 ## The Staging Area
 
 Before performing any Git operations, it is critical that you understand the
-three main states that a file can be in.
+three main states of a Git file.
 
 Your project folder is considered your **working directory**. When you make
 changes to files in this directory, they are not immediately reflected in the
