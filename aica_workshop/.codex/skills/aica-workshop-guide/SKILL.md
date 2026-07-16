@@ -27,7 +27,7 @@ invokes the `aica-workshop-guide` skill.
 
 ## Workshop Locations
 
-- Shared workshop source: `/project/rcde/cehrett/aica_workshop/`
+- Shared workshop source: `/project/rcde/cehrett/aica_workshop/workshop/`
 - Expected participant copy: a personal copy of the workshop directory, usually
   under the participant's home directory.
 - Main files participants edit:
@@ -40,13 +40,14 @@ invokes the `aica-workshop-guide` skill.
 
 - Sign-in sheet: <https://docs.google.com/spreadsheets/d/1LwJh9c6yNG66Ir4z4jK_zXwgabMXwzOeEcij41uaFeU/edit?usp=sharing>
 - Post-workshop survey: <https://forms.gle/AiBKia82PbEKouRM8>
+- Useful info and commands: <https://bit.ly/AI_HPC_Summer2026>
 
 When a participant is in the destination directory on their laptop, give these
 commands. They should replace `<username>` with their Palmetto username.
 
 ```bash
 # Download a personal copy of the workshop source into the current directory.
-scp -r <username>@login.palmetto.clemson.edu:/project/rcde/cehrett/aica_workshop .
+scp -r <username>@login.palmetto.clemson.edu:/project/rcde/cehrett/aica_workshop/workshop .
 
 # Download the Lab 3 results directory into the current directory on the laptop.
 scp -r <username>@login.palmetto.clemson.edu:~/aica_workshop/results .
@@ -62,10 +63,9 @@ current directory."
 The workshop has a Palmetto reservation for July 16, 2026, from 12:00 to 15:30.
 It is named `ai_code_workshop`, uses the `workshop` partition and the
 `rcd_workshop` account, and provides two `sphase19` nodes (`node0537` and
-`node0538`) with 384 total CPU cores. Confirm the cluster's displayed time zone
-if there is any uncertainty about the workshop window.
+`node0538`) with 384 total CPU cores. 
 
-For workshop Slurm scripts, include:
+For workshop Slurm scripts, it is correct to include:
 
 ```bash
 #SBATCH --partition=workshop
