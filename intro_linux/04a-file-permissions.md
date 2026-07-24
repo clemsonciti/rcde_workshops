@@ -48,7 +48,7 @@ The `rwx` permissions are represented by octal numbers (0-7). The following tabl
 - `600` - owner can read and write, no access to anyone else
 
 ```{note}
-When using numeric mode, all permissions are updated (i.e. you can't just update user permisisons and not change group or other)
+When using numeric mode, all permissions are updated (i.e. you can't just update user permissions and not change group or other)
 ```
 
 ### Symbolic mode
@@ -57,7 +57,7 @@ Use symbolic notation for finer grained control of permissions. Symbolic notatio
 | Reference | Class | Description |
 | --------- | ----- | ----------- |
 | u         | user  | file owner  |
-| g         | group | member's of the files's group |
+| g         | group | members of the file group |
 | o         | others | users who are neither the file's owner nor members of the file's group |
 | a         | all   | all three of the above, same as `ugo` |
 | (empty)   | default | same as "all", except that bits in the umask will be unchanged |

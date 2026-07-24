@@ -1,13 +1,13 @@
 # Evaluation Metrics with caret
 
 
-## Evaluation of prediction 
+## Evaluation of prediction
 
-Here, we will discuss how we can evaluate our prediction. This process is somewhat different depending on whether we predict numerical outouts (regression) or categorical outputs (classification).
+Here, we will discuss how we can evaluate our prediction. This process is somewhat different depending on whether we predict numerical outputs (regression) or categorical outputs (classification).
 
-## Classification model 
+## Classification model
 
-Let's do our first prediction. Let's predict the species of irises from the 4 variables (sepal / petal width and length). First, let's train the model:
+Let's do our first prediction. Let's predict the species of irises from the 4 variables available (sepal / petal width and length). First, let's train the model:
 
 ~~~r
 train_inputs=training[,1:4]
@@ -42,23 +42,23 @@ library(reshape2)
 cm <- confusionMatrix (predictions,testing$Species)
 cm_df <- melt(cm$table)
 ggplot(cm_df, aes(x = Prediction, y = Reference, fill = value)) +
- geom_raster() + scale_fill_distiller(palette = "Spectral") 
-~~~ 
+ geom_raster() + scale_fill_distiller(palette = "Spectral")
+~~~
 
 
-- Evaluation Metric is an essential part in any Machine Learning project.
-- It measures how good or bad is your Machine Learning model
-- Different Evaluation Metrics are used for Regression model (Continuous output) or Classification model (Categorical output).
+- The evaluation metric is an essential part in any machine learning project.
+- It measures how well you trained your machine learning model.
+- Different evaluation metrics are used for regression models (continuous output) or classification models (categorical output).
 
-## Regression model 
+## Regression model
 
-Now, let's do rergession -- that is, let's try to predict a numerical (continuous) outcome. We will use the `mtcars` dataset to predict miles-per-gallon from the car's weight, number of cylinders, and other variables. This time, we will do a leave-one-out: for each car, we will exclude it from the training set; use all remaining cars to train the model; and apply the model to predict the MPG of the excluded car. We will use Linear Model (LM) as the method of our prediction.
+Now, let's do regression -- that is, let's try to predict a numerical (continuous) outcome. We will use the `mtcars` dataset to predict miles-per-gallon from the car's weight, number of cylinders, and other variables. This time, we will do a leave-one-out: for each car, we will exclude it from the training set; use all remaining cars to train the model; and apply the model to predict the MPG of the excluded car. We will use Linear Model (LM) as the method of our prediction.
 
 ~~~r
 predictions <- rep (0, dim(mtcars)[1])
 for (i in 1:dim(mtcars)[1]) {
   training <- mtcars[-i,]
-  testing  <- mtcars[i,] 
+  testing  <- mtcars[i,]
   train_inputs=training[,2:11]
   train_outputs=training[,1]
   test_inputs=testing[,2:11]
@@ -67,7 +67,7 @@ for (i in 1:dim(mtcars)[1]) {
 }
 ~~~
 
-Now, once we are done looping, we will get the `predictions` vector which contains the predicted value of MOG for each car. To visually see how it compares to actual MPG values, we can make a scatter plot with `qplot` function:
+Now, once we are done looping, we will get the `predictions` vector which contains the predicted value of MPG for each car. To see how it compares to actual MPG values visually, we can make a scatter plot with `qplot` function:
 
 ~~~r
 qplot (predictions, mtcars$mpg)
@@ -80,6 +80,6 @@ cor (predictions, mtcars$mpg)
 cor.test (predictions, mtcars$mpg)
 ~~~
 
-Pretty good! However, when evaluating your prediction, never forget to visually inspect the scatter plot. It will tell you a lot more than you can get from looking at a single number of the correlation coefficient. Below is a [famous example](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) of four scatter plots, each representing correlation coefficient of 0.816: 
+Pretty good! However, when evaluating your prediction, never forget to visually inspect the scatter plot. It will tell you a lot more than you can get from looking at a single number of the correlation coefficient. Below is [Anscombe's Quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet), a famous example of four scatter plots, each representing correlation coefficient of 0.816:
 
 ![Anscombe's quartet](../fig/r_ml/anscombes_quartet.png)

@@ -5,7 +5,7 @@
 - **Email**: mpmoers AT clemson DOT edu
 
 ## Workshop Description
-The workshop provides the introduction to the Linux Command Line Interface
+The workshop provides an introduction to the Linux Command Line Interface
 for researchers. Topics will include the file system, file/directory manipulations,
 redirection and piping, and basic scripting.
 

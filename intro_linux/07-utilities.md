@@ -13,7 +13,7 @@ $ ls long_file_name_you_cant_remember.txt
 
 ## history
 
-Bash will retain a history of the previous commands you entered. The `history` command will (by default on Palmetto) display the last 1000 commands.
+Bash will retain a history of the previous commands you entered. The `history` command will (by default on Palmetto 2) display the last 1000 commands.
 
 ```
 $ history

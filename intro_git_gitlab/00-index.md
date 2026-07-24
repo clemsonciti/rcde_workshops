@@ -7,7 +7,7 @@
 
 ## Workshop Description
 
-Version control systems are useful tools for managing your source code and
+Version control systems such as Git and GitLab are useful tools for managing your source code and
 collaborating with other software developers. This workshop explains the basics
 of version control, how to use the Git version control system, and how to use
 the RCD GitLab service.

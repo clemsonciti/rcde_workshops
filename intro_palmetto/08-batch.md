@@ -1,14 +1,14 @@
 # Running a batch job
 
-Interactive jobs are great if you need to do something quick, or perhaps visualize some data. If you have some code which runs for seven hours, interactive jobs are not a great idea. Please keep in mind that an interactive job gets killed if you close the SSH connection. So for example, you connect to Palmetto from your laptop, start an interactive job, but then your laptop runs out of battery power and you can't find your charger. SSH client quits, and your interactive job is killed.
+Interactive jobs are great if you need to do something quick, or perhaps visualize some data. If you have some code which runs for seven hours, interactive jobs are not a great idea. Please keep in mind that an interactive job gets killed if you close the SSH connection. If you connect to Palmetto 2 from your laptop, start an interactive job, but then your laptop runs out of battery power and you can't find your charger, the SSH client quits, and your interactive job is killed.
 
-If you have some truly serious, multi-hour computation project (and that's what Palmetto is really good for), a better idea is to run it on the background. This is called a *batch job*. You submit it in a fashion which is conceptually similar to an interactive job, but then it runs on the compute node on the background until it's over. If it needs to take two days, it takes two days. You can quit the SSH client or close your laptop, it won't affect the batch job.
+If you have some truly serious, multi-hour computation project (and that's what Palmetto 2 is really good for), a better idea is to run it on the background. This is called a *batch job*. You submit it in a fashion which is conceptually similar to an interactive job, but then it runs on the compute node on the background until it's over. If it needs to take two days, it takes two days. You can quit the SSH client or close your laptop, it won't affect the batch job.
 
 To submit a batch job, we usually create a separate file called a *PBS script*. This file asks the scheduler for specific resources, and then specifies the actions that will be done once we get on a compute node.
 
 Let us go through an example. We will use batch mode to create a small random matrix with normally-distributed values. We will create two scripts: an R script which does the computation, and a PBS script which will execute the R script on a compute node in batch mode.
 
-Palmetto has a simple text editor which is called `nano`. It doesn't offer any fancy formatting, but it suffices for ceating and editing simple texts. Let's go to our home directory and create the R script:
+Palmetto has a simple text editor which is called `nano`. It doesn't offer any fancy formatting, but it suffices for creating and editing simple texts. Let's go to our home directory and create the R script:
 
 ```bash
 cd
@@ -68,14 +68,14 @@ Rscript randmatrix.r
 Let's go through the script, line by line. The first cryptic line says that it's a script that is executed by the Linux shell. The next line is empty, followed by five lines that are the instructions to the scheduler (they start with `#PBS`):
 
 - `-N` specifies the name of the job;
-- the first `-l` line is the specification of resources: one node, ten CPUs, ten Gb of RAM, 1g interconnect;
-- the second `-l` line is the amount of walltime (twenty minutes);
+- the first `-l` line is the specification of resources: 1 node, 10 CPUs, 10 GB of RAM, 1g interconnect;
+- the second `-l` line is the amount of wall time (twenty minutes);
 - `-o` specifies the name of the output file where the R output will be printed;
 - `-j oe` means "join output and error", which is, if any errors happen, they will also be written into `random_matrix.txt`.
 
 The rest are the instructions for bash. They are commands to execute once we get on the compute node that satisfies the request we provided in `-l`: go to the directory from which you have submitted `qsub`, load the R module, and execute the R script called randmatrix.r that we have created. Save the PBS script and exit `nano` (`Ctrl`+`O`, `ENTER`, `Ctrl`+`X`).
 
-A very common question is how much walltime we should ask for. It's a tricky question because there is no way of knowing how much time you will need until you actually try it. One rule of thumb is: make a rough guess, and ask for twice as much.
+A very common question is how much wall time we should ask for. It's a tricky question because there is no way of knowing how much time you will need until you actually try it. One rule of thumb is: make a rough guess, and ask for twice as much.
 
 Now, let's submit our batch job!
 
@@ -105,7 +105,7 @@ Job ID          Username Queue    Jobname    SessID NDS TSK Memory Time  S Time
 75696.pbs02     dndawso  c1_sing* random_ma* 26095*   1  10   10gb 00:20 R 00:00
 ```
 
-You see the job ID, your Palmetto username, the name of the queue (more on that later), the name of the job (`random_matrix`), the resources requested (1 node, 10 CPUs, 10 gb of RAM, twenty minutes of walltime). The letter `R` means that the job is running (`Q` means "queued", and `F` means "finished"), and then it shows for how long it's been running (it basically just started).
+You see the job ID, your Palmetto 2 username, the name of the queue (more on that later), the name of the job (`random_matrix`), the resources requested (1 node, 10 CPUs, 10 GB of RAM, twenty minutes of wall time). The letter `R` means that the job is running (`Q` means "queued", and `F` means "finished"), and then it shows for how long it's been running (it basically just started).
 
 Wait a little bit and do `qstat` again (you can hit the `UP` arrow to show the previous command). `Elap time` should now be a bit longer. The script should take a few minutes or so to execute. If you enter `qstat -u <your Palmetto username>` and the list is empty, then congratulations, we are done!
 
@@ -143,9 +143,9 @@ qstat -xf 75696.pbs02
 
 This will give you a lot of information about the job, which is really useful for debugging. If you have a problem and you need our help, it is very helpful to us if you provide the job ID so we can do `qstat -xf` on it and get the job details.
 
-How many jobs can you run at the same time? It depends on how much resources you ask for. If each job asks for a small amount of resources, you can do a large amount of jobs simultaneously. If each job needs a large amount of resources, only a few of them can be running simultaneously, and the rest of them will be waiting in the queue until the jobs that are running are completed. This is a way to ensure that Palmetto is used fairly.
+How many jobs can you run at the same time? It depends on how much resources you ask for. If each job asks for a small amount of resources, you can do a large amount of jobs simultaneously. If each job needs a large amount of resources, only a few of them can be running simultaneously, and the rest of them will be waiting in the queue until the jobs that are running are completed. This is a way to ensure that Palmetto 2 is used fairly.
 
-These limits of the number of simultaneous jobs is not carved in stone, but it changes depending on how much Palmetto is used at the moment. To see the current queue configuration, you can execute this command (note that it only works on the login node):
+These limits of the number of simultaneous jobs is not carved in stone, but it changes depending on how much Palmetto 2 is used at the moment. To see the current queue configuration, you can execute this command (note that it only works on the login node):
 
 ```
 checkqueuecfg
@@ -230,12 +230,12 @@ skygpu_e             50      240:00:00
           current max_jobs value otherwise the job will not start.
 ```
 
-One thing to note is that 1g nodes have maximum walltime of 336 hours (two weeks), and InfiniBand (hdr and fdr) nodes have maximum walltime of 72 hours (three days). Since the GPUs are only installed on the InfiniBand nodes, any job that asks for a GPU will also be subject to 72-hour limit. The maximum number of simultaneous jobs really depends on how much CPUs and memory you are asking; for example, for 1 node, 10 CPUs and 10 Gb of RAM (what we asked for in our randmatrix job), we can run 500 jobs on 1g nodes (queue name c1_single), but only 25 jobs on InfiniBand nodes (queue name c2_single). This number changes day to day, depending on how busy the cluster is –on busy days, this number is lowered so more people have a chance to run their jobs on Palmetto.
+One thing to note is that 1g nodes have maximum wall time of 336 hours (two weeks), and InfiniBand (hdr and fdr) nodes have maximum wall time of 72 hours (three days). Since the GPUs are only installed on the InfiniBand nodes, any job that asks for a GPU will also be subject to 72-hour limit. The maximum number of simultaneous jobs really depends on how much CPUs and memory you are asking; for example, for 1 node, 10 CPUs and 10 GB of RAM (what we asked for in our randmatrix job), we can run 500 jobs on 1g nodes (queue name c1_single), but only 25 jobs on InfiniBand nodes (queue name c2_single). This number changes day to day, depending on how busy the cluster is –on busy days, this number is lowered so more people have a chance to run their jobs on Palmetto 2.
 
 :::{admonition} Key Points
 - Batch jobs don't require interaction with the user and run on the compute nodes on the background.
 - To submit a batch job, users need to provide a PBS script which is passed to the scheduler.
 - Jobs are assigned to queues, according to the amount of requested resources.
-- Different queues have different limits on the walltime and the number of parallel jobs.
+- Different queues have different limits on the wall time and the number of parallel jobs.
 - `qstat` allows you to check the status of your jobs.
 :::
