@@ -1,0 +1,1 @@
+Build a visually engaging ecosystem simulation to teach population dynamics.

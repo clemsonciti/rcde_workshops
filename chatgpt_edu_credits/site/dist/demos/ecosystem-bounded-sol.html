@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3eb">
+  <title>When a predator disappears | Interactive ecosystem model</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --orange: #F56600;
+      --purple: #522D80;
+      --ink: #24272d;
+      --muted: #62686a;
+      --paper: #f6f3eb;
+      --line: #d8d7cf;
+      --leaf: #427b4c;
+      --rabbit: #625482;
+      --fox: #d75b13;
+      font-family: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: var(--paper); color: var(--ink); }
+    button, select, input { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: .48; }
+    :is(button, select, summary, input):focus-visible,
+    .prediction-option input:focus-visible + span {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .app {
+      width: min(100%, 1580px);
+      height: 100vh;
+      min-height: 670px;
+      margin: auto;
+      padding: 18px 22px 20px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 14px;
+    }
+    .masthead {
+      display: flex; align-items: end; justify-content: space-between; gap: 20px;
+      min-height: 55px;
+    }
+    .eyebrow {
+      color: var(--purple); text-transform: uppercase; letter-spacing: .18em;
+      font-size: 11px; font-weight: 800; line-height: 1.25;
+    }
+    .masthead h1 {
+      margin: 3px 0 0;
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: clamp(27px, 2.65vw, 38px); font-weight: 600; line-height: 1.05;
+      letter-spacing: -.025em;
+    }
+    .masthead-note {
+      color: var(--muted); font-size: 12px; letter-spacing: .025em;
+      white-space: nowrap; padding-bottom: 4px;
+    }
+    .board {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.62fr) minmax(385px, 1fr);
+      gap: 14px;
+    }
+    .scene-panel {
+      min-width: 0; min-height: 0; position: relative; overflow: hidden;
+      border-radius: 18px; background: #d6e9e6;
+      border: 1px solid rgba(66, 80, 69, .16);
+      box-shadow: 0 12px 28px rgba(55, 52, 43, .07);
+      isolation: isolate;
+    }
+    .scene-panel::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, rgba(255,255,255,.09), transparent 33%, transparent 70%, rgba(31,47,32,.1));
+    }
+    #meadow { width: 100%; height: 100%; display: block; }
+    .scene-top {
+      position: absolute; z-index: 2; top: 22px; left: 24px; right: 24px;
+      display: flex; align-items: start; justify-content: space-between; gap: 10px;
+    }
+    .scene-name {
+      display: inline-flex; flex-direction: column; gap: 3px;
+      color: #21332c; text-shadow: 0 1px 12px rgba(255,255,255,.65);
+    }
+    .scene-name strong {
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-weight: 600; font-size: clamp(23px, 2vw, 31px); line-height: 1;
+    }
+    .scene-name small { font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+    .scene-status {
+      border: 1px solid rgba(63,76,63,.2); border-radius: 99px;
+      background: rgba(255,253,246,.87); backdrop-filter: blur(8px);
+      padding: 7px 12px; color: #283d30; font-size: 12px; font-weight: 800;
+      white-space: nowrap;
+    }
+    .scene-bottom {
+      position: absolute; z-index: 2; left: 19px; right: 19px; bottom: 18px;
+    }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat {
+      min-width: 0; display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 12px; border-radius: 10px;
+      background: rgba(255,253,247,.91); border: 1px solid rgba(255,255,255,.62);
+      backdrop-filter: blur(8px); box-shadow: 0 3px 12px rgba(26,43,32,.08);
+    }
+    .stat-label { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .stat-value { font-size: 23px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .stat:nth-child(1) .stat-value { color: var(--leaf); }
+    .stat:nth-child(2) .stat-value { color: var(--rabbit); }
+    .stat:nth-child(3) .stat-value { color: var(--fox); }
+    .silhouette-note {
+      display: inline-block; margin-top: 8px; padding: 5px 8px;
+      border-radius: 5px; color: #344039;
+      background: rgba(255,253,246,.83); font-size: 11px; font-weight: 700;
+    }
+    .learning-panel {
+      min-width: 0; min-height: 0; overflow-y: auto; scrollbar-width: thin;
+      padding: 15px 16px 13px; border-radius: 18px;
+      background: #fffdfa; border: 1px solid #e7e2d9;
+      box-shadow: 0 12px 28px rgba(55,52,43,.04);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .question h2 {
+      margin: 0; font-family: "Iowan Old Style", Georgia, serif;
+      font-size: clamp(22px, 1.72vw, 27px); line-height: 1.11; font-weight: 600;
+      letter-spacing: -.02em;
+    }
+    .question p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.35; }
+    fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+    legend, .section-label {
+      padding: 0; margin-bottom: 6px; color: var(--purple);
+      font-size: 11px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .prediction-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .prediction-option { display: block; position: relative; min-width: 0; }
+    .prediction-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .prediction-option span {
+      display: grid; place-items: center; min-height: 35px; padding: 4px 5px;
+      border: 1px solid #d8d4cd; border-radius: 8px;
+      background: #fff; color: #393b3f; text-align: center;
+      font-size: 12px; line-height: 1.05; font-weight: 700;
+      cursor: pointer;
+    }
+    .prediction-option input:checked + span {
+      color: var(--purple); background: #f2edf7; border: 2px solid var(--purple);
+      padding: 3px 4px;
+    }
+    .prediction-feedback {
+      min-height: 15px; margin: 5px 0 0;
+      color: var(--muted); font-size: 11px; line-height: 1.3;
+    }
+    .action-row { display: grid; grid-template-columns: 1fr 1.32fr; gap: 7px; }
+    .action-row button {
+      min-height: 40px; padding: 7px 10px; border-radius: 9px;
+      border: 1.5px solid var(--purple); background: #fff; color: var(--purple);
+      font-size: 12px; font-weight: 850; line-height: 1.1;
+    }
+    .action-row button.primary {
+      color: #fff; background: var(--purple); border-color: var(--purple);
+    }
+    .action-row button.compare { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .control-row {
+      display: grid; grid-template-columns: auto auto minmax(0,1fr); gap: 7px; align-items: end;
+    }
+    .control-row button, .control-row select {
+      height: 33px; border: 1px solid #d7d5d0; border-radius: 7px;
+      background: #f9f8f4; color: #2f3034; font-size: 12px; font-weight: 750;
+    }
+    .control-row button { padding: 0 11px; }
+    .control-row button:hover:not(:disabled), .action-row button:hover:not(:disabled) { filter: brightness(.96); }
+    .selector-wrap { min-width: 0; display: grid; gap: 3px; }
+    .selector-wrap label { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .05em; }
+    .selector-wrap select { width: 100%; padding: 0 7px; appearance: auto; }
+    .chart-card {
+      min-height: 0; border: 1px solid #e5e3de; border-radius: 11px;
+      padding: 9px 10px 8px; background: #fcfcf9;
+    }
+    .chart-top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .chart-top h3 { margin: 0; font-size: 12px; font-weight: 850; }
+    .chart-top span { color: var(--muted); font-size: 10px; font-weight: 750; white-space: nowrap; }
+    .chart-legend {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 3px 11px;
+      margin: 6px 0 0; font-size: 10px; font-weight: 750;
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+    .legend-item svg { width: 25px; height: 8px; overflow: visible; }
+    #baseline-legend { display: none; }
+    .chart-svg { width: 100%; height: clamp(112px, 17.5vh, 155px); display: block; margin-top: 1px; overflow: visible; }
+    .axis-label { fill: #5f6461; font-family: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif; font-size: 11px; font-weight: 700; }
+    .gridline { stroke: #e7e9e3; stroke-width: 1; }
+    .series { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.6; vector-effect: non-scaling-stroke; }
+    #line-plants { stroke: var(--leaf); }
+    #line-rabbits { stroke: var(--rabbit); stroke-dasharray: 6 4; }
+    #line-foxes { stroke: var(--fox); stroke-dasharray: 2 4; }
+    #line-baseline { stroke: #839b74; stroke-width: 2; stroke-dasharray: 9 4 2 4; }
+    #playhead { stroke: #3f4640; stroke-width: 1; stroke-dasharray: 3 4; opacity: .5; }
+    .numeric-summary {
+      margin: -1px 0 0; color: #424a44; font-size: 11px;
+      font-weight: 700; font-variant-numeric: tabular-nums;
+    }
+    .insight {
+      border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0;
+      background: #fff5e9; padding: 8px 10px;
+    }
+    .insight strong {
+      display: block; color: #783700; font-size: 11px;
+      letter-spacing: .09em; text-transform: uppercase;
+    }
+    .insight p { margin: 3px 0 0; font-size: 12px; line-height: 1.35; }
+    .model-details { border-top: 1px solid #e8e4dd; padding-top: 7px; }
+    .model-details summary {
+      color: var(--purple); font-size: 11px; font-weight: 850; cursor: pointer;
+    }
+    .model-details p { margin: 6px 0; color: #4c4e50; font-size: 11px; line-height: 1.38; }
+    .model-details .equation { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; overflow-wrap: anywhere; }
+    .model-details .caution { font-weight: 800; color: #3d3b3b; }
+    @media (max-width: 950px) {
+      .app { height: auto; min-height: 100vh; padding: 14px; }
+      .board { grid-template-columns: 1fr; }
+      .scene-panel { min-height: min(60vw, 600px); height: min(64vh, 600px); }
+      .learning-panel { overflow: visible; }
+      .chart-svg { height: 160px; }
+    }
+    @media (max-width: 560px) {
+      .app { gap: 10px; padding: 10px; }
+      .masthead { align-items: start; }
+      .masthead h1 { font-size: 28px; }
+      .masthead-note { display: none; }
+      .scene-panel { height: 49vh; min-height: 360px; border-radius: 12px; }
+      .scene-top { top: 13px; left: 14px; right: 14px; }
+      .scene-name strong { font-size: 22px; }
+      .scene-name small { font-size: 10px; }
+      .scene-status { font-size: 10px; padding: 5px 7px; }
+      .scene-bottom { left: 9px; right: 9px; bottom: 9px; }
+      .stats { gap: 4px; }
+      .stat { display: block; padding: 6px 7px; }
+      .stat-label { display: block; font-size: 9px; }
+      .stat-value { display: block; margin-top: 2px; font-size: 19px; }
+      .silhouette-note { font-size: 9px; margin-top: 5px; }
+      .learning-panel { padding: 14px; border-radius: 12px; }
+      .question h2 { font-size: 23px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="masthead">
+      <div>
+        <div class="eyebrow">Interactive ecology exhibit · 01</div>
+        <h1>When a predator disappears</h1>
+      </div>
+      <div class="masthead-note">A two-minute investigation · 18 simulated months</div>
+    </header>
+
+    <div class="board">
+      <section class="scene-panel" aria-label="Animated meadow landscape">
+        <svg id="meadow" viewBox="0 0 900 680" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="meadow-title meadow-desc">
+          <title id="meadow-title">Meadow ecosystem</title>
+          <desc id="meadow-desc">A meadow with grasses, rabbits, and foxes. The scene changes with the simulation values.</desc>
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcecef"/><stop offset=".6" stop-color="#ecf2e5"/><stop offset="1" stop-color="#f3e9cf"/></linearGradient>
+            <radialGradient id="sun-halo"><stop offset="0" stop-color="#fff8db" stop-opacity=".8"/><stop offset="1" stop-color="#fff8db" stop-opacity="0"/></radialGradient>
+            <linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#abbd87"/><stop offset=".56" stop-color="#aab777"/><stop offset="1" stop-color="#cbb48a"/></linearGradient>
+            <linearGradient id="soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9aac69"/><stop offset="1" stop-color="#bdab78"/></linearGradient>
+            <g id="rabbit-glyph" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="-16" cy="4" rx="9" ry="10" fill="#eee8da" stroke="#756b61" stroke-width="1.4"/>
+              <path d="M-12 8 C-15 -5 -7 -16 5 -18 C17 -20 27 -13 27 -2 C27 8 20 14 7 13 C-2 15 -9 13 -12 8Z" fill="#c7bdae" stroke="#675d59" stroke-width="1.5"/>
+              <path d="M14 -15 C9 -28 10 -43 14 -45 C19 -46 21 -34 21 -19Z" fill="#c7bdae" stroke="#675d59" stroke-width="1.4"/>
+              <path d="M21 -15 C22 -30 28 -42 32 -40 C35 -38 30 -24 27 -13Z" fill="#c7bdae" stroke="#675d59" stroke-width="1.4"/>
+              <path d="M15 -20 C13 -30 14 -39 15 -41 C18 -38 18 -28 18 -20Z M25 -20 C27 -30 30 -36 31 -36 C30 -30 28 -23 27 -19Z" fill="#d99795" opacity=".8"/>
+              <ellipse cx="3" cy="12" rx="14" ry="3.6" fill="#a69b8d" stroke="#675d59" stroke-width="1.2"/>
+              <circle cx="22" cy="-8" r="1.5" fill="#2f292b"/>
+              <circle cx="28" cy="-1" r="1.9" fill="#b47576"/>
+            </g>
+            <g id="fox-glyph" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-26 0 C-48 -12 -62 -4 -59 8 C-55 21 -40 25 -22 13 L-15 10Z" fill="#cc5d23" stroke="#723b2c" stroke-width="1.5"/>
+              <path d="M-57 7 C-53 11 -47 13 -42 13 C-50 17 -56 14 -59 8Z" fill="#f6e7d2"/>
+              <path d="M-28 6 C-25 -10 -15 -17 2 -15 C17 -14 26 -5 24 6 C18 14 -9 18 -25 13Z" fill="#c95c23" stroke="#743a2a" stroke-width="1.6"/>
+              <path d="M-11 10 L-8 26 L-2 26 L3 11 M13 8 L16 26 L22 26 L23 3" fill="#7c3d2d" stroke="#633b32" stroke-width="1.3"/>
+              <path d="M15 -11 L18 -27 L27 -16 L36 -27 L39 -11 L49 -1 L36 6 L27 4 L19 8 L11 0Z" fill="#d66929" stroke="#743a2a" stroke-width="1.5"/>
+              <path d="M18 -27 L27 -16 L20 -16Z M36 -25 L38 -13 L32 -16Z" fill="#5f3730"/>
+              <path d="M21 2 L29 10 L38 5 L48 -1 L39 0 L34 -3 L28 1Z" fill="#fff2df"/>
+              <path d="M18 7 C10 12 8 8 6 -2 L13 -7Z" fill="#f6e7d2"/>
+              <circle cx="36" cy="-8" r="1.5" fill="#2c272a"/><circle cx="49" cy="-1" r="1.5" fill="#2c272a"/>
+            </g>
+          </defs>
+          <rect width="900" height="680" fill="url(#sky)"/>
+          <circle cx="692" cy="132" r="105" fill="url(#sun-halo)"/>
+          <circle cx="692" cy="132" r="39" fill="#fff9e7" opacity=".85"/>
+          <path d="M0 219 C98 210 162 246 252 232 S430 192 520 208 S740 245 900 215 L900 380 L0 380Z" fill="#cbd8c2" opacity=".8"/>
+          <path d="M0 274 C130 257 201 296 316 268 S511 248 633 278 S798 268 900 251 L900 403 L0 403Z" fill="#a9c4b2" opacity=".74"/>
+          <path d="M0 306 C140 282 220 335 325 308 S516 273 650 318 S802 305 900 294 L900 449 L0 449Z" fill="#8cad99"/>
+          <path d="M0 358 C126 321 264 351 381 338 S658 344 900 325 L900 680 L0 680Z" fill="url(#field)"/>
+          <path d="M0 448 C131 403 255 431 378 408 S651 423 900 392 L900 680 L0 680Z" fill="url(#soil)" opacity=".76"/>
+          <path id="meadow-cover" d="M0 446 C130 401 267 421 384 405 S677 420 900 393 L900 680 L0 680Z" fill="#5c945d" opacity=".52"/>
+          <path d="M0 508 C147 470 235 501 332 471 S610 462 735 477 S859 465 900 453" fill="none" stroke="#e2d4a4" stroke-width="6" opacity=".48"/>
+          <path d="M0 565 C135 529 226 549 363 525 S615 526 900 496" fill="none" stroke="#7b9d64" stroke-width="4" opacity=".34"/>
+          <g id="grass-back"></g>
+          <g id="rabbit-layer"></g>
+          <g id="fox-layer"></g>
+          <g id="grass-front"></g>
+          <path d="M0 652 C135 620 245 637 384 614 S657 621 900 593 L900 680 L0 680Z" fill="#8da46d" opacity=".25"/>
+        </svg>
+        <div class="scene-top" aria-hidden="true">
+          <div class="scene-name"><strong>A meadow, two futures</strong><small id="scene-subtitle">Foxes present</small></div>
+          <span class="scene-status" id="scene-status">Ready to investigate</span>
+        </div>
+        <div class="scene-bottom">
+          <div class="stats" aria-label="Current simulated abundance">
+            <div class="stat"><span class="stat-label">Plants</span><span class="stat-value" id="plant-count">70</span></div>
+            <div class="stat"><span class="stat-label">Rabbits</span><span class="stat-value" id="rabbit-count">22</span></div>
+            <div class="stat"><span class="stat-label">Foxes</span><span class="stat-value" id="fox-count">8</span></div>
+          </div>
+          <span class="silhouette-note">Each animal silhouette represents about 5 individuals</span>
+        </div>
+      </section>
+
+      <section class="learning-panel" aria-label="Investigation controls and graph">
+        <div class="question">
+          <h2>If the foxes disappear, what happens to the plants?</h2>
+          <p>Choose a prediction. Then run the same meadow twice.</p>
+        </div>
+        <fieldset class="prediction">
+          <legend>Your prediction</legend>
+          <div class="prediction-options">
+            <label class="prediction-option"><input type="radio" name="prediction" value="increase"><span>Increase</span></label>
+            <label class="prediction-option"><input type="radio" name="prediction" value="decrease"><span>Decrease</span></label>
+            <label class="prediction-option"><input type="radio" name="prediction" value="stay about the same"><span>Stay about<br>the same</span></label>
+          </div>
+          <p class="prediction-feedback" id="prediction-feedback">Choose one to begin.</p>
+        </fieldset>
+        <div class="action-row">
+          <button class="primary" id="run-baseline" type="button" disabled>Run baseline</button>
+          <button class="compare" id="run-removed" type="button" disabled>Remove foxes &amp; compare</button>
+        </div>
+        <div class="control-row">
+          <button id="play-pause" type="button" disabled>Play</button>
+          <button id="reset" type="button">Reset</button>
+          <div class="selector-wrap">
+            <label for="scenario-select">Scenario to inspect</label>
+            <select id="scenario-select">
+              <option value="baseline">Baseline · foxes present</option>
+              <option value="removed" disabled>Foxes removed at month 0</option>
+            </select>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-top"><h3>Abundance over time</h3><span>0–18 months</span></div>
+          <div class="chart-legend" aria-hidden="true">
+            <span class="legend-item"><svg viewBox="0 0 25 8"><path d="M0 4H25" stroke="#427b4c" stroke-width="2.5"/></svg>Plants</span>
+            <span class="legend-item"><svg viewBox="0 0 25 8"><path d="M0 4H25" stroke="#625482" stroke-width="2.5" stroke-dasharray="6 4"/></svg>Rabbits</span>
+            <span class="legend-item"><svg viewBox="0 0 25 8"><path d="M0 4H25" stroke="#d75b13" stroke-width="2.5" stroke-dasharray="2 4"/></svg>Foxes</span>
+            <span class="legend-item" id="baseline-legend"><svg viewBox="0 0 25 8"><path d="M0 4H25" stroke="#839b74" stroke-width="2" stroke-dasharray="9 4 2 4"/></svg>Baseline plants</span>
+          </div>
+          <svg class="chart-svg" id="graph" viewBox="0 0 420 174" preserveAspectRatio="none" role="img" aria-label="Line graph of simulated plant, rabbit, and fox abundance over 18 months">
+            <g aria-hidden="true">
+              <path class="gridline" d="M35 16H410 M35 50H410 M35 84H410 M35 118H410 M35 152H410"/>
+              <path class="gridline" d="M35 16V152 M160 16V152 M285 16V152 M410 16V152"/>
+              <text class="axis-label" x="27" y="19" text-anchor="end">100</text>
+              <text class="axis-label" x="27" y="53" text-anchor="end">75</text>
+              <text class="axis-label" x="27" y="87" text-anchor="end">50</text>
+              <text class="axis-label" x="27" y="121" text-anchor="end">25</text>
+              <text class="axis-label" x="27" y="155" text-anchor="end">0</text>
+              <text class="axis-label" x="35" y="169" text-anchor="middle">0</text>
+              <text class="axis-label" x="160" y="169" text-anchor="middle">6</text>
+              <text class="axis-label" x="285" y="169" text-anchor="middle">12</text>
+              <text class="axis-label" x="410" y="169" text-anchor="middle">18 mo</text>
+            </g>
+            <path class="series" id="line-baseline" d=""/>
+            <path class="series" id="line-plants" d=""/>
+            <path class="series" id="line-rabbits" d=""/>
+            <path class="series" id="line-foxes" d=""/>
+            <path id="playhead" d=""/>
+          </svg>
+          <p class="numeric-summary" id="numeric-summary">Month 0 · Plants 70 / 100 · Rabbits 22 · Foxes 8</p>
+        </div>
+        <div class="insight" aria-live="polite">
+          <strong id="insight-heading">What to watch</strong>
+          <p id="insight-text">Watch how rabbit grazing connects predators to plants.</p>
+        </div>
+        <details class="model-details">
+          <summary>About this model</summary>
+          <p>Vegetation regrows toward a capacity of 100; rabbits eat vegetation and grow when food is sufficient; foxes eat rabbits and grow when prey is sufficient. Both scenarios start with plants 70 and rabbits 22. Baseline starts with 8 foxes; removal sets foxes to 0 at month 0. All other rules are identical.</p>
+          <p class="equation">Rates per month: dV/dt = 0.28V(1 − V/100) − 0.0036RV; dR/dt = R(0.0028V − 0.075 − 0.014F); dF/dt = F(0.0045R − 0.10). Fixed step: 0.03 month. Values are clamped at zero; V is capped at 100.</p>
+          <p class="caution">A simplified teaching model, not a forecast of a real ecosystem.</p>
+          <p>Outcomes depend on these assumptions and the 18-month timescale.</p>
+        </details>
+        <span class="sr-only" id="announcement" aria-live="polite"></span>
+      </section>
+    </div>
+  </main>
+  <script>
+    (() => {
+      'use strict';
+      const P = Object.freeze({ capacity: 100, plantGrowth: 0.28, grazing: 0.0036,
+        rabbitFood: 0.0028, rabbitLoss: 0.075, predation: 0.014,
+        foxFood: 0.0045, foxLoss: 0.10 });
+      const MONTHS = 18, STEPS = 600, STEP = MONTHS / STEPS, DURATION_MS = 20000;
+      const SVG_NS = 'http://www.w3.org/2000/svg';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const $ = id => document.getElementById(id);
+      const els = {
+        runBaseline: $('run-baseline'), runRemoved: $('run-removed'), playPause: $('play-pause'),
+        reset: $('reset'), select: $('scenario-select'), predictionFeedback: $('prediction-feedback'),
+        sceneSubtitle: $('scene-subtitle'), sceneStatus: $('scene-status'),
+        plantCount: $('plant-count'), rabbitCount: $('rabbit-count'), foxCount: $('fox-count'),
+        numeric: $('numeric-summary'), insightHeading: $('insight-heading'), insightText: $('insight-text'),
+        announcement: $('announcement'), rabbitLayer: $('rabbit-layer'), foxLayer: $('fox-layer'),
+        grassBack: $('grass-back'), grassFront: $('grass-front'), cover: $('meadow-cover'),
+        linePlants: $('line-plants'), lineRabbits: $('line-rabbits'), lineFoxes: $('line-foxes'),
+        lineBaseline: $('line-baseline'), baselineLegend: $('baseline-legend'), playhead: $('playhead'),
+        graph: $('graph'), meadowDesc: $('meadow-desc')
+      };
+      const initial = id => ({ v: 70, r: 22, f: id === 'removed' ? 0 : 8 });
+      const makeRun = id => ({ id, state: initial(id), points: [], stepIndex: 0,
+        progressMs: 0, lastTime: 0, started: false, complete: false });
+      let runs = { baseline: makeRun('baseline'), removed: makeRun('removed') };
+      let activeId = 'baseline', runningId = null, raf = 0, prediction = null, lastRender = 0;
+
+      // Fixed-step Euler integration makes playback, pausing, and replay deterministic.
+      function advance(state) {
+        const { v, r, f } = state;
+        const dv = P.plantGrowth * v * (1 - v / P.capacity) - P.grazing * r * v;
+        const dr = r * (P.rabbitFood * v - P.rabbitLoss - P.predation * f);
+        const df = f * (P.foxFood * r - P.foxLoss);
+        return {
+          v: Math.min(P.capacity, Math.max(0, v + dv * STEP)),
+          r: Math.max(0, r + dr * STEP),
+          f: Math.max(0, f + df * STEP)
+        };
+      }
+      function sync(run, now) {
+        run.progressMs = Math.min(DURATION_MS, run.progressMs + Math.max(0, now - run.lastTime));
+        run.lastTime = now;
+        const target = Math.min(STEPS, Math.floor((run.progressMs / DURATION_MS) * STEPS));
+        while (run.stepIndex < target) {
+          run.state = advance(run.state);
+          run.stepIndex++;
+          run.points.push({ t: run.stepIndex * STEP, ...run.state });
+        }
+        if (run.progressMs >= DURATION_MS) run.complete = true;
+      }
+      function pause() {
+        if (!runningId) return;
+        const run = runs[runningId];
+        sync(run, performance.now());
+        cancelAnimationFrame(raf);
+        runningId = null;
+        render();
+      }
+      function frame(now) {
+        if (!runningId) return;
+        const run = runs[runningId];
+        sync(run, now);
+        const interval = reduceMotion.matches ? 250 : 65;
+        if (now - lastRender >= interval || run.complete) { render(); lastRender = now; }
+        if (run.complete) {
+          runningId = null;
+          if (run.id === 'baseline') els.announcement.textContent = 'Baseline complete. Now remove the foxes and compare.';
+          else els.announcement.textContent = 'Comparison complete. Read the model result and compare it with your prediction.';
+          render();
+          return;
+        }
+        raf = requestAnimationFrame(frame);
+      }
+      function play(id) {
+        if (runningId) pause();
+        const run = runs[id];
+        activeId = id; els.select.value = id;
+        if (!run.started || run.complete) {
+          startScenario(id);
+          return;
+        }
+        run.lastTime = performance.now();
+        runningId = id;
+        lastRender = 0;
+        raf = requestAnimationFrame(frame);
+        render();
+      }
+      function startScenario(id) {
+        if (runningId) pause();
+        if (id === 'baseline') runs.removed = makeRun('removed');
+        runs[id] = makeRun(id);
+        const run = runs[id];
+        run.started = true;
+        run.points.push({ t: 0, ...run.state });
+        activeId = id; els.select.value = id;
+        run.lastTime = performance.now();
+        runningId = id;
+        lastRender = 0;
+        els.announcement.textContent = id === 'baseline' ? 'Running baseline with foxes.' : 'Running the same meadow with foxes removed at month zero.';
+        render();
+        raf = requestAnimationFrame(frame);
+      }
+      function reset() {
+        if (runningId) { cancelAnimationFrame(raf); runningId = null; }
+        runs = { baseline: makeRun('baseline'), removed: makeRun('removed') };
+        activeId = 'baseline'; prediction = null;
+        els.select.value = 'baseline';
+        document.querySelectorAll('input[name="prediction"]').forEach(input => { input.checked = false; });
+        els.announcement.textContent = 'Activity reset. Choose a prediction to begin.';
+        render();
+      }
+
+      // Original vector meadow. Every tuft has a fixed location; only the model's V
+      // determines whether it is visible. Positions do not encode scenario outcomes.
+      let seed = 18427;
+      function random() { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 4294967296; }
+      const tufts = [];
+      function svgEl(name, attrs) {
+        const node = document.createElementNS(SVG_NS, name);
+        for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value);
+        return node;
+      }
+      for (let i = 0; i < 205; i++) {
+        const x = 12 + random() * 876;
+        const y = 366 + random() * 272;
+        const depth = (y - 366) / 272;
+        const h = 9 + depth * 19 + random() * 11;
+        const w = 5 + depth * 6 + random() * 5;
+        const threshold = random();
+        const color = ['#426f49', '#5a8b4c', '#789e59', '#a0a764', '#456c4a'][Math.floor(random() * 5)];
+        const group = svgEl('g', { transform: `translate(${x.toFixed(1)} ${y.toFixed(1)})`, stroke: color,
+          'stroke-width': (1.1 + depth * .9).toFixed(2), 'stroke-linecap': 'round', fill: 'none' });
+        group.appendChild(svgEl('path', { d: `M0 0 Q${(-w*.4).toFixed(1)} ${(-h*.54).toFixed(1)} ${(-w).toFixed(1)} ${(-h).toFixed(1)} M0 0 Q${(w*.4).toFixed(1)} ${(-h*.58).toFixed(1)} ${w.toFixed(1)} ${(-h*.92).toFixed(1)} M0 0 Q${(w*.06).toFixed(1)} ${(-h*.55).toFixed(1)} 0 ${(-h*1.17).toFixed(1)}` }));
+        if (i % 5 === 0) group.appendChild(svgEl('circle', { cx: '0', cy: (-h * 1.17).toFixed(1), r: (1.5 + depth).toFixed(1), fill: '#e7cf82', stroke: 'none' }));
+        (y < 475 ? els.grassBack : els.grassFront).appendChild(group);
+        tufts.push({ node: group, threshold });
+      }
+      const rabbitNodes = [], foxNodes = [];
+      function ensureAnimals(layer, list, count, glyph) {
+        while (list.length < count) {
+          const node = svgEl('use', { href: `#${glyph}` });
+          layer.appendChild(node); list.push(node);
+        }
+        while (list.length > count) layer.removeChild(list.pop());
+      }
+      function positionAnimals(list, kind, month) {
+        list.forEach((node, i) => {
+          const u = ((i * .61803398875 + (kind === 'fox' ? .26 : .11)) % 1);
+          const row = i % 3;
+          const baseX = 72 + u * 750;
+          const baseY = kind === 'fox' ? 440 + row * 56 : 411 + row * 65;
+          const motion = reduceMotion.matches ? 0 : Math.sin(month * 2.7 + i * 2.1) * (kind === 'fox' ? 5 : 8);
+          const hop = reduceMotion.matches ? 0 : Math.max(0, Math.sin(month * 6.3 + i * 2.1)) * (kind === 'fox' ? 1 : 3);
+          const scale = kind === 'fox' ? 1.02 + row * .08 : .78 + row * .09;
+          const flip = (i % 4 === 2) ? -1 : 1;
+          node.setAttribute('transform', `translate(${(baseX + motion).toFixed(1)} ${(baseY - hop).toFixed(1)}) scale(${(scale * flip).toFixed(2)} ${scale.toFixed(2)})`);
+        });
+      }
+      function renderScene(state, month) {
+        const density = state.v / P.capacity;
+        els.cover.setAttribute('opacity', (.08 + density * .68).toFixed(3));
+        tufts.forEach(tuft => {
+          const opacity = Math.max(0, Math.min(.96, (density - tuft.threshold) * 13));
+          tuft.node.setAttribute('opacity', opacity.toFixed(2));
+        });
+        // Rounded silhouettes approximate abundance; the exact counts remain visible.
+        ensureAnimals(els.rabbitLayer, rabbitNodes, state.r > .01 ? Math.max(1, Math.round(state.r / 5)) : 0, 'rabbit-glyph');
+        ensureAnimals(els.foxLayer, foxNodes, state.f > .01 ? Math.max(1, Math.round(state.f / 5)) : 0, 'fox-glyph');
+        positionAnimals(rabbitNodes, 'rabbit', month);
+        positionAnimals(foxNodes, 'fox', month);
+      }
+      const chartX = t => 35 + (t / MONTHS) * 375;
+      const chartY = value => 152 - Math.max(0, Math.min(100, value)) * 1.36;
+      function pathFor(points, key) {
+        if (!points.length) return '';
+        return points.map((point, i) => `${i ? 'L' : 'M'}${chartX(point.t).toFixed(2)} ${chartY(point[key]).toFixed(2)}`).join(' ');
+      }
+      function renderGraph(run) {
+        els.linePlants.setAttribute('d', pathFor(run.points, 'v'));
+        els.lineRabbits.setAttribute('d', pathFor(run.points, 'r'));
+        els.lineFoxes.setAttribute('d', pathFor(run.points, 'f'));
+        const showReference = activeId === 'removed' && runs.baseline.complete;
+        els.lineBaseline.setAttribute('d', showReference ? pathFor(runs.baseline.points, 'v') : '');
+        els.baselineLegend.style.display = showReference ? 'inline-flex' : 'none';
+        const x = chartX(run.stepIndex * STEP);
+        els.playhead.setAttribute('d', run.started ? `M${x.toFixed(2)} 16V152` : '');
+        const label = `${activeId === 'baseline' ? 'Baseline with foxes' : 'Foxes removed'}; month ${(run.stepIndex * STEP).toFixed(1)}: plants ${Math.round(run.state.v)}, rabbits ${Math.round(run.state.r)}, foxes ${Math.round(run.state.f)}.`;
+        els.graph.setAttribute('aria-label', `Line graph. ${label}${showReference ? ' Dashed reference shows baseline plant abundance.' : ''}`);
+      }
+      function renderInsight() {
+        const base = runs.baseline, removed = runs.removed;
+        const set = (element, value) => { if (element.textContent !== value) element.textContent = value; };
+        if (base.complete && removed.complete) {
+          const b = base.state, n = removed.state;
+          set(els.insightHeading, 'Compare the two meadows');
+          set(els.insightText, `You predicted plants would ${prediction}. By month 18, removing foxes led to more rabbits (${Math.round(b.r)} → ${Math.round(n.r)}) and fewer plants (${Math.round(b.v)} → ${Math.round(n.v)}) than the baseline. More rabbits ate more vegetation: an indirect predator effect.`);
+        } else if (base.complete) {
+          set(els.insightHeading, 'Baseline complete');
+          set(els.insightText, `With foxes present, plants ended near ${Math.round(base.state.v)}. Now remove foxes and compare from the same starting meadow.`);
+        } else {
+          set(els.insightHeading, 'What to watch');
+          set(els.insightText, 'Watch how rabbit grazing connects predators to plants.');
+        }
+      }
+      function render() {
+        const run = runs[activeId];
+        const state = run.state;
+        const month = run.stepIndex * STEP;
+        els.select.value = activeId;
+        els.select.options[1].disabled = !runs.baseline.complete;
+        els.runBaseline.disabled = !prediction;
+        els.runRemoved.disabled = !runs.baseline.complete;
+        els.playPause.disabled = !prediction || (activeId === 'removed' && !runs.baseline.complete);
+        els.playPause.textContent = runningId === activeId ? 'Pause' : run.complete ? 'Replay' : run.started ? 'Resume' : 'Play';
+        els.predictionFeedback.textContent = prediction ? `Prediction saved: plants ${prediction}. Compare after both runs.` : 'Choose one to begin.';
+        els.sceneSubtitle.textContent = activeId === 'baseline' ? 'Foxes present' : 'Foxes removed at month 0';
+        els.sceneStatus.textContent = run.complete ? 'Month 18 · complete' : run.started ? `Month ${month.toFixed(1)} / 18${runningId === activeId ? '' : ' · paused'}` : 'Ready to investigate';
+        els.plantCount.textContent = Math.round(state.v);
+        els.rabbitCount.textContent = Math.round(state.r);
+        els.foxCount.textContent = Math.round(state.f);
+        els.numeric.textContent = `Month ${month.toFixed(1)} · Plants ${Math.round(state.v)} / 100 · Rabbits ${Math.round(state.r)} · Foxes ${Math.round(state.f)}`;
+        els.meadowDesc.textContent = `${activeId === 'baseline' ? 'Foxes present' : 'Foxes removed'} at month ${month.toFixed(1)}. Plants ${Math.round(state.v)}, rabbits ${Math.round(state.r)}, foxes ${Math.round(state.f)}. Grass and animal silhouettes reflect these values.`;
+        renderScene(state, month);
+        renderGraph(run);
+        renderInsight();
+      }
+      document.querySelectorAll('input[name="prediction"]').forEach(input => input.addEventListener('change', () => {
+        prediction = input.value;
+        els.announcement.textContent = 'Prediction saved. Run the baseline.';
+        render();
+      }));
+      els.runBaseline.addEventListener('click', () => { if (prediction) startScenario('baseline'); });
+      els.runRemoved.addEventListener('click', () => { if (runs.baseline.complete) startScenario('removed'); });
+      els.playPause.addEventListener('click', () => {
+        if (runningId === activeId) pause(); else if (prediction) play(activeId);
+      });
+      els.reset.addEventListener('click', reset);
+      els.select.addEventListener('change', () => {
+        if (runningId) pause();
+        activeId = els.select.value;
+        render();
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>

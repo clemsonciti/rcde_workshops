@@ -1,0 +1,30 @@
+Build a polished, interactive ecosystem learning activity for an introductory college audience. The activity should take about two minutes and help learners investigate how removing predators can indirectly affect vegetation.
+
+**Deliverable**\
+Create one downloadable file named `ecosystem.html`, containing all HTML, CSS, JavaScript, and artwork. It must work in a browser without installation, external libraries, network requests, API keys, or a backend, and be suitable for embedding in another website. Provide the actual file, not just code in a message.
+
+**Learning experience**
+
+1. Open with a visually rich meadow containing vegetation, rabbits, and foxes. Show a short question: “If the foxes disappear, what happens to the plants?”
+2. Let learners predict: plants increase, decrease, or stay about the same. Record the choice without immediately judging it.
+3. Provide “Run baseline” and “Remove foxes & compare” buttons. Both scenarios must start from the same initial conditions, with predator removal as the only difference.
+4. Animate each scenario over roughly 20 seconds. Show vegetation changing and animals moving, alongside a synchronized graph of vegetation, rabbit, and fox abundance.
+5. End with a short explanation grounded in the simulated results, inviting learners to compare their prediction with what happened.
+
+**Visual direction**\
+Make the landscape the focal point, occupying at least half the interface. Use layered, original vector or canvas artwork: grasses, terrain, recognizable animal silhouettes, and restrained movement. Aim for the visual quality of an interactive science exhibit.\
+Use a light background with Clemson orange (#F56600) and purple (#522D80) as interface accents. Keep instructions brief and labels readable when projected over Zoom. Avoid emoji artwork, stock photos, decorative dashboards, and excessive text.
+
+**Model integrity**\
+Use a simple, deterministic teaching model: vegetation regrows with a finite carrying capacity; rabbits consume vegetation and depend on it for growth; foxes consume rabbits and depend on them for growth. Keep populations nonnegative and handle extinction without errors.\
+Drive the graph, counts, and landscape from the same simulation state. If animal icons represent multiple individuals, label that clearly.\
+Use identical rules and parameters across both scenarios. Do not script a predetermined animation independently of the model.\
+Include a compact “About this model” disclosure with the rules, parameter values, and the statement: “A simplified teaching model, not a forecast of a real ecosystem.” Explain that outcomes depend on assumptions and timescale.
+
+**Controls and accessibility**\
+Include play/pause, reset, and a clearly labeled scenario selector. Reset must restore the initial state and clear the graph. Make controls keyboard-accessible with visible focus. Distinguish graph series with labels or line styles as well as color. Respect reduced-motion preferences and provide a readable numerical summary.
+
+**Scope and completion**\
+Keep this to one screen on a laptop, with a stacked layout on smaller screens. No accounts, scoring system, extra species, weather controls, sound, or additional lessons.\
+Check both scenarios, pause/resume, reset, graph consistency, and layout. Fix failures in these requirements, then stop. Do not add features after the checks pass.\
+Alongside the file, briefly report the checks actually performed and any remaining limitations.

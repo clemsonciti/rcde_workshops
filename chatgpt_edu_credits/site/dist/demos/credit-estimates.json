@@ -1,0 +1,38 @@
+{
+  "basis": "Recorded cumulative task tokens repriced at September 29, 2026 standard Edu Work/Codex rates; not a billing receipt. Standard speed assumed; Fast is 2.5x. Separate unlogged overhead excluded. Reasoning is included in output and not added twice.",
+  "runs": [
+    {
+      "variant": "broad-luna",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "max",
+      "uncached_input": 103848,
+      "cached_input": 696320,
+      "output_including_reasoning": 46866,
+      "estimated_standard_credits": 1.019525,
+      "start": "2026-09-24T20:58:18.453Z",
+      "end": "2026-09-24T21:15:50.144Z"
+    },
+    {
+      "variant": "bounded-luna",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "max",
+      "uncached_input": 131039,
+      "cached_input": 1913856,
+      "output_including_reasoning": 66971,
+      "estimated_standard_credits": 1.643199,
+      "start": "2026-09-28T15:08:13.670Z",
+      "end": "2026-09-28T15:33:01.697Z"
+    },
+    {
+      "variant": "bounded-sol",
+      "model": "gpt-6-sol",
+      "reasoning_effort": "max",
+      "uncached_input": 47253,
+      "cached_input": 518528,
+      "output_including_reasoning": 26882,
+      "estimated_standard_credits": 11.67579,
+      "start": "2026-09-28T15:08:28.062Z",
+      "end": "2026-09-28T15:18:10.057Z"
+    }
+  ]
+}

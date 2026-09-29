@@ -1,0 +1,23 @@
+[
+  {
+    "variant": "broad-luna",
+    "source": "/Users/cehrett/.codex/visualizations/2026/09/24/01a0d536-418f-7652-b16d-0498783f7b8b/meadow-population.html",
+    "sha256": "f8adf21090db09a09ae890d4b0f66ebad91212c81807a29a9d9c57e8f771c031",
+    "credits": null,
+    "elapsed_seconds": 1051
+  },
+  {
+    "variant": "bounded-luna",
+    "source": "/Users/cehrett/Documents/Codex/2026-09-25/build-a-polished-interactive-ecosystem-learning/ecosystem.html",
+    "sha256": "513a088c0a266ff17951f3c3c0c9b92c551d73b4f1cbf3d1a93f1e27a070dc9a",
+    "credits": null,
+    "elapsed_seconds": 1481
+  },
+  {
+    "variant": "bounded-sol",
+    "source": "/Users/cehrett/Documents/Codex/2026-09-28/build-a-polished-interactive-ecosystem-learning/outputs/ecosystem.html",
+    "sha256": "f675eb8dd4d3708b04454a95e78058a6b524c02370f38404361948f8d07dc365",
+    "credits": null,
+    "elapsed_seconds": null
+  }
+]

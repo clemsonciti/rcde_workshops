@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Meadow Field Study — Foxes, Rabbits, and Plants</title>
+  <style>
+    :root {
+      --ink: #24332b;
+      --muted: #53645a;
+      --paper: #fbfaf6;
+      --panel: #fffefa;
+      --line: #d6ded5;
+      --orange: #f56600;
+      --purple: #522d80;
+      --teal: #317584;
+      --soft-orange: #fff0e3;
+      --soft-purple: #f0eaf7;
+      --focus: #1b5e78;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 0%, rgba(255, 239, 218, .58), transparent 34rem),
+        var(--paper);
+      color: var(--ink);
+    }
+
+    button, select, input { font: inherit; }
+
+    button, select, label { -webkit-tap-highlight-color: transparent; }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 5px;
+    }
+
+    .page {
+      width: min(100% - 44px, 1440px);
+      margin: 0 auto;
+      padding: 14px 0 18px;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 7px;
+      color: var(--purple);
+      font-size: .77rem;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 19px;
+      height: 19px;
+      border-radius: 50% 50% 50% 10%;
+      background: var(--orange);
+      transform: rotate(-35deg);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 12px;
+      left: 9px;
+      top: 4px;
+      border-radius: 2px;
+      background: #fff7ed;
+      transform: rotate(35deg);
+    }
+
+    .duration {
+      margin: 0;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 650;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+
+    .opening { margin-bottom: 8px; }
+
+    h1 {
+      max-width: 1050px;
+      margin: 0;
+      color: #273b31;
+      font-size: clamp(1.8rem, 3vw, 2.45rem);
+      font-weight: 720;
+      letter-spacing: -.045em;
+      line-height: 1.12;
+    }
+
+    .lede {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.4;
+    }
+
+    .prediction {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .prediction legend {
+      float: left;
+      margin: 0 0 0 1px;
+      padding: 0;
+      color: var(--ink);
+      font-size: .92rem;
+      font-weight: 720;
+    }
+
+    .prediction-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .prediction-choice {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 39px;
+      padding: 7px 12px;
+      border: 1px solid #c9d3ca;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .72);
+      color: #314239;
+      cursor: pointer;
+      font-size: .88rem;
+      font-weight: 620;
+      transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .prediction-choice:hover { border-color: #8871a7; }
+
+    .prediction-choice:has(input:checked) {
+      border-color: var(--purple);
+      background: var(--soft-purple);
+      box-shadow: inset 0 0 0 1px var(--purple);
+      color: #39205d;
+    }
+
+    .prediction-choice input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      accent-color: var(--purple);
+    }
+
+    .prediction-note {
+      min-width: 190px;
+      flex: 1 1 220px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.35;
+    }
+
+    .exhibit {
+      display: grid;
+      grid-template-columns: minmax(0, 1.62fr) minmax(360px, 1fr);
+      align-items: stretch;
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    .scene-column, .graph-column { min-width: 0; }
+
+    .scene-frame {
+      overflow: hidden;
+      border-radius: 18px;
+      background: #deeee4;
+      box-shadow: 0 12px 26px rgba(44, 72, 54, .12);
+    }
+
+    .scene-frame svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1000 / 420;
+    }
+
+    .scene-note {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.3;
+    }
+
+    .readouts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 7px;
+    }
+
+    .readout {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px;
+      min-width: 0;
+      padding: 7px 9px;
+      border-top: 2px solid #d9e3d8;
+      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,0));
+    }
+
+    .readout:nth-child(1) { border-color: var(--orange); }
+    .readout:nth-child(2) { border-color: var(--purple); }
+    .readout:nth-child(3) { border-color: var(--teal); }
+
+    .readout-label {
+      overflow: hidden;
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 650;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .readout-value {
+      color: var(--ink);
+      font-size: 1.12rem;
+      font-variant-numeric: tabular-nums;
+      font-weight: 740;
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+
+    .graph-column {
+      display: flex;
+      flex-direction: column;
+      padding-top: 1px;
+    }
+
+    .graph-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    h2 {
+      margin: 0;
+      color: #283b31;
+      font-size: 1.05rem;
+      font-weight: 730;
+      letter-spacing: -.015em;
+    }
+
+    .graph-units {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .76rem;
+      line-height: 1.3;
+    }
+
+    .chart {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 2px;
+      overflow: visible;
+    }
+
+    .chart-grid {
+      stroke: #dce3dc;
+      stroke-width: 1.2;
+    }
+
+    .chart-axis {
+      stroke: #829087;
+      stroke-width: 1.5;
+    }
+
+    .chart-tick, .chart-label {
+      fill: #46584e;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 20px;
+    }
+
+    .chart-label { font-size: 21px; font-weight: 650; }
+
+    .series-line {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #vegetationLine { stroke: var(--orange); }
+    #rabbitLine { stroke: var(--purple); stroke-dasharray: 10 7; }
+    #foxLine { stroke: var(--teal); stroke-dasharray: 2 8; stroke-width: 4.5; }
+    .series-dot { stroke: #fffefa; stroke-width: 2; }
+    #vegetationDot { fill: var(--orange); }
+    #rabbitDot { fill: var(--purple); }
+    #foxDot { fill: var(--teal); }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 15px;
+      margin-top: -1px;
+      color: #36473e;
+      font-size: .79rem;
+      font-weight: 620;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .legend-swatch {
+      width: 24px;
+      height: 0;
+      border-top: 3px solid;
+    }
+
+    .legend-vegetation { border-color: var(--orange); }
+    .legend-rabbits { border-color: var(--purple); border-top-style: dashed; }
+    .legend-foxes { border-color: var(--teal); border-top-style: dotted; }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+      padding: 8px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .run-actions, .playback-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: .89rem;
+      font-weight: 720;
+      line-height: 1.15;
+      transition: transform .12s ease, background-color .15s ease, border-color .15s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button:active { transform: translateY(0); }
+
+    .button-primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(180, 74, 0, .16);
+    }
+
+    .button-primary:hover { background: #d95700; }
+
+    .button-purple {
+      background: var(--purple);
+      color: #fff;
+      box-shadow: 0 3px 8px rgba(82, 45, 128, .16);
+    }
+
+    .button-purple:hover { background: #43246c; }
+
+    .button-quiet {
+      border-color: #bcc9bf;
+      background: #fffefa;
+      color: #34473d;
+    }
+
+    .button-quiet:hover { background: #f0f3ed; border-color: #84978b; }
+
+    .select-wrap {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #405247;
+      font-size: .82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .scenario-select {
+      min-height: 42px;
+      max-width: 220px;
+      padding: 8px 32px 8px 10px;
+      border: 1px solid #bcc9bf;
+      border-radius: 9px;
+      background: #fffefa;
+      color: var(--ink);
+      font-size: .83rem;
+    }
+
+    .run-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 24px;
+      padding-top: 5px;
+    }
+
+    .status {
+      margin: 0;
+      color: #46584e;
+      font-size: .82rem;
+      line-height: 1.35;
+    }
+
+    .time-readout {
+      flex: 0 0 auto;
+      margin: 0;
+      color: #53645a;
+      font-size: .78rem;
+      font-variant-numeric: tabular-nums;
+      font-weight: 670;
+      white-space: nowrap;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      align-items: start;
+      gap: 12px;
+      margin-top: 6px;
+      padding: 7px 12px;
+      border-left: 4px solid var(--purple);
+      background: rgba(240, 234, 247, .57);
+    }
+
+    .comparison h2 {
+      padding-top: 1px;
+      color: #42286a;
+      font-size: .91rem;
+    }
+
+    .comparison p {
+      margin: 0;
+      color: #34443b;
+      font-size: .85rem;
+      line-height: 1.42;
+    }
+
+    .model-details {
+      margin-top: 6px;
+      color: #43554b;
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+
+    .model-details summary {
+      width: fit-content;
+      color: var(--purple);
+      cursor: pointer;
+      font-size: .83rem;
+      font-weight: 720;
+    }
+
+    .model-content {
+      max-width: 1050px;
+      padding: 8px 0 2px 19px;
+    }
+
+    .model-content p { margin: 4px 0; }
+
+    .model-content ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2px 22px;
+      margin: 6px 0;
+      padding-left: 19px;
+    }
+
+    .formula {
+      color: #293d32;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .78rem;
+      overflow-wrap: anywhere;
+    }
+
+    .disclosure {
+      color: #34473d;
+      font-weight: 720;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 940px) {
+      .exhibit { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+      .scene-frame svg { max-height: 430px; }
+      .graph-column { max-width: 700px; }
+      .chart { max-height: 335px; }
+    }
+
+    @media (max-width: 640px) {
+      .page { width: min(100% - 28px, 520px); padding-top: 13px; }
+      .masthead { margin-bottom: 9px; font-size: .69rem; }
+      .duration { font-size: .72rem; }
+      h1 { font-size: clamp(1.7rem, 7vw, 2.1rem); }
+      .lede { font-size: .9rem; }
+      .prediction { gap: 7px 10px; }
+      .prediction legend { flex-basis: 100%; }
+      .prediction-options { gap: 6px; }
+      .prediction-choice { min-height: 42px; padding: 7px 10px; font-size: .82rem; }
+      .prediction-note { flex-basis: 100%; }
+      .exhibit { margin-top: 9px; }
+      .scene-frame { border-radius: 13px; }
+      .scene-frame svg { max-height: none; }
+      .readouts { gap: 4px; }
+      .readout { display: block; padding: 6px 5px; }
+      .readout-label { display: block; font-size: .69rem; }
+      .readout-value { display: block; margin-top: 2px; font-size: 1.04rem; }
+      .graph-column { max-width: none; }
+      .chart { max-height: none; }
+      .legend { gap: 6px 11px; font-size: .75rem; }
+      .actions { align-items: stretch; }
+      .run-actions, .playback-actions { width: 100%; }
+      .run-actions > .button { flex: 1 1 150px; }
+      .playback-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; }
+      .select-wrap { display: block; }
+      .select-wrap > span { display: block; margin-bottom: 4px; }
+      .scenario-select { width: 100%; max-width: none; }
+      .comparison { grid-template-columns: 1fr; gap: 3px; }
+      .model-content ul { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 420px) {
+      .chart-tick { font-size: 23px; }
+      .chart-label { font-size: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+      .button:hover, .button:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Meadow field study</span></div>
+      <p class="duration">About 2 minutes · Two matched runs</p>
+    </header>
+
+    <section class="opening" aria-labelledby="question">
+      <h1 id="question">If the foxes disappear, what happens to the plants?</h1>
+      <p class="lede">Make a prediction, then compare two runs that begin with the same meadow.</p>
+    </section>
+
+    <fieldset class="prediction" aria-describedby="predictionNote">
+      <legend>Your prediction</legend>
+      <div class="prediction-options">
+        <label class="prediction-choice"><input type="radio" name="prediction" value="increase"><span>Plants increase</span></label>
+        <label class="prediction-choice"><input type="radio" name="prediction" value="decrease"><span>Plants decrease</span></label>
+        <label class="prediction-choice"><input type="radio" name="prediction" value="same"><span>About the same</span></label>
+      </div>
+      <p class="prediction-note" id="predictionNote">Choose one. Your prediction will stay here while you explore.</p>
+    </fieldset>
+
+    <section class="exhibit" aria-label="Meadow simulation and population graph">
+      <div class="scene-column">
+        <div class="scene-frame">
+          <svg id="meadowScene" viewBox="0 0 1000 420" role="img" aria-labelledby="sceneTitle sceneDescription">
+            <title id="sceneTitle">A living meadow with plants, rabbits, and foxes</title>
+            <desc id="sceneDescription">The height and color of meadow plants and the visibility and movement of representative rabbits and foxes change with the simulation.</desc>
+            <defs>
+              <linearGradient id="skyGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d9edf0"></stop>
+                <stop offset="100%" stop-color="#f4f4df"></stop>
+              </linearGradient>
+              <linearGradient id="frontMeadow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8cba7b"></stop>
+                <stop offset="100%" stop-color="#527e52"></stop>
+              </linearGradient>
+              <linearGradient id="farMeadow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#b2d3a0"></stop>
+                <stop offset="100%" stop-color="#87b58a"></stop>
+              </linearGradient>
+            </defs>
+            <rect width="1000" height="420" fill="url(#skyGradient)"></rect>
+            <circle cx="824" cy="88" r="40" fill="#f6c979" opacity=".8"></circle>
+            <path d="M0 202 C110 164 186 178 284 209 C384 241 450 212 548 181 C655 147 749 177 829 210 C902 240 952 225 1000 207 L1000 333 L0 333 Z" fill="#bad6af"></path>
+            <path d="M0 246 C127 216 210 227 317 251 C424 275 516 230 622 220 C759 207 852 253 1000 229 L1000 366 L0 366 Z" fill="url(#farMeadow)"></path>
+            <path d="M0 294 C125 272 225 296 328 306 C462 319 532 271 666 271 C797 271 908 310 1000 286 L1000 420 L0 420 Z" fill="url(#frontMeadow)"></path>
+            <g fill="none" stroke="#6b9f6d" stroke-linecap="round" opacity=".58">
+              <path d="M71 357 q-3-36-14-51 M72 358 q8-35 24-46 M183 342 q-5-27-18-39 M187 344 q10-24 25-34 M722 345 q-5-31-19-45 M728 348 q10-29 27-37 M907 351 q-3-32-15-45 M913 352 q10-26 24-32" stroke-width="4"></path>
+            </g>
+            <g id="plantLayer" aria-hidden="true"></g>
+            <g id="rabbitLayer" aria-hidden="true">
+              <g id="rabbitOne" class="rabbit-sample">
+                <ellipse cx="35" cy="39" rx="24" ry="14"></ellipse>
+                <circle cx="57" cy="32" r="10"></circle>
+                <path d="M51 24 C44 5 49 -7 56 2 C61 10 59 19 59 24 Z"></path>
+                <path d="M59 23 C58 7 66 -1 70 7 C73 14 68 21 66 26 Z"></path>
+                <circle cx="60" cy="30" r="1.6" fill="#2b2924"></circle>
+                <ellipse cx="12" cy="39" rx="7" ry="7" fill="#fff8e9"></ellipse>
+                <path d="M20 48 q7 9 17 1 M48 48 q7 8 15 1" fill="none" stroke="#6f6050" stroke-width="3" stroke-linecap="round"></path>
+              </g>
+              <g id="rabbitTwo" class="rabbit-sample">
+                <ellipse cx="35" cy="39" rx="24" ry="14"></ellipse>
+                <circle cx="57" cy="32" r="10"></circle>
+                <path d="M51 24 C44 5 49 -7 56 2 C61 10 59 19 59 24 Z"></path>
+                <path d="M59 23 C58 7 66 -1 70 7 C73 14 68 21 66 26 Z"></path>
+                <circle cx="60" cy="30" r="1.6" fill="#2b2924"></circle>
+                <ellipse cx="12" cy="39" rx="7" ry="7" fill="#fff8e9"></ellipse>
+                <path d="M20 48 q7 9 17 1 M48 48 q7 8 15 1" fill="none" stroke="#6f6050" stroke-width="3" stroke-linecap="round"></path>
+              </g>
+              <g id="rabbitThree" class="rabbit-sample">
+                <ellipse cx="35" cy="39" rx="24" ry="14"></ellipse>
+                <circle cx="57" cy="32" r="10"></circle>
+                <path d="M51 24 C44 5 49 -7 56 2 C61 10 59 19 59 24 Z"></path>
+                <path d="M59 23 C58 7 66 -1 70 7 C73 14 68 21 66 26 Z"></path>
+                <circle cx="60" cy="30" r="1.6" fill="#2b2924"></circle>
+                <ellipse cx="12" cy="39" rx="7" ry="7" fill="#fff8e9"></ellipse>
+                <path d="M20 48 q7 9 17 1 M48 48 q7 8 15 1" fill="none" stroke="#6f6050" stroke-width="3" stroke-linecap="round"></path>
+              </g>
+            </g>
+            <g id="foxLayer" aria-hidden="true">
+              <g id="foxOne" class="fox-sample">
+                <path d="M16 43 C-5 41 -10 24 1 14 C9 7 20 13 29 19 C35 10 47 9 59 15 L74 25 L88 27 L78 36 L61 37 C49 51 31 52 16 43 Z"></path>
+                <path d="M1 14 C-7 5 -15 9 -13 20 C-11 31 -2 37 6 36 C-2 28 -1 21 1 14 Z" fill="#a84125"></path>
+                <path d="M45 16 L49 2 L59 15 M61 17 L72 7 L73 26" fill="#b94b29"></path>
+                <path d="M73 25 L90 28 L76 33 L65 32 Z" fill="#fff2dc"></path>
+                <circle cx="72" cy="23" r="1.8" fill="#2d2925"></circle>
+                <path d="M21 43 l-2 10 M51 43 l3 9" fill="none" stroke="#703a29" stroke-width="4" stroke-linecap="round"></path>
+              </g>
+              <g id="foxTwo" class="fox-sample">
+                <path d="M16 43 C-5 41 -10 24 1 14 C9 7 20 13 29 19 C35 10 47 9 59 15 L74 25 L88 27 L78 36 L61 37 C49 51 31 52 16 43 Z"></path>
+                <path d="M1 14 C-7 5 -15 9 -13 20 C-11 31 -2 37 6 36 C-2 28 -1 21 1 14 Z" fill="#a84125"></path>
+                <path d="M45 16 L49 2 L59 15 M61 17 L72 7 L73 26" fill="#b94b29"></path>
+                <path d="M73 25 L90 28 L76 33 L65 32 Z" fill="#fff2dc"></path>
+                <circle cx="72" cy="23" r="1.8" fill="#2d2925"></circle>
+                <path d="M21 43 l-2 10 M51 43 l3 9" fill="none" stroke="#703a29" stroke-width="4" stroke-linecap="round"></path>
+              </g>
+            </g>
+            <g transform="translate(25 24)">
+              <rect width="178" height="37" rx="18.5" fill="#fffefa" opacity=".84"></rect>
+              <circle cx="19" cy="18.5" r="5" fill="#f56600"></circle>
+              <text id="sceneYear" x="34" y="24" fill="#2b4637" font-size="17" font-weight="700" font-family="system-ui, sans-serif">Year 0</text>
+            </g>
+            <g transform="translate(735 24)">
+              <rect width="240" height="37" rx="18.5" fill="#fffefa" opacity=".84"></rect>
+              <text x="16" y="24" fill="#405548" font-size="15" font-weight="650" font-family="system-ui, sans-serif">Representative animal samples</text>
+            </g>
+          </svg>
+        </div>
+        <p class="scene-note">Illustrations are representative; the counts below are model units.</p>
+          <div class="readouts" role="group" aria-label="Current abundance">
+          <div class="readout"><span class="readout-label">Vegetation</span><span class="readout-value" id="vegetationValue">72.0%</span></div>
+          <div class="readout"><span class="readout-label">Rabbits</span><span class="readout-value" id="rabbitValue">24.0</span></div>
+          <div class="readout"><span class="readout-label">Foxes</span><span class="readout-value" id="foxValue">9.0</span></div>
+        </div>
+      </div>
+
+      <aside class="graph-column" aria-labelledby="graphHeading">
+        <div class="graph-heading">
+          <h2 id="graphHeading">Population over time</h2>
+        </div>
+        <p class="graph-units">Vegetation cover (%) · animal abundance (model units)</p>
+        <svg class="chart" id="populationChart" viewBox="0 0 640 360" role="img" aria-labelledby="chartTitle chartDescription">
+          <title id="chartTitle">Vegetation, rabbit, and fox abundance over simulated time</title>
+          <desc id="chartDescription">The graph is empty until a scenario runs. The horizontal axis is model years from zero to fifty.</desc>
+          <g aria-hidden="true">
+            <line class="chart-grid" x1="62" y1="276" x2="610" y2="276"></line>
+            <line class="chart-grid" x1="62" y1="213" x2="610" y2="213"></line>
+            <line class="chart-grid" x1="62" y1="150" x2="610" y2="150"></line>
+            <line class="chart-grid" x1="62" y1="87" x2="610" y2="87"></line>
+            <line class="chart-grid" x1="62" y1="24" x2="610" y2="24"></line>
+            <line class="chart-axis" x1="62" y1="24" x2="62" y2="276"></line>
+            <line class="chart-axis" x1="62" y1="276" x2="610" y2="276"></line>
+            <text class="chart-tick" x="49" y="282" text-anchor="end">0</text>
+            <text class="chart-tick" x="49" y="219" text-anchor="end">25</text>
+            <text class="chart-tick" x="49" y="156" text-anchor="end">50</text>
+            <text class="chart-tick" x="49" y="93" text-anchor="end">75</text>
+            <text class="chart-tick" x="49" y="30" text-anchor="end">100</text>
+            <text class="chart-tick" x="62" y="301" text-anchor="middle">0</text>
+            <text class="chart-tick" x="172" y="301" text-anchor="middle">10</text>
+            <text class="chart-tick" x="281" y="301" text-anchor="middle">20</text>
+            <text class="chart-tick" x="391" y="301" text-anchor="middle">30</text>
+            <text class="chart-tick" x="500" y="301" text-anchor="middle">40</text>
+            <text class="chart-tick" x="610" y="301" text-anchor="middle">50</text>
+            <text class="chart-label" x="336" y="338" text-anchor="middle">Model time (years)</text>
+            <text class="chart-label" transform="translate(18 150) rotate(-90)" text-anchor="middle">Value</text>
+          </g>
+          <path class="series-line" id="vegetationLine"></path>
+          <path class="series-line" id="rabbitLine"></path>
+          <path class="series-line" id="foxLine"></path>
+          <circle class="series-dot" id="vegetationDot" r="5" visibility="hidden"></circle>
+          <circle class="series-dot" id="rabbitDot" r="5" visibility="hidden"></circle>
+          <circle class="series-dot" id="foxDot" r="5" visibility="hidden"></circle>
+        </svg>
+        <div class="legend" role="group" aria-label="Graph legend">
+          <span class="legend-item"><span class="legend-swatch legend-vegetation" aria-hidden="true"></span>Vegetation · solid</span>
+          <span class="legend-item"><span class="legend-swatch legend-rabbits" aria-hidden="true"></span>Rabbits · dashed</span>
+          <span class="legend-item"><span class="legend-swatch legend-foxes" aria-hidden="true"></span>Foxes · dotted</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="actions" aria-label="Simulation controls">
+      <div class="run-actions">
+        <button class="button button-primary" id="runBaseline" type="button">Run baseline</button>
+        <button class="button button-purple" id="runRemoval" type="button">Remove foxes &amp; compare</button>
+      </div>
+      <div class="playback-actions">
+        <label class="select-wrap" for="scenarioSelect"><span>Scenario</span>
+          <select class="scenario-select" id="scenarioSelect">
+            <option value="baseline">Baseline · foxes present</option>
+            <option value="removal">Foxes removed</option>
+          </select>
+        </label>
+        <button class="button button-quiet" id="playPause" type="button" aria-pressed="false">Play</button>
+        <button class="button button-quiet" id="reset" type="button">Reset</button>
+      </div>
+    </section>
+
+    <div class="run-meta">
+      <p class="status" id="status" role="status" aria-live="polite">Choose a prediction, then run both scenarios to compare.</p>
+      <p class="time-readout" id="timeReadout">Year 0 / 50</p>
+    </div>
+
+    <section class="comparison" aria-labelledby="comparisonHeading">
+      <h2 id="comparisonHeading">Compare your prediction</h2>
+      <p id="comparisonText" aria-live="polite">Run both scenarios to see how the model results compare with your prediction.</p>
+    </section>
+
+    <details class="model-details">
+      <summary>About this model</summary>
+      <div class="model-content">
+        <p>Each run uses the same rules and parameters. Both begin with 72 vegetation cover points and 24 rabbit units; baseline starts with 9 fox units, while the removal run sets foxes to zero.</p>
+        <ul>
+          <li>Vegetation regrows logistically toward carrying capacity K = 100, with a small seed-bank term.</li>
+          <li>Rabbits reproduce based on available vegetation and are limited by food; they also die naturally and through fox predation.</li>
+          <li>Foxes gain from rabbits they consume and die naturally. At zero rabbits, foxes decline; at zero foxes, rabbits have no predator loss.</li>
+          <li>Integration step: 0.05 model years. Populations are clamped at zero; vegetation is capped at K.</li>
+        </ul>
+        <p class="formula">dV/dt = 0.90V(1 − V/100) + 0.35(1 − V/100) − 0.018RV</p>
+        <p class="formula">dR/dt = 0.80R[V/(20 + V)] max(0, 1 − R/(0.9V + 5)) − 0.28R − 0.50FR/(12 + R)</p>
+        <p class="formula">dF/dt = 0.50FR/(12 + R) − 0.15F</p>
+        <p>V is vegetation cover, R is rabbit abundance, and F is fox abundance. One animation runs 50 model years in about 20 seconds. Outcomes depend on assumptions and timescale.</p>
+        <p class="disclosure">A simplified teaching model, not a forecast of a real ecosystem.</p>
+      </div>
+    </details>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const HORIZON = 50;
+      const STEP = 0.05;
+      const MAX_STEP = Math.round(HORIZON / STEP);
+      const RUN_DURATION = 20000;
+      const INITIAL = { vegetation: 72, rabbits: 24, foxes: 9 };
+      const PARAMS = {
+        vegetationRate: 0.90,
+        carryingCapacity: 100,
+        seedRecruitment: 0.35,
+        consumption: 0.018,
+        rabbitGrowth: 0.80,
+        foodHalfSaturation: 20,
+        rabbitCapacityVegetation: 0.9,
+        rabbitCapacityOffset: 5,
+        rabbitMortality: 0.28,
+        predation: 0.50,
+        handling: 12,
+        foxConversion: 1.00,
+        foxMortality: 0.15
+      };
+
+      const byId = function (id) { return document.getElementById(id); };
+      const clamp = function (value, low, high) { return Math.max(low, Math.min(high, value)); };
+      const clone = function (state) {
+        return { vegetation: state.vegetation, rabbits: state.rabbits, foxes: state.foxes };
+      };
+
+      function advance(state, removeFoxes) {
+        const v = state.vegetation;
+        const r = state.rabbits;
+        const f = removeFoxes ? 0 : state.foxes;
+        const room = Math.max(0, 1 - v / PARAMS.carryingCapacity);
+        const vegetationGrowth = PARAMS.vegetationRate * v * room + PARAMS.seedRecruitment * room;
+        const vegetationConsumed = PARAMS.consumption * r * v;
+        const rabbitCapacity = PARAMS.rabbitCapacityVegetation * v + PARAMS.rabbitCapacityOffset;
+        const rabbitBirths = PARAMS.rabbitGrowth * r * v / (PARAMS.foodHalfSaturation + v) *
+          Math.max(0, 1 - r / rabbitCapacity);
+        const predation = PARAMS.predation * f * r / (PARAMS.handling + r);
+        const rabbitChange = rabbitBirths - PARAMS.rabbitMortality * r - predation;
+        const foxChange = PARAMS.foxConversion * predation - PARAMS.foxMortality * f;
+        return {
+          vegetation: clamp(v + STEP * (vegetationGrowth - vegetationConsumed), 0, PARAMS.carryingCapacity),
+          rabbits: Math.max(0, r + STEP * rabbitChange),
+          foxes: removeFoxes ? 0 : Math.max(0, f + STEP * foxChange)
+        };
+      }
+
+      function makeTrajectory(removeFoxes) {
+        const first = clone(INITIAL);
+        if (removeFoxes) first.foxes = 0;
+        const states = [first];
+        let current = first;
+        for (let i = 0; i < MAX_STEP; i += 1) {
+          current = advance(current, removeFoxes);
+          states.push(current);
+        }
+        return states;
+      }
+
+      const trajectories = {
+        baseline: makeTrajectory(false),
+        removal: makeTrajectory(true)
+      };
+      const results = { baseline: null, removal: null };
+      const plantLayer = byId("plantLayer");
+      const plantNodes = [];
+      const ns = "http://www.w3.org/2000/svg";
+
+      function svgElement(tag, attrs) {
+        const node = document.createElementNS(ns, tag);
+        Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+        return node;
+      }
+
+      function buildPlants() {
+        for (let i = 0; i < 27; i += 1) {
+          const x = 30 + i * 36 + ((i * 17) % 13);
+          const y = 413 + ((i * 7) % 8);
+          const height = 40 + ((i * 23) % 46);
+          const color = ["#527f4d", "#668c4e", "#738b43", "#547b58"][i % 4];
+          const group = svgElement("g", { transform: "translate(" + x + " " + y + ")" });
+          group.appendChild(svgElement("path", {
+            d: "M0 0 C-5 -" + Math.round(height * .35) + " 4 -" + Math.round(height * .68) + " 0 -" + height,
+            fill: "none", stroke: color, "stroke-width": 3.2, "stroke-linecap": "round"
+          }));
+          group.appendChild(svgElement("path", {
+            d: "M0 -" + Math.round(height * .35) + " C-13 -" + Math.round(height * .48) + " -15 -" + Math.round(height * .28) + " -2 -" + Math.round(height * .30) + " C5 -" + Math.round(height * .29) + " 4 -" + Math.round(height * .25) + " 0 -" + Math.round(height * .35),
+            fill: color, opacity: ".92"
+          }));
+          group.appendChild(svgElement("path", {
+            d: "M0 -" + Math.round(height * .57) + " C10 -" + Math.round(height * .68) + " 14 -" + Math.round(height * .53) + " 2 -" + Math.round(height * .51) + " C-3 -" + Math.round(height * .50) + " -3 -" + Math.round(height * .53) + " 0 -" + Math.round(height * .57),
+            fill: color, opacity: ".88"
+          }));
+          if (i % 4 === 1 || i % 7 === 0) {
+            group.appendChild(svgElement("circle", { cx: "0", cy: String(-height), r: "4.3", fill: i % 2 ? "#f5d57e" : "#f7eee0" }));
+            group.appendChild(svgElement("circle", { cx: "0", cy: String(-height), r: "1.3", fill: "#b87838" }));
+          }
+          plantLayer.appendChild(group);
+          plantNodes.push({ node: group, y: y, height: height, x: x });
+        }
+      }
+
+      buildPlants();
+
+      const rabbitNodes = [byId("rabbitOne"), byId("rabbitTwo"), byId("rabbitThree")];
+      const foxNodes = [byId("foxOne"), byId("foxTwo")];
+      rabbitNodes.forEach(function (node) {
+        node.setAttribute("fill", "#f2eadb");
+        node.setAttribute("stroke", "#715f4c");
+        node.setAttribute("stroke-width", "1.5");
+      });
+      foxNodes.forEach(function (node) {
+        node.setAttribute("fill", "#d96a35");
+        node.setAttribute("stroke", "#793e2b");
+        node.setAttribute("stroke-width", "1.5");
+      });
+
+      const chart = {
+        vegetationLine: byId("vegetationLine"),
+        rabbitLine: byId("rabbitLine"),
+        foxLine: byId("foxLine"),
+        vegetationDot: byId("vegetationDot"),
+        rabbitDot: byId("rabbitDot"),
+        foxDot: byId("foxDot"),
+        description: byId("chartDescription")
+      };
+
+      let scenario = "baseline";
+      let currentIndex = 0;
+      let isPlaying = false;
+      let startedAt = 0;
+      let elapsedBeforePause = 0;
+      let animationFrame = 0;
+      let lastPaintAt = 0;
+      let prediction = null;
+      const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function format(value) { return Number(value).toFixed(1); }
+      function scenarioName(value) { return value === "baseline" ? "Baseline" : "Foxes removed"; }
+
+      function pointFor(stepIndex, value) {
+        const x = 62 + (stepIndex / MAX_STEP) * 548;
+        const y = 276 - (clamp(value, 0, 100) / 100) * 252;
+        return x.toFixed(2) + "," + y.toFixed(2);
+      }
+
+      function pathFor(states, index, field) {
+        const points = [];
+        for (let i = 0; i <= index; i += 1) {
+          points.push((i === 0 ? "M" : "L") + pointFor(i, states[i][field]));
+        }
+        return points.join(" ");
+      }
+
+      function updateChart(index, state) {
+        if (index < 0) return;
+        const states = trajectories[scenario];
+        chart.vegetationLine.setAttribute("d", pathFor(states, index, "vegetation"));
+        chart.rabbitLine.setAttribute("d", pathFor(states, index, "rabbits"));
+        chart.foxLine.setAttribute("d", pathFor(states, index, "foxes"));
+        [
+          [chart.vegetationDot, state.vegetation],
+          [chart.rabbitDot, state.rabbits],
+          [chart.foxDot, state.foxes]
+        ].forEach(function (entry) {
+          const dot = entry[0];
+          const coords = pointFor(index, entry[1]).split(",");
+          dot.setAttribute("cx", coords[0]);
+          dot.setAttribute("cy", coords[1]);
+          dot.setAttribute("visibility", "visible");
+        });
+        chart.description.textContent = scenarioName(scenario) + " at year " +
+          (index * STEP).toFixed(1) + " of " + HORIZON + ". Vegetation " +
+          format(state.vegetation) + " percent cover, rabbits " + format(state.rabbits) +
+          " model units, foxes " + format(state.foxes) + " model units.";
+      }
+
+      function clearChart() {
+        chart.vegetationLine.setAttribute("d", "");
+        chart.rabbitLine.setAttribute("d", "");
+        chart.foxLine.setAttribute("d", "");
+        chart.vegetationDot.setAttribute("visibility", "hidden");
+        chart.rabbitDot.setAttribute("visibility", "hidden");
+        chart.foxDot.setAttribute("visibility", "hidden");
+        chart.description.textContent = "The graph is empty until a scenario runs. The horizontal axis is model years from zero to fifty.";
+      }
+
+      function updateScene(state, time) {
+        const vegetationFraction = state.vegetation / PARAMS.carryingCapacity;
+        plantNodes.forEach(function (plant, i) {
+          const growth = .24 + .92 * vegetationFraction;
+          const variation = .91 + ((i * 13) % 17) / 100;
+          plant.node.setAttribute("transform", "translate(" + plant.x + " " + plant.y + ") scale(1 " + (growth * variation).toFixed(3) + ")");
+          plant.node.setAttribute("opacity", (.28 + .72 * vegetationFraction).toFixed(2));
+        });
+
+        rabbitNodes.forEach(function (node, i) {
+          const wander = reducedMotion ? 0 : time;
+          const abundance = clamp(state.rabbits / 30, 0, 1);
+          const x = 265 + i * 118 + Math.sin(wander * .48 + i * 1.9) * (7 + abundance * 14);
+          const y = 351 + i * 8 + Math.cos(wander * .28 + i) * 2;
+          node.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(.86)");
+          node.setAttribute("opacity", state.rabbits <= .01 ? "0" : String((.25 + .75 * clamp(state.rabbits / 20, 0, 1)).toFixed(2)));
+          node.setAttribute("visibility", state.rabbits <= .01 ? "hidden" : "visible");
+        });
+
+        foxNodes.forEach(function (node, i) {
+          const wander = reducedMotion ? 0 : time;
+          const preyPull = clamp(state.rabbits / 32, 0, 1);
+          const x = 713 + i * 112 - preyPull * 62 + Math.sin(wander * .31 + i * 2.5) * (8 + preyPull * 12);
+          const y = 327 + i * 8 + Math.cos(wander * .23 + i) * 2;
+          node.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") scale(.94)");
+          node.setAttribute("opacity", state.foxes <= .01 ? "0" : String((.28 + .72 * clamp(state.foxes / 18, 0, 1)).toFixed(2)));
+          node.setAttribute("visibility", state.foxes <= .01 ? "hidden" : "visible");
+        });
+      }
+
+      function render(index, drawGraph) {
+        currentIndex = clamp(index, 0, MAX_STEP);
+        const state = trajectories[scenario][currentIndex];
+        const time = currentIndex * STEP;
+        byId("vegetationValue").textContent = format(state.vegetation) + "%";
+        byId("rabbitValue").textContent = format(state.rabbits);
+        byId("foxValue").textContent = format(state.foxes);
+        byId("sceneYear").textContent = "Year " + time.toFixed(1);
+        byId("timeReadout").textContent = "Year " + time.toFixed(1) + " / " + HORIZON;
+        updateScene(state, time);
+        if (drawGraph) updateChart(currentIndex, state);
+        return state;
+      }
+
+      function updateComparison() {
+        const text = byId("comparisonText");
+        const baseline = results.baseline;
+        const removal = results.removal;
+        if (!baseline || !removal) {
+          if (baseline || removal) {
+            const next = baseline ? "foxes removed" : "baseline";
+            text.textContent = "One run is complete. Run the " + next + " scenario from the same starting vegetation and rabbit populations to compare.";
+          } else {
+            text.textContent = "Run both scenarios to see how the model results compare with your prediction.";
+          }
+          return;
+        }
+
+        const difference = baseline.vegetation - removal.vegetation;
+        let vegetationOutcome = "ended at about the same level";
+        if (difference > 2) vegetationOutcome = "ended lower without foxes";
+        if (difference < -2) vegetationOutcome = "ended higher without foxes";
+        const predictionText = prediction
+          ? "You predicted plants would " + prediction + ". "
+          : "You have not recorded a prediction yet. ";
+        text.textContent = predictionText + "After " + HORIZON + " model years, vegetation " +
+          vegetationOutcome + ": " + format(removal.vegetation) + "% cover without foxes and " +
+          format(baseline.vegetation) + "% with foxes, a difference of " +
+          Math.abs(difference).toFixed(1) + " percentage points. Rabbits ended at " +
+          format(removal.rabbits) + " without foxes and " + format(baseline.rabbits) +
+          " with foxes. How does that compare with your prediction?";
+      }
+
+      function setStatus(message) { byId("status").textContent = message; }
+
+      function stopAnimation() {
+        if (animationFrame) window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        isPlaying = false;
+        byId("playPause").textContent = currentIndex >= MAX_STEP ? "Play again" : "Play";
+        byId("playPause").setAttribute("aria-pressed", "false");
+      }
+
+      function finishRun() {
+        stopAnimation();
+        elapsedBeforePause = RUN_DURATION;
+        const finalState = render(MAX_STEP, true);
+        results[scenario] = clone(finalState);
+        byId("playPause").textContent = "Play again";
+        const otherScenario = scenario === "baseline" ? "removal" : "baseline";
+        const followUp = results[otherScenario]
+          ? "Both runs are ready to compare below."
+          : "Run the " + (otherScenario === "baseline" ? "baseline" : "foxes removed") + " scenario to compare.";
+        setStatus(scenarioName(scenario) + " run complete. " + followUp);
+        updateComparison();
+      }
+
+      function animate(now) {
+        if (!isPlaying) return;
+        const elapsed = elapsedBeforePause + Math.max(0, now - startedAt);
+        const progress = clamp(elapsed / RUN_DURATION, 0, 1);
+        const nextIndex = Math.min(MAX_STEP, Math.floor(progress * MAX_STEP));
+        const paintInterval = reducedMotion ? 240 : 24;
+        if (nextIndex !== currentIndex && (now - lastPaintAt >= paintInterval || nextIndex === MAX_STEP)) {
+          render(nextIndex, true);
+          lastPaintAt = now;
+        }
+        if (progress >= 1) {
+          finishRun();
+          return;
+        }
+        animationFrame = window.requestAnimationFrame(animate);
+      }
+
+      function beginRun(nextScenario) {
+        if (animationFrame) window.cancelAnimationFrame(animationFrame);
+        scenario = nextScenario;
+        byId("scenarioSelect").value = scenario;
+        currentIndex = 0;
+        elapsedBeforePause = 0;
+        results[scenario] = null;
+        isPlaying = true;
+        startedAt = performance.now();
+        lastPaintAt = 0;
+        byId("playPause").textContent = "Pause";
+        byId("playPause").setAttribute("aria-pressed", "true");
+        render(0, true);
+        setStatus(scenarioName(scenario) + " is running. It covers " + HORIZON + " model years in about 20 seconds.");
+        updateComparison();
+        animationFrame = window.requestAnimationFrame(animate);
+      }
+
+      function togglePlayback() {
+        if (isPlaying) {
+          elapsedBeforePause += Math.max(0, performance.now() - startedAt);
+          stopAnimation();
+          setStatus("Paused at year " + (currentIndex * STEP).toFixed(1) + ". Select Play to resume.");
+          return;
+        }
+        if (currentIndex >= MAX_STEP) {
+          beginRun(scenario);
+          return;
+        }
+        isPlaying = true;
+        startedAt = performance.now();
+        byId("playPause").textContent = "Pause";
+        byId("playPause").setAttribute("aria-pressed", "true");
+        setStatus(scenarioName(scenario) + " is running.");
+        animationFrame = window.requestAnimationFrame(animate);
+      }
+
+      function changeScenario(nextScenario) {
+        if (animationFrame) window.cancelAnimationFrame(animationFrame);
+        isPlaying = false;
+        scenario = nextScenario;
+        currentIndex = 0;
+        elapsedBeforePause = 0;
+        results[scenario] = null;
+        byId("playPause").textContent = "Play";
+        byId("playPause").setAttribute("aria-pressed", "false");
+        clearChart();
+        render(0, false);
+        setStatus(scenarioName(scenario) + " selected. The graph is cleared; this run starts from the same vegetation and rabbit levels.");
+        updateComparison();
+      }
+
+      function reset() {
+        if (animationFrame) window.cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        isPlaying = false;
+        currentIndex = 0;
+        elapsedBeforePause = 0;
+        results.baseline = null;
+        results.removal = null;
+        byId("playPause").textContent = "Play";
+        byId("playPause").setAttribute("aria-pressed", "false");
+        clearChart();
+        render(0, false);
+        setStatus("Reset to the initial state. The graph is clear; your prediction is saved.");
+        updateComparison();
+      }
+
+      document.querySelectorAll('input[name="prediction"]').forEach(function (input) {
+        input.addEventListener("change", function (event) {
+          prediction = event.target.value;
+          const words = { increase: "increase", decrease: "decrease", same: "stay about the same" };
+          byId("predictionNote").textContent = "Recorded: plants will " + words[prediction] + ". Run both scenarios and compare.";
+          updateComparison();
+        });
+      });
+      byId("runBaseline").addEventListener("click", function () { beginRun("baseline"); });
+      byId("runRemoval").addEventListener("click", function () { beginRun("removal"); });
+      byId("scenarioSelect").addEventListener("change", function (event) { changeScenario(event.target.value); });
+      byId("playPause").addEventListener("click", togglePlayback);
+      byId("reset").addEventListener("click", reset);
+
+      render(0, false);
+    }());
+  </script>
+</body>
+</html>

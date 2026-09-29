@@ -1,0 +1,992 @@
+<div id="meadow-population-dynamics">
+  <style>
+    #meadow-population-dynamics {
+      position: relative;
+      color: var(--foreground);
+      font-family: inherit;
+    }
+
+    #meadow-population-dynamics h3,
+    #meadow-population-dynamics h4,
+    #meadow-population-dynamics p {
+      margin: 0;
+    }
+
+    #meadow-population-dynamics .eco-topline,
+    #meadow-population-dynamics .eco-chart-heading,
+    #meadow-population-dynamics .eco-legend,
+    #meadow-population-dynamics .eco-readout,
+    #meadow-population-dynamics .eco-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+    }
+
+    #meadow-population-dynamics .eco-topline {
+      justify-content: space-between;
+      margin-bottom: 0.7rem;
+    }
+
+    #meadow-population-dynamics .eco-year {
+      font-variant-numeric: tabular-nums;
+    }
+
+    #meadow-population-dynamics .eco-controls {
+      margin-bottom: 0.65rem;
+    }
+
+    #meadow-population-dynamics .eco-controls > label {
+      min-width: 9rem;
+      flex: 1 1 9rem;
+    }
+
+    #meadow-population-dynamics .eco-controls output {
+      margin-left: 0.25rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #meadow-population-dynamics .eco-actions {
+      gap: 0.4rem;
+    }
+
+    #meadow-population-dynamics .eco-readout {
+      gap: 0.6rem 1.2rem;
+      margin: 0.45rem 0 0.2rem;
+    }
+
+    #meadow-population-dynamics .eco-population {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+    }
+
+    #meadow-population-dynamics .eco-mark {
+      width: 0.55rem;
+      height: 0.55rem;
+      display: inline-block;
+      border-radius: 50%;
+      background: var(--series-color);
+    }
+
+    #meadow-population-dynamics .eco-population strong {
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    #meadow-population-dynamics .eco-plant { --series-color: var(--viz-series-1); }
+    #meadow-population-dynamics .eco-rabbit { --series-color: var(--viz-series-2); }
+    #meadow-population-dynamics .eco-fox { --series-color: var(--viz-series-3); }
+
+    #meadow-population-dynamics .eco-landscape {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--blue) 9%, var(--background)) 0%,
+        color-mix(in srgb, var(--blue) 5%, var(--background)) 61%,
+        color-mix(in srgb, var(--viz-series-1) 12%, var(--background)) 62%,
+        color-mix(in srgb, var(--viz-series-1) 15%, var(--background)) 100%
+      );
+    }
+
+    #meadow-population-dynamics .eco-chart-heading {
+      justify-content: space-between;
+      margin-top: 0.6rem;
+      margin-bottom: 0.1rem;
+    }
+
+    #meadow-population-dynamics .eco-legend {
+      gap: 0.35rem 0.85rem;
+    }
+
+    #meadow-population-dynamics .eco-key {
+      appearance: none;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--foreground);
+      font: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      opacity: 1;
+    }
+
+    #meadow-population-dynamics .eco-key[aria-pressed="false"] {
+      opacity: 0.48;
+    }
+
+    #meadow-population-dynamics .eco-key-line {
+      width: 0.95rem;
+      height: 0.18rem;
+      display: inline-block;
+      background: var(--series-color);
+    }
+
+    #meadow-population-dynamics .eco-chart {
+      display: block;
+      width: 100%;
+      height: 218px;
+      overflow: visible;
+      touch-action: pan-y;
+    }
+
+    #meadow-population-dynamics .eco-chart text {
+      fill: var(--foreground);
+      font-family: inherit;
+      font-size: 12px;
+    }
+
+    #meadow-population-dynamics .eco-chart .eco-muted-axis {
+      fill: var(--muted-foreground);
+    }
+
+    #meadow-population-dynamics .eco-chart .eco-grid {
+      stroke: var(--border);
+      stroke-width: 1;
+      opacity: 0.62;
+    }
+
+    #meadow-population-dynamics .eco-chart .eco-baseline {
+      stroke: var(--muted-foreground);
+      stroke-width: 1;
+      stroke-dasharray: 4 4;
+      opacity: 0.7;
+    }
+
+    #meadow-population-dynamics .eco-chart .eco-series-line {
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #meadow-population-dynamics .eco-chart .eco-last-dot,
+    #meadow-population-dynamics .eco-chart .eco-hover-dot {
+      stroke: var(--background);
+      stroke-width: 1.5;
+    }
+
+    #meadow-population-dynamics .eco-chart [data-chart-hover-guide] {
+      stroke: var(--muted-foreground);
+      stroke-width: 1;
+      stroke-dasharray: 3 4;
+      pointer-events: none;
+    }
+
+    #meadow-population-dynamics .eco-chart [data-chart-hover-marker] {
+      pointer-events: none;
+    }
+
+    #meadow-population-dynamics .eco-chart [data-chart-hit] {
+      fill: transparent;
+      stroke: none;
+      pointer-events: all;
+    }
+
+    #meadow-population-dynamics .eco-tooltip {
+      position: absolute;
+      z-index: 4;
+      max-width: min(220px, calc(100% - 1rem));
+      padding: 0.45rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 0.45rem;
+      background: var(--popover);
+      color: var(--popover-foreground);
+      box-shadow: 0 3px 14px color-mix(in srgb, var(--foreground) 16%, transparent);
+      pointer-events: none;
+      white-space: pre-line;
+      font-variant-numeric: tabular-nums;
+    }
+
+    #meadow-population-dynamics .eco-insight {
+      margin-top: 0.3rem;
+    }
+
+    #meadow-population-dynamics .eco-model-note {
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 420px) {
+      #meadow-population-dynamics .eco-controls > label {
+        min-width: 8rem;
+        flex-basis: 100%;
+      }
+
+      #meadow-population-dynamics .eco-chart {
+        height: 210px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #meadow-population-dynamics .eco-chart * {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+
+  <div class="eco-topline">
+    <h3>Meadow population dynamics</h3>
+    <span class="text-small text-muted eco-year" id="eco-year">Year 0.0</span>
+  </div>
+
+  <div class="viz-controls eco-controls" aria-label="Simulation controls">
+    <label class="form-label" for="eco-scenario">
+      Experiment
+      <select class="form-select" id="eco-scenario">
+        <option value="balanced">Meadow balance</option>
+        <option value="foxes">Add foxes</option>
+        <option value="drought">Two-year drought</option>
+      </select>
+    </label>
+    <label class="form-label" for="eco-regrowth">
+      Plant regrowth <output id="eco-regrowth-value" for="eco-regrowth">1.0×</output>
+      <input class="form-range" id="eco-regrowth" type="range" min="0.5" max="1.6" step="0.1" value="1">
+    </label>
+    <label class="form-label" for="eco-hunting">
+      Fox hunting success <output id="eco-hunting-value" for="eco-hunting">1.0×</output>
+      <input class="form-range" id="eco-hunting" type="range" min="0.5" max="1.6" step="0.1" value="1">
+    </label>
+    <div class="viz-row eco-actions">
+      <button class="btn btn-primary" id="eco-run" type="button" aria-pressed="false">Run</button>
+      <button class="btn" id="eco-step" type="button">Step 1 year</button>
+      <button class="btn btn-ghost" id="eco-reset" type="button">Reset</button>
+    </div>
+  </div>
+
+  <div class="eco-readout" aria-label="Current populations as a percent of their starting level">
+    <span class="eco-population eco-plant"><span class="eco-mark" aria-hidden="true"></span>Plants <strong id="eco-plants">100%</strong></span>
+    <span class="eco-population eco-rabbit"><span class="eco-mark" aria-hidden="true"></span>Rabbits <strong id="eco-rabbits">100%</strong></span>
+    <span class="eco-population eco-fox"><span class="eco-mark" aria-hidden="true"></span>Foxes <strong id="eco-foxes">100%</strong></span>
+  </div>
+
+  <canvas class="eco-landscape" id="eco-landscape" width="720" height="248" role="img" aria-label="A meadow with representative plants, rabbits, and foxes. More visible organisms indicate greater abundance."></canvas>
+
+  <div class="eco-chart-heading">
+    <h4>Population over time</h4>
+    <div class="eco-legend" role="group" aria-label="Show or hide population series">
+      <button class="eco-key eco-plant" type="button" data-eco-series="plants" aria-pressed="true"><span class="eco-key-line" aria-hidden="true"></span>Plants</button>
+      <button class="eco-key eco-rabbit" type="button" data-eco-series="rabbits" aria-pressed="true"><span class="eco-key-line" aria-hidden="true"></span>Rabbits</button>
+      <button class="eco-key eco-fox" type="button" data-eco-series="foxes" aria-pressed="true"><span class="eco-key-line" aria-hidden="true"></span>Foxes</button>
+    </div>
+  </div>
+
+  <svg class="eco-chart" id="eco-chart" role="img" aria-labelledby="eco-chart-title eco-chart-desc" viewBox="0 0 720 218" preserveAspectRatio="none">
+    <title id="eco-chart-title">Relative population through time</title>
+    <desc id="eco-chart-desc">Each species begins at 100 percent of its own starting level. Plants support rabbits, and foxes depend on rabbits. Hover or tap the plot to compare populations at a year.</desc>
+  </svg>
+  <div class="tooltip eco-tooltip text-small" id="eco-tooltip" role="tooltip" hidden></div>
+
+  <p class="eco-insight text-small" id="eco-insight" aria-live="polite">Watch the lag: rabbit growth can feed a fox increase a little later.</p>
+  <p class="eco-model-note text-small text-muted">Plants regrow toward a limit; rabbits eat plants; foxes hunt rabbits. Lines show change relative to each species’ starting level.</p>
+
+  <script>
+    (() => {
+      const root = document.getElementById('meadow-population-dynamics');
+      if (!root) return;
+
+      const ns = 'http://www.w3.org/2000/svg';
+      const canvas = root.querySelector('#eco-landscape');
+      const context = canvas.getContext('2d');
+      const chart = root.querySelector('#eco-chart');
+      const chartWrap = root.querySelector('.eco-chart-heading');
+      const yearLabel = root.querySelector('#eco-year');
+      const insight = root.querySelector('#eco-insight');
+      const tooltip = root.querySelector('#eco-tooltip');
+      const scenarioInput = root.querySelector('#eco-scenario');
+      const regrowthInput = root.querySelector('#eco-regrowth');
+      const huntingInput = root.querySelector('#eco-hunting');
+      const regrowthValue = root.querySelector('#eco-regrowth-value');
+      const huntingValue = root.querySelector('#eco-hunting-value');
+      const runButton = root.querySelector('#eco-run');
+      const stepButton = root.querySelector('#eco-step');
+      const resetButton = root.querySelector('#eco-reset');
+      const numberFields = {
+        plants: root.querySelector('#eco-plants'),
+        rabbits: root.querySelector('#eco-rabbits'),
+        foxes: root.querySelector('#eco-foxes')
+      };
+      const series = [
+        { key: 'plants', label: 'Plants', color: 'var(--viz-series-1)' },
+        { key: 'rabbits', label: 'Rabbits', color: 'var(--viz-series-2)' },
+        { key: 'foxes', label: 'Foxes', color: 'var(--viz-series-3)' }
+      ];
+      const presets = {
+        balanced: { populations: { plants: 80, rabbits: 13, foxes: 18 }, droughtYears: 0 },
+        foxes: { populations: { plants: 80, rabbits: 13, foxes: 34 }, droughtYears: 0 },
+        drought: { populations: { plants: 80, rabbits: 13, foxes: 18 }, droughtYears: 2 }
+      };
+      const maxHistory = 260;
+      const stepSize = 0.02;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const baseCanvasWidth = 720;
+      const baseCanvasHeight = 248;
+      let populations = { ...presets.balanced.populations };
+      let startingPopulations = { ...populations };
+      let year = 0;
+      let droughtUntil = Infinity;
+      let regrowth = 1;
+      let hunting = 1;
+      let history = [];
+      let hiddenSeries = new Set();
+      let running = false;
+      let rafId = 0;
+      let lastFrame = 0;
+      let sampleRemainder = 0;
+      let userInteracted = false;
+      let lastPointerPinned = false;
+
+      function clamp(value, minimum, maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+      }
+
+      function makeSvgElement(tag, attributes = {}, text = null) {
+        const element = document.createElementNS(ns, tag);
+        Object.entries(attributes).forEach(([name, value]) => element.setAttribute(name, String(value)));
+        if (text !== null) element.textContent = text;
+        return element;
+      }
+
+      function currentIndex(key) {
+        return startingPopulations[key] > 0 ? (populations[key] / startingPopulations[key]) * 100 : 0;
+      }
+
+      function saveSnapshot() {
+        const bridge = window.openai;
+        if (!bridge || typeof bridge.setWidgetState !== 'function') return;
+        const modelContent = {
+          version: 1,
+          scenario: scenarioInput.value,
+          populations: { ...populations },
+          startingPopulations: { ...startingPopulations },
+          year,
+          droughtUntil: Number.isFinite(droughtUntil) ? droughtUntil : null,
+          regrowth,
+          hunting,
+          history: history.slice(-maxHistory).map(point => ({ ...point }))
+        };
+        const privateContent = { hiddenSeries: [...hiddenSeries] };
+        Promise.resolve(bridge.setWidgetState({ modelContent, privateContent })).catch(() => {});
+      }
+
+      function updateSliderLabels() {
+        regrowthValue.textContent = `${Number(regrowth).toFixed(1)}×`;
+        huntingValue.textContent = `${Number(hunting).toFixed(1)}×`;
+      }
+
+      function refreshReadout() {
+        yearLabel.textContent = `Year ${year.toFixed(1)}`;
+        Object.keys(numberFields).forEach(key => {
+          numberFields[key].textContent = `${Math.max(0, currentIndex(key)).toFixed(0)}%`;
+        });
+      }
+
+      function recordPoint() {
+        history.push({
+          year,
+          plants: currentIndex('plants'),
+          rabbits: currentIndex('rabbits'),
+          foxes: currentIndex('foxes')
+        });
+        if (history.length > maxHistory) history.splice(0, history.length - maxHistory);
+      }
+
+      function setInsight(message) {
+        insight.textContent = message;
+      }
+
+      function pauseSimulation() {
+        running = false;
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = 0;
+        lastFrame = 0;
+        runButton.textContent = 'Run';
+        runButton.setAttribute('aria-label', 'Run simulation');
+        runButton.setAttribute('aria-pressed', 'false');
+      }
+
+      function startSimulation() {
+        if (running) return;
+        running = true;
+        runButton.textContent = 'Pause';
+        runButton.setAttribute('aria-label', 'Pause simulation');
+        runButton.setAttribute('aria-pressed', 'true');
+        lastFrame = 0;
+        rafId = requestAnimationFrame(frame);
+      }
+
+      function updateModel(duration) {
+        let remaining = duration;
+        let chartChanged = false;
+        while (remaining > 0) {
+          const dt = Math.min(stepSize, remaining);
+          const grass = populations.plants;
+          const rabbits = populations.rabbits;
+          const foxes = populations.foxes;
+          const weather = year < droughtUntil ? 0.42 : 1;
+          const grassChange = 1.05 * regrowth * weather * grass * (1 - grass / 100) - 1.4 * rabbits * grass / (20 + grass);
+          const rabbitChange = (0.72 * grass / (15 + grass) - 0.3) * rabbits - 0.255 * hunting * rabbits * foxes / (8 + rabbits);
+          const foxChange = (0.3825 * hunting * rabbits / (8 + rabbits) - 0.25) * foxes;
+
+          populations = {
+            plants: clamp(grass + grassChange * dt, 0, 180),
+            rabbits: clamp(rabbits + rabbitChange * dt, 0, 180),
+            foxes: clamp(foxes + foxChange * dt, 0, 180)
+          };
+          Object.keys(populations).forEach(key => {
+            if (populations[key] < 0.18) populations[key] = 0;
+          });
+          year += dt;
+          remaining -= dt;
+          sampleRemainder += dt;
+          if (sampleRemainder >= 0.1) {
+            sampleRemainder -= 0.1;
+            recordPoint();
+            chartChanged = true;
+          }
+        }
+        if (history.length === 0 || year - history[history.length - 1].year > 0.04) {
+          recordPoint();
+          chartChanged = true;
+        }
+        refreshReadout();
+        return chartChanged;
+      }
+
+      function frame(timestamp) {
+        if (!running) return;
+        if (!lastFrame) lastFrame = timestamp;
+        const elapsed = clamp((timestamp - lastFrame) / 1000, 0, 0.06);
+        lastFrame = timestamp;
+        const chartChanged = updateModel(elapsed * 1.35);
+        drawLandscape();
+        if (chartChanged) drawChart();
+        rafId = requestAnimationFrame(frame);
+      }
+
+      function setScenario(key, showMessage = true) {
+        const preset = presets[key] || presets.balanced;
+        pauseSimulation();
+        scenarioInput.value = presets[key] ? key : 'balanced';
+        startingPopulations = { ...preset.populations };
+        populations = { ...preset.populations };
+        year = 0;
+        droughtUntil = preset.droughtYears > 0 ? preset.droughtYears : Infinity;
+        sampleRemainder = 0;
+        history = [];
+        recordPoint();
+        tooltip.hidden = true;
+        if (showMessage) {
+          if (key === 'foxes') setInsight('More foxes can reduce rabbits first; fox numbers may fall later when prey becomes scarce.');
+          else if (key === 'drought') setInsight('For two years, slower plant regrowth can ripple through rabbits and then foxes.');
+          else setInsight('Watch the lag: rabbit growth can feed a fox increase a little later.');
+        }
+        refreshReadout();
+        drawLandscape();
+        drawChart();
+      }
+
+      function resetExperiment() {
+        regrowth = 1;
+        hunting = 1;
+        regrowthInput.value = '1';
+        huntingInput.value = '1';
+        updateSliderLabels();
+        setScenario(scenarioInput.value, true);
+        saveSnapshot();
+      }
+
+      function chooseTickStep(maximum, desiredCount) {
+        const rough = maximum / desiredCount;
+        const steps = [1, 2, 2.5, 5, 10, 20, 25, 50, 100, 200, 500];
+        return steps.find(step => step >= rough) || Math.ceil(rough / 1000) * 1000;
+      }
+
+      function appendText(parent, x, y, text, attributes = {}) {
+        parent.appendChild(makeSvgElement('text', { x, y, ...attributes }, text));
+      }
+
+      function visibleValues() {
+        return history.filter(point => point.year >= Math.max(0, year - 10) - 0.001);
+      }
+
+      function scalePoint(point, xScale, yScale, key) {
+        return `${xScale(point.year).toFixed(2)},${yScale(point[key]).toFixed(2)}`;
+      }
+
+      function drawChart() {
+        const width = Math.max(280, chartWrap.clientWidth || root.clientWidth || 640);
+        const height = chart.clientHeight || 218;
+        const margin = { top: 12, right: 12, bottom: 38, left: width < 390 ? 48 : 56 };
+        const plotWidth = Math.max(140, width - margin.left - margin.right);
+        const plotHeight = Math.max(110, height - margin.top - margin.bottom);
+        const xMin = Math.max(0, year - 10);
+        const xMax = Math.max(10, year);
+        const shown = visibleValues();
+        const highest = shown.reduce((max, point) => Math.max(max, point.plants, point.rabbits, point.foxes), 100);
+        const yStep = chooseTickStep(Math.max(120, highest), 4);
+        const yMax = Math.max(yStep * 3, Math.ceil(highest / yStep) * yStep);
+        const xScale = value => margin.left + ((value - xMin) / (xMax - xMin || 1)) * plotWidth;
+        const yScale = value => margin.top + plotHeight - (value / yMax) * plotHeight;
+
+        chart.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        chart.replaceChildren();
+        chart.appendChild(makeSvgElement('title', { id: 'eco-chart-title' }, 'Relative population through time'));
+        chart.appendChild(makeSvgElement('desc', { id: 'eco-chart-desc' }, 'Each species begins at 100 percent of its own starting level. Plants support rabbits, and foxes depend on rabbits. Hover or tap the plot to compare populations at a year.'));
+
+        const plotGroup = makeSvgElement('g', { 'aria-hidden': 'true' });
+        chart.appendChild(plotGroup);
+        for (let tick = 0; tick <= yMax; tick += yStep) {
+          const y = yScale(tick);
+          plotGroup.appendChild(makeSvgElement('line', { x1: margin.left, x2: width - margin.right, y1: y, y2: y, class: tick === 100 ? 'eco-baseline' : 'eco-grid' }));
+          appendText(plotGroup, margin.left - 8, y + 4, `${tick}`, { 'text-anchor': 'end', class: 'eco-muted-axis' });
+        }
+
+        const tickStep = width < 420 ? 5 : 2;
+        const firstTick = Math.ceil(xMin / tickStep) * tickStep;
+        for (let tick = firstTick; tick <= xMax + 0.001; tick += tickStep) {
+          const x = xScale(tick);
+          plotGroup.appendChild(makeSvgElement('line', { x1: x, x2: x, y1: margin.top, y2: margin.top + plotHeight, class: 'eco-grid', opacity: '0.28' }));
+          appendText(plotGroup, x, margin.top + plotHeight + 16, `${tick}`, { 'text-anchor': 'middle', class: 'eco-muted-axis' });
+        }
+        plotGroup.appendChild(makeSvgElement('line', { x1: margin.left, x2: width - margin.right, y1: margin.top + plotHeight, y2: margin.top + plotHeight, class: 'eco-grid' }));
+        appendText(plotGroup, margin.left + plotWidth / 2, height - 3, 'Year', { 'text-anchor': 'middle', class: 'eco-muted-axis' });
+        appendText(plotGroup, 13, margin.top + plotHeight / 2, 'Relative population (%)', {
+          'text-anchor': 'middle',
+          class: 'eco-muted-axis',
+          transform: `rotate(-90 13 ${margin.top + plotHeight / 2})`
+        });
+
+        series.forEach(item => {
+          const values = shown.length ? shown : history;
+          const points = values.map(point => scalePoint(point, xScale, yScale, item.key)).join(' ');
+          const group = makeSvgElement('g', {
+            'data-eco-series-group': item.key,
+            display: hiddenSeries.has(item.key) ? 'none' : 'inline'
+          });
+          group.appendChild(makeSvgElement('polyline', { points, class: 'eco-series-line', stroke: item.color }));
+          const latest = history[history.length - 1];
+          if (latest) group.appendChild(makeSvgElement('circle', {
+            cx: xScale(latest.year),
+            cy: yScale(latest[item.key]),
+            r: 3.5,
+            fill: item.color,
+            class: 'eco-last-dot'
+          }));
+          chart.appendChild(group);
+        });
+
+        const guide = makeSvgElement('line', {
+          x1: margin.left,
+          x2: margin.left,
+          y1: margin.top,
+          y2: margin.top + plotHeight,
+          'data-chart-hover-guide': '',
+          visibility: 'hidden'
+        });
+        chart.appendChild(guide);
+
+        const hoverMarkers = new Map();
+        series.forEach(item => {
+          const dot = makeSvgElement('circle', {
+            cx: margin.left,
+            cy: margin.top,
+            r: 4,
+            fill: item.color,
+            class: 'eco-hover-dot',
+            'data-chart-hover-marker': item.key,
+            visibility: 'hidden'
+          });
+          chart.appendChild(dot);
+          hoverMarkers.set(item.key, dot);
+        });
+
+        const hit = makeSvgElement('rect', {
+          x: margin.left,
+          y: margin.top,
+          width: plotWidth,
+          height: plotHeight,
+          class: 'cursor-interaction',
+          'data-chart-hit': '',
+          'data-chart-hover-overlay': 'cross-series',
+          'aria-label': 'Population plot. Move or tap to compare species at a year.'
+        });
+        chart.appendChild(hit);
+
+        function valueAt(targetYear, key) {
+          if (!history.length) return 0;
+          let low = 0;
+          let high = history.length - 1;
+          while (low < high) {
+            const middle = Math.floor((low + high) / 2);
+            if (history[middle].year < targetYear) low = middle + 1;
+            else high = middle;
+          }
+          const right = history[low];
+          const left = history[Math.max(0, low - 1)];
+          if (right.year === left.year) return right[key];
+          const fraction = clamp((targetYear - left.year) / (right.year - left.year), 0, 1);
+          return left[key] + (right[key] - left[key]) * fraction;
+        }
+
+        function showAt(event, pin = false) {
+          const bounds = chart.getBoundingClientRect();
+          const localX = clamp(event.clientX - bounds.left, margin.left, margin.left + plotWidth);
+          const hoveredYear = xMin + ((localX - margin.left) / plotWidth) * (xMax - xMin);
+          const dataYear = clamp(hoveredYear, history[0]?.year ?? 0, history[history.length - 1]?.year ?? 0);
+          guide.setAttribute('x1', localX);
+          guide.setAttribute('x2', localX);
+          guide.setAttribute('visibility', 'visible');
+          const rows = [`Year ${dataYear.toFixed(1)}`];
+          series.forEach(item => {
+            const dot = hoverMarkers.get(item.key);
+            if (hiddenSeries.has(item.key)) {
+              dot.setAttribute('visibility', 'hidden');
+              return;
+            }
+            const value = valueAt(dataYear, item.key);
+            dot.setAttribute('cx', localX);
+            dot.setAttribute('cy', yScale(value));
+            dot.setAttribute('visibility', 'visible');
+            rows.push(`${item.label}  ${Math.round(value)}%`);
+          });
+          tooltip.textContent = rows.join('\n');
+          tooltip.hidden = false;
+          const rootBounds = root.getBoundingClientRect();
+          const tooltipLeft = clamp(event.clientX - rootBounds.left + 10, 4, Math.max(4, root.clientWidth - 224));
+          const tooltipTop = chart.getBoundingClientRect().top - rootBounds.top + 10;
+          tooltip.style.left = `${tooltipLeft}px`;
+          tooltip.style.top = `${tooltipTop}px`;
+          if (pin) lastPointerPinned = true;
+        }
+
+        function hideHover() {
+          if (lastPointerPinned) return;
+          guide.setAttribute('visibility', 'hidden');
+          hoverMarkers.forEach(dot => dot.setAttribute('visibility', 'hidden'));
+          tooltip.hidden = true;
+        }
+
+        hit.addEventListener('pointermove', event => {
+          if (event.pointerType !== 'touch') lastPointerPinned = false;
+          showAt(event);
+        });
+        hit.addEventListener('pointerdown', event => {
+          if (event.pointerType === 'touch') {
+            if (lastPointerPinned) {
+              lastPointerPinned = false;
+              hideHover();
+            } else {
+              showAt(event, true);
+            }
+          }
+        });
+        hit.addEventListener('pointerleave', hideHover);
+        hit.addEventListener('pointercancel', hideHover);
+      }
+
+      function seededPosition(index, salt) {
+        const raw = Math.sin((index + 1) * (salt + 12.37)) * 43758.5453;
+        return raw - Math.floor(raw);
+      }
+
+      function drawGrass(x, y, height, widthScale, color, alpha) {
+        context.strokeStyle = color;
+        context.globalAlpha = alpha;
+        context.lineWidth = Math.max(0.8, widthScale);
+        context.beginPath();
+        context.moveTo(x, y);
+        context.quadraticCurveTo(x - widthScale * 2, y - height * 0.55, x - widthScale * 1.6, y - height);
+        context.moveTo(x, y);
+        context.quadraticCurveTo(x + widthScale, y - height * 0.62, x + widthScale * 2.2, y - height * 0.92);
+        context.stroke();
+      }
+
+      function drawRabbit(x, y, scale, color, foreground) {
+        context.save();
+        context.translate(x, y);
+        context.scale(scale, scale);
+        context.fillStyle = color;
+        context.globalAlpha = 0.94;
+        context.beginPath();
+        context.ellipse(-1, -5, 9.5, 6.2, -0.12, 0, Math.PI * 2);
+        context.fill();
+        context.beginPath();
+        context.arc(7, -10, 4.2, 0, Math.PI * 2);
+        context.fill();
+        context.beginPath();
+        context.ellipse(5, -17, 1.8, 5.3, -0.18, 0, Math.PI * 2);
+        context.ellipse(9.5, -17, 1.8, 5.7, 0.14, 0, Math.PI * 2);
+        context.fill();
+        context.beginPath();
+        context.arc(-10, -5, 2.8, 0, Math.PI * 2);
+        context.fill();
+        context.fillStyle = foreground;
+        context.globalAlpha = 0.8;
+        context.beginPath();
+        context.arc(8.3, -10.5, 0.65, 0, Math.PI * 2);
+        context.fill();
+        context.restore();
+      }
+
+      function drawFox(x, y, scale, color, foreground) {
+        context.save();
+        context.translate(x, y);
+        context.scale(scale, scale);
+        context.fillStyle = color;
+        context.globalAlpha = 0.96;
+        context.beginPath();
+        context.moveTo(-8, -5);
+        context.quadraticCurveTo(-20, -13, -20, -5);
+        context.quadraticCurveTo(-16, 1, -8, -2);
+        context.closePath();
+        context.fill();
+        context.beginPath();
+        context.ellipse(-1, -5, 10, 6, -0.05, 0, Math.PI * 2);
+        context.fill();
+        context.beginPath();
+        context.arc(8, -10, 4.4, 0, Math.PI * 2);
+        context.fill();
+        context.beginPath();
+        context.moveTo(4, -13);
+        context.lineTo(5, -20);
+        context.lineTo(9, -14);
+        context.moveTo(9, -14);
+        context.lineTo(13, -19);
+        context.lineTo(13, -11);
+        context.fill();
+        context.fillStyle = foreground;
+        context.globalAlpha = 0.86;
+        context.beginPath();
+        context.arc(9.2, -10.5, 0.7, 0, Math.PI * 2);
+        context.fill();
+        context.restore();
+      }
+
+      function drawLandscape() {
+        const bounds = canvas.getBoundingClientRect();
+        const width = Math.max(1, bounds.width);
+        const height = Math.max(1, bounds.height);
+        const pixelRatio = Math.max(1, window.devicePixelRatio || 1);
+        const pixelWidth = Math.round(width * pixelRatio);
+        const pixelHeight = Math.round(height * pixelRatio);
+        if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+          canvas.width = pixelWidth;
+          canvas.height = pixelHeight;
+        }
+        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        context.clearRect(0, 0, width, height);
+        const styles = getComputedStyle(root);
+        const colors = {
+          plant: styles.getPropertyValue('--viz-series-1').trim() || styles.color,
+          rabbit: styles.getPropertyValue('--viz-series-2').trim() || styles.color,
+          fox: styles.getPropertyValue('--viz-series-3').trim() || styles.color,
+          yellow: styles.getPropertyValue('--yellow').trim() || styles.color,
+          foreground: styles.color
+        };
+        const sx = width / baseCanvasWidth;
+        const sy = height / baseCanvasHeight;
+        const scale = Math.max(0.55, Math.min(1, sx * 1.15, sy * 1.8));
+        const groundY = height * 0.77;
+
+        context.save();
+        context.fillStyle = colors.plant;
+        context.globalAlpha = 0.055;
+        context.beginPath();
+        context.moveTo(0, height * 0.72);
+        context.bezierCurveTo(width * 0.23, height * 0.57, width * 0.48, height * 0.83, width * 0.7, height * 0.68);
+        context.bezierCurveTo(width * 0.85, height * 0.59, width * 0.96, height * 0.64, width, height * 0.6);
+        context.lineTo(width, height);
+        context.lineTo(0, height);
+        context.closePath();
+        context.fill();
+        context.globalAlpha = 0.08;
+        context.beginPath();
+        context.moveTo(0, height * 0.83);
+        context.bezierCurveTo(width * 0.2, height * 0.73, width * 0.34, height * 0.86, width * 0.52, height * 0.77);
+        context.bezierCurveTo(width * 0.7, height * 0.68, width * 0.84, height * 0.82, width, height * 0.72);
+        context.lineTo(width, height);
+        context.lineTo(0, height);
+        context.closePath();
+        context.fill();
+
+        if (year < droughtUntil) {
+          context.fillStyle = colors.yellow;
+          context.globalAlpha = 0.06;
+          context.fillRect(0, 0, width, height * 0.55);
+          context.globalAlpha = 0.34;
+          context.beginPath();
+          context.arc(width * 0.87, height * 0.17, Math.min(width, height) * 0.045, 0, Math.PI * 2);
+          context.fill();
+        }
+
+        const grassAmount = clamp(populations.plants / 100, 0.05, 1.45);
+        const blades = Math.round(132 * clamp(grassAmount, 0.12, 1));
+        for (let i = 0; i < blades; i += 1) {
+          const x = seededPosition(i, 2.1) * width;
+          const y = groundY + seededPosition(i, 5.7) * height * 0.18;
+          const h = (3 + grassAmount * (5 + seededPosition(i, 9.4) * 13)) * sy;
+          drawGrass(x, y, h, scale, colors.plant, 0.32 + seededPosition(i, 13.2) * 0.34);
+          if (i % 17 === 0 && grassAmount > 0.35) {
+            context.globalAlpha = 0.68;
+            context.fillStyle = colors.yellow;
+            context.beginPath();
+            context.arc(x + 2 * scale, y - h, 1.5 * scale, 0, Math.PI * 2);
+            context.fill();
+          }
+        }
+        context.restore();
+
+        const drift = reducedMotion.matches ? 0 : Math.sin(year * 1.5) * width * 0.012;
+        const rabbitCount = Math.min(24, Math.round(populations.rabbits * 0.62));
+        for (let i = 0; i < rabbitCount; i += 1) {
+          const x = seededPosition(i, 25.3) * width + Math.sin(year * 1.1 + i) * width * 0.012 + drift;
+          const y = height * (0.76 + seededPosition(i, 33.2) * 0.13);
+          drawRabbit(clamp(x, 10, width - 10), y, scale, colors.rabbit, colors.foreground);
+        }
+        const foxCount = Math.min(17, Math.round(populations.foxes * 0.52));
+        for (let i = 0; i < foxCount; i += 1) {
+          const x = seededPosition(i, 48.8) * width + Math.cos(year * 0.75 + i * 0.6) * width * 0.015 - drift;
+          const y = height * (0.76 + seededPosition(i, 52.1) * 0.13);
+          drawFox(clamp(x, 12, width - 12), y, scale, colors.fox, colors.foreground);
+        }
+      }
+
+      function restoreSnapshot(snapshot) {
+        const model = snapshot && snapshot.modelContent;
+        if (!model || model.version !== 1 || !presets[model.scenario]) return false;
+        const validCounts = value => value && ['plants', 'rabbits', 'foxes'].every(key => Number.isFinite(value[key]) && value[key] >= 0);
+        if (!validCounts(model.populations) || !validCounts(model.startingPopulations)) return false;
+        pauseSimulation();
+        scenarioInput.value = model.scenario;
+        populations = { ...model.populations };
+        startingPopulations = { ...model.startingPopulations };
+        year = Number.isFinite(model.year) && model.year >= 0 ? model.year : 0;
+        droughtUntil = Number.isFinite(model.droughtUntil) ? model.droughtUntil : presets[model.scenario].droughtYears ? presets[model.scenario].droughtYears : Infinity;
+        regrowth = clamp(Number(model.regrowth) || 1, 0.5, 1.6);
+        hunting = clamp(Number(model.hunting) || 1, 0.5, 1.6);
+        regrowthInput.value = String(regrowth);
+        huntingInput.value = String(hunting);
+        const restoredHistory = Array.isArray(model.history) ? model.history.filter(point =>
+          point && Number.isFinite(point.year) && point.year >= 0 && ['plants', 'rabbits', 'foxes'].every(key => Number.isFinite(point[key]))
+        ).slice(-maxHistory) : [];
+        history = restoredHistory.length ? restoredHistory.map(point => ({ ...point })) : [];
+        if (!history.length || history[history.length - 1].year < year - 0.05) recordPoint();
+        const hidden = snapshot.privateContent && snapshot.privateContent.hiddenSeries;
+        hiddenSeries = new Set(Array.isArray(hidden) ? hidden.filter(key => series.some(item => item.key === key)) : []);
+        root.querySelectorAll('[data-eco-series]').forEach(button => {
+          button.setAttribute('aria-pressed', String(!hiddenSeries.has(button.dataset.ecoSeries)));
+        });
+        updateSliderLabels();
+        refreshReadout();
+        setInsight(model.scenario === 'drought'
+          ? 'For two years, slower plant regrowth can ripple through rabbits and then foxes.'
+          : model.scenario === 'foxes'
+            ? 'More foxes can reduce rabbits first; fox numbers may fall later when prey becomes scarce.'
+            : 'Watch the lag: rabbit growth can feed a fox increase a little later.');
+        drawLandscape();
+        drawChart();
+        return true;
+      }
+
+      scenarioInput.addEventListener('change', () => {
+        userInteracted = true;
+        regrowth = 1;
+        hunting = 1;
+        regrowthInput.value = '1';
+        huntingInput.value = '1';
+        updateSliderLabels();
+        setScenario(scenarioInput.value, true);
+        saveSnapshot();
+      });
+
+      regrowthInput.addEventListener('input', () => {
+        regrowth = Number(regrowthInput.value);
+        updateSliderLabels();
+        drawLandscape();
+      });
+      regrowthInput.addEventListener('change', () => {
+        userInteracted = true;
+        setInsight(`Plant regrowth is ${regrowth.toFixed(1)}×. Watch how quickly vegetation recovers after grazing.`);
+        saveSnapshot();
+      });
+
+      huntingInput.addEventListener('input', () => {
+        hunting = Number(huntingInput.value);
+        updateSliderLabels();
+        drawLandscape();
+      });
+      huntingInput.addEventListener('change', () => {
+        userInteracted = true;
+        setInsight(`Fox hunting success is ${hunting.toFixed(1)}×. More successful hunts can lift foxes while lowering rabbits.`);
+        saveSnapshot();
+      });
+
+      runButton.addEventListener('click', () => {
+        userInteracted = true;
+        if (running) {
+          pauseSimulation();
+          setInsight(`Paused at year ${year.toFixed(1)}. Compare which population turned first.`);
+        } else {
+          startSimulation();
+          setInsight('Running. Watch for rabbits to change before foxes respond.');
+        }
+        saveSnapshot();
+      });
+
+      stepButton.addEventListener('click', () => {
+        userInteracted = true;
+        pauseSimulation();
+        updateModel(1);
+        drawLandscape();
+        drawChart();
+        setInsight(`Advanced to year ${year.toFixed(1)}. Which population changed first?`);
+        saveSnapshot();
+      });
+
+      resetButton.addEventListener('click', () => {
+        userInteracted = true;
+        resetExperiment();
+        setInsight('Reset to the start. Choose an experiment, make a prediction, then run it.');
+      });
+
+      root.querySelectorAll('[data-eco-series]').forEach(button => {
+        button.addEventListener('click', () => {
+          userInteracted = true;
+          const key = button.dataset.ecoSeries;
+          if (hiddenSeries.has(key)) hiddenSeries.delete(key);
+          else hiddenSeries.add(key);
+          button.setAttribute('aria-pressed', String(!hiddenSeries.has(key)));
+          tooltip.hidden = true;
+          lastPointerPinned = false;
+          drawChart();
+          saveSnapshot();
+        });
+      });
+
+      const resizeObserver = new ResizeObserver(() => {
+        drawLandscape();
+        drawChart();
+      });
+      resizeObserver.observe(canvas);
+      resizeObserver.observe(chartWrap);
+
+      window.addEventListener('openai:set_globals', event => {
+        drawLandscape();
+        drawChart();
+        const incoming = event.detail && event.detail.globals && event.detail.globals.widgetState;
+        if (!userInteracted && incoming) restoreSnapshot(incoming);
+      });
+      reducedMotion.addEventListener('change', drawLandscape);
+
+      updateSliderLabels();
+      if (!restoreSnapshot(window.openai && window.openai.widgetState)) {
+        setScenario('balanced', false);
+      }
+    })();
+  </script>
+</div>
