@@ -13,7 +13,7 @@ $ ls long_file_name_you_cant_remember.txt
 
 ## history
 
-Bash will retain a history of the previous commands you entered. The `history` command will (by default on Palmetto) display the last 1000 commands.
+Bash will retain a history of the previous commands you entered. The `history` command will (by default on Palmetto 2) display the last 1000 commands.
 
 ```
 $ history
@@ -75,7 +75,7 @@ $ tar xzvf my_archive.tar.gz
 
 ## Convert a Windows file to Unix format
 
-Copying a file from a Windows computer can cause issues since Windows editors like Notepad will end lines with CRLF line endings. Linux uses the Unix LF line endings.
+Copying a file from a Windows computer can cause issues since Windows editors like Notepad will end lines with CRLF endings. Linux uses the Unix LF line endings.
 
 The `dos2unix` command will convert the file to Unix format. You can confirm if a file is in the Windows format with `file`.
 ```

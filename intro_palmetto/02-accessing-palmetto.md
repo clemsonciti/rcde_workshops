@@ -1,6 +1,6 @@
-# Accessing the Palmetto Cluster
+# Accessing the Palmetto 2 Cluster
 
-Palmetto is accessed using the SSH (["Secure shell"](https://en.wikipedia.org/wiki/Ssh_(Secure_Shell))) protocol. Palmetto runs the *SSH server*; on your local machine, you will need to run *SSH client* which connects to a server using a command-line *terminal*. The commands that are entered on the terminal are processed by the server on Palmetto.
+Palmetto 2 is accessed using the SSH (["Secure shell"](https://en.wikipedia.org/wiki/Ssh_(Secure_Shell))) protocol. Palmetto 2 runs the *SSH server*; on your local machine, you will need to run *SSH client* which connects to a server using a command-line *terminal*. The commands that are entered on the terminal are processed by the server on Palmetto 2.
 
 ## Mac
 
@@ -42,12 +42,12 @@ MobaXterm SSH Session Settings
 ## Entering Username and Password
 
 At this stage, for both Mac and Windows, you will be asked to enter your username
-and password, then DUO option. Use your usual Clemson username (without @clemson.edu part) and Clemson
+and password, then Duo option. Use your usual Clemson username (without @clemson.edu part) and Clemson
 password.
 
 :::{note}
 As you type your password, nothing will appear (not even asterisks). This can be confusing, but it
-is the expected behaviour. The SSH server is still receiving your password.
+is the expected behavior. The SSH server is still receiving your password.
 :::
 
 :::{figure} ../fig/intro_palmetto/mobaxterm_2.png
@@ -82,7 +82,7 @@ i.e., `~`, which, as you will learn shortly,
 is short for your *home* directory.
 
 In the figure below, MobaXterm also gives you a GUI browser of your home
-directory on Palmetto. For Mac OS and Linux terminal, you will only have the
+directory on Palmetto 2. For Mac OS and Linux terminal, you will only have the
 command line interface to the right.
 
 
@@ -91,7 +91,7 @@ Logged into Palmetto on MobaXterm
 :::
 
 :::{admonition} Key Points
-- Palmetto can be accessed by an SSH (secure shell) client
+- Palmetto 2 an be accessed by an SSH (secure shell) client
 - Windows user can use `MobaXterm` application
 - Mac users can use the `Terminal` application
 :::
