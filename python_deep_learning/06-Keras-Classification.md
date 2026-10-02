@@ -3,7 +3,7 @@
 ## Using Keras to solve a Classification Model
 
 ### Prepare the data
-Here we use iris data from ANN and Classification episode in our previous Machine Learning class with sklearn:
+Here we use iris data from the ANN and Classification episode in our previous Machine Learning class with sklearn:
 
 ```python
 from sklearn.datasets import load_iris
@@ -19,7 +19,7 @@ y = iris.target
 ```
 
 ### Apply One Hot Encoding to categorize the output:
-- One Hot Encoding allows to represent the categorical data in a probabilistic way that is understandable by the machine.
+- One Hot Encoding represents the categorical data in a probabilistic way that is understandable by the machine.
 - For example **cat, dog, deer** can be converted to **0, 1, 2** or **[1 0 0,0 1 0,0 0 1]**
 
 ```python
@@ -45,7 +45,7 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 ```
 
-### Let's use Keras's Sequential model with Dense layers
+### Let's use Keras' Sequential model with Dense layers
 
 ```python
 from tensorflow.keras.models import Sequential
@@ -77,7 +77,7 @@ model.compile(optimizer='adam', loss='categorical_crossentropy',metrics='accurac
 model.fit(X_train_scaled, y_train, epochs=100, verbose=1,
                validation_data=(X_test_scaled,y_test))
 ```
- 
+
 ### Evaluate model
 Evaluate the testing set using given loss function
 ```python
@@ -90,7 +90,7 @@ print("test loss, test acc:", results)
 predictions = model.predict(X_test_scaled)
 ```
 
-### Inverse transform the One Hot Encoding
+### Inverse transform One Hot Encoding
 ```python
 Y_pred = enc.inverse_transform(predictions)
 Y_test = enc.inverse_transform(y_test)

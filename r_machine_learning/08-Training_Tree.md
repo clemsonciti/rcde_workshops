@@ -5,7 +5,7 @@ exercises: 0
 questions:
 - "How to train a Machine Learning model using Tree-based model"
 objectives:
-- "Learn to use different Tree-based algorithm for Machine Learning training"
+- "Learn to use different tree-based algorithms for machine learning training"
 keypoints:
 - "Decision Tree, Random Forest"
 
@@ -19,7 +19,7 @@ keypoints:
 -   Prone to overfitting
 ![image](https://user-images.githubusercontent.com/43855029/114233972-198a7280-994c-11eb-9f4f-da4ed958961e.png)
 
-### Spliting algorithm
+### Spliting the Algorithm
 - Gini Impurity: (Categorical)
 - Chi-Square index (Categorical)
 - Cross-Entropy & Information gain (Categorical)
@@ -89,7 +89,7 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 install.packages("randomForest")
 ~~~
 
-- Run the following: 
+- Run the following:
 
 ~~~r
 ModFit_rf <- train(Species~.,data=training,method="rf",prox=TRUE)
@@ -103,4 +103,4 @@ ggplot(testing,aes(x=Petal.Width,y=Petal.Length))+
 ~~~
 ![image](https://user-images.githubusercontent.com/43855029/114235296-fb257680-994d-11eb-93ff-54702cbf87b8.png)
 
-We can see that Random Forest result has better prediction than the Decision Tree.
+We can see that the Random Forest result has better prediction than the Decision Tree.

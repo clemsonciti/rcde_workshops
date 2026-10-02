@@ -4,13 +4,13 @@
 :class: dropdown
 
 - Questions:
-  - How do I use If-Then-Else structure?
-  - How do I use For loops?
-  - How do I use While loops?
+  - How do I use "If-Then-Else" structure?
+  - How do I use "For" loops?
+  - How do I use "While" loops?
 - Objectives:
-  - Write conditional statement with `if...else` and `elseif()`
-  - Write and understand `for()` loop
-- Keypoints:
+  - Write conditional statements with `if...else` and `elseif()`
+  - Write and understand `for()` loops
+- Key points:
   - "Use `if` and `else`"
   - "Use `for` loop "
 

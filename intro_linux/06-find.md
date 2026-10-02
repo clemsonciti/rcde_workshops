@@ -15,4 +15,4 @@ The `grep` command is used to search through a file for a specified pattern. Thi
 $ grep pattern filename
 ```
 
-Click [here](https://download.microsoft.com/download/c/3/e/c3ef6850-d455-478a-afbe-b89e57df8569/Regular_Expressions_Cheat_Sheet.pdf) to download a regular expression cheat sheet.
+[Download a Microsoft Regular Expressions Cheat Sheet](https://download.microsoft.com/download/c/3/e/c3ef6850-d455-478a-afbe-b89e57df8569/Regular_Expressions_Cheat_Sheet.pdf)

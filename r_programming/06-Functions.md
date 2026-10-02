@@ -5,28 +5,28 @@
 :class: dropdown
 
 - Questions:
-  - How to write functions in R
+  - How do you write functions in R?
 - Objectives:
   - Define functions
   - Return value(s) from functions
-- Keypoints:
+- Key points:
   - Use `function` to define a new function in R
-  - Use parameters to pass value to function
-  - Load function into program using `source()`
+  - Use parameters to pass values to functions
+  - Load functions into programs using `source()`
 
-- We have seen some examples of built-in R functions. For some functions, 
-you would have to install particular packages. In this chapter, we will 
-show you how to write your own functions. 
+- We have seen some examples of built-in R functions. For some functions,
+you will have to install particular packages. In this chapter, we will
+show you how to write your own functions.
 
 ```
 
 ```{admonition} Using custom functions
 :class: dropdown
 
-- There are several in-built functions in R that can be used 
-to perform analytical tasks, for example: `mean, min, max, quantile,summary`.
-- For example, here's the `mean` function, which computes the 
-arithmetic average of a vector: 
+- There are several built-in functions in R that can be used
+to perform analytical tasks. These include: `mean, min, max, quantile, summary`.
+- For example, here's the `mean` function, which computes the
+arithmetic average of a vector:
 - Using function mean with missing value
 
 ~~~r
@@ -119,12 +119,12 @@ F2C(100)
 f <- function(args){
   do function with args
   out1 <- do1
-  out2 <- do2  
+  out2 <- do2
   output <- list(out1=out1,out2=out2)
 }
 ~~~
 
-- Example: a function which converts polar coordinates to 
+- Example: a function which converts polar coordinates to
 Cartesian coordinates
 
 ~~~r
@@ -133,8 +133,8 @@ polar2cart <- function (r, phi) {
   y <- r*cos(phi)
   return (list(x, y))
 }
-polar2cart(1,pi/6)[1] 
-polar2cart(1,pi/6)[2] 
+polar2cart(1,pi/6)[1]
+polar2cart(1,pi/6)[2]
 ~~~
 
 - Let's specify the names of the two outputs:
@@ -145,10 +145,10 @@ polar2cart <- function (r, phi) {
   ycoord <- r*cos(phi)
   return (list(x=xcoord, y=ycoord))
 }
-polar2cart(1,pi/6)[1] 
-polar2cart(1,pi/6)[2] 
+polar2cart(1,pi/6)[1]
+polar2cart(1,pi/6)[2]
 polar2cart(1,pi/6)$x
-polar2cart(1,pi/6)$y 
+polar2cart(1,pi/6)$y
 ~~~
 
 ```
@@ -157,24 +157,24 @@ polar2cart(1,pi/6)$y
 ```{admonition} Nested functions
 :class: dropdown
 
-- In complex data science use cases, we may have to 
-work on nested functions, which contain functions within a function.
-- For example: Given dataset `mtcars`. Find the mean of fuel 
-consumption `mpg` for cars that having 4 cylinders `cyl`
+- In complex data science use cases, we may have to
+work on nested functions. Nested functions contain functions within a function.
+- For example: Given dataset `mtcars`, find the mean of fuel
+consumption `mpg` for cars that have 4 cylinders `cyl`.
 
 ~~~r
 data(mtcars)
 names(mtcars)
 
-# Step 1: find the cars that having 4 cylinders:
+# Step 1: find the cars that have 4 cylinders:
 ind <- mtcars$cyl==4
-# Step 2: find the fuel consumption of all the cars having 4 cylinders:
+# Step 2: find the fuel consumption of all the cars that have 4 cylinders:
 fuel_4cyl <- mtcars$mpg[ind]
 # Step 3: compute the mean
 mean(fuel_4cyl)
 ~~~
 
-- All the 3 steps can be nested into one command line for experience user:
+- All 3 steps can be nested into one command line by experienced users:
 
 ~~~r
 mean(mtcars$mpg[mtcars$cyl==4])
@@ -187,8 +187,8 @@ mean(mtcars$mpg[mtcars$cyl==4])
 :class: dropdown
 
 
-- Defensive programming encourages us to frequently check conditions 
-and throw an error if something is wrong. 
+- Defensive programming encourages us to frequently check conditions
+and throw an error if something is wrong.
 - For example:
 
 ~~~r
@@ -203,25 +203,25 @@ F2C(100)
 
 ```
 
- 
+
 ```{admonition} Saving functions for future use
 :class: dropdown
 
 - Let's save our function so we can use it later.
-- First, get your working directory by running `getwd()`. 
-Then, in a file browser (Windows) or in Finder (Mac), go 
-to that directory, and please create a folder "R_workshop". 
-Then, in R, let's make this our working directory: `setwd ("R_workshop")`. 
+- First, get your working directory by running `getwd()`.
+Then, in a file browser (Windows) or in Finder (Mac), go
+to your working directory and create a folder called "R_workshop".
+Then, in R, let's make this our new working directory: `setwd ("R_workshop")`.
 Then, let's list the files in it:
 
 ~~~r
 list.files (getwd())
 ~~~
 
-- The result should be empty (`character(0)`) because it is 
-an empty directory. If you are familiar with Linux, you can 
+- The result should be empty (`character(0)`) because it is
+an empty directory. If you are familiar with Linux, you can
 use the `Terminal` tab from the console for the same purpose.
-- Then, in the R studio Editor, copy-and-paste the `polar2cart` 
+- Then, in the R studio editor, copy and paste the `polar2cart`
 function:
 
 ~~~r
@@ -232,7 +232,7 @@ polar2cart <- function (r, phi) {
 }
 ~~~
 
-...and then save it by doing `File -> Save As` and selecting the name 
+...and then save it using `File -> Save As` and select the name
 `polar2cart.R`. Make sure you are saving it in the `R_workshop` folder.
 
 ```
