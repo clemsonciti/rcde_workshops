@@ -3,10 +3,10 @@
 # Convolutional Neural Network - CNN
 
 
-- CNNs are one type of ANN which utilize the neuron, kernel, activation function.
+- CNNs are a type of ANN that uses the neuron, kernel, and activation functions.
 - Inputs must be in images (or assumed to be images)
-- Using Forward & Backpropagation technique with certain property to process it faster
-- CNNs best for object detection, image classification, computer vision
+- Using Forward Propagation & Backpropagation techniques with certain properties for faster processing
+- CNN works best for object detection, image classification, and computer vision
 
 ## Architecture of CNNs
 
@@ -14,17 +14,17 @@
 ![image](https://user-images.githubusercontent.com/43855029/129789560-452539b8-06c7-4a3b-8543-c2f6e5a6f9c6.png)
 [Source](http://henrysprojects.net/projects/conv-net.html)
 
-- A basic CNNs consists of Convolution Layers, Max Pooling Layers and fully connected Layer (Dense) before output layer
-- A simple image can be simply flatten into 1D vector and driven through the regular fully connected NN. However, this requires lot of computational power if the image is large and has more color.
-- Therefore, Convolution Layers and  Max Pooling
+- A basic CNN consists of Convolution Layers, Max Pooling Layers and a fully connected Layer (Dense) before the output layer
+- A simple image can be flattened into 1D vectors and driven through the regular fully connected NN. However, this requires a lot of computational power if the image is large and has more color.
+- Therefore, we can use Convolution Layers and  Max Pooling
 
 ### Convolutional Layer (CNN or ConvNet)
 
-- Take a look at the simple gray scale image below which contains 10 pixels on width & height. The color scale has only 2 values (black & white) or (binary -1 and 1), there fore the size of the following image is 10x10x1:
+- Take a look at the simple gray scale image below which contains 10 pixels in width & height. The color scale has only 2 values (black & white) or (binary -1 and 1), therefore the size of the following image is 10x10x1:
 
 ![image](https://user-images.githubusercontent.com/43855029/129790068-408bbad8-8752-4153-9ce3-9099cae1995a.png)
 
-- However, regular image contains colors [RGB](https://www.rapidtables.com/web/color/RGB_Color.html) with each color scale ranges from 0-255, making the size of each image is: n x n x 3 (n = number of pixel).
+- However, a regular image contains colors [RGB](https://www.rapidtables.com/web/color/RGB_Color.html) with each color scale ranging from 0-255, making the size of each image: n x n x 3 (n = number of pixels).
 
 ![image](https://user-images.githubusercontent.com/43855029/129623983-173558ba-45f5-4a42-972d-a6252f7695e0.png)
 
@@ -37,7 +37,7 @@
 
 ![image](https://user-images.githubusercontent.com/43855029/129624564-96d6d7e4-6409-4775-ad9d-2bf133fa0396.png)
 
-- In other word, the convoluted image from RGB image would look like:
+- In other word, the convoluted image from the RGB image would look like:
 
 ![image](https://user-images.githubusercontent.com/43855029/129791297-fae899e5-1745-4fa0-b348-1785dea769ea.png)
 
@@ -49,7 +49,7 @@
 
 ![image](https://user-images.githubusercontent.com/43855029/129624678-75532145-0e90-48d5-9703-c8ee626aa7f4.png)
 
-In which Max Pooling performs a lot better than Average Pooling.
+ Max Pooling performs a lot better than Average Pooling.
 
 - The image after Max Pooling layer would look like:
 
@@ -57,19 +57,19 @@ In which Max Pooling performs a lot better than Average Pooling.
 
 
 ### Flatten Layer
-- Once the images have passed through Convolution Layer and Pooling Layer, its size has been reduced greatly and ready for MLP training (or to another Convolution steps).
-- The image is then flatten to a column vector and passed through feed-forward NN and BackPropagation applied to every iteration.
-- Softmax activation function is applied to classified the multi-output
+- Once the images have passed through the Convolution Layer and the Pooling Layer, its size has been reduced greatly and we are ready for MLP training (or moving to another Convolution step).
+- The image is then flattened to a column vector and passed through feed-forward NN and BackPropagation in every iteration.
+- The Softmax activation function is applied to classify the multi-output
 
-More information can be found [here](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+More information can be found at Towards Data Science's [Guide to Convolutional Neural Networks](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
 
 
 ## Application of CNN in image classification
 
 ### The CIFAR10 database
-- The [CIFAR10](https://www.cs.toronto.edu/~kriz/cifar.html) database consisting 60,000 color images with 10 different classes
-- Each image has 32 x 32 pixels with color range from 0-255
-- It is good database for pattern recognition and image classification task (the entire data is clean and ready for use).
+- The [CIFAR10](https://www.cs.toronto.edu/~kriz/cifar.html) database consists of 60,000 color images with 10 different classes
+- Each image has 32 x 32 pixels with a color range from 0-255
+- It is a good database for pattern recognition and image classification tasks (the data is clean and ready for use).
 - The dataset was divided into 50,000 images for training and 10,000 images for testing
 - The 10 [classes](https://keras.io/api/datasets/cifar10/) are **airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck**
 - Sample CIFAR10 data:
@@ -121,7 +121,7 @@ for i in range(49):
     plt.yticks([])
     plt.grid(False)
     plt.imshow(X_train[i])
-    # The CIFAR labels happen to be arrays, which is why you need the extra index    
+    # The CIFAR labels happen to be arrays, which is why you need the extra index
     plt.xlabel(class_names[y_train[i][0]])
 plt.show()
 ```
@@ -138,9 +138,9 @@ print(y_train.shape)
 print(y_test.shape)
 ```
 
-### Construct Convolutional Neural Network
+### Construct a Convolutional Neural Network
 - For Convolution front end, starting with kernel size (3,3) with a number of filter 10 followed by Max Pooling Layer with pool_size = (2,2).
-- The 2D data after two Max Pooling layer is flatten directly.
+- The 2D data after two Max Pooling layers is flattened directly.
 
 ```python
 model = Sequential()
@@ -156,7 +156,7 @@ model.summary()
 
 ```python
 # compile model
-model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),  metrics=['accuracy'])                                                       
+model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),  metrics=['accuracy'])
 ```
 
 ### Train model
@@ -165,7 +165,7 @@ Fit the model
 
 ```python
 # fit the model
-model_CNN = model.fit(X_train, y_train, epochs=10, 
+model_CNN = model.fit(X_train, y_train, epochs=10,
                     validation_data=(X_test, y_test))
 ```
 
@@ -241,7 +241,7 @@ plt.show()
 ![image](https://user-images.githubusercontent.com/43855029/135329702-29eeb261-e7bb-4d93-bd6c-894e8360df16.png)
 
 ### Improving the performance?
-Use more convolution and max pooling payer:
+Use more convolution and max pooling layers:
 
 ```python
 model = Sequential()
@@ -257,9 +257,9 @@ model.add(Dense(100, activation='relu'))
 model.add(Dense(10, activation='relu'))
 
 # compile model
-model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),  metrics=['accuracy'])     
-model.fit(X_train, y_train, epochs=10, 
-                    validation_data=(X_test, y_test))                   
+model.compile(optimizer='adam', loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),  metrics=['accuracy'])
+model.fit(X_train, y_train, epochs=10,
+                    validation_data=(X_test, y_test))
 ```
 
 ```python

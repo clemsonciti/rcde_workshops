@@ -3,12 +3,12 @@
 ## Recurrent Neural Network
 
 ### Introduction
-- RNNs are type of Deep Learning models with built-in feedback mechanism. 
-- The output of a particular layer can be **re-fed** as the input in order to predict the output. 
+- RNNs are a type of Deep Learning models with built-in feedback mechanisms.
+- The output of a particular layer can be **re-fed** as the input in order to predict the output.
 
 ![image](https://user-images.githubusercontent.com/43855029/132912049-167cf37e-66a0-4b54-8024-183ab7785398.png)
 
-[source](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+[Understanding LSTMS](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 
 - A look at detailed when we unroll the RNN loop:
 
@@ -20,10 +20,10 @@
 ![image](https://user-images.githubusercontent.com/43855029/132903689-398ef108-660d-47ba-ae46-b783f203e307.png)
 
 ### Applications
-- It is specifically designed for Sequential problem **Weather forecast, Stock forecast, Image captioning, Natural Language Processing, Speech/Voice Recognition**
+- It is specifically designed for Sequential problems like **Weather forecasta, Stock forecasta, Image captioning, Natural Language Processing, and Speech/Voice Recognition**
 
-### Some Disadvantages of RNN: 
-- Computationally Expensive and large memory requested
+### Some Disadvantages of RNN:
+- Computationally expensive and reuqire a large memory.
 - RNN is sensitive to changes in parameters and having **Exploding Gradient** or **Vanishing Gradient**
 - In order to resolve the gradient problem of RNN, a method Long-Short Term Memory (LSTM) is proposed.
 
@@ -77,7 +77,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
-from numpy import array    
+from numpy import array
 ```
 
 #### Loading Jena climate station data:
@@ -104,7 +104,7 @@ df1[df1==-9999.0]=np.nan
 print(df1.isna().sum())
 ```
 
-Now treat missing value with KNN Imputer 
+Now treat missing value with KNN Imputer
 
 
 ```python
@@ -118,9 +118,9 @@ print(df_knnimpute.isna().sum())
 
 Now all input data is clean without any missing value. Next step, we gonna use LASSO for variable selection:
 
-#### Variable selection with LASSO 
+#### Variable selection with LASSO
 
-Create set of input/output data. 
+Create set of input/output data.
 Here, the output variable is "T (degC)". However "Tpot (K)" and "Tdew (degC)" are very similar to the output, resulting in collinearity. Therefore, I would drop them off for now in order to check the influence of ther variables with the output:
 
 ```python
@@ -142,9 +142,9 @@ coefs = []
 for ld in lambdas:
     lassocv = Lasso(alpha=ld)
     model_LS = lassocv.fit(x, y)
-    y_predLS_cv = model_LS.predict(x)    
+    y_predLS_cv = model_LS.predict(x)
     MSE.append(mse(y,y_predLS_cv))
-    coefs.append(model_LS.coef_)        
+    coefs.append(model_LS.coef_)
 ```
 
 Plot the MSE with lambda variation:
@@ -168,7 +168,7 @@ coef_df.columns = x.columns
 ax = plt.gca()
 for i in range(0,coef_df.columns.size):
     ax.plot(np.log10(lambdas), coef_df.iloc[:,i])
-    
+
 ax.legend(coef_df.columns,bbox_to_anchor = (1.05, 0.6))
 plt.xlabel("log($\\lambda$)")
 plt.ylabel('Coefficients')
@@ -206,7 +206,7 @@ Here we see that, the variables 'p (mbar)', 'rh (%)', 'VPmax (mbar)', 'rho (g/m*
 Therefore, we select all these variables into our input data together with T (degC):
 
 ```python
-selected_col = [0,1,4,5,10] 
+selected_col = [0,1,4,5,10]
 dfnew = df_knnimpute.iloc[:,selected_col]
 dfnew.head()
 ```
@@ -227,7 +227,7 @@ dfnew.head()
 split_fraction = 0.7
 train_split = int(split_fraction * int(df.shape[0]))
 
-step = 6 
+step = 6
 past = 720
 future = 72
 
@@ -354,19 +354,19 @@ outputs = tf.keras.layers.Dense(1)(lstm_out)
 
 model = tf.keras.Model(inputs=inputs, outputs=outputs)
 model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate), loss="mse", metrics=['accuracy'])
-model.summary()    
+model.summary()
 ```
 
 ```
 Model: "functional_5"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-input_3 (InputLayer)         [(None, 120, 5)]          0         
+input_3 (InputLayer)         [(None, 120, 5)]          0
 _________________________________________________________________
-lstm_2 (LSTM)                (None, 32)                4864      
+lstm_2 (LSTM)                (None, 32)                4864
 _________________________________________________________________
-dense_2 (Dense)              (None, 1)                 33        
+dense_2 (Dense)              (None, 1)                 33
 =================================================================
 Total params: 4,897
 Trainable params: 4,897
@@ -379,7 +379,7 @@ Non-trainable params: 0
 history = model.fit(
     dataset_train,
     epochs=epochs,
-    validation_data=dataset_test   
+    validation_data=dataset_test
 )
 ```
 
@@ -420,7 +420,7 @@ model = tf.keras.models.load_model('LSTM_Jena.keras')
 
 
 #### Prediction
-Modifying the given [code](https://keras.io/examples/timeseries/timeseries_weather_forecasting/) to make predictions for 5 sets of values from validation set:
+Modifying the given [Timeseries forecasting code](https://keras.io/examples/timeseries/timeseries_weather_forecasting/) to make predictions for 5 sets of values from validation set:
 
 First, we need to create a rescale function back to original scale for T (degC)
 
@@ -461,7 +461,7 @@ for x, y in dataset_test.take(5):
         #[x[0][:, 1].numpy(), y[0].numpy(), model.predict(x)[0]],
         [scaleT.inverse_transform(pd.DataFrame(x[0][:, 1])),
          scaleT.inverse_transform(pd.DataFrame(pd.Series(y[0].numpy()))),
-         scaleT.inverse_transform(pd.DataFrame(model.predict(x)[0]))],         
+         scaleT.inverse_transform(pd.DataFrame(model.predict(x)[0]))],
         12,
         "Single Step Prediction",
     )

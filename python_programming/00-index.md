@@ -7,8 +7,8 @@
 
 ## Workshop Description
 
-This Workshop will introduce Python for those that have little to no programming experience and consists of three parts:
-- Python I: Introduction to Python and core Programming Concepts (No prior programming experience required).
+This Workshop will introduce Python to those that have little to no programming experience. It consists of three parts:
+- Python I: Introduction to Python and core programming concepts (No prior programming experience required).
 - Python II: Introduction to Numpy, Matplotlib and Anaconda Environments (Prerequisite: Python I)
 - Python III: Introduction to Data Analysis using Pandas (Prerequisite: Python I Recommended: Python II)
 - Python IV: Introduction to Data Analysis using Pandas (Prerequisite: Python I-III)

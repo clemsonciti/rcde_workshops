@@ -7,8 +7,8 @@
 
 ## Workshop Description
 
-The workshop dwelves into in-depth topics on how to work with Palmetto's scheduler 
-to launch a variety of complex computational workflows.w
+This in-depth scheduling workshop teaches participants how to work with Palmetto's scheduler
+to launch a variety of complex computational workflows.
 
 ## Prerequisites
-No prerequisits are required
+No prerequisites are required

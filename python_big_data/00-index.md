@@ -7,15 +7,15 @@
 
 ## Workshop Description
 
-This workshop will teach how to how to utilize Apache Spark and Python to perform 
-large-scale, in-memory data analytics. Learning outcomes of this workshop include 
-understanding the overall conceptual design of Spark and demonstrate the advantages 
-of using Spark over traditional Hadoop MapReduce. Participants will also learn to 
-develop Spark programs using Python and to leverage Spark’s specific capabilities 
+This workshop will demonstrate how to utilize Apache Spark and Python to perform
+large-scale, in-memory data analytics. Learning outcomes of this workshop include
+understanding the overall conceptual design of Spark and demonstrating the advantages
+of using Spark over traditional Hadoop MapReduce. Participants will also learn to
+develop Spark programs using Python and to leverage Spark’s specific capabilities
 such as SQLContext and DataFrame to assist with data analytics.
 
 ## Prerequisites
 
-This workshop requires: 
+This workshop requires:
 - Familiarity with Python (Python I/II workshops)
-- Familiarity with Palmetto (Introduction to Research Computing on Palmetto)
+- Familiarity with Palmetto 2 (Introduction to Research Computing on Palmetto 2)

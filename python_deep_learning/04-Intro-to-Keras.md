@@ -16,7 +16,7 @@ import keras
 - Convolution layer (use for model with image data)
 - Other layers
 
-For regular Deep Learning model, we use fully connected or Dense layer:
+For regular Deep Learning models we use fully connected or Dense layers:
 
 ```python
 from tensorflow.keras.models import Sequential
@@ -26,7 +26,7 @@ from tensroflow.keras.layers import Dense
 ### Sequential
 
 - A **Sequential** model is appropriate for a **plain stack of layers** where each layer has exactly one input tensor and one output tensor.
-- More information can be found [here](https://keras.io/guides/sequential_model/)
+- More information can be found at [Keras Guides: Sequential Model](https://keras.io/guides/sequential_model/)
 
 ### Dense:
 
@@ -36,7 +36,7 @@ from tensroflow.keras.layers import Dense
 - activation is the element-wise activation function passed as the activation argument,
 - kernel is a weights matrix created by the layer,
 - bias is a bias vector created by the layer (only applicable if use_bias is True).
-- More information on Dense can be found [here](https://keras.io/api/layers/core_layers/dense)
+- More information on Dense can be found [Keras Core Layers: Dense](https://keras.io/api/layers/core_layers/dense)
 
 ### Create a Sequential model with N=2 as in image above:
 
@@ -64,6 +64,6 @@ model.add(Dense(2,activation='sigmoid'))
 
 ![image](https://user-images.githubusercontent.com/43855029/129512553-17bf8d4e-5ed4-4180-aaa7-d180c2d093c0.png)
 
-Source on optimal activation function can be found [here](https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/)
+Source on optimal activation function can be found [on Machine Learning Mastery's page](https://machinelearningmastery.com/choose-an-activation-function-for-deep-learning/)
 
 

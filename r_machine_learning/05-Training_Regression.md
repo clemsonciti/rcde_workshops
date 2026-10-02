@@ -2,7 +2,7 @@
 
 ## More examples of prediction
 
-CARET supports a huge number of prediction methods; see the list [here](https://rdrr.io/cran/caret/man/models.html). Let's do a few examples.
+CARET supports a huge number of prediction methods; see the list at [Caret: Models](https://rdrr.io/cran/caret/man/models.html). Let's do a few examples.
 
 ## For Continuous output
 
@@ -33,16 +33,16 @@ ModFit <- train(Ozone~Temp,data=training,
 summary(ModFit$finalModel)
 ~~~
 
-Apply trained model to testing data set and evaluate output:
+Apply the trained model to a testing data set and evaluate output:
 
 ~~~r
 prediction <- predict(ModFit,testing)
 cor.test(prediction,testing$Ozone)
 ~~~
 
-### Linear regression with multiple predictors (Multi-Linear Regression)
+### Linear regression with multiple predictors (multi-linear regression)
 
-Now, let's predict `Ozone` from three predictors: solar radiation, wind, and temperature. 
+Now, let's predict `Ozone` from three predictors: solar radiation, wind, and temperature.
 
 ~~~r
 modFit2 <- train(Ozone~Solar.R+Wind+Temp,data=training,
@@ -54,11 +54,11 @@ prediction2 <- predict(modFit2,testing)
 cor.test(prediction2,testing$Ozone)
 ~~~
 
-We see that our correlation has improved when we used more predictors. 
+We see that our correlation has improved when we used more predictors.
 
 
 ### Train model using Stepwise Linear Regression
-It’s a step by step Regression to determine which covariates set best match with the dependent variable. Using AIC as criteria:
+Stepwise Linear Regression is a step by step regression to determine which covariate set best matches with the dependent variable. Using AIC as criteria:
 
 ~~~r
 modFit_SLR <- train(Ozone~Solar.R+Wind+Temp,data=training,method="lmStepAIC")
@@ -88,7 +88,7 @@ cor.test(prediction_poly,testing$Ozone)
 ~~~
 
 ### Train model using Principal Component Regression
-Principal Component Regression is a combination of linear regression and principal component analysis; it is particularly useful when the predictors are highly correlated. 
+Principal component regression is a combination of linear regression and principal component analysis. It is particularly useful when the predictors are highly correlated.
 
 ~~~r
 install.packages("pls")
@@ -105,7 +105,7 @@ cor.test(prediction_PCR,testing$Ozone)
 - Typical binary classification: True/False, Yes/No, Pass/Fail
 - Unlike linear regression, the prediction for the output is transformed using a non-linear function called the logistic function.
 - The standard logistic function has formulation:
- 
+
 ![image](https://user-images.githubusercontent.com/43855029/114233181-f7dcbb80-994a-11eb-9c89-58d7802d6b49.png)
 
 <!--- ![image](https://user-images.githubusercontent.com/43855029/114233189-fb704280-994a-11eb-9019-8355f5337b37.png) -->
@@ -116,7 +116,7 @@ cor.test(prediction_PCR,testing$Ozone)
 
 In this example, we use `spam` data set from package `kernlab`.
 This is a data set collected at Hewlett-Packard Labs, that classifies **4601** e-mails as spam or non-spam. In addition to this class label there are **57** variables indicating the frequency of certain words and characters in the e-mail.
-More information on this data set can be found [here](https://rdrr.io/cran/kernlab/man/spam.html)
+More information on this data set can be found at [Kernlab: Spam Email Database](https://rdrr.io/cran/kernlab/man/spam.html)
 
 Train the model:
 ~~~r

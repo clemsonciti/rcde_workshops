@@ -2,13 +2,13 @@
 
 ## QSUB
 
-Now, we arrive at the most important part of today's workshop: getting on the compute nodes. Compute nodes are the real power of Palmetto. Let's see which of the compute nodes are available at the moment:
+Now, we arrive at the most important part of today's workshop: getting on the compute nodes. Compute nodes are the real power of Palmetto 2. Let's see which of the compute nodes are available at the moment:
 
 ```
 whatsfree
 ```
 
-We can see that the cluster is quite busy, but there is a fair amount of compute nodes that are available for us. Now, let's request one compute node. Please type the following (or paste from the website into your SSH terminal):
+We can see that the cluster is quite busy, but there are a fair amount of compute nodes available. Now, let's request one compute node. Please type the following (or paste from the website into your SSH terminal):
 
 ```bash
 qsub -I -l select=1:ncpus=4:mem=10gb:interconnect=1g,walltime=2:00:00
@@ -22,12 +22,12 @@ Now, let's carefully go through the request:
 - `-I` means it's an interactive job (we'll talk about it in a bit);
 - `-l` is the list of resource requirements we are asking for;
 - `select=1` means we are asking for one compute node;
-- `ncpus=4` means that we only need four CPUs on the node (since all Palmetto compute nodes have at least 8 CPUs, we might share the compute node with other users, but it's OK because users who use the same node do not interfere with each other);
-- `mem=10gb` means that we are asking for 10 Gb of RAM (you shouldn't ask for less than 8 Gb); again, memory is specific to the user, and not shared between different users who use the same node);
+- `ncpus=4` means that we only need four CPUs on the node (since all Palmetto 2 compute nodes have at least 8 CPUs, we might share the compute node with other users, but it's OK because users who use the same node do not interfere with each other);
+- `mem=10gb` means that we are asking for 10 GB of RAM (you shouldn't ask for less than 8 GB); again, memory is specific to the user, and not shared between different users who use the same node;
 - `interconnect=1g` is the type of interconnect (the allowed types are `1g`, `10ge`, `fdr`, `hdr`, and `any`). If you look at the output of `whatsfree` and `cat /etc/hardware-table`, you will see the different CPU/RAM configurations that are available for these three types of interconnect. Typically, but not always, `1g` nodes have less RAM and a smaller number of CPUs than `fdr` and `hdr` (with the `hdr` nodes being the most powerful interms of RAM and CPUs).
 - finally, `walltime=2:00:00` means that we are asking to use the node for 2 hours; after two hours we will be logged off the compute node if we haven't already disconnected.
 
-This is actually a very modest request, and the scheduler should grant it right away. Sometimes, when we are asking for much substantial amount of resources (for example, 20 nodes with 40 cores and 370 Gb of RAM), the scheduler cannot satisfy our request, and will put us into the queue so we will have to wait until the node becomes available.
+This is actually a very modest request, and the scheduler should grant it right away. Sometimes, when we are asking for much substantial amount of resources (for example, 20 nodes with 40 cores and 370 GB of RAM), the scheduler cannot satisfy our request, and will put us into the queue so we will have to wait until the node becomes available.
 
 Once the request is granted, you will see something like that:
 
@@ -102,7 +102,7 @@ To exit the compute node, type:
 exit
 ```
 
-This will bring you back to the login node. See how your prompt has changed to `login002`. It is important to notice that you have to be on a login node to request a compute node. One you are on the compute node, and you want to go to another compute node, you have to exit first.
+This will bring you back to the login node. See how your prompt has changed to `login002`. It is important to notice that you have to be on a login node to request a compute node. Once you are on the compute node, and you want to go to another compute node, you have to exit first.
 
 For some jobs, you might want to get a GPU, or perhaps two GPUs. For such requests, the `qsub` command needs to specify the number of GPUs and the type of GPUs (which you can get from `cat /etc/hardware-table`). For example, let's request a NVIDIA K20:
 
@@ -122,16 +122,16 @@ If you want a GPU but don't care about the type of the GPU, you can request `gpu
 
 It is possible to ask for several compute nodes at a time, for example `select=4` will give you 4 compute nodes. Some programs, such as LAMMPS or NAMD, work a lot faster if you ask for several nodes. This is an advanced topic and we will not discuss it here, but you can find some examples on our website.
 
-There are other resource limit selection options documented on our
-[website](https://www.palmetto.clemson.edu/palmetto/basic/started/#resource-limits-specification).
+There are other resource limit selection options documented on the
+[Palmetto 2 website](https://www.palmetto.clemson.edu/palmetto/basic/started/#resource-limits-specification).
 
 :::{warning}
-Please be considerate of others when you issue qsub. Remember that Palmetto is a shared resource. Don't request resources you don't plan on actually using. Jobs that request in-demand resources and don't use them are subject to termination.
+Please be considerate of others when you issue `qsub`. Remember that Palmetto 2 is a shared resource. Don't request resources you don't plan on actually using. Jobs that request in-demand resources and don't use them are subject to termination.
 :::
 
 :::{important}
-It is very important to remember that you shouldn't run computations on the login node, because the login node is shared between everyone who logs into Palmetto, so your computations will interfere with other people's login processes.
-However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM so there is no interference.
+It is very important to remember that you shouldn't run computations on the login node, because the login node is shared between everyone who logs into Palmetto 2. Your computations will interfere with other people's login processes.
+However, once you are on a compute node, you can run some computations, because each user gets their own CPUs and RAM. There is no compute node interference.
 :::
 
 ## Modules
@@ -142,7 +142,7 @@ If you are on the compute node, exit it. Once you get on the login node, type th
 qsub -I -l select=1:ncpus=4:mem=10gb,walltime=2:00:00
 ```
 
-We have a lot of software installed on Palmetto, but most of it is organized into *modules*, which need to be loaded. To see which modules are available on Palmetto, please type
+We have a lot of software installed on Palmetto 2, but most of it is organized into *modules*, which need to be loaded. To see which modules are available on Palmetto 2, please type
 
 ```bash
 module avail
@@ -165,7 +165,7 @@ module avail matlab
 
 If the avail list is too long consider trying:
 
-"module --default avail" or "ml -d av" to just list the default modules.
+"module --default avail" or "ml -d av" to list the default modules.
 "module overview" or "ml ov" to display the number of modules for each name.
 
 Use "module spider" to find all possible modules and extensions.
@@ -206,6 +206,6 @@ quit()
 
 :::{admonition} Key Points
 - `qsub` sends a request for a compute node to the scheduler.
-- Software available on Palmetto is organized into modules according to version.
+- Software available on Palmetto 2 is organized into modules according to version.
 - Modules need to be loaded before use.
 :::
