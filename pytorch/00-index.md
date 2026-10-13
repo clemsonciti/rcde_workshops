@@ -57,12 +57,12 @@ To run the notebooks during the workshop, you should start a JupyterLab session 
 - **Partition**: workshop
 - **Account**: rcd_workshop
 - **Slurm Reservation**: pytorch
-- **CPU cores**: 12
+- **CPU cores**: 8
 - **Memory (GB)**: 32
 - **GPUs**: 1
 - **GPU Model**: V100
 - **Number of hours**: 2
 - **Environment**: Standard Jupyter Notebook
-- **Use a custom environment not listed below?**: No
+- **Use a custom environment not listed below?**: Yes
 - **Virtual environment activation command**: `source activate /project/rcde/cehrett/pytorch_intro/env`
 
