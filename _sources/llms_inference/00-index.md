@@ -12,17 +12,10 @@ This workshop series introduces essential concepts related to LLMs and works thr
 * **All workshop participants should have a Palmetto Cluster account.** If you do not already have an account, you can visit our [getting started page](https://docs.rcd.clemson.edu/palmetto/starting).
 * **Participants should be familiar with the Python programming language.** This requirement could be fulfilled by personal projects, coursework, or completion of the Introduction to [Python Programming workshop series](https://clemsonciti.github.io/rcde_workshops/python_programming/00-index.html).
 
-## Accessing Workshop Files
-You can download the notebooks and their contents as follows.
-In the terminal, create or navigate to an empty folder. Run the following command: `wget https://raw.githubusercontent.com/clemsonciti/rcde_workshops/master/llms_inference/download.sh`
-This copies to your drivespace a script `download.sh` that, when run, will copy the full workshop files to your drivespace. So now that you have that script, run the command: `bash download.sh`. You should now have a folder, `llms_inference`, which contains the workshop files.
-
 ## Environment
-To run the code in this workshop, you will need a python environment with the appropriate libraries installed. You can create such an environment as follows. 
+To run the code in this workshop, you will need a python environment with the appropriate libraries installed. I have created such an environment in a shared space, but that environment will not always be available to you. You can create such an environment yourself as follows. 
 
-Navigate to the directory where the workshop contents are stored. Submit the script `create_env.sh` as a job, by running the command `sbatch create_env.sh`. This will create a conda environment named `LLMsInferenceWorkshop`. (This will take a while; up to 60 minutes.) You can then use that environment as the Jupyter kernel to run the notebooks in this environment.
-
-Alternatively, if you'd rather run the script interactively: in the terminal (and not in JupyterLab), get an interactive session using `salloc --mem=12GB --time=01:30:00`. In the directory where the workshop contents are stored, run `bash create_env.sh`.
+To set up your Python environment, load the Anaconda module provided on Palmetto (e.g., `module load anaconda3/2023.09-0`), which gives you access to the `conda` tool. Then create and activate your own conda environment (for example, `conda create -n llm_workshop python=3.11 && conda activate llm_workshop`). After that, install any additional packages your code requires — either one by one using `pip install packagename`, or from a `requirements.txt` file if you have one.ß
 
 ## Hugging Face Hub
 In order to use the code in the Workshop notebooks, you will need a Hugging Face account. You can create one [here](https://huggingface.co/join).
