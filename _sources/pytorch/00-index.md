@@ -64,5 +64,5 @@ To run the notebooks during the workshop, you should start a JupyterLab session 
 - **Number of hours**: 2
 - **Environment**: Standard Jupyter Notebook
 - **Use a custom environment not listed below?**: Yes
-- **Virtual environment activation command**: `source activate /project/rcde/cehrett/pytorch_intro/env`
+- **Virtual environment activation command**: `source activate /project/rcde/workshops/pytorch_intro/env`
 
